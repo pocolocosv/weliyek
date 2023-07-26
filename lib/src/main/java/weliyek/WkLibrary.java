@@ -3,7 +3,7 @@
  */
 package weliyek;
 
-public class Library {
+public class WkLibrary {
     public boolean someLibraryMethod() {
         return true;
     }

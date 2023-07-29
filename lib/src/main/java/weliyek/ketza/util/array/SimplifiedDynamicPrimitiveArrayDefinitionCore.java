@@ -1,0 +1,181 @@
+/*
+ * Weliyek Java Library
+ * Copyright (C) 2023  Ricardo Villalobos - All Rights Reserved
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package weliyek.ketza.util.array;
+
+import java.util.function.IntFunction;
+
+import weliyek.amat.base.ComponentSegmentCore;
+import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.ProtocolDefinitionFactory;
+import weliyek.amat.base.input.BasicReadingResult;
+import weliyek.amat.base.input.BasicReadingRuntime;
+import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.InputBytestream;
+import weliyek.amat.base.input.InputBytestreamGeneralBase;
+import weliyek.amat.base.input.PacketInputFieldReadingFactory;
+import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.output.BasicWritingResult;
+import weliyek.amat.base.output.BasicWritingRuntime;
+import weliyek.amat.base.output.OutputBytestream;
+import weliyek.amat.base.output.OutputBytestreamGeneralBase;
+import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
+import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.number.NumberDefinition;
+import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.NumberSerializing;
+
+public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
+                        T extends PrimitiveArrayWrapper<?,?>,
+                        XD extends DynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
+                        XO extends DynamicPrimitiveArrayDeserializing<
+                                        T,
+                                        OperationSettings,
+                                        DeserializingRuntime<InputBytestream>,
+                                        DeserializingResult<T>,
+                                        XD,ZT,ZXO,ZXD,VXO,VXD>,
+                        YD extends DynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
+                        YO extends DynamicPrimitiveArraySerializing<
+                                        T,
+                                        OperationSettings,
+                                        SerializingRuntime<OutputBytestream>,
+                                        SerializingResult,
+                                        YD,ZT,ZYO,ZYD,VYO,VYD>,
+                        ZT extends Number,
+                        ZXD extends NumberDefinition<ZT,ZXO>,
+                        ZXO extends NumberDeserializing<
+                                        ZT,
+                                        OperationSettings,?,
+                                        ?,ZXD>,
+                        ZYD extends NumberDefinition<ZT,?>,
+                        ZYO extends NumberSerializing<
+                                        ZT,
+                                        OperationSettings,?,?,ZYD>,
+                        ZD extends NumberDefinition<ZT,ZXO>,
+                        VXD extends VariableSizePrimitiveArrayDefinition<T,VXO>,
+                        VXO extends VariableSizePrimitiveArrayReading<
+                                        T,VariableLengthSettings,?,?,VXD>,
+                        VYD extends VariableSizePrimitiveArrayDefinition<T,?>,
+                        VYO extends VariableSizePrimitiveArrayWriting<
+                                        T,OperationSettings,?,?,VYD>,
+                        VD extends VariableSizePrimitiveArrayDefinition<T,VXO>,
+                        D extends DynamicPrimitiveArrayDefinition<T,XO,YO,ZD,VD>>
+    extends DynamicSequenceDefinitionCore<
+                        T,
+                        OperationSettings,
+                        InputBytestream,
+                        InputBytestreamGeneralBase<? extends InputBytestream>,
+                        ReadingRuntimeControl<
+                          InputBytestream,
+                          InputBytestreamGeneralBase<? extends InputBytestream>,
+                          DeserializingRuntime<InputBytestream>>,
+                        DeserializingResult<T>,
+                        XO, XD,
+                        InputBytestreamGeneralBase<?>,
+                        OperationSettings,
+                        OutputBytestream,
+                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
+                        WritingRuntimeControl<
+                          OutputBytestream,
+                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
+                          SerializingRuntime<OutputBytestream>>,
+                        SerializingResult,
+                        YO, YD,
+                        OutputBytestreamGeneralBase<?>,
+                        ZT,
+                        OperationSettings,
+                        ZXO, ZXD,
+                        OperationSettings,
+                        ZYO, ZYD,
+                        ZD,
+                        VariableLengthSettings,
+                        VXO, VXD,
+                        OperationSettings,
+                        VYO, VYD,
+                        VD,
+                        D,
+                        SimplifiedDynamicPrimitiveArrayDefinitionCore<
+                          T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>>
+    implements DynamicPrimitiveArrayDefinition<T, XO, YO, ZD, VD>
+{
+
+  protected SimplifiedDynamicPrimitiveArrayDefinitionCore(
+    String sizeComponentLabel,
+    IntFunction<ZT> sizeComponentIntToNumber,
+    ProtocolDefinitionFactory<
+      ZT,OperationSettings,ZXD,ZXO,InputBytestreamGeneralBase<? extends InputBytestream>,OperationSettings,
+      ZYD,ZYO,OutputBytestreamGeneralBase<? extends OutputBytestream>,ZD> sizeComponentDefinitionFactory,
+    String varseqComponentLabel,
+    ProtocolDefinitionFactory<
+      T,VariableLengthSettings,VXD,VXO,InputBytestreamGeneralBase<? extends InputBytestream>,OperationSettings,
+      VYD,VYO,OutputBytestreamGeneralBase<? extends OutputBytestream>,VD> varseqComponentDefinitionFactory,
+    PacketInputFieldReadingFactory<
+      T,OperationSettings,XD,
+      SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
+      XO,InputBytestreamGeneralBase<?>> readingOpFactory,
+    PacketOutputFieldWritingFactory<
+      T,OperationSettings,YD,
+      SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
+      YO,OutputBytestreamGeneralBase<?>> writingOpFactory,
+    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    D definitionBody,
+    Class<T> serializableClass) {
+    super(
+          sizeComponentLabel,
+          OperationSettings::none,
+          OperationSettings::none,
+          (zk,yo,i) -> sizeComponentIntToNumber.apply(yo.serializable().getLength()), // Set size component value from wrapper length.
+          sizeComponentDefinitionFactory,
+          varseqComponentLabel,
+          (i,xo) -> {
+            ZT sizeNumber = xo.size().field().get()
+                                     .firstOperation().get()
+                                     .result().get()
+                                     .deserialized().get();
+            return VariableLengthSettings.withLength(sizeNumber.intValue());
+          },
+          OperationSettings::none,
+          (vk,yo,i) -> yo.serializable(),
+          varseqComponentDefinitionFactory,
+          componentCore,
+          BasicReadingRuntime::new,
+          BasicReadingResult::new,
+          readingOpFactory,
+          BasicWritingRuntime::new,
+          BasicWritingResult::empty,
+          writingOpFactory,
+          definitionBody,
+          serializableClass);
+  }
+
+  @Override
+  protected
+  SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>
+  getThis() {
+    return this;
+  }
+
+  @Override
+  public int extractLengthFromSerializablesSequence(T sequence) {
+    return definition().extractLengthFromSerializablesSequence(sequence);
+  }
+
+}

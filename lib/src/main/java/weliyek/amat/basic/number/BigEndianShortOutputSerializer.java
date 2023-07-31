@@ -31,7 +31,7 @@ public final class BigEndianShortOutputSerializer
 
   private BigEndianShortOutputSerializer(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Short,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<Short,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

@@ -1,0 +1,82 @@
+/*
+ * Weliyek Java Library
+ * Copyright (C) 2023  Ricardo Villalobos - All Rights Reserved
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+package weliyek.amat.base.output;
+
+import weliyek.amat.base.WkSzStructComponent;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzPacketFieldCore;
+import weliyek.amat.base.OperationSettings;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
+
+public abstract class WkSzPacketWriterFieldCore<
+                        T,
+                        YS extends OperationSettings,
+                        YD extends WkSzDefinition<T,?>,
+                        YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
+                        AYBC extends OutputBytestreamGeneralBase<?>,
+                        AYO extends WkSzAggregatorWriter<?,?,? extends SerializingRuntime<?>,?,?>>
+    extends WkSzPacketFieldCore<
+                        T, YS, YD,
+                        WkSzStructComponentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>,
+                        YO,
+                        WkSzPacketWriterOperationCore<?,?,?,?,?,YO,?,YD,?,?>,
+                        WkSzPacketWriterField<T,YD,YO>,
+                        AYBC,
+                        WkSzAggregatorWriterCore<?,?,?,AYBC,?,?,?,?,AYO,?,?,?>>
+    implements WkSzPacketWriterField<T,YD,YO>
+{
+
+  public WkSzPacketWriterFieldCore(
+    int initialOperationListCapacity,
+    WkSzStructComponentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD> protocolFieldCore) {
+    super(
+        initialOperationListCapacity,
+        protocolFieldCore,
+        WkSzPacketWriterOperation::serializable);
+  }
+
+  @Override
+  protected WkSzPacketWriterOperationCore<?,?,?,?,?,YO,?,YD,?,?>
+  newOperation(int index) {
+    YS settings = newSettings(index);
+    T serializable = serializable(index);
+    return protocolFieldCore().definitionCore().newWritingOperationCore(
+        index, serializable, settings, parentBytestream(), this);
+  }
+
+  @Override
+  protected abstract YS newSettings(int index);
+
+  @Override
+  protected abstract AYBC parentBytestream();
+
+  protected abstract T serializable(int index);
+
+  @Override
+  protected void onDoneProcessing() {
+    // Nothing to do
+  }
+
+  @Override
+  public WkSzStructComponent<? extends YD> structComponent() {
+    return protocolFieldCore().asProtocolField();
+  }
+
+}

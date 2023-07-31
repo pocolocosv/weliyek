@@ -22,22 +22,22 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.CountingOutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceDefinition;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat2.protocol.filter.FieldTester;
 
 public final class VariableSizeCollectionField<
@@ -46,19 +46,19 @@ public final class VariableSizeCollectionField<
                         YS extends OperationSettings,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                        ED extends DefinitionSegment<ET,?>>
-    implements CollectionAndElementsFieldDefinition<
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                        ED extends WkSzDefinition<ET,?>>
+    implements WkSzCollectionAndElementsDefinition<
                         T,
                         VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
                         VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
                         ET,
                         ED>,
-               VariableSizeSequenceDefinition<
+               WkSzVariableSizeSequenceDefinition<
                         T,
                         VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>>
 {
@@ -68,12 +68,12 @@ public final class VariableSizeCollectionField<
                  YS extends OperationSettings,
                  ET,
                  EXS extends OperationSettings,
-                 EXD extends DefinitionSegment<ET,EXO>,
-                 EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSzDefinition<ET,EXO>,
+                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                  EYS extends OperationSettings,
-                 EYD extends DefinitionSegment<ET,?>,
-                 EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                 ED extends DefinitionSegment<ET,EXO>>
+                 EYD extends WkSzDefinition<ET,?>,
+                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                 ED extends WkSzDefinition<ET,EXO>>
   PacketStructure<
                  T,
                  XS,
@@ -120,13 +120,13 @@ public final class VariableSizeCollectionField<
                  YS extends OperationSettings,
                  ET,
                  EXS extends OperationSettings,
-                 EXD extends DefinitionSegment<ET,?>,
-                 EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSzDefinition<ET,?>,
+                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                  EYS extends OperationSettings,
-                 EYD extends DefinitionSegment<ET,?>,
-                 EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                 ED extends DefinitionSegment<ET,?>>
-  DefinitionSegmentCore<
+                 EYD extends WkSzDefinition<ET,?>,
+                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                 ED extends WkSzDefinition<ET,?>>
+  WkSzDefinitionCore<
                  T,
                  XS,?,?,
                  VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -150,7 +150,7 @@ public final class VariableSizeCollectionField<
       ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
       EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new VariableSizeCollectionField<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
   }
 
@@ -169,7 +169,7 @@ public final class VariableSizeCollectionField<
   private VariableSizeCollectionField(
     int minSize,
     int maxSize,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     OperationSubsegmentSettingsFactory<
@@ -211,7 +211,7 @@ public final class VariableSizeCollectionField<
 
   @Override
   public
-  SubcomponentHandler<
+  WkSzStructSubcomponent<
     VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
     VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>, ED>
   element() {
@@ -219,7 +219,7 @@ public final class VariableSizeCollectionField<
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -229,7 +229,7 @@ public final class VariableSizeCollectionField<
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> subfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

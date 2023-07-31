@@ -19,15 +19,15 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterField;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.DynamicSequenceSerializing;
 
 public interface DynamicCollectionFieldSerializer<
@@ -35,27 +35,27 @@ public interface DynamicCollectionFieldSerializer<
                         YS extends OperationSettings,
                         YQ extends SerializingRuntime<?>,
                         YR extends SerializingResult,
-                        YD extends DynamicCollectionFieldDefinition<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
+                        YD extends WkSzDynamicCollectionDefinition<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
-                        ZYO extends NumberSerializing<ZT,?,?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZT,?>,
+                        ZYO extends WkSzNumberWriter<ZT,?,?,?,ZYD>,
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
                         ET,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         VYS extends OperationSettings>
-    extends DynamicCollectionFieldOperation<
+    extends WkSzDynamicCollectionOperation<
                         YS, YQ, YR, YD,
-                        SerializingField<T,YD,?>,
+                        WkSzPacketWriterField<T,YD,?>,
                         ZYO,
-                        SerializingField<ZT,ZYD,ZYO>,
-                        SerializingSubfieldHandler<ZT,ZYD,ZYO>,
+                        WkSzPacketWriterField<ZT,ZYD,ZYO>,
+                        WkSzPacketWriterSubfield<ZT,ZYD,ZYO>,
                         VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>,
-                        SerializingField<
+                        WkSzPacketWriterField<
                           T,
                           VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
                           VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>>,
-                        SerializingSubfieldHandler<T,
+                        WkSzPacketWriterSubfield<T,
                         VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
                           VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>>>,
             DynamicSequenceSerializing<T, YS, YQ, YR, YD, ZT, ZYO, ZYD,

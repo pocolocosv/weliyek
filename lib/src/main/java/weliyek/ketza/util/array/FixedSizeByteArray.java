@@ -20,11 +20,11 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketStructure;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.CountingOutputBytestream;
@@ -33,7 +33,7 @@ import weliyek.amat.basic.aggregator.sequence.SequenceFixedSizeParameter;
 import weliyek.amat2.protocol.filter.FieldTester;
 
 public class FixedSizeByteArray
-    implements ByteArrayDefinition<
+    implements WkSzByteArrayDefinition<
                         FixedSizeByteArrayDeserializing>,
                FixedSizePrimitiveArraySerializerDefinition<
                         ByteArrayWrapper,
@@ -61,7 +61,7 @@ public class FixedSizeByteArray
                       CountingOutputBytestream::new);
   }
 
-  public static DefinitionSegmentCore<
+  public static WkSzDefinitionCore<
                       ByteArrayWrapper,
                       OperationSettings,?,?,
                       FixedSizeByteArray,
@@ -74,7 +74,7 @@ public class FixedSizeByteArray
                       FixedSizeByteArray,?>
   newCore(
     int expectedLength,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new FixedSizeByteArray(expectedLength, componentCore).definitionCore;
   }
 
@@ -89,7 +89,7 @@ public class FixedSizeByteArray
 
   private FixedSizeByteArray(
     int expectedLength,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
         ByteArrayWrapper,
         OperationSettings,
@@ -124,7 +124,7 @@ public class FixedSizeByteArray
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> subfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

@@ -21,20 +21,20 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.SequenceReadingRuntime;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 
 public class SimplifiedPrimitiveArrayDeserializingCore<
                         X extends PrimitiveArrayWrapper<?,?>,
                         XS extends OperationSettings,
                         D extends PrimitiveArraySerializerDefinition<X,XO>,
-                        XO extends PrimitiveArraySerializerReading<
+                        XO extends WkSzPrimitiveArraySerializerReader<
                                           X,
                                           XS,
                                           SequenceReadingRuntime<InputBytestream>,
@@ -63,7 +63,7 @@ public class SimplifiedPrimitiveArrayDeserializingCore<
     int index,
     XS settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<X,?,D,?,?,?> deserializingfieldCore,
+    WkSzPacketReaderFieldCore<X,?,D,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<X,XS,XO,?,?,D> definitionCore,
     XO operationBody,
     Consumer<? super SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>> onInitializing) {

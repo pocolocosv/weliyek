@@ -22,12 +22,12 @@ import java.nio.charset.Charset;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.ketza.util.array.ByteArrayDefinition;
+import weliyek.ketza.util.array.WkSzByteArrayDefinition;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
@@ -38,20 +38,20 @@ public abstract class StringFromBytesWritingCore<
                         YQ extends SerializingRuntime<YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,YQ>,
                         YR extends SerializingResult,
-                        YO extends StringFromBytesWriting<YS,YQ,YR,YD,SYD,SYO>,
+                        YO extends WkSzStringFromBytesWriter<YS,YQ,YR,YD,SYD,SYO>,
                         YOC extends StringFromBytesWritingCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SYS,SYO,SYD,DC>,
-                        YD extends StringFromBytesDefinition<?,YO,? extends SYD>,
+                        YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         AYB extends OutputBytestreamGeneralBase<?>,
                         SYS extends OperationSettings,
                         SYO extends ByteArrayWriting<SYS,?,?,SYD>,
-                        SYD extends ByteArrayDefinition<?>,
-                        DC extends StringFromBytesCore<
+                        SYD extends WkSzByteArrayDefinition<?>,
+                        DC extends WkSzStringFromBytesDefinitionCore<
                                       ?,?,?,?,?,?,?,?,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       ?,?,?,SYS,SYO,SYD,?,?,DC>>
     extends StringFromPrimitiveWritingCore<
                         YS,YB,YBC,YQ,YQC,YR,YO,YOC,YD,AYB,ByteArrayWrapper,SYS,SYO,SYD,DC>
-    implements StringFromBytesWriting<YS, YQ, YR, YD, SYD, SYO>
+    implements WkSzStringFromBytesWriter<YS, YQ, YR, YD, SYD, SYO>
 {
 
   protected StringFromBytesWritingCore(
@@ -59,7 +59,7 @@ public abstract class StringFromBytesWritingCore<
     String serializable,
     YS settings,
     AYB parentBytestream,
-    SerializingFieldCore<String,?,YD,?,?,?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<String,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(
@@ -73,7 +73,7 @@ public abstract class StringFromBytesWritingCore<
   }
 
   @Override
-  public final SerializingSubfieldHandler<ByteArrayWrapper, SYD, SYO> bytes() {
+  public final WkSzPacketWriterSubfield<ByteArrayWrapper, SYD, SYO> bytes() {
     return primitiveArray();
   }
 

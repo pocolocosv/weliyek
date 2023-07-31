@@ -18,8 +18,8 @@
 package weliyek.amat.base;
 
 public interface SubcomponentSegment<
-                        D extends DefinitionSegment<?,?>>
-    extends ComponentSegment<D>
+                        D extends WkSzDefinition<?,?>>
+    extends WkSzStructComponent<D>
 {
 
 }

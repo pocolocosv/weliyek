@@ -32,7 +32,7 @@ public final class LittleEndianLongOutputSerializationRule
 
   private LittleEndianLongOutputSerializationRule(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Long,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

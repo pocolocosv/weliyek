@@ -20,24 +20,24 @@ package weliyek.amat.basic.serializer;
 import java.util.function.BiFunction;
 
 import weliyek.amat.base.input.ReadingRuntimeControl;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.WkSzNumberReader;
 
 public class BasicPrimitiveDeserializerFactory<X extends Number>
     extends InputDeserializerFactory<
                         X,
                         ReadingRuntimeControl<?,?,?>,
-                        NumberDeserializing<X,?,?,?,?>>
+                        WkSzNumberReader<X,?,?,?,?>>
 {
 
   public BasicPrimitiveDeserializerFactory(
       String label,
       BiFunction<
         ReadingRuntimeControl<?,?,?>,
-        NumberDeserializing<X,?,?,?,?>,
+        WkSzNumberReader<X,?,?,?,?>,
         InputSerializationEngine<
           X,
           ? super ReadingRuntimeControl<?,?,?>,
-          ? super NumberDeserializing<X,?,?,?,?>>> engineSupplier) {
+          ? super WkSzNumberReader<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

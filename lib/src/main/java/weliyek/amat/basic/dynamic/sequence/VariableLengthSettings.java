@@ -17,14 +17,14 @@
  */
 package weliyek.amat.basic.dynamic.sequence;
 
-import weliyek.amat.base.OperationSegment;
+import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 
 public interface VariableLengthSettings extends OperationSettings
 {
 
-  static <AO extends OperationSegment<VariableLengthSettings,?,?,?,?>>
+  static <AO extends WkSzPacketOperation<VariableLengthSettings,?,?,?,?>>
   OperationSubsegmentSettingsFactory<AO, VariableLengthSettings>
   builderWithLength(int length) {
     return new OperationSubsegmentSettingsFactory<AO, VariableLengthSettings>() {

@@ -31,7 +31,7 @@ public final class UnsignedByteInputSerialization
 
   private UnsignedByteInputSerialization(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Integer,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }
 

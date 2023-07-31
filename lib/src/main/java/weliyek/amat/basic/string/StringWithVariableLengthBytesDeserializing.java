@@ -21,11 +21,11 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
@@ -34,7 +34,7 @@ import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArrayDeserializing;
 
 public class StringWithVariableLengthBytesDeserializing
-    implements StringFromBytesReading<
+    implements WkSzStringFromBytesReader<
                         VariableLengthSettings,
                         DeserializingRuntime<InputBytestream>,
                         DeserializingResult<String>,
@@ -55,7 +55,7 @@ public class StringWithVariableLengthBytesDeserializing
     int index,
     VariableLengthSettings settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<
+    WkSzPacketReaderFieldCore<
       String,?,StringWithVariableLengthBytes,?,?,?> deserializingfieldCore,
     SimplifiedStringFromBytesCore<
       VariableLengthSettings,StringWithVariableLengthBytesDeserializing,
@@ -78,7 +78,7 @@ public class StringWithVariableLengthBytesDeserializing
 
   @Override
   public
-  DeserializingSubfieldHandler<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -109,12 +109,12 @@ public class StringWithVariableLengthBytesDeserializing
   }
 
   @Override
-  public DeserializingField<String, StringWithVariableLengthBytes, ?> packetField() {
+  public WkSzPacketReaderField<String, StringWithVariableLengthBytes, ?> packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<DeserializingSubfieldHandler<?, ?, ?>> subfields() {
+  public List<WkSzPacketReaderSubfield<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -125,7 +125,7 @@ public class StringWithVariableLengthBytesDeserializing
 
   @Override
   public
-  DeserializingSubfieldHandler<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
   bytes() {
     return this.operationCore.bytes();
   }

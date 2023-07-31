@@ -22,21 +22,21 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.CountingOutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingOperation;
-import weliyek.amat.basic.sequence.FixedSizeSequenceDefinition;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
+import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
 import weliyek.amat2.protocol.filter.FieldTester;
 
 public final class FixedSizeCollectionField<
@@ -45,18 +45,18 @@ public final class FixedSizeCollectionField<
                         YS extends OperationSettings,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,EXO>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSzDefinition<ET,EXO>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                        ED extends DefinitionSegment<ET,EXO>>
-    implements CollectionAndElementsFieldDefinition<
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                        ED extends WkSzDefinition<ET,EXO>>
+    implements WkSzCollectionAndElementsDefinition<
                         T,
                         FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
                         FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
                         ET, ED>,
-                FixedSizeSequenceDefinition<
+                WkSzFixedSizeSequenceDefinition<
                         T,
                         FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>>
 {
@@ -66,12 +66,12 @@ public final class FixedSizeCollectionField<
                  YS extends OperationSettings,
                  ET,
                  EXS extends OperationSettings,
-                 EXD extends DefinitionSegment<ET,EXO>,
-                 EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSzDefinition<ET,EXO>,
+                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                  EYS extends OperationSettings,
-                 EYD extends DefinitionSegment<ET,?>,
-                 EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                 ED extends DefinitionSegment<ET,EXO>>
+                 EYD extends WkSzDefinition<ET,?>,
+                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                 ED extends WkSzDefinition<ET,EXO>>
   PacketStructure<T,
                   XS,
                   FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -117,13 +117,13 @@ public final class FixedSizeCollectionField<
                  YS extends OperationSettings,
                  ET,
                  EXS extends OperationSettings,
-                 EXD extends DefinitionSegment<ET,EXO>,
-                 EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSzDefinition<ET,EXO>,
+                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                  EYS extends OperationSettings,
-                 EYD extends DefinitionSegment<ET,?>,
-                 EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                 ED extends DefinitionSegment<ET,EXO>>
-  DefinitionSegmentCore<
+                 EYD extends WkSzDefinition<ET,?>,
+                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                 ED extends WkSzDefinition<ET,EXO>>
+  WkSzDefinitionCore<
                       T,
                       XS,?,?,
                       FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -148,7 +148,7 @@ public final class FixedSizeCollectionField<
     ProtocolDefinitionFactory<
       ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
       EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new FixedSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>(
                         expectedCollectionSize,
                         componentCore,
@@ -173,7 +173,7 @@ public final class FixedSizeCollectionField<
 
   private FixedSizeCollectionField(
     int expectedCollectionSize,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     Function<List<ET>, T> collectionFactory,
@@ -211,7 +211,7 @@ public final class FixedSizeCollectionField<
 
   @Override
   public
-  SubcomponentHandler<
+  WkSzStructSubcomponent<
     FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
     FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,ED>
   element() {
@@ -219,7 +219,7 @@ public final class FixedSizeCollectionField<
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -229,7 +229,7 @@ public final class FixedSizeCollectionField<
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> subfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

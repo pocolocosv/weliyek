@@ -30,14 +30,14 @@ public abstract class BasicPrimitiveSerializerEngine<T extends Number>
     extends OutputSerializationEngine<
                         T,
                         WritingRuntimeControl<?,?,?>,
-                        NumberSerializing<T,?,?,?,?>>
+                        WkSzNumberWriter<T,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(BasicPrimitiveSerializerEngine.class);
 
   protected BasicPrimitiveSerializerEngine(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<T,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<T,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

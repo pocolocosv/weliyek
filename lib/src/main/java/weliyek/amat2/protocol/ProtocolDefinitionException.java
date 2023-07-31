@@ -17,36 +17,36 @@
  */
 package weliyek.amat2.protocol;
 
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzDefinitionCore;
 
 public class ProtocolDefinitionException extends ProtocolFieldException
 {
 
   private static final long serialVersionUID = 2022_05_26_0000L;
-  public final DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
+  public final WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
 
   public ProtocolDefinitionException(
-    DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
+    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
     super(definitionCore.componentCore());
     this.definitionCore = definitionCore;
   }
 
   public ProtocolDefinitionException(
-    DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message) {
     super(definitionCore.componentCore(), message);
     this.definitionCore = definitionCore;
   }
 
   public ProtocolDefinitionException(
-    DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     Throwable cause) {
     super(definitionCore.componentCore(), cause);
     this.definitionCore = definitionCore;
   }
 
   public ProtocolDefinitionException(
-    DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause) {
     super(definitionCore.componentCore(), message, cause);
@@ -54,7 +54,7 @@ public class ProtocolDefinitionException extends ProtocolFieldException
   }
 
   public ProtocolDefinitionException(
-    DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause,
     boolean enableSuppression,

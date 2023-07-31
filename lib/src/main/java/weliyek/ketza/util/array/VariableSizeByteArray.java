@@ -20,11 +20,11 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketStructure;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.CountingOutputBytestream;
@@ -34,7 +34,7 @@ import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat2.protocol.filter.FieldTester;
 
 public class VariableSizeByteArray
-    implements ByteArrayDefinition<
+    implements WkSzByteArrayDefinition<
                         VariableSizeByteArrayDeserializing>,
                VariableSizePrimitiveArraySerializerDefinition<
                         ByteArrayWrapper,
@@ -61,7 +61,7 @@ public class VariableSizeByteArray
   }
 
   public static
-  DefinitionSegmentCore<
+  WkSzDefinitionCore<
                       ByteArrayWrapper,
                       VariableLengthSettings,?,?,
                       VariableSizeByteArray,
@@ -75,7 +75,7 @@ public class VariableSizeByteArray
   newCore(
     int minSize,
     int maxSize,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new VariableSizeByteArray(minSize, maxSize, componentCore).definitionCore;
   }
 
@@ -91,7 +91,7 @@ public class VariableSizeByteArray
   private VariableSizeByteArray(
     int minSize,
     int maxSize,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
         ByteArrayWrapper,
         VariableLengthSettings,
@@ -129,7 +129,7 @@ public class VariableSizeByteArray
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> subfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

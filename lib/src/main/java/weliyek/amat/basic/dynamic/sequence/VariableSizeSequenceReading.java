@@ -17,21 +17,21 @@
  */
 package weliyek.amat.basic.dynamic.sequence;
 
-import weliyek.amat.base.input.DeserializingField;
+import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.SequenceReadingRuntime;
-import weliyek.amat.basic.sequence.SequenceReading;
+import weliyek.amat.basic.sequence.WkSzSequenceReader;
 
 public interface VariableSizeSequenceReading<
                         X,
                         S extends VariableLengthSettings,
                         Q extends SequenceReadingRuntime<?>,
                         R extends DeserializingResult<X>,
-                        D extends VariableSizeSequenceDefinition<X,?>>
-        extends SequenceReading<X, S, Q, R, D>,
-                VariableSizeSequenceOperation<
+                        D extends WkSzVariableSizeSequenceDefinition<X,?>>
+        extends WkSzSequenceReader<X, S, Q, R, D>,
+                WkSzVariableSizeSequenceOperation<
                         S, Q, R, D,
-                        DeserializingField<X,D,?>>
+                        WkSzPacketReaderField<X,D,?>>
 {
 
 }

@@ -20,17 +20,17 @@ package weliyek.ketza.util.array;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.base.output.SerializingSubfieldHandlerCore;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.aggregator.AggregatorWritingCore;
-import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceDefinition;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public abstract class DynamicSequenceSerializingCore<
                         T,
@@ -47,33 +47,33 @@ public abstract class DynamicSequenceSerializingCore<
                                         ZT,ZYS,ZYO,ZYD,
                                         VYS,VYO,VYD,
                                         DC>,
-                        YD extends DynamicSequenceDefinition<T,?,YO,?,?>,
+                        YD extends WkSzDynamicSequenceDefinition<T,?,YO,?,?>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
                         ZT extends Number,
                         ZYS extends OperationSettings,
-                        ZYO extends NumberSerializing<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZT,?>,
+                        ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
                         VYS extends OperationSettings,
                         VYO extends VariableSizeSequenceWriting<T,VYS,?,?,VYD>,
-                        VYD extends VariableSizeSequenceDefinition<T,?>,
+                        VYD extends WkSzVariableSizeSequenceDefinition<T,?>,
                         DC extends DynamicSequenceDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYBC,
                                         ZT,?,?,?,ZYS,ZYO,ZYD,
                                         ?,?,?,?,VYS,VYO,VYD,
                                         ?,?,DC>>
-    extends AggregatorWritingCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
+    extends WkSzAggregatorWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
     implements DynamicSequenceSerializing<T, YS, YQ, YR, YD, ZT, ZYO, ZYD, VYO, VYD>
 {
 
-  private SerializingSubfieldHandlerCore<ZT,ZYS,ZYD,ZYO,T,?,YD,YO> sizeWriteField;
-  private SerializingSubfieldHandlerCore<T,VYS,VYD,VYO,T,?,YD,YO> varseqWriteField;
+  private WkSzPacketWriterSubfieldCore<ZT,ZYS,ZYD,ZYO,T,?,YD,YO> sizeWriteField;
+  private WkSzPacketWriterSubfieldCore<T,VYS,VYD,VYO,T,?,YD,YO> varseqWriteField;
 
   protected DynamicSequenceSerializingCore(
     int index,
     T serializable,
     YS settings,
     AYBC parentBytestream,
-    SerializingFieldCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
@@ -86,12 +86,12 @@ public abstract class DynamicSequenceSerializingCore<
   }
 
   @Override
-  public SerializingSubfieldHandler<ZT, ZYD, ZYO> size() {
+  public WkSzPacketWriterSubfield<ZT, ZYD, ZYO> size() {
     return this.sizeWriteField.asSubfield();
   }
 
   @Override
-  public SerializingSubfieldHandler<T, VYD, VYO> variableSequence() {
+  public WkSzPacketWriterSubfield<T, VYD, VYO> variableSequence() {
     return this.varseqWriteField.asSubfield();
   }
 

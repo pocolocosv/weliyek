@@ -21,31 +21,31 @@ import java.util.List;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.CountingOutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.amat2.protocol.filter.FieldTester;
 
 public class DynamicByteArray<
                         ZT extends Number,
-                        ZXD extends NumberDefinition<ZT,ZXO>,
-                        ZXO extends NumberDeserializing<ZT,OperationSettings,?,?,ZXD>,
-                        ZYD extends NumberDefinition<ZT,?>,
-                        ZYO extends NumberSerializing<ZT,OperationSettings,?,?,ZYD>,
-                        ZD extends NumberDefinition<ZT,ZXO>>
-    implements ByteArrayDefinition<
+                        ZXD extends WkSzNumberDefinition<ZT,ZXO>,
+                        ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>,
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
+                        ZYO extends WkSzNumberWriter<ZT,OperationSettings,?,?,ZYD>,
+                        ZD extends WkSzNumberDefinition<ZT,ZXO>>
+    implements WkSzByteArrayDefinition<
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>>,
-               DynamicPrimitiveArrayDefinition<
+               WkSzDynamicPrimitiveArrayDefinition<
                         ByteArrayWrapper,
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                         DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
@@ -53,11 +53,11 @@ public class DynamicByteArray<
                         VariableSizeByteArray>
 {
   public static <ZX extends Number,
-                 ZXD extends NumberDefinition<ZX,ZXO>,
-                 ZXO extends NumberDeserializing<ZX,OperationSettings,?,?,ZXD>,
-                 ZYD extends NumberDefinition<ZX,?>,
-                 ZYO extends NumberSerializing<ZX,OperationSettings,?,?,ZYD>,
-                 ZD extends NumberDefinition<ZX,ZXO>>
+                 ZXD extends WkSzNumberDefinition<ZX,ZXO>,
+                 ZXO extends WkSzNumberReader<ZX,OperationSettings,?,?,ZXD>,
+                 ZYD extends WkSzNumberDefinition<ZX,?>,
+                 ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
+                 ZD extends WkSzNumberDefinition<ZX,ZXO>>
   PacketStructure<ByteArrayWrapper,
                   OperationSettings,
                   DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
@@ -97,12 +97,12 @@ public class DynamicByteArray<
   }
 
   public static <ZX extends Number,
-                 ZXD extends NumberDefinition<ZX,ZXO>,
-                 ZXO extends NumberDeserializing<ZX,OperationSettings,?,?,ZXD>,
-                 ZYD extends NumberDefinition<ZX,?>,
-                 ZYO extends NumberSerializing<ZX,OperationSettings,?,?,ZYD>,
-                 ZD extends NumberDefinition<ZX,ZXO>>
-  DefinitionSegmentCore<ByteArrayWrapper,
+                 ZXD extends WkSzNumberDefinition<ZX,ZXO>,
+                 ZXO extends WkSzNumberReader<ZX,OperationSettings,?,?,ZXD>,
+                 ZYD extends WkSzNumberDefinition<ZX,?>,
+                 ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
+                 ZD extends WkSzNumberDefinition<ZX,ZXO>>
+  WkSzDefinitionCore<ByteArrayWrapper,
                         OperationSettings,?,?,
                         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
@@ -113,7 +113,7 @@ public class DynamicByteArray<
                         OutputBytestreamGeneralBase<?>,
                         DynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>,?>
   newCore(
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String sizeLabel,
     IntFunction<ZX> wrapperSizeGetter,
     String arrayLabel,
@@ -140,7 +140,7 @@ public class DynamicByteArray<
                         VariableSizeByteArray,
                         DynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>> definitionCore;
 
-  DynamicByteArray(ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+  DynamicByteArray(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String sizeLabel,
     IntFunction<ZT> wrapperSizeGetter,
     String arrayLabel,
@@ -180,7 +180,7 @@ public class DynamicByteArray<
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> subfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
@@ -193,20 +193,20 @@ public class DynamicByteArray<
 
   @Override
   public
-      SubcomponentHandler<DynamicByteArrayDeserializing<ZT, ZXO, ZXD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>, ZD>
+      WkSzStructSubcomponent<DynamicByteArrayDeserializing<ZT, ZXO, ZXD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>, ZD>
       size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-      SubcomponentHandler<DynamicByteArrayDeserializing<ZT, ZXO, ZXD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>, VariableSizeByteArray>
+      WkSzStructSubcomponent<DynamicByteArrayDeserializing<ZT, ZXO, ZXD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>, VariableSizeByteArray>
       variableSequence() {
     return this.definitionCore.variableSequence();
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

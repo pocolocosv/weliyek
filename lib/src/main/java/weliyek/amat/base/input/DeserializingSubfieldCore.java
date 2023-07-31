@@ -20,27 +20,27 @@ package weliyek.amat.base.input;
 import java.util.Objects;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.basic.aggregator.AggregatorReading;
-import weliyek.amat.basic.aggregator.AggregatorReadingCore;
+import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
+import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.FilterResults;
 
 public class DeserializingSubfieldCore<
                         T,
                         XS extends OperationSettings,
-                        XD extends DefinitionSegment<T,?>,
-                        XO extends DeserializingOperation<T,XS,?,?,XD>,
+                        XD extends WkSzDefinition<T,?>,
+                        XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXBC extends InputBytestreamGeneralBase<?>,
-                        AXO extends AggregatorReading<?,?,? extends DeserializingRuntime<?>,?,?>>
-        extends DeserializingFieldCore<T, XS, XD, XO, AXBC, AXO>
+                        AXO extends WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>>
+        extends WkSzPacketReaderFieldCore<T, XS, XD, XO, AXBC, AXO>
 {
 
-  private final DeserializingSubfieldHandlerCore<T,XS,XD,XO,?,AXBC,?,AXO> myHandler;
+  private final WkSzPacketReaderSubfieldCore<T,XS,XD,XO,?,AXBC,?,AXO> myHandler;
 
   protected DeserializingSubfieldCore(
     int initialOperationListCapacity,
-    DeserializingSubfieldHandlerCore<T,XS,XD,XO,?,AXBC,?,AXO> subfieldHandler) {
+    WkSzPacketReaderSubfieldCore<T,XS,XD,XO,?,AXBC,?,AXO> subfieldHandler) {
     super(initialOperationListCapacity, subfieldHandler.protocolFieldCore());
     this.myHandler = Objects.requireNonNull(subfieldHandler);
   }
@@ -84,7 +84,7 @@ public class DeserializingSubfieldCore<
   }
 
   @Override
-  public DeserializingField<T, XD, XO> asPacket() {
+  public WkSzPacketReaderField<T, XD, XO> asPacket() {
     return this;
   }
 
@@ -93,7 +93,7 @@ public class DeserializingSubfieldCore<
   }
 
   @Override
-  protected AggregatorReadingCore<?, ?, ?, AXBC, ?, ?, ?, ?, AXO, ?, ?, ?> parentOperationCore() {
+  protected WkSzAggregatorReaderCore<?, ?, ?, AXBC, ?, ?, ?, ?, AXO, ?, ?, ?> parentOperationCore() {
     return this.myHandler.parentOperationCore();
   }
 

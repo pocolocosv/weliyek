@@ -18,21 +18,21 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
+import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.basic.sequence.SequenceWriting;
+import weliyek.amat.basic.sequence.WkSzSequenceWriter;
 
 public interface GenericArraySerializing<
                         Y extends GenericArrayWrapper<?,?>,
                         S extends OperationSettings,
                         Q extends SerializingRuntime<?>,
                         R extends SerializingResult,
-                        D extends GenericArrayDefinition<Y,?>>
-        extends SequenceWriting<Y, S, Q, R, D>,
-                GenericArrayOperation<
+                        D extends WkSzArrayDefinition<Y,?>>
+        extends WkSzSequenceWriter<Y, S, Q, R, D>,
+                WkSzArrayOperation<
                         S, Q, R, D,
-                        SerializingField<Y,D,?>>
+                        WkSzPacketWriterField<Y,D,?>>
 {
 
 }

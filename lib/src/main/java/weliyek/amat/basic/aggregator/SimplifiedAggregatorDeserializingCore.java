@@ -18,7 +18,7 @@
 package weliyek.amat.basic.aggregator;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
@@ -28,14 +28,14 @@ import weliyek.amat.base.input.ReadingRuntimeControl;
 public class SimplifiedAggregatorDeserializingCore<
                         X,
                         XS extends OperationSettings,
-                        XD extends AggregatorDefinition<X,?>,
-                        XO extends AggregatorReading<
+                        XD extends WkSzAggregatorDefinition<X,?>,
+                        XO extends WkSzAggregatorReader<
                                         X,
                                         XS,
                                         DeserializingRuntime<InputBytestream>,
                                         DeserializingResult<X>,
                                         XD>>
-    extends AggregatorReadingCore<
+    extends WkSzAggregatorReaderCore<
                         X,
                         XS,
                         InputBytestream,
@@ -57,7 +57,7 @@ public class SimplifiedAggregatorDeserializingCore<
     int index,
     XS settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<X,?,XD,?,?,?> deserializingFieldCore,
+    WkSzPacketReaderFieldCore<X,?,XD,?,?,?> deserializingFieldCore,
     SimplifiedAggregatorCore<X,XS,XD,XO,?,?,?,? extends XD> definitionCore,
     XO body) {
     super(index, settings, parentBytestream, deserializingFieldCore, definitionCore, body);

@@ -21,25 +21,25 @@ import java.util.function.BiFunction;
 
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.InputSerializationEngine;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 
 public class BasicPrimitiveArrayDeserializerFactory<
                         X extends PrimitiveArrayWrapper<?,?>>
     extends PrimitiveArrayDeserializerFactory<
                         X,
                         SequenceReadingRuntimeControl<?,?,?>,
-                        PrimitiveArraySerializerReading<X,?,?,?,?>>
+                        WkSzPrimitiveArraySerializerReader<X,?,?,?,?>>
 {
 
   public BasicPrimitiveArrayDeserializerFactory(
       String label,
       BiFunction<
         SequenceReadingRuntimeControl<?,?,?>,
-        PrimitiveArraySerializerReading<X,?,?,?,?>,
+        WkSzPrimitiveArraySerializerReader<X,?,?,?,?>,
         InputSerializationEngine<
           X,
           ? super SequenceReadingRuntimeControl<?,?,?>,
-          ? super PrimitiveArraySerializerReading<X,?,?,?,?>>> engineSupplier) {
+          ? super WkSzPrimitiveArraySerializerReader<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

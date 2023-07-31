@@ -27,47 +27,47 @@ public class OperationException extends PacketException
 
     private static final long serialVersionUID = 2019_05_18_000L;
 
-    private final OperationSegment<?,?,?,?,?> operation;
+    private final WkSzPacketOperation<?,?,?,?,?> operation;
     private final Explanation explanation;
 
-    public OperationException(OperationSegment<?,?,?,?,?> operation) {
+    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation) {
         super(operation.packetField());
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationException(OperationSegment<?,?,?,?,?> operation, Explanation explanation) {
+    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation) {
         super(operation.packetField());
         this.operation = operation;
         this.explanation = explanation;
     }
 
-    public OperationException(OperationSegment<?,?,?,?,?> operation, String message) {
+    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message) {
         super(operation.packetField(), message);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationException(OperationSegment<?,?,?,?,?> operation, Explanation explanation, String message) {
+    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation, String message) {
         super(operation.packetField(), message);
         this.operation = operation;
         this.explanation = explanation;
     }
 
-    public OperationException(OperationSegment<?,?,?,?,?> operation, Throwable cause) {
+    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, Throwable cause) {
         super(operation.packetField(), cause);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationException(OperationSegment<?,?,?,?,?> operation, String message, Throwable cause) {
+    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message, Throwable cause) {
         super(operation.packetField(), message, cause);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
     public OperationException(
-        OperationSegment<?,?,?,?,?> operation,
+        WkSzPacketOperation<?,?,?,?,?> operation,
         String message,
         Throwable cause,
         boolean enableSuppression,
@@ -77,7 +77,7 @@ public class OperationException extends PacketException
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationSegment<?,?,?,?,?> getRecord() {
+    public WkSzPacketOperation<?,?,?,?,?> getRecord() {
         return this.operation;
     }
 

@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import weliyek.amat.base.ComponentSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.BasicReadingResult;
 import weliyek.amat.base.input.BasicReadingRuntime;
@@ -43,23 +43,23 @@ import weliyek.amat.base.output.WritingRuntimeControl;
 public class SimplifiedAggregatorCore<
                         T,
                         XS extends OperationSettings,
-                        XD extends AggregatorDefinition<T,?>,
-                        XO extends AggregatorReading<
+                        XD extends WkSzAggregatorDefinition<T,?>,
+                        XO extends WkSzAggregatorReader<
                                         T,
                                         XS,
                                         DeserializingRuntime<InputBytestream>,
                                         DeserializingResult<T>,
                                         XD>,
                         YS extends OperationSettings,
-                        YD extends AggregatorDefinition<T,?>,
-                        YO extends AggregatorWriting<
+                        YD extends WkSzAggregatorDefinition<T,?>,
+                        YO extends WkSzAggregatorWriter<
                                         T,
                                         YS,
                                         SerializingRuntime<OutputBytestream>,
                                         SerializingResult,
                                         YD>,
-                        D extends AggregatorDefinition<T,XO>>
-    extends AggregatorDefinitionCore<
+                        D extends WkSzAggregatorDefinition<T,XO>>
+    extends WkSzAggregatorDefinitionCore<
                         T,
                         XS,
                         InputBytestream,
@@ -92,7 +92,7 @@ public class SimplifiedAggregatorCore<
   public SimplifiedAggregatorCore(
     PacketInputFieldReadingFactory<T, XS, XD, SimplifiedAggregatorCore<T, XS, XD, XO, YS, YD, YO, D>, XO, InputBytestreamGeneralBase<?>> deserializerFactory,
     PacketOutputFieldWritingFactory<T, YS, YD, SimplifiedAggregatorCore<T, XS, XD, XO, YS, YD, YO, D>, YO, OutputBytestreamGeneralBase<?>> serializerFactory,
-    ComponentSegmentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore,
+    WkSzStructComponentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore,
     Consumer<? super SimplifiedAggregatorDeserializingCore<T,XS,XD,XO>> onInitializing,
     Function<? super SimplifiedAggregatorDeserializingCore<T,XS,XD,XO>, T> onFullDeserializing,
     Consumer<? super SimplifiedAggregatorDeserializingCore<T,XS,XD,XO>> onSkippedDeserializing,

@@ -19,11 +19,11 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Objects;
 
-import weliyek.amat.base.DefinitionSegmentCore;
-import weliyek.amat.base.input.ReadingOperationCore;
-import weliyek.amat.base.output.WritingOperationCore;
+import weliyek.amat.base.WkSzDefinitionCore;
+import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
+import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceDefinition;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
 import weliyek.amat2.protocol.PacketOperationCoreException;
@@ -34,24 +34,24 @@ public class SequenceSizeParameters<T>
 
     private final int minSize;
     private final int maxSize;
-    private final DefinitionSegmentCore<
+    private final WkSzDefinitionCore<
                       T,? extends VariableLengthSettings,?,?,
-                      ? extends VariableSizeSequenceDefinition<T,?>,
+                      ? extends WkSzVariableSizeSequenceDefinition<T,?>,
                       ? extends VariableSizeSequenceReading<T,?,?,?,?>,?,?,?,?,
-                      ? extends VariableSizeSequenceDefinition<T,?>,
+                      ? extends WkSzVariableSizeSequenceDefinition<T,?>,
                       ? extends VariableSizeSequenceWriting<T,?,?,?,?>,?,
-                      ? extends VariableSizeSequenceDefinition<T,?>,?> definitionCore;
+                      ? extends WkSzVariableSizeSequenceDefinition<T,?>,?> definitionCore;
 
     public SequenceSizeParameters(
       int minSize,
       int maxSize,
-      DefinitionSegmentCore<
+      WkSzDefinitionCore<
         T,? extends VariableLengthSettings,?,?,
-        ? extends VariableSizeSequenceDefinition<T,?>,
+        ? extends WkSzVariableSizeSequenceDefinition<T,?>,
         ? extends VariableSizeSequenceReading<T,?,?,?,?>,?,?,?,?,
-        ? extends VariableSizeSequenceDefinition<T,?>,
+        ? extends WkSzVariableSizeSequenceDefinition<T,?>,
         ? extends VariableSizeSequenceWriting<T,?,?,?,?>,?,
-        ? extends VariableSizeSequenceDefinition<T,?>,?> definitionCore) {
+        ? extends WkSzVariableSizeSequenceDefinition<T,?>,?> definitionCore) {
       if (minSize < 0) {
         throw new ProtocolDefinitionException(
                         definitionCore,
@@ -75,9 +75,9 @@ public class SequenceSizeParameters<T>
     }
 
     void onSequenceSerializerCreation(
-      WritingOperationCore<
+      WkSzPacketWriterOperationCore<
         T,?,?,?,?,? extends VariableSizeSequenceWriting<T,?,?,?,?>,?,
-        ? extends VariableSizeSequenceDefinition<T,?>,?,?> serializer) {
+        ? extends WkSzVariableSizeSequenceDefinition<T,?>,?,?> serializer) {
       int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
       if (sequenceSize < minSize) {
         throw new PacketOperationCoreException(
@@ -92,10 +92,10 @@ public class SequenceSizeParameters<T>
     }
 
     void onBeforeFullCompletionDeserialization(
-      ReadingOperationCore<
+      WkSzPacketReaderOperationCore<
         ?,? extends VariableLengthSettings,?,?,?,
         ? extends VariableSizeSequenceReading<?,?,?,?,?>,?,
-        ? extends VariableSizeSequenceDefinition<?,?>,?,?> deserializer) {
+        ? extends WkSzVariableSizeSequenceDefinition<?,?>,?,?> deserializer) {
       VariableLengthSettings settings = deserializer.settings();
       if (settings.getRequestedLength() < minSize) {
         throw new PacketOperationCoreException(

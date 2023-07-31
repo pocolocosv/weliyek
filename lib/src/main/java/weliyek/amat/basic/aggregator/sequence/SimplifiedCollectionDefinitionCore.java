@@ -22,13 +22,13 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.BasicReadingResult;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -38,7 +38,7 @@ import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.basic.sequence.BasicSequenceReadingRuntime;
 import weliyek.amat.basic.sequence.BasicSequenceWritingRuntime;
@@ -50,7 +50,7 @@ import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 public class SimplifiedCollectionDefinitionCore<
                         T extends Collection<ET>,
                         XS extends OperationSettings,
-                        XD extends CollectionAndElementsFieldDefinition<T,XO,?,ET,?>,
+                        XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
@@ -59,7 +59,7 @@ public class SimplifiedCollectionDefinitionCore<
                                         XD,
                                         ET,EXD,EXO>,
                         YS extends OperationSettings,
-                        YD extends CollectionAndElementsFieldDefinition<T,?,YO,ET,?>,
+                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,
                                         YS,
@@ -69,13 +69,13 @@ public class SimplifiedCollectionDefinitionCore<
                                         ET,EYD,EYO>,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                        ED extends DefinitionSegment<ET,?>,
-                        D extends CollectionAndElementsFieldDefinition<T,XO,YO,ET,ED>>
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                        ED extends WkSzDefinition<ET,?>,
+                        D extends WkSzCollectionAndElementsDefinition<T,XO,YO,ET,ED>>
     extends CollectionAndElementsFieldDefinitionCore<
                         T,
                         XS,
@@ -115,7 +115,7 @@ public class SimplifiedCollectionDefinitionCore<
 {
 
   protected SimplifiedCollectionDefinitionCore(
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
       T,XS,XD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
       XO,InputBytestreamGeneralBase<?>> readingOpFactory,

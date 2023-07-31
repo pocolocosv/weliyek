@@ -24,18 +24,18 @@ import java.util.Optional;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingField;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterField;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.OptionalLengthSettings;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArraySerializing;
 
 public class StringWithVariableLengthBytesSerializing
-    implements StringFromBytesWriting<
+    implements WkSzStringFromBytesWriter<
                         OptionalLengthSettings,
                         SerializingRuntime<OutputBytestream>,
                         SerializingResult,
@@ -57,7 +57,7 @@ public class StringWithVariableLengthBytesSerializing
     String serializable,
     OptionalLengthSettings settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<
+    WkSzPacketWriterFieldCore<
       String,?,StringWithVariableLengthBytes,?,?,?> serializingfieldCore,
     SimplifiedStringFromBytesCore<
       ?,?,?,OptionalLengthSettings,StringWithVariableLengthBytesSerializing,
@@ -82,7 +82,7 @@ public class StringWithVariableLengthBytesSerializing
 
   @Override
   public
-  SerializingSubfieldHandler<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -113,12 +113,12 @@ public class StringWithVariableLengthBytesSerializing
   }
 
   @Override
-  public SerializingField<String, StringWithVariableLengthBytes, ?> packetField() {
+  public WkSzPacketWriterField<String, StringWithVariableLengthBytes, ?> packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<SerializingSubfieldHandler<?,?,?>> subfields() {
+  public List<WkSzPacketWriterSubfield<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -134,7 +134,7 @@ public class StringWithVariableLengthBytesSerializing
 
   @Override
   public
-  SerializingSubfieldHandler<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
   bytes() {
     return this.operationCore.bytes();
   }

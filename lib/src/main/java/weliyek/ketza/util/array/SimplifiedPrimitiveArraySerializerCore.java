@@ -19,7 +19,7 @@ package weliyek.ketza.util.array;
 
 import java.util.function.ToIntBiFunction;
 
-import weliyek.amat.base.ComponentSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.BasicReadingResult;
 import weliyek.amat.base.input.DeserializingResult;
@@ -40,20 +40,20 @@ import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.InputDeserializerFactory;
 import weliyek.amat.basic.serializer.OutputSerializerFactory;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public class SimplifiedPrimitiveArraySerializerCore<
                         T extends PrimitiveArrayWrapper<?, ?>,
                         XS extends OperationSettings,
-                        XO extends PrimitiveArraySerializerReading<
+                        XO extends WkSzPrimitiveArraySerializerReader<
                                         T,
                                         XS,
                                         SequenceReadingRuntime<InputBytestream>,
                                         DeserializingResult<T>,
                                         D>,
                         YS extends OperationSettings,
-                        YO extends PrimitiveArraySerializerWriting<
+                        YO extends WkSzPrimitiveArraySerializerWriter<
                                         T,
                                         YS,
                                         SequenceWritingRuntime<OutputBytestream>,
@@ -84,7 +84,7 @@ public class SimplifiedPrimitiveArraySerializerCore<
 
   public SimplifiedPrimitiveArraySerializerCore(
     int stepSize,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, D> rxRequestedLengthEvaluator,
     PacketInputFieldReadingFactory<T, XS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, XO, InputBytestreamGeneralBase<?>> readingOpFactory,
     InputDeserializerFactory<T, ? super SequenceReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>, SequenceReadingRuntime<InputBytestream>>, ? super XO> rxSerializerFactory,

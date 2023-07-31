@@ -18,39 +18,39 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
+import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.basic.aggregator.AggregatorWriting;
-import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceDefinition;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
-import weliyek.amat.basic.sequence.SequenceWriting;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
+import weliyek.amat.basic.sequence.WkSzSequenceWriter;
 
 public interface DynamicSequenceSerializing<
                         T,
                         YS extends OperationSettings,
                         YQ extends SerializingRuntime<?>,
                         YR extends SerializingResult,
-                        D extends DynamicSequenceDefinition<T,?,?,?,?>,
+                        D extends WkSzDynamicSequenceDefinition<T,?,?,?,?>,
                         ZY extends Number,
-                        ZYO extends NumberSerializing<ZY,?,?,?,ZD>,
-                        ZD extends NumberDefinition<ZY,?>,
+                        ZYO extends WkSzNumberWriter<ZY,?,?,?,ZD>,
+                        ZD extends WkSzNumberDefinition<ZY,?>,
                         VYO extends VariableSizeSequenceWriting<T,?,?,?,VD>,
-                        VD extends VariableSizeSequenceDefinition<T,?>>
-    extends DynamicSequenceOperation<
+                        VD extends WkSzVariableSizeSequenceDefinition<T,?>>
+    extends WkSzDynamicSequenceOperation<
                         YS, YQ, YR, D,
-                        SerializingField<T,D,?>,
+                        WkSzPacketWriterField<T,D,?>,
                         ZYO,
-                        SerializingField<ZY,ZD,ZYO>,
-                        SerializingSubfieldHandler<ZY,ZD,ZYO>,
+                        WkSzPacketWriterField<ZY,ZD,ZYO>,
+                        WkSzPacketWriterSubfield<ZY,ZD,ZYO>,
                         VYO,
-                        SerializingField<T,VD,VYO>,
-                        SerializingSubfieldHandler<T,VD,VYO>>,
-            SequenceWriting<T, YS, YQ, YR, D>,
-            AggregatorWriting<T, YS, YQ, YR, D>
+                        WkSzPacketWriterField<T,VD,VYO>,
+                        WkSzPacketWriterSubfield<T,VD,VYO>>,
+            WkSzSequenceWriter<T, YS, YQ, YR, D>,
+            WkSzAggregatorWriter<T, YS, YQ, YR, D>
 {
 
 }

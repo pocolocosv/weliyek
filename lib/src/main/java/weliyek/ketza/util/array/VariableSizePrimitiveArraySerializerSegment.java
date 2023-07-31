@@ -17,10 +17,10 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerField;
+import weliyek.amat.basic.serializer.WkSzSerializerPrimitiveArray;
 
 public interface VariableSizePrimitiveArraySerializerSegment
-    extends VariableSizePrimitiveArraySegment, PrimitiveArraySerializerField
+    extends WkSzVariableSizePrimitiveArraySegment, WkSzSerializerPrimitiveArray
 {
 
 }

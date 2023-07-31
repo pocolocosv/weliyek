@@ -21,7 +21,7 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 import java.util.function.Function;
 
-import weliyek.amat.base.ComponentSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
@@ -42,39 +42,39 @@ import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.ketza.util.array.ByteArrayDefinition;
+import weliyek.ketza.util.array.WkSzByteArrayDefinition;
 import weliyek.ketza.util.array.ByteArrayReading;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public class SimplifiedStringFromBytesCore<
                         XS extends OperationSettings,
-                        XO extends StringFromBytesReading<
+                        XO extends WkSzStringFromBytesReader<
                                         XS,
                                         DeserializingRuntime<InputBytestream>,
                                         DeserializingResult<String>,
                                         XD,
                                         SXD,
                                         SXO>,
-                        XD extends StringFromBytesDefinition<XO,?,? extends SXD>,
+                        XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
                         YS extends OperationSettings,
-                        YO extends StringFromBytesWriting<
+                        YO extends WkSzStringFromBytesWriter<
                                         YS,
                                         SerializingRuntime<OutputBytestream>,
                                         SerializingResult,
                                         YD,
                                         SYD,
                                         SYO>,
-                        YD extends StringFromBytesDefinition<?,YO,? extends SYD>,
+                        YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         SXS extends OperationSettings,
                         SXO extends ByteArrayReading<SXS,?,?,SXD>,
-                        SXD extends ByteArrayDefinition<SXO>,
+                        SXD extends WkSzByteArrayDefinition<SXO>,
                         SYS extends OperationSettings,
                         SYO extends ByteArrayWriting<SYS,?,?,SYD>,
-                        SYD extends ByteArrayDefinition<?>,
-                        SD extends ByteArrayDefinition<SXO>,
-                        D extends StringFromBytesDefinition<XO,YO,SD>>
-    extends StringFromBytesCore<
+                        SYD extends WkSzByteArrayDefinition<?>,
+                        SD extends WkSzByteArrayDefinition<SXO>,
+                        D extends WkSzStringFromBytesDefinition<XO,YO,SD>>
+    extends WkSzStringFromBytesDefinitionCore<
                         XS,
                         InputBytestream,
                         InputBytestreamGeneralBase<? extends InputBytestream>,
@@ -106,7 +106,7 @@ public class SimplifiedStringFromBytesCore<
 
   protected SimplifiedStringFromBytesCore(
     Charset defaultCharset,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
       String,XS,XD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       XO,InputBytestreamGeneralBase<?>>

@@ -17,14 +17,14 @@
  */
 package weliyek.amat.base.output;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 
 @FunctionalInterface
 public interface Disaggregator<
                         T,
-                        D extends DefinitionSegment<T,?>,
+                        D extends WkSzDefinition<T,?>,
                         AT,
-                        AO extends SerializingOperation<? extends AT,?,?,?,?>>
+                        AO extends WkSzPacketWriterOperation<? extends AT,?,?,?,?>>
 {
 
   /**
@@ -36,7 +36,7 @@ public interface Disaggregator<
    * @return The disaggregated value that will be used by the writing operation.
    */
   T disaggregate(
-    SerializingField<T,D,?> packetField,
+    WkSzPacketWriterField<T,D,?> packetField,
     AO parentOperation,
     int i);
 

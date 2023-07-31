@@ -17,15 +17,15 @@
  */
 package weliyek.amat.basic.serializer;
 
-import weliyek.ketza.util.array.PrimitiveArrayDefinition;
+import weliyek.ketza.util.array.WkSzPrimitiveArrayDefinition;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 
 public interface PrimitiveArraySerializerDefinition<
                         T extends PrimitiveArrayWrapper<?, ?>,
-                        XO extends PrimitiveArraySerializerReading<T, ?, ?, ?, ?>>
-    extends SerializerDefinition<T, XO>,
-            PrimitiveArrayDefinition<T, XO>,
-            PrimitiveArraySerializerField
+                        XO extends WkSzPrimitiveArraySerializerReader<T, ?, ?, ?, ?>>
+    extends WkSzSerializerDefinition<T, XO>,
+            WkSzPrimitiveArrayDefinition<T, XO>,
+            WkSzSerializerPrimitiveArray
 {
 
   int getSerializationStepSize();

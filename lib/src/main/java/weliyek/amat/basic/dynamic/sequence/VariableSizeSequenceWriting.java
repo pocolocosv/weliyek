@@ -18,9 +18,9 @@
 package weliyek.amat.basic.dynamic.sequence;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
+import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.basic.sequence.SequenceWriting;
+import weliyek.amat.basic.sequence.WkSzSequenceWriter;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 
 public interface VariableSizeSequenceWriting<
@@ -28,11 +28,11 @@ public interface VariableSizeSequenceWriting<
                         S extends OperationSettings,
                         Q extends SequenceWritingRuntime<?>,
                         R extends SerializingResult,
-                        D extends VariableSizeSequenceDefinition<Y,?>>
-        extends VariableSizeSequenceOperation<
+                        D extends WkSzVariableSizeSequenceDefinition<Y,?>>
+        extends WkSzVariableSizeSequenceOperation<
                         S, Q, R, D,
-                        SerializingField<Y,D,?>>,
-                SequenceWriting<Y, S, Q, R, D>
+                        WkSzPacketWriterField<Y,D,?>>,
+                WkSzSequenceWriter<Y, S, Q, R, D>
 {
 
 }

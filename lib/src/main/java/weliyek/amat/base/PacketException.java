@@ -24,15 +24,15 @@ public class PacketException extends Amat2Exception
 
     private static final long serialVersionUID = 2020_05_01_000L;
 
-    private final FieldSegment<?,?,?> packet;
+    private final WkSzPacketField<?,?,?> packet;
 
-    public PacketException(FieldSegment<?,?,?> packet) {
+    public PacketException(WkSzPacketField<?,?,?> packet) {
         super();
         this.packet = Objects.requireNonNull(packet);
     }
 
     public PacketException(
-        FieldSegment<?,?,?> packet,
+        WkSzPacketField<?,?,?> packet,
         String message,
         Throwable cause,
         boolean enableSuppression,
@@ -41,22 +41,22 @@ public class PacketException extends Amat2Exception
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public PacketException(FieldSegment<?,?,?> packet, String message, Throwable cause) {
+    public PacketException(WkSzPacketField<?,?,?> packet, String message, Throwable cause) {
         super(message, cause);
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public PacketException(FieldSegment<?,?,?> packet, String message) {
+    public PacketException(WkSzPacketField<?,?,?> packet, String message) {
         super(message);
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public PacketException(FieldSegment<?,?,?> packet, Throwable cause) {
+    public PacketException(WkSzPacketField<?,?,?> packet, Throwable cause) {
         super(cause);
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public final FieldSegment<?,?,?> packetField() {
+    public final WkSzPacketField<?,?,?> packetField() {
         return this.packet;
     }
 

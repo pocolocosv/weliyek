@@ -34,12 +34,12 @@ import org.slf4j.LoggerFactory;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.input.InputPacket;
+import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputPacket;
-import weliyek.amat.basic.number.SignedBigEndianInteger;
-import weliyek.amat.basic.number.SignedBigEndianIntegerDeserializing;
-import weliyek.amat.basic.number.SignedBigEndianIntegerSerializing;
+import weliyek.amat.base.output.WkSzOutputPacket;
+import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
+import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerReader;
+import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerWriter;
 import weliyek.ketza.util.KetzaByteOutputStream;
 
 public class StringWithDynamicSizeBytesTest
@@ -53,30 +53,30 @@ public class StringWithDynamicSizeBytesTest
                           String,
                           OperationSettings,
                           StringWithDynamicSizeBytes<Integer,
-                                    SignedBigEndianInteger,
-                                    SignedBigEndianIntegerDeserializing,
+                                    WkSzSignedBigEndianInteger,
+                                    WkSzSignedBigEndianIntegerReader,
                                     ?, ?,
-                                    ? extends SignedBigEndianInteger>,
-                          StringWithDynamicSizeBytesDeserializing<Integer, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing>,
+                                    ? extends WkSzSignedBigEndianInteger>,
+                          StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
                           InputBytestreamGeneralBase<?>,
                           OperationSettings,
                           StringWithDynamicSizeBytes<
                                     Integer, ?, ?,
-                                    SignedBigEndianInteger,
-                                    SignedBigEndianIntegerSerializing,
-                                    ? extends SignedBigEndianInteger>,
+                                    WkSzSignedBigEndianInteger,
+                                    WkSzSignedBigEndianIntegerWriter,
+                                    ? extends WkSzSignedBigEndianInteger>,
                           StringWithDynamicSizeBytesSerializing<
                                     Integer,
-                                    SignedBigEndianInteger,
-                                    SignedBigEndianIntegerSerializing>,
+                                    WkSzSignedBigEndianInteger,
+                                    WkSzSignedBigEndianIntegerWriter>,
                           OutputBytestreamGeneralBase<?>,
                           StringWithDynamicSizeBytes<
                                     Integer,
-                                    SignedBigEndianInteger,
-                                    SignedBigEndianIntegerDeserializing,
-                                    SignedBigEndianInteger,
-                                    SignedBigEndianIntegerSerializing,
-                                    SignedBigEndianInteger>>
+                                    WkSzSignedBigEndianInteger,
+                                    WkSzSignedBigEndianIntegerReader,
+                                    WkSzSignedBigEndianInteger,
+                                    WkSzSignedBigEndianIntegerWriter,
+                                    WkSzSignedBigEndianInteger>>
                               DYNAMIC_STR_STRUCT;
 
   static final String originalStr = "Test string";
@@ -86,11 +86,11 @@ public class StringWithDynamicSizeBytesTest
   public static void setUpBeforeClass() throws Exception {
     DYNAMIC_STR_STRUCT = StringWithDynamicSizeBytes.<
                             Integer,
-                            SignedBigEndianInteger,
-                            SignedBigEndianIntegerDeserializing,
-                            SignedBigEndianInteger,
-                            SignedBigEndianIntegerSerializing,
-                            SignedBigEndianInteger>newPacketStructure(
+                            WkSzSignedBigEndianInteger,
+                            WkSzSignedBigEndianIntegerReader,
+                            WkSzSignedBigEndianInteger,
+                            WkSzSignedBigEndianIntegerWriter,
+                            WkSzSignedBigEndianInteger>newPacketStructure(
                                 "DYNAMICSTR",
                                 "BYTES",
                                 "ARRAYSIZE",
@@ -99,7 +99,7 @@ public class StringWithDynamicSizeBytesTest
                                 1024,
                                 defaultCharset,
                                 Integer::valueOf,
-                                SignedBigEndianInteger::newCore);
+                                WkSzSignedBigEndianInteger::newCore);
   }
 
   @AfterClass
@@ -117,10 +117,10 @@ public class StringWithDynamicSizeBytesTest
   @Test
   public void test() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
-    OutputPacket<
+    WkSzOutputPacket<
                 String,
-                StringWithDynamicSizeBytes<Integer, ?, ?, SignedBigEndianInteger, SignedBigEndianIntegerSerializing, ? extends SignedBigEndianInteger>,
-                StringWithDynamicSizeBytesSerializing<Integer, SignedBigEndianInteger, SignedBigEndianIntegerSerializing>>
+                StringWithDynamicSizeBytes<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
+                StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>>
       dynstrWriting = DYNAMIC_STR_STRUCT.newOutputPacket(
                                               originalStr,
                                               OperationSettings.EMPTY,
@@ -156,10 +156,10 @@ public class StringWithDynamicSizeBytesTest
                      .firstOperation().get()
                      .serializable().equalsToArray(expectedBytes));
 
-    InputPacket<
+    WkSzInputPacket<
           String,
-          StringWithDynamicSizeBytes<Integer, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing,?,?,? extends SignedBigEndianInteger>,
-          StringWithDynamicSizeBytesDeserializing<Integer, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing>>
+          StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader,?,?,? extends WkSzSignedBigEndianInteger>,
+          StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>>
       dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
 
     while(dynstrReading.isInProgress()) {

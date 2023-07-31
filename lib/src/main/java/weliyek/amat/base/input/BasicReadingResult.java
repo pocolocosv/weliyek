@@ -31,7 +31,7 @@ public class BasicReadingResult<X>
     private final Optional<X> deserialized;
 
     public BasicReadingResult(
-            DeserializingOperation<X,?,?,?,?> operation,
+            WkSzPacketReaderOperation<X,?,?,?,?> operation,
             X deserialized) {
         this.deserialized = Optional.ofNullable(deserialized);
     }

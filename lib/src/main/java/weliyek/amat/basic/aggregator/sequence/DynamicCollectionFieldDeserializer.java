@@ -19,16 +19,16 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.ketza.util.array.DynamicSequenceDeserializing;
 
 public interface DynamicCollectionFieldDeserializer<
@@ -36,26 +36,26 @@ public interface DynamicCollectionFieldDeserializer<
                         XS extends OperationSettings,
                         XQ extends DeserializingRuntime<?>,
                         XR extends DeserializingResult<T>,
-                        XD extends DynamicCollectionFieldDefinition<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
+                        XD extends WkSzDynamicCollectionDefinition<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
-                        ZXO extends NumberDeserializing<ZT,?,?,?,ZXD>,
-                        ZXD extends NumberDefinition<ZT,?>,
+                        ZXO extends WkSzNumberReader<ZT,?,?,?,ZXD>,
+                        ZXD extends WkSzNumberDefinition<ZT,?>,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         VXS extends VariableLengthSettings>
-    extends DynamicCollectionFieldOperation<
+    extends WkSzDynamicCollectionOperation<
                         XS, XQ, XR, XD,
-                        DeserializingField<T,XD,?>,
+                        WkSzPacketReaderField<T,XD,?>,
                         ZXO,
-                        DeserializingField<ZT,ZXD,ZXO>,
-                        DeserializingSubfieldHandler<ZT,ZXD,ZXO>,
+                        WkSzPacketReaderField<ZT,ZXD,ZXO>,
+                        WkSzPacketReaderSubfield<ZT,ZXD,ZXO>,
                         VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>,
-                        DeserializingField<T,
+                        WkSzPacketReaderField<T,
                           VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                           VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>>,
-                          DeserializingSubfieldHandler<
+                          WkSzPacketReaderSubfield<
                           T,
                           VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                           VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>>>,

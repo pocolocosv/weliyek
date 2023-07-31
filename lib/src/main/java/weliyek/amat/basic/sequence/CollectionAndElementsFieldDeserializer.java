@@ -19,33 +19,33 @@ package weliyek.amat.basic.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.SequenceReadingRuntime;
-import weliyek.amat.basic.aggregator.sequence.CollectionAndElementsFieldDefinition;
-import weliyek.amat.basic.aggregator.sequence.CollectionAndElementsFieldOperation;
-import weliyek.amat.basic.aggregator.sequence.CollectionFieldDeserializer;
+import weliyek.amat.basic.aggregator.sequence.WkSzCollectionAndElementsDefinition;
+import weliyek.amat.basic.aggregator.sequence.WkSzCollectionAndElementsOperation;
+import weliyek.amat.basic.aggregator.sequence.WkSzCollectionReader;
 
 public interface CollectionAndElementsFieldDeserializer<
                         T extends Collection<ET>,
                         XS extends OperationSettings,
                         XQ extends SequenceReadingRuntime<?>,
                         XR extends DeserializingResult<T>,
-                        XD extends CollectionAndElementsFieldDefinition<T,?,?,ET,?>,
+                        XD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
                         ET,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,?,?,?,EXD>>
-        extends CollectionAndElementsFieldOperation<
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,?,?,?,EXD>>
+        extends WkSzCollectionAndElementsOperation<
                         XS, XQ, XR, XD,
-                        DeserializingField<T,XD,?>,
+                        WkSzPacketReaderField<T,XD,?>,
                         EXO,
-                        DeserializingField<ET,EXD,EXO>,
-                        DeserializingSubfieldHandler<ET,EXD,EXO>>,
-                CollectionFieldDeserializer<T, XS, XQ, XR, XD>
+                        WkSzPacketReaderField<ET,EXD,EXO>,
+                        WkSzPacketReaderSubfield<ET,EXD,EXO>>,
+                WkSzCollectionReader<T, XS, XQ, XR, XD>
 {
 
 }

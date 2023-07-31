@@ -19,13 +19,13 @@ package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
-import weliyek.amat.basic.serializer.SerializerWritingCore;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
+import weliyek.amat.basic.serializer.WkSzSerializerWriterCore;
 
 public abstract class PrimitiveArraySerializerWritingCore<
                         Y extends PrimitiveArrayWrapperBase<?,?>,
@@ -33,13 +33,13 @@ public abstract class PrimitiveArraySerializerWritingCore<
                         YQ extends SequenceWritingRuntime<?>,
                         YQC extends SequenceWritingRuntimeControl<?,?,YQ>,
                         YR extends SerializingResult,
-                        YO extends PrimitiveArraySerializerWriting<Y,YS,YQ,YR,YD>,
+                        YO extends WkSzPrimitiveArraySerializerWriter<Y,YS,YQ,YR,YD>,
                         YOC extends PrimitiveArraySerializerWritingCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends PrimitiveArraySerializerDefinition<Y,?>,
                         AYB extends OutputBytestreamGeneralBase<?>,
                         DC extends PrimitiveArraySerializerCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
-        extends SerializerWritingCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
-        implements PrimitiveArraySerializerWriting<Y, YS, YQ, YR, YD>
+        extends WkSzSerializerWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
+        implements WkSzPrimitiveArraySerializerWriter<Y, YS, YQ, YR, YD>
 {
 
   private final int requestedLength;
@@ -49,7 +49,7 @@ public abstract class PrimitiveArraySerializerWritingCore<
     Y serializable,
     YS settings,
     AYB parentBytestream,
-    SerializingFieldCore<Y,?,YD,?,?,?> serializingfieldCore,
+    WkSzPacketWriterFieldCore<Y,?,YD,?,?,?> serializingfieldCore,
     DC definitionCore,
     YO operationBody) {
     super(

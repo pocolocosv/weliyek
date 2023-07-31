@@ -24,13 +24,13 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationException;
 import weliyek.amat.base.input.ReadingRuntimeControl;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.WkSzNumberReader;
 
 public abstract class BasicPrimitiveDeserializerEngine<X extends Number>
     extends InputSerializationEngine<
                         X,
                         ReadingRuntimeControl<?,?,?>,
-                        NumberDeserializing<X,?,?,?,?>>
+                        WkSzNumberReader<X,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(BasicPrimitiveDeserializerEngine.class);
@@ -39,7 +39,7 @@ public abstract class BasicPrimitiveDeserializerEngine<X extends Number>
 
   protected BasicPrimitiveDeserializerEngine(
       ReadingRuntimeControl<?,?,?> runtimeCtrl,
-      NumberDeserializing<X,?,?,?,?> readingOperation) {
+      WkSzNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

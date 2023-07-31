@@ -24,13 +24,13 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.SubcomponentHandler;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
@@ -40,13 +40,13 @@ import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingField;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterField;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.aggregator.AggregatorDefinitionCore;
-import weliyek.amat.basic.aggregator.SubcomponentHandlerCore;
+import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
+import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 
@@ -57,7 +57,7 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
                         XBC extends InputBytestreamGeneralBase<? extends XB>,
                         XQC extends SequenceReadingRuntimeControl<XB,XBC,?>,
                         XR extends DeserializingResult<T>,
-                        XD extends CollectionAndElementsFieldDefinition<T,XO,?,ET,?>,
+                        XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,XS,? extends DeserializingRuntime<XB>,XR,XD,ET,EXD,EXO>,
                         AXB extends InputBytestreamGeneralBase<?>,
@@ -66,35 +66,35 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
                         YBC extends OutputBytestreamGeneralBase<? extends YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,?>,
                         YR extends SerializingResult,
-                        YD extends CollectionAndElementsFieldDefinition<T,?,YO,ET,?>,
+                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,YS,? extends SerializingRuntime<YB>,YR,YD,ET,EYD,EYO>,
                         AYB extends OutputBytestreamGeneralBase<?>,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                        ED extends DefinitionSegment<ET,?>,
-                        D extends CollectionAndElementsFieldDefinition<T,XO,YO,ET,ED>,
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                        ED extends WkSzDefinition<ET,?>,
+                        D extends WkSzCollectionAndElementsDefinition<T,XO,YO,ET,ED>,
                         DC extends CollectionAndElementsFieldDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
                                         YS,YB,YBC,YQC,YR,YD,YO,AYB,
                                         ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D,?>>
-    extends AggregatorDefinitionCore<
+    extends WkSzAggregatorDefinitionCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXB,
                         YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
-    implements CollectionAndElementsFieldDefinition<T, XO, YO, ET, ED>
+    implements WkSzCollectionAndElementsDefinition<T, XO, YO, ET, ED>
 {
 
-  final SubcomponentHandlerCore<ET,EXS,EXD,EXO,T,XBC,XD,XO,EYS,EYD,EYO,YBC,YD,YO,ED,D>
+  final WkSzSubcomponentCore<ET,EXS,EXD,EXO,T,XBC,XD,XO,EYS,EYD,EYO,YBC,YD,YO,ED,D>
                         elementComponent;
   final Function<XO, T> collectionSerializingFactory;
 
   protected CollectionAndElementsFieldDefinitionCore(
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB, XQC> rxRuntimeFactory,
     BiFunction<XO, T, XR> rxResultFactory,
     PacketInputFieldReadingFactory<T, XS, XD, DC, XO, AXB> readingOpFactory,
@@ -137,9 +137,9 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
   private static <T extends Collection<ET>,
                   YO extends CollectionAndElementsFieldSerializer<T,?,?,?,?,ET,EYD,?>,
                   ET,
-                  EYD extends DefinitionSegment<ET,?>>
+                  EYD extends WkSzDefinition<ET,?>>
   ET disaggregateCollection(
-    SerializingField<ET,EYD,?> serializingField,
+    WkSzPacketWriterField<ET,EYD,?> serializingField,
     YO collectionWritingOp,
     int index) {
     if (collectionWritingOp.serializableAsList().size() <= index) {
@@ -149,7 +149,7 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
   }
 
   @Override
-  public SubcomponentHandler<XO, YO, ED> element() {
+  public WkSzStructSubcomponent<XO, YO, ED> element() {
     return this.elementComponent.body();
   }
 

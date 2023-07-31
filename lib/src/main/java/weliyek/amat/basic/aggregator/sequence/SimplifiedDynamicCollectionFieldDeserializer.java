@@ -19,18 +19,18 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.ketza.util.array.DynamicSequenceDeserializingCore;
 
 public final class SimplifiedDynamicCollectionFieldDeserializer<
@@ -41,16 +41,16 @@ public final class SimplifiedDynamicCollectionFieldDeserializer<
                                         DeserializingRuntime<InputBytestream>,
                                         DeserializingResult<T>,
                                         XD,ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
-                        XD extends DynamicCollectionFieldDefinition<
+                        XD extends WkSzDynamicCollectionDefinition<
                                         T,XO,?,?,ET,EXS,?,EXO,?,?,?,?,VXS,?>,
                         ZT extends Number,
                         ZXS extends OperationSettings,
-                        ZXO extends NumberDeserializing<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends NumberDefinition<ZT,?>,
+                        ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSzNumberDefinition<ZT,?>,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         VXS extends VariableLengthSettings>
     extends DynamicSequenceDeserializingCore<
                         T, XS,
@@ -83,7 +83,7 @@ public final class SimplifiedDynamicCollectionFieldDeserializer<
     int index,
     XS settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSzPacketReaderFieldCore<T,?,XD,?,?,?> packetfieldCore,
     SimplifiedDynamicCollectionDefinitionCore<
       T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?> definitionCore,
     XO operationBody) {

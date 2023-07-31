@@ -19,11 +19,11 @@ package weliyek.amat.base;
 
 @FunctionalInterface
 public interface OperationSubsegmentSettingsFactory<
-                        AO extends OperationSegment<?,?,?,?,?>,
+                        AO extends WkSzPacketOperation<?,?,?,?,?>,
                         S extends OperationSettings>
 {
 
-  static <AO extends OperationSegment<S,?,?,?,?>,
+  static <AO extends WkSzPacketOperation<S,?,?,?,?>,
           S extends OperationSettings>
   OperationSubsegmentSettingsFactory<AO, S> parentSettingsReuser() {
     return new OperationSubsegmentSettingsFactory<AO, S>() {

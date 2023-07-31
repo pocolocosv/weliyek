@@ -19,42 +19,42 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.List;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.SubfieldHandlerList;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
-import weliyek.amat.base.input.DeserializingSubfieldHandlerCore;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
+import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 
 public class ReadingHandlerList<
                         X,
                         XBC extends InputBytestreamGeneralBase<?>,
-                        XD extends AggregatorDefinition<X,?>,
-                        XO extends AggregatorReading<X,?,? extends DeserializingRuntime<?>,?,XD>>
+                        XD extends WkSzAggregatorDefinition<X,?>,
+                        XO extends WkSzAggregatorReader<X,?,? extends DeserializingRuntime<?>,?,XD>>
         extends SubfieldHandlerList<
-                        DeserializingSubfieldHandler<?,?,?>,
-                        DeserializingSubfieldHandlerCore<?,?,?,?,?,?,XD,XO>,
-                        AggregatorReadingCore<?,?,?,?,?,?,?,XD,XO,?,?,?>>
+                        WkSzPacketReaderSubfield<?,?,?>,
+                        WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XD,XO>,
+                        WkSzAggregatorReaderCore<?,?,?,?,?,?,?,XD,XO,?,?,?>>
 {
 
     ReadingHandlerList(
-      List<DeserializingSubfieldHandlerCore<?,?,?,?,?,?,XD,XO>> deserializingSubfieldHandlers) {
+      List<WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XD,XO>> deserializingSubfieldHandlers) {
       super(deserializingSubfieldHandlers);
     }
 
     @SuppressWarnings("unchecked")
     <ST,
      SXS extends OperationSettings,
-     SXD extends DefinitionSegment<ST,?>,
-     SXO extends DeserializingOperation<ST,SXS,?,?,SXD>>
-    DeserializingSubfieldHandlerCore<ST,SXS,SXD,SXO,X,XBC,XD,XO> findSubfieldpacket(
-      SubcomponentHandlerCore<ST,SXS,SXD,SXO,X,XBC,XD,XO,?,?,?,?,?,?,? extends SXD,? extends XD> searchedSubcomponent) {
-      for (DeserializingSubfieldHandlerCore<?,?,?,?,?,?,XD,XO> deserializingSubfieldHandler : this) {
-        SubcomponentHandlerCore<?,?,?,?,?,?,XD,XO,?,?,?,?,?,?,?,?> subcomponentHandler = deserializingSubfieldHandler.subcomponentHandlerCore();
+     SXD extends WkSzDefinition<ST,?>,
+     SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>>
+    WkSzPacketReaderSubfieldCore<ST,SXS,SXD,SXO,X,XBC,XD,XO> findSubfieldpacket(
+      WkSzSubcomponentCore<ST,SXS,SXD,SXO,X,XBC,XD,XO,?,?,?,?,?,?,? extends SXD,? extends XD> searchedSubcomponent) {
+      for (WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XD,XO> deserializingSubfieldHandler : this) {
+        WkSzSubcomponentCore<?,?,?,?,?,?,XD,XO,?,?,?,?,?,?,?,?> subcomponentHandler = deserializingSubfieldHandler.subcomponentHandlerCore();
         if (subcomponentHandler.equals(searchedSubcomponent)) {
-          return (DeserializingSubfieldHandlerCore<ST,SXS,SXD,SXO,X,XBC,XD,XO>) deserializingSubfieldHandler;
+          return (WkSzPacketReaderSubfieldCore<ST,SXS,SXD,SXO,X,XBC,XD,XO>) deserializingSubfieldHandler;
         }
       }
       throw new RuntimeException(); // Should never happen.

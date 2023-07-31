@@ -22,24 +22,24 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.DynamicByteArray;
 import weliyek.ketza.util.array.DynamicByteArrayDeserializing;
 
 public class StringWithDynamicSizeBytesDeserializing<
                         ZT extends Number,
-                        ZXD extends NumberDefinition<ZT,ZXO>,
-                        ZXO extends NumberDeserializing<ZT,OperationSettings,?,?,ZXD>>
-    implements StringFromBytesReading<
+                        ZXD extends WkSzNumberDefinition<ZT,ZXO>,
+                        ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>>
+    implements WkSzStringFromBytesReader<
                         OperationSettings,
                         DeserializingRuntime<InputBytestream>,
                         DeserializingResult<String>,
@@ -61,7 +61,7 @@ public class StringWithDynamicSizeBytesDeserializing<
     int index,
     OperationSettings settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<String,?,StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?>
+    WkSzPacketReaderFieldCore<String,?,StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?>
       deserializingfieldCore,
     SimplifiedStringFromBytesCore<
       OperationSettings,StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
@@ -85,7 +85,7 @@ public class StringWithDynamicSizeBytesDeserializing<
 
   @Override
   public
-  DeserializingSubfieldHandler<
+  WkSzPacketReaderSubfield<
                         ByteArrayWrapper,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZT, ZXO, ZXD>>
@@ -120,13 +120,13 @@ public class StringWithDynamicSizeBytesDeserializing<
 
   @Override
   public
-  DeserializingField<String, StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
+  WkSzPacketReaderField<String, StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
   packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<DeserializingSubfieldHandler<?, ?, ?>> subfields() {
+  public List<WkSzPacketReaderSubfield<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -137,7 +137,7 @@ public class StringWithDynamicSizeBytesDeserializing<
 
   @Override
   public
-  DeserializingSubfieldHandler<ByteArrayWrapper, DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>, DynamicByteArrayDeserializing<ZT, ZXO, ZXD>>
+  WkSzPacketReaderSubfield<ByteArrayWrapper, DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>, DynamicByteArrayDeserializing<ZT, ZXO, ZXD>>
   bytes() {
     return this.operationCore.bytes();
   }

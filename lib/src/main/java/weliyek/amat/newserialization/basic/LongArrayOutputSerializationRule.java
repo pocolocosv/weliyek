@@ -20,7 +20,7 @@ package weliyek.amat.newserialization.basic;
 import java.io.IOException;
 
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 import weliyek.ketza.util.array.BasicPrimitiveArrayOutputSerializationEngineBase;
 import weliyek.ketza.util.array.LongArrayWrapper;
 
@@ -30,7 +30,7 @@ public abstract class LongArrayOutputSerializationRule
 
   protected LongArrayOutputSerializationRule(
     SequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    PrimitiveArraySerializerWriting<? extends LongArrayWrapper,?,?,?,?> writingOperation) {
+    WkSzPrimitiveArraySerializerWriter<? extends LongArrayWrapper,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, Long.BYTES);
   }
 

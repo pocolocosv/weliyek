@@ -32,9 +32,9 @@ import org.slf4j.LoggerFactory;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.input.InputPacket;
+import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputPacket;
+import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.ketza.util.KetzaByteOutputStream;
 
 public class StringWithFixedLengthBytesTest
@@ -47,19 +47,19 @@ public class StringWithFixedLengthBytesTest
     private PacketStructure<
                         String,
                         OperationSettings,
-                        StringWithFixedLengthBytes,
-                        StringWithFixedLengthBytesDeserializing,
+                        WkSzStringWithFixedLengthBytes,
+                        WkSzStringWithFixedLengthBytesReader,
                         InputBytestreamGeneralBase<?>,
                         OperationSettings,
-                        StringWithFixedLengthBytes,
-                        StringWithFixedLengthBytesSerializing,
+                        WkSzStringWithFixedLengthBytes,
+                        WkSzStringWithFixedLengthBytesWriter,
                         OutputBytestreamGeneralBase<?>,
-                        StringWithFixedLengthBytes> stringWithFixedSizeBytes;
+                        WkSzStringWithFixedLengthBytes> stringWithFixedSizeBytes;
 
     @Before
     public void setUp() throws Exception {
         numBytesToReadWrite = 10;
-        stringWithFixedSizeBytes = StringWithFixedLengthBytes
+        stringWithFixedSizeBytes = WkSzStringWithFixedLengthBytes
                                 .newPacketStructure(
                                     "FIXED_LEN_STRING_" + numBytesToReadWrite,
                                     "BYTES",
@@ -75,7 +75,7 @@ public class StringWithFixedLengthBytesTest
 
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-        OutputPacket<String, StringWithFixedLengthBytes, StringWithFixedLengthBytesSerializing>
+        WkSzOutputPacket<String, WkSzStringWithFixedLengthBytes, WkSzStringWithFixedLengthBytesWriter>
           stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(shortStr, OperationSettings.EMPTY, outputstream);
         logger.info(stringWithFixedSizeSerializing.name() + " created");
 
@@ -96,7 +96,7 @@ public class StringWithFixedLengthBytesTest
 
         assertTrue(outputstream.equals(expectedByteArray));
 
-        InputPacket<String, StringWithFixedLengthBytes, StringWithFixedLengthBytesDeserializing>
+        WkSzInputPacket<String, WkSzStringWithFixedLengthBytes, WkSzStringWithFixedLengthBytesReader>
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 
@@ -126,7 +126,7 @@ public class StringWithFixedLengthBytesTest
 
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-        OutputPacket<String, StringWithFixedLengthBytes, StringWithFixedLengthBytesSerializing>
+        WkSzOutputPacket<String, WkSzStringWithFixedLengthBytes, WkSzStringWithFixedLengthBytesWriter>
         stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(longStr, OperationSettings.EMPTY, outputstream);
 
         logger.info(stringWithFixedSizeSerializing.name() + " created");
@@ -148,7 +148,7 @@ public class StringWithFixedLengthBytesTest
 
         assertTrue(outputstream.equals(expectedByteArray));
 
-        InputPacket<String, StringWithFixedLengthBytes, StringWithFixedLengthBytesDeserializing>
+        WkSzInputPacket<String, WkSzStringWithFixedLengthBytes, WkSzStringWithFixedLengthBytesReader>
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 

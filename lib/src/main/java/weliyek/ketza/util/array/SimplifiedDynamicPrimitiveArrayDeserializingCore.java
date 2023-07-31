@@ -18,15 +18,15 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
 
 public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
                         T extends PrimitiveArrayWrapper<?,?>,
@@ -36,18 +36,18 @@ public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
                                         DeserializingRuntime<InputBytestream>,
                                         DeserializingResult<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
-                        XD extends DynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
+                        XD extends WkSzDynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
                         ZT extends Number,
-                        ZXO extends NumberDeserializing<
+                        ZXO extends WkSzNumberReader<
                                         ZT,
                                         OperationSettings,
                                         ?,?,ZXD>,
-                        ZXD extends NumberDefinition<ZT,ZXO>,
-                        VXO extends VariableSizePrimitiveArrayReading<
+                        ZXD extends WkSzNumberDefinition<ZT,ZXO>,
+                        VXO extends WkSzVariableSizePrimitiveArrayReader<
                                         T,
                                         VariableLengthSettings,
                                         ?,?,VXD>,
-                        VXD extends VariableSizePrimitiveArrayDefinition<T,VXO>>
+                        VXD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>>
     extends DynamicSequenceDeserializingCore<
                         T,
                         OperationSettings,
@@ -86,7 +86,7 @@ public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
     int index,
     OperationSettings settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<T,?,XD,?,?,?> deserializingfieldCore,
+    WkSzPacketReaderFieldCore<T,?,XD,?,?,?> deserializingfieldCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
       T,XD,XO,?,?,
       ZT,ZXD,ZXO,?,?,?,

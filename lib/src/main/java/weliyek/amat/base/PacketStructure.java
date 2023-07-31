@@ -22,30 +22,30 @@ import java.io.OutputStream;
 import java.util.Objects;
 import java.util.function.Function;
 
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.input.InputPacket;
-import weliyek.amat.base.input.InputPacketCore;
-import weliyek.amat.base.input.InputPacketCore.ReadingPacketParameters;
+import weliyek.amat.base.input.WkSzInputPacket;
+import weliyek.amat.base.input.WkSzInputPacketCore;
+import weliyek.amat.base.input.WkSzInputPacketCore.ReadingPacketParameters;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputPacket;
-import weliyek.amat.base.output.OutputPacketCore;
-import weliyek.amat.base.output.OutputPacketCore.WritingParameters;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzOutputPacket;
+import weliyek.amat.base.output.WkSzOutputPacketCore;
+import weliyek.amat.base.output.WkSzOutputPacketCore.WritingParameters;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat2.protocol.filter.Filter;
 
 public final class PacketStructure<
                         T,
                         XS extends OperationSettings,
-                        XD extends DefinitionSegment<T,?>,
-                        XO extends DeserializingOperation<T,XS,?,?,XD>,
+                        XD extends WkSzDefinition<T,?>,
+                        XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXBC extends InputBytestreamGeneralBase<?>,
                         YS extends OperationSettings,
-                        YD extends DefinitionSegment<T,?>,
-                        YO extends SerializingOperation<T,YS,?,?,YD>,
+                        YD extends WkSzDefinition<T,?>,
+                        YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
-                        D extends DefinitionSegment<T,XO>>
-    extends ComponentSegmentCore<
+                        D extends WkSzDefinition<T,XO>>
+    extends WkSzStructComponentCore<
                         T, XS, XD, XO, AXBC,
                         YS, YD, YO, AYBC,
                         D>
@@ -64,61 +64,61 @@ public final class PacketStructure<
     this.outputbytestreamFactory = Objects.requireNonNull(outputbytestreamFactory);
   }
 
-  public InputPacket<T, XD, XO>
+  public WkSzInputPacket<T, XD, XO>
   newInputPacket(XS settings, InputStream inputstream) {
     return newInputPacket(settings, inputstream, Filter.getEmptyFilter());
   }
 
-  public InputPacket<T, XD, XO>
+  public WkSzInputPacket<T, XD, XO>
   newInputPacket(XS settings, InputStream inputstream, Filter filter) {
     AXBC inBytestream = inputbytestreamFactory.apply(inputstream);
     return newInputPacket(settings, inBytestream, filter);
   }
 
-  public InputPacket<T, XD, XO>
+  public WkSzInputPacket<T, XD, XO>
   newInputPacket(XS settings, AXBC inputBytestream) {
     return newInputPacket(settings, inputBytestream, Filter.getEmptyFilter());
   }
 
-  public InputPacket<T, XD, XO>
+  public WkSzInputPacket<T, XD, XO>
   newInputPacket(XS settings, AXBC inputBytestream, Filter filter) {
-    ReadingPacketParameters<XS, AXBC> params = new InputPacketCore.ReadingPacketParameters<XS, AXBC>(
+    ReadingPacketParameters<XS, AXBC> params = new WkSzInputPacketCore.ReadingPacketParameters<XS, AXBC>(
                                                                         settings,
                                                                         inputBytestream,
                                                                         filter);
     @SuppressWarnings("unchecked")
-    InputPacketCore<T,XS,XD,XO,AXBC> reading = new InputPacketCore<T,XS,XD,XO,AXBC>(
-        (ComponentSegmentCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>) this, params);
+    WkSzInputPacketCore<T,XS,XD,XO,AXBC> reading = new WkSzInputPacketCore<T,XS,XD,XO,AXBC>(
+        (WkSzStructComponentCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>) this, params);
     reading.initialize(true);
     return reading.asPacket();
   }
 
-  public OutputPacket<T, YD, YO>
+  public WkSzOutputPacket<T, YD, YO>
   newOutputPacket(T serializable, YS settings, OutputStream outputstream)  {
     AYBC outBytestream = outputbytestreamFactory.apply(outputstream);
     return newOutputPacket(serializable, settings, outBytestream, Filter.getEmptyFilter());
   }
 
-  public OutputPacket<T, YD, YO>
+  public WkSzOutputPacket<T, YD, YO>
   newOutputPacket(T serializable, YS settings, AYBC outputBytestream)  {
     return newOutputPacket(serializable, settings, outputBytestream, Filter.getEmptyFilter());
   }
 
-  public OutputPacket<T, YD, YO>
+  public WkSzOutputPacket<T, YD, YO>
   newOutputPacket(T serializable, YS settings, AYBC outputBytestream, Filter filter)  {
-    WritingParameters<T,YS,AYBC> writingParams = new OutputPacketCore.WritingParameters<T,YS,AYBC>(
+    WritingParameters<T,YS,AYBC> writingParams = new WkSzOutputPacketCore.WritingParameters<T,YS,AYBC>(
                                                                         serializable,
                                                                         settings,
                                                                         outputBytestream);
     @SuppressWarnings("unchecked")
-    OutputPacketCore<T,YS,YD,YO,AYBC> writing = new OutputPacketCore<T,YS,YD,YO,AYBC>(
-        (ComponentSegmentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>) this, writingParams);
+    WkSzOutputPacketCore<T,YS,YD,YO,AYBC> writing = new WkSzOutputPacketCore<T,YS,YD,YO,AYBC>(
+        (WkSzStructComponentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>) this, writingParams);
     writing.initialize(true);
     return writing.asPacket();
   }
 
   @Override
-  protected DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
+  protected WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
     return null;
   }
 

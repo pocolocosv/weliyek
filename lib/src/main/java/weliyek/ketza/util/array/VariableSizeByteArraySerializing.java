@@ -23,10 +23,10 @@ import java.util.Optional;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingField;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterField;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 
 public class VariableSizeByteArraySerializing
@@ -54,7 +54,7 @@ public class VariableSizeByteArraySerializing
     ByteArrayWrapper serializable,
     OperationSettings settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<
+    WkSzPacketWriterFieldCore<
       ByteArrayWrapper,?,VariableSizeByteArray,?,?,?> serializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
       ByteArrayWrapper,?,?,OperationSettings,VariableSizeByteArraySerializing,VariableSizeByteArray> definitionCore) {
@@ -99,13 +99,13 @@ public class VariableSizeByteArraySerializing
   }
 
   @Override
-  public SerializingField<ByteArrayWrapper, VariableSizeByteArray, ?>
+  public WkSzPacketWriterField<ByteArrayWrapper, VariableSizeByteArray, ?>
   packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<SerializingSubfieldHandler<?,?,?>> subfields() {
+  public List<WkSzPacketWriterSubfield<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 

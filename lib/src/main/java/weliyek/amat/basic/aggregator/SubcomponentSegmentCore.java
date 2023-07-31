@@ -19,44 +19,44 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.Objects;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.SubcomponentSegment;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 
 public class SubcomponentSegmentCore<
                         T,
                         XS extends OperationSettings,
-                        XD extends DefinitionSegment<T,?>,
-                        XO extends DeserializingOperation<T,XS,?,?,XD>,
+                        XD extends WkSzDefinition<T,?>,
+                        XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXBC extends InputBytestreamGeneralBase<?>,
                         YS extends OperationSettings,
-                        YD extends DefinitionSegment<T,?>,
-                        YO extends SerializingOperation<T,YS,?,?,YD>,
+                        YD extends WkSzDefinition<T,?>,
+                        YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
-                        D extends DefinitionSegment<T,?>>
-    extends ComponentSegmentCore<T, XS, XD, XO, AXBC, YS, YD, YO, AYBC, D>
+                        D extends WkSzDefinition<T,?>>
+    extends WkSzStructComponentCore<T, XS, XD, XO, AXBC, YS, YD, YO, AYBC, D>
     implements SubcomponentSegment<D>
 {
 
-  private final DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore;
+  private final WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore;
 
   SubcomponentSegmentCore(
     String label,
     ProtocolDefinitionFactory<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D> definitionFactory,
-    DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
+    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
     super(label, definitionFactory);
     this.parentDefinitionCore = Objects.requireNonNull(parentDefinitionCore);
   }
 
   @Override
-  protected DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
+  protected WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
     return this.parentDefinitionCore;
   }
 

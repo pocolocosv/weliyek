@@ -20,13 +20,13 @@ package weliyek.amat2.protocol.filter;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 
 public abstract class FieldTester<
-                        D extends DefinitionSegment<?,?>,
-                        M extends FilterableMessageSegment>
+                        D extends WkSzDefinition<?,?>,
+                        M extends WkSzFilterableSegment>
 {
 
   private final D definition;
@@ -42,10 +42,10 @@ public abstract class FieldTester<
     this.description = null == description ? "" : description;
   }
 
-  public abstract boolean canBeTestedAgainst(FilterableMessageSegment segment);
+  public abstract boolean canBeTestedAgainst(WkSzFilterableSegment segment);
 
   @SuppressWarnings("unchecked")
-  boolean testIfProperSegmentOrFalseOtherwise(FilterableMessageSegment segment) {
+  boolean testIfProperSegmentOrFalseOtherwise(WkSzFilterableSegment segment) {
     if (canBeTestedAgainst(segment)) {
       return test((M)segment);
     }
@@ -66,32 +66,32 @@ public abstract class FieldTester<
    */
   public abstract boolean deserializedIsRequired();
 
-  static DefinitionSegment<?,?>
-  extractProtocolDefinitionFrom(FilterableMessageSegment segment) {
+  static WkSzDefinition<?,?>
+  extractProtocolDefinitionFrom(WkSzFilterableSegment segment) {
     if (isSegmentAReadingOperation(segment)) {
-      return extractDefinition((DeserializingOperation<?,?,?,?,?>)segment);
+      return extractDefinition((WkSzPacketReaderOperation<?,?,?,?,?>)segment);
     } else if (isSegmentAPacketField(segment)) {
-      return extractDefinition((DeserializingField<?,?,?>)segment);
+      return extractDefinition((WkSzPacketReaderField<?,?,?>)segment);
     }
     throw new IllegalArgumentException();
   }
 
-  protected static boolean isSegmentAReadingOperation(FilterableMessageSegment segment) {
-    return segment instanceof DeserializingOperation;
+  protected static boolean isSegmentAReadingOperation(WkSzFilterableSegment segment) {
+    return segment instanceof WkSzPacketReaderOperation;
   }
 
-  protected static boolean isSegmentAPacketField(FilterableMessageSegment segment) {
-    return segment instanceof DeserializingField;
+  protected static boolean isSegmentAPacketField(WkSzFilterableSegment segment) {
+    return segment instanceof WkSzPacketReaderField;
   }
 
-  protected static DefinitionSegment<?,?> extractDefinition(
-    DeserializingOperation<?,?,?,?,?> operationSegment) {
+  protected static WkSzDefinition<?,?> extractDefinition(
+    WkSzPacketReaderOperation<?,?,?,?,?> operationSegment) {
     return operationSegment.definition();
   }
 
-  protected static DefinitionSegment<?,?> extractDefinition(
-    DeserializingField<?,?,?> packetfield) {
-    return packetfield.protocolField().definition();
+  protected static WkSzDefinition<?,?> extractDefinition(
+    WkSzPacketReaderField<?,?,?> packetfield) {
+    return packetfield.structComponent().definition();
   }
 
   public String description() {

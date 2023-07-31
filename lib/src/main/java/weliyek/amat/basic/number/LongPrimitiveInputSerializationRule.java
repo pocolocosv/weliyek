@@ -28,7 +28,7 @@ public abstract class LongPrimitiveInputSerializationRule
 
   protected LongPrimitiveInputSerializationRule(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Long,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

@@ -21,11 +21,11 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 import weliyek.amat.base.CommonOperationRuntimeControl;
-import weliyek.amat.base.OperationSegment;
+import weliyek.amat.base.WkSzPacketOperation;
 
 public abstract class CommonSerializerFactory<
                         QC extends CommonOperationRuntimeControl<?,?,?>,
-                        O extends OperationSegment<?,?,?,?,?>,
+                        O extends WkSzPacketOperation<?,?,?,?,?>,
                         T extends PrimitiveCommonSerializationEngine<? super QC, ? super O>>
 {
 

@@ -27,7 +27,7 @@ public abstract class IntPrimiviteOutputSerializerEngine
 
   protected IntPrimiviteOutputSerializerEngine(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Integer,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<Integer,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

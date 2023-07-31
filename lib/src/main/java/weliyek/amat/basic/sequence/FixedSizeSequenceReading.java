@@ -18,7 +18,7 @@
 package weliyek.amat.basic.sequence;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
+import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.SequenceReadingRuntime;
 
@@ -27,11 +27,11 @@ public interface FixedSizeSequenceReading<
                         S extends OperationSettings,
                         Q extends SequenceReadingRuntime<?>,
                         R extends DeserializingResult<X>,
-                        D extends FixedSizeSequenceDefinition<X,?>>
-    extends SequenceReading<X, S, Q, R, D>,
-            FixedSizeSequenceOperation<
+                        D extends WkSzFixedSizeSequenceDefinition<X,?>>
+    extends WkSzSequenceReader<X, S, Q, R, D>,
+            WkSzFixedSizeSequenceOperation<
                         S, Q, R, D,
-                        DeserializingField<X,D,?>>
+                        WkSzPacketReaderField<X,D,?>>
 {
 
 }

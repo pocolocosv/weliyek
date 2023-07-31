@@ -21,24 +21,24 @@ import java.util.function.BiFunction;
 
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.OutputSerializationEngine;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public class BasicPrimitiveArraySerializationRule<Y extends PrimitiveArrayWrapperBase<?, ?>>
     extends PrimitiveArraySerializerFactory<
                         Y,
                         SequenceWritingRuntimeControl<?,?,?>,
-                        PrimitiveArraySerializerWriting<? extends Y,?,?,?,?>>
+                        WkSzPrimitiveArraySerializerWriter<? extends Y,?,?,?,?>>
 {
 
   public BasicPrimitiveArraySerializationRule(
       String label,
       BiFunction<
         SequenceWritingRuntimeControl<?,?,?>,
-        PrimitiveArraySerializerWriting<? extends Y,?,?,?,?>,
+        WkSzPrimitiveArraySerializerWriter<? extends Y,?,?,?,?>,
         OutputSerializationEngine<
           Y,
           SequenceWritingRuntimeControl<?,?,?>,
-          PrimitiveArraySerializerWriting<? extends Y,?,?,?,?>>> engineSupplier) {
+          WkSzPrimitiveArraySerializerWriter<? extends Y,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

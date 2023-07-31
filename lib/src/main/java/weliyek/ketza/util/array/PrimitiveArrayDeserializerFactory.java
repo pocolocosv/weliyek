@@ -22,12 +22,12 @@ import java.util.function.BiFunction;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.InputDeserializerFactory;
 import weliyek.amat.basic.serializer.InputSerializationEngine;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 
 public class PrimitiveArrayDeserializerFactory<
                         X extends PrimitiveArrayWrapper<?,?>,
                         QC extends SequenceReadingRuntimeControl<?,?,?>,
-                        O extends PrimitiveArraySerializerReading<X,?,?,?,?>>
+                        O extends WkSzPrimitiveArraySerializerReader<X,?,?,?,?>>
   extends InputDeserializerFactory<X, QC, O>
 {
 

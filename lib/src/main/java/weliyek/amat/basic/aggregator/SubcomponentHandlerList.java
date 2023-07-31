@@ -22,30 +22,30 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandlerCore;
+import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandlerCore;
+import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 
 public class SubcomponentHandlerList<
                         T,
                         XBC extends InputBytestreamGeneralBase<?>,
-                        XD extends AggregatorDefinition<T,?>,
-                        XO extends AggregatorReading<T,?,? extends DeserializingRuntime<?>,?,XD>,
+                        XD extends WkSzAggregatorDefinition<T,?>,
+                        XO extends WkSzAggregatorReader<T,?,? extends DeserializingRuntime<?>,?,XD>,
                         YBC extends OutputBytestreamGeneralBase<?>,
-                        YD extends AggregatorDefinition<T,?>,
-                        YO extends AggregatorWriting<T,?,? extends SerializingRuntime<?>,?,YD>>
-    extends AbstractList<SubcomponentHandlerCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
+                        YD extends WkSzAggregatorDefinition<T,?>,
+                        YO extends WkSzAggregatorWriter<T,?,? extends SerializingRuntime<?>,?,YD>>
+    extends AbstractList<WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
 {
 
-    private final List<SubcomponentHandlerCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
+    private final List<WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
                       handlerContainer = new ArrayList<>();
-    private final List<SubcomponentHandler<XO,YO,?>>
+    private final List<WkSzStructSubcomponent<XO,YO,?>>
                       subfieldList = new ArrayList<>();
-    private final List<SubcomponentHandler<?,?,?>>
+    private final List<WkSzStructSubcomponent<?,?,?>>
                       roSubfieldList = Collections.unmodifiableList(subfieldList);
 
     public SubcomponentHandlerList() {
@@ -53,49 +53,49 @@ public class SubcomponentHandlerList<
 
     @SuppressWarnings("unchecked")
     public
-    <YYD extends AggregatorDefinition<YY,?>,
+    <YYD extends WkSzAggregatorDefinition<YY,?>,
      YY,
      YYB extends OutputBytestreamGeneralBase<?>,
-     YYO extends AggregatorWriting<YY,?,? extends SerializingRuntime<?>,?,YYD>>
+     YYO extends WkSzAggregatorWriter<YY,?,? extends SerializingRuntime<?>,?,YYD>>
     WritingHandlerList<YY,YYB,YYD,YYO> newSerializingHandlers(
-      AggregatorWritingCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
-      List<SerializingSubfieldHandlerCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
-      AggregatorWritingCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>
-        parentOpCore = (AggregatorWritingCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>) parentSerializingOpCore;
-      for (SubcomponentHandlerCore<?,?,?,?,?,?,?,?,?,?,?,YBC,YD,YO,?,?> subcomponentHandler : this) {
-        SerializingSubfieldHandlerCore<?,?,?,?,?,YBC,YD,YO>
+      WkSzAggregatorWriterCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
+      List<WkSzPacketWriterSubfieldCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
+      WkSzAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>
+        parentOpCore = (WkSzAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>) parentSerializingOpCore;
+      for (WkSzSubcomponentCore<?,?,?,?,?,?,?,?,?,?,?,YBC,YD,YO,?,?> subcomponentHandler : this) {
+        WkSzPacketWriterSubfieldCore<?,?,?,?,?,YBC,YD,YO>
           serializingHandler = subcomponentHandler.newWritingSubfieldHandlerCore(parentOpCore);
-        serializingHandlerList.add((SerializingSubfieldHandlerCore<?,?,?,?,?,?,YYD,YYO>)serializingHandler);
+        serializingHandlerList.add((WkSzPacketWriterSubfieldCore<?,?,?,?,?,?,YYD,YYO>)serializingHandler);
       }
       return new WritingHandlerList<YY,YYB,YYD,YYO>(serializingHandlerList);
     }
 
     @SuppressWarnings("unchecked")
     public
-    <XXD extends AggregatorDefinition<XX,?>,
+    <XXD extends WkSzAggregatorDefinition<XX,?>,
      XX,
      XXB extends InputBytestreamGeneralBase<?>,
-     XXO extends AggregatorReading<XX,?,? extends DeserializingRuntime<?>,?,XXD>>
+     XXO extends WkSzAggregatorReader<XX,?,? extends DeserializingRuntime<?>,?,XXD>>
     ReadingHandlerList<XX,XXB,XXD,XXO> newDeserializingHandlers(
-      AggregatorReadingCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
-      List<DeserializingSubfieldHandlerCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();
-      AggregatorReadingCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>
-        parentOpCore = (AggregatorReadingCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>)parentDeserializingOpCore;
-      for (SubcomponentHandlerCore<?,?,?,?,?,XBC,XD,XO,?,?,?,?,?,?,?,?> subcomponentHandler : this) {
-        DeserializingSubfieldHandlerCore<?,?,?,?,?,?,XD,XO>
+      WkSzAggregatorReaderCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
+      List<WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();
+      WkSzAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>
+        parentOpCore = (WkSzAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>)parentDeserializingOpCore;
+      for (WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,?,?,?,?,?> subcomponentHandler : this) {
+        WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XD,XO>
           deserializingHandler = subcomponentHandler
                                     .newReadingSubfieldHandlerCore(parentOpCore);
-        deserializingHandlerList.add((DeserializingSubfieldHandlerCore<?,?,?,?,?,?,XXD,XXO>)deserializingHandler);
+        deserializingHandlerList.add((WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XXD,XXO>)deserializingHandler);
       }
       return new ReadingHandlerList<XX,XXB,XXD,XXO>(deserializingHandlerList);
     }
 
-    public List<SubcomponentHandler<?,?,?>> asSubfieldList() {
+    public List<WkSzStructSubcomponent<?,?,?>> asSubfieldList() {
       return this.roSubfieldList;
     }
 
     @Override
-    public SubcomponentHandlerCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>
+    public WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>
     get(int index) {
         return handlerContainer.get(index);
     }
@@ -105,7 +105,7 @@ public class SubcomponentHandlerList<
         return handlerContainer.size();
     }
 
-    public <P_ extends SubcomponentHandlerCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
+    public <P_ extends WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
     P_ addSubfield(P_ subfield) {
         if (handlerContainer.contains(subfield)) {
             throw new IllegalArgumentException();    // Cannot add same subfield
@@ -116,9 +116,9 @@ public class SubcomponentHandlerList<
         return subfield;
     }
 
-    public <P_ extends SubcomponentHandlerCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
+    public <P_ extends WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
     P_ insertBefore(
-      SubcomponentHandlerCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> existingSubfield,
+      WkSzSubcomponentCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> existingSubfield,
       P_ newSubfield) {
       int existingIndex = this.indexOf(existingSubfield);
       if (-1 == existingIndex) {
@@ -130,9 +130,9 @@ public class SubcomponentHandlerList<
       return newSubfield;
     }
 
-    public <P_ extends SubcomponentHandlerCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
+    public <P_ extends WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
     P_ insertAfter(
-      SubcomponentHandlerCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> existingSubfield,
+      WkSzSubcomponentCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> existingSubfield,
       P_ newSubfield) {
       int existingIndex = this.indexOf(existingSubfield);
       if (-1 == existingIndex) {
@@ -150,9 +150,9 @@ public class SubcomponentHandlerList<
       }
     }
 
-    public List<SubcomponentHandler<?,?,?>> collectRequiredSubfields() {
-      List<SubcomponentHandler<?,?,?>> requiredSubfields =new ArrayList<>();
-      for (SubcomponentHandlerCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> subcompHandler : handlerContainer) {
+    public List<WkSzStructSubcomponent<?,?,?>> collectRequiredSubfields() {
+      List<WkSzStructSubcomponent<?,?,?>> requiredSubfields =new ArrayList<>();
+      for (WkSzSubcomponentCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> subcompHandler : handlerContainer) {
         if (subcompHandler.isDeserializedRequiredByAggregator()) {
           requiredSubfields.add(subcompHandler.body());
         }

@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.number.BasicPrimitiveSerializerEngine;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public abstract class LongPrimitiveOutputSerializationRule
     extends BasicPrimitiveSerializerEngine<Long>
@@ -29,7 +29,7 @@ public abstract class LongPrimitiveOutputSerializationRule
 
   protected LongPrimitiveOutputSerializationRule(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Long,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

@@ -18,33 +18,33 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
+import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public interface DynamicPrimitiveArraySerializing<
                         T extends PrimitiveArrayWrapper<?,?>,
                         YS extends OperationSettings,
                         YQ extends SerializingRuntime<?>,
                         YR extends SerializingResult,
-                        D extends DynamicPrimitiveArrayDefinition<T,?,?,?,?>,
+                        D extends WkSzDynamicPrimitiveArrayDefinition<T,?,?,?,?>,
                         ZT extends Number,
-                        ZYO extends NumberSerializing<ZT,?,?,?,ZD>,
-                        ZD extends NumberDefinition<ZT,?>,
-                        VYO extends VariableSizePrimitiveArrayWriting<T,?,?,?,VD>,
-                        VD extends VariableSizePrimitiveArrayDefinition<T,?>>
-    extends DynamicPrimitiveArrayOperation<
+                        ZYO extends WkSzNumberWriter<ZT,?,?,?,ZD>,
+                        ZD extends WkSzNumberDefinition<ZT,?>,
+                        VYO extends WkSzVariableSizePrimitiveArrayWriter<T,?,?,?,VD>,
+                        VD extends WkSzVariableSizePrimitiveArrayDefinition<T,?>>
+    extends WkSzDynamicPrimitiveArrayOperation<
                         YS, YQ, YR, D,
-                        SerializingField<T,D,?>,
+                        WkSzPacketWriterField<T,D,?>,
                         ZYO,
-                        SerializingField<ZT,ZD,ZYO>,
-                        SerializingSubfieldHandler<ZT,ZD,ZYO>,
+                        WkSzPacketWriterField<ZT,ZD,ZYO>,
+                        WkSzPacketWriterSubfield<ZT,ZD,ZYO>,
                         VYO,
-                        SerializingField<T,VD,VYO>,
-                        SerializingSubfieldHandler<T,VD,VYO>>,
+                        WkSzPacketWriterField<T,VD,VYO>,
+                        WkSzPacketWriterSubfield<T,VD,VYO>>,
             DynamicSequenceSerializing<T, YS, YQ, YR, D, ZT, ZYO, ZD, VYO, VD>
 {
 

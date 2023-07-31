@@ -20,24 +20,24 @@ package weliyek.amat.basic.string;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.ketza.util.array.ByteArrayDefinition;
+import weliyek.ketza.util.array.WkSzByteArrayDefinition;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public class SimpleStringFromBytesWritingCore<
                         YS extends OperationSettings,
-                        YO extends StringFromBytesWriting<
+                        YO extends WkSzStringFromBytesWriter<
                                       YS,
                                       SerializingRuntime<OutputBytestream>,
                                       SerializingResult,
                                       YD,SYD,SYO>,
-                        YD extends StringFromBytesDefinition<?,YO,? extends SYD>,
+                        YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         SYS extends OperationSettings,
                         SYO extends ByteArrayWriting<SYS,?,?,SYD>,
-                        SYD extends ByteArrayDefinition<?>>
+                        SYD extends WkSzByteArrayDefinition<?>>
     extends StringFromBytesWritingCore<
                         YS,
                         OutputBytestream,
@@ -61,7 +61,7 @@ public class SimpleStringFromBytesWritingCore<
     String serializable,
     YS settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<String,?,YD,?,?,?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<String,?,YD,?,?,?> packetHandlerCore,
     SimplifiedStringFromBytesCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
     YO operationBody) {
     super(

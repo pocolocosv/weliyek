@@ -19,12 +19,12 @@ package weliyek.amat2.protocol.filter;
 
 import java.util.function.Predicate;
 
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 
 public class PacketInputFieldOperationPredicate<
-                        D extends DefinitionSegment<?,?>,
-                        O extends DeserializingOperation<?,?,?,?,D>>
+                        D extends WkSzDefinition<?,?>,
+                        O extends WkSzPacketReaderOperation<?,?,?,?,D>>
     extends FieldTester<D, O>
 {
 
@@ -39,9 +39,9 @@ public class PacketInputFieldOperationPredicate<
   }
 
   @Override
-  public boolean canBeTestedAgainst(FilterableMessageSegment segment) {
+  public boolean canBeTestedAgainst(WkSzFilterableSegment segment) {
     if (isSegmentAReadingOperation(segment)) {
-      DefinitionSegment<?,?> segmentDef = extractDefinition((DeserializingOperation<?,?,?,?,?>)segment);
+      WkSzDefinition<?,?> segmentDef = extractDefinition((WkSzPacketReaderOperation<?,?,?,?,?>)segment);
       return targetProtocolField().equals(segmentDef);
     }
     return false;

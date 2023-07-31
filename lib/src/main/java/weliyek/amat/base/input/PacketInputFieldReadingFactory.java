@@ -17,8 +17,8 @@
  */
 package weliyek.amat.base.input;
 
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationFactory;
 import weliyek.amat.base.OperationSettings;
 
@@ -26,18 +26,18 @@ import weliyek.amat.base.OperationSettings;
 public interface PacketInputFieldReadingFactory<
                         T,
                         XS extends OperationSettings,
-                        XD extends DefinitionSegment<T,?>,
-                        DC extends DefinitionSegmentCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
-                        XO extends DeserializingOperation<T,XS,?,?,XD>,
+                        XD extends WkSzDefinition<T,?>,
+                        DC extends WkSzDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
+                        XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXB extends InputBytestreamGeneralBase<?>>
     extends OperationFactory
 {
 
-  ReadingOperationCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
+  WkSzPacketReaderOperationCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
     int index,
     XS settings,
     AXB parentBytestream,
-    DeserializingFieldCore<T,?,XD,?,?,?> ownerPacket,
+    WkSzPacketReaderFieldCore<T,?,XD,?,?,?> ownerPacket,
     DC definitionCore);
 
 }

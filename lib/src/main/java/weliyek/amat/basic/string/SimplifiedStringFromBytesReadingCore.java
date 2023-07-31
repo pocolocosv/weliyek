@@ -18,26 +18,26 @@
 package weliyek.amat.basic.string;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.ReadingRuntimeControl;
-import weliyek.ketza.util.array.ByteArrayDefinition;
+import weliyek.ketza.util.array.WkSzByteArrayDefinition;
 import weliyek.ketza.util.array.ByteArrayReading;
 
 public class SimplifiedStringFromBytesReadingCore<
                         XS extends OperationSettings,
-                        XO extends StringFromBytesReading<
+                        XO extends WkSzStringFromBytesReader<
                                       XS,
                                       DeserializingRuntime<InputBytestream>,
                                       DeserializingResult<String>,
                                       XD,SXD,SXO>,
-                        XD extends StringFromBytesDefinition<XO,?,? extends SXD>,
+                        XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
                         SXS extends OperationSettings,
                         SXO extends ByteArrayReading<SXS,?,?,SXD>,
-                        SXD extends ByteArrayDefinition<SXO>>
+                        SXD extends WkSzByteArrayDefinition<SXO>>
     extends StringFromBytesReadingCore<
                         XS,
                         InputBytestream,
@@ -59,7 +59,7 @@ public class SimplifiedStringFromBytesReadingCore<
     int index,
     XS settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<String,?,XD,?,?,?> packetfieldCore,
+    WkSzPacketReaderFieldCore<String,?,XD,?,?,?> packetfieldCore,
     SimplifiedStringFromBytesCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
     XO operationBody) {
     super(

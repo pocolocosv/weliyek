@@ -24,13 +24,13 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Optional;
 
-import weliyek.amat.basic.aggregator.AggregatorOperation;
+import weliyek.amat.basic.aggregator.WkSzAggregatorOperation;
 import weliyek.ketza.base.Completable;
 
 public abstract class SubfieldHandlerList<
-                        SJ extends SubfieldHandler<?>,
-                        SJC extends SubfieldHandlerCore<?,?,?,?,?,? extends SJ,?,?>,
-                        O extends AggregatorOperation<?,?,?,?,?>>
+                        SJ extends WkSzPacketSubfield<?>,
+                        SJC extends WkSzPacketSubfieldCore<?,?,?,?,?,? extends SJ,?,?>,
+                        O extends WkSzAggregatorOperation<?,?,?,?,?>>
     extends AbstractList<SJC>
     implements Completable
 {
@@ -60,7 +60,7 @@ public abstract class SubfieldHandlerList<
         return null != handlerIter;
     }
 
-    public Optional<OperationSegment<?,?,?,?,?>> processBytestream() {
+    public Optional<WkSzPacketOperation<?,?,?,?,?>> processBytestream() {
         if (isEmpty()) {
           throw new IllegalStateException();  // Must have at least one handler.
         }
@@ -69,7 +69,7 @@ public abstract class SubfieldHandlerList<
           handlerIter = packetCoreListContainer.listIterator();
           startNextHandler();
         }
-        Optional<OperationSegment<?,?,?,?,?>> completed = currentHandler.processBytestream();
+        Optional<WkSzPacketOperation<?,?,?,?,?>> completed = currentHandler.processBytestream();
         if (currentHandler.fieldCore().isCompleted()) {
             startNextHandler();
         }

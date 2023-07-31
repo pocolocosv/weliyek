@@ -18,7 +18,7 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
+import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 
@@ -26,11 +26,11 @@ public interface ByteArrayReading<
                         S extends OperationSettings,
                         Q extends DeserializingRuntime<?>,
                         R extends DeserializingResult<ByteArrayWrapper>,
-                        D extends ByteArrayDefinition<?>>
+                        D extends WkSzByteArrayDefinition<?>>
     extends PrimitiveArrayReading<ByteArrayWrapper, S, Q, R, D>,
-            ByteArrayOperation<
+            WkSzByteArrayOperation<
                         S, Q, R, D,
-                        DeserializingField<ByteArrayWrapper,D,?>>
+                        WkSzPacketReaderField<ByteArrayWrapper,D,?>>
 {
 
 }

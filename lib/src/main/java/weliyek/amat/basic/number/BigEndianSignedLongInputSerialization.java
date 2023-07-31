@@ -33,7 +33,7 @@ public final class BigEndianSignedLongInputSerialization
 
   private BigEndianSignedLongInputSerialization(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Long,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

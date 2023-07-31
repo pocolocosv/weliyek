@@ -20,12 +20,12 @@ package weliyek.ketza.util.array;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public class SimplifiedDynamicPrimitiveArraySerializingCore<
                         T extends PrimitiveArrayWrapper<?,?>,
@@ -35,18 +35,18 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
                                         SerializingRuntime<OutputBytestream>,
                                         SerializingResult,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
-                        YD extends DynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
+                        YD extends WkSzDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
                         ZT extends Number,
-                        ZYO extends NumberSerializing<
+                        ZYO extends WkSzNumberWriter<
                                         ZT,
                                         OperationSettings,
                                         ?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZT,?>,
-                        VYO extends VariableSizePrimitiveArrayWriting<
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
+                        VYO extends WkSzVariableSizePrimitiveArrayWriter<
                                         T,
                                         OperationSettings,
                                         ?,?,VYD>,
-                        VYD extends VariableSizePrimitiveArrayDefinition<T,?>>
+                        VYD extends WkSzVariableSizePrimitiveArrayDefinition<T,?>>
     extends DynamicSequenceSerializingCore<
                         T,
                         OperationSettings,
@@ -86,7 +86,7 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
     T serializable,
     OperationSettings settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
       T,?,?,YD,YO,
       ZT,?,?,ZYD,ZYO,?,

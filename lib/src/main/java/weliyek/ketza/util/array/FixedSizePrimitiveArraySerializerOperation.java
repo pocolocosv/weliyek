@@ -17,21 +17,21 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.FieldSegment;
+import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.sequence.SequenceCommonOperationRuntime;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerOperation;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerOperation;
 
 public interface FixedSizePrimitiveArraySerializerOperation<
                         S extends OperationSettings,
                         Q extends SequenceCommonOperationRuntime<?>,
                         R extends OperationResult,
                         D extends FixedSizePrimitiveArraySerializerDefinition<?,?>,
-                        K extends FieldSegment<?,?,?>>
-    extends FixedSizePrimitiveArraySerializerField,
-            FixedSizePrimitiveArrayOperation<S, Q, R, D, K>,
-            PrimitiveArraySerializerOperation<S, Q, R, D, K>
+                        K extends WkSzPacketField<?,?,?>>
+    extends WkSzFixedSizePrimitiveArraySerializer,
+            WkSzFixedSizePrimitiveArrayOperation<S, Q, R, D, K>,
+            WkSzPrimitiveArraySerializerOperation<S, Q, R, D, K>
 {
 
 }

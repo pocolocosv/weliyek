@@ -19,13 +19,13 @@ package weliyek.amat.basic.serializer;
 
 import java.io.IOException;
 
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.WritingRuntimeControl;
 
 public abstract class OutputSerializationEngine<
                         T,
                         QC extends WritingRuntimeControl<?,?,?>,
-                        O extends SerializingOperation<? extends T,?,?,?,?>>
+                        O extends WkSzPacketWriterOperation<? extends T,?,?,?,?>>
     extends PrimitiveCommonSerializationEngine<QC, O>
 {
 

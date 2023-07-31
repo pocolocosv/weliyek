@@ -24,13 +24,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationException;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 
 public abstract class InputSerializationEngine<
                         X,
                         QC extends ReadingRuntimeControl<?,?,?>,
-                        O extends DeserializingOperation<X,?,?,?,?>>
+                        O extends WkSzPacketReaderOperation<X,?,?,?,?>>
     extends PrimitiveCommonSerializationEngine<QC,O>
 {
 

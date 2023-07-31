@@ -19,24 +19,24 @@ package weliyek.amat.base;
 
 import java.util.function.Function;
 
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 
 public interface ProtocolDefinitionFactory<
                         T,
                         XS extends OperationSettings,
-                        XD extends DefinitionSegment<T,?>,
-                        XO extends DeserializingOperation<T,XS,?,?,XD>,
+                        XD extends WkSzDefinition<T,?>,
+                        XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXBC extends InputBytestreamGeneralBase<?>,
                         YS extends OperationSettings,
-                        YD extends DefinitionSegment<T,?>,
-                        YO extends SerializingOperation<T,YS,?,?,YD>,
+                        YD extends WkSzDefinition<T,?>,
+                        YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
-                        D extends DefinitionSegment<T,?>>
-    extends Function<ComponentSegmentCore<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
-                     DefinitionSegmentCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
+                        D extends WkSzDefinition<T,?>>
+    extends Function<WkSzStructComponentCore<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
+                     WkSzDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
 {
 
 }

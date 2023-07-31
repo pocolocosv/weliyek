@@ -19,42 +19,42 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.List;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.SubfieldHandlerList;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.base.output.SerializingSubfieldHandlerCore;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 
 public class WritingHandlerList<
                         Y,
                         YBC extends OutputBytestreamGeneralBase<?>,
-                        YD extends AggregatorDefinition<Y,?>,
-                        YO extends AggregatorWriting<Y,?,? extends SerializingRuntime<?>,?,YD>>
+                        YD extends WkSzAggregatorDefinition<Y,?>,
+                        YO extends WkSzAggregatorWriter<Y,?,? extends SerializingRuntime<?>,?,YD>>
         extends SubfieldHandlerList<
-                        SerializingSubfieldHandler<?,?,?>,
-                        SerializingSubfieldHandlerCore<?,?,?,?,?,?,YD,YO>,
-                        AggregatorWritingCore<?,?,?,?,?,?,?,YD,YO,?,?,?>>
+                        WkSzPacketWriterSubfield<?,?,?>,
+                        WkSzPacketWriterSubfieldCore<?,?,?,?,?,?,YD,YO>,
+                        WkSzAggregatorWriterCore<?,?,?,?,?,?,?,YD,YO,?,?,?>>
 {
 
   WritingHandlerList(
-    List<SerializingSubfieldHandlerCore<?,?,?,?,?,?,YD,YO>> subfieldHandlers) {
+    List<WkSzPacketWriterSubfieldCore<?,?,?,?,?,?,YD,YO>> subfieldHandlers) {
     super(subfieldHandlers);
   }
 
   @SuppressWarnings("unchecked")
   <SY,
    SYS extends OperationSettings,
-   SYD extends DefinitionSegment<SY,?>,
-   SYO extends SerializingOperation<SY,SYS,?,?,SYD>>
-  SerializingSubfieldHandlerCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(
-    SubcomponentHandlerCore<SY,?,?,?,Y,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD> searchedSubcomponent) {
-    for (SerializingSubfieldHandlerCore<?,?,?,?,?,?,YD,YO> serializingSubfieldHandler : this) {
-      SubcomponentHandlerCore<?,?,?,?,?,?,?,?,?,?,?,?,YD,YO,?,? extends YD> subcomponentHandler = serializingSubfieldHandler.subcomponentHandlerCore();
+   SYD extends WkSzDefinition<SY,?>,
+   SYO extends WkSzPacketWriterOperation<SY,SYS,?,?,SYD>>
+  WkSzPacketWriterSubfieldCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(
+    WkSzSubcomponentCore<SY,?,?,?,Y,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD> searchedSubcomponent) {
+    for (WkSzPacketWriterSubfieldCore<?,?,?,?,?,?,YD,YO> serializingSubfieldHandler : this) {
+      WkSzSubcomponentCore<?,?,?,?,?,?,?,?,?,?,?,?,YD,YO,?,? extends YD> subcomponentHandler = serializingSubfieldHandler.subcomponentHandlerCore();
       if (subcomponentHandler.equals(searchedSubcomponent)) {
-        return (SerializingSubfieldHandlerCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO>) serializingSubfieldHandler;
+        return (WkSzPacketWriterSubfieldCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO>) serializingSubfieldHandler;
       }
     }
     throw new RuntimeException(); // Should never happen.

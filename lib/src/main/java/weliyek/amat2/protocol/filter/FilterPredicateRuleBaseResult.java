@@ -19,7 +19,7 @@ package weliyek.amat2.protocol.filter;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 
 public abstract class FilterPredicateRuleBaseResult
         implements FilterTesterResult,
@@ -34,23 +34,23 @@ public abstract class FilterPredicateRuleBaseResult
         this.desc = "RESULT:" + rule.name();
     }
 
-    final boolean test(FilterableMessageSegment info) {
+    final boolean test(WkSzFilterableSegment info) {
         //if (this.isEvaluationCompleted())
         //    return result();
         return onTest(info);
     }
 
-    void process(FilterableMessageSegment segment, FilterQuery query) {
+    void process(WkSzFilterableSegment segment, FilterQuery query) {
       if (isPremiseFound()) {
         return;
       }
-      DefinitionSegment<?,?> definitionUnderTest = FieldTester.extractProtocolDefinitionFrom(segment);
+      WkSzDefinition<?,?> definitionUnderTest = FieldTester.extractProtocolDefinitionFrom(segment);
       if (query.rule.matchTargets().contains(definitionUnderTest)) {
         onTest(segment);
       }
     }
 
-    abstract boolean onTest(FilterableMessageSegment segment);
+    abstract boolean onTest(WkSzFilterableSegment segment);
 
     @Override
     public final String name() {

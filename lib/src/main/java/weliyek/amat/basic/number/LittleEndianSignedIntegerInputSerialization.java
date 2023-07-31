@@ -33,7 +33,7 @@ public final class LittleEndianSignedIntegerInputSerialization
 
   private LittleEndianSignedIntegerInputSerialization(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Integer,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }
 

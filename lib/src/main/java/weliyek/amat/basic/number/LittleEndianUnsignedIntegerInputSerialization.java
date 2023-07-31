@@ -33,7 +33,7 @@ public final class LittleEndianUnsignedIntegerInputSerialization
 
   private LittleEndianUnsignedIntegerInputSerialization(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Long,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

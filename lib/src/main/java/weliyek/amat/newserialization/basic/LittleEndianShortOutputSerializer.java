@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.number.BasicPrimitiveSerializerEngine;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.amat.basic.serializer.BasicPrimitiveSerializerFactory;
 
 public final class LittleEndianShortOutputSerializer
@@ -33,7 +33,7 @@ public final class LittleEndianShortOutputSerializer
 
   private LittleEndianShortOutputSerializer(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Short,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<Short,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

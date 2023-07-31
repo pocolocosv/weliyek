@@ -18,16 +18,16 @@
 package weliyek.amat.basic.string;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
-import weliyek.amat.base.input.DeserializingSubfieldHandlerCore;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
+import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.ReadingRuntimeControl;
-import weliyek.amat.basic.aggregator.AggregatorReadingCore;
-import weliyek.ketza.util.array.PrimitiveArrayDefinition;
+import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
+import weliyek.ketza.util.array.WkSzPrimitiveArrayDefinition;
 import weliyek.ketza.util.array.PrimitiveArrayReading;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 
@@ -38,27 +38,27 @@ public abstract class StringFromPrimitiveReadingCore<
                         XQ extends DeserializingRuntime<XB>,
                         XQC extends ReadingRuntimeControl<XB,XBC,XQ>,
                         XR extends DeserializingResult<String>,
-                        XO extends StringFromPrimitiveReading<XS,XQ,XR,XD,SX,SXD,SXO>,
+                        XO extends WkSzStringFromPrimitiveReader<XS,XQ,XR,XD,SX,SXD,SXO>,
                         XOC extends StringFromPrimitiveReadingCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SX,SXS,SXO,SXD,DC>,
-                        XD extends StringFromPrimitiveDefinition<XO,?,? extends SXD>,
+                        XD extends WkSzStringFromPrimitiveDefinition<XO,?,? extends SXD>,
                         AXB extends InputBytestreamGeneralBase<?>,
                         SX extends PrimitiveArrayWrapper<?,?>,
                         SXS extends OperationSettings,
                         SXO extends PrimitiveArrayReading<SX,SXS,?,?,SXD>,
-                        SXD extends PrimitiveArrayDefinition<SX, SXO>,
-                        DC extends StringFromPrimitiveCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
-       extends AggregatorReadingCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
-       implements StringFromPrimitiveReading<XS, XQ, XR, XD, SX, SXD, SXO>
+                        SXD extends WkSzPrimitiveArrayDefinition<SX, SXO>,
+                        DC extends WkSzStringFromPrimitiveDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
+       extends WkSzAggregatorReaderCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
+       implements WkSzStringFromPrimitiveReader<XS, XQ, XR, XD, SX, SXD, SXO>
 {
 
-  private DeserializingSubfieldHandlerCore<SX,SXS,SXD,SXO,String,XBC,XD,XO>
+  private WkSzPacketReaderSubfieldCore<SX,SXS,SXD,SXO,String,XBC,XD,XO>
                     primitiveArraySubfieldpacket;
 
   protected StringFromPrimitiveReadingCore(
     int index,
     XS settings,
     AXB parentBytestream,
-    DeserializingFieldCore<String,?,XD,?,?,?> deserializingfieldCore,
+    WkSzPacketReaderFieldCore<String,?,XD,?,?,?> deserializingfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, deserializingfieldCore, definitionCore, operationBody);
@@ -88,7 +88,7 @@ public abstract class StringFromPrimitiveReadingCore<
   */
 
   protected SX getPrimitiveArray() {
-    if ( ! StringFromPrimitiveReading.isPrimitiveArrayReady(body())) {
+    if ( ! WkSzStringFromPrimitiveReader.isPrimitiveArrayReady(body())) {
       throw new IllegalArgumentException();
     }
     return primitiveArray().field().get().firstOperation().get()
@@ -104,7 +104,7 @@ public abstract class StringFromPrimitiveReadingCore<
   protected abstract void onStringFromPrimitiveReadingInitialization();
 
   @Override
-  public DeserializingSubfieldHandler<SX, SXD, SXO> primitiveArray() {
+  public WkSzPacketReaderSubfield<SX, SXD, SXO> primitiveArray() {
     return this.primitiveArraySubfieldpacket;
   }
 

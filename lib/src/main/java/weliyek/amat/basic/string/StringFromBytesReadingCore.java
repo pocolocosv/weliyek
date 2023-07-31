@@ -20,14 +20,14 @@ package weliyek.amat.basic.string;
 import java.nio.charset.Charset;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.ReadingRuntimeControl;
-import weliyek.ketza.util.array.ByteArrayDefinition;
+import weliyek.ketza.util.array.WkSzByteArrayDefinition;
 import weliyek.ketza.util.array.ByteArrayReading;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 
@@ -38,28 +38,28 @@ public abstract class StringFromBytesReadingCore<
                         XQ extends DeserializingRuntime<XB>,
                         XQC extends ReadingRuntimeControl<XB,XBC,XQ>,
                         XR extends DeserializingResult<String>,
-                        XO extends StringFromBytesReading<XS,XQ,XR,XD,SXD,SXO>,
+                        XO extends WkSzStringFromBytesReader<XS,XQ,XR,XD,SXD,SXO>,
                         XOC extends StringFromBytesReadingCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
-                        XD extends StringFromBytesDefinition<XO,?,? extends SXD>,
+                        XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
                         AXB extends InputBytestreamGeneralBase<?>,
                         SXS extends OperationSettings,
                         SXO extends ByteArrayReading<SXS,?,?,SXD>,
-                        SXD extends ByteArrayDefinition<SXO>,
-                        DC extends StringFromBytesCore<
+                        SXD extends WkSzByteArrayDefinition<SXO>,
+                        DC extends WkSzStringFromBytesDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       ?,?,?,?,?,?,?,?,
                                       SXS,SXO,SXD,?,?,?,?,?,DC>>
     extends StringFromPrimitiveReadingCore<
                         XS, XB, XBC, XQ, XQC, XR, XO, XOC, XD, AXB,
                         ByteArrayWrapper, SXS, SXO, SXD, DC>
-    implements StringFromBytesReading<XS, XQ, XR, XD, SXD, SXO>
+    implements WkSzStringFromBytesReader<XS, XQ, XR, XD, SXD, SXO>
 {
 
   protected StringFromBytesReadingCore(
     int index,
     XS settings,
     AXB parentBytestream,
-    DeserializingFieldCore<String,?,XD,?,?,?> packetField,
+    WkSzPacketReaderFieldCore<String,?,XD,?,?,?> packetField,
     DC definitionCore,
     XO operationBody) {
     super(
@@ -72,7 +72,7 @@ public abstract class StringFromBytesReadingCore<
   }
 
   @Override
-  public final DeserializingSubfieldHandler<ByteArrayWrapper, SXD, SXO> bytes() {
+  public final WkSzPacketReaderSubfield<ByteArrayWrapper, SXD, SXO> bytes() {
     return this.primitiveArray();
   }
 

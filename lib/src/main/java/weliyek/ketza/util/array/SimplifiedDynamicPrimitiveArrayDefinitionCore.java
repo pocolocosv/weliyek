@@ -19,7 +19,7 @@ package weliyek.ketza.util.array;
 
 import java.util.function.IntFunction;
 
-import weliyek.amat.base.ComponentSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.BasicReadingResult;
@@ -39,20 +39,20 @@ import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                         T extends PrimitiveArrayWrapper<?,?>,
-                        XD extends DynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
+                        XD extends WkSzDynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
                         XO extends DynamicPrimitiveArrayDeserializing<
                                         T,
                                         OperationSettings,
                                         DeserializingRuntime<InputBytestream>,
                                         DeserializingResult<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
-                        YD extends DynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
+                        YD extends WkSzDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
                         YO extends DynamicPrimitiveArraySerializing<
                                         T,
                                         OperationSettings,
@@ -60,24 +60,24 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                                         SerializingResult,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         ZT extends Number,
-                        ZXD extends NumberDefinition<ZT,ZXO>,
-                        ZXO extends NumberDeserializing<
+                        ZXD extends WkSzNumberDefinition<ZT,ZXO>,
+                        ZXO extends WkSzNumberReader<
                                         ZT,
                                         OperationSettings,?,
                                         ?,ZXD>,
-                        ZYD extends NumberDefinition<ZT,?>,
-                        ZYO extends NumberSerializing<
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
+                        ZYO extends WkSzNumberWriter<
                                         ZT,
                                         OperationSettings,?,?,ZYD>,
-                        ZD extends NumberDefinition<ZT,ZXO>,
-                        VXD extends VariableSizePrimitiveArrayDefinition<T,VXO>,
-                        VXO extends VariableSizePrimitiveArrayReading<
+                        ZD extends WkSzNumberDefinition<ZT,ZXO>,
+                        VXD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>,
+                        VXO extends WkSzVariableSizePrimitiveArrayReader<
                                         T,VariableLengthSettings,?,?,VXD>,
-                        VYD extends VariableSizePrimitiveArrayDefinition<T,?>,
-                        VYO extends VariableSizePrimitiveArrayWriting<
+                        VYD extends WkSzVariableSizePrimitiveArrayDefinition<T,?>,
+                        VYO extends WkSzVariableSizePrimitiveArrayWriter<
                                         T,OperationSettings,?,?,VYD>,
-                        VD extends VariableSizePrimitiveArrayDefinition<T,VXO>,
-                        D extends DynamicPrimitiveArrayDefinition<T,XO,YO,ZD,VD>>
+                        VD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>,
+                        D extends WkSzDynamicPrimitiveArrayDefinition<T,XO,YO,ZD,VD>>
     extends DynamicSequenceDefinitionCore<
                         T,
                         OperationSettings,
@@ -114,7 +114,7 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                         D,
                         SimplifiedDynamicPrimitiveArrayDefinitionCore<
                           T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>>
-    implements DynamicPrimitiveArrayDefinition<T, XO, YO, ZD, VD>
+    implements WkSzDynamicPrimitiveArrayDefinition<T, XO, YO, ZD, VD>
 {
 
   protected SimplifiedDynamicPrimitiveArrayDefinitionCore(
@@ -135,7 +135,7 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
       T,OperationSettings,YD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       YO,OutputBytestreamGeneralBase<?>> writingOpFactory,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     D definitionBody,
     Class<T> serializableClass) {
     super(

@@ -21,16 +21,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.OperationSegment;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.input.ReadingOperationCore;
+import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 
 public abstract class SerializerReadingCore<
@@ -39,13 +39,13 @@ public abstract class SerializerReadingCore<
                         XQ extends DeserializingRuntime<?>,
                         XQC extends ReadingRuntimeControl<?,?,XQ>,
                         XR extends DeserializingResult<X>,
-                        XO extends DeserializingOperation<X,XS,XQ,XR,XD>,
+                        XO extends WkSzPacketReaderOperation<X,XS,XQ,XR,XD>,
                         XOC extends SerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends DefinitionSegment<X,XO>,
+                        XD extends WkSzDefinition<X,XO>,
                         AXB extends InputBytestreamGeneralBase<?>,
-                        DC extends SerializerDefinitionCore<
+                        DC extends WkSzSerializerDefinitionCore<
                                       X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
-        extends ReadingOperationCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
+        extends WkSzPacketReaderOperationCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
 {
 
     protected InputSerializationEngine<X, ? super XQC, ? super XO> rule;
@@ -54,7 +54,7 @@ public abstract class SerializerReadingCore<
         int index,
         XS settings,
         AXB parentBytestream,
-        DeserializingFieldCore<X,?,XD,?,?,?> packetField,
+        WkSzPacketReaderFieldCore<X,?,XD,?,?,?> packetField,
         DC definitionCore,
         XO operationBody) {
         super(index, settings, parentBytestream, packetField, definitionCore, operationBody);
@@ -71,7 +71,7 @@ public abstract class SerializerReadingCore<
     protected abstract void onDeserilizingOperationInitialization();
 
     @Override
-    protected final Optional<OperationSegment<?,?,?,?,?>> onProcessingBytestream() {
+    protected final Optional<WkSzPacketOperation<?,?,?,?,?>> onProcessingBytestream() {
         this.rule.processBytestream();
         if (this.rule.isDone()) {
           this.completeOperation();
@@ -89,7 +89,7 @@ public abstract class SerializerReadingCore<
     }
 
     @Override
-    public final List<DeserializingSubfieldHandler<?,?,?>> subfields() {
+    public final List<WkSzPacketReaderSubfield<?,?,?>> subfields() {
       return Collections.emptyList();
     }
 

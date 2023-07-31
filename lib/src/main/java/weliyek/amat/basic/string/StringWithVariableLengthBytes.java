@@ -22,19 +22,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.PacketStructure;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.CountingOutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.sequence.OptionalLengthSettings;
-import weliyek.amat.basic.string.StringFromBytesCore.ByteArrayFromStringDisaggregator;
+import weliyek.amat.basic.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
@@ -43,7 +43,7 @@ import weliyek.ketza.util.array.VariableSizeByteArrayDeserializing;
 import weliyek.ketza.util.array.VariableSizeByteArraySerializing;
 
 public class StringWithVariableLengthBytes
-    implements StringFromBytesDefinition<
+    implements WkSzStringFromBytesDefinition<
                         StringWithVariableLengthBytesDeserializing,
                         StringWithVariableLengthBytesSerializing,
                         VariableSizeByteArray>
@@ -74,7 +74,7 @@ public class StringWithVariableLengthBytes
                       CountingOutputBytestream::new);
   }
 
-  public static DefinitionSegmentCore<
+  public static WkSzDefinitionCore<
                       String,
                       VariableLengthSettings,?,?,
                       StringWithVariableLengthBytes,
@@ -90,7 +90,7 @@ public class StringWithVariableLengthBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new StringWithVariableLengthBytes(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -115,7 +115,7 @@ public class StringWithVariableLengthBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedStringFromBytesCore<>(
                                     defaultCharset,
                                     componentCore,
@@ -161,13 +161,13 @@ public class StringWithVariableLengthBytes
 
   @Override
   public
-  SubcomponentHandler<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, VariableSizeByteArray>
+  WkSzStructSubcomponent<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, VariableSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -177,7 +177,7 @@ public class StringWithVariableLengthBytes
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> subfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
@@ -191,7 +191,7 @@ public class StringWithVariableLengthBytes
 
   @Override
   public
-  SubcomponentHandler<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, VariableSizeByteArray>
+  WkSzStructSubcomponent<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, VariableSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

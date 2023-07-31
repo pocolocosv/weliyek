@@ -20,24 +20,24 @@ package weliyek.amat.basic.serializer;
 import java.util.function.BiFunction;
 
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public class BasicPrimitiveSerializerFactory<T extends Number>
     extends OutputSerializerFactory<
                         T,
                         WritingRuntimeControl<?,?,?>,
-                        NumberSerializing<T,?,?,?,?>>
+                        WkSzNumberWriter<T,?,?,?,?>>
 {
 
   public BasicPrimitiveSerializerFactory(
     String label,
     BiFunction<
       WritingRuntimeControl<?,?,?>,
-      NumberSerializing<T,?,?,?,?>,
+      WkSzNumberWriter<T,?,?,?,?>,
       OutputSerializationEngine<
         T,
         WritingRuntimeControl<?,?,?>,
-        NumberSerializing<T,?,?,?,?>>> engineSupplier) {
+        WkSzNumberWriter<T,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

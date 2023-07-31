@@ -31,7 +31,7 @@ public final class ByteOutputSerializer
 
   private ByteOutputSerializer(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Byte,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<Byte,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

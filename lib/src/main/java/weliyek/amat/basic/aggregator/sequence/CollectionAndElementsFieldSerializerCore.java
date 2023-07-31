@@ -20,16 +20,16 @@ package weliyek.amat.basic.aggregator.sequence;
 import java.util.Collection;
 import java.util.List;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.base.output.SerializingSubfieldHandlerCore;
-import weliyek.amat.basic.aggregator.AggregatorWritingCore;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 
@@ -41,31 +41,31 @@ public abstract class CollectionAndElementsFieldSerializerCore<
                         YQ extends SequenceWritingRuntime<YB>,
                         YQC extends SequenceWritingRuntimeControl<YB,YBC,YQ>,
                         YR extends SerializingResult,
-                        YD extends CollectionAndElementsFieldDefinition<T,?,YO,ET,?>,
+                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<T,YS,YQ,YR,YD,ET,EYD,EYO>,
                         YOC extends CollectionAndElementsFieldSerializerCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYBC,ET,EYS,EYD,EYO,DC>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
                         ET,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         DC extends CollectionAndElementsFieldDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYBC,
                                         ET,?,?,?,EYS,EYD,EYO,?,?,DC>>
-        extends AggregatorWritingCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
+        extends WkSzAggregatorWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
         implements CollectionAndElementsFieldSerializer<T, YS, YQ, YR, YD, ET, EYD, EYO>
 {
 
   private final List<ET> serializableAsList;
 
-  private SerializingSubfieldHandlerCore<ET,EYS,EYD,EYO,T,YBC,YD,YO> elementPacketSubfield;
+  private WkSzPacketWriterSubfieldCore<ET,EYS,EYD,EYO,T,YBC,YD,YO> elementPacketSubfield;
 
   protected CollectionAndElementsFieldSerializerCore(
     int index,
     T serializable,
     YS settings,
     AYBC parentBytestream,
-    SerializingFieldCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
@@ -86,7 +86,7 @@ public abstract class CollectionAndElementsFieldSerializerCore<
   protected abstract void onCollectionWritingInitialization();
 
   @Override
-  public final SerializingSubfieldHandler<ET,EYD,EYO> element() {
+  public final WkSzPacketWriterSubfield<ET,EYD,EYO> element() {
     return this.elementPacketSubfield.asSubfield();
   }
 

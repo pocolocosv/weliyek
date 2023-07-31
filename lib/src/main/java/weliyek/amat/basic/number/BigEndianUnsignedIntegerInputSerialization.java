@@ -33,7 +33,7 @@ public final class BigEndianUnsignedIntegerInputSerialization
 
   private BigEndianUnsignedIntegerInputSerialization(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Long,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

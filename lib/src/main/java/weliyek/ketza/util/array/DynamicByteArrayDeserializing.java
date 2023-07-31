@@ -21,20 +21,20 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
 
 public class DynamicByteArrayDeserializing<
                         ZT extends Number,
-                        ZXO extends NumberDeserializing<ZT,OperationSettings,?,?,ZXD>,
-                        ZXD extends NumberDefinition<ZT,ZXO>>
+                        ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>,
+                        ZXD extends WkSzNumberDefinition<ZT,ZXO>>
     implements ByteArrayReading<
                         OperationSettings,
                         DeserializingRuntime<InputBytestream>,
@@ -65,7 +65,7 @@ public class DynamicByteArrayDeserializing<
     int index,
     OperationSettings settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<
+    WkSzPacketReaderFieldCore<
       ByteArrayWrapper,?,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?> deserializingfieldCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
       ByteArrayWrapper,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
@@ -99,7 +99,7 @@ public class DynamicByteArrayDeserializing<
   */
 
   @Override
-  public List<DeserializingSubfieldHandler<?, ?, ?>> subfields() {
+  public List<WkSzPacketReaderSubfield<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -129,7 +129,7 @@ public class DynamicByteArrayDeserializing<
   }
 
   @Override
-  public DeserializingField<ByteArrayWrapper,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
+  public WkSzPacketReaderField<ByteArrayWrapper,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
   packetField() {
     return this.operationCore.packetField();
   }
@@ -140,13 +140,13 @@ public class DynamicByteArrayDeserializing<
   }
 
   @Override
-  public DeserializingSubfieldHandler<ZT, ZXD, ZXO> size() {
+  public WkSzPacketReaderSubfield<ZT, ZXD, ZXO> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  DeserializingSubfieldHandler<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

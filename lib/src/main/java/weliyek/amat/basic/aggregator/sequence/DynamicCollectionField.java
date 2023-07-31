@@ -23,16 +23,16 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.ComponentSegmentCore;
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
@@ -40,13 +40,13 @@ import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.CountingOutputBytestream;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.amat2.protocol.filter.FieldTester;
 
 public class DynamicCollectionField<
@@ -55,23 +55,23 @@ public class DynamicCollectionField<
                         YS extends OperationSettings,
                         ZT extends Number,
                         ZXS extends OperationSettings,
-                        ZXO extends NumberDeserializing<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends NumberDefinition<ZT,?>,
+                        ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSzNumberDefinition<ZT,?>,
                         ZYS extends OperationSettings,
-                        ZYO extends NumberSerializing<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZT,?>,
-                        ZD extends NumberDefinition<ZT,ZXO>,
+                        ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
+                        ZD extends WkSzNumberDefinition<ZT,ZXO>,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                        ED extends DefinitionSegment<ET,EXO>,
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                        ED extends WkSzDefinition<ET,EXO>,
                         VXS extends VariableLengthSettings,
                         VYS extends OperationSettings>
-    implements DynamicCollectionFieldDefinition<
+    implements WkSzDynamicCollectionDefinition<
                         T,
                         DynamicCollectionFieldDeserializer<
                           T, XS,
@@ -95,20 +95,20 @@ public class DynamicCollectionField<
                  YS extends OperationSettings,
                  ZT extends Number,
                  ZXS extends OperationSettings,
-                 ZXO extends NumberDeserializing<ZT,ZXS,?,?,ZXD>,
-                 ZXD extends NumberDefinition<ZT,?>,
+                 ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
+                 ZXD extends WkSzNumberDefinition<ZT,?>,
                  ZYS extends OperationSettings,
-                 ZYO extends NumberSerializing<ZT,ZYS,?,?,ZYD>,
-                 ZYD extends NumberDefinition<ZT,?>,
-                 ZD extends NumberDefinition<ZT,ZXO>,
+                 ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
+                 ZYD extends WkSzNumberDefinition<ZT,?>,
+                 ZD extends WkSzNumberDefinition<ZT,ZXO>,
                  ET,
                  EXS extends OperationSettings,
-                 EXD extends DefinitionSegment<ET,?>,
-                 EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSzDefinition<ET,?>,
+                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                  EYS extends OperationSettings,
-                 EYD extends DefinitionSegment<ET,?>,
-                 EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                 ED extends DefinitionSegment<ET,EXO>,
+                 EYD extends WkSzDefinition<ET,?>,
+                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                 ED extends WkSzDefinition<ET,EXO>,
                  VXS extends VariableLengthSettings,
                  VYS extends OperationSettings>
   PacketStructure<
@@ -192,23 +192,23 @@ public class DynamicCollectionField<
                  YS extends OperationSettings,
                  ZT extends Number,
                  ZXS extends OperationSettings,
-                 ZXO extends NumberDeserializing<ZT,ZXS,?,?,ZXD>,
-                 ZXD extends NumberDefinition<ZT,?>,
+                 ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
+                 ZXD extends WkSzNumberDefinition<ZT,?>,
                  ZYS extends OperationSettings,
-                 ZYO extends NumberSerializing<ZT,ZYS,?,?,ZYD>,
-                 ZYD extends NumberDefinition<ZT,?>,
-                 ZD extends NumberDefinition<ZT,ZXO>,
+                 ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
+                 ZYD extends WkSzNumberDefinition<ZT,?>,
+                 ZD extends WkSzNumberDefinition<ZT,ZXO>,
                  ET,
                  EXS extends OperationSettings,
-                 EXD extends DefinitionSegment<ET,?>,
-                 EXO extends DeserializingOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSzDefinition<ET,?>,
+                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                  EYS extends OperationSettings,
-                 EYD extends DefinitionSegment<ET,?>,
-                 EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
-                 ED extends DefinitionSegment<ET,EXO>,
+                 EYD extends WkSzDefinition<ET,?>,
+                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                 ED extends WkSzDefinition<ET,EXO>,
                  VXS extends VariableLengthSettings,
                  VYS extends OperationSettings>
-  DefinitionSegmentCore<
+  WkSzDefinitionCore<
                  T, XS,?,?,
                  DynamicCollectionField<
                    T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -259,7 +259,7 @@ public class DynamicCollectionField<
       elementSerializerSettingsFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
-    ComponentSegmentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
+    WkSzStructComponentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
     return new DynamicCollectionField<
                  T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                  ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>(
@@ -335,7 +335,7 @@ public class DynamicCollectionField<
       elementSerializerSettingsFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
-    ComponentSegmentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
+    WkSzStructComponentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
     this.definitionCore = new SimplifiedDynamicCollectionDefinitionCore<
                                   T, XS,
                                   DynamicCollectionFieldDeserializer<
@@ -390,14 +390,14 @@ public class DynamicCollectionField<
 
   @Override
   public
-  SubcomponentHandler<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<InputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<OutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
+  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<InputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<OutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
   size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-  SubcomponentHandler<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<InputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<OutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
+  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<InputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<OutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
   variableSequence() {
     return this.definitionCore.variableSequence();
   }
@@ -408,7 +408,7 @@ public class DynamicCollectionField<
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> subfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
@@ -420,7 +420,7 @@ public class DynamicCollectionField<
   }
 
   @Override
-  public List<SubcomponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSzStructSubcomponent<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

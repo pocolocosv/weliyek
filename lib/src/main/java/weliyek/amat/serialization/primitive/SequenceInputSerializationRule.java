@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 import weliyek.amat.base.OperationException;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.InputSerializationEngine;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 
 public abstract class SequenceInputSerializationRule<
@@ -37,7 +37,7 @@ public abstract class SequenceInputSerializationRule<
         extends InputSerializationEngine<
                         X,
                         QC,
-                        PrimitiveArraySerializerReading<X,?,?,?,?>>
+                        WkSzPrimitiveArraySerializerReader<X,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(SequenceInputSerializationRule.class);
@@ -54,7 +54,7 @@ public abstract class SequenceInputSerializationRule<
       int elementByteLength,
       int stepSize,
       QC runtimeCtrl,
-      PrimitiveArraySerializerReading<X,?,?,?,?> readingOperation) {
+      WkSzPrimitiveArraySerializerReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.sequenceToDeserialized = Objects.requireNonNull(sequenceToDeserialized);
     this.primitiveByteLength = elementByteLength;
@@ -128,7 +128,7 @@ public abstract class SequenceInputSerializationRule<
   }
 
   private final int getSerializationStepSize() {
-    return operation().packetField().protocolField().definition().getSerializationStepSize();
+    return operation().packetField().structComponent().definition().getSerializationStepSize();
   }
 
 }

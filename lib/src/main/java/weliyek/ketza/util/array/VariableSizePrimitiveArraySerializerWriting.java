@@ -18,10 +18,10 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
+import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public interface VariableSizePrimitiveArraySerializerWriting<
                         Y extends PrimitiveArrayWrapper<?, ?>,
@@ -29,11 +29,11 @@ public interface VariableSizePrimitiveArraySerializerWriting<
                         Q extends SequenceWritingRuntime<?>,
                         R extends SerializingResult,
                         D extends VariableSizePrimitiveArraySerializerDefinition<Y,?>>
-    extends VariableSizePrimitiveArrayWriting<Y, S, Q, R, D>,
-            PrimitiveArraySerializerWriting<Y, S, Q, R, D>,
+    extends WkSzVariableSizePrimitiveArrayWriter<Y, S, Q, R, D>,
+            WkSzPrimitiveArraySerializerWriter<Y, S, Q, R, D>,
             VariableSizePrimitiveArraySerializerOperation<
                         S, Q, R, D,
-                        SerializingField<Y,D,?>>
+                        WkSzPacketWriterField<Y,D,?>>
 {
 
 }

@@ -31,16 +31,16 @@ public abstract class PacketOperationSegmentCore<
                         Q extends CommonOperationRuntime<?>,
                         QC extends CommonOperationRuntimeControl<?,?,Q>,
                         R extends OperationResult,
-                        _D extends DefinitionSegment<?,?>,
-                        DC extends DefinitionSegmentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        O extends OperationSegment<S,?,R,_D,?>,
+                        _D extends WkSzDefinition<?,?>,
+                        DC extends WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
+                        O extends WkSzPacketOperation<S,?,R,_D,?>,
                         OC extends PacketOperationSegmentCore<S,Q,QC,R,_D,DC,O,?,AB,K,KC>,
                         AB extends BytestreamCore<?,?>,
-                        K extends FieldSegment<?,?,?>,
-                        KC extends FieldCore<?,?,?,?,?,?,? extends K,?,?>>
+                        K extends WkSzPacketField<?,?,?>,
+                        KC extends WkSzPacketFieldCore<?,?,?,?,?,?,? extends K,?,?>>
         implements Completable,
                    Initializable,
-                   OperationSegment<S,Q,R,_D,K>
+                   WkSzPacketOperation<S,Q,R,_D,K>
 {
 
     private static final Logger logger = LoggerFactory.getLogger(PacketOperationSegmentCore.class);
@@ -85,7 +85,7 @@ public abstract class PacketOperationSegmentCore<
 
     protected abstract void onStart();
 
-    protected Optional<OperationSegment<?,?,?,?,?>> processBytestream() {
+    protected Optional<WkSzPacketOperation<?,?,?,?,?>> processBytestream() {
       if (isCompleted()) {
         // TODO Warn or raise an exception?
         return Optional.empty();
@@ -100,7 +100,7 @@ public abstract class PacketOperationSegmentCore<
       return onProcessingBytestream();
     }
 
-    protected abstract Optional<OperationSegment<?,?,?,?,?>> onProcessingBytestream();
+    protected abstract Optional<WkSzPacketOperation<?,?,?,?,?>> onProcessingBytestream();
 
     public abstract long expectedBytes();
 

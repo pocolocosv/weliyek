@@ -23,11 +23,11 @@ public class BasicWritingResult
 
   private static final BasicWritingResult INSTANCE = new BasicWritingResult(null);
 
-  public static SerializingResult empty(SerializingOperation<?,?,?,?,?> operation) {
+  public static SerializingResult empty(WkSzPacketWriterOperation<?,?,?,?,?> operation) {
     return INSTANCE;
   }
 
-  private BasicWritingResult(SerializingOperation<?,?,?,?,?> operation) {
+  private BasicWritingResult(WkSzPacketWriterOperation<?,?,?,?,?> operation) {
   }
 
 }

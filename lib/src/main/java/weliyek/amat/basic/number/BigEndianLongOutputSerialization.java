@@ -32,7 +32,7 @@ public final class BigEndianLongOutputSerialization
 
   private BigEndianLongOutputSerialization(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Long,?,?,?,?> writingOperation) {
+    WkSzNumberWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

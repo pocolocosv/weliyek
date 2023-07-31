@@ -20,7 +20,7 @@ package weliyek.amat2.protocol.filter;
 import java.util.List;
 import java.util.Set;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 
 public interface FilterPredicateRule
 {
@@ -51,6 +51,6 @@ public interface FilterPredicateRule
 
     Set<? extends FilterPredicateRule> subrules();
 
-    List<DefinitionSegment<?,?>> matchTargets();
+    List<WkSzDefinition<?,?>> matchTargets();
 
 }

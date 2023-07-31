@@ -23,18 +23,18 @@ import java.util.Optional;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingField;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterField;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public class DynamicByteArraySerialzing<
                         ZT extends Number,
-                        ZYO extends NumberSerializing<ZT,OperationSettings,?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZT,?>>
+                        ZYO extends WkSzNumberWriter<ZT,OperationSettings,?,?,ZYD>,
+                        ZYD extends WkSzNumberDefinition<ZT,?>>
     implements ByteArrayWriting<
                         OperationSettings,
                         SerializingRuntime<OutputBytestream>,
@@ -64,7 +64,7 @@ public class DynamicByteArraySerialzing<
     ByteArrayWrapper serializable,
     OperationSettings settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<
+    WkSzPacketWriterFieldCore<
       ByteArrayWrapper,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?> serializingfieldCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
       ByteArrayWrapper,?,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
@@ -93,7 +93,7 @@ public class DynamicByteArraySerialzing<
   }
 
   @Override
-  public List<SerializingSubfieldHandler<?, ?, ?>> subfields() {
+  public List<WkSzPacketWriterSubfield<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -123,7 +123,7 @@ public class DynamicByteArraySerialzing<
   }
 
   @Override
-  public SerializingField<ByteArrayWrapper,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?>
+  public WkSzPacketWriterField<ByteArrayWrapper,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?>
   packetField() {
     return this.operationCore.packetField();
   }
@@ -134,13 +134,13 @@ public class DynamicByteArraySerialzing<
   }
 
   @Override
-  public SerializingSubfieldHandler<ZT, ZYD, ZYO> size() {
+  public WkSzPacketWriterSubfield<ZT, ZYD, ZYO> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  SerializingSubfieldHandler<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

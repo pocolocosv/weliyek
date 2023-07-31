@@ -36,13 +36,13 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.input.InputPacket;
+import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputPacket;
+import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.number.SignedBigEndianInteger;
-import weliyek.amat.basic.number.SignedBigEndianIntegerDeserializing;
-import weliyek.amat.basic.number.SignedBigEndianIntegerSerializing;
+import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
+import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerReader;
+import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerWriter;
 import weliyek.ketza.util.KetzaByteOutputStream;
 
 public class FixedAndVariableSizeCollectionFieldsTest
@@ -56,27 +56,27 @@ public class FixedAndVariableSizeCollectionFieldsTest
   private static PacketStructure<
                         List<Integer>,
                         OperationSettings,
-                        FixedSizeCollectionField<List<Integer>, OperationSettings, ?, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing, ?, ?, ?, ?>,
-                        FixedSizeCollectionFieldDeserializer<List<Integer>, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing>,
+                        FixedSizeCollectionField<List<Integer>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>,
+                        FixedSizeCollectionFieldDeserializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
                         InputBytestreamGeneralBase<?>,
                         OperationSettings,
-                        FixedSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing, ?>,
-                        FixedSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing>,
+                        FixedSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ?>,
+                        FixedSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
                         OutputBytestreamGeneralBase<?>,
-                        FixedSizeCollectionField<List<Integer>, OperationSettings, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing, SignedBigEndianInteger>>
+                        FixedSizeCollectionField<List<Integer>, OperationSettings, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
                           FIXED_SIZE_INT_LIST;
 
   private static PacketStructure<
                         List<Integer>,
                         VariableLengthSettings,
-                        VariableSizeCollectionField<List<Integer>, VariableLengthSettings, ?, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing, ?, ?, ?, ?>,
-                        VariableSizeCollectionFieldDeserializer<List<Integer>, VariableLengthSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing>,
+                        VariableSizeCollectionField<List<Integer>, VariableLengthSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>,
+                        VariableSizeCollectionFieldDeserializer<List<Integer>, VariableLengthSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
                         InputBytestreamGeneralBase<?>,
                         OperationSettings,
-                        VariableSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing, ?>,
-                        VariableSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing>,
+                        VariableSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ?>,
+                        VariableSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
                         OutputBytestreamGeneralBase<?>,
-                        VariableSizeCollectionField<List<Integer>, VariableLengthSettings, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing, SignedBigEndianInteger>>
+                        VariableSizeCollectionField<List<Integer>, VariableLengthSettings, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
                           VAR_SIZE_INT_LIST;
 
 
@@ -89,12 +89,12 @@ public class FixedAndVariableSizeCollectionFieldsTest
                               OperationSettings,
                               Integer,
                               OperationSettings,
-                              SignedBigEndianInteger,
-                              SignedBigEndianIntegerDeserializing,
+                              WkSzSignedBigEndianInteger,
+                              WkSzSignedBigEndianIntegerReader,
                               OperationSettings,
-                              SignedBigEndianInteger,
-                              SignedBigEndianIntegerSerializing,
-                              SignedBigEndianInteger>newPacketStructure(
+                              WkSzSignedBigEndianInteger,
+                              WkSzSignedBigEndianIntegerWriter,
+                              WkSzSignedBigEndianInteger>newPacketStructure(
                                   "FIXEDINTLIST",
                                   "INT",
                                   ORIGINAL_LIST.size(),
@@ -102,7 +102,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
                                   (l) -> l,
                                   OperationSettings::none,
                                   OperationSettings::none,
-                                  SignedBigEndianInteger::newCore);
+                                  WkSzSignedBigEndianInteger::newCore);
 
     VAR_SIZE_INT_LIST = VariableSizeCollectionField.<
                               List<Integer>,
@@ -110,18 +110,18 @@ public class FixedAndVariableSizeCollectionFieldsTest
                               OperationSettings,
                               Integer,
                               OperationSettings,
-                              SignedBigEndianInteger,
-                              SignedBigEndianIntegerDeserializing,
+                              WkSzSignedBigEndianInteger,
+                              WkSzSignedBigEndianIntegerReader,
                               OperationSettings,
-                              SignedBigEndianInteger,
-                              SignedBigEndianIntegerSerializing,
-                              SignedBigEndianInteger>newPacketStructure(
+                              WkSzSignedBigEndianInteger,
+                              WkSzSignedBigEndianIntegerWriter,
+                              WkSzSignedBigEndianInteger>newPacketStructure(
                                 "FIXEDINTLIST",
                                 "INT",
                                 0,
                                 ORIGINAL_LIST.size() + 10,
                                 (Class<List<Integer>>)(Class<?>)List.class,
-                                SignedBigEndianInteger::newCore,
+                                WkSzSignedBigEndianInteger::newCore,
                                 (i,ao) -> VariableLengthSettings.withLength(ORIGINAL_LIST.size()),
                                 OperationSettings::none,
                                 (l) -> l);
@@ -143,7 +143,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
   public void testFixedSizeCollectionField() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    OutputPacket<List<Integer>, FixedSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing, ?>, FixedSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing>>
+    WkSzOutputPacket<List<Integer>, FixedSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ?>, FixedSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>>
       listWriting = FIXED_SIZE_INT_LIST.newOutputPacket(ORIGINAL_LIST,
                                                         OperationSettings.EMPTY,
                                                         outputstream);
@@ -160,7 +160,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
 
     assertEquals(ORIGINAL_LIST, listWriting.firstOperation().get().serializable());
 
-    InputPacket<List<Integer>, FixedSizeCollectionField<List<Integer>, OperationSettings, ?, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing, ?, ?, ?, ?>, FixedSizeCollectionFieldDeserializer<List<Integer>, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing>>
+    WkSzInputPacket<List<Integer>, FixedSizeCollectionField<List<Integer>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>, FixedSizeCollectionFieldDeserializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>>
       listReading = FIXED_SIZE_INT_LIST.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
 
     logger.info(listReading + " created");
@@ -178,7 +178,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
   public void testVariableSizeCollectionField() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    OutputPacket<List<Integer>, VariableSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing, ?>, VariableSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerSerializing>>
+    WkSzOutputPacket<List<Integer>, VariableSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ?>, VariableSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>>
       varlistWriting = VAR_SIZE_INT_LIST.newOutputPacket(ORIGINAL_LIST, OperationSettings.EMPTY, outputstream);
 
     logger.info(varlistWriting.toString() + " created");
@@ -196,7 +196,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
 
     CountingInputBytestream inputbytestream = new CountingInputBytestream(outputstream.inputStream());
 
-    InputPacket<List<Integer>, VariableSizeCollectionField<List<Integer>, VariableLengthSettings, ?, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<List<Integer>, VariableLengthSettings, Integer, OperationSettings, SignedBigEndianInteger, SignedBigEndianIntegerDeserializing>>
+    WkSzInputPacket<List<Integer>, VariableSizeCollectionField<List<Integer>, VariableLengthSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<List<Integer>, VariableLengthSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>>
       varListReading = VAR_SIZE_INT_LIST.newInputPacket(VariableLengthSettings.withLength(ORIGINAL_LIST.size()), inputbytestream);
 
     logger.info(varListReading + " created");

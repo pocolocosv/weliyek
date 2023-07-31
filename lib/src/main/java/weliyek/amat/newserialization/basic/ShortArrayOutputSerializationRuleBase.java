@@ -20,7 +20,7 @@ package weliyek.amat.newserialization.basic;
 import java.io.IOException;
 
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 import weliyek.ketza.util.array.BasicPrimitiveArrayOutputSerializationEngineBase;
 import weliyek.ketza.util.array.ShortArrayWrapper;
 
@@ -30,7 +30,7 @@ public abstract class ShortArrayOutputSerializationRuleBase
 
   protected ShortArrayOutputSerializationRuleBase(
     SequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    PrimitiveArraySerializerWriting<? extends ShortArrayWrapper,?,?,?,?> writingOperation) {
+    WkSzPrimitiveArraySerializerWriter<? extends ShortArrayWrapper,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, Short.BYTES);
   }
 

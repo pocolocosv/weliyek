@@ -19,17 +19,17 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.DynamicSequenceSerializingCore;
 
 public final class SimplifiedDynamicCollectionFieldSerializer<
@@ -40,16 +40,16 @@ public final class SimplifiedDynamicCollectionFieldSerializer<
                                         SerializingRuntime<OutputBytestream>,
                                         SerializingResult,
                                         YD,ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
-                        YD extends DynamicCollectionFieldDefinition<
+                        YD extends WkSzDynamicCollectionDefinition<
                                         T,?,YO,?,ET,?,?,?,EYS,?,EYO,?,?,VYS>,
                         ZT extends Number,
                         ZYS extends OperationSettings,
-                        ZYO extends NumberSerializing<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZT,?>,
+                        ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
                         ET,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         VYS extends OperationSettings>
     extends DynamicSequenceSerializingCore<
                         T, YS,
@@ -84,7 +84,7 @@ public final class SimplifiedDynamicCollectionFieldSerializer<
     T serializable,
     YS settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<T, ?, YD, ?, ?, ?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<T, ?, YD, ?, ?, ?> packetHandlerCore,
     SimplifiedDynamicCollectionDefinitionCore<T, ?, ?, ?, YS, YO, YD, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS, ?> definitionCore,
     YO operationBody) {
     super(

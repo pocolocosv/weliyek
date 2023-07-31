@@ -18,7 +18,7 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
+import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 
@@ -27,11 +27,11 @@ public interface PrimitiveArrayWriting<
                         S extends OperationSettings,
                         Q extends SerializingRuntime<?>,
                         R extends SerializingResult,
-                        D extends PrimitiveArrayDefinition<Y,?>>
+                        D extends WkSzPrimitiveArrayDefinition<Y,?>>
         extends GenericArraySerializing<Y, S, Q, R, D>,
-                PrimitiveArrayOperation<
+                WkSzPrimitiveArrayOperation<
                         S, Q, R, D,
-                        SerializingField<Y,D,?>>
+                        WkSzPacketWriterField<Y,D,?>>
 
 {
 

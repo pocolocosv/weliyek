@@ -19,11 +19,11 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Objects;
 
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.ReadingOperationCore;
-import weliyek.amat.base.output.WritingOperationCore;
-import weliyek.amat.basic.sequence.FixedSizeSequenceDefinition;
+import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
+import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
+import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
 import weliyek.amat.basic.sequence.FixedSizeSequenceReading;
 import weliyek.amat.basic.sequence.FixedSizeSequenceWriting;
 import weliyek.amat2.protocol.PacketOperationCoreException;
@@ -33,27 +33,27 @@ public class SequenceFixedSizeParameter<T>
 {
 
   private final int sequenceExpectedSize;
-  private final DefinitionSegmentCore<
+  private final WkSzDefinitionCore<
                         T,?,?,
                         ? extends DeserializingResult<T>,
-                        ? extends FixedSizeSequenceDefinition<T,?>,
+                        ? extends WkSzFixedSizeSequenceDefinition<T,?>,
                         ? extends FixedSizeSequenceReading<T,?,?,?,?>,
                         ?,?,?,?,
-                        ? extends FixedSizeSequenceDefinition<T,?>,
+                        ? extends WkSzFixedSizeSequenceDefinition<T,?>,
                         ? extends FixedSizeSequenceWriting<T,?,?,?,?>,?,
-                        ? extends FixedSizeSequenceDefinition<T,?>,?> definitionCore;
+                        ? extends WkSzFixedSizeSequenceDefinition<T,?>,?> definitionCore;
 
   public SequenceFixedSizeParameter(
     int sequenceExpectedSize,
-    DefinitionSegmentCore<
+    WkSzDefinitionCore<
       T,?,?,
       ? extends DeserializingResult<T>,
-      ? extends FixedSizeSequenceDefinition<T,?>,
+      ? extends WkSzFixedSizeSequenceDefinition<T,?>,
       ? extends FixedSizeSequenceReading<T,?,?,?,?>,
       ?,?,?,?,
-      ? extends FixedSizeSequenceDefinition<T,?>,
+      ? extends WkSzFixedSizeSequenceDefinition<T,?>,
       ? extends FixedSizeSequenceWriting<T,?,?,?,?>,?,
-      ? extends FixedSizeSequenceDefinition<T,?>,?> definitionCore) {
+      ? extends WkSzFixedSizeSequenceDefinition<T,?>,?> definitionCore) {
     if (sequenceExpectedSize < 0) {
       throw new ProtocolDefinitionException(definitionCore,
                                             "Fixed sequence size cannot be negative");
@@ -65,9 +65,9 @@ public class SequenceFixedSizeParameter<T>
   }
 
   void onSequenceSerializerCreation(
-    WritingOperationCore<
+    WkSzPacketWriterOperationCore<
       T,?,?,?,?,? extends FixedSizeSequenceWriting<T,?,?,?,?>,
-      ?,? extends FixedSizeSequenceDefinition<T,?>,?,?> serializer) {
+      ?,? extends WkSzFixedSizeSequenceDefinition<T,?>,?,?> serializer) {
     int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
     if (sequenceSize != this.sequenceExpectedSize) {
       throw new PacketOperationCoreException(serializer, "Supplied sequence size differs from expected size");
@@ -75,11 +75,11 @@ public class SequenceFixedSizeParameter<T>
   }
 
   void onAfterFullCompletionDeserialization(
-    ReadingOperationCore<
+    WkSzPacketReaderOperationCore<
       T,?,?,?,
       ? extends DeserializingResult<T>,
       ? extends FixedSizeSequenceReading<T,?,?,?,?>,?,
-      ? extends FixedSizeSequenceDefinition<T,?>,?,?> deserializer) {
+      ? extends WkSzFixedSizeSequenceDefinition<T,?>,?,?> deserializer) {
     T sequence = deserializer.result().get().deserialized().get();
     int seqLen = deserializer.definition().extractLengthFromSerializablesSequence(sequence);
     if (seqLen != this.sequenceExpectedSize) {

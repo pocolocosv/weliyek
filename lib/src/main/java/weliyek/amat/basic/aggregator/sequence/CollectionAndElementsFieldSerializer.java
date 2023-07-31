@@ -22,12 +22,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingField;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterField;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 
 public interface CollectionAndElementsFieldSerializer<
@@ -35,17 +35,17 @@ public interface CollectionAndElementsFieldSerializer<
                         YS extends OperationSettings,
                         YQ extends SequenceWritingRuntime<?>,
                         YR extends SerializingResult,
-                        YD extends CollectionAndElementsFieldDefinition<T,?,?,ET,?>,
+                        YD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
                         ET,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,?,?,?,EYD>>
-        extends CollectionAndElementsFieldOperation<
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,?,?,?,EYD>>
+        extends WkSzCollectionAndElementsOperation<
                         YS, YQ, YR, YD,
-                        SerializingField<T,YD,?>,
+                        WkSzPacketWriterField<T,YD,?>,
                         EYO,
-                        SerializingField<ET,EYD,EYO>,
-                        SerializingSubfieldHandler<ET,EYD,EYO>>,
-                CollectionFieldSerializer<T, YS, YQ, YR, YD>
+                        WkSzPacketWriterField<ET,EYD,EYO>,
+                        WkSzPacketWriterSubfield<ET,EYD,EYO>>,
+                WkSzCollectionWriter<T, YS, YQ, YR, YD>
 {
 
   List<ET> serializableAsList();

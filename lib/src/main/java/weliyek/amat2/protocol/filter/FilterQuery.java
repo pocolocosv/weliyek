@@ -20,18 +20,18 @@ package weliyek.amat2.protocol.filter;
 import java.util.List;
 import java.util.Objects;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 
 public class FilterQuery
 {
 
     final FilterPredicateRuleBase rule;
 
-    private final DefinitionSegment<?,?> mySearchTargetField;
+    private final WkSzDefinition<?,?> mySearchTargetField;
 
     private final String description;
 
-    FilterQuery(DefinitionSegment<?,?> searchedField,
+    FilterQuery(WkSzDefinition<?,?> searchedField,
                 String desc,
                 FilterPredicateRuleBase rule) {
         this.mySearchTargetField = Objects.requireNonNull(searchedField);
@@ -39,11 +39,11 @@ public class FilterQuery
         this.description = "Query:" + Objects.requireNonNull(desc);
     }
 
-    public DefinitionSegment<?,?> searchedField() {
+    public WkSzDefinition<?,?> searchedField() {
         return this.mySearchTargetField;
     }
 
-    public List<DefinitionSegment<?,?>> matchTargetFields() {
+    public List<WkSzDefinition<?,?>> matchTargetFields() {
         return rule.matchTargets();
     }
 

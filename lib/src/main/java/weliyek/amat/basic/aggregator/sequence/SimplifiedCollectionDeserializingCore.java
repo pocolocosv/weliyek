@@ -19,10 +19,10 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -33,7 +33,7 @@ import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 public final class SimplifiedCollectionDeserializingCore<
                         T extends Collection<ET>,
                         XS extends OperationSettings,
-                        XD extends CollectionAndElementsFieldDefinition<T,XO,?,ET,?>,
+                        XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
@@ -43,8 +43,8 @@ public final class SimplifiedCollectionDeserializingCore<
                                         ET,EXD,EXO>,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>>
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>>
     extends CollectionAndElementsFieldDeserializerCore<
                         T,
                         XS,
@@ -71,7 +71,7 @@ public final class SimplifiedCollectionDeserializingCore<
     int index,
     XS settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSzPacketReaderFieldCore<T,?,XD,?,?,?> packetfieldCore,
     SimplifiedCollectionDefinitionCore<
       T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore,
     XO operationBody) {

@@ -21,32 +21,32 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingField;
-import weliyek.amat.base.output.SerializingFieldCore;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterField;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public class DynamicCollectionFieldSerializerImpl<
                         T extends Collection<ET>,
                         YS extends OperationSettings,
-                        YD extends DynamicCollectionFieldDefinition<
+                        YD extends WkSzDynamicCollectionDefinition<
                                       T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZYS extends OperationSettings,
-                        ZYO extends NumberSerializing<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZT,?>,
+                        ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSzNumberDefinition<ZT,?>,
                         ET,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>,
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         VYS extends OperationSettings>
     implements DynamicCollectionFieldSerializer<
                         T, YS,
@@ -74,7 +74,7 @@ public class DynamicCollectionFieldSerializerImpl<
     int index,
     T serializable, YS settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<
+    WkSzPacketWriterFieldCore<
       T,?,DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
       ?,?,?> packetfieldCore,
     SimplifiedDynamicCollectionDefinitionCore<
@@ -106,13 +106,13 @@ public class DynamicCollectionFieldSerializerImpl<
   }
 
   @Override
-  public SerializingSubfieldHandler<ZT, ZYD, ZYO> size() {
+  public WkSzPacketWriterSubfield<ZT, ZYD, ZYO> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  SerializingSubfieldHandler<T, VariableSizeCollectionField<T, ?, VYS, ET, ?, ?, ?, EYS, EYD, EYO, ?>, VariableSizeCollectionFieldSerializer<T, VYS, ET, EYS, EYD, EYO>>
+  WkSzPacketWriterSubfield<T, VariableSizeCollectionField<T, ?, VYS, ET, ?, ?, ?, EYS, EYD, EYO, ?>, VariableSizeCollectionFieldSerializer<T, VYS, ET, EYS, EYD, EYO>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }
@@ -146,7 +146,7 @@ public class DynamicCollectionFieldSerializerImpl<
 
   @Override
   public
-  SerializingField<T, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ?>
+  WkSzPacketWriterField<T, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ?>
   packetField() {
     return this.operationCore.packetField();
   }
@@ -162,7 +162,7 @@ public class DynamicCollectionFieldSerializerImpl<
   }
 
   @Override
-  public List<SerializingSubfieldHandler<?, ?, ?>> subfields() {
+  public List<WkSzPacketWriterSubfield<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 

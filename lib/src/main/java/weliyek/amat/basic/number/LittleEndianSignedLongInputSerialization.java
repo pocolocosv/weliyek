@@ -33,7 +33,7 @@ public final class LittleEndianSignedLongInputSerialization
 
   private LittleEndianSignedLongInputSerialization(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Long,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

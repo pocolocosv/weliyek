@@ -18,13 +18,13 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.SequenceReadingRuntime;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.amat.basic.serializer.SerializerReadingCore;
 
 public abstract class PrimitiveArraySerializerReadingCore<
@@ -33,13 +33,13 @@ public abstract class PrimitiveArraySerializerReadingCore<
                         XQ extends SequenceReadingRuntime<?>,
                         XQC extends SequenceReadingRuntimeControl<?,?,XQ>,
                         XR extends DeserializingResult<X>,
-                        XO extends PrimitiveArraySerializerReading<X,XS,XQ,XR,XD>,
+                        XO extends WkSzPrimitiveArraySerializerReader<X,XS,XQ,XR,XD>,
                         XOC extends PrimitiveArraySerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends PrimitiveArraySerializerDefinition<X,XO>,
                         AXB extends InputBytestreamGeneralBase<?>,
                         DC extends PrimitiveArraySerializerCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends SerializerReadingCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
-        implements PrimitiveArraySerializerReading<X, XS, XQ, XR, XD>
+        implements WkSzPrimitiveArraySerializerReader<X, XS, XQ, XR, XD>
 {
 
   private final int requestedLength;
@@ -48,7 +48,7 @@ public abstract class PrimitiveArraySerializerReadingCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    DeserializingFieldCore<X,?,XD,?,?,?> deserializingfieldCore,
+    WkSzPacketReaderFieldCore<X,?,XD,?,?,?> deserializingfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, deserializingfieldCore, definitionCore, operationBody);

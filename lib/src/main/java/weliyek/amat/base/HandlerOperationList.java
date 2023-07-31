@@ -34,7 +34,7 @@ import weliyek.ketza.base.Resetable;
 
 public class HandlerOperationList<
                         T,
-                        O extends OperationSegment<?, ?, ?, ?, ?>,
+                        O extends WkSzPacketOperation<?, ?, ?, ?, ?>,
                         OC extends PacketOperationSegmentCore<?,?,?,?,?,?,O,?,?,?,?>>
         extends AbstractList<OC>
         implements Initializable, Completable, Resetable
@@ -44,7 +44,7 @@ public class HandlerOperationList<
 
     private static final int UNINITIALIZED_LIST = -1;
 
-    private final FieldCore<?,?,?,?,?,?,?,?,?> ownerField;
+    private final WkSzPacketFieldCore<?,?,?,?,?,?,?,?,?> ownerField;
     private final IntFunction<OC> operationFactory;
     private final Function<? super O, T> valueExtractor;
 
@@ -54,7 +54,7 @@ public class HandlerOperationList<
     private OC currentOpCore;
 
     public HandlerOperationList(
-      FieldCore<?,?,?,?,?,?,?,?,?> ownerField,
+      WkSzPacketFieldCore<?,?,?,?,?,?,?,?,?> ownerField,
       IntFunction<OC> operationFactory,
       int initialCapacity,
       Function<? super O, T> valueExtractor) {
@@ -133,7 +133,7 @@ public class HandlerOperationList<
       this.operationList.add(this.currentOpCore.body());
     }
 
-    public Optional<OperationSegment<?,?,?,?,?>> processingBytestream() {
+    public Optional<WkSzPacketOperation<?,?,?,?,?>> processingBytestream() {
         if (isUnitialized()) {
           throw new IllegalStateException();
         }
@@ -143,7 +143,7 @@ public class HandlerOperationList<
           // core is available.
           return Optional.empty();
         }
-        Optional<OperationSegment<?,?,?,?,?>> lastOp = this.currentOpCore.processBytestream();
+        Optional<WkSzPacketOperation<?,?,?,?,?>> lastOp = this.currentOpCore.processBytestream();
         if (this.currentOpCore.isCompleted()) {
           if (this.coreContainer.size() < this.expectedSize) {
             // Still operation left to perform.

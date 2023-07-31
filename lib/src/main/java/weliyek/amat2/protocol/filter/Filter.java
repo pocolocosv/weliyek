@@ -22,7 +22,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 
 public class Filter
 {
@@ -42,13 +42,13 @@ public class Filter
 
     private final Set<FilterQuery> queries;
 
-    private final Set<DefinitionSegment<?,?>> fieldsToBeMatched;
+    private final Set<WkSzDefinition<?,?>> fieldsToBeMatched;
 
     private final Set<FieldTester<?, ?>> matchers;
 
     private Filter(Set<FilterQuery> queries) {
         this.queries = Collections.unmodifiableSet(new LinkedHashSet<>(queries));
-        Set<DefinitionSegment<?,?>> toBeMatched = new LinkedHashSet<>();
+        Set<WkSzDefinition<?,?>> toBeMatched = new LinkedHashSet<>();
         Set<FieldTester<?, ?>> matchersSet = new LinkedHashSet<>();
         for (FilterQuery query : queries) {
             toBeMatched.addAll(query.rule.matchTargets());
@@ -65,14 +65,14 @@ public class Filter
             return new FilterResults(this);
     }
 
-    public boolean hasToBeDeserialized(DefinitionSegment<?,?> definition) {
+    public boolean hasToBeDeserialized(WkSzDefinition<?,?> definition) {
       if (isSearhed(definition)) {
         return true;
       }
       return hasToMatch(definition);
     }
 
-    public boolean isSearhed(DefinitionSegment<?,?> definition) {
+    public boolean isSearhed(WkSzDefinition<?,?> definition) {
       for (FilterQuery query : queries) {
         if (query.searchedField().equals(definition)) {
           return true;
@@ -83,7 +83,7 @@ public class Filter
       return false;
     }
 
-    public final boolean hasToMatch(DefinitionSegment<?,?> protocolField) {
+    public final boolean hasToMatch(WkSzDefinition<?,?> protocolField) {
         return fieldsToBeMatched.contains(protocolField);
     }
 

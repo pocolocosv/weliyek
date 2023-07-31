@@ -31,7 +31,7 @@ public class UnsignedByteOutputSerializer
 
   protected UnsignedByteOutputSerializer(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Integer, ?, ?, ?, ?> writingOperation) {
+    WkSzNumberWriter<Integer, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

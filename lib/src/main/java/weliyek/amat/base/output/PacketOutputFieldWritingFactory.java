@@ -17,8 +17,8 @@
  */
 package weliyek.amat.base.output;
 
-import weliyek.amat.base.DefinitionSegment;
-import weliyek.amat.base.DefinitionSegmentCore;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationFactory;
 import weliyek.amat.base.OperationSettings;
 
@@ -26,19 +26,19 @@ import weliyek.amat.base.OperationSettings;
 public interface PacketOutputFieldWritingFactory<
                         T,
                         YS extends OperationSettings,
-                        YD extends DefinitionSegment<T,?>,
-                        DC extends DefinitionSegmentCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
-                        YO extends SerializingOperation<T,YS,?,?,YD>,
+                        YD extends WkSzDefinition<T,?>,
+                        DC extends WkSzDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
+                        YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         YAB extends OutputBytestreamGeneralBase<?>>
     extends OperationFactory
 {
 
-  WritingOperationCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
+  WkSzPacketWriterOperationCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
     int index,
     T serializable,
     YS settings,
     YAB parentBytestream,
-    SerializingFieldCore<T,?,YD,?,?,?> packet,
+    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packet,
     DC definitionCore);
 
 }

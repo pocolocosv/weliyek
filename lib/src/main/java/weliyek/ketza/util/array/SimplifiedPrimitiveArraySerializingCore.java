@@ -23,18 +23,18 @@ import java.util.function.Consumer;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public class SimplifiedPrimitiveArraySerializingCore<
                         Y extends PrimitiveArrayWrapperBase<?,?>,
                         YS extends OperationSettings,
                         D extends PrimitiveArraySerializerDefinition<Y,?>,
-                        YO extends PrimitiveArraySerializerWriting<
+                        YO extends WkSzPrimitiveArraySerializerWriter<
                                         Y,
                                         YS,
                                         SequenceWritingRuntime<OutputBytestream>,
@@ -64,7 +64,7 @@ public class SimplifiedPrimitiveArraySerializingCore<
     Y serializable,
     YS settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<Y,?,D,?,?,?> serializingfieldCore,
+    WkSzPacketWriterFieldCore<Y,?,D,?,?,?> serializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,
     Consumer<? super SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>> onInitializing) {

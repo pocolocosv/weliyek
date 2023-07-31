@@ -21,10 +21,10 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.SequenceReadingRuntime;
@@ -35,7 +35,7 @@ public class FixedSizeByteArrayDeserializing
                         SequenceReadingRuntime<InputBytestream>,
                         DeserializingResult<ByteArrayWrapper>,
                         FixedSizeByteArray>,
-               FixedSizePrimitiveArraySerializerReading<
+               WkSzSerializerReaderFixedSizePrimitiveArray<
                         ByteArrayWrapper,
                         OperationSettings,
                         SequenceReadingRuntime<InputBytestream>,
@@ -53,7 +53,7 @@ public class FixedSizeByteArrayDeserializing
     int index,
     OperationSettings settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<
+    WkSzPacketReaderFieldCore<
       ByteArrayWrapper,?,FixedSizeByteArray,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
       ByteArrayWrapper,OperationSettings,FixedSizeByteArrayDeserializing,?,?,FixedSizeByteArray> definitionCore) {
@@ -72,7 +72,7 @@ public class FixedSizeByteArrayDeserializing
   }
 
   @Override
-  public List<DeserializingSubfieldHandler<?,?,?>> subfields() {
+  public List<WkSzPacketReaderSubfield<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -102,7 +102,7 @@ public class FixedSizeByteArrayDeserializing
   }
 
   @Override
-  public DeserializingField<ByteArrayWrapper, FixedSizeByteArray, ?>
+  public WkSzPacketReaderField<ByteArrayWrapper, FixedSizeByteArray, ?>
       packetField() {
     return this.operationCore.packetField();
   }

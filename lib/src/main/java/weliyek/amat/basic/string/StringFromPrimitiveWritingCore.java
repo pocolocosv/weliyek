@@ -20,14 +20,14 @@ package weliyek.amat.basic.string;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.SerializingSubfieldHandler;
-import weliyek.amat.base.output.SerializingSubfieldHandlerCore;
+import weliyek.amat.base.output.WkSzPacketWriterSubfield;
+import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.aggregator.AggregatorWritingCore;
-import weliyek.ketza.util.array.PrimitiveArrayDefinition;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
+import weliyek.ketza.util.array.WkSzPrimitiveArrayDefinition;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 import weliyek.ketza.util.array.PrimitiveArrayWriting;
 
@@ -38,27 +38,27 @@ public abstract class StringFromPrimitiveWritingCore<
                         YQ extends SerializingRuntime<YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,YQ>,
                         YR extends SerializingResult,
-                        YO extends StringFromPrimitiveWriting<YS,YQ,YR,YD,SY,SYD,SYO>,
+                        YO extends WkSzStringFromPrimitiveWriter<YS,YQ,YR,YD,SY,SYD,SYO>,
                         YOC extends StringFromPrimitiveWritingCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SY,SYS,SYO,SYD,DC>,
-                        YD extends StringFromPrimitiveDefinition<?,YO,? extends SYD>,
+                        YD extends WkSzStringFromPrimitiveDefinition<?,YO,? extends SYD>,
                         AYB extends OutputBytestreamGeneralBase<?>,
                         SY extends PrimitiveArrayWrapper<?,?>,
                         SYS extends OperationSettings,
                         SYO extends PrimitiveArrayWriting<SY,SYS,?,?,SYD>,
-                        SYD extends PrimitiveArrayDefinition<SY,?>,
-                        DC extends StringFromPrimitiveCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
-        extends AggregatorWritingCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>
-        implements StringFromPrimitiveWriting<YS, YQ, YR, YD, SY, SYD, SYO>
+                        SYD extends WkSzPrimitiveArrayDefinition<SY,?>,
+                        DC extends WkSzStringFromPrimitiveDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
+        extends WkSzAggregatorWriterCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>
+        implements WkSzStringFromPrimitiveWriter<YS, YQ, YR, YD, SY, SYD, SYO>
 {
 
-  protected SerializingSubfieldHandlerCore<SY,SYS,SYD,SYO,String,YBC,YD,YO> primitiveArraySubfieldpacket;
+  protected WkSzPacketWriterSubfieldCore<SY,SYS,SYD,SYO,String,YBC,YD,YO> primitiveArraySubfieldpacket;
 
   protected StringFromPrimitiveWritingCore(
     int index,
     String serializable,
     YS settings,
     AYB parentBytestream,
-    SerializingFieldCore<String,?,YD,?,?,?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<String,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
@@ -73,7 +73,7 @@ public abstract class StringFromPrimitiveWritingCore<
   protected abstract void onStringFromPrimitiveWritingInitialization();
 
   @Override
-  public SerializingSubfieldHandler<SY,SYD,SYO> primitiveArray() {
+  public WkSzPacketWriterSubfield<SY,SYD,SYO> primitiveArray() {
     return primitiveArraySubfieldpacket.asSubfield();
   }
 

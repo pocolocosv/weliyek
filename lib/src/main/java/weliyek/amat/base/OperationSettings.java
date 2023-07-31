@@ -22,7 +22,7 @@ public interface OperationSettings extends PacketSegmentData
 
   final OperationSettings EMPTY = new OperationSettings(){};
 
-  public static <AO extends OperationSegment<?,?,?,?,?>>
+  public static <AO extends WkSzPacketOperation<?,?,?,?,?>>
   OperationSettings none(int index, AO parentOperation) {
     return EMPTY;
   }

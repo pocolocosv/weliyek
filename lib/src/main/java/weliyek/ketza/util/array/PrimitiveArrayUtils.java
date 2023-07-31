@@ -25,7 +25,7 @@ public class PrimitiveArrayUtils
 
   public static void onFixedSizeDeserilizingInitialization(
     SimplifiedPrimitiveArrayDeserializingCore<
-      ?,?,?,? extends FixedSizePrimitiveArraySerializerReading<?,?,?,?,?>> deserializing) {
+      ?,?,?,? extends WkSzSerializerReaderFixedSizePrimitiveArray<?,?,?,?,?>> deserializing) {
     // Nothing to do.
   }
 

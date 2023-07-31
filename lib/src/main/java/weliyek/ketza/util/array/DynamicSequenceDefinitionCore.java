@@ -21,11 +21,11 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.amat.base.ComponentSegmentCore;
+import weliyek.amat.base.WkSzStructComponentCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.SubcomponentHandler;
+import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
@@ -39,15 +39,15 @@ import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.aggregator.AggregatorDefinitionCore;
-import weliyek.amat.basic.aggregator.SubcomponentHandlerCore;
+import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
+import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceDefinition;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
-import weliyek.amat.basic.number.NumberSerializing;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
+import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public abstract class DynamicSequenceDefinitionCore<
                         T,
@@ -60,7 +60,7 @@ public abstract class DynamicSequenceDefinitionCore<
                                         T, XS,
                                         ? extends DeserializingRuntime<XB>,
                                         XR, XD, ?, ?, ?, ?, ?>,
-                        XD extends DynamicSequenceDefinition<T,XO,?,?,?>,
+                        XD extends WkSzDynamicSequenceDefinition<T,XO,?,?,?>,
                         AXBC extends InputBytestreamGeneralBase<?>,
                         YS extends OperationSettings,
                         YB extends OutputBytestream,
@@ -71,39 +71,39 @@ public abstract class DynamicSequenceDefinitionCore<
                                         T, YS,
                                         ? extends SerializingRuntime<YB>,
                                         YR, YD, ?, ?, ?, ?, ?>,
-                        YD extends DynamicSequenceDefinition<T,?,YO,?,?>,
+                        YD extends WkSzDynamicSequenceDefinition<T,?,YO,?,?>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
                         ZX extends Number,
                         ZXS extends OperationSettings,
-                        ZXO extends NumberDeserializing<ZX,ZXS,?,?,ZXD>,
-                        ZXD extends NumberDefinition<ZX,?>,
+                        ZXO extends WkSzNumberReader<ZX,ZXS,?,?,ZXD>,
+                        ZXD extends WkSzNumberDefinition<ZX,?>,
                         ZYS extends OperationSettings,
-                        ZYO extends NumberSerializing<ZX,ZYS,?,?,ZYD>,
-                        ZYD extends NumberDefinition<ZX,?>,
-                        ZD extends NumberDefinition<ZX,?>,
+                        ZYO extends WkSzNumberWriter<ZX,ZYS,?,?,ZYD>,
+                        ZYD extends WkSzNumberDefinition<ZX,?>,
+                        ZD extends WkSzNumberDefinition<ZX,?>,
                         VXS extends VariableLengthSettings,
                         VXO extends VariableSizeSequenceReading<T,VXS,?,?,VXD>,
-                        VXD extends VariableSizeSequenceDefinition<T,VXO>,
+                        VXD extends WkSzVariableSizeSequenceDefinition<T,VXO>,
                         VYS extends OperationSettings,
                         VYO extends VariableSizeSequenceWriting<T,VYS,?,?,VYD>,
-                        VYD extends VariableSizeSequenceDefinition<T,?>,
-                        VD extends VariableSizeSequenceDefinition<T,VXO>,
-                        D extends DynamicSequenceDefinition<T,XO,YO,ZD,VD>,
+                        VYD extends WkSzVariableSizeSequenceDefinition<T,?>,
+                        VD extends WkSzVariableSizeSequenceDefinition<T,VXO>,
+                        D extends WkSzDynamicSequenceDefinition<T,XO,YO,ZD,VD>,
                         DC extends DynamicSequenceDefinitionCore<
                                       T,XS,XB,XBC,XQC,XR,XO,XD,AXBC,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYBC,
                                       ZX,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                                       VXS,VXO,VXD,VYS,VYO,VYD,VD,
                                       D,?>>
-    extends AggregatorDefinitionCore<
+    extends WkSzAggregatorDefinitionCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXBC,
                         YS, YB, YBC, YQC, YR, YD, YO, AYBC, D, DC>
-    implements DynamicSequenceDefinition<T, XO, YO, ZD, VD>
+    implements WkSzDynamicSequenceDefinition<T, XO, YO, ZD, VD>
 {
 
-  final SubcomponentHandlerCore<ZX,ZXS,ZXD,ZXO,T,XBC,XD,XO,ZYS,ZYD,ZYO,YBC,YD,YO,ZD,D>
+  final WkSzSubcomponentCore<ZX,ZXS,ZXD,ZXO,T,XBC,XD,XO,ZYS,ZYD,ZYO,YBC,YD,YO,ZD,D>
                         sizeComponent;
-  final SubcomponentHandlerCore<T,VXS,VXD,VXO,T,XBC,XD,XO,VYS,VYD,VYO,YBC,YD,YO,VD,D>
+  final WkSzSubcomponentCore<T,VXS,VXD,VXO,T,XBC,XD,XO,VYS,VYD,VYO,YBC,YD,YO,VD,D>
                         varseqComponent;
 
   protected DynamicSequenceDefinitionCore(
@@ -117,7 +117,7 @@ public abstract class DynamicSequenceDefinitionCore<
     OperationSubsegmentSettingsFactory<YO,VYS> varseqComponentTxSettingsFactory,
     Disaggregator<T, VYD, T, YO> varseqComponentTxDesaggregator,
     ProtocolDefinitionFactory<T,VXS,VXD,VXO,XBC,VYS,VYD,VYO,YBC,VD> varseqComponentDefinitionFactory,
-    ComponentSegmentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
@@ -161,12 +161,12 @@ public abstract class DynamicSequenceDefinitionCore<
   }
 
   @Override
-  public SubcomponentHandler<XO, YO, ZD> size() {
+  public WkSzStructSubcomponent<XO, YO, ZD> size() {
     return this.sizeComponent.body();
   }
 
   @Override
-  public SubcomponentHandler<XO, YO, VD> variableSequence() {
+  public WkSzStructSubcomponent<XO, YO, VD> variableSequence() {
     return this.varseqComponent.body();
   }
 

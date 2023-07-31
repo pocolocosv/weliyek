@@ -19,12 +19,12 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
-import weliyek.amat.base.output.SerializingOperation;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
@@ -32,7 +32,7 @@ import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 public final class SimplifiedCollectionSerializingCore<
                         T extends Collection<ET>,
                         YS extends OperationSettings,
-                        YD extends CollectionAndElementsFieldDefinition<T,?,YO,ET,?>,
+                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,
                                         YS,
@@ -42,8 +42,8 @@ public final class SimplifiedCollectionSerializingCore<
                                         ET,EYD,EYO>,
                         ET,
                         EYS extends OperationSettings,
-                        EYD extends DefinitionSegment<ET,?>,
-                        EYO extends SerializingOperation<ET,EYS,?,?,EYD>>
+                        EYD extends WkSzDefinition<ET,?>,
+                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>>
     extends CollectionAndElementsFieldSerializerCore<
                         T,
                         YS,
@@ -73,7 +73,7 @@ public final class SimplifiedCollectionSerializingCore<
     T serializable,
     YS settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     SimplifiedCollectionDefinitionCore<
       T,?,?,?,YS,YD,YO,ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore,
     YO operationBody) {

@@ -18,7 +18,7 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public abstract class BasicPrimitiveArrayOutputSerializationEngineBase<
                         Y extends PrimitiveArrayWrapperBase<V, ?>,
@@ -30,7 +30,7 @@ public abstract class BasicPrimitiveArrayOutputSerializationEngineBase<
 
   protected BasicPrimitiveArrayOutputSerializationEngineBase(
     SequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    PrimitiveArraySerializerWriting<? extends Y,?,?,?,?> writingOperation,
+    WkSzPrimitiveArraySerializerWriter<? extends Y,?,?,?,?> writingOperation,
     int primitiveByteLength) {
     super(runtimeControl, writingOperation, primitiveByteLength);
   }

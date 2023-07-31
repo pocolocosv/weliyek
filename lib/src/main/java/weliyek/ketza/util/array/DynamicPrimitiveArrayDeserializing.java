@@ -18,33 +18,33 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
+import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
 
 public interface DynamicPrimitiveArrayDeserializing<
                         T extends PrimitiveArrayWrapper<?,?>,
                         XS extends OperationSettings,
                         XQ extends DeserializingRuntime<?>,
                         XR extends DeserializingResult<T>,
-                        XD extends DynamicPrimitiveArrayDefinition<T,?,?,?,?>,
+                        XD extends WkSzDynamicPrimitiveArrayDefinition<T,?,?,?,?>,
                         ZT extends Number,
-                        ZXO extends NumberDeserializing<ZT,?,?,?,ZD>,
-                        ZD extends NumberDefinition<ZT,ZXO>,
-                        VXO extends VariableSizePrimitiveArrayReading<T,?,?,?,VD>,
-                        VD extends VariableSizePrimitiveArrayDefinition<T,VXO>>
-    extends DynamicPrimitiveArrayOperation<
+                        ZXO extends WkSzNumberReader<ZT,?,?,?,ZD>,
+                        ZD extends WkSzNumberDefinition<ZT,ZXO>,
+                        VXO extends WkSzVariableSizePrimitiveArrayReader<T,?,?,?,VD>,
+                        VD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>>
+    extends WkSzDynamicPrimitiveArrayOperation<
                         XS, XQ, XR, XD,
-                        DeserializingField<T,XD,?>,
+                        WkSzPacketReaderField<T,XD,?>,
                         ZXO,
-                        DeserializingField<ZT,ZD,ZXO>,
-                        DeserializingSubfieldHandler<ZT,ZD,ZXO>,
+                        WkSzPacketReaderField<ZT,ZD,ZXO>,
+                        WkSzPacketReaderSubfield<ZT,ZD,ZXO>,
                         VXO,
-                        DeserializingField<T,VD,VXO>,
-                        DeserializingSubfieldHandler<T,VD,VXO>>,
+                        WkSzPacketReaderField<T,VD,VXO>,
+                        WkSzPacketReaderSubfield<T,VD,VXO>>,
             DynamicSequenceDeserializing<T, XS, XQ, XR, XD, ZT, ZXO, ZD, VXO, VD>
 {
 

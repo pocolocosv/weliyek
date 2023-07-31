@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.OutputBytestream;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.SerializingFieldCore;
+import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
@@ -31,13 +31,13 @@ import weliyek.amat.base.output.WritingRuntimeControl;
 public class SimplifiedAggregatorSerializingCore<
                         T,
                         YS extends OperationSettings,
-                        YD extends AggregatorDefinition<T,?>,
-                        YO extends AggregatorWriting<
+                        YD extends WkSzAggregatorDefinition<T,?>,
+                        YO extends WkSzAggregatorWriter<
                                         T,YS,
                                         SerializingRuntime<OutputBytestream>,
                                         SerializingResult,
                                         YD>>
-    extends AggregatorWritingCore<
+    extends WkSzAggregatorWriterCore<
                         T,
                         YS,
                         OutputBytestream,
@@ -62,7 +62,7 @@ public class SimplifiedAggregatorSerializingCore<
     T serializable,
     YS settings,
     OutputBytestreamGeneralBase<?> parentBytestream,
-    SerializingFieldCore<T,?,YD,?,?,?> serializingfieldCore,
+    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> serializingfieldCore,
     SimplifiedAggregatorCore<T,?,?,?,YS,YD,YO,?> definitionCore,
     YO body,
     Consumer<? super SimplifiedAggregatorSerializingCore<T,YS,YD,YO>> onInitializing) {

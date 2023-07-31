@@ -20,7 +20,7 @@ package weliyek.amat.serialization.primitive;
 import java.util.function.Function;
 
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 
 public abstract class BasicPrimitiveArrayInputDeserializationEngine<
@@ -37,7 +37,7 @@ public abstract class BasicPrimitiveArrayInputDeserializationEngine<
       Function<V, X> newWrapperFactory,
       int elementByteLength,
       SequenceReadingRuntimeControl<?,?,?> runtimeCtrl,
-      PrimitiveArraySerializerReading<X,?,?,?,?> readingOperation) {
+      WkSzPrimitiveArraySerializerReader<X,?,?,?,?> readingOperation) {
     super(newWrapperFactory, elementByteLength, STEP_SIZE, runtimeCtrl, readingOperation);
   }
 

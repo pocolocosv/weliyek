@@ -20,7 +20,7 @@ package weliyek.amat.newserialization.basic;
 import java.io.IOException;
 
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerWriting;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 import weliyek.ketza.util.array.BasicPrimitiveArraySerializationRule;
 import weliyek.ketza.util.array.ShortArrayWrapper;
 
@@ -35,7 +35,7 @@ public final class LittleEndianShortArrayOutputRule
 
   private LittleEndianShortArrayOutputRule(
     SequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    PrimitiveArraySerializerWriting<? extends ShortArrayWrapper,?,?,?,?> writingOperation) {
+    WkSzPrimitiveArraySerializerWriter<? extends ShortArrayWrapper,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

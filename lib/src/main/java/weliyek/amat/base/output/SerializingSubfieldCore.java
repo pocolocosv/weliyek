@@ -19,27 +19,27 @@ package weliyek.amat.base.output;
 
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.basic.aggregator.AggregatorWriting;
-import weliyek.amat.basic.aggregator.AggregatorWritingCore;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
+import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 
 public class SerializingSubfieldCore<
                         T,
                         YS extends OperationSettings,
-                        YD extends DefinitionSegment<T,?>,
-                        YO extends SerializingOperation<T,YS,?,?,YD>,
+                        YD extends WkSzDefinition<T,?>,
+                        YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AY,
                         AYBC extends OutputBytestreamGeneralBase<?>,
-                        AYO extends AggregatorWriting<AY,?,? extends SerializingRuntime<?>,?,?>>
-        extends SerializingFieldCore<T, YS, YD, YO, AYBC, AYO>
+                        AYO extends WkSzAggregatorWriter<AY,?,? extends SerializingRuntime<?>,?,?>>
+        extends WkSzPacketWriterFieldCore<T, YS, YD, YO, AYBC, AYO>
 {
 
-  private final SerializingSubfieldHandlerCore<T,YS,YD,YO,AY,AYBC,?,AYO> myHandler;
+  private final WkSzPacketWriterSubfieldCore<T,YS,YD,YO,AY,AYBC,?,AYO> myHandler;
 
   SerializingSubfieldCore(
     int initialOperationListCapacity,
-    SerializingSubfieldHandlerCore<T,YS,YD,YO,AY,AYBC,?,AYO> subfieldHandler) {
+    WkSzPacketWriterSubfieldCore<T,YS,YD,YO,AY,AYBC,?,AYO> subfieldHandler) {
     super(initialOperationListCapacity, subfieldHandler.protocolFieldCore());
     assert null != subfieldHandler;
     this.myHandler = subfieldHandler;
@@ -82,12 +82,12 @@ public class SerializingSubfieldCore<
   }
 
   @Override
-  public SerializingField<T, YD, YO> asPacket() {
+  public WkSzPacketWriterField<T, YD, YO> asPacket() {
     return this;
   }
 
   @Override
-  protected AggregatorWritingCore<?, ?, ?, AYBC, ?, ?, ?, ?, AYO, ?, ?, ?> parentOperationCore() {
+  protected WkSzAggregatorWriterCore<?, ?, ?, AYBC, ?, ?, ?, ?, AYO, ?, ?, ?> parentOperationCore() {
     return this.myHandler.parentOperationCore();
   }
 

@@ -31,7 +31,7 @@ public class UnsignedBigEndianIntegerOutputSerializer
 
   private UnsignedBigEndianIntegerOutputSerializer(
     WritingRuntimeControl<?,?,?> runtimeControl,
-    NumberSerializing<Long, ?, ?, ?, ?> writingOperation) {
+    WkSzNumberWriter<Long, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

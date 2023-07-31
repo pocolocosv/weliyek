@@ -21,13 +21,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.DefinitionSegment;
+import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingFieldCore;
-import weliyek.amat.base.input.DeserializingOperation;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.SequenceReadingRuntime;
@@ -40,8 +40,8 @@ public final class VariableSizeCollectionFieldDeserializer<
                         XS extends VariableLengthSettings,
                         ET,
                         EXS extends OperationSettings,
-                        EXD extends DefinitionSegment<ET,?>,
-                        EXO extends DeserializingOperation<ET,EXS,?,?,EXD>>
+                        EXD extends WkSzDefinition<ET,?>,
+                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>>
     implements CollectionAndElementsFieldDeserializer<
                         T,
                         XS,
@@ -73,7 +73,7 @@ public final class VariableSizeCollectionFieldDeserializer<
     int index,
     XS settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<
+    WkSzPacketReaderFieldCore<
       T,?,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?,?,?> deserializingfieldCore,
     SimplifiedCollectionDefinitionCore<
       T,XS,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -94,7 +94,7 @@ public final class VariableSizeCollectionFieldDeserializer<
   }
 
   @Override
-  public DeserializingSubfieldHandler<ET, EXD, EXO> element() {
+  public WkSzPacketReaderSubfield<ET, EXD, EXO> element() {
     return this.operationCore.element();
   }
 
@@ -125,13 +125,13 @@ public final class VariableSizeCollectionFieldDeserializer<
 
   @Override
   public
-  DeserializingField<T,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
+  WkSzPacketReaderField<T,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
   packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<DeserializingSubfieldHandler<?, ?, ?>> subfields() {
+  public List<WkSzPacketReaderSubfield<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 

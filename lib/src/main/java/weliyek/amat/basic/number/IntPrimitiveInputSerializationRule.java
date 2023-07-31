@@ -33,7 +33,7 @@ public abstract class IntPrimitiveInputSerializationRule<X extends Number>
   protected IntPrimitiveInputSerializationRule(
       IntFunction<X> converter,
       ReadingRuntimeControl<?,?,?> runtimeCtrl,
-      NumberDeserializing<X,?,?,?,?> readingOperation) {
+      WkSzNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.converter = Objects.requireNonNull(converter);
   }

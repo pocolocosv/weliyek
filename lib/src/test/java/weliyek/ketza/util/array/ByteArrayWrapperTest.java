@@ -32,9 +32,9 @@ import org.slf4j.LoggerFactory;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketStructure;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.input.InputPacket;
+import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputPacket;
+import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat2.protocol.ProtocolDefinitionException;
 import weliyek.ketza.util.KetzaByteOutputStream;
@@ -79,7 +79,7 @@ public class ByteArrayWrapperTest
         fixeSizeByteArray = FixedSizeByteArray.newPacketStructure("FIXED_BYTEARRAY", sequenceLenght);
       logger.info(fixeSizeByteArray + " output protocol created");
 
-      OutputPacket<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArraySerializing>
+      WkSzOutputPacket<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArraySerializing>
         byteArrayWriting = fixeSizeByteArray.newOutputPacket(outputWrapper, OperationSettings.EMPTY, outputstream);
 
       logger.info(byteArrayWriting.toString());
@@ -102,7 +102,7 @@ public class ByteArrayWrapperTest
 
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
-      InputPacket<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArrayDeserializing>
+      WkSzInputPacket<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArrayDeserializing>
         byteArrayReading = fixeSizeByteArray.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
 
       logger.info(byteArrayReading + " input op created");
@@ -137,7 +137,7 @@ public class ByteArrayWrapperTest
       PacketStructure<ByteArrayWrapper, VariableLengthSettings, VariableSizeByteArray, VariableSizeByteArrayDeserializing, InputBytestreamGeneralBase<?>, OperationSettings, VariableSizeByteArray, VariableSizeByteArraySerializing, OutputBytestreamGeneralBase<?>, VariableSizeByteArray>
         outputProtocol = VariableSizeByteArray.newPacketStructure("DYNAMIC_BYTEARRAY", 0, 100);
 
-      OutputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
+      WkSzOutputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
         wrapperWriting = outputProtocol.newOutputPacket(outputWrapper, OperationSettings.EMPTY, outputstream);
 
       assertFalse(wrapperWriting.isCompleted());
@@ -148,7 +148,7 @@ public class ByteArrayWrapperTest
 
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
-      InputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
+      WkSzInputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
         wrapperReading = outputProtocol.newInputPacket(VariableLengthSettings.withLength(sequenceLenght), outputstream.inputStream());
 
       logger.info(wrapperReading + " input op created");

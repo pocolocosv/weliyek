@@ -20,10 +20,10 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.input.DeserializingField;
-import weliyek.amat.base.input.DeserializingFieldCore;
+import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.SequenceReadingRuntime;
@@ -53,7 +53,7 @@ public final class VariableSizeByteArrayDeserializing
     int index,
     VariableLengthSettings settings,
     InputBytestreamGeneralBase<?> parentBytestream,
-    DeserializingFieldCore<
+    WkSzPacketReaderFieldCore<
       ByteArrayWrapper,?,VariableSizeByteArray,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
       ByteArrayWrapper,VariableLengthSettings,VariableSizeByteArrayDeserializing,?,?,VariableSizeByteArray> definitionCore) {
@@ -72,7 +72,7 @@ public final class VariableSizeByteArrayDeserializing
   }
 
   @Override
-  public List<DeserializingSubfieldHandler<?,?,?>> subfields() {
+  public List<WkSzPacketReaderSubfield<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -102,7 +102,7 @@ public final class VariableSizeByteArrayDeserializing
   }
 
   @Override
-  public DeserializingField<ByteArrayWrapper, VariableSizeByteArray, ?>
+  public WkSzPacketReaderField<ByteArrayWrapper, VariableSizeByteArray, ?>
   packetField() {
     return this.operationCore.packetField();
   }

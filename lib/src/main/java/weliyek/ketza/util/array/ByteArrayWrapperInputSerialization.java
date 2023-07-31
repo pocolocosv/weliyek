@@ -20,7 +20,7 @@ package weliyek.ketza.util.array;
 import java.io.IOException;
 
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
-import weliyek.amat.basic.serializer.PrimitiveArraySerializerReading;
+import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.amat.serialization.primitive.BasicPrimitiveArrayInputDeserializationEngine;
 
 public final class ByteArrayWrapperInputSerialization
@@ -34,7 +34,7 @@ public final class ByteArrayWrapperInputSerialization
 
   private ByteArrayWrapperInputSerialization(
     SequenceReadingRuntimeControl<?,?,?> runtimeCtrl,
-    PrimitiveArraySerializerReading<ByteArrayWrapper,?,?,?,?> readingOperation) {
+    WkSzPrimitiveArraySerializerReader<ByteArrayWrapper,?,?,?,?> readingOperation) {
     super(ByteArrayWrapper::new, 1, runtimeCtrl, readingOperation);
   }
 

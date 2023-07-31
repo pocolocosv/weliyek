@@ -33,7 +33,7 @@ public final class LittleEndianSignedShortInputSerialization
 
   private LittleEndianSignedShortInputSerialization(
     ReadingRuntimeControl<?,?,?> runtimeCtrl,
-    NumberDeserializing<Short,?,?,?,?> readingOperation) {
+    WkSzNumberReader<Short,?,?,?,?> readingOperation) {
     super((i) -> Short.valueOf((short)i), runtimeCtrl, readingOperation);
   }
 

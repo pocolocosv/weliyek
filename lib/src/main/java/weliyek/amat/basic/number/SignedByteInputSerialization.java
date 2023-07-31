@@ -31,7 +31,7 @@ public final class SignedByteInputSerialization
 
   public SignedByteInputSerialization(
       ReadingRuntimeControl<?,?,?> runtimeCtrl,
-      NumberDeserializing<Byte,?,?,?,?> readingOperation) {
+      WkSzNumberReader<Byte,?,?,?,?> readingOperation) {
     super((i) -> Byte.valueOf((byte) i), runtimeCtrl, readingOperation);
   }
 

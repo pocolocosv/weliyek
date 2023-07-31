@@ -22,7 +22,7 @@ import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 public interface VariableSizePrimitiveArraySerializerDefinition<
                         T extends PrimitiveArrayWrapper<?, ?>,
                         XO extends VariableSizePrimitiveArraySerializerReading<T, ?, ?, ?, ?>>
-    extends VariableSizePrimitiveArrayDefinition<T, XO>,
+    extends WkSzVariableSizePrimitiveArrayDefinition<T, XO>,
             PrimitiveArraySerializerDefinition<T, XO>,
             VariableSizePrimitiveArraySerializerSegment
 {

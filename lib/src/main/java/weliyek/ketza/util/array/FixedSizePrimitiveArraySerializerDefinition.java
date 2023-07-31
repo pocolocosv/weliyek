@@ -21,9 +21,9 @@ import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 
 public interface FixedSizePrimitiveArraySerializerDefinition<
                         T extends PrimitiveArrayWrapper<?, ?>,
-                        XO extends FixedSizePrimitiveArraySerializerReading<T, ?, ?, ?, ?>>
-    extends FixedSizePrimitiveArraySerializerField,
-            FixedSizePrimitiveArrayDefinition<T, XO>,
+                        XO extends WkSzSerializerReaderFixedSizePrimitiveArray<T, ?, ?, ?, ?>>
+    extends WkSzFixedSizePrimitiveArraySerializer,
+            WkSzFixedSizePrimitiveArrayDefinition<T, XO>,
             PrimitiveArraySerializerDefinition<T, XO>
 {
 

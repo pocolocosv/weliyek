@@ -18,39 +18,39 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingField;
+import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.DeserializingSubfieldHandler;
-import weliyek.amat.basic.aggregator.AggregatorReading;
-import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceDefinition;
+import weliyek.amat.base.input.WkSzPacketReaderSubfield;
+import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
-import weliyek.amat.basic.number.NumberDefinition;
-import weliyek.amat.basic.number.NumberDeserializing;
-import weliyek.amat.basic.sequence.SequenceReading;
+import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.amat.basic.number.WkSzNumberReader;
+import weliyek.amat.basic.sequence.WkSzSequenceReader;
 
 public interface DynamicSequenceDeserializing<
                         T,
                         XS extends OperationSettings,
                         XQ extends DeserializingRuntime<?>,
                         XR extends DeserializingResult<T>,
-                        D extends DynamicSequenceDefinition<T,?,?,?,?>,
+                        D extends WkSzDynamicSequenceDefinition<T,?,?,?,?>,
                         ZX extends Number,
-                        ZXO extends NumberDeserializing<ZX,?,?,?,ZXD>,
-                        ZXD extends NumberDefinition<ZX,?>,
+                        ZXO extends WkSzNumberReader<ZX,?,?,?,ZXD>,
+                        ZXD extends WkSzNumberDefinition<ZX,?>,
                         VXO extends VariableSizeSequenceReading<T,?,?,?,VXD>,
-                        VXD extends VariableSizeSequenceDefinition<T,VXO>>
-    extends DynamicSequenceOperation<
+                        VXD extends WkSzVariableSizeSequenceDefinition<T,VXO>>
+    extends WkSzDynamicSequenceOperation<
                         XS, XQ, XR, D,
-                        DeserializingField<T,D,?>,
+                        WkSzPacketReaderField<T,D,?>,
                         ZXO,
-                        DeserializingField<ZX,ZXD,ZXO>,
-                        DeserializingSubfieldHandler<ZX,ZXD,ZXO>,
+                        WkSzPacketReaderField<ZX,ZXD,ZXO>,
+                        WkSzPacketReaderSubfield<ZX,ZXD,ZXO>,
                         VXO,
-                        DeserializingField<T,VXD,VXO>,
-                        DeserializingSubfieldHandler<T,VXD,VXO>>,
-            SequenceReading<T, XS, XQ, XR, D>,
-            AggregatorReading<T, XS, XQ, XR, D>
+                        WkSzPacketReaderField<T,VXD,VXO>,
+                        WkSzPacketReaderSubfield<T,VXD,VXO>>,
+            WkSzSequenceReader<T, XS, XQ, XR, D>,
+            WkSzAggregatorReader<T, XS, XQ, XR, D>
 {
 
 }

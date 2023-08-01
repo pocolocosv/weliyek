@@ -17,14 +17,16 @@ To do:
 Later will look into creating a client that will be able to connect to a
 Bitcoin node. 
 
-See the following unit test for examples how the serialization is performed:
+See the following unit test for examples how the serialization is performed. Also see 
+FilterBuilderTest.java for an example on how a search can be done.
 
-weliyek/lib/src/test/java/welikey.amat.basic.aggregator.sequence.DynamicCollectionFieldTest.java
-weliyek/lib/src/test/java/welikey.amat.basic.aggregator.sequence.FixedAndVariableSizeCollectionFieldsTest.java
-weliyek/lib/src/test/java/welikey.amat.basic.number.PrimitiveSerializationTests.java
-weliyek/lib/src/test/java/welikey.amat.basic.string.StringWithDynamicSizeBytesTest.java
-weliyek/lib/src/test/java/welikey.amat.basic.string.StringWithFixedLengthBytesTest.java
-weliyek/lib/src/test/java/welikey.ketza.util.array.ByteArrayWrapperTest.java
-weliyek/lib/src/test/java/welikey.ketza.util.array.DynamicByteArrayTest.java
+- weliyek/lib/src/test/java/welikey.amat.basic.aggregator.sequence.DynamicCollectionFieldTest.java
+- weliyek/lib/src/test/java/welikey.amat.basic.aggregator.sequence.FixedAndVariableSizeCollectionFieldsTest.java
+- weliyek/lib/src/test/java/welikey.amat.basic.number.PrimitiveSerializationTests.java
+- weliyek/lib/src/test/java/welikey.amat.basic.string.StringWithDynamicSizeBytesTest.java
+- weliyek/lib/src/test/java/welikey.amat.basic.string.StringWithFixedLengthBytesTest.java
+- weliyek/lib/src/test/java/welikey.ketza.util.array.ByteArrayWrapperTest.java
+- weliyek/lib/src/test/java/welikey.ketza.util.array.DynamicByteArrayTest.java
+- weliyek/lib/src/test/java/weliyek.amat2.protocol.filter.FilterBuilderTest.java
 
 [1] Hernández G., Werner. NAWAT MUJMUSTA. TZUNHEJEKAT. 2016

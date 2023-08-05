@@ -23,7 +23,7 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
@@ -65,7 +65,7 @@ public abstract class WkSzSerializerDefinitionCore<
   final OutputSerializerFactory<T, ? super YQC, ? super YO> txSerializerFactory;
 
   protected WkSzSerializerDefinitionCore(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,

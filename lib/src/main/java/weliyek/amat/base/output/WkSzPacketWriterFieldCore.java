@@ -18,7 +18,7 @@
 package weliyek.amat.base.output;
 
 import weliyek.amat.base.WkSzStructComponent;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzPacketFieldCore;
 import weliyek.amat.base.OperationSettings;
@@ -34,7 +34,7 @@ public abstract class WkSzPacketWriterFieldCore<
                         AYO extends WkSzAggregatorWriter<?,?,? extends SerializingRuntime<?>,?,?>>
     extends WkSzPacketFieldCore<
                         T, YS, YD,
-                        WkSzStructComponentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>,
+                        WkSzStructComponentCoreBase<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>,
                         YO,
                         WkSzPacketWriterOperationCore<?,?,?,?,?,YO,?,YD,?,?>,
                         WkSzPacketWriterField<T,YD,YO>,
@@ -45,7 +45,7 @@ public abstract class WkSzPacketWriterFieldCore<
 
   public WkSzPacketWriterFieldCore(
     int initialOperationListCapacity,
-    WkSzStructComponentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD> protocolFieldCore) {
+    WkSzStructComponentCoreBase<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD> protocolFieldCore) {
     super(
         initialOperationListCapacity,
         protocolFieldCore,

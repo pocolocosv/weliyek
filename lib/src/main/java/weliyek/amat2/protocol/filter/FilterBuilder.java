@@ -20,7 +20,7 @@ package weliyek.amat2.protocol.filter;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 
 public class FilterBuilder
 {
@@ -30,7 +30,7 @@ public class FilterBuilder
     public FilterBuilder() {
     }
 
-    FilterBuilder setProtocol(PacketStructure<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> packetStructure) {
+    FilterBuilder setProtocol(WkSzStruct<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> packetStructure) {
       // TODO: Set structure to be used to verify that all added queries do apply for
       // said structure.
         return this;

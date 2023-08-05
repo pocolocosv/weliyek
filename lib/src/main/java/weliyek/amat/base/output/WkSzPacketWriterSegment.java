@@ -25,7 +25,7 @@ public interface WkSzPacketWriterSegment extends WkSzPacketSegment
 
   @Override
   default Direction direction() {
-    return Direction.SERIALIZING;
+    return Direction.WRITE;
   }
 
 }

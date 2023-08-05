@@ -22,11 +22,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -49,7 +49,7 @@ public class StringWithVariableLengthBytes
                         VariableSizeByteArray>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       String,
                       VariableLengthSettings,
                       StringWithVariableLengthBytes,
@@ -66,7 +66,7 @@ public class StringWithVariableLengthBytes
     int minimalLength,
     int maximalLength,
     Charset defaultCharset) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       (pc) -> StringWithVariableLengthBytes.newCore(
                                     bytesLabel, minimalLength, maximalLength, defaultCharset, pc),
@@ -90,7 +90,7 @@ public class StringWithVariableLengthBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new StringWithVariableLengthBytes(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -115,7 +115,7 @@ public class StringWithVariableLengthBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedStringFromBytesCore<>(
                                     defaultCharset,
                                     componentCore,

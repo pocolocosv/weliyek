@@ -22,10 +22,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -52,7 +52,7 @@ public class WkSzStringWithFixedLengthBytes
                         FixedSizeByteArray>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       String,
                       OperationSettings,
                       WkSzStringWithFixedLengthBytes,
@@ -68,7 +68,7 @@ public class WkSzStringWithFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       (pc) -> WkSzStringWithFixedLengthBytes.newCore(
                                     bytesLabel, expectedSize, defaultCharset, pc),
@@ -91,7 +91,7 @@ public class WkSzStringWithFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSzStringWithFixedLengthBytes(bytesLabel, expectedSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -115,7 +115,7 @@ public class WkSzStringWithFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
 
     this.definitionCore = new SimplifiedStringFromBytesCore<>(
                                   defaultCharset,

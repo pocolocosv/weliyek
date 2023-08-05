@@ -22,12 +22,12 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
@@ -72,7 +72,7 @@ public final class FixedSizeCollectionField<
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,EXO>>
-  PacketStructure<T,
+  WkSzStruct<T,
                   XS,
                   FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                   FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
@@ -97,7 +97,7 @@ public final class FixedSizeCollectionField<
     ProtocolDefinitionFactory<
       ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
       EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       (pc) -> FixedSizeCollectionField.newCore(
                                     expectedCollectionSize,
@@ -148,7 +148,7 @@ public final class FixedSizeCollectionField<
     ProtocolDefinitionFactory<
       ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
       EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new FixedSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>(
                         expectedCollectionSize,
                         componentCore,
@@ -173,7 +173,7 @@ public final class FixedSizeCollectionField<
 
   private FixedSizeCollectionField(
     int expectedCollectionSize,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     Function<List<ET>, T> collectionFactory,

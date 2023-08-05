@@ -22,8 +22,9 @@ import java.util.function.Predicate;
 import weliyek.amat2.protocol.filter.FieldTester;
 
 /**
- * The main segment that defines the serialization rules for a given data type. It can also create
- * a {@link FieldTester} for a given {@link Predicate} for the represented data type.
+ * The main segment that defines the serialization rules for a given data type. It has also a
+ * shortcut that can create a {@link FieldTester} with a given {@link Predicate} for the 
+ * represented data type.
  * 
  * @param <D> Serialization characteristics and rules for the target data type.
  */
@@ -40,10 +41,5 @@ public interface WkSzStructComponent<
   String name();
 
   FieldTester<?, ?> makeTester(Predicate<WkSzPacketField<?,?,?>> test, String description);
-
-  @Override
-  default SegmentType type() {
-    return SegmentType.STRUCT;
-  }
 
 }

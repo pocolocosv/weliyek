@@ -20,10 +20,10 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -37,7 +37,7 @@ public class WkSzSignedBigEndianShort
                         WkSzSignedBigEndianShortReader>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       Short,
                       OperationSettings,
                       WkSzSignedBigEndianShort,
@@ -49,7 +49,7 @@ public class WkSzSignedBigEndianShort
                       OutputBytestreamGeneralBase<?>,
                       WkSzSignedBigEndianShort>
   newPacketStructure(String label) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       WkSzSignedBigEndianShort::newCore,
                       CountingInputBytestream::new,
@@ -67,7 +67,7 @@ public class WkSzSignedBigEndianShort
                       WkSzSignedBigEndianShortWriter,
                       OutputBytestreamGeneralBase<?>,
                       WkSzSignedBigEndianShort,?>
-  newCore(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  newCore(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSzSignedBigEndianShort(componentCore).definitionCore;
   }
 
@@ -78,7 +78,7 @@ public class WkSzSignedBigEndianShort
                         WkSzSignedBigEndianShort> definitionCore;
 
   public WkSzSignedBigEndianShort(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSzSimplifiedNumberSerializerDefinitionCore<
                                   Short,
                                   WkSzSignedBigEndianShortReader,

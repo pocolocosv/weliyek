@@ -21,7 +21,7 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
@@ -106,7 +106,7 @@ public class SimplifiedStringFromBytesCore<
 
   protected SimplifiedStringFromBytesCore(
     Charset defaultCharset,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
       String,XS,XD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       XO,InputBytestreamGeneralBase<?>>

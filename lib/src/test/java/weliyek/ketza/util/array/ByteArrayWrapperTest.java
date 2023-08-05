@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
@@ -75,7 +75,7 @@ public class ByteArrayWrapperTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      PacketStructure<ByteArrayWrapper, OperationSettings, FixedSizeByteArray, FixedSizeByteArrayDeserializing, InputBytestreamGeneralBase<?>, OperationSettings, FixedSizeByteArray, FixedSizeByteArraySerializing, OutputBytestreamGeneralBase<?>, FixedSizeByteArray>
+      WkSzStruct<ByteArrayWrapper, OperationSettings, FixedSizeByteArray, FixedSizeByteArrayDeserializing, InputBytestreamGeneralBase<?>, OperationSettings, FixedSizeByteArray, FixedSizeByteArraySerializing, OutputBytestreamGeneralBase<?>, FixedSizeByteArray>
         fixeSizeByteArray = FixedSizeByteArray.newPacketStructure("FIXED_BYTEARRAY", sequenceLenght);
       logger.info(fixeSizeByteArray + " output protocol created");
 
@@ -134,7 +134,7 @@ public class ByteArrayWrapperTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      PacketStructure<ByteArrayWrapper, VariableLengthSettings, VariableSizeByteArray, VariableSizeByteArrayDeserializing, InputBytestreamGeneralBase<?>, OperationSettings, VariableSizeByteArray, VariableSizeByteArraySerializing, OutputBytestreamGeneralBase<?>, VariableSizeByteArray>
+      WkSzStruct<ByteArrayWrapper, VariableLengthSettings, VariableSizeByteArray, VariableSizeByteArrayDeserializing, InputBytestreamGeneralBase<?>, OperationSettings, VariableSizeByteArray, VariableSizeByteArraySerializing, OutputBytestreamGeneralBase<?>, VariableSizeByteArray>
         outputProtocol = VariableSizeByteArray.newPacketStructure("DYNAMIC_BYTEARRAY", 0, 100);
 
       WkSzOutputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>

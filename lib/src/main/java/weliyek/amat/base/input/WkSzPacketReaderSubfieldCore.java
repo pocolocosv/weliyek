@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.WkSzStructComponent;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStructSubcomponent;
@@ -102,7 +102,7 @@ public class WkSzPacketReaderSubfieldCore<
   }
 
   @Override
-  public WkSzStructComponentCore<ST,SXS,SXD,SXO,XBC,?,?,?,?,? extends SXD> protocolFieldCore() {
+  public WkSzStructComponentCoreBase<ST,SXS,SXD,SXO,XBC,?,?,?,?,? extends SXD> protocolFieldCore() {
     return subcomponentHandlerCore().protocolFieldCore();
   }
 

@@ -18,6 +18,6 @@
 package weliyek.amat.base;
 
 public enum Direction {
-  DESERIALIZING,
-  SERIALIZING
+  READ,
+  WRITE
 }

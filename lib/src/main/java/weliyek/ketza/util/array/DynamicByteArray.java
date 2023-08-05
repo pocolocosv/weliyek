@@ -21,10 +21,10 @@ import java.util.List;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
@@ -58,7 +58,7 @@ public class DynamicByteArray<
                  ZYD extends WkSzNumberDefinition<ZX,?>,
                  ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
-  PacketStructure<ByteArrayWrapper,
+  WkSzStruct<ByteArrayWrapper,
                   OperationSettings,
                   DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
@@ -79,7 +79,7 @@ public class DynamicByteArray<
       ZX,OperationSettings,ZXD,ZXO,InputBytestreamGeneralBase<?>,
       OperationSettings,ZYD,ZYO,OutputBytestreamGeneralBase<?>,ZD>  sizeDefinition)
   {
-    return new PacketStructure<ByteArrayWrapper,
+    return new WkSzStruct<ByteArrayWrapper,
         OperationSettings,
         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
@@ -113,7 +113,7 @@ public class DynamicByteArray<
                         OutputBytestreamGeneralBase<?>,
                         DynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>,?>
   newCore(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     String sizeLabel,
     IntFunction<ZX> wrapperSizeGetter,
     String arrayLabel,
@@ -140,7 +140,7 @@ public class DynamicByteArray<
                         VariableSizeByteArray,
                         DynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>> definitionCore;
 
-  DynamicByteArray(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+  DynamicByteArray(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     String sizeLabel,
     IntFunction<ZT> wrapperSizeGetter,
     String arrayLabel,

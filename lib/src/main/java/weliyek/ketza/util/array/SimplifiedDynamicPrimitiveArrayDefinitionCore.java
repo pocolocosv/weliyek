@@ -19,7 +19,7 @@ package weliyek.ketza.util.array;
 
 import java.util.function.IntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.BasicReadingResult;
@@ -135,7 +135,7 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
       T,OperationSettings,YD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       YO,OutputBytestreamGeneralBase<?>> writingOpFactory,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     D definitionBody,
     Class<T> serializableClass) {
     super(

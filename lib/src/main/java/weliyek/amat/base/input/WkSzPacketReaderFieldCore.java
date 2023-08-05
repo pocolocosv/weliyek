@@ -18,7 +18,7 @@
 package weliyek.amat.base.input;
 
 import weliyek.amat.base.WkSzStructComponent;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.Direction;
@@ -38,7 +38,7 @@ public abstract class WkSzPacketReaderFieldCore<
                         AXO extends WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>>
     extends WkSzPacketFieldCore<
                         T, XS, XD,
-                        WkSzStructComponentCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>,
+                        WkSzStructComponentCoreBase<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>,
                         XO,
                         WkSzPacketReaderOperationCore<?,?,?,?,?,XO,?,XD,?,?>,
                         WkSzPacketReaderField<T,XD,XO>,
@@ -51,7 +51,7 @@ public abstract class WkSzPacketReaderFieldCore<
 
   protected WkSzPacketReaderFieldCore(
     int initialOperationListCapacity,
-    WkSzStructComponentCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> protocolHandler) {
+    WkSzStructComponentCoreBase<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> protocolHandler) {
     super(
         initialOperationListCapacity,
         protocolHandler,
@@ -63,7 +63,7 @@ public abstract class WkSzPacketReaderFieldCore<
   newOperation(int index) {
     final XS settings = newSettings(index);
     final AXBC parentBytestream = parentBytestream();
-    final WkSzStructComponentCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> componentCore = protocolFieldCore();
+    final WkSzStructComponentCoreBase<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> componentCore = protocolFieldCore();
     WkSzDefinitionCore<T,XS,?,?,XD,XO,AXBC,?,?,?,?,?,?,? extends XD,?> definitionCore = componentCore.definitionCore();
     return definitionCore.newReadingOperationCore(index, settings, parentBytestream, this);
   }
@@ -111,7 +111,7 @@ public abstract class WkSzPacketReaderFieldCore<
 
   @Override
   public final Direction direction() {
-    return Direction.DESERIALIZING;
+    return Direction.READ;
   }
 
   @Override

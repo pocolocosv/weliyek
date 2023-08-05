@@ -19,7 +19,7 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.Objects;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
@@ -30,7 +30,22 @@ import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 
-public class SubcomponentSegmentCore<
+/**
+ * Defines a struct component that has other components as a parent. Only the sibling 
+ * type {@link WkSzStruct} does not have a parent.
+ * 
+ * @param <T>
+ * @param <XS>
+ * @param <XD>
+ * @param <XO>
+ * @param <AXBC>
+ * @param <YS>
+ * @param <YD>
+ * @param <YO>
+ * @param <AYBC>
+ * @param <D>
+ */
+public class WkSzStructChildComponent<
                         T,
                         XS extends OperationSettings,
                         XD extends WkSzDefinition<T,?>,
@@ -41,13 +56,12 @@ public class SubcomponentSegmentCore<
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
                         D extends WkSzDefinition<T,?>>
-    extends WkSzStructComponentCore<T, XS, XD, XO, AXBC, YS, YD, YO, AYBC, D>
-    implements SubcomponentSegment<D>
+    extends WkSzStructComponentCoreBase<T, XS, XD, XO, AXBC, YS, YD, YO, AYBC, D>
 {
 
   private final WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore;
 
-  SubcomponentSegmentCore(
+  WkSzStructChildComponent(
     String label,
     ProtocolDefinitionFactory<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D> definitionFactory,
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {

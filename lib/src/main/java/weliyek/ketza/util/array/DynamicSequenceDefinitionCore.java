@@ -21,7 +21,7 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
@@ -117,7 +117,7 @@ public abstract class DynamicSequenceDefinitionCore<
     OperationSubsegmentSettingsFactory<YO,VYS> varseqComponentTxSettingsFactory,
     Disaggregator<T, VYD, T, YO> varseqComponentTxDesaggregator,
     ProtocolDefinitionFactory<T,VXS,VXD,VXO,XBC,VYS,VYD,VYO,YBC,VD> varseqComponentDefinitionFactory,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,

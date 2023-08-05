@@ -20,7 +20,7 @@ package weliyek.amat.basic.number;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -55,7 +55,7 @@ public abstract class WkSzNumberDefinitionCore<
 {
 
   protected WkSzNumberDefinitionCore(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,

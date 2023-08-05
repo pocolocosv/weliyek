@@ -20,7 +20,7 @@ package weliyek.amat.base.output;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
@@ -61,7 +61,7 @@ public final class WkSzOutputPacketCore<
   private Optional<WkSzPacketOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
 
   public WkSzOutputPacketCore(
-    WkSzStructComponentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD> protocolFieldCore,
+    WkSzStructComponentCoreBase<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD> protocolFieldCore,
     WkSzOutputPacketCore.WritingParameters<T,YS,AYBC> parameters) {
     super(1, protocolFieldCore);
     this.parameters = parameters;

@@ -31,7 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
@@ -47,7 +47,7 @@ public class DynamicByteArrayTest
 
   private static final Logger logger = LoggerFactory.getLogger(DynamicByteArrayTest.class);
 
-  private static PacketStructure<
+  private static WkSzStruct<
                     ByteArrayWrapper,
                     OperationSettings,
                     DynamicByteArray<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,

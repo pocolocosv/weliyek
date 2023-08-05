@@ -19,7 +19,7 @@ package weliyek.ketza.util.array;
 
 import java.util.function.ToIntBiFunction;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.BasicReadingResult;
 import weliyek.amat.base.input.DeserializingResult;
@@ -84,7 +84,7 @@ public class SimplifiedPrimitiveArraySerializerCore<
 
   public SimplifiedPrimitiveArraySerializerCore(
     int stepSize,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, D> rxRequestedLengthEvaluator,
     PacketInputFieldReadingFactory<T, XS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, XO, InputBytestreamGeneralBase<?>> readingOpFactory,
     InputDeserializerFactory<T, ? super SequenceReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>, SequenceReadingRuntime<InputBytestream>>, ? super XO> rxSerializerFactory,

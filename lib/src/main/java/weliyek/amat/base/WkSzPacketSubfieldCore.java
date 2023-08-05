@@ -127,7 +127,7 @@ public abstract class WkSzPacketSubfieldCore<
 
   protected abstract WkSzStructComponent<? extends TD> protocolField();
 
-  public abstract WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> protocolFieldCore();
+  public abstract WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> protocolFieldCore();
 
   public AOC parentOperationCore() {
     return this.parentOperationCore;

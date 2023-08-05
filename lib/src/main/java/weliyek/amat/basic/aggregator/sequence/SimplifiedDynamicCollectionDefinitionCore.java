@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
@@ -156,7 +156,7 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
       serializerFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> serializableClass,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     D definitionBody) {
     super(
           sizeFieldLabel,

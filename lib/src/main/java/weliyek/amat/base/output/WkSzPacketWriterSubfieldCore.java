@@ -20,7 +20,7 @@ package weliyek.amat.base.output;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.WkSzStructComponent;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzPacketSubfieldCore;
@@ -87,7 +87,7 @@ public class WkSzPacketWriterSubfieldCore<
   }
 
   @Override
-  public WkSzStructComponentCore<ST,?,?,?,?,SYS,SYD,SYO,YBC,? extends SYD> protocolFieldCore() {
+  public WkSzStructComponentCoreBase<ST,?,?,?,?,SYS,SYD,SYO,YBC,? extends SYD> protocolFieldCore() {
     return subcomponentHandlerCore().protocolFieldCore();
   }
 

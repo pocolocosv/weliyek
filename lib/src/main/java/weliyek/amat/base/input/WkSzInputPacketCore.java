@@ -20,7 +20,7 @@ package weliyek.amat.base.input;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
@@ -62,7 +62,7 @@ public final class WkSzInputPacketCore<
   private Optional<WkSzPacketOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
 
   public WkSzInputPacketCore(
-    WkSzStructComponentCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> protocolHandler,
+    WkSzStructComponentCoreBase<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> protocolHandler,
     ReadingPacketParameters<XS,AXBC> parameters) {
     super(1, protocolHandler);
     this.parameters = parameters;

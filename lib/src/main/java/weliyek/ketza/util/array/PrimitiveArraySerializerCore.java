@@ -22,7 +22,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntBiFunction;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -66,7 +66,7 @@ public abstract class PrimitiveArraySerializerCore<
 
   protected PrimitiveArraySerializerCore(
     int stepSize,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,

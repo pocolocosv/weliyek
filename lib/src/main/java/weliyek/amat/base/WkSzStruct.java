@@ -34,7 +34,22 @@ import weliyek.amat.base.output.WkSzOutputPacketCore.WritingParameters;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat2.protocol.filter.Filter;
 
-public final class PacketStructure<
+/**
+ * Main type that holds all components that form a self contained struct which defines
+ * how a <code><strong>T</strong></code> object is serialized.
+ *  
+ * @param <T>
+ * @param <XS>
+ * @param <XD>
+ * @param <XO>
+ * @param <AXBC>
+ * @param <YS>
+ * @param <YD>
+ * @param <YO>
+ * @param <AYBC>
+ * @param <D>
+ */
+public final class WkSzStruct<
                         T,
                         XS extends OperationSettings,
                         XD extends WkSzDefinition<T,?>,
@@ -45,7 +60,7 @@ public final class PacketStructure<
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
                         D extends WkSzDefinition<T,XO>>
-    extends WkSzStructComponentCore<
+    extends WkSzStructComponentCoreBase<
                         T, XS, XD, XO, AXBC,
                         YS, YD, YO, AYBC,
                         D>
@@ -54,7 +69,7 @@ public final class PacketStructure<
   private final Function<InputStream, AXBC> inputbytestreamFactory;
   private final Function<OutputStream, AYBC> outputbytestreamFactory;
 
-  public PacketStructure(
+  public WkSzStruct(
     String label,
     ProtocolDefinitionFactory<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D> definitionFactory,
     Function<InputStream, AXBC> inputbytestreamFactory,
@@ -88,7 +103,7 @@ public final class PacketStructure<
                                                                         filter);
     @SuppressWarnings("unchecked")
     WkSzInputPacketCore<T,XS,XD,XO,AXBC> reading = new WkSzInputPacketCore<T,XS,XD,XO,AXBC>(
-        (WkSzStructComponentCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>) this, params);
+        (WkSzStructComponentCoreBase<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>) this, params);
     reading.initialize(true);
     return reading.asPacket();
   }
@@ -112,7 +127,7 @@ public final class PacketStructure<
                                                                         outputBytestream);
     @SuppressWarnings("unchecked")
     WkSzOutputPacketCore<T,YS,YD,YO,AYBC> writing = new WkSzOutputPacketCore<T,YS,YD,YO,AYBC>(
-        (WkSzStructComponentCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>) this, writingParams);
+        (WkSzStructComponentCoreBase<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>) this, writingParams);
     writing.initialize(true);
     return writing.asPacket();
   }

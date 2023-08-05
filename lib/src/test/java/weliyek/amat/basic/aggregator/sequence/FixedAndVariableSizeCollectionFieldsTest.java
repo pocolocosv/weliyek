@@ -33,7 +33,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.WkSzInputPacket;
@@ -53,7 +53,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
   public static final List<Integer> ORIGINAL_LIST = Arrays.asList(Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
   public static final int LIST_SIZE = ORIGINAL_LIST.size();
 
-  private static PacketStructure<
+  private static WkSzStruct<
                         List<Integer>,
                         OperationSettings,
                         FixedSizeCollectionField<List<Integer>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>,
@@ -66,7 +66,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
                         FixedSizeCollectionField<List<Integer>, OperationSettings, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
                           FIXED_SIZE_INT_LIST;
 
-  private static PacketStructure<
+  private static WkSzStruct<
                         List<Integer>,
                         VariableLengthSettings,
                         VariableSizeCollectionField<List<Integer>, VariableLengthSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>,

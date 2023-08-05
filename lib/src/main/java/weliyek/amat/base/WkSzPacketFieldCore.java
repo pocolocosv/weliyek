@@ -37,7 +37,7 @@ public abstract class WkSzPacketFieldCore<
                         D extends WkSzDefinition<?,?>, // Not needed directly but
                         // used nonetheless to simplify the declaration of PacketFieldCore<>
                         // elsewhere where ProtocolField<D> is used.
-                        PC extends WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?>,
+                        PC extends WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSzPacketOperation<S,?,?,? super D,? super K>,
                         OC extends PacketOperationSegmentCore<?,?,?,?,?,?,O,?,?,?,?>,
                         K extends WkSzPacketField<T,O,?>,
@@ -203,7 +203,7 @@ public abstract class WkSzPacketFieldCore<
         return  strB.toString();
       } else {
         strB.append(parentOperationCore().name());
-        strB.append(WkSzStructComponentCore.FIELD_NAME_SEPARATOR);
+        strB.append(WkSzStructComponentCoreBase.FIELD_NAME_SEPARATOR);
         strB.append(label());
         return strB.toString();
       }

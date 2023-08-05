@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
@@ -47,7 +47,7 @@ public class FilterBuilderTest
 
   private static Predicate<WkSzPacketReaderOperation<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().deserialized().get().intValue() == 400;
 
-  private static PacketStructure<
+  private static WkSzStruct<
                       MultipleLists,
                       OperationSettings,
                       MultipleListInputField,

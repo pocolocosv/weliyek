@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.basic.aggregator.sequence.SimplifiedDynamicCollectionDefinitionCore;
 import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionField;
@@ -77,7 +77,7 @@ public class PrimitivesGroupListField
                         OperationSettings,
                         PrimitivesGroupListField> fieldCore;
 
-    PrimitivesGroupListField(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    PrimitivesGroupListField(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
         fieldCore = new SimplifiedDynamicCollectionDefinitionCore<
                             PrimitivesGroupList, OperationSettings, PrimitivesGroupListFieldDeserializer, PrimitivesGroupListField, OperationSettings, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianInteger, PrimitivesGroup, OperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, OperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, PrimitivesGroupField, VariableLengthSettings, OperationSettings, PrimitivesGroupListField>(
                                 0, //minSize,

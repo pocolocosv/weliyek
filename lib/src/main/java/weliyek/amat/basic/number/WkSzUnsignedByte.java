@@ -20,10 +20,10 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -37,7 +37,7 @@ public class WkSzUnsignedByte
                       WkSzUnsignedByteReader>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       Integer,
                       OperationSettings,
                       WkSzUnsignedByte,
@@ -49,7 +49,7 @@ public class WkSzUnsignedByte
                       OutputBytestreamGeneralBase<?>,
                       WkSzUnsignedByte>
   newPacketStructure(String label) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       WkSzUnsignedByte::newCore,
                       CountingInputBytestream::new,
@@ -67,7 +67,7 @@ public class WkSzUnsignedByte
                       WkSzUnsignedByteWriter,
                       OutputBytestreamGeneralBase<?>,
                       WkSzUnsignedByte, ?>
-  newCore(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  newCore(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSzUnsignedByte(componentCore).definitionCore;
   }
 
@@ -77,7 +77,7 @@ public class WkSzUnsignedByte
                         WkSzUnsignedByteWriter,
                         WkSzUnsignedByte> definitionCore;
 
-  private WkSzUnsignedByte(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  private WkSzUnsignedByte(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSzSimplifiedNumberSerializerDefinitionCore<>(
                                   componentCore,
                                   (i,xs,axb,xkc,dc) -> new WkSzUnsignedByteReader(i,xs,axb,xkc,dc).operationCore,

@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStruct;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -54,7 +54,7 @@ public class MultipleListInputField
                         OperationSettings>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                         MultipleLists,
                         OperationSettings,
                         MultipleListInputField,
@@ -66,7 +66,7 @@ public class MultipleListInputField
                         OutputBytestreamGeneralBase<?>,
                         MultipleListInputField>
   newPacketStructure() {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                         "MULTILIST",
                         (pc) -> new MultipleListInputField(pc).definitionCore,
                         CountingInputBytestream::new,
@@ -101,7 +101,7 @@ public class MultipleListInputField
                       OperationSettings,
                       MultipleListInputField> definitionCore;
 
-  MultipleListInputField(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  MultipleListInputField(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
       definitionCore = new SimplifiedDynamicCollectionDefinitionCore<
                               MultipleLists, OperationSettings, MultipleListReading, MultipleListInputField, OperationSettings, MultipleListsWriting, MultipleListInputField, Short, OperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, OperationSettings, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, WkSzSignedBigEndianShort, PrimitivesGroupList, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, VariableLengthSettings, OperationSettings, MultipleListInputField>(
                                   0, // minSize

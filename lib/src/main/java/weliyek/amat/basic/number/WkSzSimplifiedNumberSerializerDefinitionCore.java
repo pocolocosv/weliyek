@@ -17,7 +17,7 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.BasicReadingResult;
 import weliyek.amat.base.input.BasicReadingRuntime;
@@ -76,7 +76,7 @@ public final class WkSzSimplifiedNumberSerializerDefinitionCore<
 {
 
   public WkSzSimplifiedNumberSerializerDefinitionCore(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
       T, OperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
       XO, InputBytestreamGeneralBase<?>> rxOpFactory,

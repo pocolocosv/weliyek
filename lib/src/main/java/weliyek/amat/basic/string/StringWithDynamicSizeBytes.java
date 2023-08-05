@@ -23,10 +23,10 @@ import java.util.Optional;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
@@ -65,7 +65,7 @@ public class StringWithDynamicSizeBytes<
                  ZYD extends WkSzNumberDefinition<ZX,?>,
                  ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
-  PacketStructure<String,
+  WkSzStruct<String,
                   OperationSettings,
                   StringWithDynamicSizeBytes<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   StringWithDynamicSizeBytesDeserializing<ZX,ZXD,ZXO>,
@@ -87,7 +87,7 @@ public class StringWithDynamicSizeBytes<
     ProtocolDefinitionFactory<
       ZX,OperationSettings,ZXD,ZXO,InputBytestreamGeneralBase<? extends InputBytestream>,OperationSettings,
       ZYD,ZYO,OutputBytestreamGeneralBase<? extends OutputBytestream>,ZD> sizeDefinitionFactory) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                   label,
                   (pc) -> StringWithDynamicSizeBytes.newCore(
                                 pc, bytesLabel, sizeLabel, arrayLabel, minLength, maxLength, defaultCharset, wrapperSizeGetter, sizeDefinitionFactory),
@@ -113,7 +113,7 @@ public class StringWithDynamicSizeBytes<
                         OutputBytestreamGeneralBase<?>,
                         StringWithDynamicSizeBytes<ZX,ZXD,ZXO,ZYD,ZYO,ZD>,?>
   newCore(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     String bytesLabel,
     String sizeLabel,
     String arrayLabel,
@@ -155,7 +155,7 @@ public class StringWithDynamicSizeBytes<
 
   private StringWithDynamicSizeBytes(
     Charset defaultCharset,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     String bytesLabel,
     String szieLabel,
     IntFunction<ZT> wrapperSizeGetter,

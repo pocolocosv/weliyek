@@ -23,12 +23,12 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
@@ -111,7 +111,7 @@ public class DynamicCollectionField<
                  ED extends WkSzDefinition<ET,EXO>,
                  VXS extends VariableLengthSettings,
                  VYS extends OperationSettings>
-  PacketStructure<
+  WkSzStruct<
                 T, XS,
                 DynamicCollectionField<
                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -163,7 +163,7 @@ public class DynamicCollectionField<
       elementSerializerSettingsFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                   dynamicCollectionLabel,
                   (pc) -> DynamicCollectionField.newCore(
                       minSize,
@@ -259,7 +259,7 @@ public class DynamicCollectionField<
       elementSerializerSettingsFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
-    WkSzStructComponentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
+    WkSzStructComponentCoreBase<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
     return new DynamicCollectionField<
                  T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                  ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>(
@@ -335,7 +335,7 @@ public class DynamicCollectionField<
       elementSerializerSettingsFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
-    WkSzStructComponentCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
+    WkSzStructComponentCoreBase<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
     this.definitionCore = new SimplifiedDynamicCollectionDefinitionCore<
                                   T, XS,
                                   DynamicCollectionFieldDeserializer<

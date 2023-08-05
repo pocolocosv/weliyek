@@ -65,7 +65,7 @@ public abstract class WkSzDefinitionCore<
     public static final char NAME_PREFIX = '<';
     public static final char NAME_SUFFIX = '>';
 
-    private final WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore;
+    private final WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore;
     private final Function<AXBC, XQC> rxRuntimeFactory;
     private final Function<AYBC, YQC> txRuntimeFactory;
     private final BiFunction<XO, T, XR> rxResultFactory;
@@ -81,7 +81,7 @@ public abstract class WkSzDefinitionCore<
     private final List<Consumer<WkSzPacketReaderOperationCore<T,? extends XS,?,?,?,? extends XO,?,? extends XD,?,?>>> onBeforeDeserializingObservers = new ArrayList<>();
 
     protected WkSzDefinitionCore(
-      WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+      WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
       Function<AXBC,XQC> rxRuntimeFactory,
       BiFunction<XO,T,XR> rxResultFactory,
       PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
@@ -174,7 +174,7 @@ public abstract class WkSzDefinitionCore<
       return this.definitionBody;
     }
 
-    public WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore() {
+    public WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore() {
       return this.componentCore;
     }
 

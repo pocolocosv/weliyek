@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.InputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -172,7 +172,7 @@ public class PrimitivesGroupField
                                 PrimitivesGroupField> dynStrSubcomponent;
 
   PrimitivesGroupField(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedAggregatorCore<
                                   PrimitivesGroup,
                                   OperationSettings,

@@ -20,10 +20,10 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -40,7 +40,7 @@ public class FixedSizeByteArray
                         FixedSizeByteArrayDeserializing>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       ByteArrayWrapper,
                       OperationSettings,
                       FixedSizeByteArray,
@@ -54,7 +54,7 @@ public class FixedSizeByteArray
   newPacketStructure(
     String label,
     int expectedLength) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       (pc) -> FixedSizeByteArray.newCore(expectedLength, pc),
                       CountingInputBytestream::new,
@@ -74,7 +74,7 @@ public class FixedSizeByteArray
                       FixedSizeByteArray,?>
   newCore(
     int expectedLength,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new FixedSizeByteArray(expectedLength, componentCore).definitionCore;
   }
 
@@ -89,7 +89,7 @@ public class FixedSizeByteArray
 
   private FixedSizeByteArray(
     int expectedLength,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
         ByteArrayWrapper,
         OperationSettings,

@@ -26,7 +26,7 @@ import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat2.protocol.filter.FieldTester;
 
-public abstract class WkSzStructComponentCore<
+public abstract class WkSzStructComponentCoreBase<
                         T,
                         XS extends OperationSettings,
                         XD extends WkSzDefinition<T,?>,
@@ -49,7 +49,7 @@ public abstract class WkSzStructComponentCore<
 
   private final WkSzStructComponent<D> body;
 
-  protected WkSzStructComponentCore(
+  protected WkSzStructComponentCoreBase(
     String label,
     ProtocolDefinitionFactory<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D> definitionFactory) {
     this.label = Objects.requireNonNull(label);
@@ -57,23 +57,23 @@ public abstract class WkSzStructComponentCore<
 
       @Override
       public String label() {
-        return WkSzStructComponentCore.this.label();
+        return WkSzStructComponentCoreBase.this.label();
       }
 
       @Override
       public D definition() {
-        return WkSzStructComponentCore.this.definition();
+        return WkSzStructComponentCoreBase.this.definition();
       }
 
       @Override
       public String name() {
-        return WkSzStructComponentCore.this.name();
+        return WkSzStructComponentCoreBase.this.name();
       }
 
       @Override
       public FieldTester<?, ?>
           makeTester(Predicate<WkSzPacketField<?, ?, ?>> test, String description) {
-        return WkSzStructComponentCore.this.makeTester(test, description);
+        return WkSzStructComponentCoreBase.this.makeTester(test, description);
       }
     };
     this.definitionCore = Objects.requireNonNull(definitionFactory).apply(this);
@@ -112,7 +112,7 @@ public abstract class WkSzStructComponentCore<
       return  strB.toString();
     } else {
       strB.append(parentDefinitionCore().name());
-      strB.append(WkSzStructComponentCore.FIELD_NAME_SEPARATOR);
+      strB.append(WkSzStructComponentCoreBase.FIELD_NAME_SEPARATOR);
       strB.append(label());
       return strB.toString();
     }

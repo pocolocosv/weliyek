@@ -20,10 +20,10 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -38,7 +38,7 @@ public class WkSzSignedLittleEndianShort
                         WkSzSignedLittleEndianShortReader>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       Short,
                       OperationSettings,
                       WkSzSignedLittleEndianShort,
@@ -50,7 +50,7 @@ public class WkSzSignedLittleEndianShort
                       OutputBytestreamGeneralBase<?>,
                       WkSzSignedLittleEndianShort>
   newPacketStructure(String label) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       WkSzSignedLittleEndianShort::newCore,
                       CountingInputBytestream::new,
@@ -68,7 +68,7 @@ public class WkSzSignedLittleEndianShort
                       WkSzSignedLittleEndianShortWriter,
                       OutputBytestreamGeneralBase<?>,
                       WkSzSignedLittleEndianShort,?>
-  newCore(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  newCore(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSzSignedLittleEndianShort(componentCore).definitionCore;
   }
 
@@ -79,7 +79,7 @@ public class WkSzSignedLittleEndianShort
                         WkSzSignedLittleEndianShort> definitionCore;
 
   public WkSzSignedLittleEndianShort(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSzSimplifiedNumberSerializerDefinitionCore<
                                   Short,
                                   WkSzSignedLittleEndianShortReader,

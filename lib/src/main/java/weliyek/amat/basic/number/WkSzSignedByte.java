@@ -20,10 +20,10 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -37,7 +37,7 @@ public class WkSzSignedByte
                         WkSzSignedByteReader>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       Byte,
                       OperationSettings,
                       WkSzSignedByte,
@@ -49,7 +49,7 @@ public class WkSzSignedByte
                       OutputBytestreamGeneralBase<?>,
                       WkSzSignedByte>
   newPacketStructure(String label) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       WkSzSignedByte::newCore,
                       CountingInputBytestream::new,
@@ -67,7 +67,7 @@ public class WkSzSignedByte
                       WkSzSignedByteWriter,
                       OutputBytestreamGeneralBase<?>,
                       WkSzSignedByte,?>
-  newCore(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  newCore(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSzSignedByte(componentCore).definitionCore;
   }
 
@@ -77,7 +77,7 @@ public class WkSzSignedByte
                         WkSzSignedByteWriter,
                         WkSzSignedByte> definitionCore;
 
-  private WkSzSignedByte(WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  private WkSzSignedByte(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSzSimplifiedNumberSerializerDefinitionCore<
                                 Byte,
                                 WkSzSignedByteReader,

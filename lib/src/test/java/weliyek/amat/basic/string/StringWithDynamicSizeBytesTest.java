@@ -32,7 +32,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.OutputBytestreamGeneralBase;
@@ -49,7 +49,7 @@ public class StringWithDynamicSizeBytesTest
 
   private static Charset defaultCharset = StandardCharsets.UTF_8;
 
-  private static PacketStructure<
+  private static WkSzStruct<
                           String,
                           OperationSettings,
                           StringWithDynamicSizeBytes<Integer,

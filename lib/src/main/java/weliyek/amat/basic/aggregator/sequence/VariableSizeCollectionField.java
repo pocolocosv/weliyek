@@ -22,12 +22,12 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
@@ -74,7 +74,7 @@ public final class VariableSizeCollectionField<
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,EXO>>
-  PacketStructure<
+  WkSzStruct<
                  T,
                  XS,
                  VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -99,7 +99,7 @@ public final class VariableSizeCollectionField<
     OperationSubsegmentSettingsFactory<
       VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     Function<List<ET>, T> collectionFactory) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                   label,
         (pc) -> VariableSizeCollectionField.newCore(
                     elementsLabel,
@@ -150,7 +150,7 @@ public final class VariableSizeCollectionField<
       ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
       EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new VariableSizeCollectionField<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
   }
 
@@ -169,7 +169,7 @@ public final class VariableSizeCollectionField<
   private VariableSizeCollectionField(
     int minSize,
     int maxSize,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     OperationSubsegmentSettingsFactory<

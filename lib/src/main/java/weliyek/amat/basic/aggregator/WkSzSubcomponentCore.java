@@ -23,7 +23,7 @@ import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
 import weliyek.amat.base.WkSzStructComponent;
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
@@ -68,7 +68,7 @@ public class WkSzSubcomponentCore<
   private final Optional<Predicate<? super YO>> txEnablingTest;
   private final ToIntFunction<? super YO> numberOfTxOperationsEvaluator;
   private final OperationSubsegmentSettingsFactory<YO, SYS> txSettingsFactory;
-  private final WkSzStructComponentCore<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> protocolfieldCore;
+  private final WkSzStructComponentCoreBase<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> protocolfieldCore;
   private final WkSzStructSubcomponent<XO, YO, SD> body;
   private final Disaggregator<ST, SYD, T, YO> disaggregator;
   private boolean deserializedRequiredByAggregator;
@@ -92,7 +92,7 @@ public class WkSzSubcomponentCore<
     this.txEnablingTest = Objects.requireNonNull(txEnablingTest);
     this.numberOfTxOperationsEvaluator = Objects.requireNonNull(numberOfTxOperationsEvaluator);
     this.txSettingsFactory = Objects.requireNonNull(txSettingsFactory);
-    this.protocolfieldCore = new SubcomponentSegmentCore<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD>(label, definitionFactory, parentDefinitionCore);
+    this.protocolfieldCore = new WkSzStructChildComponent<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD>(label, definitionFactory, parentDefinitionCore);
     this.disaggregator = Objects.requireNonNull(disaggregator);
     setFlagDeserializedAsRequiredByAggregator(deserializedRequiredByAggregator);
     this.body = new WkSzStructSubcomponent<XO, YO, SD>() {
@@ -213,7 +213,7 @@ public class WkSzSubcomponentCore<
     return this.body;
   }
 
-  public final WkSzStructComponentCore<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> protocolFieldCore() {
+  public final WkSzStructComponentCoreBase<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> protocolFieldCore() {
     return this.protocolfieldCore;
   }
 

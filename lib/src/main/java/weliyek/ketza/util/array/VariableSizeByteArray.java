@@ -20,10 +20,10 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.CountingInputBytestream;
 import weliyek.amat.base.input.InputBytestreamGeneralBase;
@@ -41,7 +41,7 @@ public class VariableSizeByteArray
                         VariableSizeByteArrayDeserializing>
 {
 
-  public static PacketStructure<
+  public static WkSzStruct<
                       ByteArrayWrapper,
                       VariableLengthSettings,
                       VariableSizeByteArray,
@@ -53,7 +53,7 @@ public class VariableSizeByteArray
                       OutputBytestreamGeneralBase<?>,
                       VariableSizeByteArray>
   newPacketStructure(String label, int minSize, int maxSize) {
-    return new PacketStructure<>(
+    return new WkSzStruct<>(
                       label,
                       (pc) -> VariableSizeByteArray.newCore(minSize, maxSize, pc),
                       CountingInputBytestream::new,
@@ -75,7 +75,7 @@ public class VariableSizeByteArray
   newCore(
     int minSize,
     int maxSize,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new VariableSizeByteArray(minSize, maxSize, componentCore).definitionCore;
   }
 
@@ -91,7 +91,7 @@ public class VariableSizeByteArray
   private VariableSizeByteArray(
     int minSize,
     int maxSize,
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
         ByteArrayWrapper,
         VariableLengthSettings,

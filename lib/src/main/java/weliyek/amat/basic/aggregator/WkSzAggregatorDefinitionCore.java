@@ -25,7 +25,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCore;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
@@ -92,7 +92,7 @@ public abstract class WkSzAggregatorDefinitionCore<
   private List<WkSzStructSubcomponent<?, ?, ?>> roRequiredSubfields;
 
   protected WkSzAggregatorDefinitionCore(
-    WkSzStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,

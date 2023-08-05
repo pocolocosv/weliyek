@@ -73,9 +73,4 @@ public interface WkSzDefinition<
 
   FieldTester<?,?> makeTester(Predicate<? super XO> test, String description);
 
-  @Override
-  default SegmentType type() {
-    return SegmentType.STRUCT;
-  }
-
 }

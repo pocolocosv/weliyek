@@ -35,7 +35,7 @@ public interface ProtocolDefinitionFactory<
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends OutputBytestreamGeneralBase<?>,
                         D extends WkSzDefinition<T,?>>
-    extends Function<WkSzStructComponentCore<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
+    extends Function<WkSzStructComponentCoreBase<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
                      WkSzDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
 {
 

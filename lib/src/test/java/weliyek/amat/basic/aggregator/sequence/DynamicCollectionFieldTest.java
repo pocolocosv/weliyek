@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.PacketStructure;
+import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.InputBytestream;
@@ -56,7 +56,7 @@ public class DynamicCollectionFieldTest
                                                                 Short.valueOf((short) 1),
                                                                 Short.valueOf((short) 2),
                                                                 Short.valueOf((short) 3));
-  private static PacketStructure<
+  private static WkSzStruct<
                           List<Short>,
                           OperationSettings,
                           DynamicCollectionField<List<Short>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, VariableLengthSettings, ?>,

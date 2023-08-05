@@ -25,7 +25,7 @@ public interface WkSzPacketReaderSegment extends WkSzPacketSegment
 
   @Override
   default Direction direction() {
-    return Direction.DESERIALIZING;
+    return Direction.READ;
   }
 
 }

@@ -30,14 +30,14 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzSerializerDefinitionCore<
                         T,

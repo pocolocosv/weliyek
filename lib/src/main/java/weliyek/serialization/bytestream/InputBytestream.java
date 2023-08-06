@@ -15,11 +15,9 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base.output;
+package weliyek.serialization.bytestream;
 
-import weliyek.amat.base.Bytestream;
-
-public interface OutputBytestream
+public interface InputBytestream
         extends Bytestream
 {
 

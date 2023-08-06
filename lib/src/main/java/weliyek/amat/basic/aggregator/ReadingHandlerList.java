@@ -26,7 +26,7 @@ import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class ReadingHandlerList<
                         X,

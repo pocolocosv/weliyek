@@ -24,6 +24,7 @@ import weliyek.amat.base.WkSzPacketFieldCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzPacketWriterFieldCore<
                         T,

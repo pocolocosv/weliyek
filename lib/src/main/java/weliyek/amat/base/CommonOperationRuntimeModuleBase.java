@@ -20,6 +20,9 @@ package weliyek.amat.base;
 import java.util.Objects;
 import java.util.function.Function;
 
+import weliyek.serialization.bytestream.Bytestream;
+import weliyek.serialization.bytestream.BytestreamCore;
+
 public abstract class CommonOperationRuntimeModuleBase<
                         AB extends Bytestream,
                         B extends Bytestream,

@@ -30,6 +30,7 @@ import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class WkSzPacketReaderSubfieldCore<
                         ST,

@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.function.Function;
 
 import weliyek.amat.base.CommonOperationRuntimeModuleBase;
+import weliyek.serialization.bytestream.InputBytestream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class BasicReadingRuntimeModule<
                         AB extends InputBytestream,

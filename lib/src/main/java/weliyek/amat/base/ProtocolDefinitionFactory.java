@@ -20,9 +20,9 @@ package weliyek.amat.base;
 import java.util.function.Function;
 
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public interface ProtocolDefinitionFactory<
                         T,

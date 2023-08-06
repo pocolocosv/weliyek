@@ -22,8 +22,6 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
@@ -32,6 +30,8 @@ import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.FixedSizeByteArray;
 import weliyek.ketza.util.array.FixedSizeByteArraySerializing;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzStringWithFixedLengthBytesWriter
     implements WkSzStringFromBytesWriter<

@@ -21,8 +21,6 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WkSzPacketWriterField;
@@ -35,6 +33,8 @@ import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionField;
 import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionFieldSerializer;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShort;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortWriter;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class MultipleListsWriting
         implements DynamicCollectionFieldSerializer<

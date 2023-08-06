@@ -33,12 +33,8 @@ import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.InputBytestream;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.output.Disaggregator;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
@@ -49,6 +45,10 @@ import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.serialization.bytestream.InputBytestream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class CollectionAndElementsFieldDefinitionCore<
                         T extends Collection<ET>,

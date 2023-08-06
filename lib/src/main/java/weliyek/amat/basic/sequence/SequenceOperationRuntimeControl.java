@@ -17,10 +17,10 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.Bytestream;
-import weliyek.amat.base.BytestreamCore;
 import weliyek.amat.base.CommonOperationRuntime;
 import weliyek.amat.base.CommonOperationRuntimeControl;
+import weliyek.serialization.bytestream.Bytestream;
+import weliyek.serialization.bytestream.BytestreamCore;
 
 public interface SequenceOperationRuntimeControl<
                         B extends Bytestream,

@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base.input;
+package weliyek.serialization.bytestream;
 
 import java.io.InputStream;
 import java.util.function.Function;

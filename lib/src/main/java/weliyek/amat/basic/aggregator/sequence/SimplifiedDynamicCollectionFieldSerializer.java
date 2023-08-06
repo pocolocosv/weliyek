@@ -21,8 +21,6 @@ import java.util.Collection;
 
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
@@ -31,6 +29,8 @@ import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.DynamicSequenceSerializingCore;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class SimplifiedDynamicCollectionFieldSerializer<
                         T extends Collection<ET>,

@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.ketza.base.Completable;
 import weliyek.ketza.base.Initializable;
+import weliyek.serialization.bytestream.BytestreamCore;
 
 public abstract class PacketOperationSegmentCore<
                         S extends OperationSettings,

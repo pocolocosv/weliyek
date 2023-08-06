@@ -26,9 +26,9 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.SubcomponentSegment;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 /**
  * Defines a struct component that has other components as a parent. Only the sibling 

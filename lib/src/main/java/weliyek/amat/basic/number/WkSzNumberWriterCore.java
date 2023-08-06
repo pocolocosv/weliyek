@@ -18,12 +18,12 @@
 package weliyek.amat.basic.number;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.serializer.WkSzSerializerWriterCore;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzNumberWriterCore<
                         T extends Number,

@@ -19,11 +19,11 @@ package weliyek.amat.basic.sequence;
 
 import java.io.IOException;
 
-import weliyek.amat.base.output.BasicOutputBytestream;
 import weliyek.amat.base.output.BasicWritingRuntimeModule;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.ketza.util.DoesNothingRunnable;
+import weliyek.serialization.bytestream.BasicOutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class BasicSequenceWritingRuntime
     implements SequenceWritingRuntimeControl<

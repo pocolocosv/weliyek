@@ -29,12 +29,6 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
-import weliyek.amat.base.input.CountingInputBytestream;
-import weliyek.amat.base.input.InputBytestream;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.output.CountingOutputBytestream;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
@@ -45,6 +39,12 @@ import weliyek.ketza.util.array.DynamicByteArray;
 import weliyek.ketza.util.array.DynamicByteArrayDeserializing;
 import weliyek.ketza.util.array.DynamicByteArraySerialzing;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.serialization.bytestream.CountingInputBytestream;
+import weliyek.serialization.bytestream.CountingOutputBytestream;
+import weliyek.serialization.bytestream.InputBytestream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class StringWithDynamicSizeBytes<
                         ZT extends Number,

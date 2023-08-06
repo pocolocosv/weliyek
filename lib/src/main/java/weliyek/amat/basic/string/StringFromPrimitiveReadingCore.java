@@ -23,11 +23,11 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
-import weliyek.amat.base.input.InputBytestream;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.ketza.util.array.WkSzPrimitiveArrayDefinition;
+import weliyek.serialization.bytestream.InputBytestream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.ketza.util.array.PrimitiveArrayReading;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 

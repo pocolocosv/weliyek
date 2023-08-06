@@ -27,10 +27,6 @@ import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
-import weliyek.amat.base.input.CountingInputBytestream;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.output.CountingOutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.basic.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.ketza.util.array.ByteArrayWrapper;
@@ -38,6 +34,10 @@ import weliyek.ketza.util.array.FixedSizeByteArray;
 import weliyek.ketza.util.array.FixedSizeByteArrayDeserializing;
 import weliyek.ketza.util.array.FixedSizeByteArraySerializing;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.serialization.bytestream.CountingInputBytestream;
+import weliyek.serialization.bytestream.CountingOutputBytestream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 /**
  * Packet structure and data for handling fixed length bytes array. The serialization

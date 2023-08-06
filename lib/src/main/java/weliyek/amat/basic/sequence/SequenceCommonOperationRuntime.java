@@ -17,8 +17,8 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.Bytestream;
 import weliyek.amat.base.CommonOperationRuntime;
+import weliyek.serialization.bytestream.Bytestream;
 
 public interface SequenceCommonOperationRuntime<B extends Bytestream>
     extends SequenceOnlyOperationRuntime,

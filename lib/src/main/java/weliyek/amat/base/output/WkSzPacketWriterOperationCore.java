@@ -23,6 +23,7 @@ import java.util.Optional;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.WkSzPacketOperation;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketOperationSegmentCore;
 

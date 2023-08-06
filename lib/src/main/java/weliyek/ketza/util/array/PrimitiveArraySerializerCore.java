@@ -25,9 +25,7 @@ import java.util.function.ToIntBiFunction;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
@@ -38,6 +36,8 @@ import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 import weliyek.amat.basic.serializer.WkSzSerializerDefinitionCore;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class PrimitiveArraySerializerCore<
                         T extends PrimitiveArrayWrapper<?, ?>,

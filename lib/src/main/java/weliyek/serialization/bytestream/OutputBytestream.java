@@ -15,35 +15,10 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base.input;
+package weliyek.serialization.bytestream;
 
-import java.io.InputStream;
-
-import org.apache.commons.io.input.CountingInputStream;
-
-public final class CountingInputBytestream
-        extends InputstreamWrapperBytestream<
-                        InputStream,
-                        CountingInputStream,
-                        InputBytestream>
+public interface OutputBytestream
+        extends Bytestream
 {
-
-  public CountingInputBytestream(InputStream sourceInputstream) {
-    super(
-        () -> sourceInputstream,
-        CountingInputStream::new,
-        false,
-        0);
-  }
-
-  @Override
-  public long getTotalPacketProcessedBytes() {
-    return this.iostream().getByteCount();
-  }
-
-  @Override
-  public InputBytestream body() {
-    return this;
-  }
 
 }

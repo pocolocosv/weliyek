@@ -19,6 +19,7 @@ package weliyek.amat.base.input;
 
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.amat.base.OperationFactory;
 import weliyek.amat.base.OperationSettings;
 

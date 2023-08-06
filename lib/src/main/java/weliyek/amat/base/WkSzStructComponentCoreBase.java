@@ -21,10 +21,10 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzStructComponentCoreBase<
                         T,

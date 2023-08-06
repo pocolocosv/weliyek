@@ -15,41 +15,31 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base.input;
+package weliyek.serialization.bytestream;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Objects;
 
-public final class BasicInputBytestream
-    extends InputBytestreamGeneralBase<InputBytestream>
+public final class BasicOutputBytestream
+    extends OutputBytestreamGeneralBase<OutputBytestream>
 {
 
-    private final InputBytestreamGeneralBase<?> parent;
+    private final OutputBytestreamGeneralBase<?> parent;
 
-    public BasicInputBytestream(InputBytestreamGeneralBase<?> parentInputBytestream) {
-      super(parentInputBytestream.getTotalPacketProcessedBytes());
-      this.parent = Objects.requireNonNull(parentInputBytestream);
+    public BasicOutputBytestream(OutputBytestreamGeneralBase<?> parentOutputBytestream) {
+      super(Objects.requireNonNull(parentOutputBytestream).getTotalPacketProcessedBytes());
+      this.parent = parentOutputBytestream;
+    }
+
+    @Override
+    void writeByte(int b) throws IOException {
+      this.parent.writeByte(b);
     }
 
     @Override
     public long getTotalPacketProcessedBytes() {
-      return this.parent.getTotalPacketProcessedBytes();
-    }
-
-    @Override
-    int readByte() throws IOException {
-      return this.parent.readByte();
-    }
-
-    @Override
-    long skipBytes(long num) throws IOException {
-      return this.parent.skipBytes(num);
-    }
-
-    @Override
-    protected InputStream iostream() {
-      return this.parent.iostream();
+        return parent.getTotalPacketProcessedBytes();
     }
 
     @Override
@@ -58,7 +48,12 @@ public final class BasicInputBytestream
     }
 
     @Override
-    public InputBytestream body() {
+    protected OutputStream iostream() {
+      return this.parent.iostream();
+    }
+
+    @Override
+    public OutputBytestream body() {
       return this;
     }
 

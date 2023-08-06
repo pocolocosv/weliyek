@@ -28,11 +28,9 @@ import java.util.function.Predicate;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.input.ReadingRuntimeControl;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
@@ -41,6 +39,8 @@ import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.amat2.protocol.filter.PacketInputFieldOperationPredicate;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzDefinitionCore<
                         T,

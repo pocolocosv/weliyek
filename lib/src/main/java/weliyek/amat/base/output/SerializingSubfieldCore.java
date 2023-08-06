@@ -23,6 +23,7 @@ import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class SerializingSubfieldCore<
                         T,

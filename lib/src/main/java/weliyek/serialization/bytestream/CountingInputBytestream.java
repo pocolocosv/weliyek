@@ -15,26 +15,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base.output;
+package weliyek.serialization.bytestream;
 
-import java.io.OutputStream;
+import java.io.InputStream;
 
-import org.apache.commons.io.output.CountingOutputStream;
+import org.apache.commons.io.input.CountingInputStream;
 
-public class CountingOutputBytestream
-        extends OutputStreamWrapperBytestream<
-                        OutputStream,
-                        CountingOutputStream,
-                        OutputBytestream>
+public final class CountingInputBytestream
+        extends InputstreamWrapperBytestream<
+                        InputStream,
+                        CountingInputStream,
+                        InputBytestream>
 {
 
-  public CountingOutputBytestream(OutputStream output) {
+  public CountingInputBytestream(InputStream sourceInputstream) {
     super(
-        () -> output,
-        CountingOutputStream::new,
-        false, // Normally we should close the counting stream but it will
-               // simply call the wrapped output stream which was supplied
-               // and hence not in our responsability to close.
+        () -> sourceInputstream,
+        CountingInputStream::new,
+        false,
         0);
   }
 
@@ -44,7 +42,7 @@ public class CountingOutputBytestream
   }
 
   @Override
-  public OutputBytestream body() {
+  public InputBytestream body() {
     return this;
   }
 

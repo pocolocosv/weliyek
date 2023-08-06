@@ -28,6 +28,7 @@ import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzPacketWriterSubfieldCore<
                         ST,

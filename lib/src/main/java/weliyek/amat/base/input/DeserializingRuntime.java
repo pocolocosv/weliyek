@@ -19,6 +19,7 @@ package weliyek.amat.base.input;
 
 import weliyek.amat.base.CommonOperationRuntime;
 import weliyek.amat.base.ReadingData;
+import weliyek.serialization.bytestream.InputBytestream;
 
 public interface DeserializingRuntime<B extends InputBytestream>
         extends ReadingData,

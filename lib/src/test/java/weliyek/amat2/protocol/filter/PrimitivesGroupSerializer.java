@@ -21,8 +21,6 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WkSzPacketWriterField;
@@ -44,6 +42,8 @@ import weliyek.amat.basic.string.StringWithDynamicSizeBytes;
 import weliyek.amat.basic.string.StringWithDynamicSizeBytesSerializing;
 import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytes;
 import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytesWriter;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class PrimitivesGroupSerializer
         implements WkSzAggregatorWriter<

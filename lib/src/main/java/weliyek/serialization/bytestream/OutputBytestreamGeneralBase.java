@@ -15,12 +15,23 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base.input;
+package weliyek.serialization.bytestream;
 
-import weliyek.amat.base.Bytestream;
+import java.io.IOException;
+import java.io.OutputStream;
 
-public interface InputBytestream
-        extends Bytestream
+public abstract class OutputBytestreamGeneralBase<B extends OutputBytestream>
+    extends BytestreamCore<OutputStream, B>
+    implements OutputBytestream
 {
+
+  protected OutputBytestreamGeneralBase(long startPos) {
+    super(startPos);
+  }
+
+  abstract void writeByte(int b) throws IOException;
+
+  @Override
+  protected abstract OutputStream iostream();
 
 }

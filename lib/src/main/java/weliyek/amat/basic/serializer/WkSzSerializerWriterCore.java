@@ -24,7 +24,6 @@ import java.util.Optional;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
@@ -32,6 +31,7 @@ import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzSerializerWriterCore<
                         T,

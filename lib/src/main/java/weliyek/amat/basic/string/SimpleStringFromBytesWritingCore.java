@@ -18,13 +18,13 @@
 package weliyek.amat.basic.string;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public class SimpleStringFromBytesWritingCore<

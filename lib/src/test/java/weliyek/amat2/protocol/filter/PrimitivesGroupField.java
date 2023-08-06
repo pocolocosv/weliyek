@@ -26,10 +26,6 @@ import java.util.function.Predicate;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzStructSubcomponent;
-import weliyek.amat.base.input.InputBytestream;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.basic.aggregator.SimplifiedAggregatorCore;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
@@ -52,6 +48,10 @@ import weliyek.amat.basic.string.StringWithDynamicSizeBytesSerializing;
 import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytes;
 import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytesReader;
 import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytesWriter;
+import weliyek.serialization.bytestream.InputBytestream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class PrimitivesGroupField
         implements WkSzAggregatorDefinition<

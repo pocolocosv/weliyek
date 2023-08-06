@@ -28,6 +28,7 @@ import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.Filter;
 import weliyek.amat2.protocol.filter.FilterResults;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class WkSzInputPacketCore<
                         T,

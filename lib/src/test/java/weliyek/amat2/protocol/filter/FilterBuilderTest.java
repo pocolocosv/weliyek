@@ -28,15 +28,15 @@ import org.junit.Test;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedBigEndianLong;
 import weliyek.amat.basic.number.WkSzSignedByte;
 import weliyek.ketza.util.KetzaByteOutputStream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class FilterBuilderTest
 {

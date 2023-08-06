@@ -21,9 +21,9 @@ import java.io.IOException;
 import java.util.function.Function;
 
 import weliyek.amat.base.output.BasicWritingRuntimeModule;
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.ketza.util.DoesNothingRunnable;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class StandardSequenceSerializingRuntimeControl<
                         AB extends OutputBytestreamGeneralBase<?>,

@@ -17,9 +17,9 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.output.OutputBytestream;
-import weliyek.amat.base.output.OutputBytestreamGeneralBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.serialization.bytestream.OutputBytestream;
+import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public interface SequenceWritingRuntimeControl<
                         B extends OutputBytestream,

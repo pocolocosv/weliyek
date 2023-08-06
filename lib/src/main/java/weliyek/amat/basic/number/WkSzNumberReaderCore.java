@@ -21,9 +21,9 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.basic.serializer.SerializerReadingCore;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public abstract class WkSzNumberReaderCore<
                         X extends Number,

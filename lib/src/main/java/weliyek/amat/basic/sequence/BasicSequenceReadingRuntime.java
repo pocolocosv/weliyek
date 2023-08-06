@@ -19,12 +19,12 @@ package weliyek.amat.basic.sequence;
 
 import java.io.IOException;
 
-import weliyek.amat.base.input.BasicInputBytestream;
 import weliyek.amat.base.input.BasicReadingRuntimeModule;
-import weliyek.amat.base.input.InputBytestream;
-import weliyek.amat.base.input.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.SequenceReadingRuntime;
 import weliyek.ketza.util.DoesNothingRunnable;
+import weliyek.serialization.bytestream.BasicInputBytestream;
+import weliyek.serialization.bytestream.InputBytestream;
+import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class BasicSequenceReadingRuntime
     implements SequenceReadingRuntimeControl<

@@ -19,6 +19,7 @@ package weliyek.amat.base.output;
 
 import weliyek.amat.base.CommonOperationRuntime;
 import weliyek.amat.base.WritingData;
+import weliyek.serialization.bytestream.OutputBytestream;
 
 public interface SerializingRuntime<B extends OutputBytestream>
         extends WritingData,

@@ -20,43 +20,40 @@ package weliyek.amat.base.input;
 import java.io.IOException;
 
 import weliyek.ketza.util.DoesNothingRunnable;
-import weliyek.serialization.bytestream.BasicInputBytestream;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class BasicReadingRuntime
         implements ReadingRuntimeControl<
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
-                        DeserializingRuntime<InputBytestream>>
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>>
 {
 
   private final BasicReadingRuntimeModule<
-                    InputBytestreamGeneralBase<?>,
-                    InputBytestream,
-                    InputBytestreamGeneralBase<InputBytestream>,
-                    DeserializingRuntime<InputBytestream>> core;
+                    WkSzInputBytestreamBase<?>,
+                    WkSzInputBytestream,
+                    WkSzInputBytestreamBase<WkSzInputBytestream>,
+                    DeserializingRuntime<WkSzInputBytestream>> core;
 
   public BasicReadingRuntime(
-    InputBytestreamGeneralBase<?> parentBytestream) {
+    WkSzInputBytestreamBase<?> parentBytestream) {
     this.core = new BasicReadingRuntimeModule<
-                      InputBytestreamGeneralBase<?>,
-                      InputBytestream,
-                      InputBytestreamGeneralBase<InputBytestream>,
-                      DeserializingRuntime<InputBytestream>>(
+                      WkSzInputBytestreamBase<?>,
+                      WkSzInputBytestream,
+                      WkSzInputBytestreamBase<WkSzInputBytestream>,
+                      DeserializingRuntime<WkSzInputBytestream>>(
                           this,
                           parentBytestream,
-                          BasicInputBytestream::new,
+                          WkSzBasicInputBytestream::new,
                           DoesNothingRunnable.INSTANCE);
   }
 
   @Override
-  public InputBytestream bytestream() {
+  public WkSzInputBytestream bytestream() {
     return this.core.bytestream();
   }
 
   @Override
-  public DeserializingRuntime<InputBytestream> asRuntime() {
+  public DeserializingRuntime<WkSzInputBytestream> asRuntime() {
     return this.core.asRuntime();
   }
 
@@ -76,7 +73,7 @@ public final class BasicReadingRuntime
   }
 
   @Override
-  public InputBytestreamGeneralBase<InputBytestream> bytestreamCore() {
+  public WkSzInputBytestreamBase<WkSzInputBytestream> bytestreamCore() {
     return this.core.bytestreamCore();
   }
 

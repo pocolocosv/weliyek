@@ -30,7 +30,6 @@ import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class WkSzPacketReaderSubfieldCore<
                         ST,
@@ -38,7 +37,7 @@ public class WkSzPacketReaderSubfieldCore<
                         SXD extends WkSzDefinition<ST,?>,
                         SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>,
                         T,
-                        XBC extends InputBytestreamGeneralBase<?>,
+                        XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<T,?,? extends DeserializingRuntime<?>,?,XD>>
     extends WkSzPacketSubfieldCore<

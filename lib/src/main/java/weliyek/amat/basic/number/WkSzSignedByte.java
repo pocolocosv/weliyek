@@ -25,11 +25,11 @@ import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzSignedByte
     implements WkSzNumberDefinition<
@@ -42,18 +42,18 @@ public class WkSzSignedByte
                       OperationSettings,
                       WkSzSignedByte,
                       WkSzSignedByteReader,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,
                       WkSzSignedByte,
                       WkSzSignedByteWriter,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       WkSzSignedByte>
   newPacketStructure(String label) {
     return new WkSzStruct<>(
                       label,
                       WkSzSignedByte::newCore,
-                      CountingInputBytestream::new,
-                      CountingOutputBytestream::new);
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
   }
 
   public static WkSzDefinitionCore<
@@ -61,11 +61,11 @@ public class WkSzSignedByte
                       OperationSettings,?,?,
                       WkSzSignedByte,
                       WkSzSignedByteReader,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,?,?,
                       WkSzSignedByte,
                       WkSzSignedByteWriter,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       WkSzSignedByte,?>
   newCore(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSzSignedByte(componentCore).definitionCore;

@@ -28,7 +28,6 @@ import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzPacketWriterSubfieldCore<
                         ST,
@@ -36,7 +35,7 @@ public class WkSzPacketWriterSubfieldCore<
                         SYD extends WkSzDefinition<ST,?>,
                         SYO extends WkSzPacketWriterOperation<ST,SYS,?,?,SYD>,
                         T,
-                        YBC extends OutputBytestreamGeneralBase<?>,
+                        YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<T,?,? extends SerializingRuntime<?>,?,YD>>
     extends WkSzPacketSubfieldCore<

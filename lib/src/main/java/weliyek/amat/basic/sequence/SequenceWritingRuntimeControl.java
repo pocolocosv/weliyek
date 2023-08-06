@@ -17,13 +17,13 @@
  */
 package weliyek.amat.basic.sequence;
 
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public interface SequenceWritingRuntimeControl<
-                        B extends OutputBytestream,
-                        BC extends OutputBytestreamGeneralBase<? extends B>,
+                        B extends WkSzOutputBytestream,
+                        BC extends WkSzOutputBytestreamBase<? extends B>,
                         Q extends SequenceWritingRuntime<B>>
     extends WritingRuntimeControl<B, BC, Q>,
             SequenceWritingRuntime<B>,

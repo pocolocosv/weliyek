@@ -25,18 +25,18 @@ import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArrayDeserializing;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class StringWithVariableLengthBytesDeserializing
     implements WkSzStringFromBytesReader<
                         VariableLengthSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<String>,
                         StringWithVariableLengthBytes,
                         VariableSizeByteArray,
@@ -54,7 +54,7 @@ public class StringWithVariableLengthBytesDeserializing
   StringWithVariableLengthBytesDeserializing(
     int index,
     VariableLengthSettings settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       String,?,StringWithVariableLengthBytes,?,?,?> deserializingfieldCore,
     SimplifiedStringFromBytesCore<
@@ -94,7 +94,7 @@ public class StringWithVariableLengthBytesDeserializing
   }
 
   @Override
-  public DeserializingRuntime<InputBytestream> dashboard() {
+  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

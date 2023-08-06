@@ -26,17 +26,17 @@ import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.FixedSizeByteArray;
 import weliyek.ketza.util.array.FixedSizeByteArraySerializing;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzStringWithFixedLengthBytesWriter
     implements WkSzStringFromBytesWriter<
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         WkSzStringWithFixedLengthBytes,
                         FixedSizeByteArray,
@@ -55,7 +55,7 @@ public class WkSzStringWithFixedLengthBytesWriter
     int index,
     String serializable,
     OperationSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       String,?,WkSzStringWithFixedLengthBytes,?,?,?> serializingfieldCore,
     SimplifiedStringFromBytesCore<
@@ -96,7 +96,7 @@ public class WkSzStringWithFixedLengthBytesWriter
   }
 
   @Override
-  public SerializingRuntime<OutputBytestream> dashboard() {
+  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

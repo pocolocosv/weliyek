@@ -27,6 +27,10 @@ import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.ketza.util.array.ByteArrayWrapper;
@@ -34,10 +38,6 @@ import weliyek.ketza.util.array.FixedSizeByteArray;
 import weliyek.ketza.util.array.FixedSizeByteArrayDeserializing;
 import weliyek.ketza.util.array.FixedSizeByteArraySerializing;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 /**
  * Packet structure and data for handling fixed length bytes array. The serialization
@@ -57,11 +57,11 @@ public class WkSzStringWithFixedLengthBytes
                       OperationSettings,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesReader,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesWriter,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       WkSzStringWithFixedLengthBytes>
   newPacketStructure(
     String label,
@@ -72,8 +72,8 @@ public class WkSzStringWithFixedLengthBytes
                       label,
                       (pc) -> WkSzStringWithFixedLengthBytes.newCore(
                                     bytesLabel, expectedSize, defaultCharset, pc),
-                      CountingInputBytestream::new,
-                      CountingOutputBytestream::new);
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
   }
 
   public static WkSzDefinitionCore<
@@ -81,11 +81,11 @@ public class WkSzStringWithFixedLengthBytes
                       OperationSettings,?,?,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesReader,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,?,?,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesWriter,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       WkSzStringWithFixedLengthBytes,?>
   newCore(
     String bytesLabel,

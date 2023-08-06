@@ -21,9 +21,9 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.serializer.WkSzSerializerWriterCore;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzNumberWriterCore<
                         T extends Number,
@@ -34,7 +34,7 @@ public abstract class WkSzNumberWriterCore<
                         YO extends WkSzNumberWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSzNumberWriterCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSzNumberDefinition<T,?>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSzNumberDefinitionCore<T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
     extends WkSzSerializerWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
     implements WkSzNumberWriter<T, YS, YQ, YR, YD>

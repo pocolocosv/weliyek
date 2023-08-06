@@ -21,14 +21,14 @@ import java.io.IOException;
 import java.util.function.Function;
 
 import weliyek.amat.base.output.BasicWritingRuntimeModule;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.ketza.util.DoesNothingRunnable;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class StandardSequenceSerializingRuntimeControl<
-                        AB extends OutputBytestreamGeneralBase<?>,
-                        B extends OutputBytestream,
-                        BC extends OutputBytestreamGeneralBase<B>>
+                        AB extends WkSzOutputBytestreamBase<?>,
+                        B extends WkSzOutputBytestream,
+                        BC extends WkSzOutputBytestreamBase<B>>
     implements SequenceWritingRuntimeControl<
                         B, BC,
                         SequenceWritingRuntime<B>>

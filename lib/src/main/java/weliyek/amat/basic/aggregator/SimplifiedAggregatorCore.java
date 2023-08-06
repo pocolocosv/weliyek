@@ -29,16 +29,16 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.BasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class SimplifiedAggregatorCore<
                         T,
@@ -47,7 +47,7 @@ public class SimplifiedAggregatorCore<
                         XO extends WkSzAggregatorReader<
                                         T,
                                         XS,
-                                        DeserializingRuntime<InputBytestream>,
+                                        DeserializingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<T>,
                                         XD>,
                         YS extends OperationSettings,
@@ -55,32 +55,32 @@ public class SimplifiedAggregatorCore<
                         YO extends WkSzAggregatorWriter<
                                         T,
                                         YS,
-                                        SerializingRuntime<OutputBytestream>,
+                                        SerializingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD>,
                         D extends WkSzAggregatorDefinition<T,XO>>
     extends WkSzAggregatorDefinitionCore<
                         T,
                         XS,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<?>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<?>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         XD, XO,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         YS,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<?>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<?>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YD, YO,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         D,
                         SimplifiedAggregatorCore<T,XS,XD,XO,YS,YD,YO,D>>
 {
@@ -90,8 +90,8 @@ public class SimplifiedAggregatorCore<
   final Consumer<? super SimplifiedAggregatorDeserializingCore<T,XS,XD,XO>> onSkippedDeserializing;
 
   public SimplifiedAggregatorCore(
-    PacketInputFieldReadingFactory<T, XS, XD, SimplifiedAggregatorCore<T, XS, XD, XO, YS, YD, YO, D>, XO, InputBytestreamGeneralBase<?>> deserializerFactory,
-    PacketOutputFieldWritingFactory<T, YS, YD, SimplifiedAggregatorCore<T, XS, XD, XO, YS, YD, YO, D>, YO, OutputBytestreamGeneralBase<?>> serializerFactory,
+    PacketInputFieldReadingFactory<T, XS, XD, SimplifiedAggregatorCore<T, XS, XD, XO, YS, YD, YO, D>, XO, WkSzInputBytestreamBase<?>> deserializerFactory,
+    PacketOutputFieldWritingFactory<T, YS, YD, SimplifiedAggregatorCore<T, XS, XD, XO, YS, YD, YO, D>, YO, WkSzOutputBytestreamBase<?>> serializerFactory,
     WkSzStructComponentCoreBase<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore,
     Consumer<? super SimplifiedAggregatorDeserializingCore<T,XS,XD,XO>> onInitializing,
     Function<? super SimplifiedAggregatorDeserializingCore<T,XS,XD,XO>, T> onFullDeserializing,

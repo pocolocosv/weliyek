@@ -31,13 +31,13 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat2.protocol.ProtocolDefinitionException;
 import weliyek.ketza.util.KetzaByteOutputStream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class ByteArrayWrapperTest
 {
@@ -75,7 +75,7 @@ public class ByteArrayWrapperTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSzStruct<ByteArrayWrapper, OperationSettings, FixedSizeByteArray, FixedSizeByteArrayDeserializing, InputBytestreamGeneralBase<?>, OperationSettings, FixedSizeByteArray, FixedSizeByteArraySerializing, OutputBytestreamGeneralBase<?>, FixedSizeByteArray>
+      WkSzStruct<ByteArrayWrapper, OperationSettings, FixedSizeByteArray, FixedSizeByteArrayDeserializing, WkSzInputBytestreamBase<?>, OperationSettings, FixedSizeByteArray, FixedSizeByteArraySerializing, WkSzOutputBytestreamBase<?>, FixedSizeByteArray>
         fixeSizeByteArray = FixedSizeByteArray.newPacketStructure("FIXED_BYTEARRAY", sequenceLenght);
       logger.info(fixeSizeByteArray + " output protocol created");
 
@@ -134,7 +134,7 @@ public class ByteArrayWrapperTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSzStruct<ByteArrayWrapper, VariableLengthSettings, VariableSizeByteArray, VariableSizeByteArrayDeserializing, InputBytestreamGeneralBase<?>, OperationSettings, VariableSizeByteArray, VariableSizeByteArraySerializing, OutputBytestreamGeneralBase<?>, VariableSizeByteArray>
+      WkSzStruct<ByteArrayWrapper, VariableLengthSettings, VariableSizeByteArray, VariableSizeByteArrayDeserializing, WkSzInputBytestreamBase<?>, OperationSettings, VariableSizeByteArray, VariableSizeByteArraySerializing, WkSzOutputBytestreamBase<?>, VariableSizeByteArray>
         outputProtocol = VariableSizeByteArray.newPacketStructure("DYNAMIC_BYTEARRAY", 0, 100);
 
       WkSzOutputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>

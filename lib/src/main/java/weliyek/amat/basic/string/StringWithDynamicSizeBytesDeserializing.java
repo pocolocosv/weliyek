@@ -26,14 +26,14 @@ import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.DynamicByteArray;
 import weliyek.ketza.util.array.DynamicByteArrayDeserializing;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class StringWithDynamicSizeBytesDeserializing<
                         ZT extends Number,
@@ -41,7 +41,7 @@ public class StringWithDynamicSizeBytesDeserializing<
                         ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>>
     implements WkSzStringFromBytesReader<
                         OperationSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<String>,
                         StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
@@ -60,7 +60,7 @@ public class StringWithDynamicSizeBytesDeserializing<
   StringWithDynamicSizeBytesDeserializing(
     int index,
     OperationSettings settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<String,?,StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?>
       deserializingfieldCore,
     SimplifiedStringFromBytesCore<
@@ -104,7 +104,7 @@ public class StringWithDynamicSizeBytesDeserializing<
   }
 
   @Override
-  public DeserializingRuntime<InputBytestream> dashboard() {
+  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

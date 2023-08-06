@@ -22,8 +22,8 @@ import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.serializer.SerializerReadingCore;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public abstract class WkSzNumberReaderCore<
                         X extends Number,
@@ -34,7 +34,7 @@ public abstract class WkSzNumberReaderCore<
                         XO extends WkSzNumberReader<X,XS,XQ,XR,XD>,
                         XOC extends WkSzNumberReaderCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSzNumberDefinition<X,XO>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSzNumberDefinitionCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
     extends SerializerReadingCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
     implements WkSzNumberReader<X, XS, XQ, XR, XD>

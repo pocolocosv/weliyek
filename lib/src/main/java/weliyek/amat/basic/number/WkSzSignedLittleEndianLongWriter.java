@@ -25,15 +25,15 @@ import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class WkSzSignedLittleEndianLongWriter
         implements WkSzNumberWriter<
                         Long,
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         WkSzSignedLittleEndianLong>
 {
@@ -47,7 +47,7 @@ public final class WkSzSignedLittleEndianLongWriter
     int index,
     Long serializable,
     OperationSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       Long,?,WkSzSignedLittleEndianLong,?,?,?> serializingfieldCore,
     WkSzSimplifiedNumberSerializerDefinitionCore<
@@ -68,7 +68,7 @@ public final class WkSzSignedLittleEndianLongWriter
   }
 
   @Override
-  public SerializingRuntime<OutputBytestream> dashboard() {
+  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

@@ -25,23 +25,23 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.ketza.util.array.ByteArrayReading;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 
 public abstract class StringFromBytesReadingCore<
                         XS extends OperationSettings,
-                        XB extends InputBytestream,
-                        XBC extends InputBytestreamGeneralBase<? extends XB>,
+                        XB extends WkSzInputBytestream,
+                        XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends DeserializingRuntime<XB>,
                         XQC extends ReadingRuntimeControl<XB,XBC,XQ>,
                         XR extends DeserializingResult<String>,
                         XO extends WkSzStringFromBytesReader<XS,XQ,XR,XD,SXD,SXO>,
                         XOC extends StringFromBytesReadingCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
                         XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         SXS extends OperationSettings,
                         SXO extends ByteArrayReading<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,

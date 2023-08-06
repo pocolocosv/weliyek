@@ -28,11 +28,11 @@ import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class DynamicCollectionFieldSerializerImpl<
                         T extends Collection<ET>,
@@ -50,7 +50,7 @@ public class DynamicCollectionFieldSerializerImpl<
                         VYS extends OperationSettings>
     implements DynamicCollectionFieldSerializer<
                         T, YS,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         DynamicCollectionField<
                           T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
@@ -61,7 +61,7 @@ public class DynamicCollectionFieldSerializerImpl<
                         T, YS,
                         DynamicCollectionFieldSerializer<
                           T, YS,
-                          SerializingRuntime<OutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>,
                           SerializingResult,
                           DynamicCollectionField<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
@@ -73,13 +73,13 @@ public class DynamicCollectionFieldSerializerImpl<
   DynamicCollectionFieldSerializerImpl(
     int index,
     T serializable, YS settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       T,?,DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
       ?,?,?> packetfieldCore,
     SimplifiedDynamicCollectionDefinitionCore<
       T,?,?,?,YS,
-      DynamicCollectionFieldSerializer<T,YS,SerializingRuntime<OutputBytestream>,SerializingResult,
+      DynamicCollectionFieldSerializer<T,YS,SerializingRuntime<WkSzOutputBytestream>,SerializingResult,
         DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
         ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
       DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
@@ -88,7 +88,7 @@ public class DynamicCollectionFieldSerializerImpl<
                                 T, YS,
                                 DynamicCollectionFieldSerializer<
                                   T, YS,
-                                  SerializingRuntime<OutputBytestream>,
+                                  SerializingRuntime<WkSzOutputBytestream>,
                                   SerializingResult,
                                   DynamicCollectionField<
                                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
@@ -130,7 +130,7 @@ public class DynamicCollectionFieldSerializerImpl<
   }
 
   @Override
-  public SerializingRuntime<OutputBytestream> dashboard() {
+  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

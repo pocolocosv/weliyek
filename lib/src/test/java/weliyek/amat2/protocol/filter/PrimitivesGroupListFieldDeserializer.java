@@ -23,6 +23,8 @@ import java.util.Optional;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
@@ -34,14 +36,12 @@ import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionFieldDeseria
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianIntegerReader;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class PrimitivesGroupListFieldDeserializer
     implements DynamicCollectionFieldDeserializer<
                         PrimitivesGroupList,
                         OperationSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<PrimitivesGroupList>,
                         PrimitivesGroupListField,
                         Integer,
@@ -72,7 +72,7 @@ public class PrimitivesGroupListFieldDeserializer
     PrimitivesGroupListFieldDeserializer(
       int index,
       OperationSettings settings,
-      InputBytestreamGeneralBase<?> parentBytestream,
+      WkSzInputBytestreamBase<?> parentBytestream,
       WkSzPacketReaderFieldCore<PrimitivesGroupList, ?, PrimitivesGroupListField, ?, ?, ?>
         packetfieldCore,
       SimplifiedDynamicCollectionDefinitionCore<PrimitivesGroupList, OperationSettings, PrimitivesGroupListFieldDeserializer, PrimitivesGroupListField, ?, ?, ?, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, PrimitivesGroup, OperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, ?, ?, ?, ?, VariableLengthSettings, ?, ?>
@@ -106,7 +106,7 @@ public class PrimitivesGroupListFieldDeserializer
     }
 
     @Override
-    public DeserializingRuntime<InputBytestream> dashboard() {
+    public DeserializingRuntime<WkSzInputBytestream> dashboard() {
       return this.readingCore.dashboard();
     }
 

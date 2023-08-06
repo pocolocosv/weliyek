@@ -20,12 +20,12 @@ package weliyek.ketza.util.array;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 import weliyek.amat.basic.serializer.WkSzSerializerWriterCore;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class PrimitiveArraySerializerWritingCore<
                         Y extends PrimitiveArrayWrapperBase<?,?>,
@@ -36,7 +36,7 @@ public abstract class PrimitiveArraySerializerWritingCore<
                         YO extends WkSzPrimitiveArraySerializerWriter<Y,YS,YQ,YR,YD>,
                         YOC extends PrimitiveArraySerializerWritingCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends PrimitiveArraySerializerDefinition<Y,?>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends PrimitiveArraySerializerCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
         extends WkSzSerializerWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
         implements WkSzPrimitiveArraySerializerWriter<Y, YS, YQ, YR, YD>

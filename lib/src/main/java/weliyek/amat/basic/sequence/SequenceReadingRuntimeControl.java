@@ -19,12 +19,12 @@ package weliyek.amat.basic.sequence;
 
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.base.input.SequenceReadingRuntime;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public interface SequenceReadingRuntimeControl<
-                        B extends InputBytestream,
-                        BC extends InputBytestreamGeneralBase<? extends B>,
+                        B extends WkSzInputBytestream,
+                        BC extends WkSzInputBytestreamBase<? extends B>,
                         Q extends SequenceReadingRuntime<B>>
     extends ReadingRuntimeControl<B, BC, Q>,
             SequenceReadingRuntime<B>,

@@ -24,13 +24,13 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.SubfieldHandlerList;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class ReadingHandlerList<
                         X,
-                        XBC extends InputBytestreamGeneralBase<?>,
+                        XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkSzAggregatorDefinition<X,?>,
                         XO extends WkSzAggregatorReader<X,?,? extends DeserializingRuntime<?>,?,XD>>
         extends SubfieldHandlerList<

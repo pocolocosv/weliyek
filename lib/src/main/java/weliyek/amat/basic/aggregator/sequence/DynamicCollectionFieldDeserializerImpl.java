@@ -28,12 +28,12 @@ import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class DynamicCollectionFieldDeserializerImpl<
                         T extends Collection<ET>,
@@ -49,7 +49,7 @@ public class DynamicCollectionFieldDeserializerImpl<
                         VXS extends VariableLengthSettings>
     implements DynamicCollectionFieldDeserializer<
                         T, XS,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<T>,
                         DynamicCollectionField<
                           T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -60,7 +60,7 @@ public class DynamicCollectionFieldDeserializerImpl<
                         T, XS,
                         DynamicCollectionFieldDeserializer<
                           T, XS,
-                          DeserializingRuntime<InputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>,
                           DeserializingResult<T>,
                           DynamicCollectionField<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -72,14 +72,14 @@ public class DynamicCollectionFieldDeserializerImpl<
   DynamicCollectionFieldDeserializerImpl(
     int index,
     XS settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       T,?,DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
       ?,?,?> packetfieldCore,
     SimplifiedDynamicCollectionDefinitionCore<
       T,XS,
       DynamicCollectionFieldDeserializer<
-        T,XS,DeserializingRuntime<InputBytestream>,DeserializingResult<T>,
+        T,XS,DeserializingRuntime<WkSzInputBytestream>,DeserializingResult<T>,
         DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
         ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
       DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -88,7 +88,7 @@ public class DynamicCollectionFieldDeserializerImpl<
                                 T, XS,
                                 DynamicCollectionFieldDeserializer<
                                 T, XS,
-                                DeserializingRuntime<InputBytestream>,
+                                DeserializingRuntime<WkSzInputBytestream>,
                                 DeserializingResult<T>,
                                 DynamicCollectionField<
                                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -129,7 +129,7 @@ public class DynamicCollectionFieldDeserializerImpl<
   }
 
   @Override
-  public DeserializingRuntime<InputBytestream> dashboard() {
+  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

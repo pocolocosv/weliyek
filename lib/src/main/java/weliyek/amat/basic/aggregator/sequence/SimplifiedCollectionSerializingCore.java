@@ -24,10 +24,10 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class SimplifiedCollectionSerializingCore<
                         T extends Collection<ET>,
@@ -36,7 +36,7 @@ public final class SimplifiedCollectionSerializingCore<
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,
                                         YS,
-                                        SequenceWritingRuntime<OutputBytestream>,
+                                        SequenceWritingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD,
                                         ET,EYD,EYO>,
@@ -47,18 +47,18 @@ public final class SimplifiedCollectionSerializingCore<
     extends CollectionAndElementsFieldSerializerCore<
                         T,
                         YS,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                        SequenceWritingRuntime<OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        SequenceWritingRuntime<WkSzOutputBytestream>,
                         SequenceWritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SequenceWritingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SequenceWritingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YD,
                         YO,
                         SimplifiedCollectionSerializingCore<T,YS,YD,YO,ET,EYS,EYD,EYO>,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         ET,
                         EYS,
                         EYD,
@@ -72,7 +72,7 @@ public final class SimplifiedCollectionSerializingCore<
     int index,
     T serializable,
     YS settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     SimplifiedCollectionDefinitionCore<
       T,?,?,?,YS,YD,YO,ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore,

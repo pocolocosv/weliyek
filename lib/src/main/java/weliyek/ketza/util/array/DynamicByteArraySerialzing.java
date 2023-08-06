@@ -25,11 +25,11 @@ import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class DynamicByteArraySerialzing<
                         ZT extends Number,
@@ -37,13 +37,13 @@ public class DynamicByteArraySerialzing<
                         ZYD extends WkSzNumberDefinition<ZT,?>>
     implements ByteArrayWriting<
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>>,
                DynamicPrimitiveArraySerializing<
                         ByteArrayWrapper,
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         ZT, ZYO, ZYD,
@@ -63,7 +63,7 @@ public class DynamicByteArraySerialzing<
     int index,
     ByteArrayWrapper serializable,
     OperationSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       ByteArrayWrapper,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?> serializingfieldCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
@@ -108,7 +108,7 @@ public class DynamicByteArraySerialzing<
   }
 
   @Override
-  public SerializingRuntime<OutputBytestream> dashboard() {
+  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

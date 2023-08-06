@@ -20,34 +20,31 @@ package weliyek.amat.base.output;
 import java.io.IOException;
 
 import weliyek.ketza.util.DoesNothingRunnable;
-import weliyek.serialization.bytestream.BasicOutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class BasicWritingRuntime
         implements WritingRuntimeControl<
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                        SerializingRuntime<OutputBytestream>>
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>>
 {
 
   private final BasicWritingRuntimeModule<
-                    OutputBytestreamGeneralBase<?>,
-                    OutputBytestream,
-                    OutputBytestreamGeneralBase<OutputBytestream>,
-                    SerializingRuntime<OutputBytestream>> core;
+                    WkSzOutputBytestreamBase<?>,
+                    WkSzOutputBytestream,
+                    WkSzOutputBytestreamBase<WkSzOutputBytestream>,
+                    SerializingRuntime<WkSzOutputBytestream>> core;
 
-    public BasicWritingRuntime(OutputBytestreamGeneralBase<?> parentBytestream) {
-        this.core = new BasicWritingRuntimeModule<>(this, parentBytestream, BasicOutputBytestream::new, DoesNothingRunnable.INSTANCE);
+    public BasicWritingRuntime(WkSzOutputBytestreamBase<?> parentBytestream) {
+        this.core = new BasicWritingRuntimeModule<>(this, parentBytestream, WkSzBasicOutputBytestream::new, DoesNothingRunnable.INSTANCE);
     }
 
     @Override
-    public OutputBytestream bytestream() {
+    public WkSzOutputBytestream bytestream() {
       return this.core.bytestream();
     }
 
     @Override
-    public SerializingRuntime<OutputBytestream> asRuntime() {
+    public SerializingRuntime<WkSzOutputBytestream> asRuntime() {
       return core.asRuntime();
     }
 
@@ -62,7 +59,7 @@ public class BasicWritingRuntime
     }
 
     @Override
-    public OutputBytestreamGeneralBase<OutputBytestream> bytestreamCore() {
+    public WkSzOutputBytestreamBase<WkSzOutputBytestream> bytestreamCore() {
       return core.bytestreamCore();
     }
 

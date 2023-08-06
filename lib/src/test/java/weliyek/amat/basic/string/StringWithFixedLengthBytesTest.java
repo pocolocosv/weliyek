@@ -31,11 +31,11 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.ketza.util.KetzaByteOutputStream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class StringWithFixedLengthBytesTest
 {
@@ -49,11 +49,11 @@ public class StringWithFixedLengthBytesTest
                         OperationSettings,
                         WkSzStringWithFixedLengthBytes,
                         WkSzStringWithFixedLengthBytesReader,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,
                         WkSzStringWithFixedLengthBytes,
                         WkSzStringWithFixedLengthBytesWriter,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         WkSzStringWithFixedLengthBytes> stringWithFixedSizeBytes;
 
     @Before

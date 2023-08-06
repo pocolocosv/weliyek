@@ -28,10 +28,10 @@ import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzSerializerWriterCore<
                         T,
@@ -42,7 +42,7 @@ public abstract class WkSzSerializerWriterCore<
                         YO extends WkSzPacketWriterOperation<T,YS,YQ,YR,YD>,
                         YOC extends WkSzSerializerWriterCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSzDefinition<T,?>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSzSerializerDefinitionCore<T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
     extends WkSzPacketWriterOperationCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
 {

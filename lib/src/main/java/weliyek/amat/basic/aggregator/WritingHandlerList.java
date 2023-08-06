@@ -24,13 +24,13 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.SubfieldHandlerList;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WritingHandlerList<
                         Y,
-                        YBC extends OutputBytestreamGeneralBase<?>,
+                        YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkSzAggregatorDefinition<Y,?>,
                         YO extends WkSzAggregatorWriter<Y,?,? extends SerializingRuntime<?>,?,YD>>
         extends SubfieldHandlerList<

@@ -25,12 +25,12 @@ import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.aggregator.sequence.SequenceFixedSizeParameter;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class FixedSizeByteArray
     implements WkSzByteArrayDefinition<
@@ -45,11 +45,11 @@ public class FixedSizeByteArray
                       OperationSettings,
                       FixedSizeByteArray,
                       FixedSizeByteArrayDeserializing,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,
                       FixedSizeByteArray,
                       FixedSizeByteArraySerializing,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       FixedSizeByteArray>
   newPacketStructure(
     String label,
@@ -57,8 +57,8 @@ public class FixedSizeByteArray
     return new WkSzStruct<>(
                       label,
                       (pc) -> FixedSizeByteArray.newCore(expectedLength, pc),
-                      CountingInputBytestream::new,
-                      CountingOutputBytestream::new);
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
   }
 
   public static WkSzDefinitionCore<
@@ -66,11 +66,11 @@ public class FixedSizeByteArray
                       OperationSettings,?,?,
                       FixedSizeByteArray,
                       FixedSizeByteArrayDeserializing,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,?,?,
                       FixedSizeByteArray,
                       FixedSizeByteArraySerializing,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       FixedSizeByteArray,?>
   newCore(
     int expectedLength,

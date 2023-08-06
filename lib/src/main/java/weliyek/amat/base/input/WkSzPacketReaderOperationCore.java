@@ -23,7 +23,6 @@ import java.util.function.BiFunction;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.WkSzPacketOperation;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketOperationSegmentCore;
 
@@ -36,7 +35,7 @@ public abstract class WkSzPacketReaderOperationCore<
                         XO extends WkSzPacketReaderOperation<T,XS,XQ,XR,XD>,
                         XOC extends WkSzPacketReaderOperationCore<T,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSzDefinition<T,?>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSzDefinitionCore<
                                       T,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,DC>>
         extends PacketOperationSegmentCore<

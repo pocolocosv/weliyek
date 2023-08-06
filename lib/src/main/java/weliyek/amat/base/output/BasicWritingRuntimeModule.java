@@ -21,13 +21,11 @@ import java.io.IOException;
 import java.util.function.Function;
 
 import weliyek.amat.base.CommonOperationRuntimeModuleBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class BasicWritingRuntimeModule<
-                        AB extends OutputBytestream,
-                        B extends OutputBytestream,
-                        BC extends OutputBytestreamGeneralBase<B>,
+                        AB extends WkSzOutputBytestream,
+                        B extends WkSzOutputBytestream,
+                        BC extends WkSzOutputBytestreamBase<B>,
                         Q extends SerializingRuntime<B>>
     extends CommonOperationRuntimeModuleBase<AB, B, BC, Q>
     implements WritingRuntimeControl<B, BC, Q>

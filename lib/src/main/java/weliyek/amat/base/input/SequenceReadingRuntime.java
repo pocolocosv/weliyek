@@ -18,9 +18,8 @@
 package weliyek.amat.base.input;
 
 import weliyek.amat.basic.sequence.SequenceCommonOperationRuntime;
-import weliyek.serialization.bytestream.InputBytestream;
 
-public interface SequenceReadingRuntime<B extends InputBytestream>
+public interface SequenceReadingRuntime<B extends WkSzInputBytestream>
     extends SequenceCommonOperationRuntime<B>,
             DeserializingRuntime<B>
 {

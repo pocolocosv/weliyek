@@ -32,20 +32,20 @@ import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.sequence.BasicSequenceReadingRuntime;
 import weliyek.amat.basic.sequence.BasicSequenceWritingRuntime;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class SimplifiedCollectionDefinitionCore<
                         T extends Collection<ET>,
@@ -54,7 +54,7 @@ public class SimplifiedCollectionDefinitionCore<
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
-                                        SequenceReadingRuntime<InputBytestream>,
+                                        SequenceReadingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<T>,
                                         XD,
                                         ET,EXD,EXO>,
@@ -63,7 +63,7 @@ public class SimplifiedCollectionDefinitionCore<
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,
                                         YS,
-                                        SequenceWritingRuntime<OutputBytestream>,
+                                        SequenceWritingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD,
                                         ET,EYD,EYO>,
@@ -79,27 +79,27 @@ public class SimplifiedCollectionDefinitionCore<
     extends CollectionAndElementsFieldDefinitionCore<
                         T,
                         XS,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                         SequenceReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          SequenceReadingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          SequenceReadingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         XD,
                         XO,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         YS,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         SequenceWritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SequenceWritingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SequenceWritingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YD,
                         YO,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         ET,
                         EXS,
                         EXD,
@@ -118,17 +118,17 @@ public class SimplifiedCollectionDefinitionCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
       T,XS,XD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
-      XO,InputBytestreamGeneralBase<?>> readingOpFactory,
+      XO,WkSzInputBytestreamBase<?>> readingOpFactory,
     PacketOutputFieldWritingFactory<
       T,YS,YD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
-      YO,OutputBytestreamGeneralBase<?>> writingOpFactory,
+      YO,WkSzOutputBytestreamBase<?>> writingOpFactory,
     String elementsLabel,
     ToIntFunction<? super XO> elementsDeserializingNumOfOps,
     OperationSubsegmentSettingsFactory<XO, EXS> elementsRxSettingsFactory,
     OperationSubsegmentSettingsFactory<YO, EYS> elementsTxSettingsFactory,
     ProtocolDefinitionFactory<
-      ET,EXS,EXD,EXO,InputBytestreamGeneralBase<? extends InputBytestream>,EYS,EYD,EYO,
-      OutputBytestreamGeneralBase<? extends OutputBytestream>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,EYS,EYD,EYO,
+      WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
     D definitionBody,
     Class<T> serializableClass) {

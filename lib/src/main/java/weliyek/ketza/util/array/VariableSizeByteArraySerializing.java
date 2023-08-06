@@ -24,21 +24,21 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class VariableSizeByteArraySerializing
     implements ByteArrayWriting<
                         OperationSettings,
-                        SequenceWritingRuntime<OutputBytestream>,
+                        SequenceWritingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         VariableSizeByteArray>,
                VariableSizePrimitiveArraySerializerWriting<
                         ByteArrayWrapper,
                         OperationSettings,
-                        SequenceWritingRuntime<OutputBytestream>,
+                        SequenceWritingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         VariableSizeByteArray>
 {
@@ -53,7 +53,7 @@ public class VariableSizeByteArraySerializing
     int index,
     ByteArrayWrapper serializable,
     OperationSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       ByteArrayWrapper,?,VariableSizeByteArray,?,?,?> serializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
@@ -84,7 +84,7 @@ public class VariableSizeByteArraySerializing
   }
 
   @Override
-  public SequenceWritingRuntime<OutputBytestream> dashboard() {
+  public SequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

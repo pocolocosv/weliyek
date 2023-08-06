@@ -19,7 +19,6 @@ package weliyek.amat.base.output;
 
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.amat.base.OperationFactory;
 import weliyek.amat.base.OperationSettings;
 
@@ -30,7 +29,7 @@ public interface PacketOutputFieldWritingFactory<
                         YD extends WkSzDefinition<T,?>,
                         DC extends WkSzDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
-                        YAB extends OutputBytestreamGeneralBase<?>>
+                        YAB extends WkSzOutputBytestreamBase<?>>
     extends OperationFactory
 {
 

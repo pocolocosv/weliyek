@@ -19,11 +19,11 @@ package weliyek.amat.basic.aggregator;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public class SimplifiedAggregatorDeserializingCore<
                         X,
@@ -32,31 +32,31 @@ public class SimplifiedAggregatorDeserializingCore<
                         XO extends WkSzAggregatorReader<
                                         X,
                                         XS,
-                                        DeserializingRuntime<InputBytestream>,
+                                        DeserializingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<X>,
                                         XD>>
     extends WkSzAggregatorReaderCore<
                         X,
                         XS,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
-                        DeserializingRuntime<InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<X>,
                         XD,
                         XO,
                         SimplifiedAggregatorDeserializingCore<X,XS,XD,XO>,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         SimplifiedAggregatorCore<X,XS,XD,XO,?,?,?,? extends XD>>
 {
 
   public SimplifiedAggregatorDeserializingCore(
     int index,
     XS settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<X,?,XD,?,?,?> deserializingFieldCore,
     SimplifiedAggregatorCore<X,XS,XD,XO,?,?,?,? extends XD> definitionCore,
     XO body) {

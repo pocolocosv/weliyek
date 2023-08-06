@@ -25,10 +25,10 @@ import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class SimplifiedCollectionDeserializingCore<
                         T extends Collection<ET>,
@@ -37,7 +37,7 @@ public final class SimplifiedCollectionDeserializingCore<
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
-                                        SequenceReadingRuntime<InputBytestream>,
+                                        SequenceReadingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<T>,
                                         XD,
                                         ET,EXD,EXO>,
@@ -48,18 +48,18 @@ public final class SimplifiedCollectionDeserializingCore<
     extends CollectionAndElementsFieldDeserializerCore<
                         T,
                         XS,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
-                        SequenceReadingRuntime<InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                        SequenceReadingRuntime<WkSzInputBytestream>,
                         SequenceReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          SequenceReadingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          SequenceReadingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         XD,
                         XO,
                         SimplifiedCollectionDeserializingCore<T,XS,XD,XO,ET,EXS,EXD,EXO>,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         ET,
                         EXS,
                         EXD,
@@ -70,7 +70,7 @@ public final class SimplifiedCollectionDeserializingCore<
   SimplifiedCollectionDeserializingCore(
     int index,
     XS settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<T,?,XD,?,?,?> packetfieldCore,
     SimplifiedCollectionDefinitionCore<
       T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore,

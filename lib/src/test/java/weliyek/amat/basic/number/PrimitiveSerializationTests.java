@@ -33,11 +33,11 @@ import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.WkSzPacketReaderField;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.ketza.util.KetzaByteOutputStream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PrimitiveSerializationTests {
@@ -49,7 +49,7 @@ public class PrimitiveSerializationTests {
     Byte b = Byte.valueOf((byte) 0xFF);
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSzStruct<Byte, OperationSettings, WkSzSignedByte, WkSzSignedByteReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzSignedByte, WkSzSignedByteWriter, OutputBytestreamGeneralBase<?>, WkSzSignedByte>
+    WkSzStruct<Byte, OperationSettings, WkSzSignedByte, WkSzSignedByteReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzSignedByte, WkSzSignedByteWriter, WkSzOutputBytestreamBase<?>, WkSzSignedByte>
       signedBytePacketStructure = WkSzSignedByte.newPacketStructure("SINGLE_SINT8");
 
     logger.info(signedBytePacketStructure.name() + " created");
@@ -97,7 +97,7 @@ public class PrimitiveSerializationTests {
     Integer b = Integer.valueOf(0xFF);
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSzStruct<Integer, OperationSettings, WkSzUnsignedByte, WkSzUnsignedByteReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzUnsignedByte, WkSzUnsignedByteWriter, OutputBytestreamGeneralBase<?>, WkSzUnsignedByte>
+    WkSzStruct<Integer, OperationSettings, WkSzUnsignedByte, WkSzUnsignedByteReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzUnsignedByte, WkSzUnsignedByteWriter, WkSzOutputBytestreamBase<?>, WkSzUnsignedByte>
       unsignedBytePacketStructure = WkSzUnsignedByte.newPacketStructure("SINGLE_UINT8");
 
     WkSzOutputPacket<Integer, WkSzUnsignedByte, WkSzUnsignedByteWriter>
@@ -143,7 +143,7 @@ public class PrimitiveSerializationTests {
     Short s = Short.valueOf((short) 0xFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, OutputBytestreamGeneralBase<?>, WkSzSignedBigEndianShort>
+    WkSzStruct<Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzOutputBytestreamBase<?>, WkSzSignedBigEndianShort>
       signedBigEndianShort = WkSzSignedBigEndianShort.newPacketStructure("SINGLE_SINT16BE");
 
     logger.info(signedBigEndianShort.name() + " created");
@@ -184,7 +184,7 @@ public class PrimitiveSerializationTests {
     Short s = Short.valueOf((short) 0xFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Short, OperationSettings, WkSzSignedLittleEndianShort, WkSzSignedLittleEndianShortReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzSignedLittleEndianShort, WkSzSignedLittleEndianShortWriter, OutputBytestreamGeneralBase<?>, WkSzSignedLittleEndianShort>
+    WkSzStruct<Short, OperationSettings, WkSzSignedLittleEndianShort, WkSzSignedLittleEndianShortReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzSignedLittleEndianShort, WkSzSignedLittleEndianShortWriter, WkSzOutputBytestreamBase<?>, WkSzSignedLittleEndianShort>
       signedLittleEndianShort = WkSzSignedLittleEndianShort.newPacketStructure("SINGLE_SINT16LE");
     logger.info(signedLittleEndianShort.name() + " created");
 
@@ -224,7 +224,7 @@ public class PrimitiveSerializationTests {
     Integer s = Integer.valueOf(0xFABC);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Integer, OperationSettings, WkSzUnsignedBigEndianShort, WkSzUnsignedBigEndianShortReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzUnsignedBigEndianShort, WkSzUnsignedBigEndianShortWriter, OutputBytestreamGeneralBase<?>, WkSzUnsignedBigEndianShort>
+    WkSzStruct<Integer, OperationSettings, WkSzUnsignedBigEndianShort, WkSzUnsignedBigEndianShortReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzUnsignedBigEndianShort, WkSzUnsignedBigEndianShortWriter, WkSzOutputBytestreamBase<?>, WkSzUnsignedBigEndianShort>
       unsignedBigEndianShort = WkSzUnsignedBigEndianShort.newPacketStructure("SINGLE_UINT16BE");
     logger.info(unsignedBigEndianShort.name() + " created");
 
@@ -264,7 +264,7 @@ public class PrimitiveSerializationTests {
     Integer s = Integer.valueOf(0x0000FABC);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Integer, OperationSettings, WkSzUnsignedLittleEndianShort, WkSzUnsignedLittleEndianShortReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzUnsignedLittleEndianShort, WkSzUnsignedLittleEndianShortWriter, OutputBytestreamGeneralBase<?>, WkSzUnsignedLittleEndianShort>
+    WkSzStruct<Integer, OperationSettings, WkSzUnsignedLittleEndianShort, WkSzUnsignedLittleEndianShortReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzUnsignedLittleEndianShort, WkSzUnsignedLittleEndianShortWriter, WkSzOutputBytestreamBase<?>, WkSzUnsignedLittleEndianShort>
       shortOutputProtocol = WkSzUnsignedLittleEndianShort.newPacketStructure("SINGLE_UINT16LE");
     logger.info(shortOutputProtocol.name() + " created");
 
@@ -305,7 +305,7 @@ public class PrimitiveSerializationTests {
     Integer i = Integer.valueOf(0xFFFFFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, OutputBytestreamGeneralBase<?>, WkSzSignedBigEndianInteger>
+    WkSzStruct<Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzOutputBytestreamBase<?>, WkSzSignedBigEndianInteger>
       signedBigEndianInt = WkSzSignedBigEndianInteger.newPacketStructure("SINGLE_SINT32BE");
     logger.info(signedBigEndianInt.name() + " created");
 
@@ -345,7 +345,7 @@ public class PrimitiveSerializationTests {
     Integer i = Integer.valueOf(0xFFFFFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Integer, OperationSettings, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianIntegerReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianIntegerWriter, OutputBytestreamGeneralBase<?>, WkSzSignedLittleEndianInteger>
+    WkSzStruct<Integer, OperationSettings, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianIntegerReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianIntegerWriter, WkSzOutputBytestreamBase<?>, WkSzSignedLittleEndianInteger>
       signedLittleEndianInt = WkSzSignedLittleEndianInteger.newPacketStructure("SINGLE_SINT32LE");
     logger.info(signedLittleEndianInt.name() + " created");
 
@@ -385,7 +385,7 @@ public class PrimitiveSerializationTests {
     Long i = Long.valueOf(0xFFAB_CDEF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Long, OperationSettings, WkSzUnsignedBigEndianInteger, WkSzUnsignedBigEndianIntegerReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzUnsignedBigEndianInteger, WkSzUnsignedBigEndianIntegerWriter, OutputBytestreamGeneralBase<?>, WkSzUnsignedBigEndianInteger>
+    WkSzStruct<Long, OperationSettings, WkSzUnsignedBigEndianInteger, WkSzUnsignedBigEndianIntegerReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzUnsignedBigEndianInteger, WkSzUnsignedBigEndianIntegerWriter, WkSzOutputBytestreamBase<?>, WkSzUnsignedBigEndianInteger>
       unsignedBigEndianInt = WkSzUnsignedBigEndianInteger.newPacketStructure("SINGLE_UINT32BE");
     logger.info(unsignedBigEndianInt.name() + " created");
 
@@ -431,7 +431,7 @@ public class PrimitiveSerializationTests {
     Long i = Long.valueOf(0xFFABCDEF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Long, OperationSettings, WkSzUnsignedLittleEndianInteger, WkSzUnsignedLittleEndianIntegerReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzUnsignedLittleEndianInteger, WkSzUnsignedLittleEndianIntegerWriter, OutputBytestreamGeneralBase<?>, WkSzUnsignedLittleEndianInteger>
+    WkSzStruct<Long, OperationSettings, WkSzUnsignedLittleEndianInteger, WkSzUnsignedLittleEndianIntegerReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzUnsignedLittleEndianInteger, WkSzUnsignedLittleEndianIntegerWriter, WkSzOutputBytestreamBase<?>, WkSzUnsignedLittleEndianInteger>
       unsignedLittleEndianInt = WkSzUnsignedLittleEndianInteger.newPacketStructure("SINGLE_UINT32LE");
     logger.info(unsignedLittleEndianInt.name() + " created");
 
@@ -476,7 +476,7 @@ public class PrimitiveSerializationTests {
     Long l = Long.valueOf(0x01234567_89ABCDEFL);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Long, OperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongWriter, OutputBytestreamGeneralBase<?>, WkSzSignedBigEndianLong>
+    WkSzStruct<Long, OperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongWriter, WkSzOutputBytestreamBase<?>, WkSzSignedBigEndianLong>
       signedBigEndianLong = WkSzSignedBigEndianLong.newPacketStructure("SINGLE_SINT64BE");
     logger.info(signedBigEndianLong.name() + " created");
 
@@ -524,7 +524,7 @@ public class PrimitiveSerializationTests {
     Long l = Long.valueOf(0x01234567_89ABCDEFL);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzStruct<Long, OperationSettings, WkSzSignedLittleEndianLong, WkSzSignedLittleEndianLongReader, InputBytestreamGeneralBase<?>, OperationSettings, WkSzSignedLittleEndianLong, WkSzSignedLittleEndianLongWriter, OutputBytestreamGeneralBase<?>, WkSzSignedLittleEndianLong>
+    WkSzStruct<Long, OperationSettings, WkSzSignedLittleEndianLong, WkSzSignedLittleEndianLongReader, WkSzInputBytestreamBase<?>, OperationSettings, WkSzSignedLittleEndianLong, WkSzSignedLittleEndianLongWriter, WkSzOutputBytestreamBase<?>, WkSzSignedLittleEndianLong>
       signedLittleEndianLong = WkSzSignedLittleEndianLong.newPacketStructure("SINGLE_SINT64LE");
     logger.info(signedLittleEndianLong.name() + " created");
 

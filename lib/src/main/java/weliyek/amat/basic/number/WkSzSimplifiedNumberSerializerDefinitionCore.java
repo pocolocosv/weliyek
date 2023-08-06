@@ -25,31 +25,31 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.BasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.serializer.InputDeserializerFactory;
 import weliyek.amat.basic.serializer.OutputSerializerFactory;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class WkSzSimplifiedNumberSerializerDefinitionCore<
                         T extends Number,
                         XO extends WkSzNumberReader<
                                       T,
                                       OperationSettings,
-                                      DeserializingRuntime<InputBytestream>,
+                                      DeserializingRuntime<WkSzInputBytestream>,
                                       DeserializingResult<T>,
                                       D>,
                         YO extends WkSzNumberWriter<
                                       T,
                                       OperationSettings,
-                                      SerializingRuntime<OutputBytestream>,
+                                      SerializingRuntime<WkSzOutputBytestream>,
                                       SerializingResult,
                                       D>,
                         D extends WkSzNumberDefinition<T,XO>>
@@ -57,20 +57,20 @@ public final class WkSzSimplifiedNumberSerializerDefinitionCore<
                         T,
                         OperationSettings,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         D, XO,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         D, YO,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         D,
                         WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>>
 {
@@ -79,16 +79,16 @@ public final class WkSzSimplifiedNumberSerializerDefinitionCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
       T, OperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
-      XO, InputBytestreamGeneralBase<?>> rxOpFactory,
+      XO, WkSzInputBytestreamBase<?>> rxOpFactory,
     InputDeserializerFactory<
-      T, ? super ReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>,
-      DeserializingRuntime<InputBytestream>>, ? super XO> rxSerializerFactory,
+      T, ? super ReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+      DeserializingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
     PacketOutputFieldWritingFactory<
       T, OperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
-      YO, OutputBytestreamGeneralBase<?>> txOpFactory,
+      YO, WkSzOutputBytestreamBase<?>> txOpFactory,
     OutputSerializerFactory<
-      T, ? super WritingRuntimeControl<OutputBytestream, OutputBytestreamGeneralBase<? extends OutputBytestream>,
-      SerializingRuntime<OutputBytestream>>, ? super YO> txSerializerFactory,
+      T, ? super WritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+      SerializingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

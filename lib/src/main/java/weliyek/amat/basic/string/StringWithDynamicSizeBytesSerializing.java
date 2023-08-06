@@ -26,14 +26,14 @@ import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.DynamicByteArray;
 import weliyek.ketza.util.array.DynamicByteArraySerialzing;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class StringWithDynamicSizeBytesSerializing<
                         ZT extends Number,
@@ -41,7 +41,7 @@ public class StringWithDynamicSizeBytesSerializing<
                         ZYO extends WkSzNumberWriter<ZT,OperationSettings,?,?,ZYD>>
     implements WkSzStringFromBytesWriter<
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
@@ -60,7 +60,7 @@ public class StringWithDynamicSizeBytesSerializing<
     int index,
     String serializable,
     OperationSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       String,?,StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?> serializingfieldCore,
     SimplifiedStringFromBytesCore<
@@ -102,7 +102,7 @@ public class StringWithDynamicSizeBytesSerializing<
   }
 
   @Override
-  public SerializingRuntime<OutputBytestream> dashboard() {
+  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

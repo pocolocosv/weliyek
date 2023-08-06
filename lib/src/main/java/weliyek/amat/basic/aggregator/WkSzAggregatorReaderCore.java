@@ -29,23 +29,23 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public abstract class WkSzAggregatorReaderCore<
                         T,
                         XS extends OperationSettings,
-                        XB extends InputBytestream,
-                        XBC extends InputBytestreamGeneralBase<? extends XB>,
+                        XB extends WkSzInputBytestream,
+                        XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends DeserializingRuntime<XB>,
                         XQC extends ReadingRuntimeControl<XB,XBC,XQ>,
                         XR extends DeserializingResult<T>,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<T,XS,XQ,XR,XD>,
                         XOC extends WkSzAggregatorReaderCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSzAggregatorDefinitionCore<T,XS,XB,XBC,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,?,?,DC>>
     extends WkSzPacketReaderOperationCore<T, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
     implements WkSzAggregatorReader<T, XS, XQ, XR, XD>

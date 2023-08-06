@@ -34,29 +34,29 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.BasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.DynamicSequenceDefinitionCore;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class SimplifiedDynamicCollectionDefinitionCore<
                         T extends Collection<ET>,
                         XS extends OperationSettings,
                         XO extends DynamicCollectionFieldDeserializer<
                                         T,XS,
-                                        DeserializingRuntime<InputBytestream>,
+                                        DeserializingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<T>,
                                         XD,ZT,ZXO,?,ET,EXS,?,EXO,VXS>,
                         XD extends WkSzDynamicCollectionDefinition<
@@ -64,7 +64,7 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
                         YS extends OperationSettings,
                         YO extends DynamicCollectionFieldSerializer<
                                         T,YS,
-                                        SerializingRuntime<OutputBytestream>,
+                                        SerializingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD,ZT,ZYO,?,ET,EYS,?,EYO,VYS>,
                         YD extends WkSzDynamicCollectionDefinition<
@@ -92,25 +92,25 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
                                       EYS, EYD, EYO, ED, VXS, VYS>>
     extends DynamicSequenceDefinitionCore<
                         T, XS,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         XO, XD,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         YS,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YO, YD,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD,
                         VXS,
                         VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>, // VXO
@@ -132,13 +132,13 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
     OperationSubsegmentSettingsFactory<XO, ZXS> sizeDeserializerSettingsFactory,
     OperationSubsegmentSettingsFactory<YO, ZYS> sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
-    ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, InputBytestreamGeneralBase<? extends InputBytestream>, ZYS, ZYD, ZYO, OutputBytestreamGeneralBase<? extends OutputBytestream>, ZD>
+    ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
     OperationSubsegmentSettingsFactory<XO,VXS> collectionAndElementsDeserializerSettingsFactory,
     OperationSubsegmentSettingsFactory<YO,VYS> collectionAndElementsSerializerSettingsFactory,
     String elementFieldLabel,
-    ProtocolDefinitionFactory<ET, EXS, EXD, EXO, InputBytestreamGeneralBase<?>, EYS, EYD, EYO, OutputBytestreamGeneralBase<?>, ED>
+    ProtocolDefinitionFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
       elementsDefinitionFactory,
     OperationSubsegmentSettingsFactory<VariableSizeCollectionFieldDeserializer<T, VXS, ET, EXS, EXD, EXO>, EXS>
       elementDeserializerSettingsFactory,
@@ -147,12 +147,12 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
     //Function<InputBytestreamGeneralBase<?>, ReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>, DeserializingRuntime<InputBytestream>>>
     //  deserializerRuntimeFactory,
     //BiFunction<XO, T, DeserializingResult<T>> deserializerResultFactory,
-    PacketInputFieldReadingFactory<T, XS, XD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, XO, InputBytestreamGeneralBase<?>>
+    PacketInputFieldReadingFactory<T, XS, XD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, XO, WkSzInputBytestreamBase<?>>
       deserializerFactory,
     //Function<OutputBytestreamGeneralBase<?>, WritingRuntimeControl<OutputBytestream, OutputBytestreamGeneralBase<? extends OutputBytestream>, SerializingRuntime<OutputBytestream>>>
     //  serializerRuntimeFactory,
     //Function<YO, SerializingResult> serializerResultFactory,
-    PacketOutputFieldWritingFactory<T, YS, YD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, YO, OutputBytestreamGeneralBase<?>>
+    PacketOutputFieldWritingFactory<T, YS, YD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, YO, WkSzOutputBytestreamBase<?>>
       serializerFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> serializableClass,

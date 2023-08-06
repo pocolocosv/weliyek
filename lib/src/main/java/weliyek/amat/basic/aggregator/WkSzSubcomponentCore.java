@@ -32,13 +32,13 @@ import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzSubcomponentCore<
                         ST,
@@ -46,14 +46,14 @@ public class WkSzSubcomponentCore<
                         SXD extends WkSzDefinition<ST,?>,
                         SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>,
                         T,
-                        XBC extends InputBytestreamGeneralBase<?>,
+                        XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<
                                         T,?, ? extends DeserializingRuntime<?>,?,XD>,
                         SYS extends OperationSettings,
                         SYD extends WkSzDefinition<ST,?>,
                         SYO extends WkSzPacketWriterOperation<ST,SYS,?,?,SYD>,
-                        YBC extends OutputBytestreamGeneralBase<?>,
+                        YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<
                                         T,?,? extends SerializingRuntime<?>,?,YD>,

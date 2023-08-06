@@ -23,12 +23,12 @@ import java.util.function.Consumer;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class SimplifiedPrimitiveArraySerializingCore<
                         Y extends PrimitiveArrayWrapperBase<?,?>,
@@ -37,22 +37,22 @@ public class SimplifiedPrimitiveArraySerializingCore<
                         YO extends WkSzPrimitiveArraySerializerWriter<
                                         Y,
                                         YS,
-                                        SequenceWritingRuntime<OutputBytestream>,
+                                        SequenceWritingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         D>>
     extends PrimitiveArraySerializerWritingCore<
                         Y,
                         YS,
-                        SequenceWritingRuntime<OutputBytestream>,
+                        SequenceWritingRuntime<WkSzOutputBytestream>,
                         SequenceWritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SequenceWritingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SequenceWritingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YO,
                         SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>,
                         D,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         SimplifiedPrimitiveArraySerializerCore<Y,?,?,YS,YO,D>>
 {
 
@@ -63,7 +63,7 @@ public class SimplifiedPrimitiveArraySerializingCore<
     int index,
     Y serializable,
     YS settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<Y,?,D,?,?,?> serializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,

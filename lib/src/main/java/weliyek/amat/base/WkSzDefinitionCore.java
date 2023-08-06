@@ -31,16 +31,16 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.amat2.protocol.filter.PacketInputFieldOperationPredicate;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzDefinitionCore<
                         T,
@@ -49,13 +49,13 @@ public abstract class WkSzDefinitionCore<
                         XR extends DeserializingResult<T>,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,XR,XD>,
-                        AXBC extends InputBytestreamGeneralBase<?>,
+                        AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends OperationSettings,
                         YQC extends WritingRuntimeControl<?,?,?>,
                         YR extends SerializingResult,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,YR,YD>,
-                        AYBC extends OutputBytestreamGeneralBase<?>,
+                        AYBC extends WkSzOutputBytestreamBase<?>,
                         D extends WkSzDefinition<T,?>,
                         DC extends WkSzDefinitionCore<
                                       T,XS,XQC,XR,XD,XO,AXBC,YS,YQC,YR,YD,YO,AYBC,D,?>>

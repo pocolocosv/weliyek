@@ -23,6 +23,8 @@ import java.util.Optional;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
@@ -33,14 +35,12 @@ import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionField;
 import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionFieldSerializer;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianIntegerWriter;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class PrimitivesGroupListFieldSerializer
     implements DynamicCollectionFieldSerializer<
                         PrimitivesGroupList,
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         PrimitivesGroupListField,
                         Integer,
@@ -72,7 +72,7 @@ public class PrimitivesGroupListFieldSerializer
       int index,
       PrimitivesGroupList serializable,
       OperationSettings settings,
-      OutputBytestreamGeneralBase<?> parentBytestream,
+      WkSzOutputBytestreamBase<?> parentBytestream,
       WkSzPacketWriterFieldCore<PrimitivesGroupList, ?, PrimitivesGroupListField, ?, ?, ?>
         serializerpacketCore,
       SimplifiedDynamicCollectionDefinitionCore<PrimitivesGroupList, ?, ?, ?, OperationSettings, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, Integer, ?, ?, ?, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, PrimitivesGroup, ?, ?, ?, OperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, ?, ?, OperationSettings, ?>
@@ -106,7 +106,7 @@ public class PrimitivesGroupListFieldSerializer
     }
 
     @Override
-    public SerializingRuntime<OutputBytestream> dashboard() {
+    public SerializingRuntime<WkSzOutputBytestream> dashboard() {
       return this.writingCore.dashboard();
     }
 

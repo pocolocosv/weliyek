@@ -25,14 +25,13 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.FilterResults;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class DeserializingSubfieldCore<
                         T,
                         XS extends OperationSettings,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
-                        AXBC extends InputBytestreamGeneralBase<?>,
+                        AXBC extends WkSzInputBytestreamBase<?>,
                         AXO extends WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>>
         extends WkSzPacketReaderFieldCore<T, XS, XD, XO, AXBC, AXO>
 {

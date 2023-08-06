@@ -34,16 +34,16 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerWriter;
 import weliyek.ketza.util.KetzaByteOutputStream;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class FixedAndVariableSizeCollectionFieldsTest
 {
@@ -58,11 +58,11 @@ public class FixedAndVariableSizeCollectionFieldsTest
                         OperationSettings,
                         FixedSizeCollectionField<List<Integer>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>,
                         FixedSizeCollectionFieldDeserializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,
                         FixedSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ?>,
                         FixedSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         FixedSizeCollectionField<List<Integer>, OperationSettings, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
                           FIXED_SIZE_INT_LIST;
 
@@ -71,11 +71,11 @@ public class FixedAndVariableSizeCollectionFieldsTest
                         VariableLengthSettings,
                         VariableSizeCollectionField<List<Integer>, VariableLengthSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>,
                         VariableSizeCollectionFieldDeserializer<List<Integer>, VariableLengthSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,
                         VariableSizeCollectionField<List<Integer>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ?>,
                         VariableSizeCollectionFieldSerializer<List<Integer>, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         VariableSizeCollectionField<List<Integer>, VariableLengthSettings, OperationSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
                           VAR_SIZE_INT_LIST;
 
@@ -194,7 +194,7 @@ public class FixedAndVariableSizeCollectionFieldsTest
 
     assertEquals(ORIGINAL_LIST, varlistWriting.firstOperation().get().serializable());
 
-    CountingInputBytestream inputbytestream = new CountingInputBytestream(outputstream.inputStream());
+    WkSzCountingInputBytestream inputbytestream = new WkSzCountingInputBytestream(outputstream.inputStream());
 
     WkSzInputPacket<List<Integer>, VariableSizeCollectionField<List<Integer>, VariableLengthSettings, ?, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<List<Integer>, VariableLengthSettings, Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>>
       varListReading = VAR_SIZE_INT_LIST.newInputPacket(VariableLengthSettings.withLength(ORIGINAL_LIST.size()), inputbytestream);

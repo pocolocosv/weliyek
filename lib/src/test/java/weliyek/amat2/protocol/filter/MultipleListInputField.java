@@ -24,6 +24,10 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.aggregator.sequence.SimplifiedDynamicCollectionDefinitionCore;
 import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionField;
 import weliyek.amat.basic.aggregator.sequence.WkSzDynamicCollectionDefinition;
@@ -31,10 +35,6 @@ import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShort;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortWriter;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class MultipleListInputField
     implements WkSzDynamicCollectionDefinition<
@@ -59,18 +59,18 @@ public class MultipleListInputField
                         OperationSettings,
                         MultipleListInputField,
                         MultipleListReading,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,
                         MultipleListInputField,
                         MultipleListsWriting,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         MultipleListInputField>
   newPacketStructure() {
     return new WkSzStruct<>(
                         "MULTILIST",
                         (pc) -> new MultipleListInputField(pc).definitionCore,
-                        CountingInputBytestream::new,
-                        CountingOutputBytestream::new);
+                        WkSzCountingInputBytestream::new,
+                        WkSzCountingOutputBytestream::new);
   }
 
   private final SimplifiedDynamicCollectionDefinitionCore<

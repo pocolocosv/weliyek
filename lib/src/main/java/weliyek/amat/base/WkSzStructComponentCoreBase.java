@@ -20,22 +20,22 @@ package weliyek.amat.base;
 import java.util.Objects;
 import java.util.function.Predicate;
 
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzStructComponentCoreBase<
                         T,
                         XS extends OperationSettings,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
-                        AXBC extends InputBytestreamGeneralBase<?>,
+                        AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends OperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
-                        AYBC extends OutputBytestreamGeneralBase<?>,
+                        AYBC extends WkSzOutputBytestreamBase<?>,
                         D extends WkSzDefinition<T,?>>
     implements WkSzStructComponent<D>
 {

@@ -25,20 +25,20 @@ import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public class FixedSizeByteArrayDeserializing
     implements ByteArrayReading<
                         OperationSettings,
-                        SequenceReadingRuntime<InputBytestream>,
+                        SequenceReadingRuntime<WkSzInputBytestream>,
                         DeserializingResult<ByteArrayWrapper>,
                         FixedSizeByteArray>,
                WkSzSerializerReaderFixedSizePrimitiveArray<
                         ByteArrayWrapper,
                         OperationSettings,
-                        SequenceReadingRuntime<InputBytestream>,
+                        SequenceReadingRuntime<WkSzInputBytestream>,
                         DeserializingResult<ByteArrayWrapper>,
                         FixedSizeByteArray>
 {
@@ -52,7 +52,7 @@ public class FixedSizeByteArrayDeserializing
   FixedSizeByteArrayDeserializing(
     int index,
     OperationSettings settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       ByteArrayWrapper,?,FixedSizeByteArray,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
@@ -87,7 +87,7 @@ public class FixedSizeByteArrayDeserializing
   }
 
   @Override
-  public SequenceReadingRuntime<InputBytestream> dashboard() {
+  public SequenceReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

@@ -21,6 +21,8 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
@@ -29,14 +31,12 @@ import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class DynamicSequenceSerializingCore<
                         T,
                         YS extends OperationSettings,
-                        YB extends OutputBytestream,
-                        YBC extends OutputBytestreamGeneralBase<? extends YB>,
+                        YB extends WkSzOutputBytestream,
+                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQ extends SerializingRuntime<YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,YQ>,
                         YR extends SerializingResult,
@@ -48,7 +48,7 @@ public abstract class DynamicSequenceSerializingCore<
                                         VYS,VYO,VYD,
                                         DC>,
                         YD extends WkSzDynamicSequenceDefinition<T,?,YO,?,?>,
-                        AYBC extends OutputBytestreamGeneralBase<?>,
+                        AYBC extends WkSzOutputBytestreamBase<?>,
                         ZT extends Number,
                         ZYS extends OperationSettings,
                         ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,

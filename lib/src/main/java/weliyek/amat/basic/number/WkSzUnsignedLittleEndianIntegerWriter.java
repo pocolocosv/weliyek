@@ -25,15 +25,15 @@ import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzUnsignedLittleEndianIntegerWriter
     implements WkSzNumberWriter<
                         Long,
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         WkSzUnsignedLittleEndianInteger>
 {
@@ -47,7 +47,7 @@ public class WkSzUnsignedLittleEndianIntegerWriter
     int index,
     Long serializable,
     OperationSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       Long,?,WkSzUnsignedLittleEndianInteger,?,?,?> serializingfieldCore,
     WkSzSimplifiedNumberSerializerDefinitionCore<
@@ -73,7 +73,7 @@ public class WkSzUnsignedLittleEndianIntegerWriter
   }
 
   @Override
-  public SerializingRuntime<OutputBytestream> dashboard() {
+  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

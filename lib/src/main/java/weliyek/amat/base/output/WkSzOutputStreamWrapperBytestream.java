@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization.bytestream;
+package weliyek.amat.base.output;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -23,11 +23,11 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public abstract class OutputStreamWrapperBytestream<
+public abstract class WkSzOutputStreamWrapperBytestream<
                         AS extends OutputStream,
                         S extends OutputStream,
-                        B extends OutputBytestream>
-        extends OutputBytestreamGeneralBase<B>
+                        B extends WkSzOutputBytestream>
+        extends WkSzOutputBytestreamBase<B>
 {
 
   private final S outputstream;
@@ -46,7 +46,7 @@ public abstract class OutputStreamWrapperBytestream<
    * @param             startPos Starting position in the byte stream for
    *                             this object.
    */
-  protected OutputStreamWrapperBytestream(
+  protected WkSzOutputStreamWrapperBytestream(
     Supplier<AS> outputstreamSourceSupplier,
     Function<AS, S> outputstreamFactory,
     boolean doCloseNewStream,

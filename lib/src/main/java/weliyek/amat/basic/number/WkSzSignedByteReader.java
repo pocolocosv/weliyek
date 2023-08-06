@@ -25,15 +25,15 @@ import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class WkSzSignedByteReader
         implements WkSzNumberReader<
                         Byte,
                         OperationSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<Byte>,
                         WkSzSignedByte>
 {
@@ -46,7 +46,7 @@ public final class WkSzSignedByteReader
     WkSzSignedByteReader(
       int index,
       OperationSettings settings,
-      InputBytestreamGeneralBase<?> parentBytestream,
+      WkSzInputBytestreamBase<?> parentBytestream,
       WkSzPacketReaderFieldCore<Byte,?,WkSzSignedByte,?,?,?> readingfieldCore,
       WkSzSimplifiedNumberSerializerDefinitionCore<
         Byte,WkSzSignedByteReader,?,WkSzSignedByte> definitionCore) {
@@ -66,7 +66,7 @@ public final class WkSzSignedByteReader
     }
 
     @Override
-    public DeserializingRuntime<InputBytestream> dashboard() {
+    public DeserializingRuntime<WkSzInputBytestream> dashboard() {
       return this.operationCore.getRuntimeControl().asRuntime();
     }
 

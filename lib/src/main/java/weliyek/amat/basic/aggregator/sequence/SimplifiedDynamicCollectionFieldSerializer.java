@@ -25,19 +25,19 @@ import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.DynamicSequenceSerializingCore;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class SimplifiedDynamicCollectionFieldSerializer<
                         T extends Collection<ET>,
                         YS extends OperationSettings,
                         YO extends DynamicCollectionFieldSerializer<
                                         T,YS,
-                                        SerializingRuntime<OutputBytestream>,
+                                        SerializingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD,ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
                         YD extends WkSzDynamicCollectionDefinition<
@@ -53,19 +53,19 @@ public final class SimplifiedDynamicCollectionFieldSerializer<
                         VYS extends OperationSettings>
     extends DynamicSequenceSerializingCore<
                         T, YS,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                        SerializingRuntime<OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YO,
                         SimplifiedDynamicCollectionFieldSerializer<
                           T,YS,YO,YD,ZT,ZYS,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
                         YD,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         ZT, ZYS, ZYO, ZYD, VYS,
                         VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>, // VYO
                         VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>, // VYD
@@ -74,7 +74,7 @@ public final class SimplifiedDynamicCollectionFieldSerializer<
     implements DynamicCollectionFieldSerializer<
                         T,
                         YS,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         YD, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>
 {
@@ -83,7 +83,7 @@ public final class SimplifiedDynamicCollectionFieldSerializer<
     int index,
     T serializable,
     YS settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<T, ?, YD, ?, ?, ?> packetHandlerCore,
     SimplifiedDynamicCollectionDefinitionCore<T, ?, ?, ?, YS, YO, YD, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS, ?> definitionCore,
     YO operationBody) {

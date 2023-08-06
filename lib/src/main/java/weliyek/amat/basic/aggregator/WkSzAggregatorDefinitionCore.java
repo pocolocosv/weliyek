@@ -37,37 +37,37 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzAggregatorDefinitionCore<
                         T,
                         XS extends OperationSettings,
-                        XB extends InputBytestream,
-                        XBC extends InputBytestreamGeneralBase<? extends XB>,
+                        XB extends WkSzInputBytestream,
+                        XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends ReadingRuntimeControl<XB,XBC,?>,
                         XR extends DeserializingResult<T>,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<
                                         T,XS,? extends DeserializingRuntime<XB>,XR,XD>,
-                        AXBC extends InputBytestreamGeneralBase<?>,
+                        AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends OperationSettings,
-                        YB extends OutputBytestream,
-                        YBC extends OutputBytestreamGeneralBase<? extends YB>,
+                        YB extends WkSzOutputBytestream,
+                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,?>,
                         YR extends SerializingResult,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<
                                         T,YS,? extends SerializingRuntime<YB>,YR,YD>,
-                        AYBC extends OutputBytestreamGeneralBase<?>,
+                        AYBC extends WkSzOutputBytestreamBase<?>,
                         D extends WkSzAggregatorDefinition<T,XO>,
                         DC extends WkSzAggregatorDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXBC,YS,YB,YBC,YQC,YR,YD,YO,AYBC,D,?>>

@@ -24,14 +24,13 @@ import weliyek.amat.base.WkSzPacketFieldCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzPacketWriterFieldCore<
                         T,
                         YS extends OperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
-                        AYBC extends OutputBytestreamGeneralBase<?>,
+                        AYBC extends WkSzOutputBytestreamBase<?>,
                         AYO extends WkSzAggregatorWriter<?,?,? extends SerializingRuntime<?>,?,?>>
     extends WkSzPacketFieldCore<
                         T, YS, YD,

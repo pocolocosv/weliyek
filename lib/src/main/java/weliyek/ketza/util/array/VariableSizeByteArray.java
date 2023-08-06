@@ -25,13 +25,13 @@ import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.aggregator.sequence.SequenceSizeParameters;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class VariableSizeByteArray
     implements WkSzByteArrayDefinition<
@@ -46,18 +46,18 @@ public class VariableSizeByteArray
                       VariableLengthSettings,
                       VariableSizeByteArray,
                       VariableSizeByteArrayDeserializing,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,
                       VariableSizeByteArray,
                       VariableSizeByteArraySerializing,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       VariableSizeByteArray>
   newPacketStructure(String label, int minSize, int maxSize) {
     return new WkSzStruct<>(
                       label,
                       (pc) -> VariableSizeByteArray.newCore(minSize, maxSize, pc),
-                      CountingInputBytestream::new,
-                      CountingOutputBytestream::new);
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
   }
 
   public static
@@ -66,11 +66,11 @@ public class VariableSizeByteArray
                       VariableLengthSettings,?,?,
                       VariableSizeByteArray,
                       VariableSizeByteArrayDeserializing,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OperationSettings,?,?,
                       VariableSizeByteArray,
                       VariableSizeByteArraySerializing,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       VariableSizeByteArray,?>
   newCore(
     int minSize,

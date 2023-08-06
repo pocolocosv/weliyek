@@ -19,12 +19,12 @@ package weliyek.amat.basic.sequence;
 
 import weliyek.amat.base.CommonOperationRuntime;
 import weliyek.amat.base.CommonOperationRuntimeControl;
-import weliyek.serialization.bytestream.Bytestream;
-import weliyek.serialization.bytestream.BytestreamCore;
+import weliyek.amat.base.WkSzBytestream;
+import weliyek.amat.base.WkSzBytestreamBase;
 
 public interface SequenceOperationRuntimeControl<
-                        B extends Bytestream,
-                        BC extends BytestreamCore<?, ? extends B>,
+                        B extends WkSzBytestream,
+                        BC extends WkSzBytestreamBase<?, ? extends B>,
                         Q extends CommonOperationRuntime<B>>
     extends CommonOperationRuntimeControl<B, BC, Q>,
             SequenceCommonOperationRuntime<B>,

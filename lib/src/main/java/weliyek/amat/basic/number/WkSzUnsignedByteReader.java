@@ -25,15 +25,15 @@ import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class WkSzUnsignedByteReader
         implements WkSzNumberReader<
                         Integer,
                         OperationSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<Integer>,
                         WkSzUnsignedByte>
 {
@@ -46,7 +46,7 @@ public final class WkSzUnsignedByteReader
     WkSzUnsignedByteReader(
       int index,
       OperationSettings settings,
-      InputBytestreamGeneralBase<?> parentBytestream,
+      WkSzInputBytestreamBase<?> parentBytestream,
       WkSzPacketReaderFieldCore<Integer,?,WkSzUnsignedByte,?,?,?> readingfieldCore,
       WkSzSimplifiedNumberSerializerDefinitionCore<
         Integer,WkSzUnsignedByteReader,?,WkSzUnsignedByte> definitionCore) {
@@ -66,7 +66,7 @@ public final class WkSzUnsignedByteReader
     }
 
     @Override
-    public DeserializingRuntime<InputBytestream> dashboard() {
+    public DeserializingRuntime<WkSzInputBytestream> dashboard() {
       return this.operationCore.getRuntimeControl().asRuntime();
     }
 

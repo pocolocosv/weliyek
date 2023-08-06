@@ -20,30 +20,30 @@ package weliyek.amat.basic.sequence;
 import java.io.IOException;
 
 import weliyek.amat.base.output.BasicWritingRuntimeModule;
+import weliyek.amat.base.output.WkSzBasicOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.ketza.util.DoesNothingRunnable;
-import weliyek.serialization.bytestream.BasicOutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class BasicSequenceWritingRuntime
     implements SequenceWritingRuntimeControl<
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                        SequenceWritingRuntime<OutputBytestream>>
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        SequenceWritingRuntime<WkSzOutputBytestream>>
 {
 
   private final BasicWritingRuntimeModule<
-                    OutputBytestreamGeneralBase<?>,
-                    OutputBytestream,
-                    OutputBytestreamGeneralBase<OutputBytestream>,
-                    SequenceWritingRuntime<OutputBytestream>> ctrlCore;
+                    WkSzOutputBytestreamBase<?>,
+                    WkSzOutputBytestream,
+                    WkSzOutputBytestreamBase<WkSzOutputBytestream>,
+                    SequenceWritingRuntime<WkSzOutputBytestream>> ctrlCore;
   private final SequenceOnlyOperationRuntimeControlModule sequenceCtrl = new SequenceOnlyOperationRuntimeControlModule();
-  private final SequenceWritingRuntime<OutputBytestream> publicRuntime;
+  private final SequenceWritingRuntime<WkSzOutputBytestream> publicRuntime;
 
   public BasicSequenceWritingRuntime(
-    OutputBytestreamGeneralBase<?> parentBytestream) {
-    this.ctrlCore = new BasicWritingRuntimeModule<>(this, parentBytestream, BasicOutputBytestream::new, DoesNothingRunnable.INSTANCE);
-    this.publicRuntime = new SequenceWritingRuntime<OutputBytestream>() {
+    WkSzOutputBytestreamBase<?> parentBytestream) {
+    this.ctrlCore = new BasicWritingRuntimeModule<>(this, parentBytestream, WkSzBasicOutputBytestream::new, DoesNothingRunnable.INSTANCE);
+    this.publicRuntime = new SequenceWritingRuntime<WkSzOutputBytestream>() {
 
       @Override
       public long nextElementIndex() {
@@ -51,18 +51,18 @@ public class BasicSequenceWritingRuntime
       }
 
       @Override
-      public OutputBytestream bytestream() {
+      public WkSzOutputBytestream bytestream() {
         return BasicSequenceWritingRuntime.this.bytestream();
       }};
   }
 
   @Override
-  public OutputBytestream bytestream() {
+  public WkSzOutputBytestream bytestream() {
     return this.ctrlCore.bytestream();
   }
 
   @Override
-  public SequenceWritingRuntime<OutputBytestream> asRuntime() {
+  public SequenceWritingRuntime<WkSzOutputBytestream> asRuntime() {
     return this.publicRuntime;
   }
 
@@ -77,7 +77,7 @@ public class BasicSequenceWritingRuntime
   }
 
   @Override
-  public OutputBytestreamGeneralBase<OutputBytestream> bytestreamCore() {
+  public WkSzOutputBytestreamBase<WkSzOutputBytestream> bytestreamCore() {
     return this.ctrlCore.bytestreamCore();
   }
 

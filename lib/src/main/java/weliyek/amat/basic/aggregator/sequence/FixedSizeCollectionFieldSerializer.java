@@ -27,11 +27,11 @@ import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.FixedSizeSequenceWriting;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class FixedSizeCollectionFieldSerializer<
                         T extends Collection<ET>,
@@ -43,7 +43,7 @@ public final class FixedSizeCollectionFieldSerializer<
     implements CollectionAndElementsFieldSerializer<
                         T,
                         YS,
-                        SequenceWritingRuntime<OutputBytestream>,
+                        SequenceWritingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                         ET,
@@ -52,7 +52,7 @@ public final class FixedSizeCollectionFieldSerializer<
                 FixedSizeSequenceWriting<
                         T,
                         YS,
-                        SequenceWritingRuntime<OutputBytestream>,
+                        SequenceWritingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
 {
@@ -67,7 +67,7 @@ public final class FixedSizeCollectionFieldSerializer<
     int index,
     T serializable,
     YS settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       T,?,FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
       ?,?,?> serializingfieldCore,
@@ -105,7 +105,7 @@ public final class FixedSizeCollectionFieldSerializer<
   }
 
   @Override
-  public SequenceWritingRuntime<OutputBytestream> dashboard() {
+  public SequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

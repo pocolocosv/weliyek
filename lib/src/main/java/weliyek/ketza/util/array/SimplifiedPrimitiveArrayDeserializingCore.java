@@ -24,11 +24,11 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class SimplifiedPrimitiveArrayDeserializingCore<
                         X extends PrimitiveArrayWrapper<?,?>,
@@ -37,22 +37,22 @@ public class SimplifiedPrimitiveArrayDeserializingCore<
                         XO extends WkSzPrimitiveArraySerializerReader<
                                           X,
                                           XS,
-                                          SequenceReadingRuntime<InputBytestream>,
+                                          SequenceReadingRuntime<WkSzInputBytestream>,
                                           DeserializingResult<X>,
                                           D>>
     extends PrimitiveArraySerializerReadingCore<
                         X,
                         XS,
-                        SequenceReadingRuntime<InputBytestream>,
+                        SequenceReadingRuntime<WkSzInputBytestream>,
                         SequenceReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          SequenceReadingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          SequenceReadingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<X>,
                         XO,
                         SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>,
                         D,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         SimplifiedPrimitiveArraySerializerCore<X,XS,XO,?,?,D>>
 {
 
@@ -62,7 +62,7 @@ public class SimplifiedPrimitiveArrayDeserializingCore<
   public SimplifiedPrimitiveArrayDeserializingCore(
     int index,
     XS settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<X,?,D,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<X,XS,XO,?,?,D> definitionCore,
     XO operationBody,

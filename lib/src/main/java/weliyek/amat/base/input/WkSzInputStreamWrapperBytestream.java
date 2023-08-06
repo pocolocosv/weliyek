@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization.bytestream;
+package weliyek.amat.base.input;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,17 +23,17 @@ import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public abstract class InputstreamWrapperBytestream<
+public abstract class WkSzInputStreamWrapperBytestream<
                         AS extends InputStream,
                         S extends InputStream,
-                        B extends InputBytestream>
-        extends InputBytestreamGeneralBase<B>
+                        B extends WkSzInputBytestream>
+        extends WkSzInputBytestreamBase<B>
 {
 
   private final S inputstream;
   private final boolean doCloseStream;
 
-  protected InputstreamWrapperBytestream(
+  protected WkSzInputStreamWrapperBytestream(
     Supplier<AS> sourceInputstream,
     Function<AS, S> inputstreamFactory,
     boolean doCloseNewStream,

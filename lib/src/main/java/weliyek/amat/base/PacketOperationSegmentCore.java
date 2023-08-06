@@ -25,7 +25,6 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.ketza.base.Completable;
 import weliyek.ketza.base.Initializable;
-import weliyek.serialization.bytestream.BytestreamCore;
 
 public abstract class PacketOperationSegmentCore<
                         S extends OperationSettings,
@@ -36,7 +35,7 @@ public abstract class PacketOperationSegmentCore<
                         DC extends WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSzPacketOperation<S,?,R,_D,?>,
                         OC extends PacketOperationSegmentCore<S,Q,QC,R,_D,DC,O,?,AB,K,KC>,
-                        AB extends BytestreamCore<?,?>,
+                        AB extends WkSzBytestreamBase<?,?>,
                         K extends WkSzPacketField<?,?,?>,
                         KC extends WkSzPacketFieldCore<?,?,?,?,?,?,? extends K,?,?>>
         implements Completable,

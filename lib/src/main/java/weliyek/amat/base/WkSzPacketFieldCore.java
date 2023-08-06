@@ -30,7 +30,6 @@ import weliyek.ketza.base.Completable;
 import weliyek.ketza.base.Enableable;
 import weliyek.ketza.base.Initializable;
 import weliyek.ketza.base.Resetable;
-import weliyek.serialization.bytestream.BytestreamCore;
 
 public abstract class WkSzPacketFieldCore<
                         T,
@@ -42,7 +41,7 @@ public abstract class WkSzPacketFieldCore<
                         O extends WkSzPacketOperation<S,?,?,? super D,? super K>,
                         OC extends PacketOperationSegmentCore<?,?,?,?,?,?,O,?,?,?,?>,
                         K extends WkSzPacketField<T,O,?>,
-                        AB extends BytestreamCore<?,?>,
+                        AB extends WkSzBytestreamBase<?,?>,
                         AOC extends PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?>>
     implements Initializable,
                Enableable,

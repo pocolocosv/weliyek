@@ -27,25 +27,25 @@ import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzAggregatorWriterCore<
                         T,
                         YS extends OperationSettings,
-                        YB extends OutputBytestream,
-                        YBC extends OutputBytestreamGeneralBase<? extends YB>,
+                        YB extends WkSzOutputBytestream,
+                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQ extends SerializingRuntime<YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,YQ>,
                         YR extends SerializingResult,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSzAggregatorWriterCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYB,DC>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSzAggregatorDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYB,?,DC>>
         extends WkSzPacketWriterOperationCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>

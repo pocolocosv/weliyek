@@ -27,7 +27,6 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.FilterResults;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public abstract class WkSzPacketReaderFieldCore<
                         T,
@@ -35,7 +34,7 @@ public abstract class WkSzPacketReaderFieldCore<
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<
                                         T,XS,?,? extends DeserializingResult<T>,XD>,
-                        AXBC extends InputBytestreamGeneralBase<?>,
+                        AXBC extends WkSzInputBytestreamBase<?>,
                         AXO extends WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>>
     extends WkSzPacketFieldCore<
                         T, XS, XD,

@@ -26,18 +26,18 @@ import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.OptionalLengthSettings;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArraySerializing;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class StringWithVariableLengthBytesSerializing
     implements WkSzStringFromBytesWriter<
                         OptionalLengthSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         StringWithVariableLengthBytes,
                         VariableSizeByteArray,
@@ -56,7 +56,7 @@ public class StringWithVariableLengthBytesSerializing
     int index,
     String serializable,
     OptionalLengthSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       String,?,StringWithVariableLengthBytes,?,?,?> serializingfieldCore,
     SimplifiedStringFromBytesCore<
@@ -98,7 +98,7 @@ public class StringWithVariableLengthBytesSerializing
   }
 
   @Override
-  public SerializingRuntime<OutputBytestream> dashboard() {
+  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

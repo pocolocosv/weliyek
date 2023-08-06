@@ -34,37 +34,37 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.ketza.util.array.ByteArrayReading;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public abstract class WkSzStringFromBytesDefinitionCore<
                         XS extends OperationSettings,
-                        XB extends InputBytestream,
-                        XBC extends InputBytestreamGeneralBase<? extends XB>,
+                        XB extends WkSzInputBytestream,
+                        XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends ReadingRuntimeControl<XB,XBC,?>,
                         XR extends DeserializingResult<String>,
                         XO extends WkSzStringFromBytesReader<XS,? extends DeserializingRuntime<XB>,XR,XD,SXD,SXO>,
                         XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         YS extends OperationSettings,
-                        YB extends OutputBytestream,
-                        YBC extends OutputBytestreamGeneralBase<? extends YB>,
+                        YB extends WkSzOutputBytestream,
+                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,?>,
                         YR extends SerializingResult,
                         YO extends WkSzStringFromBytesWriter<YS,? extends SerializingRuntime<YB>,YR,YD,SYD,SYO>,
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         SXS extends OperationSettings,
                         SXO extends ByteArrayReading<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,

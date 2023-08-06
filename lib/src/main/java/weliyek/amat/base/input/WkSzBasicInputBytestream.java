@@ -15,31 +15,41 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization.bytestream;
+package weliyek.amat.base.input;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.util.Objects;
 
-public final class BasicOutputBytestream
-    extends OutputBytestreamGeneralBase<OutputBytestream>
+public final class WkSzBasicInputBytestream
+    extends WkSzInputBytestreamBase<WkSzInputBytestream>
 {
 
-    private final OutputBytestreamGeneralBase<?> parent;
+    private final WkSzInputBytestreamBase<?> parent;
 
-    public BasicOutputBytestream(OutputBytestreamGeneralBase<?> parentOutputBytestream) {
-      super(Objects.requireNonNull(parentOutputBytestream).getTotalPacketProcessedBytes());
-      this.parent = parentOutputBytestream;
-    }
-
-    @Override
-    void writeByte(int b) throws IOException {
-      this.parent.writeByte(b);
+    public WkSzBasicInputBytestream(WkSzInputBytestreamBase<?> parentInputBytestream) {
+      super(parentInputBytestream.getTotalPacketProcessedBytes());
+      this.parent = Objects.requireNonNull(parentInputBytestream);
     }
 
     @Override
     public long getTotalPacketProcessedBytes() {
-        return parent.getTotalPacketProcessedBytes();
+      return this.parent.getTotalPacketProcessedBytes();
+    }
+
+    @Override
+    int readByte() throws IOException {
+      return this.parent.readByte();
+    }
+
+    @Override
+    long skipBytes(long num) throws IOException {
+      return this.parent.skipBytes(num);
+    }
+
+    @Override
+    protected InputStream iostream() {
+      return this.parent.iostream();
     }
 
     @Override
@@ -48,12 +58,7 @@ public final class BasicOutputBytestream
     }
 
     @Override
-    protected OutputStream iostream() {
-      return this.parent.iostream();
-    }
-
-    @Override
-    public OutputBytestream body() {
+    public WkSzInputBytestream body() {
       return this;
     }
 

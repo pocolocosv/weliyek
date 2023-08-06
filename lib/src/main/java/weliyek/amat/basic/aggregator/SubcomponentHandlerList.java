@@ -24,18 +24,18 @@ import java.util.List;
 
 import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class SubcomponentHandlerList<
                         T,
-                        XBC extends InputBytestreamGeneralBase<?>,
+                        XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<T,?,? extends DeserializingRuntime<?>,?,XD>,
-                        YBC extends OutputBytestreamGeneralBase<?>,
+                        YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<T,?,? extends SerializingRuntime<?>,?,YD>>
     extends AbstractList<WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
@@ -55,7 +55,7 @@ public class SubcomponentHandlerList<
     public
     <YYD extends WkSzAggregatorDefinition<YY,?>,
      YY,
-     YYB extends OutputBytestreamGeneralBase<?>,
+     YYB extends WkSzOutputBytestreamBase<?>,
      YYO extends WkSzAggregatorWriter<YY,?,? extends SerializingRuntime<?>,?,YYD>>
     WritingHandlerList<YY,YYB,YYD,YYO> newSerializingHandlers(
       WkSzAggregatorWriterCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
@@ -74,7 +74,7 @@ public class SubcomponentHandlerList<
     public
     <XXD extends WkSzAggregatorDefinition<XX,?>,
      XX,
-     XXB extends InputBytestreamGeneralBase<?>,
+     XXB extends WkSzInputBytestreamBase<?>,
      XXO extends WkSzAggregatorReader<XX,?,? extends DeserializingRuntime<?>,?,XXD>>
     ReadingHandlerList<XX,XXB,XXD,XXO> newDeserializingHandlers(
       WkSzAggregatorReaderCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {

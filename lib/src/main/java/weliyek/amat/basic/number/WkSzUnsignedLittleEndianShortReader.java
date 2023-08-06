@@ -25,15 +25,15 @@ import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class WkSzUnsignedLittleEndianShortReader
         implements WkSzNumberReader<
                         Integer,
                         OperationSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<Integer>,
                         WkSzUnsignedLittleEndianShort>
 {
@@ -46,7 +46,7 @@ public final class WkSzUnsignedLittleEndianShortReader
   WkSzUnsignedLittleEndianShortReader(
     int index,
     OperationSettings settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       Integer,?,WkSzUnsignedLittleEndianShort,?,?,?> packetfieldCore,
     WkSzSimplifiedNumberSerializerDefinitionCore<
@@ -66,7 +66,7 @@ public final class WkSzUnsignedLittleEndianShortReader
   }
 
   @Override
-  public DeserializingRuntime<InputBytestream> dashboard() {
+  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

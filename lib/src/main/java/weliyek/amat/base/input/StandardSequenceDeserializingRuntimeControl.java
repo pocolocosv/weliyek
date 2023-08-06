@@ -23,13 +23,11 @@ import java.util.function.Function;
 import weliyek.amat.basic.sequence.SequenceOnlyOperationRuntimeControlModule;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.ketza.util.DoesNothingRunnable;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class StandardSequenceDeserializingRuntimeControl<
-                        AB extends InputBytestreamGeneralBase<?>,
-                        B extends InputBytestream,
-                        BC extends InputBytestreamGeneralBase<B>>
+                        AB extends WkSzInputBytestreamBase<?>,
+                        B extends WkSzInputBytestream,
+                        BC extends WkSzInputBytestreamBase<B>>
     implements SequenceReadingRuntimeControl<
                         B, BC,
                         SequenceReadingRuntime<B>>

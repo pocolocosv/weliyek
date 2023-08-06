@@ -30,15 +30,15 @@ import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class VariableSizeCollectionField<
                         T extends Collection<ET>,
@@ -79,11 +79,11 @@ public final class VariableSizeCollectionField<
                  XS,
                  VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                  VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
-                 InputBytestreamGeneralBase<?>,
+                 WkSzInputBytestreamBase<?>,
                  YS,
                  VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                  VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
-                 OutputBytestreamGeneralBase<?>,
+                 WkSzOutputBytestreamBase<?>,
                  VariableSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
   newPacketStructure(
     String label,
@@ -92,8 +92,8 @@ public final class VariableSizeCollectionField<
     int maxSize,
     Class<T> collectionClass,
     ProtocolDefinitionFactory<
-      ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
-      EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
+      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
     OperationSubsegmentSettingsFactory<
       VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
     OperationSubsegmentSettingsFactory<
@@ -111,8 +111,8 @@ public final class VariableSizeCollectionField<
                     elementsDefinitionFactory,
                     collectionFactory,
                     pc),
-        CountingInputBytestream::new,
-        CountingOutputBytestream::new);
+        WkSzCountingInputBytestream::new,
+        WkSzCountingOutputBytestream::new);
   }
 
   public static <T extends Collection<ET>,
@@ -131,11 +131,11 @@ public final class VariableSizeCollectionField<
                  XS,?,?,
                  VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                  VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
-                 InputBytestreamGeneralBase<?>,
+                 WkSzInputBytestreamBase<?>,
                  YS,?,?,
                  VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                  VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
-                 OutputBytestreamGeneralBase<?>,
+                 WkSzOutputBytestreamBase<?>,
                  VariableSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,?>
   newCore(
     String elementsLabel,
@@ -147,8 +147,8 @@ public final class VariableSizeCollectionField<
     OperationSubsegmentSettingsFactory<
       VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     ProtocolDefinitionFactory<
-      ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
-      EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
+      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new VariableSizeCollectionField<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
@@ -177,8 +177,8 @@ public final class VariableSizeCollectionField<
     OperationSubsegmentSettingsFactory<
       VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     ProtocolDefinitionFactory<
-      ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
-      EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
+      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory) {
     this.definitionCore = new SimplifiedCollectionDefinitionCore<
                                 T,

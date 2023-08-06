@@ -29,10 +29,10 @@ import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.FixedSizeSequenceReading;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class FixedSizeCollectionFieldDeserializer<
                         T extends Collection<ET>,
@@ -44,14 +44,14 @@ public final class FixedSizeCollectionFieldDeserializer<
     implements CollectionAndElementsFieldDeserializer<
                         T,
                         XS,
-                        SequenceReadingRuntime<InputBytestream>,
+                        SequenceReadingRuntime<WkSzInputBytestream>,
                         DeserializingResult<T>,
                         FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                         ET, EXD, EXO>,
                 FixedSizeSequenceReading<
                         T,
                         XS,
-                        SequenceReadingRuntime<InputBytestream>,
+                        SequenceReadingRuntime<WkSzInputBytestream>,
                         DeserializingResult<T>,
                         FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
 {
@@ -65,7 +65,7 @@ public final class FixedSizeCollectionFieldDeserializer<
   FixedSizeCollectionFieldDeserializer(
     int index,
     XS settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       T,?,FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
       ?,?,?> deserializingfieldCore,
@@ -102,7 +102,7 @@ public final class FixedSizeCollectionFieldDeserializer<
   }
 
   @Override
-  public SequenceReadingRuntime<InputBytestream> dashboard() {
+  public SequenceReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

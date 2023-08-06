@@ -25,9 +25,13 @@ import weliyek.amat.base.input.BasicReadingResult;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.sequence.BasicSequenceReadingRuntime;
 import weliyek.amat.basic.sequence.BasicSequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
@@ -38,10 +42,6 @@ import weliyek.amat.basic.serializer.OutputSerializerFactory;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class SimplifiedPrimitiveArraySerializerCore<
                         T extends PrimitiveArrayWrapper<?, ?>,
@@ -49,14 +49,14 @@ public class SimplifiedPrimitiveArraySerializerCore<
                         XO extends WkSzPrimitiveArraySerializerReader<
                                         T,
                                         XS,
-                                        SequenceReadingRuntime<InputBytestream>,
+                                        SequenceReadingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<T>,
                                         D>,
                         YS extends OperationSettings,
                         YO extends WkSzPrimitiveArraySerializerWriter<
                                         T,
                                         YS,
-                                        SequenceWritingRuntime<OutputBytestream>,
+                                        SequenceWritingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         D>,
                         D extends PrimitiveArraySerializerDefinition<T,XO>>
@@ -64,20 +64,20 @@ public class SimplifiedPrimitiveArraySerializerCore<
                         T,
                         XS,
                         SequenceReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          SequenceReadingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          SequenceReadingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         D, XO,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         YS,
                         SequenceWritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SequenceWritingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SequenceWritingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         D, YO,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         D,
                         SimplifiedPrimitiveArraySerializerCore<T,XS,XO,YS,YO,D>>
 {
@@ -86,11 +86,11 @@ public class SimplifiedPrimitiveArraySerializerCore<
     int stepSize,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, D> rxRequestedLengthEvaluator,
-    PacketInputFieldReadingFactory<T, XS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, XO, InputBytestreamGeneralBase<?>> readingOpFactory,
-    InputDeserializerFactory<T, ? super SequenceReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>, SequenceReadingRuntime<InputBytestream>>, ? super XO> rxSerializerFactory,
+    PacketInputFieldReadingFactory<T, XS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, XO, WkSzInputBytestreamBase<?>> readingOpFactory,
+    InputDeserializerFactory<T, ? super SequenceReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, SequenceReadingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
     SerializingPrimitiveArrayLengthProvider<? super T,? super YS,? super D> txRequestedLengthEvaluator,
-    PacketOutputFieldWritingFactory<T, YS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, YO, OutputBytestreamGeneralBase<?>> writingOpFactory,
-    OutputSerializerFactory<T, ? super SequenceWritingRuntimeControl<OutputBytestream, OutputBytestreamGeneralBase<? extends OutputBytestream>, SequenceWritingRuntime<OutputBytestream>>, ? super YO> txSerializerFactory,
+    PacketOutputFieldWritingFactory<T, YS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, YO, WkSzOutputBytestreamBase<?>> writingOpFactory,
+    OutputSerializerFactory<T, ? super SequenceWritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, SequenceWritingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

@@ -28,20 +28,20 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.BasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                         T extends PrimitiveArrayWrapper<?,?>,
@@ -49,14 +49,14 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                         XO extends DynamicPrimitiveArrayDeserializing<
                                         T,
                                         OperationSettings,
-                                        DeserializingRuntime<InputBytestream>,
+                                        DeserializingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         YD extends WkSzDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
                         YO extends DynamicPrimitiveArraySerializing<
                                         T,
                                         OperationSettings,
-                                        SerializingRuntime<OutputBytestream>,
+                                        SerializingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         ZT extends Number,
@@ -81,25 +81,25 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
     extends DynamicSequenceDefinitionCore<
                         T,
                         OperationSettings,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         XO, XD,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YO, YD,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         ZT,
                         OperationSettings,
                         ZXO, ZXD,
@@ -121,20 +121,20 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
     String sizeComponentLabel,
     IntFunction<ZT> sizeComponentIntToNumber,
     ProtocolDefinitionFactory<
-      ZT,OperationSettings,ZXD,ZXO,InputBytestreamGeneralBase<? extends InputBytestream>,OperationSettings,
-      ZYD,ZYO,OutputBytestreamGeneralBase<? extends OutputBytestream>,ZD> sizeComponentDefinitionFactory,
+      ZT,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,OperationSettings,
+      ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeComponentDefinitionFactory,
     String varseqComponentLabel,
     ProtocolDefinitionFactory<
-      T,VariableLengthSettings,VXD,VXO,InputBytestreamGeneralBase<? extends InputBytestream>,OperationSettings,
-      VYD,VYO,OutputBytestreamGeneralBase<? extends OutputBytestream>,VD> varseqComponentDefinitionFactory,
+      T,VariableLengthSettings,VXD,VXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,OperationSettings,
+      VYD,VYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,VD> varseqComponentDefinitionFactory,
     PacketInputFieldReadingFactory<
       T,OperationSettings,XD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
-      XO,InputBytestreamGeneralBase<?>> readingOpFactory,
+      XO,WkSzInputBytestreamBase<?>> readingOpFactory,
     PacketOutputFieldWritingFactory<
       T,OperationSettings,YD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
-      YO,OutputBytestreamGeneralBase<?>> writingOpFactory,
+      YO,WkSzOutputBytestreamBase<?>> writingOpFactory,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     D definitionBody,
     Class<T> serializableClass) {

@@ -21,29 +21,29 @@ import java.io.IOException;
 
 import weliyek.amat.base.input.BasicReadingRuntimeModule;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzBasicInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.ketza.util.DoesNothingRunnable;
-import weliyek.serialization.bytestream.BasicInputBytestream;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class BasicSequenceReadingRuntime
     implements SequenceReadingRuntimeControl<
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
-                        SequenceReadingRuntime<InputBytestream>>
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                        SequenceReadingRuntime<WkSzInputBytestream>>
 {
 
   private final BasicReadingRuntimeModule<
-                    InputBytestreamGeneralBase<?>,
-                    InputBytestream,
-                    InputBytestreamGeneralBase<InputBytestream>,
-                    SequenceReadingRuntime<InputBytestream>> ctrlCore;
+                    WkSzInputBytestreamBase<?>,
+                    WkSzInputBytestream,
+                    WkSzInputBytestreamBase<WkSzInputBytestream>,
+                    SequenceReadingRuntime<WkSzInputBytestream>> ctrlCore;
   private final SequenceOnlyOperationRuntimeControlModule sequenceCtrl = new SequenceOnlyOperationRuntimeControlModule();
-  private final SequenceReadingRuntime<InputBytestream> publicRuntime;
+  private final SequenceReadingRuntime<WkSzInputBytestream> publicRuntime;
 
-  public BasicSequenceReadingRuntime(InputBytestreamGeneralBase<?> parentBytestream) {
-    this.ctrlCore = new BasicReadingRuntimeModule<>(this, parentBytestream, BasicInputBytestream::new, DoesNothingRunnable.INSTANCE);
-    this.publicRuntime = new SequenceReadingRuntime<InputBytestream>() {
+  public BasicSequenceReadingRuntime(WkSzInputBytestreamBase<?> parentBytestream) {
+    this.ctrlCore = new BasicReadingRuntimeModule<>(this, parentBytestream, WkSzBasicInputBytestream::new, DoesNothingRunnable.INSTANCE);
+    this.publicRuntime = new SequenceReadingRuntime<WkSzInputBytestream>() {
 
       @Override
       public long nextElementIndex() {
@@ -51,18 +51,18 @@ public class BasicSequenceReadingRuntime
       }
 
       @Override
-      public InputBytestream bytestream() {
+      public WkSzInputBytestream bytestream() {
         return BasicSequenceReadingRuntime.this.bytestream();
       }};
   }
 
   @Override
-  public InputBytestream bytestream() {
+  public WkSzInputBytestream bytestream() {
     return this.ctrlCore.bytestream();
   }
 
   @Override
-  public SequenceReadingRuntime<InputBytestream> asRuntime() {
+  public SequenceReadingRuntime<WkSzInputBytestream> asRuntime() {
     return this.publicRuntime;
   }
 
@@ -82,7 +82,7 @@ public class BasicSequenceReadingRuntime
   }
 
   @Override
-  public InputBytestreamGeneralBase<InputBytestream> bytestreamCore() {
+  public WkSzInputBytestreamBase<WkSzInputBytestream> bytestreamCore() {
     return this.ctrlCore.bytestreamCore();
   }
 

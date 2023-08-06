@@ -31,18 +31,18 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.BasicWritingRuntime;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.ketza.util.array.ByteArrayReading;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.ByteArrayWriting;
@@ -51,7 +51,7 @@ public class SimplifiedStringFromBytesCore<
                         XS extends OperationSettings,
                         XO extends WkSzStringFromBytesReader<
                                         XS,
-                                        DeserializingRuntime<InputBytestream>,
+                                        DeserializingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<String>,
                                         XD,
                                         SXD,
@@ -60,7 +60,7 @@ public class SimplifiedStringFromBytesCore<
                         YS extends OperationSettings,
                         YO extends WkSzStringFromBytesWriter<
                                         YS,
-                                        SerializingRuntime<OutputBytestream>,
+                                        SerializingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD,
                                         SYD,
@@ -76,25 +76,25 @@ public class SimplifiedStringFromBytesCore<
                         D extends WkSzStringFromBytesDefinition<XO,YO,SD>>
     extends WkSzStringFromBytesDefinitionCore<
                         XS,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<String>,
                         XO, XD,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         YS,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YO, YD,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         SXS,
                         SXO, SXD,
                         SYS,
@@ -109,11 +109,11 @@ public class SimplifiedStringFromBytesCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
       String,XS,XD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
-      XO,InputBytestreamGeneralBase<?>>
+      XO,WkSzInputBytestreamBase<?>>
         readingOpFactory,
     PacketOutputFieldWritingFactory<
       String,YS,YD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
-      YO,OutputBytestreamGeneralBase<?>>
+      YO,WkSzOutputBytestreamBase<?>>
         writingOpFactory,
     String bytesLabel,
     OperationSubsegmentSettingsFactory<XO, SXS> bytesDeserializingSettingsFactory,
@@ -121,8 +121,8 @@ public class SimplifiedStringFromBytesCore<
     OperationSubsegmentSettingsFactory<YO, SYS> bytesSerializingSettingsFactory,
     Disaggregator<ByteArrayWrapper,SYD,String,YO> bytesSerializingDisaggregator,
     ProtocolDefinitionFactory<
-      ByteArrayWrapper,SXS,SXD,SXO,InputBytestreamGeneralBase<? extends InputBytestream>,
-      SYS,SYD,SYO,OutputBytestreamGeneralBase<? extends OutputBytestream>,SD>
+      ByteArrayWrapper,SXS,SXD,SXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+      SYS,SYD,SYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,SD>
         bytesDefinitionFactory,
     D definitionBody) {
     super(

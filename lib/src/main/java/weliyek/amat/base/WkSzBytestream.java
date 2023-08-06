@@ -15,14 +15,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.basic.sequence;
+package weliyek.amat.base;
 
-import weliyek.amat.base.output.SerializingRuntime;
-import weliyek.amat.base.output.WkSzOutputBytestream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-public interface SequenceWritingRuntime<B extends WkSzOutputBytestream>
-    extends SequenceCommonOperationRuntime<B>,
-            SerializingRuntime<B>
+/**
+ * This type encapsulates all logic related to management of the actual serialization such as
+ * wrapping {@link InputStream} and {@link OutputStream}.
+ */
+public interface WkSzBytestream
 {
+
+    long getTotalPacketProcessedBytes();
+
+    long getStartIndexInGlobalBytestream();
+
+    long getFieldProcessedBytes();
+
+    boolean isClosed();
 
 }

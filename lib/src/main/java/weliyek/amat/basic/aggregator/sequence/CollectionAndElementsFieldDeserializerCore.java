@@ -27,17 +27,17 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public abstract class CollectionAndElementsFieldDeserializerCore<
                         T extends Collection<ET>,
                         XS extends OperationSettings,
-                        XB extends InputBytestream,
-                        XBC extends InputBytestreamGeneralBase<? extends XB>,
+                        XB extends WkSzInputBytestream,
+                        XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends SequenceReadingRuntime<XB>,
                         XQC extends SequenceReadingRuntimeControl<XB,XBC,XQ>,
                         XR extends DeserializingResult<T>,
@@ -45,7 +45,7 @@ public abstract class CollectionAndElementsFieldDeserializerCore<
                         XO extends CollectionAndElementsFieldDeserializer<T,XS,XQ,XR,XD,ET,EXD,EXO>,
                         XOC extends CollectionAndElementsFieldDeserializerCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXBC,ET,EXS,EXD,EXO,DC>,
-                        AXBC extends InputBytestreamGeneralBase<?>,
+                        AXBC extends WkSzInputBytestreamBase<?>,
                         ET,
                         EXS extends OperationSettings,
                         EXD extends WkSzDefinition<ET,?>,

@@ -15,25 +15,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization.bytestream;
+package weliyek.amat.base.input;
 
-import java.io.IOException;
-import java.io.InputStream;
+import weliyek.amat.base.WkSzBytestream;
 
-public abstract class InputBytestreamGeneralBase<B extends InputBytestream>
-    extends BytestreamCore<InputStream, B>
-    implements InputBytestream
+public interface WkSzInputBytestream
+        extends WkSzBytestream
 {
-
-  protected InputBytestreamGeneralBase(long startPos) {
-    super(startPos);
-  }
-
-  abstract int readByte() throws IOException;
-
-  abstract long skipBytes(long num) throws IOException;
-
-  @Override
-  protected abstract InputStream iostream();
 
 }

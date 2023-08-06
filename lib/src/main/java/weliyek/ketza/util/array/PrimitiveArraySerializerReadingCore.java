@@ -21,10 +21,10 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.amat.basic.serializer.SerializerReadingCore;
 
 public abstract class PrimitiveArraySerializerReadingCore<
@@ -36,7 +36,7 @@ public abstract class PrimitiveArraySerializerReadingCore<
                         XO extends WkSzPrimitiveArraySerializerReader<X,XS,XQ,XR,XD>,
                         XOC extends PrimitiveArraySerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends PrimitiveArraySerializerDefinition<X,XO>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         DC extends PrimitiveArraySerializerCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends SerializerReadingCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
         implements WkSzPrimitiveArraySerializerReader<X, XS, XQ, XR, XD>

@@ -32,12 +32,12 @@ import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class WkSzSerializerDefinitionCore<
                         T,
@@ -46,13 +46,13 @@ public abstract class WkSzSerializerDefinitionCore<
                         XR extends DeserializingResult<T>,
                         XD extends WkSzDefinition<T,XO>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,XR,XD>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         YS extends OperationSettings,
                         YQC extends WritingRuntimeControl<?,?,?>,
                         YR extends SerializingResult,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,YR,YD>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         D extends WkSzDefinition<T,XO>,
                         DC extends WkSzSerializerDefinitionCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSzDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>

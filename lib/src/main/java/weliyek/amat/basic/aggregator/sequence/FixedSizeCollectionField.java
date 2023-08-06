@@ -22,22 +22,22 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
+import weliyek.amat.base.WkSzDefinition;
+import weliyek.amat.base.WkSzDefinitionCore;
+import weliyek.amat.base.WkSzStruct;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class FixedSizeCollectionField<
                         T extends Collection<ET>,
@@ -76,11 +76,11 @@ public final class FixedSizeCollectionField<
                   XS,
                   FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                   FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
-                  InputBytestreamGeneralBase<?>,
+                  WkSzInputBytestreamBase<?>,
                   YS,
                   FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                   FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
-                  OutputBytestreamGeneralBase<?>,
+                  WkSzOutputBytestreamBase<?>,
                   FixedSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
   newPacketStructure(
     String label,
@@ -95,8 +95,8 @@ public final class FixedSizeCollectionField<
       FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     ProtocolDefinitionFactory<
-      ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
-      EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory) {
+      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
+      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory) {
     return new WkSzStruct<>(
                       label,
                       (pc) -> FixedSizeCollectionField.newCore(
@@ -108,8 +108,8 @@ public final class FixedSizeCollectionField<
                                     elementsTxSettingsFactory,
                                     elementsDefinitionFactory,
                                     pc),
-                      CountingInputBytestream::new,
-                      CountingOutputBytestream::new);
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
   }
 
   public static <T extends Collection<ET>,
@@ -128,11 +128,11 @@ public final class FixedSizeCollectionField<
                       XS,?,?,
                       FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                       FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       YS,?,?,
                       FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                       FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       FixedSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,?>
   newCore(
     int expectedCollectionSize,
@@ -146,8 +146,8 @@ public final class FixedSizeCollectionField<
       FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     ProtocolDefinitionFactory<
-      ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
-      EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
+      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new FixedSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>(
                         expectedCollectionSize,
@@ -184,8 +184,8 @@ public final class FixedSizeCollectionField<
       FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     ProtocolDefinitionFactory<
-      ET,EXS,EXD,EXO,InputBytestreamGeneralBase<?>,
-      EYS,EYD,EYO,OutputBytestreamGeneralBase<?>,ED> elementsDefinitionFactory) {
+      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
+      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory) {
     this.definitionCore = new SimplifiedCollectionDefinitionCore<
                                   T, XS,
                                   FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,

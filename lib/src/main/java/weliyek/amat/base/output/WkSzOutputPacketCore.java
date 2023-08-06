@@ -26,14 +26,13 @@ import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public final class WkSzOutputPacketCore<
                         T,
                         YS extends OperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
-                        AYBC extends OutputBytestreamGeneralBase<?>>
+                        AYBC extends WkSzOutputBytestreamBase<?>>
     extends WkSzPacketWriterFieldCore<
                         T, YS, YD, YO, AYBC,
                         WkSzAggregatorWriter<?,?,? extends SerializingRuntime<?>,?,?>>
@@ -43,7 +42,7 @@ public final class WkSzOutputPacketCore<
   static public class WritingParameters<
                         Y,
                         S extends OperationSettings,
-                        AYB extends OutputBytestreamGeneralBase<?>>
+                        AYB extends WkSzOutputBytestreamBase<?>>
   {
 
     final Y serializable;

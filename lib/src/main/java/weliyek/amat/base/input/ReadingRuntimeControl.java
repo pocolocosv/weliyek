@@ -20,12 +20,10 @@ package weliyek.amat.base.input;
 import java.io.IOException;
 
 import weliyek.amat.base.CommonOperationRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public interface ReadingRuntimeControl<
-                        B extends InputBytestream,
-                        BC extends InputBytestreamGeneralBase<? extends B>,
+                        B extends WkSzInputBytestream,
+                        BC extends WkSzInputBytestreamBase<? extends B>,
                         Q extends DeserializingRuntime<B>>
     extends DeserializingRuntime<B>,
             CommonOperationRuntimeControl<B, BC, Q>

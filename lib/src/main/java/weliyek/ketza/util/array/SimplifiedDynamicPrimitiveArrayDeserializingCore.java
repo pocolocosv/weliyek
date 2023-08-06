@@ -22,18 +22,18 @@ import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
                         T extends PrimitiveArrayWrapper<?,?>,
                         XO extends DynamicPrimitiveArrayDeserializing<
                                         T,
                                         OperationSettings,
-                                        DeserializingRuntime<InputBytestream>,
+                                        DeserializingRuntime<WkSzInputBytestream>,
                                         DeserializingResult<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD extends WkSzDynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
@@ -51,18 +51,18 @@ public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
     extends DynamicSequenceDeserializingCore<
                         T,
                         OperationSettings,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
-                        DeserializingRuntime<InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<T>,
                         XO,
                         SimplifiedDynamicPrimitiveArrayDeserializingCore<T,XO,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         ZT,
                         OperationSettings,
                         ZXO,
@@ -77,7 +77,7 @@ public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
     implements DynamicPrimitiveArrayDeserializing<
                         T,
                         OperationSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<T>,
                         XD, ZT, ZXO, ZXD, VXO, VXD>
 {
@@ -85,7 +85,7 @@ public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
   public SimplifiedDynamicPrimitiveArrayDeserializingCore(
     int index,
     OperationSettings settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<T,?,XD,?,?,?> deserializingfieldCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
       T,XD,XO,?,?,

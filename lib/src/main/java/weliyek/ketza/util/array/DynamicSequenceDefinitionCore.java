@@ -30,10 +30,14 @@ import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
@@ -44,16 +48,12 @@ import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class DynamicSequenceDefinitionCore<
                         T,
                         XS extends OperationSettings,
-                        XB extends InputBytestream,
-                        XBC extends InputBytestreamGeneralBase<? extends XB>,
+                        XB extends WkSzInputBytestream,
+                        XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends ReadingRuntimeControl<XB,XBC,?>,
                         XR extends DeserializingResult<T>,
                         XO extends DynamicSequenceDeserializing<
@@ -61,10 +61,10 @@ public abstract class DynamicSequenceDefinitionCore<
                                         ? extends DeserializingRuntime<XB>,
                                         XR, XD, ?, ?, ?, ?, ?>,
                         XD extends WkSzDynamicSequenceDefinition<T,XO,?,?,?>,
-                        AXBC extends InputBytestreamGeneralBase<?>,
+                        AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends OperationSettings,
-                        YB extends OutputBytestream,
-                        YBC extends OutputBytestreamGeneralBase<? extends YB>,
+                        YB extends WkSzOutputBytestream,
+                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,?>,
                         YR extends SerializingResult,
                         YO extends DynamicSequenceSerializing<
@@ -72,7 +72,7 @@ public abstract class DynamicSequenceDefinitionCore<
                                         ? extends SerializingRuntime<YB>,
                                         YR, YD, ?, ?, ?, ?, ?>,
                         YD extends WkSzDynamicSequenceDefinition<T,?,YO,?,?>,
-                        AYBC extends OutputBytestreamGeneralBase<?>,
+                        AYBC extends WkSzOutputBytestreamBase<?>,
                         ZX extends Number,
                         ZXS extends OperationSettings,
                         ZXO extends WkSzNumberReader<ZX,ZXS,?,?,ZXD>,

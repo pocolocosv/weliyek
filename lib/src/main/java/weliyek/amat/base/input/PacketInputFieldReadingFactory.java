@@ -19,7 +19,6 @@ package weliyek.amat.base.input;
 
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.amat.base.OperationFactory;
 import weliyek.amat.base.OperationSettings;
 
@@ -30,7 +29,7 @@ public interface PacketInputFieldReadingFactory<
                         XD extends WkSzDefinition<T,?>,
                         DC extends WkSzDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
-                        AXB extends InputBytestreamGeneralBase<?>>
+                        AXB extends WkSzInputBytestreamBase<?>>
     extends OperationFactory
 {
 

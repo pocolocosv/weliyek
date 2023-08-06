@@ -21,17 +21,17 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public class SimpleStringFromBytesWritingCore<
                         YS extends OperationSettings,
                         YO extends WkSzStringFromBytesWriter<
                                       YS,
-                                      SerializingRuntime<OutputBytestream>,
+                                      SerializingRuntime<WkSzOutputBytestream>,
                                       SerializingResult,
                                       YD,SYD,SYO>,
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
@@ -40,18 +40,18 @@ public class SimpleStringFromBytesWritingCore<
                         SYD extends WkSzByteArrayDefinition<?>>
     extends StringFromBytesWritingCore<
                         YS,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                        SerializingRuntime<OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YO,
                         SimpleStringFromBytesWritingCore<YS,YO,YD,SYS,SYO,SYD>,
                         YD,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         SYS, SYO, SYD,
                         SimplifiedStringFromBytesCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?>>
 {
@@ -60,7 +60,7 @@ public class SimpleStringFromBytesWritingCore<
     int index,
     String serializable,
     YS settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<String,?,YD,?,?,?> packetHandlerCore,
     SimplifiedStringFromBytesCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
     YO operationBody) {

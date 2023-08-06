@@ -27,14 +27,14 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class DynamicByteArray<
                         ZT extends Number,
@@ -62,11 +62,11 @@ public class DynamicByteArray<
                   OperationSettings,
                   DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
-                  InputBytestreamGeneralBase<?>,
+                  WkSzInputBytestreamBase<?>,
                   OperationSettings,
                   DynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                   DynamicByteArraySerialzing<ZX,ZYO,ZYD>,
-                  OutputBytestreamGeneralBase<?>,
+                  WkSzOutputBytestreamBase<?>,
                   DynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>>
   newPacketStructure(
     String label,
@@ -76,24 +76,24 @@ public class DynamicByteArray<
     int maxLength,
     IntFunction<ZX> sizeWrapper,
     ProtocolDefinitionFactory<
-      ZX,OperationSettings,ZXD,ZXO,InputBytestreamGeneralBase<?>,
-      OperationSettings,ZYD,ZYO,OutputBytestreamGeneralBase<?>,ZD>  sizeDefinition)
+      ZX,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,
+      OperationSettings,ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD>  sizeDefinition)
   {
     return new WkSzStruct<ByteArrayWrapper,
         OperationSettings,
         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
-        InputBytestreamGeneralBase<?>,
+        WkSzInputBytestreamBase<?>,
         OperationSettings,
         DynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
         DynamicByteArraySerialzing<ZX,ZYO,ZYD>,
-        OutputBytestreamGeneralBase<?>,
+        WkSzOutputBytestreamBase<?>,
         DynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>>(
                   label,
                   (pc) -> DynamicByteArray.newCore(
                               pc, sizeLabel, sizeWrapper, bytearrayLabel, minLength, maxLength, sizeDefinition),
-                  CountingInputBytestream::new,
-                  CountingOutputBytestream::new);
+                  WkSzCountingInputBytestream::new,
+                  WkSzCountingOutputBytestream::new);
   }
 
   public static <ZX extends Number,
@@ -106,11 +106,11 @@ public class DynamicByteArray<
                         OperationSettings,?,?,
                         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,?,?,
                         DynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                         DynamicByteArraySerialzing<ZX,ZYO,ZYD>,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         DynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>,?>
   newCore(
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
@@ -120,8 +120,8 @@ public class DynamicByteArray<
     int minLength,
     int maxLength,
     ProtocolDefinitionFactory<
-      ZX,OperationSettings,ZXD,ZXO,InputBytestreamGeneralBase<?>,
-      OperationSettings,ZYD,ZYO,OutputBytestreamGeneralBase<?>,ZD> sizeDefinitionFactory)
+      ZX,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,
+      OperationSettings,ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD> sizeDefinitionFactory)
   {
     return new DynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>(componentCore, sizeLabel, wrapperSizeGetter, arrayLabel, minLength, maxLength, sizeDefinitionFactory).definitionCore;
   }
@@ -147,8 +147,8 @@ public class DynamicByteArray<
     int minLength,
     int maxLength,
     ProtocolDefinitionFactory<
-      ZT,OperationSettings,ZXD,ZXO,InputBytestreamGeneralBase<?>,OperationSettings,
-      ZYD,ZYO,OutputBytestreamGeneralBase<?>,ZD> sizeComponentDefinitionFactory) {
+      ZT,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,OperationSettings,
+      ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD> sizeComponentDefinitionFactory) {
     this.definitionCore = new SimplifiedDynamicPrimitiveArrayDefinitionCore<
                                 ByteArrayWrapper,
                                 DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,

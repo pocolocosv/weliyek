@@ -21,13 +21,11 @@ import java.io.IOException;
 import java.util.function.Function;
 
 import weliyek.amat.base.CommonOperationRuntimeModuleBase;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public final class BasicReadingRuntimeModule<
-                        AB extends InputBytestream,
-                        B extends InputBytestream,
-                        BC extends InputBytestreamGeneralBase<B>,
+                        AB extends WkSzInputBytestream,
+                        B extends WkSzInputBytestream,
+                        BC extends WkSzInputBytestreamBase<B>,
                         Q extends DeserializingRuntime<B>>
     extends CommonOperationRuntimeModuleBase<AB, B, BC, Q>
     implements ReadingRuntimeControl<B, BC, Q>

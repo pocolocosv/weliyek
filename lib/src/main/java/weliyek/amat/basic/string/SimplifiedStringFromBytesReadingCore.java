@@ -22,16 +22,16 @@ import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 import weliyek.ketza.util.array.ByteArrayReading;
 
 public class SimplifiedStringFromBytesReadingCore<
                         XS extends OperationSettings,
                         XO extends WkSzStringFromBytesReader<
                                       XS,
-                                      DeserializingRuntime<InputBytestream>,
+                                      DeserializingRuntime<WkSzInputBytestream>,
                                       DeserializingResult<String>,
                                       XD,SXD,SXO>,
                         XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
@@ -40,25 +40,25 @@ public class SimplifiedStringFromBytesReadingCore<
                         SXD extends WkSzByteArrayDefinition<SXO>>
     extends StringFromBytesReadingCore<
                         XS,
-                        InputBytestream,
-                        InputBytestreamGeneralBase<? extends InputBytestream>,
-                        DeserializingRuntime<InputBytestream>,
+                        WkSzInputBytestream,
+                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         ReadingRuntimeControl<
-                          InputBytestream,
-                          InputBytestreamGeneralBase<? extends InputBytestream>,
-                          DeserializingRuntime<InputBytestream>>,
+                          WkSzInputBytestream,
+                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+                          DeserializingRuntime<WkSzInputBytestream>>,
                         DeserializingResult<String>,
                         XO,
                         SimplifiedStringFromBytesReadingCore<XS,XO,XD,SXS,SXO,SXD>,
                         XD,
-                        InputBytestreamGeneralBase<?>, SXS, SXO, SXD,
+                        WkSzInputBytestreamBase<?>, SXS, SXO, SXD,
                         SimplifiedStringFromBytesCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?>>
 {
 
   public SimplifiedStringFromBytesReadingCore(
     int index,
     XS settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<String,?,XD,?,?,?> packetfieldCore,
     SimplifiedStringFromBytesCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
     XO operationBody) {

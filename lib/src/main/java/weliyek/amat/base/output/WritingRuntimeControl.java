@@ -20,12 +20,10 @@ package weliyek.amat.base.output;
 import java.io.IOException;
 
 import weliyek.amat.base.CommonOperationRuntimeControl;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public interface WritingRuntimeControl<
-                        B extends OutputBytestream,
-                        BC extends OutputBytestreamGeneralBase<? extends B>,
+                        B extends WkSzOutputBytestream,
+                        BC extends WkSzOutputBytestreamBase<? extends B>,
                         Q extends SerializingRuntime<B>>
     extends SerializingRuntime<B>,
             CommonOperationRuntimeControl<B, BC, Q>

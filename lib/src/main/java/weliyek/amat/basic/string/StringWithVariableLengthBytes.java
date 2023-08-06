@@ -28,16 +28,16 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.sequence.OptionalLengthSettings;
 import weliyek.amat.basic.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArrayDeserializing;
 import weliyek.ketza.util.array.VariableSizeByteArraySerializing;
@@ -54,11 +54,11 @@ public class StringWithVariableLengthBytes
                       VariableLengthSettings,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesDeserializing,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OptionalLengthSettings,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesSerializing,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       StringWithVariableLengthBytes>
   newPacketStructure(
     String label,
@@ -70,8 +70,8 @@ public class StringWithVariableLengthBytes
                       label,
                       (pc) -> StringWithVariableLengthBytes.newCore(
                                     bytesLabel, minimalLength, maximalLength, defaultCharset, pc),
-                      CountingInputBytestream::new,
-                      CountingOutputBytestream::new);
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
   }
 
   public static WkSzDefinitionCore<
@@ -79,11 +79,11 @@ public class StringWithVariableLengthBytes
                       VariableLengthSettings,?,?,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesDeserializing,
-                      InputBytestreamGeneralBase<?>,
+                      WkSzInputBytestreamBase<?>,
                       OptionalLengthSettings,?,?,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesSerializing,
-                      OutputBytestreamGeneralBase<?>,
+                      WkSzOutputBytestreamBase<?>,
                       StringWithVariableLengthBytes,?>
   newCore(
     String bytesLabel,

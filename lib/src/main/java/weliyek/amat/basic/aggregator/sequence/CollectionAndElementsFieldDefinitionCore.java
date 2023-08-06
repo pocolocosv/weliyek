@@ -34,42 +34,42 @@ import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public abstract class CollectionAndElementsFieldDefinitionCore<
                         T extends Collection<ET>,
                         XS extends OperationSettings,
-                        XB extends InputBytestream,
-                        XBC extends InputBytestreamGeneralBase<? extends XB>,
+                        XB extends WkSzInputBytestream,
+                        XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends SequenceReadingRuntimeControl<XB,XBC,?>,
                         XR extends DeserializingResult<T>,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,XS,? extends DeserializingRuntime<XB>,XR,XD,ET,EXD,EXO>,
-                        AXB extends InputBytestreamGeneralBase<?>,
+                        AXB extends WkSzInputBytestreamBase<?>,
                         YS extends OperationSettings,
-                        YB extends OutputBytestream,
-                        YBC extends OutputBytestreamGeneralBase<? extends YB>,
+                        YB extends WkSzOutputBytestream,
+                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WritingRuntimeControl<YB,YBC,?>,
                         YR extends SerializingResult,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,YS,? extends SerializingRuntime<YB>,YR,YD,ET,EYD,EYO>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EXS extends OperationSettings,
                         EXD extends WkSzDefinition<ET,?>,

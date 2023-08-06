@@ -23,7 +23,6 @@ import java.util.Optional;
 import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.WkSzPacketOperation;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketOperationSegmentCore;
 
@@ -36,7 +35,7 @@ public abstract class WkSzPacketWriterOperationCore<
                         YO extends WkSzPacketWriterOperation<T,YS,YQ,YR,YD>,
                         YOC extends WkSzPacketWriterOperationCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSzDefinition<T,?>,
-                        AYB extends OutputBytestreamGeneralBase<?>,
+                        AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSzDefinitionCore<
                                       T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,?,DC>>
         extends PacketOperationSegmentCore<

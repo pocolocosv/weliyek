@@ -25,12 +25,12 @@ import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.amat.base.input.WkSzCountingInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
+import weliyek.amat.base.output.WkSzCountingOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.newserialization.basic.LittleEndianIntegerOutputSerializer;
 import weliyek.amat2.protocol.filter.FieldTester;
-import weliyek.serialization.bytestream.CountingInputBytestream;
-import weliyek.serialization.bytestream.CountingOutputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class WkSzSignedLittleEndianInteger
     implements WkSzNumberDefinition<
@@ -43,18 +43,18 @@ public class WkSzSignedLittleEndianInteger
                         OperationSettings,
                         WkSzSignedLittleEndianInteger,
                         WkSzSignedLittleEndianIntegerReader,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,
                         WkSzSignedLittleEndianInteger,
                         WkSzSignedLittleEndianIntegerWriter,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         WkSzSignedLittleEndianInteger>
   newPacketStructure(String label) {
     return new WkSzStruct<>(
                       label,
                       WkSzSignedLittleEndianInteger::newCore,
-                      CountingInputBytestream::new,
-                      CountingOutputBytestream::new);
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
   }
 
   public static WkSzDefinitionCore<
@@ -62,11 +62,11 @@ public class WkSzSignedLittleEndianInteger
                         OperationSettings,?,?,
                         WkSzSignedLittleEndianInteger,
                         WkSzSignedLittleEndianIntegerReader,
-                        InputBytestreamGeneralBase<?>,
+                        WkSzInputBytestreamBase<?>,
                         OperationSettings,?,?,
                         WkSzSignedLittleEndianInteger,
                         WkSzSignedLittleEndianIntegerWriter,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         WkSzSignedLittleEndianInteger,?>
   newCore(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSzSignedLittleEndianInteger(componentCore).definitionCore;

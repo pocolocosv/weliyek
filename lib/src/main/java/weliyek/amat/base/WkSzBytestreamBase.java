@@ -15,18 +15,26 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization.bytestream;
+package weliyek.amat.base;
 
-public abstract class BytestreamCore<
+import java.io.InputStream;
+
+/**
+ * Base implementation shared by the input and output {@link WkSzBytestream} types.
+ * 
+ * @param <S> {@link InputStream} or {@link OutputStream}.
+ * @param <B>
+ */
+public abstract class WkSzBytestreamBase<
                         S,
-                        B extends Bytestream>
-        implements Bytestream
+                        B extends WkSzBytestream>
+        implements WkSzBytestream
 {
 
   private final long startIndex;
   private long endIndex = -1;
 
-  protected BytestreamCore(final long startPos) {
+  protected WkSzBytestreamBase(final long startPos) {
     this.startIndex = startPos;
   }
 

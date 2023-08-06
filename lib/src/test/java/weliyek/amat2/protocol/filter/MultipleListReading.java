@@ -23,6 +23,8 @@ import java.util.Optional;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzInputBytestream;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
@@ -34,14 +36,12 @@ import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionFieldDeseria
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShort;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortReader;
-import weliyek.serialization.bytestream.InputBytestream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
 
 public class MultipleListReading
         implements DynamicCollectionFieldDeserializer<
                         MultipleLists,
                         OperationSettings,
-                        DeserializingRuntime<InputBytestream>,
+                        DeserializingRuntime<WkSzInputBytestream>,
                         DeserializingResult<MultipleLists>,
                         MultipleListInputField,
                         Short,
@@ -73,7 +73,7 @@ public class MultipleListReading
   MultipleListReading(
     int index,
     OperationSettings settings,
-    InputBytestreamGeneralBase<?> parentBytestream,
+    WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<MultipleLists, ?, MultipleListInputField, ?, ?, ?> packetfieldCore,
     SimplifiedDynamicCollectionDefinitionCore<MultipleLists, OperationSettings, MultipleListReading, MultipleListInputField, ?, ?, ?, Short, OperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, ?, ?, ?, ?, PrimitivesGroupList, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, ?, ?, ?, ?, VariableLengthSettings, ?, ?>
       definitionCore) {
@@ -107,7 +107,7 @@ public class MultipleListReading
   }
 
   @Override
-  public DeserializingRuntime<InputBytestream> dashboard() {
+  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 

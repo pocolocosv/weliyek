@@ -21,18 +21,18 @@ import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzOutputBytestream;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
-import weliyek.serialization.bytestream.OutputBytestream;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class SimplifiedDynamicPrimitiveArraySerializingCore<
                         T extends PrimitiveArrayWrapper<?,?>,
                         YO extends DynamicPrimitiveArraySerializing<
                                         T,
                                         OperationSettings,
-                                        SerializingRuntime<OutputBytestream>,
+                                        SerializingRuntime<WkSzOutputBytestream>,
                                         SerializingResult,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD extends WkSzDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
@@ -50,18 +50,18 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
     extends DynamicSequenceSerializingCore<
                         T,
                         OperationSettings,
-                        OutputBytestream,
-                        OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                        SerializingRuntime<OutputBytestream>,
+                        WkSzOutputBytestream,
+                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         WritingRuntimeControl<
-                          OutputBytestream,
-                          OutputBytestreamGeneralBase<? extends OutputBytestream>,
-                          SerializingRuntime<OutputBytestream>>,
+                          WkSzOutputBytestream,
+                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                          SerializingRuntime<WkSzOutputBytestream>>,
                         SerializingResult,
                         YO,
                         SimplifiedDynamicPrimitiveArraySerializingCore<T,YO,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD,
-                        OutputBytestreamGeneralBase<?>,
+                        WkSzOutputBytestreamBase<?>,
                         ZT,
                         OperationSettings,
                         ZYO,
@@ -76,7 +76,7 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
     implements DynamicPrimitiveArraySerializing<
                         T,
                         OperationSettings,
-                        SerializingRuntime<OutputBytestream>,
+                        SerializingRuntime<WkSzOutputBytestream>,
                         SerializingResult,
                         YD, ZT, ZYO, ZYD, VYO, VYD>
 {
@@ -85,7 +85,7 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
     int index,
     T serializable,
     OperationSettings settings,
-    OutputBytestreamGeneralBase<?> parentBytestream,
+    WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
       T,?,?,YD,YO,

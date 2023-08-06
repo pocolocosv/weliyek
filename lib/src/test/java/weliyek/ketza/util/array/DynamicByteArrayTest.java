@@ -32,15 +32,15 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStruct;
+import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
+import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerWriter;
 import weliyek.amat2.protocol.PacketOperationCoreException;
 import weliyek.ketza.util.KetzaByteOutputStream;
-import weliyek.serialization.bytestream.InputBytestreamGeneralBase;
-import weliyek.serialization.bytestream.OutputBytestreamGeneralBase;
 
 public class DynamicByteArrayTest
 {
@@ -52,11 +52,11 @@ public class DynamicByteArrayTest
                     OperationSettings,
                     DynamicByteArray<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
                     DynamicByteArrayDeserializing<Integer, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger>,
-                    InputBytestreamGeneralBase<?>,
+                    WkSzInputBytestreamBase<?>,
                     OperationSettings,
                     DynamicByteArray<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
                     DynamicByteArraySerialzing<Integer, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>,
-                    OutputBytestreamGeneralBase<?>,
+                    WkSzOutputBytestreamBase<?>,
                     DynamicByteArray<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
                         DYNAMIC_BYTE_ARRAY;
   private static byte[] SHORT_BYTE_ARRAY;

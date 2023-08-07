@@ -23,7 +23,6 @@ import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
@@ -46,6 +45,7 @@ import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
+import weliyek.serialization.WkSzDefinition;
 
 public class SimplifiedCollectionDefinitionCore<
                         T extends Collection<ET>,

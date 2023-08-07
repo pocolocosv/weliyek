@@ -17,6 +17,8 @@
  */
 package weliyek.amat.base;
 
+import weliyek.serialization.WkSzPacketOperation;
+
 public interface OperationSettings extends PacketSegmentData
 {
 

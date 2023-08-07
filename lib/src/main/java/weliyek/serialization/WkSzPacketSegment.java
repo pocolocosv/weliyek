@@ -15,7 +15,9 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.serialization;
+
+import weliyek.amat.base.Direction;
 
 /**
  * Used in the handling of serialization data according to the rules defined by a serialization

@@ -17,9 +17,9 @@
  */
 package weliyek.amat.basic.string;
 
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.ketza.util.array.WkSzPrimitiveArrayDefinition;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public interface WkSzStringFromPrimitiveDefinition<
                         XO extends WkSzStringFromPrimitiveReader<?,?,?,?,?,?,?>,

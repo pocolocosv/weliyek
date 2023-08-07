@@ -23,7 +23,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public class FilterResults
 {

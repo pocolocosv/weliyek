@@ -20,11 +20,11 @@ package weliyek.amat.base.input;
 import java.util.Objects;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.FilterResults;
+import weliyek.serialization.WkSzDefinition;
 
 public class DeserializingSubfieldCore<
                         T,

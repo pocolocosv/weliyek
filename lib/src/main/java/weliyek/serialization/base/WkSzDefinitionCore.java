@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.serialization.base;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,8 @@ import java.util.function.Predicate;
 
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
@@ -41,6 +43,7 @@ import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.amat2.protocol.filter.PacketInputFieldOperationPredicate;
+import weliyek.serialization.WkSzDefinition;
 
 public abstract class WkSzDefinitionCore<
                         T,

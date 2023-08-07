@@ -18,10 +18,10 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.sequence.WkSzSequenceOperation;
+import weliyek.serialization.WkSzPacketField;
 
 public interface WkSzArrayOperation<
                         S extends OperationSettings,

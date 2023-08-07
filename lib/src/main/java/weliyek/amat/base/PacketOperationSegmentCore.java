@@ -25,6 +25,10 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.ketza.base.Completable;
 import weliyek.ketza.base.Initializable;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzPacketOperation;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public abstract class PacketOperationSegmentCore<
                         S extends OperationSettings,

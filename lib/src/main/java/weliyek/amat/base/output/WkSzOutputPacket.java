@@ -19,8 +19,8 @@ package weliyek.amat.base.output;
 
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketOperation;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketOperation;
 
 public interface WkSzOutputPacket<
                         T,

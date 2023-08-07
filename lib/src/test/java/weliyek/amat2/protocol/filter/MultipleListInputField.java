@@ -21,9 +21,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
@@ -35,6 +33,8 @@ import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShort;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortWriter;
+import weliyek.serialization.WkSzStruct;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public class MultipleListInputField
     implements WkSzDynamicCollectionDefinition<

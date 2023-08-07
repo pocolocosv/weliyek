@@ -23,7 +23,6 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
@@ -50,6 +49,7 @@ import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.DynamicSequenceDefinitionCore;
+import weliyek.serialization.WkSzDefinition;
 
 public final class SimplifiedDynamicCollectionDefinitionCore<
                         T extends Collection<ET>,

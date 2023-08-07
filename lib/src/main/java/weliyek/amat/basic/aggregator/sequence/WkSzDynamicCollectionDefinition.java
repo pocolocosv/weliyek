@@ -19,14 +19,14 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.ketza.util.array.WkSzDynamicSequenceDefinition;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public interface WkSzDynamicCollectionDefinition<
                         T extends Collection<ET>,

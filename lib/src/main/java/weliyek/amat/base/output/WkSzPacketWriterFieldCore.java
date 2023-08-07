@@ -17,13 +17,13 @@
  */
 package weliyek.amat.base.output;
 
-import weliyek.amat.base.WkSzStructComponent;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.WkSzPacketFieldCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructComponent;
 
 public abstract class WkSzPacketWriterFieldCore<
                         T,

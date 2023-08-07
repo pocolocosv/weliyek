@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import weliyek.ketza.base.Completable;
 import weliyek.ketza.base.Initializable;
 import weliyek.ketza.base.Resetable;
+import weliyek.serialization.WkSzPacketOperation;
 
 public class HandlerOperationList<
                         T,

@@ -20,9 +20,9 @@ package weliyek.amat2.protocol.filter;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.serialization.WkSzDefinition;
 
 public abstract class FieldTester<
                         D extends WkSzDefinition<?,?>,

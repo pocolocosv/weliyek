@@ -19,7 +19,7 @@ package weliyek.amat2.protocol.filter;
 
 import java.util.Collection;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public abstract class FilterPredicateRuleBaseResult
         implements FilterTesterResult,

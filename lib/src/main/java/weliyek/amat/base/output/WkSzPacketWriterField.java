@@ -17,8 +17,8 @@
  */
 package weliyek.amat.base.output;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketField;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketField;
 
 public interface WkSzPacketWriterField<
                         T,

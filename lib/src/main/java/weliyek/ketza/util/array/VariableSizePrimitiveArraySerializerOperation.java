@@ -17,11 +17,11 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.sequence.SequenceCommonOperationRuntime;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerOperation;
+import weliyek.serialization.WkSzPacketField;
 
 public interface VariableSizePrimitiveArraySerializerOperation<
                         S extends OperationSettings,

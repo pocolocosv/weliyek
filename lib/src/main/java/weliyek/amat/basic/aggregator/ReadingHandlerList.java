@@ -19,7 +19,6 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.List;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.SubfieldHandlerList;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
@@ -27,6 +26,7 @@ import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
+import weliyek.serialization.WkSzDefinition;
 
 public class ReadingHandlerList<
                         X,

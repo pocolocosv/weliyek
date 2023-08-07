@@ -22,7 +22,6 @@ import java.util.function.Predicate;
 
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.basic.aggregator.sequence.SimplifiedDynamicCollectionDefinitionCore;
 import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionField;
 import weliyek.amat.basic.aggregator.sequence.WkSzDynamicCollectionDefinition;
@@ -30,6 +29,7 @@ import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianIntegerReader;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianIntegerWriter;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public class PrimitivesGroupListField
         implements WkSzDynamicCollectionDefinition<

@@ -20,7 +20,6 @@ package weliyek.amat.basic.aggregator.sequence;
 import java.util.Collection;
 import java.util.List;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
@@ -32,6 +31,7 @@ import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
+import weliyek.serialization.WkSzDefinition;
 
 public abstract class CollectionAndElementsFieldSerializerCore<
                         T extends Collection<ET>,

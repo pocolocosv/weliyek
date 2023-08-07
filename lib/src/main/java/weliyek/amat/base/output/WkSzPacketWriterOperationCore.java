@@ -20,9 +20,9 @@ package weliyek.amat.base.output;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzDefinitionCore;
-import weliyek.amat.base.WkSzPacketOperation;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketOperation;
+import weliyek.serialization.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.PacketOperationSegmentCore;
 

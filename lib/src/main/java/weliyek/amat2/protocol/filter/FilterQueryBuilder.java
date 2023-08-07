@@ -17,8 +17,8 @@
  */
 package weliyek.amat2.protocol.filter;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat2.protocol.filter.FilterPredicateRule.ExclusiveOption;
+import weliyek.serialization.WkSzDefinition;
 
 public class FilterQueryBuilder
 {

@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 import weliyek.amat.base.CommonOperationRuntimeControl;
-import weliyek.amat.base.WkSzPacketOperation;
+import weliyek.serialization.WkSzPacketOperation;
 
 public abstract class CommonSerializerFactory<
                         QC extends CommonOperationRuntimeControl<?,?,?>,

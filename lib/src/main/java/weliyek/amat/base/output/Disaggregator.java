@@ -17,7 +17,7 @@
  */
 package weliyek.amat.base.output;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 @FunctionalInterface
 public interface Disaggregator<

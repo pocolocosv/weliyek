@@ -22,7 +22,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public class Filter
 {

@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public class FilterPredicateRuleField
         extends FilterPredicateRuleBase

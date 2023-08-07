@@ -15,39 +15,13 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization.base;
-
-import weliyek.base.WkException;
+package weliyek.serialization;
 
 /**
- * General exception for the serialization portion of the library.
+ * All struct and packet segments related to the definition of the type being serialized inherit
+ * from this type.
  */
-public class WkSzException extends WkException
+public interface WkSzDatatypeSegment extends WkSzSegment
 {
-
-  private static final long serialVersionUID = 2023_08_07_000L;
-
-  public WkSzException() {
-  }
-
-  public WkSzException(String message) {
-    super(message);
-  }
-
-  public WkSzException(Throwable cause) {
-    super(cause);
-  }
-
-  public WkSzException(String message, Throwable cause) {
-    super(message, cause);
-  }
-
-  public WkSzException(
-    String message,
-    Throwable cause,
-    boolean enableSuppression,
-    boolean writableStackTrace) {
-    super(message, cause, enableSuppression, writableStackTrace);
-  }
 
 }

@@ -17,7 +17,7 @@
  */
 package weliyek.amat.basic.serializer;
 
-import weliyek.amat.base.WkSzDatatypeSegment;
+import weliyek.serialization.WkSzDatatypeSegment;
 
 /**
  * Handles the actual serialization or deserialization of a given data type which most of the

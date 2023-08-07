@@ -17,7 +17,7 @@
  */
 package weliyek.amat2.protocol.filter;
 
-import weliyek.amat.base.WkSzPacketSegment;
+import weliyek.serialization.WkSzPacketSegment;
 
 public interface WkSzFilterableSegment
     extends WkSzPacketSegment

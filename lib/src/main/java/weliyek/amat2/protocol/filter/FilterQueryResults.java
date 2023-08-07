@@ -24,8 +24,8 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.serialization.WkSzDefinition;
 
 public class FilterQueryResults
 {

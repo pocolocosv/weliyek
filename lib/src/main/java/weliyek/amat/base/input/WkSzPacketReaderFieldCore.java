@@ -17,16 +17,16 @@
  */
 package weliyek.amat.base.input;
 
-import weliyek.amat.base.WkSzStructComponent;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.Direction;
 import weliyek.amat.base.WkSzPacketFieldCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.FilterResults;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructComponent;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public abstract class WkSzPacketReaderFieldCore<
                         T,

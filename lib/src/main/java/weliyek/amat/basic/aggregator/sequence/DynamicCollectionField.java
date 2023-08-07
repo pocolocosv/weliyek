@@ -24,13 +24,9 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
@@ -48,6 +44,10 @@ import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStruct;
+import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public class DynamicCollectionField<
                         T extends Collection<ET>,

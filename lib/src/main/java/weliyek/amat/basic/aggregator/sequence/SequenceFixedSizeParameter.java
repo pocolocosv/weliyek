@@ -19,8 +19,6 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Objects;
 
-import weliyek.amat.base.WkSzDefinitionCore;
-import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
@@ -28,6 +26,8 @@ import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
 import weliyek.amat.basic.sequence.FixedSizeSequenceReading;
 import weliyek.amat.basic.sequence.FixedSizeSequenceWriting;
 import weliyek.amat2.protocol.WkSzPacketOperationException;
+import weliyek.serialization.WkSzOperationException;
+import weliyek.serialization.base.WkSzDefinitionCore;
 import weliyek.amat2.protocol.WkSzDefinitionCoreException;
 
 public class SequenceFixedSizeParameter<T>

@@ -20,8 +20,6 @@ package weliyek.amat.basic.aggregator;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
@@ -33,6 +31,8 @@ import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketOperation;
 
 public abstract class WkSzAggregatorWriterCore<
                         T,

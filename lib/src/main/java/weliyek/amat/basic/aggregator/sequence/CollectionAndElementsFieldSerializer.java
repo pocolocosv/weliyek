@@ -22,13 +22,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingResult;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.SequenceWritingRuntime;
+import weliyek.serialization.WkSzDefinition;
 
 public interface CollectionAndElementsFieldSerializer<
                         T extends Collection<ET>,

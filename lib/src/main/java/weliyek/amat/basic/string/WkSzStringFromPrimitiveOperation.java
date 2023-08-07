@@ -18,12 +18,12 @@
 package weliyek.amat.basic.string;
 
 import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzPacketSubfield;
 import weliyek.amat.basic.aggregator.WkSzAggregatorOperation;
 import weliyek.ketza.util.array.WkSzPrimitiveArrayOperation;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzPacketSubfield;
 
 public interface WkSzStringFromPrimitiveOperation<
                         S extends OperationSettings,

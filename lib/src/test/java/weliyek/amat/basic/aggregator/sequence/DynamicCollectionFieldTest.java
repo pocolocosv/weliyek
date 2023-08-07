@@ -29,7 +29,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
@@ -48,6 +47,7 @@ import weliyek.amat.basic.number.WkSzSignedLittleEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianIntegerReader;
 import weliyek.amat.basic.number.WkSzSignedLittleEndianIntegerWriter;
 import weliyek.ketza.util.KetzaByteOutputStream;
+import weliyek.serialization.WkSzStruct;
 
 public class DynamicCollectionFieldTest
 {

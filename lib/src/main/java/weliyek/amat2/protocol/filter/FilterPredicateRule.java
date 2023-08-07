@@ -20,7 +20,7 @@ package weliyek.amat2.protocol.filter;
 import java.util.List;
 import java.util.Set;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public interface FilterPredicateRule
 {

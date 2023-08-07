@@ -17,8 +17,8 @@
  */
 package weliyek.amat.basic.serializer;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.serialization.WkSzDefinition;
 
 public interface WkSzSerializerDefinition<
                         T,

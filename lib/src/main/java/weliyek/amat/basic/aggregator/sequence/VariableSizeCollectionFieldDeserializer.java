@@ -21,7 +21,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
@@ -34,6 +33,7 @@ import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
+import weliyek.serialization.WkSzDefinition;
 
 public final class VariableSizeCollectionFieldDeserializer<
                         T extends Collection<ET>,

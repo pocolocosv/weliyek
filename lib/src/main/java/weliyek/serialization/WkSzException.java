@@ -15,24 +15,39 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.serialization;
 
-import java.util.Optional;
+import weliyek.base.WkException;
 
-public interface WkSzPacketSubfield<K extends WkSzPacketField<?,?,?>>
-    extends WkSzPacketSegment,
-            WkSzBinderSegment
+/**
+ * General exception for the serialization portion of the library.
+ */
+public class WkSzException extends WkException
 {
 
-  boolean isAwaitingActivation();
+  private static final long serialVersionUID = 2023_08_07_000L;
 
-  default boolean isActivated() { return ! isAwaitingActivation(); }
+  public WkSzException() {
+  }
 
-  Optional<K> field();
+  public WkSzException(String message) {
+    super(message);
+  }
 
-  @Override
-  default SegmentType type() {
-    return SegmentType.PACKET;
+  public WkSzException(Throwable cause) {
+    super(cause);
+  }
+
+  public WkSzException(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  public WkSzException(
+    String message,
+    Throwable cause,
+    boolean enableSuppression,
+    boolean writableStackTrace) {
+    super(message, cause, enableSuppression, writableStackTrace);
   }
 
 }

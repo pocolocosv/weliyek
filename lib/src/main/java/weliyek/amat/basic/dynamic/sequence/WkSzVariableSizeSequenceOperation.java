@@ -17,12 +17,12 @@
  */
 package weliyek.amat.basic.dynamic.sequence;
 
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.sequence.SequenceCommonOperationRuntime;
 import weliyek.amat.basic.sequence.WkSzSequenceOperation;
 import weliyek.amat.basic.sequence.WkSzVariableSizeSequenceSegment;
+import weliyek.serialization.WkSzPacketField;
 
 public interface WkSzVariableSizeSequenceOperation<
                         S extends OperationSettings,

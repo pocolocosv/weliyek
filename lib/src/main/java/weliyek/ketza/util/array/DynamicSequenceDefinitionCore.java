@@ -25,7 +25,6 @@ import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
@@ -48,6 +47,7 @@ import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public abstract class DynamicSequenceDefinitionCore<
                         T,

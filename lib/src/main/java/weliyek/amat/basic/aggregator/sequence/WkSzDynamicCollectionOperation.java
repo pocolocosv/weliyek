@@ -18,14 +18,14 @@
 package weliyek.amat.basic.aggregator.sequence;
 
 import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzPacketSubfield;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceOperation;
 import weliyek.amat.basic.number.WkSzNumberOperation;
 import weliyek.ketza.util.array.WkSzDynamicSequenceDefinition;
 import weliyek.ketza.util.array.WkSzDynamicSequenceOperation;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzPacketSubfield;
 
 public interface WkSzDynamicCollectionOperation<
                         S extends OperationSettings,

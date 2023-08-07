@@ -21,11 +21,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketOperation;
 
 public final class WkSzOutputPacketCore<
                         T,

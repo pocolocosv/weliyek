@@ -30,6 +30,10 @@ import weliyek.ketza.base.Completable;
 import weliyek.ketza.base.Enableable;
 import weliyek.ketza.base.Initializable;
 import weliyek.ketza.base.Resetable;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzPacketFieldException;
+import weliyek.serialization.WkSzPacketOperation;
 
 public abstract class WkSzPacketFieldCore<
                         T,

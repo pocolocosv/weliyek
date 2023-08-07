@@ -20,9 +20,9 @@ package weliyek.amat2.protocol;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzStructComponent;
 import weliyek.base.WkException;
-import weliyek.serialization.base.WkSzSegmentException;
+import weliyek.serialization.WkSzSegmentException;
+import weliyek.serialization.WkSzStructComponent;
 
 public class WkSzStructComponentException extends WkSzSegmentException
 {

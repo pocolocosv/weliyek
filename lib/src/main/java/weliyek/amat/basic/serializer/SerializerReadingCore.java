@@ -21,14 +21,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketOperation;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;

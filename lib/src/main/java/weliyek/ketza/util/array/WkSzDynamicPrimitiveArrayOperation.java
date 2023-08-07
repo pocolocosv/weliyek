@@ -18,11 +18,11 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzPacketSubfield;
 import weliyek.amat.basic.number.WkSzNumberOperation;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzPacketSubfield;
 
 public interface WkSzDynamicPrimitiveArrayOperation<
                         S extends OperationSettings,

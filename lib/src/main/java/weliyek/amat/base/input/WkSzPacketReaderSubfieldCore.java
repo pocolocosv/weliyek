@@ -20,16 +20,16 @@ package weliyek.amat.base.input;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponent;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.WkSzPacketSubfieldCore;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructComponent;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public class WkSzPacketReaderSubfieldCore<
                         ST,

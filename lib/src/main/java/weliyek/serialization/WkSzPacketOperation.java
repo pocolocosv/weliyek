@@ -15,10 +15,14 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.serialization;
 
 import java.util.List;
 import java.util.Optional;
+
+import weliyek.amat.base.CommonOperationRuntime;
+import weliyek.amat.base.OperationResult;
+import weliyek.amat.base.OperationSettings;
 
 /**
  * An operation is in charge of managing the data and logic needed to serialize

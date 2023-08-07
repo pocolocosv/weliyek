@@ -20,7 +20,7 @@ package weliyek.amat2.protocol.filter;
 import java.util.List;
 import java.util.Objects;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public class FilterQuery
 {

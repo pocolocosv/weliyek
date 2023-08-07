@@ -18,9 +18,9 @@
 package weliyek.amat.basic.aggregator;
 
 import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
-import weliyek.amat.base.WkSzPacketOperation;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 
 public interface WkSzAggregatorOperation<

@@ -15,31 +15,19 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
-
-import java.util.function.Predicate;
-
-import weliyek.amat2.protocol.filter.FieldTester;
+package weliyek.serialization;
 
 /**
- * The main segment that defines the serialization rules for a given data type. It has also a
- * shortcut that can create a {@link FieldTester} with a given {@link Predicate} for the 
- * represented data type.
- * 
- * @param <D> Serialization characteristics and rules for the target data type.
+ * All serialization segment types used to build structs and packets inherit from this type.
  */
-public interface WkSzStructComponent<
-                        D extends WkSzDefinition<?,?>>
-    extends WkSzStructSegment,
-            WkSzBinderSegment
+public interface WkSzSegment
 {
 
-  String label();
+  enum SegmentType {
+    STRUCT,
+    PACKET
+  }
 
-  D definition();
-
-  String name();
-
-  FieldTester<?, ?> makeTester(Predicate<WkSzPacketField<?,?,?>> test, String description);
+  SegmentType type();
 
 }

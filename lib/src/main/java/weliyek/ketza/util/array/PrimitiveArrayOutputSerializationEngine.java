@@ -22,10 +22,10 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.OutputSerializationEngine;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
+import weliyek.serialization.WkSzOperationException;
 
 public abstract class PrimitiveArrayOutputSerializationEngine<
                         Y extends PrimitiveArrayWrapperBase<V, ?>,

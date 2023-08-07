@@ -15,12 +15,11 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.serialization;
 
 import java.util.Objects;
 
 import weliyek.base.WkException;
-import weliyek.serialization.base.WkSzSegmentException;
 
 public class WkSzPacketFieldException extends WkSzSegmentException
 {

@@ -19,8 +19,8 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.List;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzStructSubcomponent;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public interface WkSzAggregatorDefinition<
                         T,

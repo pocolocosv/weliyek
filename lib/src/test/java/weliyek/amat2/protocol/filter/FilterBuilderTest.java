@@ -27,7 +27,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
@@ -37,6 +36,7 @@ import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedBigEndianLong;
 import weliyek.amat.basic.number.WkSzSignedByte;
 import weliyek.ketza.util.KetzaByteOutputStream;
+import weliyek.serialization.WkSzStruct;
 
 public class FilterBuilderTest
 {

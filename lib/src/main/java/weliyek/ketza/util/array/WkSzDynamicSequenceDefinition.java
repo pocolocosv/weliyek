@@ -17,11 +17,11 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.sequence.WkSzSequenceDefinition;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public interface WkSzDynamicSequenceDefinition<
                         T,

@@ -17,9 +17,9 @@
  */
 package weliyek.amat.base.input;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat2.protocol.filter.WkSzFilterableSegment;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketField;
 
 public interface WkSzPacketReaderField<
                         T,

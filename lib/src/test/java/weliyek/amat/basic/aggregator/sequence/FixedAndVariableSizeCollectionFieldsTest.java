@@ -33,7 +33,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
@@ -44,6 +43,7 @@ import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerWriter;
 import weliyek.ketza.util.KetzaByteOutputStream;
+import weliyek.serialization.WkSzStruct;
 
 public class FixedAndVariableSizeCollectionFieldsTest
 {

@@ -22,9 +22,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.basic.number.WkSzNumberReader;
+import weliyek.serialization.WkSzOperationException;
 
 public abstract class BasicPrimitiveDeserializerEngine<X extends Number>
     extends InputSerializationEngine<

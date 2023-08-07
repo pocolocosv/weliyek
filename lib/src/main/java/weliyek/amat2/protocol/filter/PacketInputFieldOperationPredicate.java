@@ -19,8 +19,8 @@ package weliyek.amat2.protocol.filter;
 
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.serialization.WkSzDefinition;
 
 public class PacketInputFieldOperationPredicate<
                         D extends WkSzDefinition<?,?>,

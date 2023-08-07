@@ -17,8 +17,8 @@
  */
 package weliyek.amat.base.input;
 
-import weliyek.amat.base.WkSzPacketSegment;
 import weliyek.amat.base.Direction;
+import weliyek.serialization.WkSzPacketSegment;
 
 public interface WkSzPacketReaderSegment extends WkSzPacketSegment
 {

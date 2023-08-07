@@ -25,11 +25,7 @@ import java.util.function.Predicate;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzDefinitionCore;
-import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
@@ -38,6 +34,10 @@ import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStruct;
+import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public final class FixedSizeCollectionField<
                         T extends Collection<ET>,

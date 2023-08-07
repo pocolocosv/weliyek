@@ -17,7 +17,7 @@
  */
 package weliyek.amat.basic.aggregator;
 
-import weliyek.amat.base.WkSzDatatypeSegment;
+import weliyek.serialization.WkSzDatatypeSegment;
 
 public interface WkSzAggregatorSegment extends WkSzDatatypeSegment
 {

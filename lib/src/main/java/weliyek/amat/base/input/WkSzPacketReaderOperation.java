@@ -19,10 +19,10 @@ package weliyek.amat.base.input;
 
 import java.util.List;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat2.protocol.filter.WkSzFilterableSegment;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketOperation;
 
 public interface WkSzPacketReaderOperation<
                         T,

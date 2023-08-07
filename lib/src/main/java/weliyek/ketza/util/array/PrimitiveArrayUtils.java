@@ -17,9 +17,9 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat2.protocol.WkSzPacketOperationException;
+import weliyek.serialization.WkSzOperationException;
 
 public class PrimitiveArrayUtils
 {

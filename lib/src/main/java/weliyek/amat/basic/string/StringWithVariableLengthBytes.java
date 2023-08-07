@@ -23,11 +23,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.WkSzStruct;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
@@ -38,6 +35,9 @@ import weliyek.amat.basic.string.WkSzStringFromBytesDefinitionCore.ByteArrayFrom
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.serialization.WkSzStruct;
+import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzDefinitionCore;
 import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArrayDeserializing;
 import weliyek.ketza.util.array.VariableSizeByteArraySerializing;

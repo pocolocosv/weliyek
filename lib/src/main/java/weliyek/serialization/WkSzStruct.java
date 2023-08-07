@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.serialization;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,6 +23,8 @@ import java.util.Objects;
 import java.util.function.Function;
 
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
+import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.input.WkSzInputPacketCore;

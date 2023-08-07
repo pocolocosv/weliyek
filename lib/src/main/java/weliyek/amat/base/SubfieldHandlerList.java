@@ -26,6 +26,8 @@ import java.util.Optional;
 
 import weliyek.amat.basic.aggregator.WkSzAggregatorOperation;
 import weliyek.ketza.base.Completable;
+import weliyek.serialization.WkSzPacketOperation;
+import weliyek.serialization.WkSzPacketSubfield;
 
 public abstract class SubfieldHandlerList<
                         SJ extends WkSzPacketSubfield<?>,

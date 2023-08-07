@@ -17,7 +17,7 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public interface WkSzSequenceDefinition<
                         T,

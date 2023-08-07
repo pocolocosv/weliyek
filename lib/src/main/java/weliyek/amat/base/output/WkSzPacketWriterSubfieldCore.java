@@ -19,15 +19,15 @@ package weliyek.amat.base.output;
 
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponent;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.WkSzPacketSubfieldCore;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructComponent;
 
 public class WkSzPacketWriterSubfieldCore<
                         ST,

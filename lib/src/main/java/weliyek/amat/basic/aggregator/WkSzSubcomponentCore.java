@@ -22,14 +22,10 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.WkSzStructComponent;
 import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.DeserializingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
@@ -39,6 +35,10 @@ import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.base.output.SerializingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructComponent;
+import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public class WkSzSubcomponentCore<
                         ST,

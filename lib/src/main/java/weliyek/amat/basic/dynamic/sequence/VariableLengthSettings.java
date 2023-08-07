@@ -17,9 +17,9 @@
  */
 package weliyek.amat.basic.dynamic.sequence;
 
-import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
+import weliyek.serialization.WkSzPacketOperation;
 
 public interface VariableLengthSettings extends OperationSettings
 {

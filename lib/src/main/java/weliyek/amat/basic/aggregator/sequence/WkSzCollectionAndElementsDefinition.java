@@ -19,9 +19,9 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public interface WkSzCollectionAndElementsDefinition<
                         T extends Collection<ET>,

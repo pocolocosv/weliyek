@@ -17,7 +17,7 @@
  */
 package weliyek.amat2.protocol;
 
-import weliyek.amat.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public class WkSzDefinitionCoreException extends WkSzStructComponentException
 {

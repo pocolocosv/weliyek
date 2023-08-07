@@ -19,7 +19,6 @@ package weliyek.amat.basic.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.WkSzDefinition;
 import weliyek.amat.base.OperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
@@ -29,6 +28,7 @@ import weliyek.amat.base.input.SequenceReadingRuntime;
 import weliyek.amat.basic.aggregator.sequence.WkSzCollectionAndElementsDefinition;
 import weliyek.amat.basic.aggregator.sequence.WkSzCollectionAndElementsOperation;
 import weliyek.amat.basic.aggregator.sequence.WkSzCollectionReader;
+import weliyek.serialization.WkSzDefinition;
 
 public interface CollectionAndElementsFieldDeserializer<
                         T extends Collection<ET>,

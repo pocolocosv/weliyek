@@ -23,6 +23,8 @@ import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public interface ProtocolDefinitionFactory<
                         T,

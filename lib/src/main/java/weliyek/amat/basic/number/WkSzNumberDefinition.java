@@ -17,7 +17,7 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.WkSzDefinition;
+import weliyek.serialization.WkSzDefinition;
 
 public interface WkSzNumberDefinition<
                         T extends Number,

@@ -19,9 +19,9 @@ package weliyek.amat.base.input;
 
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzDefinition;
-import weliyek.amat.base.WkSzPacketOperation;
 import weliyek.amat2.protocol.filter.FilterResults;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketOperation;
 
 public interface WkSzInputPacket<
                         X,

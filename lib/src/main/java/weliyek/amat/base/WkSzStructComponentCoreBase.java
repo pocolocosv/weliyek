@@ -25,6 +25,10 @@ import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzStructComponent;
+import weliyek.serialization.base.WkSzDefinitionCore;
 
 public abstract class WkSzStructComponentCoreBase<
                         T,

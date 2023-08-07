@@ -17,6 +17,8 @@
  */
 package weliyek.amat.base;
 
+import weliyek.serialization.WkSzPacketOperation;
+
 @FunctionalInterface
 public interface OperationSubsegmentSettingsFactory<
                         AO extends WkSzPacketOperation<?,?,?,?,?>,

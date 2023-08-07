@@ -17,9 +17,9 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.WkSzPacketField;
 import weliyek.amat.base.OperationResult;
 import weliyek.amat.base.OperationSettings;
+import weliyek.serialization.WkSzPacketField;
 
 public interface WkSzFixedSizeSequenceOperation<
                         S extends OperationSettings,

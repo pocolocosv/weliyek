@@ -1,6 +1,4 @@
-package weliyek.serialization.base;
-
-import weliyek.amat.base.WkSzSegment;
+package weliyek.serialization;
 
 public class WkSzSegmentException extends WkSzException
 {

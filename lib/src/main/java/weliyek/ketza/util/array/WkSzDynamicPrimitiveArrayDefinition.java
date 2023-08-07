@@ -17,8 +17,8 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public interface WkSzDynamicPrimitiveArrayDefinition<
                         T extends PrimitiveArrayWrapper<?,?>,

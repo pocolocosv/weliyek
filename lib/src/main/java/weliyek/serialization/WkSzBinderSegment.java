@@ -15,8 +15,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.serialization;
 
+/**
+ * All types used to construct struct and packets but do not form part on the definition of the
+ * type being serialized inherit from this type.
+ */
 public interface WkSzBinderSegment extends WkSzSegment
 {
 

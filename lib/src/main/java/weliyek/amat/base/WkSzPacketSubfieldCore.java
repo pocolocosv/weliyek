@@ -23,6 +23,11 @@ import java.util.Optional;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.ketza.base.Initializable;
 import weliyek.ketza.base.Resetable;
+import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketField;
+import weliyek.serialization.WkSzPacketOperation;
+import weliyek.serialization.WkSzPacketSubfield;
+import weliyek.serialization.WkSzStructComponent;
 
 public abstract class WkSzPacketSubfieldCore<
                         S extends OperationSettings,

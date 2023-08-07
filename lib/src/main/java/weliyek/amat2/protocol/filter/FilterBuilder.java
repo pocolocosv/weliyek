@@ -20,7 +20,7 @@ package weliyek.amat2.protocol.filter;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import weliyek.amat.base.WkSzStruct;
+import weliyek.serialization.WkSzStruct;
 
 public class FilterBuilder
 {

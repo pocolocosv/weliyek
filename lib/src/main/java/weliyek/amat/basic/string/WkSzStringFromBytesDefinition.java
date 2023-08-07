@@ -19,8 +19,8 @@ package weliyek.amat.basic.string;
 
 import java.nio.charset.Charset;
 
-import weliyek.amat.base.WkSzStructSubcomponent;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
+import weliyek.serialization.WkSzStructSubcomponent;
 
 public interface WkSzStringFromBytesDefinition<
                         XO extends WkSzStringFromBytesReader<?,?,?,?,?,?>,

@@ -36,7 +36,7 @@ import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat2.protocol.ProtocolDefinitionException;
+import weliyek.amat2.protocol.WkSzDefinitionCoreException;
 import weliyek.ketza.util.KetzaByteOutputStream;
 
 public class ByteArrayWrapperTest
@@ -172,21 +172,21 @@ public class ByteArrayWrapperTest
     @Test
     public void test04_VariableSizeByteArray_InvalidLowerBound() {
       assertThrows(
-          ProtocolDefinitionException.class,
+          WkSzDefinitionCoreException.class,
           () -> VariableSizeByteArray.newPacketStructure("INVALID", -1, 10));
     }
 
     @Test
     public void test05_VariableSizeByteArray_InvalidHigherBound() {
       assertThrows(
-          ProtocolDefinitionException.class,
+          WkSzDefinitionCoreException.class,
           () -> VariableSizeByteArray.newPacketStructure("INVALID", 1, -1));
     }
 
     @Test
     public void test06_VariableSizeByteArray_InvalidBounds() {
       assertThrows(
-          ProtocolDefinitionException.class,
+          WkSzDefinitionCoreException.class,
           () -> VariableSizeByteArray.newPacketStructure("INVALID", 22, 11));
     }
 

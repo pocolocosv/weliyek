@@ -19,33 +19,33 @@ package weliyek.amat2.protocol;
 
 import weliyek.amat.base.PacketOperationSegmentCore;
 
-public class PacketOperationCoreException extends ProtocolDefinitionException
+public class WkSzPacketOperationException extends WkSzDefinitionCoreException
 {
 
   private static final long serialVersionUID = 2022_07_04_0000L;
   public final PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
 
-  public PacketOperationCoreException(
+  public WkSzPacketOperationException(
     PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore) {
     super(operationCore.definitionCore());
     this.operationCore = operationCore;
   }
 
-  public PacketOperationCoreException(
+  public WkSzPacketOperationException(
     PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     Throwable cause) {
     super(operationCore.definitionCore(), cause);
     this.operationCore = operationCore;
   }
 
-  public PacketOperationCoreException(
+  public WkSzPacketOperationException(
     PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message) {
     super(operationCore.definitionCore(), message);
     this.operationCore = operationCore;
   }
 
-  public PacketOperationCoreException(
+  public WkSzPacketOperationException(
     PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause) {
@@ -53,7 +53,7 @@ public class PacketOperationCoreException extends ProtocolDefinitionException
     this.operationCore = operationCore;
   }
 
-  public PacketOperationCoreException(
+  public WkSzPacketOperationException(
     PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause,

@@ -19,19 +19,19 @@ package weliyek.amat.base;
 
 import java.util.Objects;
 
-public class PacketException extends Amat2Exception
+public class WkSzPacketFieldException extends WkRuntimeException
 {
 
     private static final long serialVersionUID = 2020_05_01_000L;
 
     private final WkSzPacketField<?,?,?> packet;
 
-    public PacketException(WkSzPacketField<?,?,?> packet) {
+    public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet) {
         super();
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public PacketException(
+    public WkSzPacketFieldException(
         WkSzPacketField<?,?,?> packet,
         String message,
         Throwable cause,
@@ -41,17 +41,17 @@ public class PacketException extends Amat2Exception
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public PacketException(WkSzPacketField<?,?,?> packet, String message, Throwable cause) {
+    public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet, String message, Throwable cause) {
         super(message, cause);
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public PacketException(WkSzPacketField<?,?,?> packet, String message) {
+    public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet, String message) {
         super(message);
         this.packet = Objects.requireNonNull(packet);
     }
 
-    public PacketException(WkSzPacketField<?,?,?> packet, Throwable cause) {
+    public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet, Throwable cause) {
         super(cause);
         this.packet = Objects.requireNonNull(packet);
     }

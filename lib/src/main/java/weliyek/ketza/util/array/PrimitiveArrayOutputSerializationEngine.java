@@ -22,7 +22,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationException;
+import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.OutputSerializationEngine;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
@@ -87,7 +87,7 @@ public abstract class PrimitiveArrayOutputSerializationEngine<
             writeElementAtAbsolutePos(i);
         }
       } catch (IOException e) {
-        throw new OperationException(operation());
+        throw new WkSzOperationException(operation());
       }
     }
 

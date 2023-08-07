@@ -24,7 +24,7 @@ import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationException;
+import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.InputSerializationEngine;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
@@ -98,7 +98,7 @@ public abstract class SequenceInputSerializationRule<
             readSequenceElement(i);
       }
     } catch (IOException e) {
-      throw new OperationException(operation(), "Failed to read element with index " + i);
+      throw new WkSzOperationException(operation(), "Failed to read element with index " + i);
     }
   }
 

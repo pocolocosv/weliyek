@@ -23,7 +23,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationException;
+import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 
@@ -59,10 +59,10 @@ public abstract class InputSerializationEngine<
       }
       skippedBytes = getRuntimeControl().skipBytes(requestedBytesToIO());
     } catch (IOException e) {
-      throw new OperationException(operation(), "Skipping bytes failed");
+      throw new WkSzOperationException(operation(), "Skipping bytes failed");
     }
     if (requestedBytesToIO() != skippedBytes) {
-      throw new OperationException(operation(), "Skipping " + requestedBytesToIO()
+      throw new WkSzOperationException(operation(), "Skipping " + requestedBytesToIO()
                                                 + " bytes during deserializing failed (only skipped "
                                                 + skippedBytes + " bytes)");
     }

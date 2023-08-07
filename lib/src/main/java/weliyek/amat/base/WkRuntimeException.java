@@ -17,25 +17,25 @@
  */
 package weliyek.amat.base;
 
-public class Amat2Exception extends RuntimeException {
+public class WkRuntimeException extends RuntimeException {
 
   private static final long serialVersionUID = 2018_03_05_000L;
 
-  public Amat2Exception() {}
+  public WkRuntimeException() {}
 
-  public Amat2Exception(String message) {
+  public WkRuntimeException(String message) {
     super(message);
   }
 
-  public Amat2Exception(Throwable cause) {
+  public WkRuntimeException(Throwable cause) {
     super(cause);
   }
 
-  public Amat2Exception(String message, Throwable cause) {
+  public WkRuntimeException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public Amat2Exception(
+  public WkRuntimeException(
       String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
     super(message, cause, enableSuppression, writableStackTrace);
   }

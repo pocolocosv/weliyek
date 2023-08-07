@@ -26,8 +26,8 @@ import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
-import weliyek.amat2.protocol.PacketOperationCoreException;
-import weliyek.amat2.protocol.ProtocolDefinitionException;
+import weliyek.amat2.protocol.WkSzPacketOperationException;
+import weliyek.amat2.protocol.WkSzDefinitionCoreException;
 
 public class SequenceSizeParameters<T>
 {
@@ -53,17 +53,17 @@ public class SequenceSizeParameters<T>
         ? extends VariableSizeSequenceWriting<T,?,?,?,?>,?,
         ? extends WkSzVariableSizeSequenceDefinition<T,?>,?> definitionCore) {
       if (minSize < 0) {
-        throw new ProtocolDefinitionException(
+        throw new WkSzDefinitionCoreException(
                         definitionCore,
                         "Minimal size must be zero or positive");
       }
       if (maxSize < 0) {
-        throw new ProtocolDefinitionException(
+        throw new WkSzDefinitionCoreException(
                         definitionCore,
                         "Maximal size must be zero or positive");
       }
       if (maxSize < minSize) {
-        throw new ProtocolDefinitionException(
+        throw new WkSzDefinitionCoreException(
                         definitionCore,
                         "Maximal size must higher or equal than minimal size");
       }
@@ -80,12 +80,12 @@ public class SequenceSizeParameters<T>
         ? extends WkSzVariableSizeSequenceDefinition<T,?>,?,?> serializer) {
       int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
       if (sequenceSize < minSize) {
-        throw new PacketOperationCoreException(
+        throw new WkSzPacketOperationException(
                         serializer,
                         "Serializable sequence is too small for this field");
       }
       if (sequenceSize > maxSize) {
-        throw new PacketOperationCoreException(
+        throw new WkSzPacketOperationException(
                         serializer,
                         "Serializable sequence is too large for this field");
       }
@@ -98,12 +98,12 @@ public class SequenceSizeParameters<T>
         ? extends WkSzVariableSizeSequenceDefinition<?,?>,?,?> deserializer) {
       VariableLengthSettings settings = deserializer.settings();
       if (settings.getRequestedLength() < minSize) {
-        throw new PacketOperationCoreException(
+        throw new WkSzPacketOperationException(
                         deserializer,
                         "Requested deserializable sequence size is shorter than permited by this field");
       }
       if (settings.getRequestedLength() > maxSize) {
-        throw new PacketOperationCoreException(
+        throw new WkSzPacketOperationException(
                         deserializer,
                         "Requested deserializable sequence size is longer than permited by this field");
       }

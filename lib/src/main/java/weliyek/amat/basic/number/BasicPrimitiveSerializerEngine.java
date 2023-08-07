@@ -22,7 +22,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationException;
+import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.base.output.WritingRuntimeControl;
 import weliyek.amat.basic.serializer.OutputSerializationEngine;
 
@@ -60,7 +60,7 @@ public abstract class BasicPrimitiveSerializerEngine<T extends Number>
       }
       writePrimitive(serializable);
     } catch (IOException e) {
-      throw new OperationException(operation(), "Failed to write primitive");
+      throw new WkSzOperationException(operation(), "Failed to write primitive");
     }
   }
 

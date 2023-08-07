@@ -22,7 +22,7 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationException;
+import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.base.input.ReadingRuntimeControl;
 import weliyek.amat.basic.number.WkSzNumberReader;
 
@@ -61,7 +61,7 @@ public abstract class BasicPrimitiveDeserializerEngine<X extends Number>
         }
         this.deserializedNumber = readNumber();
       } catch (IOException e) {
-        throw new OperationException(operation(), "Failed reading bytes");
+        throw new WkSzOperationException(operation(), "Failed reading bytes");
       }
   }
 

@@ -17,7 +17,7 @@
  */
 package weliyek.amat.base;
 
-public class OperationException extends PacketException
+public class WkSzOperationException extends WkSzPacketFieldException
 {
 
     public enum Explanation {
@@ -30,43 +30,43 @@ public class OperationException extends PacketException
     private final WkSzPacketOperation<?,?,?,?,?> operation;
     private final Explanation explanation;
 
-    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation) {
+    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation) {
         super(operation.packetField());
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation) {
+    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation) {
         super(operation.packetField());
         this.operation = operation;
         this.explanation = explanation;
     }
 
-    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message) {
+    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message) {
         super(operation.packetField(), message);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation, String message) {
+    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation, String message) {
         super(operation.packetField(), message);
         this.operation = operation;
         this.explanation = explanation;
     }
 
-    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, Throwable cause) {
+    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, Throwable cause) {
         super(operation.packetField(), cause);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message, Throwable cause) {
+    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message, Throwable cause) {
         super(operation.packetField(), message, cause);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public OperationException(
+    public WkSzOperationException(
         WkSzPacketOperation<?,?,?,?,?> operation,
         String message,
         Throwable cause,

@@ -19,39 +19,39 @@ package weliyek.amat2.protocol;
 
 import java.util.Optional;
 
-import weliyek.amat.base.Amat2Exception;
+import weliyek.amat.base.WkRuntimeException;
 import weliyek.amat.base.WkSzStructComponent;
 
-public class ProtocolFieldException extends Amat2Exception
+public class WkSzStructComponentException extends WkRuntimeException
 {
 
     private static final long serialVersionUID = 2018_03_05_000L;
 
     public final Optional<WkSzStructComponent<?>> field;
 
-    public ProtocolFieldException(WkSzStructComponent<?> field) {
+    public WkSzStructComponentException(WkSzStructComponent<?> field) {
         this.field = Optional.ofNullable(field);
     }
 
-    public ProtocolFieldException(WkSzStructComponent<?> field,
+    public WkSzStructComponentException(WkSzStructComponent<?> field,
                                   String message) {
         super(message);
         this.field = Optional.ofNullable(field);
     }
 
-    public ProtocolFieldException(WkSzStructComponent<?> field,
+    public WkSzStructComponentException(WkSzStructComponent<?> field,
                                   Throwable cause) {
         super(cause);
         this.field = Optional.ofNullable(field);
     }
 
-    public ProtocolFieldException(WkSzStructComponent<?> field,
+    public WkSzStructComponentException(WkSzStructComponent<?> field,
                                   String message, Throwable cause) {
         super(message, cause);
         this.field = Optional.ofNullable(field);
     }
 
-    public ProtocolFieldException(WkSzStructComponent<?> field,
+    public WkSzStructComponentException(WkSzStructComponent<?> field,
                                   String message,
                                   Throwable cause,
                                   boolean enableSuppression,

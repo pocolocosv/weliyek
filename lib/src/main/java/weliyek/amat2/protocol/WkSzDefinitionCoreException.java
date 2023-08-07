@@ -19,33 +19,33 @@ package weliyek.amat2.protocol;
 
 import weliyek.amat.base.WkSzDefinitionCore;
 
-public class ProtocolDefinitionException extends ProtocolFieldException
+public class WkSzDefinitionCoreException extends WkSzStructComponentException
 {
 
   private static final long serialVersionUID = 2022_05_26_0000L;
   public final WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
 
-  public ProtocolDefinitionException(
+  public WkSzDefinitionCoreException(
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
     super(definitionCore.componentCore());
     this.definitionCore = definitionCore;
   }
 
-  public ProtocolDefinitionException(
+  public WkSzDefinitionCoreException(
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message) {
     super(definitionCore.componentCore(), message);
     this.definitionCore = definitionCore;
   }
 
-  public ProtocolDefinitionException(
+  public WkSzDefinitionCoreException(
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     Throwable cause) {
     super(definitionCore.componentCore(), cause);
     this.definitionCore = definitionCore;
   }
 
-  public ProtocolDefinitionException(
+  public WkSzDefinitionCoreException(
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause) {
@@ -53,7 +53,7 @@ public class ProtocolDefinitionException extends ProtocolFieldException
     this.definitionCore = definitionCore;
   }
 
-  public ProtocolDefinitionException(
+  public WkSzDefinitionCoreException(
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause,

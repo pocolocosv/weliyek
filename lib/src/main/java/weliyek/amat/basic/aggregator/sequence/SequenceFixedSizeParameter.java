@@ -26,8 +26,8 @@ import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
 import weliyek.amat.basic.sequence.FixedSizeSequenceReading;
 import weliyek.amat.basic.sequence.FixedSizeSequenceWriting;
-import weliyek.amat2.protocol.PacketOperationCoreException;
-import weliyek.amat2.protocol.ProtocolDefinitionException;
+import weliyek.amat2.protocol.WkSzPacketOperationException;
+import weliyek.amat2.protocol.WkSzDefinitionCoreException;
 
 public class SequenceFixedSizeParameter<T>
 {
@@ -55,7 +55,7 @@ public class SequenceFixedSizeParameter<T>
       ? extends FixedSizeSequenceWriting<T,?,?,?,?>,?,
       ? extends WkSzFixedSizeSequenceDefinition<T,?>,?> definitionCore) {
     if (sequenceExpectedSize < 0) {
-      throw new ProtocolDefinitionException(definitionCore,
+      throw new WkSzDefinitionCoreException(definitionCore,
                                             "Fixed sequence size cannot be negative");
     }
     this.sequenceExpectedSize = sequenceExpectedSize;
@@ -70,7 +70,7 @@ public class SequenceFixedSizeParameter<T>
       ?,? extends WkSzFixedSizeSequenceDefinition<T,?>,?,?> serializer) {
     int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
     if (sequenceSize != this.sequenceExpectedSize) {
-      throw new PacketOperationCoreException(serializer, "Supplied sequence size differs from expected size");
+      throw new WkSzPacketOperationException(serializer, "Supplied sequence size differs from expected size");
     }
   }
 
@@ -83,7 +83,7 @@ public class SequenceFixedSizeParameter<T>
     T sequence = deserializer.result().get().deserialized().get();
     int seqLen = deserializer.definition().extractLengthFromSerializablesSequence(sequence);
     if (seqLen != this.sequenceExpectedSize) {
-      throw new PacketOperationCoreException(
+      throw new WkSzPacketOperationException(
                       deserializer,
                       "Sequence resulting from deserialization does not comform to expected size");
     }

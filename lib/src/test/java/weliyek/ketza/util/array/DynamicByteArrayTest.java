@@ -39,7 +39,7 @@ import weliyek.amat.base.output.WkSzOutputPacket;
 import weliyek.amat.basic.number.WkSzSignedBigEndianInteger;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianIntegerWriter;
-import weliyek.amat2.protocol.PacketOperationCoreException;
+import weliyek.amat2.protocol.WkSzPacketOperationException;
 import weliyek.ketza.util.KetzaByteOutputStream;
 
 public class DynamicByteArrayTest
@@ -112,7 +112,7 @@ public class DynamicByteArrayTest
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
-    assertThrows(PacketOperationCoreException.class, () -> serializer.processBytestream());
+    assertThrows(WkSzPacketOperationException.class, () -> serializer.processBytestream());
   }
 
   @Test
@@ -137,7 +137,7 @@ public class DynamicByteArrayTest
       deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(OperationSettings.EMPTY, inputstream);
 
     deserializer.processBytestream();
-    assertThrows(PacketOperationCoreException.class, () -> deserializer.processBytestream());
+    assertThrows(WkSzPacketOperationException.class, () -> deserializer.processBytestream());
   }
 
   @Test
@@ -162,7 +162,7 @@ public class DynamicByteArrayTest
       deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(OperationSettings.EMPTY, inputstream);
 
     deserializer.processBytestream();
-    assertThrows(PacketOperationCoreException.class, () -> deserializer.processBytestream());
+    assertThrows(WkSzPacketOperationException.class, () -> deserializer.processBytestream());
   }
 
   @Test
@@ -175,7 +175,7 @@ public class DynamicByteArrayTest
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
-    assertThrows(PacketOperationCoreException.class, () -> serializer.processBytestream());
+    assertThrows(WkSzPacketOperationException.class, () -> serializer.processBytestream());
   }
 
   @Test

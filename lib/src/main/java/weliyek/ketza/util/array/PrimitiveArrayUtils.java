@@ -18,7 +18,7 @@
 package weliyek.ketza.util.array;
 
 import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat2.protocol.PacketOperationCoreException;
+import weliyek.amat2.protocol.WkSzPacketOperationException;
 
 public class PrimitiveArrayUtils
 {
@@ -35,7 +35,7 @@ public class PrimitiveArrayUtils
     final int reqLen = serializingCore.serializable().getLength();
     final int expectedLen = serializingCore.getRequestedLength();
     if (reqLen != expectedLen) {
-      throw new PacketOperationCoreException(
+      throw new WkSzPacketOperationException(
                     serializingCore,
                     "Serializable array does NOT have required length");
     }
@@ -50,7 +50,7 @@ public class PrimitiveArrayUtils
     final int minLen = deserializingCore.definition().minimalSize();
     final int maxLen = deserializingCore.definition().maximalSize();
     if ((reqLen < minLen) || (reqLen > maxLen)) {
-      throw new PacketOperationCoreException(
+      throw new WkSzPacketOperationException(
                     deserializingCore,
                     "Requested deserializing length is not in bounds");
     }
@@ -64,7 +64,7 @@ public class PrimitiveArrayUtils
     final int minLen = serializingCore.definition().minimalSize();
     final int maxLen = serializingCore.definition().maximalSize();
     if ((reqLen < minLen) || (reqLen > maxLen)) {
-      throw new PacketOperationCoreException(
+      throw new WkSzPacketOperationException(
                     serializingCore,
                     "Requested serializing length is not in bounds");
     }

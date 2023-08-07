@@ -23,7 +23,8 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
 {
 
   private static final long serialVersionUID = 2022_05_26_0000L;
-  public final WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
+  
+  private final WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
 
   public WkSzDefinitionCoreException(
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
@@ -61,6 +62,10 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
     boolean writableStackTrace) {
     super(definitionCore.componentCore(), message, cause, enableSuppression, writableStackTrace);
     this.definitionCore = definitionCore;
+  }
+  
+  public WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> getDefinitionCore() {
+    return this.definitionCore;
   }
 
 }

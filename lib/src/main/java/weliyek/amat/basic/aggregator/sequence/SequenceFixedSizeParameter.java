@@ -20,6 +20,7 @@ package weliyek.amat.basic.aggregator.sequence;
 import java.util.Objects;
 
 import weliyek.amat.base.WkSzDefinitionCore;
+import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.base.input.DeserializingResult;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
@@ -70,7 +71,7 @@ public class SequenceFixedSizeParameter<T>
       ?,? extends WkSzFixedSizeSequenceDefinition<T,?>,?,?> serializer) {
     int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
     if (sequenceSize != this.sequenceExpectedSize) {
-      throw new WkSzPacketOperationException(serializer, "Supplied sequence size differs from expected size");
+      throw new WkSzOperationException(serializer, "Supplied sequence size differs from expected size");
     }
   }
 
@@ -83,7 +84,7 @@ public class SequenceFixedSizeParameter<T>
     T sequence = deserializer.result().get().deserialized().get();
     int seqLen = deserializer.definition().extractLengthFromSerializablesSequence(sequence);
     if (seqLen != this.sequenceExpectedSize) {
-      throw new WkSzPacketOperationException(
+      throw new WkSzOperationException(
                       deserializer,
                       "Sequence resulting from deserialization does not comform to expected size");
     }

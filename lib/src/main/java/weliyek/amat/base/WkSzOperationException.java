@@ -77,7 +77,7 @@ public class WkSzOperationException extends WkSzPacketFieldException
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public WkSzPacketOperation<?,?,?,?,?> getRecord() {
+    public WkSzPacketOperation<?,?,?,?,?> getOperation() {
         return this.operation;
     }
 

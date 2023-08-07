@@ -19,16 +19,19 @@ package weliyek.amat.base;
 
 import java.util.Objects;
 
-public class WkSzPacketFieldException extends WkRuntimeException
+import weliyek.base.WkException;
+import weliyek.serialization.base.WkSzSegmentException;
+
+public class WkSzPacketFieldException extends WkSzSegmentException
 {
 
     private static final long serialVersionUID = 2020_05_01_000L;
 
-    private final WkSzPacketField<?,?,?> packet;
+    private final WkSzPacketField<?,?,?> packetField;
 
-    public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet) {
-        super();
-        this.packet = Objects.requireNonNull(packet);
+    public WkSzPacketFieldException(WkSzPacketField<?,?,?> packetField) {
+        super(packetField);
+        this.packetField = Objects.requireNonNull(packetField);
     }
 
     public WkSzPacketFieldException(
@@ -37,27 +40,27 @@ public class WkSzPacketFieldException extends WkRuntimeException
         Throwable cause,
         boolean enableSuppression,
         boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-        this.packet = Objects.requireNonNull(packet);
+        super(packet, message, cause, enableSuppression, writableStackTrace);
+        this.packetField = Objects.requireNonNull(packet);
     }
 
     public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet, String message, Throwable cause) {
-        super(message, cause);
-        this.packet = Objects.requireNonNull(packet);
+        super(packet, message, cause);
+        this.packetField = Objects.requireNonNull(packet);
     }
 
     public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet, String message) {
-        super(message);
-        this.packet = Objects.requireNonNull(packet);
+        super(packet, message);
+        this.packetField = Objects.requireNonNull(packet);
     }
 
     public WkSzPacketFieldException(WkSzPacketField<?,?,?> packet, Throwable cause) {
-        super(cause);
-        this.packet = Objects.requireNonNull(packet);
+        super(packet, cause);
+        this.packetField = Objects.requireNonNull(packet);
     }
 
     public final WkSzPacketField<?,?,?> packetField() {
-        return this.packet;
+        return this.packetField;
     }
 
 }

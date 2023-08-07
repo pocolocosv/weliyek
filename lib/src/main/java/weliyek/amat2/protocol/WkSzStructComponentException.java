@@ -17,47 +17,55 @@
  */
 package weliyek.amat2.protocol;
 
+import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.amat.base.WkRuntimeException;
 import weliyek.amat.base.WkSzStructComponent;
+import weliyek.base.WkException;
+import weliyek.serialization.base.WkSzSegmentException;
 
-public class WkSzStructComponentException extends WkRuntimeException
+public class WkSzStructComponentException extends WkSzSegmentException
 {
 
-    private static final long serialVersionUID = 2018_03_05_000L;
+  private static final long serialVersionUID = 2018_03_05_000L;
 
-    public final Optional<WkSzStructComponent<?>> field;
+  private final WkSzStructComponent<?> structComponent;
 
-    public WkSzStructComponentException(WkSzStructComponent<?> field) {
-        this.field = Optional.ofNullable(field);
-    }
+  public WkSzStructComponentException(WkSzStructComponent<?> structComponent) {
+    super(structComponent);
+    this.structComponent = Objects.requireNonNull(structComponent);
+  }
 
-    public WkSzStructComponentException(WkSzStructComponent<?> field,
-                                  String message) {
-        super(message);
-        this.field = Optional.ofNullable(field);
-    }
+  public WkSzStructComponentException(WkSzStructComponent<?> structComponent, String message) {
+    super(structComponent, message);
+    this.structComponent = Objects.requireNonNull(structComponent);
+  }
 
-    public WkSzStructComponentException(WkSzStructComponent<?> field,
-                                  Throwable cause) {
-        super(cause);
-        this.field = Optional.ofNullable(field);
-    }
+  public WkSzStructComponentException(WkSzStructComponent<?> structComponent, Throwable cause) {
+    super(structComponent, cause);
+    this.structComponent = Objects.requireNonNull(structComponent);
+  }
 
-    public WkSzStructComponentException(WkSzStructComponent<?> field,
-                                  String message, Throwable cause) {
-        super(message, cause);
-        this.field = Optional.ofNullable(field);
-    }
+  public WkSzStructComponentException(
+    WkSzStructComponent<?> structComponent,
+    String message,
+    Throwable cause) {
+    super(structComponent, message, cause);
+    this.structComponent = Objects.requireNonNull(structComponent);
+  }
 
-    public WkSzStructComponentException(WkSzStructComponent<?> field,
-                                  String message,
-                                  Throwable cause,
-                                  boolean enableSuppression,
-                                  boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
-        this.field = Optional.ofNullable(field);
-    }
+  public WkSzStructComponentException(
+    WkSzStructComponent<?> structComponent,
+    String message,
+    Throwable cause,
+    boolean enableSuppression,
+    boolean writableStackTrace) {
+    super(structComponent, message, cause, enableSuppression, writableStackTrace);
+    this.structComponent = Objects.requireNonNull(structComponent);
+  }
+  
+  public WkSzStructComponent<?> getStructComponent() {
+    return this.structComponent;
+  }
 
 }

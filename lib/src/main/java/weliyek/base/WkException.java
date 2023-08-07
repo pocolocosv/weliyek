@@ -15,28 +15,33 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.amat.base;
+package weliyek.base;
 
-public class WkRuntimeException extends RuntimeException {
+public class WkException extends RuntimeException
+{
 
   private static final long serialVersionUID = 2018_03_05_000L;
 
-  public WkRuntimeException() {}
+  public WkException() {
+  }
 
-  public WkRuntimeException(String message) {
+  public WkException(String message) {
     super(message);
   }
 
-  public WkRuntimeException(Throwable cause) {
+  public WkException(Throwable cause) {
     super(cause);
   }
 
-  public WkRuntimeException(String message, Throwable cause) {
+  public WkException(String message, Throwable cause) {
     super(message, cause);
   }
 
-  public WkRuntimeException(
-      String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+  public WkException(
+    String message,
+    Throwable cause,
+    boolean enableSuppression,
+    boolean writableStackTrace) {
     super(message, cause, enableSuppression, writableStackTrace);
   }
 }

@@ -31,6 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationException;
 import weliyek.amat.base.WkSzStruct;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
@@ -112,7 +113,7 @@ public class DynamicByteArrayTest
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
-    assertThrows(WkSzPacketOperationException.class, () -> serializer.processBytestream());
+    assertThrows(WkSzOperationException.class, () -> serializer.processBytestream());
   }
 
   @Test
@@ -137,7 +138,7 @@ public class DynamicByteArrayTest
       deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(OperationSettings.EMPTY, inputstream);
 
     deserializer.processBytestream();
-    assertThrows(WkSzPacketOperationException.class, () -> deserializer.processBytestream());
+    assertThrows(WkSzOperationException.class, () -> deserializer.processBytestream());
   }
 
   @Test
@@ -162,7 +163,7 @@ public class DynamicByteArrayTest
       deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(OperationSettings.EMPTY, inputstream);
 
     deserializer.processBytestream();
-    assertThrows(WkSzPacketOperationException.class, () -> deserializer.processBytestream());
+    assertThrows(WkSzOperationException.class, () -> deserializer.processBytestream());
   }
 
   @Test
@@ -175,7 +176,7 @@ public class DynamicByteArrayTest
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
-    assertThrows(WkSzPacketOperationException.class, () -> serializer.processBytestream());
+    assertThrows(WkSzOperationException.class, () -> serializer.processBytestream());
   }
 
   @Test

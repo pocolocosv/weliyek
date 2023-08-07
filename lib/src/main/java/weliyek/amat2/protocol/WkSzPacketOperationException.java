@@ -23,7 +23,8 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
 {
 
   private static final long serialVersionUID = 2022_07_04_0000L;
-  public final PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
+  
+  private final PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
 
   public WkSzPacketOperationException(
     PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore) {
@@ -61,6 +62,10 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
     boolean writableStackTrace) {
     super(operationCore.definitionCore(), message, cause, enableSuppression, writableStackTrace);
     this.operationCore = operationCore;
+  }
+  
+  public PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> getOperationCore() {
+    return this.operationCore;
   }
 
 }

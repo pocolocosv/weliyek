@@ -24,7 +24,7 @@ import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.PrimitiveArrayWrapper;
 
 public abstract class WkSzPrimitiveArrayWrapperReadEngine<
                         X extends PrimitiveArrayWrapper<V, ?>,

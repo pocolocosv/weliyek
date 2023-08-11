@@ -20,7 +20,7 @@ package weliyek.serialization.string;
 import java.nio.charset.Charset;
 import java.util.Objects;
 
-import weliyek.serialization.util.array.ByteArrayWrapper;
+import weliyek.util.array.ByteArrayWrapper;
 
 public class DeserializedStringFromBytes
     extends DeserializedString<ByteArrayWrapper>

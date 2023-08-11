@@ -26,7 +26,7 @@ import weliyek.serialization.WkSzPacketWriterOperation;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzNumberDefinition;
-import weliyek.serialization.util.array.WkSzDynamicSequenceDefinition;
+import weliyek.util.array.WkSzDynamicSequenceDefinition;
 
 public interface WkSzDynamicCollectionDefinition<
                         T extends Collection<ET>,

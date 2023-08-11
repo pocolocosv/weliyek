@@ -19,7 +19,7 @@ package weliyek.serialization.string;
 
 import java.util.Objects;
 
-import weliyek.serialization.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.PrimitiveArrayWrapper;
 
 public class StringAndPrimitiveArray<T extends PrimitiveArrayWrapper<?,?>>
 {

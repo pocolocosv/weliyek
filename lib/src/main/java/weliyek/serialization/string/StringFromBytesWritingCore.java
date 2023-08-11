@@ -27,9 +27,9 @@ import weliyek.serialization.WkSzPacketWriterSubfield;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.ByteArrayWriting;
-import weliyek.serialization.util.array.WkSzByteArrayDefinition;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.ByteArrayWriting;
+import weliyek.util.array.WkSzByteArrayDefinition;
 
 public abstract class StringFromBytesWritingCore<
                         YS extends WkSzOperationSettings,

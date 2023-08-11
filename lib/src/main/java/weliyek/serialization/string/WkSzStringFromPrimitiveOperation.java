@@ -23,7 +23,7 @@ import weliyek.serialization.WkSzOperationResult;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzPacketField;
 import weliyek.serialization.WkSzPacketSubfield;
-import weliyek.serialization.util.array.WkSzPrimitiveArrayOperation;
+import weliyek.util.array.WkSzPrimitiveArrayOperation;
 
 public interface WkSzStringFromPrimitiveOperation<
                         S extends WkSzOperationSettings,

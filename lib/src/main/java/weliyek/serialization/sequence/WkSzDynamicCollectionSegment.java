@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.util.array.WkSzDynamicSequenceSegment;
+import weliyek.util.array.WkSzDynamicSequenceSegment;
 
 public interface WkSzDynamicCollectionSegment<Z, V>
     extends WkSzCollectionSegment,

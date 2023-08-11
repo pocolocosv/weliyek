@@ -17,8 +17,8 @@
  */
 package weliyek.serialization;
 
-import weliyek.serialization.util.array.PrimitiveArrayWrapper;
-import weliyek.serialization.util.array.WkSzPrimitiveArrayDefinition;
+import weliyek.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public interface PrimitiveArraySerializerDefinition<
                         T extends PrimitiveArrayWrapper<?, ?>,

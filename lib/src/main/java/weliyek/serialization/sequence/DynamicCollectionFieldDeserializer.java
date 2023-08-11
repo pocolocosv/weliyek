@@ -29,7 +29,7 @@ import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
-import weliyek.serialization.util.array.DynamicSequenceDeserializing;
+import weliyek.util.array.DynamicSequenceDeserializing;
 
 public interface DynamicCollectionFieldDeserializer<
                         T extends Collection<ET>,

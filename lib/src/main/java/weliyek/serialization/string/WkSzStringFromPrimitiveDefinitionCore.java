@@ -44,10 +44,10 @@ import weliyek.serialization.WkSzSubcomponentCore;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.serialization.util.array.PrimitiveArrayReading;
-import weliyek.serialization.util.array.PrimitiveArrayWrapper;
-import weliyek.serialization.util.array.PrimitiveArrayWriting;
-import weliyek.serialization.util.array.WkSzPrimitiveArrayDefinition;
+import weliyek.util.array.PrimitiveArrayReading;
+import weliyek.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.PrimitiveArrayWriting;
+import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public abstract class WkSzStringFromPrimitiveDefinitionCore<
                         XS extends WkSzOperationSettings,

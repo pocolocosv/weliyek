@@ -22,9 +22,9 @@ import weliyek.serialization.WkSzPacketReaderField;
 import weliyek.serialization.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.util.array.ByteArrayReading;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.WkSzByteArrayDefinition;
+import weliyek.util.array.ByteArrayReading;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkSzByteArrayDefinition;
 
 public interface WkSzStringFromBytesReader<
                         XS extends WkSzOperationSettings,

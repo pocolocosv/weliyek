@@ -33,11 +33,11 @@ import weliyek.serialization.WkSzStructComponentCoreBase;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.filter.FieldTester;
 import weliyek.serialization.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.FixedSizeByteArray;
-import weliyek.serialization.util.array.FixedSizeByteArrayDeserializing;
-import weliyek.serialization.util.array.FixedSizeByteArraySerializing;
-import weliyek.serialization.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.FixedSizeByteArray;
+import weliyek.util.array.FixedSizeByteArrayDeserializing;
+import weliyek.util.array.FixedSizeByteArraySerializing;
+import weliyek.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
 
 /**
  * Packet structure and data for handling fixed length bytes array. The serialization

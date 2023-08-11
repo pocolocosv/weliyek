@@ -21,8 +21,8 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineBase;
-import weliyek.serialization.util.array.IntArrayWrapper;
+import weliyek.util.array.IntArrayWrapper;
+import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineBase;
 
 public abstract class WkSzIntArrayWrapperWriteEngine
     extends WkSzBasicPrimitiveArrayWrapperWriteEngineBase<IntArrayWrapper, int[]>

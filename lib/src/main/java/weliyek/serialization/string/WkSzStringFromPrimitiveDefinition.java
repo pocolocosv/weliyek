@@ -19,7 +19,7 @@ package weliyek.serialization.string;
 
 import weliyek.serialization.WkSzAggregatorDefinition;
 import weliyek.serialization.WkSzStructSubcomponent;
-import weliyek.serialization.util.array.WkSzPrimitiveArrayDefinition;
+import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public interface WkSzStringFromPrimitiveDefinition<
                         XO extends WkSzStringFromPrimitiveReader<?,?,?,?,?,?,?>,

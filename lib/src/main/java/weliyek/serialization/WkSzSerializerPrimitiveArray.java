@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-import weliyek.serialization.util.array.WkSzPrimitiveArraySegment;
+import weliyek.util.array.WkSzPrimitiveArraySegment;
 
 public interface WkSzSerializerPrimitiveArray
     extends WkSzSerializerSegment, WkSzPrimitiveArraySegment

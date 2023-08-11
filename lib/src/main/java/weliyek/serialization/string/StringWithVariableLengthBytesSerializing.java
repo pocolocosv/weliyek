@@ -30,9 +30,9 @@ import weliyek.serialization.WkSzPacketWriterFieldCore;
 import weliyek.serialization.WkSzPacketWriterSubfield;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.VariableSizeByteArray;
-import weliyek.serialization.util.array.VariableSizeByteArraySerializing;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.VariableSizeByteArray;
+import weliyek.util.array.VariableSizeByteArraySerializing;
 
 public class StringWithVariableLengthBytesSerializing
     implements WkSzStringFromBytesWriter<

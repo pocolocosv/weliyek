@@ -25,7 +25,7 @@ import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-import weliyek.serialization.util.array.WKArrayUtil;
+import weliyek.util.array.WKArrayUtil;
 
 public class KetzaByteOutputStream
         extends ByteArrayOutputStream

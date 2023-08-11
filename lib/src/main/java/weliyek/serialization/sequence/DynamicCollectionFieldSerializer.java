@@ -28,7 +28,7 @@ import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberWriter;
-import weliyek.serialization.util.array.DynamicSequenceSerializing;
+import weliyek.util.array.DynamicSequenceSerializing;
 
 public interface DynamicCollectionFieldSerializer<
                         T extends Collection<ET>,

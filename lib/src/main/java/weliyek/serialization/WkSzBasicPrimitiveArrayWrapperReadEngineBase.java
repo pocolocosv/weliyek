@@ -19,7 +19,7 @@ package weliyek.serialization;
 
 import java.util.function.Function;
 
-import weliyek.serialization.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.PrimitiveArrayWrapper;
 
 public abstract class WkSzBasicPrimitiveArrayWrapperReadEngineBase<
                         X extends PrimitiveArrayWrapper<V, ?>,

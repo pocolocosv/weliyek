@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.PrimitiveArrayWrapper;
 
 /**
  * Holds the string obtained when deserializing data from a primitive array

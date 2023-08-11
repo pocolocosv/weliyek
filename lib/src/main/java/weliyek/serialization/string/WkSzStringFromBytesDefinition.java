@@ -20,7 +20,7 @@ package weliyek.serialization.string;
 import java.nio.charset.Charset;
 
 import weliyek.serialization.WkSzStructSubcomponent;
-import weliyek.serialization.util.array.WkSzByteArrayDefinition;
+import weliyek.util.array.WkSzByteArrayDefinition;
 
 public interface WkSzStringFromBytesDefinition<
                         XO extends WkSzStringFromBytesReader<?,?,?,?,?,?>,

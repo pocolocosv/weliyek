@@ -31,9 +31,9 @@ import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberWriter;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.DynamicByteArray;
-import weliyek.serialization.util.array.DynamicByteArraySerialzing;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.DynamicByteArray;
+import weliyek.util.array.DynamicByteArraySerialzing;
 
 public class StringWithDynamicSizeBytesSerializing<
                         ZT extends Number,

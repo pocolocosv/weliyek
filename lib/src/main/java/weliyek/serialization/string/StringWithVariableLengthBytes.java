@@ -36,11 +36,11 @@ import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.filter.FieldTester;
 import weliyek.serialization.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.VariableSizeByteArray;
-import weliyek.serialization.util.array.VariableSizeByteArrayDeserializing;
-import weliyek.serialization.util.array.VariableSizeByteArraySerializing;
-import weliyek.serialization.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.VariableSizeByteArray;
+import weliyek.util.array.VariableSizeByteArrayDeserializing;
+import weliyek.util.array.VariableSizeByteArraySerializing;
+import weliyek.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
 
 public class StringWithVariableLengthBytes
     implements WkSzStringFromBytesDefinition<

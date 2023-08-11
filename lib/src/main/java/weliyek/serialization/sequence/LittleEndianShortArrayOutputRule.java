@@ -21,8 +21,8 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
-import weliyek.serialization.util.array.ShortArrayWrapper;
+import weliyek.util.array.ShortArrayWrapper;
+import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
 
 public final class LittleEndianShortArrayOutputRule
         extends WkSzShortArrayWrapperWriteEngine

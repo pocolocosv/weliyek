@@ -40,11 +40,11 @@ import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
 import weliyek.serialization.number.WkSzNumberWriter;
 import weliyek.serialization.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.DynamicByteArray;
-import weliyek.serialization.util.array.DynamicByteArrayDeserializing;
-import weliyek.serialization.util.array.DynamicByteArraySerialzing;
-import weliyek.serialization.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.DynamicByteArray;
+import weliyek.util.array.DynamicByteArrayDeserializing;
+import weliyek.util.array.DynamicByteArraySerialzing;
+import weliyek.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
 
 public class StringWithDynamicSizeBytes<
                         ZT extends Number,

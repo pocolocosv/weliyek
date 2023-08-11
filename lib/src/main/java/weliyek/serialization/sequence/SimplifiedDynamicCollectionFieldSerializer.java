@@ -30,7 +30,7 @@ import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberWriter;
-import weliyek.serialization.util.array.DynamicSequenceSerializingCore;
+import weliyek.util.array.DynamicSequenceSerializingCore;
 
 public final class SimplifiedDynamicCollectionFieldSerializer<
                         T extends Collection<ET>,

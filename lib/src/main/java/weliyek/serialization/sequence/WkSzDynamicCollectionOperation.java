@@ -23,8 +23,8 @@ import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzPacketField;
 import weliyek.serialization.WkSzPacketSubfield;
 import weliyek.serialization.number.WkSzNumberOperation;
-import weliyek.serialization.util.array.WkSzDynamicSequenceDefinition;
-import weliyek.serialization.util.array.WkSzDynamicSequenceOperation;
+import weliyek.util.array.WkSzDynamicSequenceDefinition;
+import weliyek.util.array.WkSzDynamicSequenceOperation;
 
 public interface WkSzDynamicCollectionOperation<
                         S extends WkSzOperationSettings,

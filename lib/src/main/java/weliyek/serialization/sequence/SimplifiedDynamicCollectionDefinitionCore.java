@@ -49,7 +49,7 @@ import weliyek.serialization.WkSzWritingRuntimeControl;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
 import weliyek.serialization.number.WkSzNumberWriter;
-import weliyek.serialization.util.array.DynamicSequenceDefinitionCore;
+import weliyek.util.array.DynamicSequenceDefinitionCore;
 
 public final class SimplifiedDynamicCollectionDefinitionCore<
                         T extends Collection<ET>,

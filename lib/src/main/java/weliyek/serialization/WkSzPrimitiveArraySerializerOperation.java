@@ -18,7 +18,7 @@
 package weliyek.serialization;
 
 import weliyek.serialization.sequence.WkSzCommonSequenceOperationRuntime;
-import weliyek.serialization.util.array.WkSzPrimitiveArrayOperation;
+import weliyek.util.array.WkSzPrimitiveArrayOperation;
 
 public interface WkSzPrimitiveArraySerializerOperation<
                         S extends WkSzOperationSettings,

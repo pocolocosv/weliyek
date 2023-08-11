@@ -29,9 +29,9 @@ import weliyek.serialization.WkSzPacketReaderFieldCore;
 import weliyek.serialization.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.util.array.ByteArrayWrapper;
-import weliyek.serialization.util.array.FixedSizeByteArray;
-import weliyek.serialization.util.array.FixedSizeByteArrayDeserializing;
+import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.FixedSizeByteArray;
+import weliyek.util.array.FixedSizeByteArrayDeserializing;
 
 public class WkSzStringWithFixedLengthBytesReader
     implements WkSzStringFromBytesReader<

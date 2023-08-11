@@ -19,10 +19,10 @@ package weliyek.serialization.util.array;
 
 import java.util.function.ToIntBiFunction;
 
-import weliyek.serialization.InputDeserializerFactory;
-import weliyek.serialization.OutputSerializerFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzReadEngineFactory;
+import weliyek.serialization.WkSzWriteEngineFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.PrimitiveArraySerializerDefinition;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicSequenceReadingRuntime;
@@ -86,11 +86,11 @@ public class SimplifiedPrimitiveArraySerializerCore<
     int stepSize,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, D> rxRequestedLengthEvaluator,
-    PacketInputFieldReadingFactory<T, XS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, XO, WkSzInputBytestreamBase<?>> readingOpFactory,
-    InputDeserializerFactory<T, ? super WkSzSequenceReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, WkSzSequenceReadingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
+    WkSzPacketReaderOperationCoreFactory<T, XS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, XO, WkSzInputBytestreamBase<?>> readingOpFactory,
+    WkSzReadEngineFactory<T, ? super WkSzSequenceReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, WkSzSequenceReadingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
     SerializingPrimitiveArrayLengthProvider<? super T,? super YS,? super D> txRequestedLengthEvaluator,
-    PacketOutputFieldWritingFactory<T, YS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, YO, WkSzOutputBytestreamBase<?>> writingOpFactory,
-    OutputSerializerFactory<T, ? super WkSzSequenceWritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, WkSzSequenceWritingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
+    WkSzPacketWriterOperationCoreFactory<T, YS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, YO, WkSzOutputBytestreamBase<?>> writingOpFactory,
+    WkSzWriteEngineFactory<T, ? super WkSzSequenceWritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, WkSzSequenceWritingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

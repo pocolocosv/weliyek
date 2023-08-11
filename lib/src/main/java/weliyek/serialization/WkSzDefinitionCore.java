@@ -56,9 +56,9 @@ public abstract class WkSzDefinitionCore<
     private final Function<AYBC, YQC> txRuntimeFactory;
     private final BiFunction<XO, T, XR> rxResultFactory;
     private final Function<YO, YR> txResultFactory;
-    public final PacketInputFieldReadingFactory<
+    public final WkSzPacketReaderOperationCoreFactory<
                     T,XS,XD,DC,XO,AXBC> readingOpFactory;
-    public final PacketOutputFieldWritingFactory<
+    public final WkSzPacketWriterOperationCoreFactory<
                     T,YS,YD,DC,YO,AYBC> writingOpFactory;
     private final D definitionBody;
     private final Class<T> serializableClass;
@@ -70,10 +70,10 @@ public abstract class WkSzDefinitionCore<
       WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
       Function<AXBC,XQC> rxRuntimeFactory,
       BiFunction<XO,T,XR> rxResultFactory,
-      PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
+      WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
       Function<AYBC,YQC> txRuntimeFactory,
       Function<YO,YR> txResultFactory,
-      PacketOutputFieldWritingFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
+      WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
       D definitionBody,
       Class<T> serializableClass) {
       this.componentCore = componentCore;

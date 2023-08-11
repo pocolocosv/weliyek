@@ -39,10 +39,10 @@ public abstract class WkSzPacketFieldCore<
                         // elsewhere where ProtocolField<D> is used.
                         PC extends WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSzPacketOperation<S,?,?,? super D,? super K>,
-                        OC extends PacketOperationSegmentCore<?,?,?,?,?,?,O,?,?,?,?>,
+                        OC extends WkSzPacketOperationCore<?,?,?,?,?,?,O,?,?,?,?>,
                         K extends WkSzPacketField<T,O,?>,
                         AB extends WkSzBytestreamBase<?,?>,
-                        AOC extends PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?>>
+                        AOC extends WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?>>
     implements Initializable,
                Enableable,
                Completable,
@@ -54,7 +54,7 @@ public abstract class WkSzPacketFieldCore<
     private static final Logger logger = LoggerFactory.getLogger(WkSzPacketFieldCore.class);
 
     private final PC protocolFieldCore;
-    private final HandlerOperationList<T, O, OC> operationListManager;
+    private final WkSzPacketOperationCoreList<T, O, OC> operationListManager;
 
     private Boolean enabled;
     private Optional<O> singleOperation;
@@ -65,7 +65,7 @@ public abstract class WkSzPacketFieldCore<
       PC protocolHandler,
       Function<? super O, T> operationValueExtractor) {
       this.protocolFieldCore = Objects.requireNonNull(protocolHandler);
-      this.operationListManager = new HandlerOperationList<T, O, OC>(this, this::newOperation, initialOperationListCapacity, operationValueExtractor);
+      this.operationListManager = new WkSzPacketOperationCoreList<T, O, OC>(this, this::newOperation, initialOperationListCapacity, operationValueExtractor);
     }
 
     protected abstract OC newOperation(int index);

@@ -72,10 +72,10 @@ public abstract class WkSzAggregatorDefinitionCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
-    PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
+    WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
     Function<AYBC,YQC> txRuntimeFactory,
     Function<YO,YR> txResultFactory,
-    PacketOutputFieldWritingFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
+    WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(
@@ -122,7 +122,7 @@ public abstract class WkSzAggregatorDefinitionCore<
     Optional<Predicate<? super YO>> txEnablingTest,
     ToIntFunction<? super YO> numberOfTxOperationsEvaluator,
     OperationSubsegmentSettingsFactory<YO, SYS> txSettingsFactory,
-    Disaggregator<ST,SYD,T,YO> disaggregator,
+    WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
     ProtocolDefinitionFactory<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> definitionFactory) {
     WkSzSubcomponentCore<ST,SXS,SXD,SXO,T,XBC,XD,XO,SYS,SYD,SYO,YBC,YD,YO,SD,D>
@@ -153,7 +153,7 @@ public abstract class WkSzAggregatorDefinitionCore<
     Optional<Predicate<? super YO>> txEnablingTest,
     ToIntFunction<? super YO> numberOfTxOperationsEvaluator,
     OperationSubsegmentSettingsFactory<YO, SYS> txSettingsFactory,
-    Disaggregator<ST,SYD,T,YO> disaggregator,
+    WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
     ProtocolDefinitionFactory<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> definitionFactory) {
     WkSzSubcomponentCore<ST,SXS,SXD,SXO,T,XBC,XD,XO,SYS,SYD,SYO,YBC,YD,YO,SD,D>
@@ -184,7 +184,7 @@ public abstract class WkSzAggregatorDefinitionCore<
     Optional<Predicate<? super YO>> txEnablingTest,
     ToIntFunction<? super YO> numberOfTxOperationsEvaluator,
     OperationSubsegmentSettingsFactory<YO, SYS> txSettingsFactory,
-    Disaggregator<ST,SYD,T,YO> disaggregator,
+    WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
     ProtocolDefinitionFactory<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> definitionFactory) {
     WkSzSubcomponentCore<ST,SXS,SXD,SXO,T,XBC,XD,XO,SYS,SYD,SYO,YBC,YD,YO,SD,D>
@@ -214,7 +214,7 @@ public abstract class WkSzAggregatorDefinitionCore<
     Optional<Predicate<? super YO>> txEnablingTest,
     ToIntFunction<? super YO> numberOfTxOperationsEvaluator,
     OperationSubsegmentSettingsFactory<YO, SYS> txSettingsFactory,
-    Disaggregator<ST,SYD,T,YO> disaggregator,
+    WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
     ProtocolDefinitionFactory<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> definitionFactory) {
     WkSzSubcomponentCore<ST, SXS, SXD, SXO, T, XBC, XD, XO, SYS, SYD, SYO, YBC, YD, YO, SD, D>

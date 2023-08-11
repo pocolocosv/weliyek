@@ -101,10 +101,10 @@ public class FixedSizeByteArray
                                     componentCore,
                                     FixedSizeByteArray::getRxRequestedLengthFromDefinition,
                                     (i,xs,axb,xkc,dc) -> new FixedSizeByteArrayDeserializing(i,xs,axb,xkc,dc).operationCore,
-                                    ByteArrayWrapperInputSerialization.FACTORY,
+                                    WkSzByteArrayWrapperReadEngine.FACTORY,
                                     (SerializingPrimitiveArrayLengthProvider<ByteArrayWrapper,WkSzOperationSettings,FixedSizeByteArray>)FixedSizeByteArray::getTxRequestedLengthFromDefinition,
                                     (i,y,ys,ayb,ykc,dc) -> new FixedSizeByteArraySerializing(i,y,ys,ayb,ykc,dc).operationCore,
-                                    ByteArrayWrapperOutputSerialization.FACTORY,
+                                    WkSzByteArrayWrapperWriteEngine.FACTORY,
                                     this,
                                     ByteArrayWrapper.class);
     this.fixedSizeParameter = new SequenceFixedSizeParameter<ByteArrayWrapper>(expectedLength, this.definitionCore);

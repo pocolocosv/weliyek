@@ -21,10 +21,10 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 import java.util.function.Function;
 
-import weliyek.serialization.Disaggregator;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicReadingRuntime;
@@ -107,11 +107,11 @@ public class SimplifiedStringFromBytesCore<
   protected SimplifiedStringFromBytesCore(
     Charset defaultCharset,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
-    PacketInputFieldReadingFactory<
+    WkSzPacketReaderOperationCoreFactory<
       String,XS,XD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       XO,WkSzInputBytestreamBase<?>>
         readingOpFactory,
-    PacketOutputFieldWritingFactory<
+    WkSzPacketWriterOperationCoreFactory<
       String,YS,YD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       YO,WkSzOutputBytestreamBase<?>>
         writingOpFactory,
@@ -119,7 +119,7 @@ public class SimplifiedStringFromBytesCore<
     OperationSubsegmentSettingsFactory<XO, SXS> bytesDeserializingSettingsFactory,
     Function<XO,String> bytesDeserializingStringAggregator,
     OperationSubsegmentSettingsFactory<YO, SYS> bytesSerializingSettingsFactory,
-    Disaggregator<ByteArrayWrapper,SYD,String,YO> bytesSerializingDisaggregator,
+    WkSzPacketWriteDisaggregator<ByteArrayWrapper,SYD,String,YO> bytesSerializingDisaggregator,
     ProtocolDefinitionFactory<
       ByteArrayWrapper,SXS,SXD,SXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
       SYS,SYD,SYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,SD>

@@ -86,9 +86,9 @@ public class WkSzSignedBigEndianInteger
                                   WkSzSignedBigEndianInteger>(
                                       componentCore,
                                       (i,xs,axb,xkc,dc) -> new WkSzSignedBigEndianIntegerReader(i,xs,axb,xkc,dc).operationCore,
-                                      BigEndianSignedIntegerInputSerialization.FACTORY,
+                                      WkSzBigEndianSignedIntegerReadEngine.FACTORY,
                                       (i,y,ys,ayb,ykc,dc) -> new WkSzSignedBigEndianIntegerWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                      BigEndianIntegerOutputSerializer.FACTORY,
+                                      WkSzBigEndianIntegerWriteEngine.FACTORY,
                                       this,
                                       Integer.class);
   }

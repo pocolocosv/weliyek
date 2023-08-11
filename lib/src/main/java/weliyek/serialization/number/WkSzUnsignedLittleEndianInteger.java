@@ -86,9 +86,9 @@ public class WkSzUnsignedLittleEndianInteger
                                   WkSzUnsignedLittleEndianInteger>(
                                       componentCore,
                                       (i,xs,axb,xkc,dc) -> new WkSzUnsignedLittleEndianIntegerReader(i,xs,axb,xkc,dc).operationCore,
-                                      LittleEndianUnsignedIntegerInputSerialization.FACTORY,
+                                      WkSzLittleEndianUnsignedIntegerReadEngine.FACTORY,
                                       (i,y,ys,ayb,ykc,dc) -> new WkSzUnsignedLittleEndianIntegerWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                      UnsignedLittleEndianIntegerOutputSerializer.FACTORY,
+                                      WkSzUnsignedLittleEndianIntegerWriteEngine.FACTORY,
                                       this,
                                       Long.class);
   }

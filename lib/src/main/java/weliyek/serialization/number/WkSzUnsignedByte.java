@@ -81,9 +81,9 @@ public class WkSzUnsignedByte
     this.definitionCore = new WkSzSimplifiedNumberSerializerDefinitionCore<>(
                                   componentCore,
                                   (i,xs,axb,xkc,dc) -> new WkSzUnsignedByteReader(i,xs,axb,xkc,dc).operationCore,
-                                  UnsignedByteInputSerialization.FACTORY,
+                                  WkSzUnsignedByteReadEngine.FACTORY,
                                   (i,y,ys,ayb,ykc,dc) -> new WkSzUnsignedByteWriter(i,y,ys,ayb,ykc,dc).writingCore,
-                                  UnsignedByteOutputSerializer.FACTORY,
+                                  WkSzUnsignedByteWriteEngine.FACTORY,
                                   this,
                                   Integer.class);
   }

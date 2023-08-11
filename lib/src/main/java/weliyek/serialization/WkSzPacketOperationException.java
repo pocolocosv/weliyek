@@ -22,30 +22,30 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
 
   private static final long serialVersionUID = 2022_07_04_0000L;
   
-  private final PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
+  private final WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
 
   public WkSzPacketOperationException(
-    PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore) {
+    WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore) {
     super(operationCore.definitionCore());
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     Throwable cause) {
     super(operationCore.definitionCore(), cause);
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message) {
     super(operationCore.definitionCore(), message);
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause) {
     super(operationCore.definitionCore(), message, cause);
@@ -53,7 +53,7 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
   }
 
   public WkSzPacketOperationException(
-    PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -62,7 +62,7 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
     this.operationCore = operationCore;
   }
   
-  public PacketOperationSegmentCore<?,?,?,?,?,?,?,?,?,?,?> getOperationCore() {
+  public WkSzPacketOperationCore<?,?,?,?,?,?,?,?,?,?,?> getOperationCore() {
     return this.operationCore;
   }
 

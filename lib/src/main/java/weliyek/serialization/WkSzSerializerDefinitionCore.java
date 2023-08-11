@@ -45,19 +45,19 @@ public abstract class WkSzSerializerDefinitionCore<
 
   public static final char LABEL_SEPARATOR = ',';
 
-  final InputDeserializerFactory<T, ? super XQC, ? super XO> rxSerializerFactory;
-  final OutputSerializerFactory<T, ? super YQC, ? super YO> txSerializerFactory;
+  final WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory;
+  final WkSzWriteEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory;
 
   protected WkSzSerializerDefinitionCore(
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
-    PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
-    InputDeserializerFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
+    WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
     Function<AYB, YQC> txRuntimeFactory,
     Function<YO, YR> txResultFactory,
-    PacketOutputFieldWritingFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
-    OutputSerializerFactory<T, ? super YQC, ? super YO> txSerializerFactory,
+    WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSzWriteEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

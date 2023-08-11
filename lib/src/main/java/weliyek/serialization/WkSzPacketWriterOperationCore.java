@@ -32,7 +32,7 @@ public abstract class WkSzPacketWriterOperationCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSzDefinitionCore<
                                       T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,?,DC>>
-        extends PacketOperationSegmentCore<
+        extends WkSzPacketOperationCore<
                         YS, YQ, YQC, YR, YD, DC, YO, YOC, AYB,
                         WkSzPacketWriterField<T,YD,?>,
                         WkSzPacketWriterFieldCore<T,?,YD,?,?,?>>

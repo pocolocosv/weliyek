@@ -24,10 +24,10 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.Disaggregator;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzAggregatorDefinitionCore;
 import weliyek.serialization.WkSzDefinition;
@@ -96,15 +96,15 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB, XQC> rxRuntimeFactory,
     BiFunction<XO, T, XR> rxResultFactory,
-    PacketInputFieldReadingFactory<T, XS, XD, DC, XO, AXB> readingOpFactory,
+    WkSzPacketReaderOperationCoreFactory<T, XS, XD, DC, XO, AXB> readingOpFactory,
     Function<AYB, YQC> txRuntimeFactory,
     Function<YO, YR> txResultFactory,
-    PacketOutputFieldWritingFactory<T, YS, YD, DC, YO, AYB> writingOpFactory,
+    WkSzPacketWriterOperationCoreFactory<T, YS, YD, DC, YO, AYB> writingOpFactory,
     String elementsLabel,
     ToIntFunction<? super XO> elementsDeserializingNumOfOps,
     OperationSubsegmentSettingsFactory<XO, EXS> elementsRxSettingsFactory,
     OperationSubsegmentSettingsFactory<YO, EYS> elementsTxSettingsFactory,
-    Disaggregator<ET,EYD,T,YO> elementsDisaggregator,
+    WkSzPacketWriteDisaggregator<ET,EYD,T,YO> elementsDisaggregator,
     ProtocolDefinitionFactory<ET,EXS,EXD,EXO,XBC,EYS,EYD,EYO,YBC,ED> elementsDefinitionFactory,
     Function<XO,T> collectionSerializingFactory,
     D definitionBody,

@@ -23,8 +23,8 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 
 import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicReadingRuntime;
@@ -147,12 +147,12 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
     //Function<InputBytestreamGeneralBase<?>, ReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>, DeserializingRuntime<InputBytestream>>>
     //  deserializerRuntimeFactory,
     //BiFunction<XO, T, DeserializingResult<T>> deserializerResultFactory,
-    PacketInputFieldReadingFactory<T, XS, XD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, XO, WkSzInputBytestreamBase<?>>
+    WkSzPacketReaderOperationCoreFactory<T, XS, XD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, XO, WkSzInputBytestreamBase<?>>
       deserializerFactory,
     //Function<OutputBytestreamGeneralBase<?>, WritingRuntimeControl<OutputBytestream, OutputBytestreamGeneralBase<? extends OutputBytestream>, SerializingRuntime<OutputBytestream>>>
     //  serializerRuntimeFactory,
     //Function<YO, SerializingResult> serializerResultFactory,
-    PacketOutputFieldWritingFactory<T, YS, YD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, YO, WkSzOutputBytestreamBase<?>>
+    WkSzPacketWriterOperationCoreFactory<T, YS, YD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, YO, WkSzOutputBytestreamBase<?>>
       serializerFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> serializableClass,

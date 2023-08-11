@@ -32,7 +32,7 @@ public abstract class WkSzPacketReaderOperationCore<
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSzDefinitionCore<
                                       T,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,DC>>
-        extends PacketOperationSegmentCore<
+        extends WkSzPacketOperationCore<
                         XS, XQ, XQC, XR, XD, DC, XO, XOC, AXB,
                         WkSzPacketReaderField<T,XD,?>,
                         WkSzPacketReaderFieldCore<T,?,XD,?,?,?>>

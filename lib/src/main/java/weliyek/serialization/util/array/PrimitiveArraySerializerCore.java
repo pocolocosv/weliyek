@@ -22,10 +22,10 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntBiFunction;
 
-import weliyek.serialization.InputDeserializerFactory;
-import weliyek.serialization.OutputSerializerFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzReadEngineFactory;
+import weliyek.serialization.WkSzWriteEngineFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.PrimitiveArraySerializerDefinition;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
@@ -70,13 +70,13 @@ public abstract class PrimitiveArraySerializerCore<
     ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
-    PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
-    InputDeserializerFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
+    WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
     SerializingPrimitiveArrayLengthProvider<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator,
     Function<AYB,YQC> txRuntimeFactory,
     Function<YO,YR> txResultFactory,
-    PacketOutputFieldWritingFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
-    OutputSerializerFactory<T, ? super YQC, ? super YO> txSerializerFactory,
+    WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSzWriteEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

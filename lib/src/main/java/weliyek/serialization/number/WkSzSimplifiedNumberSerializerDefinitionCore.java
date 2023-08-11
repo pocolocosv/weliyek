@@ -17,10 +17,10 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.InputDeserializerFactory;
-import weliyek.serialization.OutputSerializerFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzReadEngineFactory;
+import weliyek.serialization.WkSzWriteEngineFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicReadingRuntime;
 import weliyek.serialization.WkSzBasicWritingResult;
@@ -77,16 +77,16 @@ public final class WkSzSimplifiedNumberSerializerDefinitionCore<
 
   public WkSzSimplifiedNumberSerializerDefinitionCore(
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
-    PacketInputFieldReadingFactory<
+    WkSzPacketReaderOperationCoreFactory<
       T, WkSzOperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
       XO, WkSzInputBytestreamBase<?>> rxOpFactory,
-    InputDeserializerFactory<
+    WkSzReadEngineFactory<
       T, ? super WkSzReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
       WkSzReadingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
-    PacketOutputFieldWritingFactory<
+    WkSzPacketWriterOperationCoreFactory<
       T, WkSzOperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
       YO, WkSzOutputBytestreamBase<?>> txOpFactory,
-    OutputSerializerFactory<
+    WkSzWriteEngineFactory<
       T, ? super WkSzWritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
       WkSzWritingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
     D definitionBody,

@@ -52,7 +52,7 @@ public class WkSzSubcomponentCore<
   private final OperationSubsegmentSettingsFactory<YO, SYS> txSettingsFactory;
   private final WkSzStructComponentCoreBase<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> protocolfieldCore;
   private final WkSzStructSubcomponent<XO, YO, SD> body;
-  private final Disaggregator<ST, SYD, T, YO> disaggregator;
+  private final WkSzPacketWriteDisaggregator<ST, SYD, T, YO> disaggregator;
   private boolean deserializedRequiredByAggregator;
   private int order;
 
@@ -64,7 +64,7 @@ public class WkSzSubcomponentCore<
     Optional<Predicate<? super YO>> txEnablingTest,
     ToIntFunction<? super YO> numberOfTxOperationsEvaluator,
     OperationSubsegmentSettingsFactory<YO, SYS> txSettingsFactory,
-    Disaggregator<ST, SYD, T, YO> disaggregator,
+    WkSzPacketWriteDisaggregator<ST, SYD, T, YO> disaggregator,
     boolean deserializedRequiredByAggregator,
     ProtocolDefinitionFactory<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> definitionFactory,
     WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
@@ -199,7 +199,7 @@ public class WkSzSubcomponentCore<
     return this.protocolfieldCore;
   }
 
-  public Disaggregator<ST,SYD,T,YO> disaggregator() {
+  public WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator() {
     return this.disaggregator;
   }
 

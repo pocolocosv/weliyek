@@ -36,7 +36,7 @@ public abstract class SerializerReadingCore<
         extends WkSzPacketReaderOperationCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
 {
 
-    protected InputSerializationEngine<X, ? super XQC, ? super XO> rule;
+    protected WkSzReadEngine<X, ? super XQC, ? super XO> rule;
 
     protected SerializerReadingCore(
         int index,

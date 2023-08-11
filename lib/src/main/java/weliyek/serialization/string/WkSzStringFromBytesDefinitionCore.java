@@ -25,10 +25,10 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.serialization.Disaggregator;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -88,17 +88,17 @@ public abstract class WkSzStringFromBytesDefinitionCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,String,XR> rxResultFactory,
-    PacketInputFieldReadingFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSzPacketReaderOperationCoreFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
     Function<AYB,YQC> txRuntimeFactory,
     Function<YO,YR> txResultFactory,
-    PacketOutputFieldWritingFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSzPacketWriterOperationCoreFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
     String bytesLabel,
     Optional<Predicate<? super XO>> bytesDeserializationEnablingTest,
     OperationSubsegmentSettingsFactory<XO, SXS> bytesDeserializingSettingsFactory,
     Function<XO, String> bytesDeserializingStringAggregator,
     Optional<Predicate<? super YO>> bytesSerializationEnablingTest,
     OperationSubsegmentSettingsFactory<YO, SYS> bytesSerializingSettingsFactory,
-    Disaggregator<ByteArrayWrapper, SYD, String, YO> bytesSerializingDisaggregator,
+    WkSzPacketWriteDisaggregator<ByteArrayWrapper, SYD, String, YO> bytesSerializingDisaggregator,
     boolean bytesDeserializedRequired,
     ProtocolDefinitionFactory<ByteArrayWrapper,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> bytesDefinitionFactory,
     D definitionBody) {

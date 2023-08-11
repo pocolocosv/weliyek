@@ -21,10 +21,10 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.serialization.Disaggregator;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzAggregatorDefinitionCore;
 import weliyek.serialization.WkSzInputBytestream;
@@ -110,20 +110,20 @@ public abstract class DynamicSequenceDefinitionCore<
     String sizeComponentLabel,
     OperationSubsegmentSettingsFactory<XO,ZXS> sizeComponentRxSettingsFactory,
     OperationSubsegmentSettingsFactory<YO, ZYS> sizeComponentTxSettingsFactory,
-    Disaggregator<ZX, ZYD, T, YO> sizeComponentTxDesaggregator,
+    WkSzPacketWriteDisaggregator<ZX, ZYD, T, YO> sizeComponentTxDesaggregator,
     ProtocolDefinitionFactory<ZX,ZXS,ZXD,ZXO,XBC,ZYS,ZYD,ZYO,YBC,ZD> sizeComponentDefinitionFactory,
     String varseqComponentLabel,
     OperationSubsegmentSettingsFactory<XO,VXS> varseqComponentRxSettingsFactory,
     OperationSubsegmentSettingsFactory<YO,VYS> varseqComponentTxSettingsFactory,
-    Disaggregator<T, VYD, T, YO> varseqComponentTxDesaggregator,
+    WkSzPacketWriteDisaggregator<T, VYD, T, YO> varseqComponentTxDesaggregator,
     ProtocolDefinitionFactory<T,VXS,VXD,VXO,XBC,VYS,VYD,VYO,YBC,VD> varseqComponentDefinitionFactory,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
-    PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
+    WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
     Function<AYBC,YQC> txRuntimeFactory,
     Function<YO,YR> txResultFactory,
-    PacketOutputFieldWritingFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
+    WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

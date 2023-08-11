@@ -23,8 +23,8 @@ import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicSequenceReadingRuntime;
@@ -114,10 +114,10 @@ public class SimplifiedCollectionDefinitionCore<
 
   protected SimplifiedCollectionDefinitionCore(
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
-    PacketInputFieldReadingFactory<
+    WkSzPacketReaderOperationCoreFactory<
       T,XS,XD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
       XO,WkSzInputBytestreamBase<?>> readingOpFactory,
-    PacketOutputFieldWritingFactory<
+    WkSzPacketWriterOperationCoreFactory<
       T,YS,YD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
       YO,WkSzOutputBytestreamBase<?>> writingOpFactory,
     String elementsLabel,

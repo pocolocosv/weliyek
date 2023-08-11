@@ -30,7 +30,7 @@ public abstract class WkSzPacketSubfieldCore<
                         K extends WkSzPacketField<?,?,?>,
                         KC extends WkSzPacketFieldCore<?,?,?,?,?,?,? extends K,?,?>,
                         J extends WkSzPacketSubfield<?>,
-                        AOC extends PacketOperationSegmentCore<?,?,?,?,AD,?,?,?,?,?,?>,
+                        AOC extends WkSzPacketOperationCore<?,?,?,?,AD,?,?,?,?,?,?>,
                         AD extends WkSzDefinition<?,?>>
     implements WkSzPacketSubfield<K>,
                Initializable,

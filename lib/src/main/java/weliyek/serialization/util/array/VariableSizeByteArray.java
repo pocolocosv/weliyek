@@ -103,10 +103,10 @@ public class VariableSizeByteArray
                                   componentCore,
                                   VariableSizeByteArray::getRxRequestedLength,
                                   (i,xs,axb,xkc,dc) -> new VariableSizeByteArrayDeserializing(i,xs,axb,xkc,dc).operationCore,
-                                  ByteArrayWrapperInputSerialization.FACTORY,
+                                  WkSzByteArrayWrapperReadEngine.FACTORY,
                                   (SerializingPrimitiveArrayLengthProvider<ByteArrayWrapper,WkSzOperationSettings,VariableSizeByteArray>)VariableSizeByteArray::getTxRequestedLength,
                                   (i,y,ys,ayb,ykc,dc) -> new VariableSizeByteArraySerializing(i,y,ys,ayb,ykc,dc).operationCore,
-                                  ByteArrayWrapperOutputSerialization.FACTORY,
+                                  WkSzByteArrayWrapperWriteEngine.FACTORY,
                                   this,
                                   ByteArrayWrapper.class);
     this.sizeLimits = new SequenceSizeParameters<>(minSize, maxSize, definitionCore);

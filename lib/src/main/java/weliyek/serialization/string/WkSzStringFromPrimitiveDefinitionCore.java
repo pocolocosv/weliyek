@@ -23,10 +23,10 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.serialization.Disaggregator;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzAggregatorDefinitionCore;
 import weliyek.serialization.WkSzInputBytestream;
@@ -92,17 +92,17 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,String,XR> rxResultFactory,
-    PacketInputFieldReadingFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSzPacketReaderOperationCoreFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
     Function<AYB, YQC> txRuntimeFactory,
     Function<YO, YR> txResultFactory,
-    PacketOutputFieldWritingFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSzPacketWriterOperationCoreFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
     String primitiveArrayLabel,
     Optional<Predicate<? super XO>> primitiveArrayDeserializationEnablingTest,
     OperationSubsegmentSettingsFactory<XO,SXS> primitiveArrayDeserializingSettingsFactory,
     Function<XO, String> primitiveArrayDeserializingStringAggregator,
     Optional<Predicate<? super YO>> primitiveArraySerializationEnablingTest,
     OperationSubsegmentSettingsFactory<YO,SYS> primitiveArraySerializingSettingsFactory,
-    Disaggregator<ST, SYD, String, YO> primitiveArraySerializingDisaggregator,
+    WkSzPacketWriteDisaggregator<ST, SYD, String, YO> primitiveArraySerializingDisaggregator,
     boolean primitiveArrayDeserializedRequired,
     ProtocolDefinitionFactory<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> primitiveArrayDefinitionFactory,
     D definitionBody) {
@@ -135,7 +135,7 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
                           ST extends PrimitiveArrayWrapper<?,?>,
                           SD extends WkSzPrimitiveArrayDefinition<ST,?>,
                           WA>
-      implements Disaggregator<ST, SD, String, YO>
+      implements WkSzPacketWriteDisaggregator<ST, SD, String, YO>
   {
 
     @Override

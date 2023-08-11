@@ -86,9 +86,9 @@ public class WkSzSignedBigEndianLong
                             WkSzSignedBigEndianLong>(
                                 componentCore,
                                 (i,xs,axb,xkc,dc) -> new WkSzSignedBigEndianLongReader(i,xs,axb,xkc,dc).operationCore,
-                                BigEndianSignedLongInputSerialization.FACTORY,
+                                WkSzBigEndianSignedLongReadEngine.FACTORY,
                                 (i,y,ys,ayb,ykc,dc) -> new WkSzSignedBigEndianLongWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                BigEndianLongOutputSerialization.FACTORY,
+                                WkSzBigEndianLongWriteEngine.FACTORY,
                                 this,
                                 Long.class);
   }

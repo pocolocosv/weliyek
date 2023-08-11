@@ -30,7 +30,7 @@ import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructComponentCoreBase;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.filter.FieldTester;
-import weliyek.serialization.sequence.LittleEndianIntegerOutputSerializer;
+import weliyek.serialization.sequence.WkSzLittleEndianIntegerWriteEngine;
 
 public class WkSzSignedLittleEndianInteger
     implements WkSzNumberDefinition<
@@ -87,9 +87,9 @@ public class WkSzSignedLittleEndianInteger
                                   WkSzSignedLittleEndianInteger>(
                                       componentCore,
                                       (i,xs,axb,xkc,dc) -> new WkSzSignedLittleEndianIntegerReader(i,xs,axb,xkc,dc).operationCore,
-                                      LittleEndianSignedIntegerInputSerialization.FACTORY,
+                                      WkSzLittleEndianSignedIntegerReadEngine.FACTORY,
                                       (i,y,ys,ayb,ykc,dc) -> new WkSzSignedLittleEndianIntegerWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                      LittleEndianIntegerOutputSerializer.FACTORY,
+                                      WkSzLittleEndianIntegerWriteEngine.FACTORY,
                                       this,
                                       Integer.class);
   }

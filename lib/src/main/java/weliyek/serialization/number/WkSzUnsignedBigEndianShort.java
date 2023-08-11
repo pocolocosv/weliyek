@@ -86,9 +86,9 @@ public class WkSzUnsignedBigEndianShort
                                   WkSzUnsignedBigEndianShort>(
                                     componentCore,
                                     (i,xs,axb,xkc,dc) -> new WkSzUnsignedBigEndianShortReader(i,xs,axb,xkc,dc).operationCore,
-                                    BigEndianUnsignedShortInputSerialization.FACTORY,
+                                    WkSzBigEndianUnsignedShortReadEngine.FACTORY,
                                     (i,y,ys,ayb,ykc,dc) -> new WkSzUnsignedBigEndianShortWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                    UnsignedBigEndianShortOutputSerializer.FACTORY,
+                                    WkSzUnsignedBigEndianShortWriteEngine.FACTORY,
                                     this,
                                     Integer.class);
   }

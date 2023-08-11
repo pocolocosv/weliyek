@@ -21,15 +21,15 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.util.array.BasicPrimitiveArraySerializationRule;
+import weliyek.serialization.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
 import weliyek.serialization.util.array.IntArrayWrapper;
 
 public final class LittleEndianIntArrayOutputSerializationRule
-        extends IntArrayOutputSerializationRule
+        extends WkSzIntArrayWrapperWriteEngine
 {
 
-  public static final BasicPrimitiveArraySerializationRule<IntArrayWrapper> FACTORY =
-      new BasicPrimitiveArraySerializationRule<>(
+  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<IntArrayWrapper> FACTORY =
+      new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<>(
             "L_INT32[]",
             LittleEndianIntArrayOutputSerializationRule::new);
 

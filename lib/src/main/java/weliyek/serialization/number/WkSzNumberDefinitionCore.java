@@ -20,10 +20,10 @@ package weliyek.serialization.number;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.serialization.InputDeserializerFactory;
-import weliyek.serialization.OutputSerializerFactory;
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzReadEngineFactory;
+import weliyek.serialization.WkSzWriteEngineFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
@@ -58,12 +58,12 @@ public abstract class WkSzNumberDefinitionCore<
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
-    PacketInputFieldReadingFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
-    InputDeserializerFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
+    WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
     Function<AYB,YQC> txRuntimeFactory,
     Function<YO,YR> txResultFactory,
-    PacketOutputFieldWritingFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
-    OutputSerializerFactory<T, ? super YQC, ? super YO> txSerializerFactory,
+    WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSzWriteEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

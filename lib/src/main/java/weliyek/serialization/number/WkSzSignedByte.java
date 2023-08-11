@@ -85,9 +85,9 @@ public class WkSzSignedByte
                                 WkSzSignedByte>(
                                     componentCore,
                                     (i,xs,xab,xkc,xdc) -> new WkSzSignedByteReader(i,xs,xab,xkc,xdc).operationCore,
-                                    SignedByteInputSerialization.FACTORY,
+                                    WkSzSignedByteReadEngine.FACTORY,
                                     (i,y,ys,yab,ykc,ydc) -> new WkSzSignedByteWriter(i,y,ys,yab,ykc,ydc).writingCore,
-                                    ByteOutputSerializer.FACTORY,
+                                    WkSzSignedByteWriteEngine.FACTORY,
                                     this,
                                     Byte.class);
   }

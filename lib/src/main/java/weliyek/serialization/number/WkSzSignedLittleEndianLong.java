@@ -86,9 +86,9 @@ public class WkSzSignedLittleEndianLong
                                   WkSzSignedLittleEndianLong>(
                                       componentCore,
                                       (i,xs,axb,xkc,dc) -> new WkSzSignedLittleEndianLongReader(i,xs,axb,xkc,dc).operationCore,
-                                      LittleEndianSignedLongInputSerialization.FACTORY,
+                                      WkSzLittleEndianSignedLongReadEngine.FACTORY,
                                       (i,y,ys,ayb,ykc,dc) -> new WkSzSignedLittleEndianLongWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                      LittleEndianLongOutputSerializationRule.FACTORY,
+                                      WkSzLittleEndianLongWriteEngine.FACTORY,
                                       this,
                                       Long.class);
   }

@@ -56,7 +56,7 @@ public class SerializingSubfieldCore<
 
   @Override
   protected T serializable(int index) {
-    Disaggregator<T,YD,AY,AYO> disaggregator = this.myHandler.subcomponentHandlerCore().disaggregator();
+    WkSzPacketWriteDisaggregator<T,YD,AY,AYO> disaggregator = this.myHandler.subcomponentHandlerCore().disaggregator();
     return disaggregator.disaggregate(asPacket(), parentOperation(), index);
   }
 

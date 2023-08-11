@@ -35,7 +35,7 @@ public abstract class WkSzSerializerWriterCore<
     extends WkSzPacketWriterOperationCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
 {
 
-    protected OutputSerializationEngine<T, ? super YQC, ? super YO> rule;
+    protected WkSzWriteEngine<T, ? super YQC, ? super YO> rule;
 
     protected WkSzSerializerWriterCore(
             int index,

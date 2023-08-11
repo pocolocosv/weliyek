@@ -19,8 +19,8 @@ package weliyek.serialization.util.array;
 
 import java.util.function.IntFunction;
 
-import weliyek.serialization.PacketInputFieldReadingFactory;
-import weliyek.serialization.PacketOutputFieldWritingFactory;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicReadingRuntime;
@@ -127,11 +127,11 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
     ProtocolDefinitionFactory<
       T,WkSzVariableLengthOperationSettings,VXD,VXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
       VYD,VYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,VD> varseqComponentDefinitionFactory,
-    PacketInputFieldReadingFactory<
+    WkSzPacketReaderOperationCoreFactory<
       T,WkSzOperationSettings,XD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       XO,WkSzInputBytestreamBase<?>> readingOpFactory,
-    PacketOutputFieldWritingFactory<
+    WkSzPacketWriterOperationCoreFactory<
       T,WkSzOperationSettings,YD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       YO,WkSzOutputBytestreamBase<?>> writingOpFactory,

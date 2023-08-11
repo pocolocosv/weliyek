@@ -24,13 +24,11 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
@@ -38,43 +36,45 @@ import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class CollectionAndElementsFieldDefinitionCore<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends SequenceReadingRuntimeControl<XB,XBC,?>,
-                        XR extends DeserializingResult<T>,
+                        XQC extends WkSzSequenceReadingRuntimeControl<XB,XBC,?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
-                                        T,XS,? extends DeserializingRuntime<XB>,XR,XD,ET,EXD,EXO>,
+                                        T,XS,? extends WkSzReadingRuntime<XB>,XR,XD,ET,EXD,EXO>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WritingRuntimeControl<YB,YBC,?>,
-                        YR extends SerializingResult,
+                        YQC extends WkSzWritingRuntimeControl<YB,YBC,?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
-                                        T,YS,? extends SerializingRuntime<YB>,YR,YD,ET,EYD,EYO>,
+                                        T,YS,? extends WkSzWritingRuntime<YB>,YR,YD,ET,EYD,EYO>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         ED extends WkSzDefinition<ET,?>,

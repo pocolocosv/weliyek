@@ -17,17 +17,17 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
@@ -35,12 +35,12 @@ import weliyek.amat.basic.number.WkSzNumberReader;
 
 public abstract class DynamicSequenceDeserializingCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends DeserializingRuntime<XB>,
-                        XQC extends ReadingRuntimeControl<XB,XBC,XQ>,
-                        XR extends DeserializingResult<T>,
+                        XQ extends WkSzReadingRuntime<XB>,
+                        XQC extends WkSzReadingRuntimeControl<XB,XBC,XQ>,
+                        XR extends WkSzReadingResult<T>,
                         XO extends DynamicSequenceDeserializing<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XOC extends DynamicSequenceDeserializingCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,
@@ -50,10 +50,10 @@ public abstract class DynamicSequenceDeserializingCore<
                         XD extends WkSzDynamicSequenceDefinition<T,XO,?,?,?>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         ZT extends Number,
-                        ZXS extends OperationSettings,
+                        ZXS extends WkSzOperationSettings,
                         ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZT,?>,
-                        VXS extends VariableLengthSettings,
+                        VXS extends WkSzVariableLengthOperationSettings,
                         VXO extends VariableSizeSequenceReading<T,VXS,?,?,VXD>,
                         VXD extends WkSzVariableSizeSequenceDefinition<T,VXO>,
                         DC extends DynamicSequenceDefinitionCore<

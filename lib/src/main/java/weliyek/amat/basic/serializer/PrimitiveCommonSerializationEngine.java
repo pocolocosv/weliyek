@@ -19,11 +19,11 @@ package weliyek.amat.basic.serializer;
 
 import java.util.Objects;
 
-import weliyek.amat.base.CommonOperationRuntimeControl;
+import weliyek.amat.base.WkSzOperationRuntimeControl;
 import weliyek.serialization.WkSzPacketOperation;
 
 public abstract class PrimitiveCommonSerializationEngine<
-                        QC extends CommonOperationRuntimeControl<?,?,?>,
+                        QC extends WkSzOperationRuntimeControl<?,?,?>,
                         O extends WkSzPacketOperation<?,?,?,?,?>>
 {
 

@@ -20,11 +20,11 @@ package weliyek.amat.basic.serializer;
 import java.util.function.BiFunction;
 
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 
 public class InputDeserializerFactory<
                         T,
-                        QC extends ReadingRuntimeControl<?,?,?>,
+                        QC extends WkSzReadingRuntimeControl<?,?,?>,
                         O extends WkSzPacketReaderOperation<T,?,?,?,?>>
     extends CommonSerializerFactory<
                         QC,

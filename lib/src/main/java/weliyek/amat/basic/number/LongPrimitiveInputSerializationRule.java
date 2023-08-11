@@ -19,7 +19,7 @@ package weliyek.amat.basic.number;
 
 import java.io.IOException;
 
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.basic.serializer.BasicPrimitiveDeserializerEngine;
 
 public abstract class LongPrimitiveInputSerializationRule
@@ -27,7 +27,7 @@ public abstract class LongPrimitiveInputSerializationRule
 {
 
   protected LongPrimitiveInputSerializationRule(
-    ReadingRuntimeControl<?,?,?> runtimeCtrl,
+    WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
     WkSzNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }

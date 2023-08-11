@@ -20,35 +20,35 @@ package weliyek.ketza.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.basic.sequence.SequenceWritingRuntime;
-import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntime;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public class SimplifiedPrimitiveArraySerializingCore<
                         Y extends PrimitiveArrayWrapperBase<?,?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         D extends PrimitiveArraySerializerDefinition<Y,?>,
                         YO extends WkSzPrimitiveArraySerializerWriter<
                                         Y,
                                         YS,
-                                        SequenceWritingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         D>>
     extends PrimitiveArraySerializerWritingCore<
                         Y,
                         YS,
-                        SequenceWritingRuntime<WkSzOutputBytestream>,
-                        SequenceWritingRuntimeControl<
+                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
+                        WkSzSequenceWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SequenceWritingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzSequenceWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YO,
                         SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>,
                         D,

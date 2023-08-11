@@ -19,7 +19,7 @@ package weliyek.amat.basic.number;
 
 import java.io.IOException;
 
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.serializer.BasicPrimitiveSerializerFactory;
 
 public class UnsignedByteOutputSerializer
@@ -30,7 +30,7 @@ public class UnsignedByteOutputSerializer
       new BasicPrimitiveSerializerFactory<>("UINT8", UnsignedByteOutputSerializer::new);
 
   protected UnsignedByteOutputSerializer(
-    WritingRuntimeControl<?,?,?> runtimeControl,
+    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
     WkSzNumberWriter<Integer, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

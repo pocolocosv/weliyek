@@ -21,7 +21,7 @@ import java.util.Objects;
 
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
@@ -36,7 +36,7 @@ public class SequenceSizeParameters<T>
     private final int minSize;
     private final int maxSize;
     private final WkSzDefinitionCore<
-                      T,? extends VariableLengthSettings,?,?,
+                      T,? extends WkSzVariableLengthOperationSettings,?,?,
                       ? extends WkSzVariableSizeSequenceDefinition<T,?>,
                       ? extends VariableSizeSequenceReading<T,?,?,?,?>,?,?,?,?,
                       ? extends WkSzVariableSizeSequenceDefinition<T,?>,
@@ -47,7 +47,7 @@ public class SequenceSizeParameters<T>
       int minSize,
       int maxSize,
       WkSzDefinitionCore<
-        T,? extends VariableLengthSettings,?,?,
+        T,? extends WkSzVariableLengthOperationSettings,?,?,
         ? extends WkSzVariableSizeSequenceDefinition<T,?>,
         ? extends VariableSizeSequenceReading<T,?,?,?,?>,?,?,?,?,
         ? extends WkSzVariableSizeSequenceDefinition<T,?>,
@@ -94,10 +94,10 @@ public class SequenceSizeParameters<T>
 
     void onBeforeFullCompletionDeserialization(
       WkSzPacketReaderOperationCore<
-        ?,? extends VariableLengthSettings,?,?,?,
+        ?,? extends WkSzVariableLengthOperationSettings,?,?,?,
         ? extends VariableSizeSequenceReading<?,?,?,?,?>,?,
         ? extends WkSzVariableSizeSequenceDefinition<?,?>,?,?> deserializer) {
-      VariableLengthSettings settings = deserializer.settings();
+      WkSzVariableLengthOperationSettings settings = deserializer.settings();
       if (settings.getRequestedLength() < minSize) {
         throw new WkSzOperationException(
                         deserializer,

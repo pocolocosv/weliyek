@@ -19,13 +19,13 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.ketza.util.array.DynamicSequenceDeserializing;
@@ -33,18 +33,18 @@ import weliyek.serialization.WkSzDefinition;
 
 public interface DynamicCollectionFieldDeserializer<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzDynamicCollectionDefinition<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZXO extends WkSzNumberReader<ZT,?,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZT,?>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        VXS extends VariableLengthSettings>
+                        VXS extends WkSzVariableLengthOperationSettings>
     extends WkSzDynamicCollectionOperation<
                         XS, XQ, XR, XD,
                         WkSzPacketReaderField<T,XD,?>,

@@ -19,7 +19,7 @@ package weliyek.ketza.util.array;
 
 import java.util.function.BiFunction;
 
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.InputSerializationEngine;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 
@@ -27,18 +27,18 @@ public class BasicPrimitiveArrayDeserializerFactory<
                         X extends PrimitiveArrayWrapper<?,?>>
     extends PrimitiveArrayDeserializerFactory<
                         X,
-                        SequenceReadingRuntimeControl<?,?,?>,
+                        WkSzSequenceReadingRuntimeControl<?,?,?>,
                         WkSzPrimitiveArraySerializerReader<X,?,?,?,?>>
 {
 
   public BasicPrimitiveArrayDeserializerFactory(
       String label,
       BiFunction<
-        SequenceReadingRuntimeControl<?,?,?>,
+        WkSzSequenceReadingRuntimeControl<?,?,?>,
         WkSzPrimitiveArraySerializerReader<X,?,?,?,?>,
         InputSerializationEngine<
           X,
-          ? super SequenceReadingRuntimeControl<?,?,?>,
+          ? super WkSzSequenceReadingRuntimeControl<?,?,?>,
           ? super WkSzPrimitiveArraySerializerReader<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }

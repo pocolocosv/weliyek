@@ -17,35 +17,35 @@
  */
 package weliyek.amat.basic.aggregator;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public class SimplifiedAggregatorDeserializingCore<
                         X,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzAggregatorDefinition<X,?>,
                         XO extends WkSzAggregatorReader<
                                         X,
                                         XS,
-                                        DeserializingRuntime<WkSzInputBytestream>,
-                                        DeserializingResult<X>,
+                                        WkSzReadingRuntime<WkSzInputBytestream>,
+                                        WkSzReadingResult<X>,
                                         XD>>
     extends WkSzAggregatorReaderCore<
                         X,
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        ReadingRuntimeControl<
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          DeserializingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<X>,
+                          WkSzReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<X>,
                         XD,
                         XO,
                         SimplifiedAggregatorDeserializingCore<X,XS,XD,XO>,

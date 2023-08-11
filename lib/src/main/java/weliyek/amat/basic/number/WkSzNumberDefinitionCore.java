@@ -20,31 +20,31 @@ package weliyek.amat.basic.number;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.WkSzOperationSettings;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.serializer.InputDeserializerFactory;
 import weliyek.amat.basic.serializer.OutputSerializerFactory;
 import weliyek.amat.basic.serializer.WkSzSerializerDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class WkSzNumberDefinitionCore<
                         T extends Number,
-                        XS extends OperationSettings,
-                        XQC extends ReadingRuntimeControl<?,?,?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQC extends WkSzReadingRuntimeControl<?,?,?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzNumberDefinition<T,XO>,
                         XO extends WkSzNumberReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
-                        YQC extends WritingRuntimeControl<?,?,?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQC extends WkSzWritingRuntimeControl<?,?,?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzNumberDefinition<T,?>,
                         YO extends WkSzNumberWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,

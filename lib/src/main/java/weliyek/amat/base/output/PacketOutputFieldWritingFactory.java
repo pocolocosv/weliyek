@@ -20,12 +20,12 @@ package weliyek.amat.base.output;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationFactory;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 
 @FunctionalInterface
 public interface PacketOutputFieldWritingFactory<
                         T,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         DC extends WkSzDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,

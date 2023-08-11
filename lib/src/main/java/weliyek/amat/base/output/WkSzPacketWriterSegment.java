@@ -17,15 +17,15 @@
  */
 package weliyek.amat.base.output;
 
-import weliyek.amat.base.Direction;
+import weliyek.serialization.WkSzPacketDirection;
 import weliyek.serialization.WkSzPacketSegment;
 
 public interface WkSzPacketWriterSegment extends WkSzPacketSegment
 {
 
   @Override
-  default Direction direction() {
-    return Direction.WRITE;
+  default WkSzPacketDirection direction() {
+    return WkSzPacketDirection.WRITE;
   }
 
 }

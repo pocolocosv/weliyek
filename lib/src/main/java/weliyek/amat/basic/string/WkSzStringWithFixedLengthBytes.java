@@ -22,8 +22,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
@@ -38,6 +37,7 @@ import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 /**
  * Packet structure and data for handling fixed length bytes array. The serialization
@@ -54,11 +54,11 @@ public class WkSzStringWithFixedLengthBytes
 
   public static WkSzStruct<
                       String,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesReader,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesWriter,
                       WkSzOutputBytestreamBase<?>,
@@ -78,11 +78,11 @@ public class WkSzStringWithFixedLengthBytes
 
   public static WkSzDefinitionCore<
                       String,
-                      OperationSettings,?,?,
+                      WkSzOperationSettings,?,?,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesReader,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,?,?,
+                      WkSzOperationSettings,?,?,
                       WkSzStringWithFixedLengthBytes,
                       WkSzStringWithFixedLengthBytesWriter,
                       WkSzOutputBytestreamBase<?>,
@@ -96,16 +96,16 @@ public class WkSzStringWithFixedLengthBytes
   }
 
   private final SimplifiedStringFromBytesCore<
-                        OperationSettings,
+                        WkSzOperationSettings,
                         WkSzStringWithFixedLengthBytesReader,
                         WkSzStringWithFixedLengthBytes,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         WkSzStringWithFixedLengthBytesWriter,
                         WkSzStringWithFixedLengthBytes,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         FixedSizeByteArrayDeserializing,
                         FixedSizeByteArray,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         FixedSizeByteArraySerializing,
                         FixedSizeByteArray,
                         FixedSizeByteArray,
@@ -123,9 +123,9 @@ public class WkSzStringWithFixedLengthBytes
                                   (i,xs,axb,xpc,dc) -> new WkSzStringWithFixedLengthBytesReader(i,xs,axb,xpc,dc).operationCore,
                                   (i,y,ys,ayb,ypc,dc) -> new WkSzStringWithFixedLengthBytesWriter(i,y,ys,ayb,ypc,dc).operationCore,
                                   bytesLabel,
-                                  OperationSettings::none,
+                                  WkSzOperationSettings::none,
                                   WkSzStringWithFixedLengthBytes::aggragateByteArray,
-                                  OperationSettings::none,
+                                  WkSzOperationSettings::none,
                                   new FixedLengthBytesDisaggregatorFromString(expectedSize),
                                   (pc) -> FixedSizeByteArray.newCore(expectedSize, pc),
                                   this);

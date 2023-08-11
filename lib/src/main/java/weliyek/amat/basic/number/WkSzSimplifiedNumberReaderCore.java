@@ -17,11 +17,11 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
@@ -29,20 +29,20 @@ public final class WkSzSimplifiedNumberReaderCore<
                         X extends Number,
                         XO extends WkSzNumberReader<
                                       X,
-                                      OperationSettings,
-                                      DeserializingRuntime<WkSzInputBytestream>,
-                                      DeserializingResult<X>,
+                                      WkSzOperationSettings,
+                                      WkSzReadingRuntime<WkSzInputBytestream>,
+                                      WkSzReadingResult<X>,
                                       XD>,
                         XD extends WkSzNumberDefinition<X,XO>>
     extends WkSzNumberReaderCore<
                         X,
-                        OperationSettings,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        ReadingRuntimeControl<
+                        WkSzOperationSettings,
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          DeserializingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<X>,
+                          WkSzReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<X>,
                         XO,
                         WkSzSimplifiedNumberReaderCore<X,XO,XD>,
                         XD,
@@ -52,7 +52,7 @@ public final class WkSzSimplifiedNumberReaderCore<
 
   public WkSzSimplifiedNumberReaderCore(
     int index,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<X,?,XD,?,?,?> readingfieldCore,
     WkSzSimplifiedNumberSerializerDefinitionCore<X,XO,?,XD> definitionCore,

@@ -19,19 +19,19 @@ package weliyek.amat.base.output;
 
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.serialization.WkSzDefinition;
 
 public class SerializingSubfieldCore<
                         T,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AY,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        AYO extends WkSzAggregatorWriter<AY,?,? extends SerializingRuntime<?>,?,?>>
+                        AYO extends WkSzAggregatorWriter<AY,?,? extends WkSzWritingRuntime<?>,?,?>>
         extends WkSzPacketWriterFieldCore<T, YS, YD, YO, AYBC, AYO>
 {
 

@@ -23,67 +23,67 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class DynamicCollectionField<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
-                        YS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
+                        YS extends WkSzOperationSettings,
                         ZT extends Number,
-                        ZXS extends OperationSettings,
+                        ZXS extends WkSzOperationSettings,
                         ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZT,?>,
-                        ZYS extends OperationSettings,
+                        ZYS extends WkSzOperationSettings,
                         ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
                         ZD extends WkSzNumberDefinition<ZT,ZXO>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         ED extends WkSzDefinition<ET,EXO>,
-                        VXS extends VariableLengthSettings,
-                        VYS extends OperationSettings>
+                        VXS extends WkSzVariableLengthOperationSettings,
+                        VYS extends WkSzOperationSettings>
     implements WkSzDynamicCollectionDefinition<
                         T,
                         DynamicCollectionFieldDeserializer<
                           T, XS,
-                          DeserializingRuntime<WkSzInputBytestream>,
-                          DeserializingResult<T>,
+                          WkSzReadingRuntime<WkSzInputBytestream>,
+                          WkSzReadingResult<T>,
                           DynamicCollectionField<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
                         DynamicCollectionFieldSerializer<
                           T, YS,
-                          SerializingRuntime<WkSzOutputBytestream>,
-                          SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>,
+                          WkSzWritingResult,
                           DynamicCollectionField<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -91,34 +91,34 @@ public class DynamicCollectionField<
 {
 
   public static <T extends Collection<ET>,
-                 XS extends OperationSettings,
-                 YS extends OperationSettings,
+                 XS extends WkSzOperationSettings,
+                 YS extends WkSzOperationSettings,
                  ZT extends Number,
-                 ZXS extends OperationSettings,
+                 ZXS extends WkSzOperationSettings,
                  ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
                  ZXD extends WkSzNumberDefinition<ZT,?>,
-                 ZYS extends OperationSettings,
+                 ZYS extends WkSzOperationSettings,
                  ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
                  ZYD extends WkSzNumberDefinition<ZT,?>,
                  ZD extends WkSzNumberDefinition<ZT,ZXO>,
                  ET,
-                 EXS extends OperationSettings,
+                 EXS extends WkSzOperationSettings,
                  EXD extends WkSzDefinition<ET,?>,
                  EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                 EYS extends OperationSettings,
+                 EYS extends WkSzOperationSettings,
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,EXO>,
-                 VXS extends VariableLengthSettings,
-                 VYS extends OperationSettings>
+                 VXS extends WkSzVariableLengthOperationSettings,
+                 VYS extends WkSzOperationSettings>
   WkSzStruct<
                 T, XS,
                 DynamicCollectionField<
                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                 DynamicCollectionFieldDeserializer<
                   T, XS,
-                  DeserializingRuntime<WkSzInputBytestream>,
-                  DeserializingResult<T>,
+                  WkSzReadingRuntime<WkSzInputBytestream>,
+                  WkSzReadingResult<T>,
                   DynamicCollectionField<
                     T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                   ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -128,8 +128,8 @@ public class DynamicCollectionField<
                   T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                 DynamicCollectionFieldSerializer<
                   T, YS,
-                  SerializingRuntime<WkSzOutputBytestream>,
-                  SerializingResult,
+                  WkSzWritingRuntime<WkSzOutputBytestream>,
+                  WkSzWritingResult,
                   DynamicCollectionField<
                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                   ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -142,17 +142,17 @@ public class DynamicCollectionField<
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     ProtocolDefinitionFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -188,34 +188,34 @@ public class DynamicCollectionField<
   }
 
   public static <T extends Collection<ET>,
-                 XS extends OperationSettings,
-                 YS extends OperationSettings,
+                 XS extends WkSzOperationSettings,
+                 YS extends WkSzOperationSettings,
                  ZT extends Number,
-                 ZXS extends OperationSettings,
+                 ZXS extends WkSzOperationSettings,
                  ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
                  ZXD extends WkSzNumberDefinition<ZT,?>,
-                 ZYS extends OperationSettings,
+                 ZYS extends WkSzOperationSettings,
                  ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
                  ZYD extends WkSzNumberDefinition<ZT,?>,
                  ZD extends WkSzNumberDefinition<ZT,ZXO>,
                  ET,
-                 EXS extends OperationSettings,
+                 EXS extends WkSzOperationSettings,
                  EXD extends WkSzDefinition<ET,?>,
                  EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                 EYS extends OperationSettings,
+                 EYS extends WkSzOperationSettings,
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,EXO>,
-                 VXS extends VariableLengthSettings,
-                 VYS extends OperationSettings>
+                 VXS extends WkSzVariableLengthOperationSettings,
+                 VYS extends WkSzOperationSettings>
   WkSzDefinitionCore<
                  T, XS,?,?,
                  DynamicCollectionField<
                    T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                  DynamicCollectionFieldDeserializer<
                    T, XS,
-                   DeserializingRuntime<WkSzInputBytestream>,
-                   DeserializingResult<T>,
+                   WkSzReadingRuntime<WkSzInputBytestream>,
+                   WkSzReadingResult<T>,
                    DynamicCollectionField<
                      T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                    ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -225,8 +225,8 @@ public class DynamicCollectionField<
                    T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                  DynamicCollectionFieldSerializer<
                    T, YS,
-                   SerializingRuntime<WkSzOutputBytestream>,
-                   SerializingResult,
+                   WkSzWritingRuntime<WkSzOutputBytestream>,
+                   WkSzWritingResult,
                    DynamicCollectionField<
                      T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                    ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -238,17 +238,17 @@ public class DynamicCollectionField<
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     ProtocolDefinitionFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -286,8 +286,8 @@ public class DynamicCollectionField<
                         T, XS,
                         DynamicCollectionFieldDeserializer<
                           T, XS,
-                          DeserializingRuntime<WkSzInputBytestream>,
-                          DeserializingResult<T>,
+                          WkSzReadingRuntime<WkSzInputBytestream>,
+                          WkSzReadingResult<T>,
                           DynamicCollectionField<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
@@ -296,8 +296,8 @@ public class DynamicCollectionField<
                         YS,
                         DynamicCollectionFieldSerializer<
                           T, YS,
-                          SerializingRuntime<WkSzOutputBytestream>,
-                          SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>,
+                          WkSzWritingResult,
                           DynamicCollectionField<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -314,17 +314,17 @@ public class DynamicCollectionField<
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     ProtocolDefinitionFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -340,8 +340,8 @@ public class DynamicCollectionField<
                                   T, XS,
                                   DynamicCollectionFieldDeserializer<
                                     T, XS,
-                                    DeserializingRuntime<WkSzInputBytestream>,
-                                    DeserializingResult<T>,
+                                    WkSzReadingRuntime<WkSzInputBytestream>,
+                                    WkSzReadingResult<T>,
                                     DynamicCollectionField<
                                       T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                     ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
@@ -350,8 +350,8 @@ public class DynamicCollectionField<
                                   YS,
                                   DynamicCollectionFieldSerializer<
                                     T, YS,
-                                    SerializingRuntime<WkSzOutputBytestream>,
-                                    SerializingResult,
+                                    WkSzWritingRuntime<WkSzOutputBytestream>,
+                                    WkSzWritingResult,
                                     DynamicCollectionField<
                                       T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                     ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -390,14 +390,14 @@ public class DynamicCollectionField<
 
   @Override
   public
-  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
+  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
   size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
+  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
   variableSequence() {
     return this.definitionCore.variableSequence();
   }
@@ -414,7 +414,7 @@ public class DynamicCollectionField<
 
   @Override
   public FieldTester<?, ?> makeTester(
-  Predicate<? super DynamicCollectionFieldDeserializer<T, XS, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>> test,
+  Predicate<? super DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>> test,
   String description) {
     return this.definitionCore.makeTester(test, description);
   }

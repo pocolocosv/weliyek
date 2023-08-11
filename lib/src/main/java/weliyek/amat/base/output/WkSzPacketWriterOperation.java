@@ -21,13 +21,13 @@ import java.util.List;
 
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 
 public interface WkSzPacketWriterOperation<
                         T,
-                        S extends OperationSettings,
-                        Q extends SerializingRuntime<?>,
-                        R extends SerializingResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzWritingRuntime<?>,
+                        R extends WkSzWritingResult,
                         D extends WkSzDefinition<T,?>>
         extends WkSzPacketOperation<
                         S, Q, R, D,

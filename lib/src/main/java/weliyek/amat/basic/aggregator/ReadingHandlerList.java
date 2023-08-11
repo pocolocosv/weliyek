@@ -19,10 +19,10 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.List;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.SubfieldHandlerList;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
@@ -32,7 +32,7 @@ public class ReadingHandlerList<
                         X,
                         XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkSzAggregatorDefinition<X,?>,
-                        XO extends WkSzAggregatorReader<X,?,? extends DeserializingRuntime<?>,?,XD>>
+                        XO extends WkSzAggregatorReader<X,?,? extends WkSzReadingRuntime<?>,?,XD>>
         extends SubfieldHandlerList<
                         WkSzPacketReaderSubfield<?,?,?>,
                         WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XD,XO>,
@@ -46,7 +46,7 @@ public class ReadingHandlerList<
 
     @SuppressWarnings("unchecked")
     <ST,
-     SXS extends OperationSettings,
+     SXS extends WkSzOperationSettings,
      SXD extends WkSzDefinition<ST,?>,
      SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>>
     WkSzPacketReaderSubfieldCore<ST,SXS,SXD,SXO,X,XBC,XD,XO> findSubfieldpacket(

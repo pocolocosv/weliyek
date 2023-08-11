@@ -17,19 +17,19 @@
  */
 package weliyek.amat.basic.string;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public interface WkSzStringFromBytesWriter<
-                        YS extends OperationSettings,
-                        YQ extends SerializingRuntime<?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzWritingRuntime<?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzStringFromBytesDefinition<?,?,? extends SD>,
                         SD extends WkSzByteArrayDefinition<?>,
                         SYO extends ByteArrayWriting<?,?,?,SD>>

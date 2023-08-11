@@ -19,14 +19,14 @@ package weliyek.amat.basic.number;
 
 import java.io.IOException;
 
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 
 public abstract class IntPrimiviteOutputSerializerEngine
     extends BasicPrimitiveSerializerEngine<Integer>
 {
 
   protected IntPrimiviteOutputSerializerEngine(
-    WritingRuntimeControl<?,?,?> runtimeControl,
+    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
     WkSzNumberWriter<Integer,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

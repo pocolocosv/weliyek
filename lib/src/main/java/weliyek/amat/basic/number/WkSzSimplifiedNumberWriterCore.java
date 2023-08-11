@@ -17,32 +17,32 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 
 public class WkSzSimplifiedNumberWriterCore<
                         Y extends Number,
                         YO extends WkSzNumberWriter<
                                         Y,
-                                        OperationSettings,
-                                        SerializingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzOperationSettings,
+                                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         YD>,
                         YD extends WkSzNumberDefinition<Y,?>>
     extends WkSzNumberWriterCore<
                         Y,
-                        OperationSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        WritingRuntimeControl<
+                        WkSzOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YO,
                         WkSzSimplifiedNumberWriterCore<Y,YO,YD>,
                         YD,
@@ -53,7 +53,7 @@ public class WkSzSimplifiedNumberWriterCore<
   WkSzSimplifiedNumberWriterCore(
     int index,
     Y serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<Y,?,YD,?,?,?> packetHandlerCore,
     WkSzSimplifiedNumberSerializerDefinitionCore<Y,?,YO,YD> definitionCore,

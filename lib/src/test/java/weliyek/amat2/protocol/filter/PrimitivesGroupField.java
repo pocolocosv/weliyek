@@ -23,8 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructComponentCoreBase;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputBytestream;
@@ -52,6 +51,7 @@ import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytes;
 import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytesReader;
 import weliyek.amat.basic.string.WkSzStringWithFixedLengthBytesWriter;
 import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class PrimitivesGroupField
         implements WkSzAggregatorDefinition<
@@ -61,23 +61,23 @@ public class PrimitivesGroupField
 
   final SimplifiedAggregatorCore<
                         PrimitivesGroup,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupField,
                         PrimitivesGroupDeserializer,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupField,
                         PrimitivesGroupSerializer,
                         PrimitivesGroupField> definitionCore;
 
   final WkSzSubcomponentCore<Byte,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedByte,
                                 WkSzSignedByteReader,
                                 PrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 PrimitivesGroupField,
                                 PrimitivesGroupDeserializer,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedByte,
                                 WkSzSignedByteWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -87,14 +87,14 @@ public class PrimitivesGroupField
                                 PrimitivesGroupField> byteSubcomponent;
 
   final WkSzSubcomponentCore<Short,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedBigEndianShort,
                                 WkSzSignedBigEndianShortReader,
                                 PrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 PrimitivesGroupField,
                                 PrimitivesGroupDeserializer,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedBigEndianShort,
                                 WkSzSignedBigEndianShortWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -104,14 +104,14 @@ public class PrimitivesGroupField
                                 PrimitivesGroupField> shortSubcomponent;
 
   final WkSzSubcomponentCore<Integer,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedBigEndianInteger,
                                 WkSzSignedBigEndianIntegerReader,
                                 PrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 PrimitivesGroupField,
                                 PrimitivesGroupDeserializer,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedBigEndianInteger,
                                 WkSzSignedBigEndianIntegerWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -121,14 +121,14 @@ public class PrimitivesGroupField
                                 PrimitivesGroupField> intSubcomponent;
 
   final WkSzSubcomponentCore<Long,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedBigEndianLong,
                                 WkSzSignedBigEndianLongReader,
                                 PrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 PrimitivesGroupField,
                                 PrimitivesGroupDeserializer,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzSignedBigEndianLong,
                                 WkSzSignedBigEndianLongWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -138,14 +138,14 @@ public class PrimitivesGroupField
                                 PrimitivesGroupField> longSubcomponent;
 
   final WkSzSubcomponentCore<String,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzStringWithFixedLengthBytes,
                                 WkSzStringWithFixedLengthBytesReader,
                                 PrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 PrimitivesGroupField,
                                 PrimitivesGroupDeserializer,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzStringWithFixedLengthBytes,
                                 WkSzStringWithFixedLengthBytesWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -155,14 +155,14 @@ public class PrimitivesGroupField
                                 PrimitivesGroupField> fixedStrSubcomponent;
 
   final WkSzSubcomponentCore<String,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
                                 StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
                                 PrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 PrimitivesGroupField,
                                 PrimitivesGroupDeserializer,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 StringWithDynamicSizeBytes<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
                                 StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -175,10 +175,10 @@ public class PrimitivesGroupField
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedAggregatorCore<
                                   PrimitivesGroup,
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   PrimitivesGroupField,
                                   PrimitivesGroupDeserializer,
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   PrimitivesGroupField,
                                   PrimitivesGroupSerializer,
                                   PrimitivesGroupField>(
@@ -200,14 +200,14 @@ public class PrimitivesGroupField
 
   private WkSzSubcomponentCore<
               Byte,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedByte,
               WkSzSignedByteReader,
               PrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               PrimitivesGroupField,
               PrimitivesGroupDeserializer,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedByte,
               WkSzSignedByteWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -216,15 +216,15 @@ public class PrimitivesGroupField
               WkSzSignedByte,
               PrimitivesGroupField>
   addByteSubcomponent() {
-    return this.definitionCore.<Byte, OperationSettings, WkSzSignedByte, WkSzSignedByteReader, OperationSettings, WkSzSignedByte, WkSzSignedByteWriter, WkSzSignedByte>
+    return this.definitionCore.<Byte, WkSzOperationSettings, WkSzSignedByte, WkSzSignedByteReader, WkSzOperationSettings, WkSzSignedByte, WkSzSignedByteWriter, WkSzSignedByte>
                                addSubcomponent(
                                     "BYTE",
                                     Optional.empty(),
                                     WkSzAggregatorDefinitionCore.singleOperation(),
-                                    OperationSettings::none,
+                                    WkSzOperationSettings::none,
                                     Optional.empty(),
                                     WkSzAggregatorDefinitionCore.singleOperation(),
-                                    OperationSettings::none,
+                                    WkSzOperationSettings::none,
                                     (k,ao,i) -> ao.serializable().b,
                                     false,
                                     WkSzSignedByte::newCore);
@@ -232,14 +232,14 @@ public class PrimitivesGroupField
 
   private WkSzSubcomponentCore<
               Short,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedBigEndianShort,
               WkSzSignedBigEndianShortReader,
               PrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               PrimitivesGroupField,
               PrimitivesGroupDeserializer,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedBigEndianShort,
               WkSzSignedBigEndianShortWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -248,15 +248,15 @@ public class PrimitivesGroupField
               WkSzSignedBigEndianShort,
               PrimitivesGroupField>
   addShortSubcomponent() {
-    return this.definitionCore.<Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort>
+    return this.definitionCore.<Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort>
                     addSubcomponent(
                           "SHORT",
                           Optional.empty(),
                           WkSzAggregatorDefinitionCore.singleOperation(),
-                          OperationSettings::none,
+                          WkSzOperationSettings::none,
                           Optional.empty(),
                           WkSzAggregatorDefinitionCore.singleOperation(),
-                          OperationSettings::none,
+                          WkSzOperationSettings::none,
                           (k,ao,i) -> ao.serializable().s,
                           false,
                           WkSzSignedBigEndianShort::newCore);
@@ -264,14 +264,14 @@ public class PrimitivesGroupField
 
   private WkSzSubcomponentCore<
               Integer,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedBigEndianInteger,
               WkSzSignedBigEndianIntegerReader,
               PrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               PrimitivesGroupField,
               PrimitivesGroupDeserializer,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedBigEndianInteger,
               WkSzSignedBigEndianIntegerWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -280,15 +280,15 @@ public class PrimitivesGroupField
               WkSzSignedBigEndianInteger,
               PrimitivesGroupField>
   addIntSubcomponent() {
-    return this.definitionCore.<Integer, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, OperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>
+    return this.definitionCore.<Integer, WkSzOperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzOperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>
                     addSubcomponent(
                             "INT",
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             (k,ao,i) -> ao.serializable().i,
                             false,
                             WkSzSignedBigEndianInteger::newCore);
@@ -296,14 +296,14 @@ public class PrimitivesGroupField
 
   private WkSzSubcomponentCore<
               Long,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedBigEndianLong,
               WkSzSignedBigEndianLongReader,
               PrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               PrimitivesGroupField,
               PrimitivesGroupDeserializer,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzSignedBigEndianLong,
               WkSzSignedBigEndianLongWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -312,15 +312,15 @@ public class PrimitivesGroupField
               WkSzSignedBigEndianLong,
               PrimitivesGroupField>
   addLongSubcomponent() {
-    return this.definitionCore.<Long, OperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongReader, OperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongWriter, WkSzSignedBigEndianLong>
+    return this.definitionCore.<Long, WkSzOperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongReader, WkSzOperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongWriter, WkSzSignedBigEndianLong>
                       addSubcomponent(
                             "LONG",
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             (k,ao,i) -> ao.serializable().l,
                             false,
                             WkSzSignedBigEndianLong::newCore);
@@ -328,14 +328,14 @@ public class PrimitivesGroupField
 
   private WkSzSubcomponentCore<
               String,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzStringWithFixedLengthBytes,
               WkSzStringWithFixedLengthBytesReader,
               PrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               PrimitivesGroupField,
               PrimitivesGroupDeserializer,
-              OperationSettings,
+              WkSzOperationSettings,
               WkSzStringWithFixedLengthBytes,
               WkSzStringWithFixedLengthBytesWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -348,20 +348,20 @@ public class PrimitivesGroupField
     int expectedSize = PrimitivesGroup.FIXED_STRING_LENGTH;
     Charset defaultCharset = StandardCharsets.US_ASCII;
     return this.definitionCore.<String,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzStringWithFixedLengthBytes,
                                 WkSzStringWithFixedLengthBytesReader,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 WkSzStringWithFixedLengthBytes,
                                 WkSzStringWithFixedLengthBytesWriter,
                                 WkSzStringWithFixedLengthBytes>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,
                             (pc) -> WkSzStringWithFixedLengthBytes.newCore(bytesLabel, expectedSize, defaultCharset, pc));
@@ -369,14 +369,14 @@ public class PrimitivesGroupField
 
   private WkSzSubcomponentCore<
               String,
-              OperationSettings,
+              WkSzOperationSettings,
               StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
               StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
               PrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               PrimitivesGroupField,
               PrimitivesGroupDeserializer,
-              OperationSettings,
+              WkSzOperationSettings,
               StringWithDynamicSizeBytes<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
               StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -392,20 +392,20 @@ public class PrimitivesGroupField
     int maxLength = 1000;
     Charset charset = StandardCharsets.US_ASCII;
     return this.definitionCore.<String,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
                                 StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 StringWithDynamicSizeBytes<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
                                 StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
                                 StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             Optional.empty(),
                             WkSzAggregatorDefinitionCore.singleOperation(),
-                            OperationSettings::none,
+                            WkSzOperationSettings::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,
                             (pc) -> StringWithDynamicSizeBytes.<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>

@@ -17,22 +17,22 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.amat.basic.serializer.SerializerReadingCore;
 
 public abstract class PrimitiveArraySerializerReadingCore<
                         X extends PrimitiveArrayWrapper<?,?>,
-                        XS extends OperationSettings,
-                        XQ extends SequenceReadingRuntime<?>,
-                        XQC extends SequenceReadingRuntimeControl<?,?,XQ>,
-                        XR extends DeserializingResult<X>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzSequenceReadingRuntime<?>,
+                        XQC extends WkSzSequenceReadingRuntimeControl<?,?,XQ>,
+                        XR extends WkSzReadingResult<X>,
                         XO extends WkSzPrimitiveArraySerializerReader<X,XS,XQ,XR,XD>,
                         XOC extends PrimitiveArraySerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends PrimitiveArraySerializerDefinition<X,XO>,

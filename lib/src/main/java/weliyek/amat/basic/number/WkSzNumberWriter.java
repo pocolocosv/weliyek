@@ -17,17 +17,17 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 
 public interface WkSzNumberWriter<
                         T extends Number,
-                        S extends OperationSettings,
-                        Q extends SerializingRuntime<?>,
-                        R extends SerializingResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzWritingRuntime<?>,
+                        R extends WkSzWritingResult,
                         D extends WkSzNumberDefinition<T,?>>
         extends WkSzNumberOperation<
                         S, Q, R, D,

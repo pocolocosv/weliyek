@@ -17,13 +17,13 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 
@@ -31,42 +31,42 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
                         T extends PrimitiveArrayWrapper<?,?>,
                         YO extends DynamicPrimitiveArraySerializing<
                                         T,
-                                        OperationSettings,
-                                        SerializingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzOperationSettings,
+                                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD extends WkSzDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
                         ZT extends Number,
                         ZYO extends WkSzNumberWriter<
                                         ZT,
-                                        OperationSettings,
+                                        WkSzOperationSettings,
                                         ?,?,ZYD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
                         VYO extends WkSzVariableSizePrimitiveArrayWriter<
                                         T,
-                                        OperationSettings,
+                                        WkSzOperationSettings,
                                         ?,?,VYD>,
                         VYD extends WkSzVariableSizePrimitiveArrayDefinition<T,?>>
     extends DynamicSequenceSerializingCore<
                         T,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        WritingRuntimeControl<
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YO,
                         SimplifiedDynamicPrimitiveArraySerializingCore<T,YO,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD,
                         WkSzOutputBytestreamBase<?>,
                         ZT,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         ZYO,
                         ZYD,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         VYO,
                         VYD,
                         SimplifiedDynamicPrimitiveArrayDefinitionCore<
@@ -75,16 +75,16 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
                           ?,?,VYD,VYO,?,?>>
     implements DynamicPrimitiveArraySerializing<
                         T,
-                        OperationSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         YD, ZT, ZYO, ZYD, VYO, VYD>
 {
 
   public SimplifiedDynamicPrimitiveArraySerializingCore(
     int index,
     T serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<

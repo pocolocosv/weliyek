@@ -22,71 +22,71 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.BasicReadingResult;
-import weliyek.amat.base.input.BasicReadingRuntime;
+import weliyek.amat.base.input.WkSzBasicReadingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
-import weliyek.amat.base.output.BasicWritingRuntime;
+import weliyek.amat.base.output.WkSzBasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.ketza.util.array.DynamicSequenceDefinitionCore;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public final class SimplifiedDynamicCollectionDefinitionCore<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XO extends DynamicCollectionFieldDeserializer<
                                         T,XS,
-                                        DeserializingRuntime<WkSzInputBytestream>,
-                                        DeserializingResult<T>,
+                                        WkSzReadingRuntime<WkSzInputBytestream>,
+                                        WkSzReadingResult<T>,
                                         XD,ZT,ZXO,?,ET,EXS,?,EXO,VXS>,
                         XD extends WkSzDynamicCollectionDefinition<
                                         T,XO,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YO extends DynamicCollectionFieldSerializer<
                                         T,YS,
-                                        SerializingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         YD,ZT,ZYO,?,ET,EYS,?,EYO,VYS>,
                         YD extends WkSzDynamicCollectionDefinition<
                                         T,?,YO,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
-                        ZXS extends OperationSettings,
+                        ZXS extends WkSzOperationSettings,
                         ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZT,?>,
-                        ZYS extends OperationSettings,
+                        ZYS extends WkSzOperationSettings,
                         ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
                         ZD extends WkSzNumberDefinition<ZT,ZXO>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         ED extends WkSzDefinition<ET,EXO>,
-                        VXS extends VariableLengthSettings,
-                        VYS extends OperationSettings,
+                        VXS extends WkSzVariableLengthOperationSettings,
+                        VYS extends WkSzOperationSettings,
                         D extends WkSzDynamicCollectionDefinition<
                                       T, XO, YO, ZD, ET, EXS, EXD, EXO,
                                       EYS, EYD, EYO, ED, VXS, VYS>>
@@ -94,21 +94,21 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
                         T, XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        ReadingRuntimeControl<
+                        WkSzReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          DeserializingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<T>,
+                          WkSzReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<T>,
                         XO, XD,
                         WkSzInputBytestreamBase<?>,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WritingRuntimeControl<
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YO, YD,
                         WkSzOutputBytestreamBase<?>,
                         ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD,
@@ -180,10 +180,10 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
                                 collectionFactory,
                                 pc),
           componentCore,
-          BasicReadingRuntime::new,
+          WkSzBasicReadingRuntime::new,
           BasicReadingResult::new,
           deserializerFactory,
-          BasicWritingRuntime::new,
+          WkSzBasicWritingRuntime::new,
           BasicWritingResult::empty,
           serializerFactory,
           definitionBody,

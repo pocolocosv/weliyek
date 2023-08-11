@@ -17,13 +17,13 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 
 @FunctionalInterface
 public interface SerializingPrimitiveArrayLengthProvider<
                         Y extends PrimitiveArrayWrapper<?,?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends PrimitiveArraySerializerDefinition<Y, ?>>
 {
 

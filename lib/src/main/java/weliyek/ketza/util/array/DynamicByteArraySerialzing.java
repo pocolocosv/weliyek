@@ -20,11 +20,11 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
@@ -33,18 +33,18 @@ import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public class DynamicByteArraySerialzing<
                         ZT extends Number,
-                        ZYO extends WkSzNumberWriter<ZT,OperationSettings,?,?,ZYD>,
+                        ZYO extends WkSzNumberWriter<ZT,WkSzOperationSettings,?,?,ZYD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>>
     implements ByteArrayWriting<
-                        OperationSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>>,
                DynamicPrimitiveArraySerializing<
                         ByteArrayWrapper,
-                        OperationSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         ZT, ZYO, ZYD,
                         VariableSizeByteArraySerializing,
@@ -62,7 +62,7 @@ public class DynamicByteArraySerialzing<
   DynamicByteArraySerialzing(
     int index,
     ByteArrayWrapper serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       ByteArrayWrapper,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?> serializingfieldCore,
@@ -103,17 +103,17 @@ public class DynamicByteArraySerialzing<
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.operationCore.result();
   }
 

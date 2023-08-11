@@ -21,55 +21,55 @@ import java.nio.charset.Charset;
 import java.util.Optional;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.BasicReadingResult;
-import weliyek.amat.base.input.BasicReadingRuntime;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzBasicReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
-import weliyek.amat.base.output.BasicWritingRuntime;
+import weliyek.amat.base.output.WkSzBasicWritingRuntime;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
+import weliyek.serialization.ProtocolDefinitionFactory;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 import weliyek.ketza.util.array.ByteArrayReading;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public class SimplifiedStringFromBytesCore<
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XO extends WkSzStringFromBytesReader<
                                         XS,
-                                        DeserializingRuntime<WkSzInputBytestream>,
-                                        DeserializingResult<String>,
+                                        WkSzReadingRuntime<WkSzInputBytestream>,
+                                        WkSzReadingResult<String>,
                                         XD,
                                         SXD,
                                         SXO>,
                         XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YO extends WkSzStringFromBytesWriter<
                                         YS,
-                                        SerializingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         YD,
                                         SYD,
                                         SYO>,
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
-                        SXS extends OperationSettings,
+                        SXS extends WkSzOperationSettings,
                         SXO extends ByteArrayReading<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,
-                        SYS extends OperationSettings,
+                        SYS extends WkSzOperationSettings,
                         SYO extends ByteArrayWriting<SYS,?,?,SYD>,
                         SYD extends WkSzByteArrayDefinition<?>,
                         SD extends WkSzByteArrayDefinition<SXO>,
@@ -78,21 +78,21 @@ public class SimplifiedStringFromBytesCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        ReadingRuntimeControl<
+                        WkSzReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          DeserializingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<String>,
+                          WkSzReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<String>,
                         XO, XD,
                         WkSzInputBytestreamBase<?>,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WritingRuntimeControl<
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YO, YD,
                         WkSzOutputBytestreamBase<?>,
                         SXS,
@@ -128,10 +128,10 @@ public class SimplifiedStringFromBytesCore<
     super(
           defaultCharset,
           componentCore,
-          BasicReadingRuntime::new,
+          WkSzBasicReadingRuntime::new,
           BasicReadingResult::new,
           readingOpFactory,
-          BasicWritingRuntime::new,
+          WkSzBasicWritingRuntime::new,
           BasicWritingResult::empty,
           writingOpFactory,
           bytesLabel,

@@ -19,10 +19,10 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.List;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.SubfieldHandlerList;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
@@ -32,7 +32,7 @@ public class WritingHandlerList<
                         Y,
                         YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkSzAggregatorDefinition<Y,?>,
-                        YO extends WkSzAggregatorWriter<Y,?,? extends SerializingRuntime<?>,?,YD>>
+                        YO extends WkSzAggregatorWriter<Y,?,? extends WkSzWritingRuntime<?>,?,YD>>
         extends SubfieldHandlerList<
                         WkSzPacketWriterSubfield<?,?,?>,
                         WkSzPacketWriterSubfieldCore<?,?,?,?,?,?,YD,YO>,
@@ -46,7 +46,7 @@ public class WritingHandlerList<
 
   @SuppressWarnings("unchecked")
   <SY,
-   SYS extends OperationSettings,
+   SYS extends WkSzOperationSettings,
    SYD extends WkSzDefinition<SY,?>,
    SYO extends WkSzPacketWriterOperation<SY,SYS,?,?,SYD>>
   WkSzPacketWriterSubfieldCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(

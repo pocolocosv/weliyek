@@ -20,9 +20,9 @@ package weliyek.amat2.protocol.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.WkSzOperationSettings;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterField;
@@ -39,46 +39,46 @@ import weliyek.amat.basic.number.WkSzSignedBigEndianShortWriter;
 public class MultipleListsWriting
         implements DynamicCollectionFieldSerializer<
                         MultipleLists,
-                        OperationSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         MultipleListInputField,
                         Short,
                         WkSzSignedBigEndianShortWriter,
                         WkSzSignedBigEndianShort,
                         PrimitivesGroupList,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupListField,
                         PrimitivesGroupListFieldSerializer,
-                        OperationSettings>
+                        WkSzOperationSettings>
 {
 
     final SimplifiedDynamicCollectionFieldSerializer<
                         MultipleLists,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         MultipleListsWriting,
                         MultipleListInputField,
                         Short,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         WkSzSignedBigEndianShortWriter,
                         WkSzSignedBigEndianShort,
                         PrimitivesGroupList,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupListField,
                         PrimitivesGroupListFieldSerializer,
-                        OperationSettings> operationCore;
+                        WkSzOperationSettings> operationCore;
 
   MultipleListsWriting(
     int index,
     MultipleLists serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<MultipleLists, ?, MultipleListInputField, ?, ?, ?>
       serializerpacketCore,
-    SimplifiedDynamicCollectionDefinitionCore<MultipleLists, ?, ?, ?, OperationSettings, MultipleListsWriting, MultipleListInputField, Short, ?, ?, ?, OperationSettings, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, ?, PrimitivesGroupList, ?, ?, ?, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, ?, ?, OperationSettings, ?>
+    SimplifiedDynamicCollectionDefinitionCore<MultipleLists, ?, ?, ?, WkSzOperationSettings, MultipleListsWriting, MultipleListInputField, Short, ?, ?, ?, WkSzOperationSettings, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, ?, PrimitivesGroupList, ?, ?, ?, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, ?, ?, WkSzOperationSettings, ?>
       definitionCore) {
     operationCore = new SimplifiedDynamicCollectionFieldSerializer<
-                            MultipleLists, OperationSettings, MultipleListsWriting, MultipleListInputField, Short, OperationSettings, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, PrimitivesGroupList, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, OperationSettings>(
+                            MultipleLists, WkSzOperationSettings, MultipleListsWriting, MultipleListInputField, Short, WkSzOperationSettings, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, WkSzOperationSettings>(
                                 index, serializable, settings, parentBytestream, serializerpacketCore, definitionCore, this);
   }
 
@@ -90,7 +90,7 @@ public class MultipleListsWriting
 
   @Override
   public
-  WkSzPacketWriterSubfield<MultipleLists, VariableSizeCollectionField<MultipleLists, ?, OperationSettings, PrimitivesGroupList, ?, ?, ?, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, ?>, VariableSizeCollectionFieldSerializer<MultipleLists, OperationSettings, PrimitivesGroupList, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer>>
+  WkSzPacketWriterSubfield<MultipleLists, VariableSizeCollectionField<MultipleLists, ?, WkSzOperationSettings, PrimitivesGroupList, ?, ?, ?, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, ?>, VariableSizeCollectionFieldSerializer<MultipleLists, WkSzOperationSettings, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }
@@ -101,17 +101,17 @@ public class MultipleListsWriting
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.operationCore.result();
   }
 

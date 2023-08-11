@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.function.IntFunction;
 
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.basic.serializer.BasicPrimitiveDeserializerEngine;
 
 public abstract class IntPrimitiveInputSerializationRule<X extends Number>
@@ -32,7 +32,7 @@ public abstract class IntPrimitiveInputSerializationRule<X extends Number>
 
   protected IntPrimitiveInputSerializationRule(
       IntFunction<X> converter,
-      ReadingRuntimeControl<?,?,?> runtimeCtrl,
+      WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
       WkSzNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.converter = Objects.requireNonNull(converter);

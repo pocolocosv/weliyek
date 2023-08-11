@@ -20,28 +20,28 @@ package weliyek.amat.basic.aggregator;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
 
 public abstract class WkSzAggregatorWriterCore<
                         T,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends SerializingRuntime<YB>,
-                        YQC extends WritingRuntimeControl<YB,YBC,YQ>,
-                        YR extends SerializingResult,
+                        YQ extends WkSzWritingRuntime<YB>,
+                        YQC extends WkSzWritingRuntimeControl<YB,YBC,YQ>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSzAggregatorWriterCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYB,DC>,
@@ -89,7 +89,7 @@ public abstract class WkSzAggregatorWriterCore<
 
   @SuppressWarnings("unchecked")
   public <SY,
-             SYS extends OperationSettings,
+             SYS extends WkSzOperationSettings,
              SYD extends WkSzDefinition<SY,?>,
              SYO extends WkSzPacketWriterOperation<SY,SYS,?,?,SYD>>
   WkSzPacketWriterSubfieldCore<SY,SYS,SYD,SYO,T,YBC,YD,YO> getSubfieldpacketFor(

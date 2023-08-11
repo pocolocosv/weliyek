@@ -22,14 +22,14 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.serialization.WkSzOperationException;
 
 public abstract class BasicPrimitiveDeserializerEngine<X extends Number>
     extends InputSerializationEngine<
                         X,
-                        ReadingRuntimeControl<?,?,?>,
+                        WkSzReadingRuntimeControl<?,?,?>,
                         WkSzNumberReader<X,?,?,?,?>>
 {
 
@@ -38,7 +38,7 @@ public abstract class BasicPrimitiveDeserializerEngine<X extends Number>
   private X deserializedNumber;
 
   protected BasicPrimitiveDeserializerEngine(
-      ReadingRuntimeControl<?,?,?> runtimeCtrl,
+      WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
       WkSzNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }

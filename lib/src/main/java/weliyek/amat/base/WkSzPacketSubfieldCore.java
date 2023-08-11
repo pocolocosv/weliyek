@@ -28,9 +28,10 @@ import weliyek.serialization.WkSzPacketField;
 import weliyek.serialization.WkSzPacketOperation;
 import weliyek.serialization.WkSzPacketSubfield;
 import weliyek.serialization.WkSzStructComponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class WkSzPacketSubfieldCore<
-                        S extends OperationSettings,
+                        S extends WkSzOperationSettings,
                         TD extends WkSzDefinition<?,?>,
                         NC extends WkSzSubcomponentCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         K extends WkSzPacketField<?,?,?>,

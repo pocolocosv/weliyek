@@ -20,11 +20,11 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
@@ -32,9 +32,9 @@ import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 public final class WkSzUnsignedBigEndianIntegerReader
         implements WkSzNumberReader<
                         Long,
-                        OperationSettings,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<Long>,
+                        WkSzOperationSettings,
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<Long>,
                         WkSzUnsignedBigEndianInteger>
 {
 
@@ -45,7 +45,7 @@ public final class WkSzUnsignedBigEndianIntegerReader
 
   WkSzUnsignedBigEndianIntegerReader(
     int index,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       Long,?,WkSzUnsignedBigEndianInteger,?,?,?> deserializingfieldCore,
@@ -61,17 +61,17 @@ public final class WkSzUnsignedBigEndianIntegerReader
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<DeserializingResult<Long>> result() {
+  public Optional<WkSzReadingResult<Long>> result() {
     return this.operationCore.result();
   }
 

@@ -19,7 +19,7 @@ package weliyek.amat.basic.number;
 
 import java.io.IOException;
 
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.serializer.BasicPrimitiveSerializerFactory;
 
 public class UnsignedBigEndianIntegerOutputSerializer
@@ -30,7 +30,7 @@ public class UnsignedBigEndianIntegerOutputSerializer
       new BasicPrimitiveSerializerFactory<>("UINT32BE", UnsignedBigEndianIntegerOutputSerializer::new);
 
   private UnsignedBigEndianIntegerOutputSerializer(
-    WritingRuntimeControl<?,?,?> runtimeControl,
+    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
     WkSzNumberWriter<Long, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

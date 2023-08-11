@@ -17,22 +17,22 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.basic.sequence.SequenceWritingRuntime;
-import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntime;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 import weliyek.amat.basic.serializer.WkSzSerializerWriterCore;
 
 public abstract class PrimitiveArraySerializerWritingCore<
                         Y extends PrimitiveArrayWrapperBase<?,?>,
-                        YS extends OperationSettings,
-                        YQ extends SequenceWritingRuntime<?>,
-                        YQC extends SequenceWritingRuntimeControl<?,?,YQ>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzSequenceWritingRuntime<?>,
+                        YQC extends WkSzSequenceWritingRuntimeControl<?,?,YQ>,
+                        YR extends WkSzWritingResult,
                         YO extends WkSzPrimitiveArraySerializerWriter<Y,YS,YQ,YR,YD>,
                         YOC extends PrimitiveArraySerializerWritingCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends PrimitiveArraySerializerDefinition<Y,?>,

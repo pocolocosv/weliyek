@@ -22,19 +22,19 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
-import weliyek.amat.basic.sequence.SequenceWritingRuntime;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzDefinition;
 
 public interface CollectionAndElementsFieldSerializer<
                         T extends Collection<ET>,
-                        YS extends OperationSettings,
-                        YQ extends SequenceWritingRuntime<?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzSequenceWritingRuntime<?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
                         ET,
                         EYD extends WkSzDefinition<ET,?>,

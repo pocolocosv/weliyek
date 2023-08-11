@@ -20,18 +20,18 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.aggregator.sequence.SequenceSizeParameters;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class VariableSizeByteArray
     implements WkSzByteArrayDefinition<
@@ -43,11 +43,11 @@ public class VariableSizeByteArray
 
   public static WkSzStruct<
                       ByteArrayWrapper,
-                      VariableLengthSettings,
+                      WkSzVariableLengthOperationSettings,
                       VariableSizeByteArray,
                       VariableSizeByteArrayDeserializing,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       VariableSizeByteArray,
                       VariableSizeByteArraySerializing,
                       WkSzOutputBytestreamBase<?>,
@@ -63,11 +63,11 @@ public class VariableSizeByteArray
   public static
   WkSzDefinitionCore<
                       ByteArrayWrapper,
-                      VariableLengthSettings,?,?,
+                      WkSzVariableLengthOperationSettings,?,?,
                       VariableSizeByteArray,
                       VariableSizeByteArrayDeserializing,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,?,?,
+                      WkSzOperationSettings,?,?,
                       VariableSizeByteArray,
                       VariableSizeByteArraySerializing,
                       WkSzOutputBytestreamBase<?>,
@@ -81,9 +81,9 @@ public class VariableSizeByteArray
 
   private final SimplifiedPrimitiveArraySerializerCore<
                         ByteArrayWrapper,
-                        VariableLengthSettings,
+                        WkSzVariableLengthOperationSettings,
                         VariableSizeByteArrayDeserializing,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         VariableSizeByteArraySerializing,
                         VariableSizeByteArray> definitionCore;
   private final SequenceSizeParameters<ByteArrayWrapper> sizeLimits;
@@ -94,9 +94,9 @@ public class VariableSizeByteArray
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
         ByteArrayWrapper,
-        VariableLengthSettings,
+        WkSzVariableLengthOperationSettings,
         VariableSizeByteArrayDeserializing,
-        OperationSettings,
+        WkSzOperationSettings,
         VariableSizeByteArraySerializing,
         VariableSizeByteArray>(
                                   1024, // de/serialization step size
@@ -104,7 +104,7 @@ public class VariableSizeByteArray
                                   VariableSizeByteArray::getRxRequestedLength,
                                   (i,xs,axb,xkc,dc) -> new VariableSizeByteArrayDeserializing(i,xs,axb,xkc,dc).operationCore,
                                   ByteArrayWrapperInputSerialization.FACTORY,
-                                  (SerializingPrimitiveArrayLengthProvider<ByteArrayWrapper,OperationSettings,VariableSizeByteArray>)VariableSizeByteArray::getTxRequestedLength,
+                                  (SerializingPrimitiveArrayLengthProvider<ByteArrayWrapper,WkSzOperationSettings,VariableSizeByteArray>)VariableSizeByteArray::getTxRequestedLength,
                                   (i,y,ys,ayb,ykc,dc) -> new VariableSizeByteArraySerializing(i,y,ys,ayb,ykc,dc).operationCore,
                                   ByteArrayWrapperOutputSerialization.FACTORY,
                                   this,
@@ -112,13 +112,13 @@ public class VariableSizeByteArray
     this.sizeLimits = new SequenceSizeParameters<>(minSize, maxSize, definitionCore);
   }
 
-  private static int getRxRequestedLength(VariableLengthSettings settings, VariableSizeByteArray definition) {
+  private static int getRxRequestedLength(WkSzVariableLengthOperationSettings settings, VariableSizeByteArray definition) {
     return settings.getRequestedLength();
   }
 
   private static int getTxRequestedLength(
     ByteArrayWrapper wrapper,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     VariableSizeByteArray definition) {
     return wrapper.getLength();
   }

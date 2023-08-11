@@ -17,17 +17,17 @@
  */
 package weliyek.amat.basic.aggregator.sequence;
 
-import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.OperationResult;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzCommonOperationRuntime;
+import weliyek.amat.base.WkSzOperationResult;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorOperation;
 import weliyek.amat.basic.sequence.WkSzSequenceOperation;
 import weliyek.serialization.WkSzPacketField;
 
 public interface WkSzCollectionOperation<
-                        S extends OperationSettings,
-                        Q extends CommonOperationRuntime<?>,
-                        R extends OperationResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzCommonOperationRuntime<?>,
+                        R extends WkSzOperationResult,
                         D extends WzSzCollectionDefinition<?,?>,
                         K extends WkSzPacketField<?,?,?>>
     extends WkSzCollectionSegment,

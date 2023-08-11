@@ -17,11 +17,11 @@
  */
 package weliyek.amat.basic.string;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.ketza.util.array.WkSzPrimitiveArrayDefinition;
@@ -29,9 +29,9 @@ import weliyek.ketza.util.array.PrimitiveArrayReading;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 
 public interface WkSzStringFromPrimitiveReader<
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XR extends DeserializingResult<String>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XR extends WkSzReadingResult<String>,
                         XD extends WkSzStringFromPrimitiveDefinition<?,?,? extends SXD>,
                         SX extends PrimitiveArrayWrapper<?,?>,
                         SXD extends WkSzPrimitiveArrayDefinition<SX, SXO>,

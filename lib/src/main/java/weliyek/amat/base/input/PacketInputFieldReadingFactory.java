@@ -20,12 +20,12 @@ package weliyek.amat.base.input;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.base.WkSzDefinitionCore;
 import weliyek.amat.base.OperationFactory;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 
 @FunctionalInterface
 public interface PacketInputFieldReadingFactory<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzDefinition<T,?>,
                         DC extends WkSzDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,

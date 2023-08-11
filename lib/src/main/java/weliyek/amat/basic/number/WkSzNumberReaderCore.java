@@ -17,20 +17,20 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.serializer.SerializerReadingCore;
 
 public abstract class WkSzNumberReaderCore<
                         X extends Number,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XQC extends ReadingRuntimeControl<?,?,XQ>,
-                        XR extends DeserializingResult<X>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XQC extends WkSzReadingRuntimeControl<?,?,XQ>,
+                        XR extends WkSzReadingResult<X>,
                         XO extends WkSzNumberReader<X,XS,XQ,XR,XD>,
                         XOC extends WkSzNumberReaderCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSzNumberDefinition<X,XO>,

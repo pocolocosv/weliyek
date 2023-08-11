@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BasicReadingResult<X>
-  implements DeserializingResult<X>
+  implements WkSzReadingResult<X>
 {
 
     private static final Logger logger = LoggerFactory.getLogger(BasicReadingResult.class);

@@ -21,30 +21,30 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.sequence.FixedSizeSequenceWriting;
-import weliyek.amat.basic.sequence.SequenceWritingRuntime;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzDefinition;
 
 public final class FixedSizeCollectionFieldSerializer<
                         T extends Collection<ET>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         ET,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>>
     implements CollectionAndElementsFieldSerializer<
                         T,
                         YS,
-                        SequenceWritingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                         ET,
                         EYD,
@@ -52,8 +52,8 @@ public final class FixedSizeCollectionFieldSerializer<
                 FixedSizeSequenceWriting<
                         T,
                         YS,
-                        SequenceWritingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
 {
 
@@ -105,12 +105,12 @@ public final class FixedSizeCollectionFieldSerializer<
   }
 
   @Override
-  public SequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzSequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.operationCore.result();
   }
 

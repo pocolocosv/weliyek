@@ -17,19 +17,19 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 
 public interface DynamicPrimitiveArrayDeserializing<
                         T extends PrimitiveArrayWrapper<?,?>,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzDynamicPrimitiveArrayDefinition<T,?,?,?,?>,
                         ZT extends Number,
                         ZXO extends WkSzNumberReader<ZT,?,?,?,ZD>,

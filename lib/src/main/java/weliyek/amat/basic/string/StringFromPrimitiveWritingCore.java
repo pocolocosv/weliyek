@@ -17,33 +17,33 @@
  */
 package weliyek.amat.basic.string;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.ketza.util.array.WkSzPrimitiveArrayDefinition;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 import weliyek.ketza.util.array.PrimitiveArrayWriting;
 
 public abstract class StringFromPrimitiveWritingCore<
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends SerializingRuntime<YB>,
-                        YQC extends WritingRuntimeControl<YB,YBC,YQ>,
-                        YR extends SerializingResult,
+                        YQ extends WkSzWritingRuntime<YB>,
+                        YQC extends WkSzWritingRuntimeControl<YB,YBC,YQ>,
+                        YR extends WkSzWritingResult,
                         YO extends WkSzStringFromPrimitiveWriter<YS,YQ,YR,YD,SY,SYD,SYO>,
                         YOC extends StringFromPrimitiveWritingCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SY,SYS,SYO,SYD,DC>,
                         YD extends WkSzStringFromPrimitiveDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SY extends PrimitiveArrayWrapper<?,?>,
-                        SYS extends OperationSettings,
+                        SYS extends WkSzOperationSettings,
                         SYO extends PrimitiveArrayWriting<SY,SYS,?,?,SYD>,
                         SYD extends WkSzPrimitiveArrayDefinition<SY,?>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>

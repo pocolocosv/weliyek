@@ -17,15 +17,15 @@
  */
 package weliyek.amat.base.input;
 
-import weliyek.amat.base.Direction;
+import weliyek.serialization.WkSzPacketDirection;
 import weliyek.serialization.WkSzPacketSegment;
 
 public interface WkSzPacketReaderSegment extends WkSzPacketSegment
 {
 
   @Override
-  default Direction direction() {
-    return Direction.READ;
+  default WkSzPacketDirection direction() {
+    return WkSzPacketDirection.READ;
   }
 
 }

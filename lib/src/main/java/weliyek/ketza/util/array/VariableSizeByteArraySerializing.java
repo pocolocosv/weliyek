@@ -20,47 +20,47 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
-import weliyek.amat.basic.sequence.SequenceWritingRuntime;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntime;
 
 public class VariableSizeByteArraySerializing
     implements ByteArrayWriting<
-                        OperationSettings,
-                        SequenceWritingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         VariableSizeByteArray>,
                VariableSizePrimitiveArraySerializerWriting<
                         ByteArrayWrapper,
-                        OperationSettings,
-                        SequenceWritingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         VariableSizeByteArray>
 {
 
   final SimplifiedPrimitiveArraySerializingCore<
                     ByteArrayWrapper,
-                    OperationSettings,
+                    WkSzOperationSettings,
                     VariableSizeByteArray,
                     VariableSizeByteArraySerializing> operationCore;
 
   VariableSizeByteArraySerializing(
     int index,
     ByteArrayWrapper serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       ByteArrayWrapper,?,VariableSizeByteArray,?,?,?> serializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
-      ByteArrayWrapper,?,?,OperationSettings,VariableSizeByteArraySerializing,VariableSizeByteArray> definitionCore) {
+      ByteArrayWrapper,?,?,WkSzOperationSettings,VariableSizeByteArraySerializing,VariableSizeByteArray> definitionCore) {
     this.operationCore = new SimplifiedPrimitiveArraySerializingCore<
                                 ByteArrayWrapper,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 VariableSizeByteArray,
                                 VariableSizeByteArraySerializing>(
                                     index,
@@ -79,17 +79,17 @@ public class VariableSizeByteArraySerializing
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public SequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzSequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.operationCore.result();
   }
 

@@ -21,70 +21,70 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinitionCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceReading;
 import weliyek.amat.basic.dynamic.sequence.VariableSizeSequenceWriting;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class DynamicSequenceDefinitionCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends ReadingRuntimeControl<XB,XBC,?>,
-                        XR extends DeserializingResult<T>,
+                        XQC extends WkSzReadingRuntimeControl<XB,XBC,?>,
+                        XR extends WkSzReadingResult<T>,
                         XO extends DynamicSequenceDeserializing<
                                         T, XS,
-                                        ? extends DeserializingRuntime<XB>,
+                                        ? extends WkSzReadingRuntime<XB>,
                                         XR, XD, ?, ?, ?, ?, ?>,
                         XD extends WkSzDynamicSequenceDefinition<T,XO,?,?,?>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WritingRuntimeControl<YB,YBC,?>,
-                        YR extends SerializingResult,
+                        YQC extends WkSzWritingRuntimeControl<YB,YBC,?>,
+                        YR extends WkSzWritingResult,
                         YO extends DynamicSequenceSerializing<
                                         T, YS,
-                                        ? extends SerializingRuntime<YB>,
+                                        ? extends WkSzWritingRuntime<YB>,
                                         YR, YD, ?, ?, ?, ?, ?>,
                         YD extends WkSzDynamicSequenceDefinition<T,?,YO,?,?>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ZX extends Number,
-                        ZXS extends OperationSettings,
+                        ZXS extends WkSzOperationSettings,
                         ZXO extends WkSzNumberReader<ZX,ZXS,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZX,?>,
-                        ZYS extends OperationSettings,
+                        ZYS extends WkSzOperationSettings,
                         ZYO extends WkSzNumberWriter<ZX,ZYS,?,?,ZYD>,
                         ZYD extends WkSzNumberDefinition<ZX,?>,
                         ZD extends WkSzNumberDefinition<ZX,?>,
-                        VXS extends VariableLengthSettings,
+                        VXS extends WkSzVariableLengthOperationSettings,
                         VXO extends VariableSizeSequenceReading<T,VXS,?,?,VXD>,
                         VXD extends WkSzVariableSizeSequenceDefinition<T,VXO>,
-                        VYS extends OperationSettings,
+                        VYS extends WkSzOperationSettings,
                         VYO extends VariableSizeSequenceWriting<T,VYS,?,?,VYD>,
                         VYD extends WkSzVariableSizeSequenceDefinition<T,?>,
                         VD extends WkSzVariableSizeSequenceDefinition<T,VXO>,

@@ -21,24 +21,24 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
 
 public abstract class WkSzSerializerWriterCore<
                         T,
-                        YS extends OperationSettings,
-                        YQ extends SerializingRuntime<?>,
-                        YQC extends WritingRuntimeControl<?,?,YQ>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzWritingRuntime<?>,
+                        YQC extends WkSzWritingRuntimeControl<?,?,YQ>,
+                        YR extends WkSzWritingResult,
                         YO extends WkSzPacketWriterOperation<T,YS,YQ,YR,YD>,
                         YOC extends WkSzSerializerWriterCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSzDefinition<T,?>,

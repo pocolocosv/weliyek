@@ -20,11 +20,11 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
@@ -33,18 +33,18 @@ import weliyek.amat.basic.number.WkSzNumberReader;
 
 public class DynamicByteArrayDeserializing<
                         ZT extends Number,
-                        ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>,
+                        ZXO extends WkSzNumberReader<ZT,WkSzOperationSettings,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZT,ZXO>>
     implements ByteArrayReading<
-                        OperationSettings,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<ByteArrayWrapper>,
+                        WkSzOperationSettings,
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<ByteArrayWrapper>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>,
                DynamicPrimitiveArrayDeserializing<
                         ByteArrayWrapper,
-                        OperationSettings,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<ByteArrayWrapper>,
+                        WkSzOperationSettings,
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<ByteArrayWrapper>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         ZT,
                         ZXO,
@@ -63,7 +63,7 @@ public class DynamicByteArrayDeserializing<
 
   DynamicByteArrayDeserializing(
     int index,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       ByteArrayWrapper,?,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?> deserializingfieldCore,
@@ -109,17 +109,17 @@ public class DynamicByteArrayDeserializing<
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<DeserializingResult<ByteArrayWrapper>> result() {
+  public Optional<WkSzReadingResult<ByteArrayWrapper>> result() {
     return this.operationCore.result();
   }
 

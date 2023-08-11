@@ -17,58 +17,58 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.BasicReadingResult;
-import weliyek.amat.base.input.BasicReadingRuntime;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzBasicReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
-import weliyek.amat.base.output.BasicWritingRuntime;
+import weliyek.amat.base.output.WkSzBasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.serializer.InputDeserializerFactory;
 import weliyek.amat.basic.serializer.OutputSerializerFactory;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public final class WkSzSimplifiedNumberSerializerDefinitionCore<
                         T extends Number,
                         XO extends WkSzNumberReader<
                                       T,
-                                      OperationSettings,
-                                      DeserializingRuntime<WkSzInputBytestream>,
-                                      DeserializingResult<T>,
+                                      WkSzOperationSettings,
+                                      WkSzReadingRuntime<WkSzInputBytestream>,
+                                      WkSzReadingResult<T>,
                                       D>,
                         YO extends WkSzNumberWriter<
                                       T,
-                                      OperationSettings,
-                                      SerializingRuntime<WkSzOutputBytestream>,
-                                      SerializingResult,
+                                      WkSzOperationSettings,
+                                      WkSzWritingRuntime<WkSzOutputBytestream>,
+                                      WkSzWritingResult,
                                       D>,
                         D extends WkSzNumberDefinition<T,XO>>
     extends WkSzNumberDefinitionCore<
                         T,
-                        OperationSettings,
-                        ReadingRuntimeControl<
+                        WkSzOperationSettings,
+                        WkSzReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          DeserializingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<T>,
+                          WkSzReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<T>,
                         D, XO,
                         WkSzInputBytestreamBase<?>,
-                        OperationSettings,
-                        WritingRuntimeControl<
+                        WkSzOperationSettings,
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         D, YO,
                         WkSzOutputBytestreamBase<?>,
                         D,
@@ -78,26 +78,26 @@ public final class WkSzSimplifiedNumberSerializerDefinitionCore<
   public WkSzSimplifiedNumberSerializerDefinitionCore(
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
     PacketInputFieldReadingFactory<
-      T, OperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
+      T, WkSzOperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
       XO, WkSzInputBytestreamBase<?>> rxOpFactory,
     InputDeserializerFactory<
-      T, ? super ReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-      DeserializingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
+      T, ? super WkSzReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+      WkSzReadingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
     PacketOutputFieldWritingFactory<
-      T, OperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
+      T, WkSzOperationSettings, D, WkSzSimplifiedNumberSerializerDefinitionCore<T,XO,YO,D>,
       YO, WkSzOutputBytestreamBase<?>> txOpFactory,
     OutputSerializerFactory<
-      T, ? super WritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-      SerializingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
+      T, ? super WkSzWritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+      WkSzWritingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(
           componentCore,
-          BasicReadingRuntime::new,
+          WkSzBasicReadingRuntime::new,
           BasicReadingResult::new,
           rxOpFactory,
           rxSerializerFactory,
-          BasicWritingRuntime::new,
+          WkSzBasicWritingRuntime::new,
           BasicWritingResult::empty,
           txOpFactory,
           txSerializerFactory,

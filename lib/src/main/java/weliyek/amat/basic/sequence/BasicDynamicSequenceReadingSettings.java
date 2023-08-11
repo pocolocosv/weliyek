@@ -17,10 +17,10 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 
 public class BasicDynamicSequenceReadingSettings
-        implements VariableLengthSettings
+        implements WkSzVariableLengthOperationSettings
 {
 
     private final int requestedSize;

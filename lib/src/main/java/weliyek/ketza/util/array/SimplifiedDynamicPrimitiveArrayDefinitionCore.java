@@ -19,96 +19,96 @@ package weliyek.ketza.util.array;
 
 import java.util.function.IntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.ProtocolDefinitionFactory;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.BasicReadingResult;
-import weliyek.amat.base.input.BasicReadingRuntime;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzBasicReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
-import weliyek.amat.base.output.BasicWritingRuntime;
+import weliyek.amat.base.output.WkSzBasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
+import weliyek.serialization.ProtocolDefinitionFactory;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                         T extends PrimitiveArrayWrapper<?,?>,
                         XD extends WkSzDynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
                         XO extends DynamicPrimitiveArrayDeserializing<
                                         T,
-                                        OperationSettings,
-                                        DeserializingRuntime<WkSzInputBytestream>,
-                                        DeserializingResult<T>,
+                                        WkSzOperationSettings,
+                                        WkSzReadingRuntime<WkSzInputBytestream>,
+                                        WkSzReadingResult<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         YD extends WkSzDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
                         YO extends DynamicPrimitiveArraySerializing<
                                         T,
-                                        OperationSettings,
-                                        SerializingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzOperationSettings,
+                                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         ZT extends Number,
                         ZXD extends WkSzNumberDefinition<ZT,ZXO>,
                         ZXO extends WkSzNumberReader<
                                         ZT,
-                                        OperationSettings,?,
+                                        WkSzOperationSettings,?,
                                         ?,ZXD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
                         ZYO extends WkSzNumberWriter<
                                         ZT,
-                                        OperationSettings,?,?,ZYD>,
+                                        WkSzOperationSettings,?,?,ZYD>,
                         ZD extends WkSzNumberDefinition<ZT,ZXO>,
                         VXD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>,
                         VXO extends WkSzVariableSizePrimitiveArrayReader<
-                                        T,VariableLengthSettings,?,?,VXD>,
+                                        T,WkSzVariableLengthOperationSettings,?,?,VXD>,
                         VYD extends WkSzVariableSizePrimitiveArrayDefinition<T,?>,
                         VYO extends WkSzVariableSizePrimitiveArrayWriter<
-                                        T,OperationSettings,?,?,VYD>,
+                                        T,WkSzOperationSettings,?,?,VYD>,
                         VD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>,
                         D extends WkSzDynamicPrimitiveArrayDefinition<T,XO,YO,ZD,VD>>
     extends DynamicSequenceDefinitionCore<
                         T,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        ReadingRuntimeControl<
+                        WkSzReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          DeserializingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<T>,
+                          WkSzReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<T>,
                         XO, XD,
                         WkSzInputBytestreamBase<?>,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WritingRuntimeControl<
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YO, YD,
                         WkSzOutputBytestreamBase<?>,
                         ZT,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         ZXO, ZXD,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         ZYO, ZYD,
                         ZD,
-                        VariableLengthSettings,
+                        WkSzVariableLengthOperationSettings,
                         VXO, VXD,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         VYO, VYD,
                         VD,
                         D,
@@ -121,18 +121,18 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
     String sizeComponentLabel,
     IntFunction<ZT> sizeComponentIntToNumber,
     ProtocolDefinitionFactory<
-      ZT,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,OperationSettings,
+      ZT,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
       ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeComponentDefinitionFactory,
     String varseqComponentLabel,
     ProtocolDefinitionFactory<
-      T,VariableLengthSettings,VXD,VXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,OperationSettings,
+      T,WkSzVariableLengthOperationSettings,VXD,VXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
       VYD,VYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,VD> varseqComponentDefinitionFactory,
     PacketInputFieldReadingFactory<
-      T,OperationSettings,XD,
+      T,WkSzOperationSettings,XD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       XO,WkSzInputBytestreamBase<?>> readingOpFactory,
     PacketOutputFieldWritingFactory<
-      T,OperationSettings,YD,
+      T,WkSzOperationSettings,YD,
       SimplifiedDynamicPrimitiveArrayDefinitionCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       YO,WkSzOutputBytestreamBase<?>> writingOpFactory,
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
@@ -140,8 +140,8 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
     Class<T> serializableClass) {
     super(
           sizeComponentLabel,
-          OperationSettings::none,
-          OperationSettings::none,
+          WkSzOperationSettings::none,
+          WkSzOperationSettings::none,
           (zk,yo,i) -> sizeComponentIntToNumber.apply(yo.serializable().getLength()), // Set size component value from wrapper length.
           sizeComponentDefinitionFactory,
           varseqComponentLabel,
@@ -150,16 +150,16 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                                      .firstOperation().get()
                                      .result().get()
                                      .deserialized().get();
-            return VariableLengthSettings.withLength(sizeNumber.intValue());
+            return WkSzVariableLengthOperationSettings.withLength(sizeNumber.intValue());
           },
-          OperationSettings::none,
+          WkSzOperationSettings::none,
           (vk,yo,i) -> yo.serializable(),
           varseqComponentDefinitionFactory,
           componentCore,
-          BasicReadingRuntime::new,
+          WkSzBasicReadingRuntime::new,
           BasicReadingResult::new,
           readingOpFactory,
-          BasicWritingRuntime::new,
+          WkSzBasicWritingRuntime::new,
           BasicWritingResult::empty,
           writingOpFactory,
           definitionBody,

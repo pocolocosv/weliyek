@@ -19,7 +19,7 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Objects;
 
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
 import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
@@ -36,7 +36,7 @@ public class SequenceFixedSizeParameter<T>
   private final int sequenceExpectedSize;
   private final WkSzDefinitionCore<
                         T,?,?,
-                        ? extends DeserializingResult<T>,
+                        ? extends WkSzReadingResult<T>,
                         ? extends WkSzFixedSizeSequenceDefinition<T,?>,
                         ? extends FixedSizeSequenceReading<T,?,?,?,?>,
                         ?,?,?,?,
@@ -48,7 +48,7 @@ public class SequenceFixedSizeParameter<T>
     int sequenceExpectedSize,
     WkSzDefinitionCore<
       T,?,?,
-      ? extends DeserializingResult<T>,
+      ? extends WkSzReadingResult<T>,
       ? extends WkSzFixedSizeSequenceDefinition<T,?>,
       ? extends FixedSizeSequenceReading<T,?,?,?,?>,
       ?,?,?,?,
@@ -78,7 +78,7 @@ public class SequenceFixedSizeParameter<T>
   void onAfterFullCompletionDeserialization(
     WkSzPacketReaderOperationCore<
       T,?,?,?,
-      ? extends DeserializingResult<T>,
+      ? extends WkSzReadingResult<T>,
       ? extends FixedSizeSequenceReading<T,?,?,?,?>,?,
       ? extends WkSzFixedSizeSequenceDefinition<T,?>,?,?> deserializer) {
     T sequence = deserializer.result().get().deserialized().get();

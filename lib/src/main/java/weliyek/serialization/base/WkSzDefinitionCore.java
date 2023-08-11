@@ -27,35 +27,34 @@ import java.util.function.Predicate;
 
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.WkSzOperationSettings;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperationCore;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.amat2.protocol.filter.PacketInputFieldOperationPredicate;
 import weliyek.serialization.WkSzDefinition;
 
 public abstract class WkSzDefinitionCore<
                         T,
-                        XS extends OperationSettings,
-                        XQC extends ReadingRuntimeControl<?,?,?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQC extends WkSzReadingRuntimeControl<?,?,?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,XR,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
-                        YQC extends WritingRuntimeControl<?,?,?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQC extends WkSzWritingRuntimeControl<?,?,?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,YR,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,

@@ -20,9 +20,9 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.OperationResult;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzCommonOperationRuntime;
+import weliyek.amat.base.WkSzOperationResult;
+import weliyek.amat.base.WkSzOperationSettings;
 
 /**
  * An operation is in charge of managing the data and logic needed to serialize
@@ -35,9 +35,9 @@ import weliyek.amat.base.OperationSettings;
  * @param <K> Packet handler objects of this operation.
  */
 public interface WkSzPacketOperation<
-                        S extends OperationSettings,
-                        Q extends CommonOperationRuntime<?>,
-                        R extends OperationResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzCommonOperationRuntime<?>,
+                        R extends WkSzOperationResult,
                         D extends WkSzDefinition<?,?>,
                         K extends WkSzPacketField<?,?,?>>
         extends WkSzPacketSegment,

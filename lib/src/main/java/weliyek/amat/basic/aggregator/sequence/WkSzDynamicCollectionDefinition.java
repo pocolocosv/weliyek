@@ -19,10 +19,10 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.ketza.util.array.WkSzDynamicSequenceDefinition;
 import weliyek.serialization.WkSzDefinition;
@@ -34,15 +34,15 @@ public interface WkSzDynamicCollectionDefinition<
                         YO extends DynamicCollectionFieldSerializer<T,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZD extends WkSzNumberDefinition<?,?>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         ED extends WkSzDefinition<ET,EXO>,
-                        VXS extends VariableLengthSettings,
-                        VYS extends OperationSettings>
+                        VXS extends WkSzVariableLengthOperationSettings,
+                        VYS extends WkSzOperationSettings>
     extends WkSzDynamicCollectionSegment<
                         WkSzStructSubcomponent<XO, YO, ZD>,
                         WkSzStructSubcomponent<

@@ -17,17 +17,17 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.basic.sequence.SequenceWritingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntime;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public interface VariableSizePrimitiveArraySerializerWriting<
                         Y extends PrimitiveArrayWrapper<?, ?>,
-                        S extends OperationSettings,
-                        Q extends SequenceWritingRuntime<?>,
-                        R extends SerializingResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzSequenceWritingRuntime<?>,
+                        R extends WkSzWritingResult,
                         D extends VariableSizePrimitiveArraySerializerDefinition<Y,?>>
     extends WkSzVariableSizePrimitiveArrayWriter<Y, S, Q, R, D>,
             WkSzPrimitiveArraySerializerWriter<Y, S, Q, R, D>,

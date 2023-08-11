@@ -34,10 +34,11 @@ import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketField;
 import weliyek.serialization.WkSzPacketFieldException;
 import weliyek.serialization.WkSzPacketOperation;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class WkSzPacketFieldCore<
                         T,
-                        S extends OperationSettings,
+                        S extends WkSzOperationSettings,
                         D extends WkSzDefinition<?,?>, // Not needed directly but
                         // used nonetheless to simplify the declaration of PacketFieldCore<>
                         // elsewhere where ProtocolField<D> is used.

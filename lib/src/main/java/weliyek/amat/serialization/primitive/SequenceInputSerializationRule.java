@@ -24,7 +24,7 @@ import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.InputSerializationEngine;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
@@ -33,7 +33,7 @@ import weliyek.serialization.WkSzOperationException;
 public abstract class SequenceInputSerializationRule<
                         X extends PrimitiveArrayWrapper<V, ?>,
                         V,
-                        QC extends SequenceReadingRuntimeControl<?,?,?>>
+                        QC extends WkSzSequenceReadingRuntimeControl<?,?,?>>
         extends InputSerializationEngine<
                         X,
                         QC,

@@ -21,11 +21,11 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
@@ -38,41 +38,41 @@ import weliyek.ketza.util.array.DynamicByteArraySerialzing;
 public class StringWithDynamicSizeBytesSerializing<
                         ZT extends Number,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
-                        ZYO extends WkSzNumberWriter<ZT,OperationSettings,?,?,ZYD>>
+                        ZYO extends WkSzNumberWriter<ZT,WkSzOperationSettings,?,?,ZYD>>
     implements WkSzStringFromBytesWriter<
-                        OperationSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         DynamicByteArraySerialzing<ZT,ZYO,ZYD>>
 {
 
   final SimpleStringFromBytesWritingCore<
-              OperationSettings,
+              WkSzOperationSettings,
               StringWithDynamicSizeBytesSerializing<ZT,ZYD,ZYO>,
               StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-              OperationSettings,
+              WkSzOperationSettings,
               DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
               DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>> operationCore;
 
   StringWithDynamicSizeBytesSerializing(
     int index,
     String serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       String,?,StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?> serializingfieldCore,
     SimplifiedStringFromBytesCore<
-      ?,?,?,OperationSettings,StringWithDynamicSizeBytesSerializing<ZT,ZYD,ZYO>,
+      ?,?,?,WkSzOperationSettings,StringWithDynamicSizeBytesSerializing<ZT,ZYD,ZYO>,
       StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?,
-      OperationSettings,DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
+      WkSzOperationSettings,DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
       DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?> definitionCore) {
     this.operationCore = new SimpleStringFromBytesWritingCore<
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   StringWithDynamicSizeBytesSerializing<ZT,ZYD,ZYO>,
                                   StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                                   DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>>(
                                       index,
@@ -97,17 +97,17 @@ public class StringWithDynamicSizeBytesSerializing<
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.operationCore.result();
   }
 

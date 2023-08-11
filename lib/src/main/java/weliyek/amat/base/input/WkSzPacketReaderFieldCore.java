@@ -17,25 +17,25 @@
  */
 package weliyek.amat.base.input;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.Direction;
 import weliyek.amat.base.WkSzPacketFieldCore;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.FilterResults;
 import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSzPacketDirection;
 import weliyek.serialization.WkSzStructComponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class WkSzPacketReaderFieldCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<
-                                        T,XS,?,? extends DeserializingResult<T>,XD>,
+                                        T,XS,?,? extends WkSzReadingResult<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        AXO extends WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>>
+                        AXO extends WkSzAggregatorReader<?,?,? extends WkSzReadingRuntime<?>,?,?>>
     extends WkSzPacketFieldCore<
                         T, XS, XD,
                         WkSzStructComponentCoreBase<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>,
@@ -70,9 +70,9 @@ public abstract class WkSzPacketReaderFieldCore<
 
   private static
   <XX,
-   OO extends WkSzPacketReaderOperation<?,?,?,? extends DeserializingResult<XX>,?>>
+   OO extends WkSzPacketReaderOperation<?,?,?,? extends WkSzReadingResult<XX>,?>>
   XX getDeserializedFromReadingOp(OO readingOp) {
-    final DeserializingResult<XX> result = readingOp.result().get();
+    final WkSzReadingResult<XX> result = readingOp.result().get();
     return result.deserialized().get();
   }
 
@@ -110,8 +110,8 @@ public abstract class WkSzPacketReaderFieldCore<
   }
 
   @Override
-  public final Direction direction() {
-    return Direction.READ;
+  public final WkSzPacketDirection direction() {
+    return WkSzPacketDirection.READ;
   }
 
   @Override

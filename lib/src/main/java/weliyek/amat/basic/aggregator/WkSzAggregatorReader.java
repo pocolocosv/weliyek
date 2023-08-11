@@ -17,17 +17,17 @@
  */
 package weliyek.amat.basic.aggregator;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 
 public interface WkSzAggregatorReader<
                         T,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzAggregatorDefinition<T,?>>
         extends WkSzAggregatorOperation<
                         XS, XQ, XR, XD,

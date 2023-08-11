@@ -31,7 +31,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
@@ -51,7 +51,7 @@ public class StringWithDynamicSizeBytesTest
 
   private static WkSzStruct<
                           String,
-                          OperationSettings,
+                          WkSzOperationSettings,
                           StringWithDynamicSizeBytes<Integer,
                                     WkSzSignedBigEndianInteger,
                                     WkSzSignedBigEndianIntegerReader,
@@ -59,7 +59,7 @@ public class StringWithDynamicSizeBytesTest
                                     ? extends WkSzSignedBigEndianInteger>,
                           StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
                           WkSzInputBytestreamBase<?>,
-                          OperationSettings,
+                          WkSzOperationSettings,
                           StringWithDynamicSizeBytes<
                                     Integer, ?, ?,
                                     WkSzSignedBigEndianInteger,
@@ -123,7 +123,7 @@ public class StringWithDynamicSizeBytesTest
                 StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>>
       dynstrWriting = DYNAMIC_STR_STRUCT.newOutputPacket(
                                               originalStr,
-                                              OperationSettings.EMPTY,
+                                              WkSzOperationSettings.EMPTY,
                                               outputstream);
     logger.info(dynstrWriting.name() + " created");
     while(dynstrWriting.isInProgress()) {
@@ -160,7 +160,7 @@ public class StringWithDynamicSizeBytesTest
           String,
           StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader,?,?,? extends WkSzSignedBigEndianInteger>,
           StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>>
-      dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
+      dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
 
     while(dynstrReading.isInProgress()) {
       dynstrReading.processBytestream();

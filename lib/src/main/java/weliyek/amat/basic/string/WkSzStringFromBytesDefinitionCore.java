@@ -25,50 +25,50 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 import weliyek.ketza.util.array.ByteArrayReading;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public abstract class WkSzStringFromBytesDefinitionCore<
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends ReadingRuntimeControl<XB,XBC,?>,
-                        XR extends DeserializingResult<String>,
-                        XO extends WkSzStringFromBytesReader<XS,? extends DeserializingRuntime<XB>,XR,XD,SXD,SXO>,
+                        XQC extends WkSzReadingRuntimeControl<XB,XBC,?>,
+                        XR extends WkSzReadingResult<String>,
+                        XO extends WkSzStringFromBytesReader<XS,? extends WkSzReadingRuntime<XB>,XR,XD,SXD,SXO>,
                         XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WritingRuntimeControl<YB,YBC,?>,
-                        YR extends SerializingResult,
-                        YO extends WkSzStringFromBytesWriter<YS,? extends SerializingRuntime<YB>,YR,YD,SYD,SYO>,
+                        YQC extends WkSzWritingRuntimeControl<YB,YBC,?>,
+                        YR extends WkSzWritingResult,
+                        YO extends WkSzStringFromBytesWriter<YS,? extends WkSzWritingRuntime<YB>,YR,YD,SYD,SYO>,
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        SXS extends OperationSettings,
+                        SXS extends WkSzOperationSettings,
                         SXO extends ByteArrayReading<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,
-                        SYS extends OperationSettings,
+                        SYS extends WkSzOperationSettings,
                         SYO extends ByteArrayWriting<SYS,?,?,SYD>,
                         SYD extends WkSzByteArrayDefinition<?>,
                         SD extends WkSzByteArrayDefinition<SXO>,

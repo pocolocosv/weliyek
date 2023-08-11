@@ -23,9 +23,7 @@ import java.util.Optional;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.ProtocolDefinitionFactory;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
@@ -42,16 +40,18 @@ import weliyek.ketza.util.array.DynamicByteArray;
 import weliyek.ketza.util.array.DynamicByteArrayDeserializing;
 import weliyek.ketza.util.array.DynamicByteArraySerialzing;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class StringWithDynamicSizeBytes<
                         ZT extends Number,
                         ZXD extends WkSzNumberDefinition<ZT,ZXO>,
-                        ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>,
+                        ZXO extends WkSzNumberReader<ZT,WkSzOperationSettings,?,?,ZXD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
-                        ZYO extends WkSzNumberWriter<ZT,OperationSettings,?,?,ZYD>,
+                        ZYO extends WkSzNumberWriter<ZT,WkSzOperationSettings,?,?,ZYD>,
                         ZD extends WkSzNumberDefinition<ZT,ZXO>>
     implements WkSzStringFromBytesDefinition<
                         StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
@@ -61,16 +61,16 @@ public class StringWithDynamicSizeBytes<
 
   public static <ZX extends Number,
                  ZXD extends WkSzNumberDefinition<ZX,ZXO>,
-                 ZXO extends WkSzNumberReader<ZX,OperationSettings,?,?,ZXD>,
+                 ZXO extends WkSzNumberReader<ZX,WkSzOperationSettings,?,?,ZXD>,
                  ZYD extends WkSzNumberDefinition<ZX,?>,
-                 ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
+                 ZYO extends WkSzNumberWriter<ZX,WkSzOperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
   WkSzStruct<String,
-                  OperationSettings,
+                  WkSzOperationSettings,
                   StringWithDynamicSizeBytes<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   StringWithDynamicSizeBytesDeserializing<ZX,ZXD,ZXO>,
                   WkSzInputBytestreamBase<?>,
-                  OperationSettings,
+                  WkSzOperationSettings,
                   StringWithDynamicSizeBytes<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                   StringWithDynamicSizeBytesSerializing<ZX,ZYD,ZYO>,
                   WkSzOutputBytestreamBase<?>,
@@ -85,7 +85,7 @@ public class StringWithDynamicSizeBytes<
     Charset defaultCharset,
     IntFunction<ZX> wrapperSizeGetter,
     ProtocolDefinitionFactory<
-      ZX,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,OperationSettings,
+      ZX,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
       ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
     return new WkSzStruct<>(
                   label,
@@ -97,17 +97,17 @@ public class StringWithDynamicSizeBytes<
 
   public static <ZX extends Number,
                  ZXD extends WkSzNumberDefinition<ZX,ZXO>,
-                 ZXO extends WkSzNumberReader<ZX,OperationSettings,?,?,ZXD>,
+                 ZXO extends WkSzNumberReader<ZX,WkSzOperationSettings,?,?,ZXD>,
                  ZYD extends WkSzNumberDefinition<ZX,?>,
-                 ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
+                 ZYO extends WkSzNumberWriter<ZX,WkSzOperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
   WkSzDefinitionCore<
                         String,
-                        OperationSettings,?,?,
+                        WkSzOperationSettings,?,?,
                         StringWithDynamicSizeBytes<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         StringWithDynamicSizeBytesDeserializing<ZX,ZXD,ZXO>,
                         WkSzInputBytestreamBase<?>,
-                        OperationSettings,?,?,
+                        WkSzOperationSettings,?,?,
                         StringWithDynamicSizeBytes<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                         StringWithDynamicSizeBytesSerializing<ZX,ZYD,ZYO>,
                         WkSzOutputBytestreamBase<?>,
@@ -122,7 +122,7 @@ public class StringWithDynamicSizeBytes<
     Charset defaultCharset,
     IntFunction<ZX> wrapperSizeGetter,
     ProtocolDefinitionFactory<
-      ZX,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,OperationSettings,
+      ZX,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
       ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
     return new StringWithDynamicSizeBytes<ZX,ZXD,ZXO,ZYD,ZYO,ZD>(
                         defaultCharset,
@@ -137,16 +137,16 @@ public class StringWithDynamicSizeBytes<
   }
 
   private final SimplifiedStringFromBytesCore<
-                        OperationSettings,
+                        WkSzOperationSettings,
                         StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
                         StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         StringWithDynamicSizeBytesSerializing<ZT,ZYD,ZYO>,
                         StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         DynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
@@ -163,19 +163,19 @@ public class StringWithDynamicSizeBytes<
     int minLength,
     int maxLength,
     ProtocolDefinitionFactory<
-      ZT,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,OperationSettings,ZYD,ZYO,
+      ZT,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,ZYD,ZYO,
       WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
     this.definitionCore = new SimplifiedStringFromBytesCore<
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
                                   StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   StringWithDynamicSizeBytesSerializing<ZT,ZYD,ZYO>,
                                   StringWithDynamicSizeBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                                   DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                                  OperationSettings,
+                                  WkSzOperationSettings,
                                   DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                                   DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                   DynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
@@ -185,9 +185,9 @@ public class StringWithDynamicSizeBytes<
                                       (i,xs,axb,xpc,dc) -> new StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>(i,xs,axb,xpc,dc).operationCore,
                                       (i,y,ys,ayb,ypc,dc) -> new StringWithDynamicSizeBytesSerializing<ZT,ZYD,ZYO>(i,y,ys,ayb,ypc,dc).operationCore,
                                       bytesLabel,
-                                      OperationSettings::none,
+                                      WkSzOperationSettings::none,
                                       StringWithDynamicSizeBytes::aggragateByteArray,
-                                      OperationSettings::none,
+                                      WkSzOperationSettings::none,
                                       new BytesFromDynamicStringDisaggregator<ZT,ZYD,ZYO>(),
                                       (pc) -> DynamicByteArray.<ZT,ZXD,ZXO,ZYD,ZYO,ZD>newCore(
                                           pc, szieLabel, wrapperSizeGetter, arrayLabel,
@@ -197,7 +197,7 @@ public class StringWithDynamicSizeBytes<
 
   private static <ZX extends Number,
                   ZXD extends WkSzNumberDefinition<ZX,ZXO>,
-                  ZXO extends WkSzNumberReader<ZX,OperationSettings,?,?,ZXD>>
+                  ZXO extends WkSzNumberReader<ZX,WkSzOperationSettings,?,?,ZXD>>
   String aggragateByteArray(StringWithDynamicSizeBytesDeserializing<ZX,ZXD,ZXO> deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
@@ -212,7 +212,7 @@ public class StringWithDynamicSizeBytes<
   class BytesFromDynamicStringDisaggregator<
                         ZY extends Number,
                         ZYD extends WkSzNumberDefinition<ZY,?>,
-                        ZYO extends WkSzNumberWriter<ZY,OperationSettings,?,?,ZYD>>
+                        ZYO extends WkSzNumberWriter<ZY,WkSzOperationSettings,?,?,ZYD>>
       extends ByteArrayFromStringDisaggregator<
                         StringWithDynamicSizeBytesSerializing<ZY,ZYD,ZYO>,
                         DynamicByteArray<ZY,?,?,ZYD,ZYO,? extends ZYD>>

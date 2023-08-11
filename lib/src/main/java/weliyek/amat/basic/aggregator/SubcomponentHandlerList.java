@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfieldCore;
 import weliyek.serialization.WkSzStructSubcomponent;
@@ -34,10 +34,10 @@ public class SubcomponentHandlerList<
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkSzAggregatorDefinition<T,?>,
-                        XO extends WkSzAggregatorReader<T,?,? extends DeserializingRuntime<?>,?,XD>,
+                        XO extends WkSzAggregatorReader<T,?,? extends WkSzReadingRuntime<?>,?,XD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkSzAggregatorDefinition<T,?>,
-                        YO extends WkSzAggregatorWriter<T,?,? extends SerializingRuntime<?>,?,YD>>
+                        YO extends WkSzAggregatorWriter<T,?,? extends WkSzWritingRuntime<?>,?,YD>>
     extends AbstractList<WkSzSubcomponentCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
 {
 
@@ -56,7 +56,7 @@ public class SubcomponentHandlerList<
     <YYD extends WkSzAggregatorDefinition<YY,?>,
      YY,
      YYB extends WkSzOutputBytestreamBase<?>,
-     YYO extends WkSzAggregatorWriter<YY,?,? extends SerializingRuntime<?>,?,YYD>>
+     YYO extends WkSzAggregatorWriter<YY,?,? extends WkSzWritingRuntime<?>,?,YYD>>
     WritingHandlerList<YY,YYB,YYD,YYO> newSerializingHandlers(
       WkSzAggregatorWriterCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
       List<WkSzPacketWriterSubfieldCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
@@ -75,7 +75,7 @@ public class SubcomponentHandlerList<
     <XXD extends WkSzAggregatorDefinition<XX,?>,
      XX,
      XXB extends WkSzInputBytestreamBase<?>,
-     XXO extends WkSzAggregatorReader<XX,?,? extends DeserializingRuntime<?>,?,XXD>>
+     XXO extends WkSzAggregatorReader<XX,?,? extends WkSzReadingRuntime<?>,?,XXD>>
     ReadingHandlerList<XX,XXB,XXD,XXO> newDeserializingHandlers(
       WkSzAggregatorReaderCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
       List<WkSzPacketReaderSubfieldCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();

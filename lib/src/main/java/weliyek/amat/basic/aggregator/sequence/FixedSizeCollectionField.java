@@ -22,10 +22,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
@@ -34,20 +32,22 @@ import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat.basic.sequence.WkSzFixedSizeSequenceDefinition;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public final class FixedSizeCollectionField<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
-                        YS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
+                        YS extends WkSzOperationSettings,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,EXO>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         ED extends WkSzDefinition<ET,EXO>>
@@ -62,13 +62,13 @@ public final class FixedSizeCollectionField<
 {
 
   public static <T extends Collection<ET>,
-                 XS extends OperationSettings,
-                 YS extends OperationSettings,
+                 XS extends WkSzOperationSettings,
+                 YS extends WkSzOperationSettings,
                  ET,
-                 EXS extends OperationSettings,
+                 EXS extends WkSzOperationSettings,
                  EXD extends WkSzDefinition<ET,EXO>,
                  EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                 EYS extends OperationSettings,
+                 EYS extends WkSzOperationSettings,
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,EXO>>
@@ -113,13 +113,13 @@ public final class FixedSizeCollectionField<
   }
 
   public static <T extends Collection<ET>,
-                 XS extends OperationSettings,
-                 YS extends OperationSettings,
+                 XS extends WkSzOperationSettings,
+                 YS extends WkSzOperationSettings,
                  ET,
-                 EXS extends OperationSettings,
+                 EXS extends WkSzOperationSettings,
                  EXD extends WkSzDefinition<ET,EXO>,
                  EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                 EYS extends OperationSettings,
+                 EYS extends WkSzOperationSettings,
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,EXO>>

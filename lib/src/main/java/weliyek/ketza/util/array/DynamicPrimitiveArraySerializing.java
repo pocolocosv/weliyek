@@ -17,19 +17,19 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 
 public interface DynamicPrimitiveArraySerializing<
                         T extends PrimitiveArrayWrapper<?,?>,
-                        YS extends OperationSettings,
-                        YQ extends SerializingRuntime<?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzWritingRuntime<?>,
+                        YR extends WkSzWritingResult,
                         D extends WkSzDynamicPrimitiveArrayDefinition<T,?,?,?,?>,
                         ZT extends Number,
                         ZYO extends WkSzNumberWriter<ZT,?,?,?,ZD>,

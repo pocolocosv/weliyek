@@ -19,7 +19,7 @@ package weliyek.ketza.util.array;
 
 import java.io.IOException;
 
-import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 
 public final class ByteArrayWrapperOutputSerialization
@@ -32,7 +32,7 @@ public final class ByteArrayWrapperOutputSerialization
             ByteArrayWrapperOutputSerialization::new);
 
   private ByteArrayWrapperOutputSerialization(
-    SequenceWritingRuntimeControl<?,?,?> runtimeControl,
+    WkSzSequenceWritingRuntimeControl<?,?,?> runtimeControl,
     WkSzPrimitiveArraySerializerWriter<? extends ByteArrayWrapper,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, 1);
   }

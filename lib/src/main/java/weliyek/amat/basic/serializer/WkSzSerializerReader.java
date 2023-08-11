@@ -17,17 +17,17 @@
  */
 package weliyek.amat.basic.serializer;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 
 public interface WkSzSerializerReader<
                         X,
-                        S extends OperationSettings,
-                        Q extends DeserializingRuntime<?>,
-                        R extends DeserializingResult<X>,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzReadingRuntime<?>,
+                        R extends WkSzReadingResult<X>,
                         D extends WkSzSerializerDefinition<X,?>>
     extends WkSzSerializerOperation<
                         S, Q, R, D,

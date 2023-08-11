@@ -23,8 +23,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructComponentCoreBase;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.input.WkSzInputPacketCore;
@@ -35,6 +34,8 @@ import weliyek.amat.base.output.WkSzOutputPacketCore;
 import weliyek.amat.base.output.WkSzOutputPacketCore.WritingParameters;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
 import weliyek.amat2.protocol.filter.Filter;
+import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 /**
  * Main type that holds all components that form a self contained struct which defines
@@ -53,11 +54,11 @@ import weliyek.amat2.protocol.filter.Filter;
  */
 public final class WkSzStruct<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,

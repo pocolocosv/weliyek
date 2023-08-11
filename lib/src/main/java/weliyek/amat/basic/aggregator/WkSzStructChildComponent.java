@@ -19,16 +19,16 @@ package weliyek.amat.basic.aggregator;
 
 import java.util.Objects;
 
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.ProtocolDefinitionFactory;
-import weliyek.amat.base.WkSzStructComponentCoreBase;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 /**
  * Defines a struct component that has other components as a parent. Only the sibling 
@@ -47,11 +47,11 @@ import weliyek.serialization.base.WkSzDefinitionCore;
  */
 public class WkSzStructChildComponent<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,

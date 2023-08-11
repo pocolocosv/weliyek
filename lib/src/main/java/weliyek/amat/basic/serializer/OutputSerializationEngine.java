@@ -20,11 +20,11 @@ package weliyek.amat.basic.serializer;
 import java.io.IOException;
 
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 
 public abstract class OutputSerializationEngine<
                         T,
-                        QC extends WritingRuntimeControl<?,?,?>,
+                        QC extends WkSzWritingRuntimeControl<?,?,?>,
                         O extends WkSzPacketWriterOperation<? extends T,?,?,?,?>>
     extends PrimitiveCommonSerializationEngine<QC, O>
 {

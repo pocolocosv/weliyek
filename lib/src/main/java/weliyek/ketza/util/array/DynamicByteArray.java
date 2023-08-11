@@ -21,9 +21,7 @@ import java.util.List;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.ProtocolDefinitionFactory;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
@@ -32,16 +30,18 @@ import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.amat.basic.number.WkSzNumberWriter;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class DynamicByteArray<
                         ZT extends Number,
                         ZXD extends WkSzNumberDefinition<ZT,ZXO>,
-                        ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>,
+                        ZXO extends WkSzNumberReader<ZT,WkSzOperationSettings,?,?,ZXD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
-                        ZYO extends WkSzNumberWriter<ZT,OperationSettings,?,?,ZYD>,
+                        ZYO extends WkSzNumberWriter<ZT,WkSzOperationSettings,?,?,ZYD>,
                         ZD extends WkSzNumberDefinition<ZT,ZXO>>
     implements WkSzByteArrayDefinition<
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>>,
@@ -54,16 +54,16 @@ public class DynamicByteArray<
 {
   public static <ZX extends Number,
                  ZXD extends WkSzNumberDefinition<ZX,ZXO>,
-                 ZXO extends WkSzNumberReader<ZX,OperationSettings,?,?,ZXD>,
+                 ZXO extends WkSzNumberReader<ZX,WkSzOperationSettings,?,?,ZXD>,
                  ZYD extends WkSzNumberDefinition<ZX,?>,
-                 ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
+                 ZYO extends WkSzNumberWriter<ZX,WkSzOperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
   WkSzStruct<ByteArrayWrapper,
-                  OperationSettings,
+                  WkSzOperationSettings,
                   DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
                   WkSzInputBytestreamBase<?>,
-                  OperationSettings,
+                  WkSzOperationSettings,
                   DynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                   DynamicByteArraySerialzing<ZX,ZYO,ZYD>,
                   WkSzOutputBytestreamBase<?>,
@@ -76,15 +76,15 @@ public class DynamicByteArray<
     int maxLength,
     IntFunction<ZX> sizeWrapper,
     ProtocolDefinitionFactory<
-      ZX,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,
-      OperationSettings,ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD>  sizeDefinition)
+      ZX,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,
+      WkSzOperationSettings,ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD>  sizeDefinition)
   {
     return new WkSzStruct<ByteArrayWrapper,
-        OperationSettings,
+        WkSzOperationSettings,
         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
         WkSzInputBytestreamBase<?>,
-        OperationSettings,
+        WkSzOperationSettings,
         DynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
         DynamicByteArraySerialzing<ZX,ZYO,ZYD>,
         WkSzOutputBytestreamBase<?>,
@@ -98,16 +98,16 @@ public class DynamicByteArray<
 
   public static <ZX extends Number,
                  ZXD extends WkSzNumberDefinition<ZX,ZXO>,
-                 ZXO extends WkSzNumberReader<ZX,OperationSettings,?,?,ZXD>,
+                 ZXO extends WkSzNumberReader<ZX,WkSzOperationSettings,?,?,ZXD>,
                  ZYD extends WkSzNumberDefinition<ZX,?>,
-                 ZYO extends WkSzNumberWriter<ZX,OperationSettings,?,?,ZYD>,
+                 ZYO extends WkSzNumberWriter<ZX,WkSzOperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
   WkSzDefinitionCore<ByteArrayWrapper,
-                        OperationSettings,?,?,
+                        WkSzOperationSettings,?,?,
                         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
                         WkSzInputBytestreamBase<?>,
-                        OperationSettings,?,?,
+                        WkSzOperationSettings,?,?,
                         DynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                         DynamicByteArraySerialzing<ZX,ZYO,ZYD>,
                         WkSzOutputBytestreamBase<?>,
@@ -120,8 +120,8 @@ public class DynamicByteArray<
     int minLength,
     int maxLength,
     ProtocolDefinitionFactory<
-      ZX,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,
-      OperationSettings,ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD> sizeDefinitionFactory)
+      ZX,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,
+      WkSzOperationSettings,ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD> sizeDefinitionFactory)
   {
     return new DynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>(componentCore, sizeLabel, wrapperSizeGetter, arrayLabel, minLength, maxLength, sizeDefinitionFactory).definitionCore;
   }
@@ -147,7 +147,7 @@ public class DynamicByteArray<
     int minLength,
     int maxLength,
     ProtocolDefinitionFactory<
-      ZT,OperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,OperationSettings,
+      ZT,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,WkSzOperationSettings,
       ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD> sizeComponentDefinitionFactory) {
     this.definitionCore = new SimplifiedDynamicPrimitiveArrayDefinitionCore<
                                 ByteArrayWrapper,

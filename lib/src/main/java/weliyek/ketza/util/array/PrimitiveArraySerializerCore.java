@@ -22,34 +22,34 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntBiFunction;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.WkSzOperationSettings;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
-import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntimeControl;
 import weliyek.amat.basic.serializer.InputDeserializerFactory;
 import weliyek.amat.basic.serializer.OutputSerializerFactory;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerWriter;
 import weliyek.amat.basic.serializer.WkSzSerializerDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class PrimitiveArraySerializerCore<
                         T extends PrimitiveArrayWrapper<?, ?>,
-                        XS extends OperationSettings,
-                        XQC extends SequenceReadingRuntimeControl<?,?,?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQC extends WkSzSequenceReadingRuntimeControl<?,?,?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends PrimitiveArraySerializerDefinition<T,XO>,
                         XO extends WkSzPrimitiveArraySerializerReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
-                        YQC extends SequenceWritingRuntimeControl<?,?,?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQC extends WkSzSequenceWritingRuntimeControl<?,?,?>,
+                        YR extends WkSzWritingResult,
                         YD extends PrimitiveArraySerializerDefinition<T,?>,
                         YO extends WkSzPrimitiveArraySerializerWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,

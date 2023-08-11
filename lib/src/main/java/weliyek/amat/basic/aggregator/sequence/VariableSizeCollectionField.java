@@ -22,33 +22,33 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
 import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public final class VariableSizeCollectionField<
                         T extends Collection<ET>,
-                        XS extends VariableLengthSettings,
-                        YS extends OperationSettings,
+                        XS extends WkSzVariableLengthOperationSettings,
+                        YS extends WkSzOperationSettings,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         ED extends WkSzDefinition<ET,?>>
@@ -64,13 +64,13 @@ public final class VariableSizeCollectionField<
 {
 
   public static <T extends Collection<ET>,
-                 XS extends VariableLengthSettings,
-                 YS extends OperationSettings,
+                 XS extends WkSzVariableLengthOperationSettings,
+                 YS extends WkSzOperationSettings,
                  ET,
-                 EXS extends OperationSettings,
+                 EXS extends WkSzOperationSettings,
                  EXD extends WkSzDefinition<ET,EXO>,
                  EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                 EYS extends OperationSettings,
+                 EYS extends WkSzOperationSettings,
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,EXO>>
@@ -116,13 +116,13 @@ public final class VariableSizeCollectionField<
   }
 
   public static <T extends Collection<ET>,
-                 XS extends VariableLengthSettings,
-                 YS extends OperationSettings,
+                 XS extends WkSzVariableLengthOperationSettings,
+                 YS extends WkSzOperationSettings,
                  ET,
-                 EXS extends OperationSettings,
+                 EXS extends WkSzOperationSettings,
                  EXD extends WkSzDefinition<ET,?>,
                  EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                 EYS extends OperationSettings,
+                 EYS extends WkSzOperationSettings,
                  EYD extends WkSzDefinition<ET,?>,
                  EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                  ED extends WkSzDefinition<ET,?>>
@@ -204,7 +204,7 @@ public final class VariableSizeCollectionField<
     this.sizeLimits = new SequenceSizeParameters<T>(minSize, maxSize, definitionCore);
   }
 
-  private static <XS extends VariableLengthSettings>
+  private static <XS extends WkSzVariableLengthOperationSettings>
   int getNumberOfDeserializingOperations(VariableSizeCollectionFieldDeserializer<?,XS,?,?,?,?> aggregatingDeserializer) {
     return aggregatingDeserializer.settings().getRequestedLength();
   }

@@ -17,8 +17,6 @@
  */
 package weliyek.serialization;
 
-import weliyek.amat.base.Direction;
-
 /**
  * Used in the handling of serialization data according to the rules defined by a serialization
  * struct. It is not necessary to have a 1 to 1 mapping of {@link WkSzPacketSegment} to 
@@ -27,7 +25,7 @@ import weliyek.amat.base.Direction;
 public interface WkSzPacketSegment extends WkSzSegment
 {
 
-  Direction direction();
+  WkSzPacketDirection direction();
 
   @Override
   default SegmentType type() {

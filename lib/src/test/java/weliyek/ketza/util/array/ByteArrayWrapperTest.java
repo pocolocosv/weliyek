@@ -29,12 +29,12 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzOutputPacket;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat2.protocol.WkSzDefinitionCoreException;
 import weliyek.ketza.util.KetzaByteOutputStream;
 import weliyek.serialization.WkSzStruct;
@@ -75,12 +75,12 @@ public class ByteArrayWrapperTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSzStruct<ByteArrayWrapper, OperationSettings, FixedSizeByteArray, FixedSizeByteArrayDeserializing, WkSzInputBytestreamBase<?>, OperationSettings, FixedSizeByteArray, FixedSizeByteArraySerializing, WkSzOutputBytestreamBase<?>, FixedSizeByteArray>
+      WkSzStruct<ByteArrayWrapper, WkSzOperationSettings, FixedSizeByteArray, FixedSizeByteArrayDeserializing, WkSzInputBytestreamBase<?>, WkSzOperationSettings, FixedSizeByteArray, FixedSizeByteArraySerializing, WkSzOutputBytestreamBase<?>, FixedSizeByteArray>
         fixeSizeByteArray = FixedSizeByteArray.newPacketStructure("FIXED_BYTEARRAY", sequenceLenght);
       logger.info(fixeSizeByteArray + " output protocol created");
 
       WkSzOutputPacket<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArraySerializing>
-        byteArrayWriting = fixeSizeByteArray.newOutputPacket(outputWrapper, OperationSettings.EMPTY, outputstream);
+        byteArrayWriting = fixeSizeByteArray.newOutputPacket(outputWrapper, WkSzOperationSettings.EMPTY, outputstream);
 
       logger.info(byteArrayWriting.toString());
 
@@ -103,7 +103,7 @@ public class ByteArrayWrapperTest
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
       WkSzInputPacket<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArrayDeserializing>
-        byteArrayReading = fixeSizeByteArray.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
+        byteArrayReading = fixeSizeByteArray.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
 
       logger.info(byteArrayReading + " input op created");
 
@@ -134,11 +134,11 @@ public class ByteArrayWrapperTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSzStruct<ByteArrayWrapper, VariableLengthSettings, VariableSizeByteArray, VariableSizeByteArrayDeserializing, WkSzInputBytestreamBase<?>, OperationSettings, VariableSizeByteArray, VariableSizeByteArraySerializing, WkSzOutputBytestreamBase<?>, VariableSizeByteArray>
+      WkSzStruct<ByteArrayWrapper, WkSzVariableLengthOperationSettings, VariableSizeByteArray, VariableSizeByteArrayDeserializing, WkSzInputBytestreamBase<?>, WkSzOperationSettings, VariableSizeByteArray, VariableSizeByteArraySerializing, WkSzOutputBytestreamBase<?>, VariableSizeByteArray>
         outputProtocol = VariableSizeByteArray.newPacketStructure("DYNAMIC_BYTEARRAY", 0, 100);
 
       WkSzOutputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
-        wrapperWriting = outputProtocol.newOutputPacket(outputWrapper, OperationSettings.EMPTY, outputstream);
+        wrapperWriting = outputProtocol.newOutputPacket(outputWrapper, WkSzOperationSettings.EMPTY, outputstream);
 
       assertFalse(wrapperWriting.isCompleted());
       int i = 1;
@@ -149,7 +149,7 @@ public class ByteArrayWrapperTest
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
       WkSzInputPacket<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
-        wrapperReading = outputProtocol.newInputPacket(VariableLengthSettings.withLength(sequenceLenght), outputstream.inputStream());
+        wrapperReading = outputProtocol.newInputPacket(WkSzVariableLengthOperationSettings.withLength(sequenceLenght), outputstream.inputStream());
 
       logger.info(wrapperReading + " input op created");
 

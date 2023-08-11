@@ -21,12 +21,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
@@ -36,22 +36,22 @@ import weliyek.serialization.WkSzDefinition;
 
 public class DynamicCollectionFieldSerializerImpl<
                         T extends Collection<ET>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzDynamicCollectionDefinition<
                                       T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
-                        ZYS extends OperationSettings,
+                        ZYS extends WkSzOperationSettings,
                         ZYO extends WkSzNumberWriter<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>,
                         ET,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
-                        VYS extends OperationSettings>
+                        VYS extends WkSzOperationSettings>
     implements DynamicCollectionFieldSerializer<
                         T, YS,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         DynamicCollectionField<
                           T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                         ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>
@@ -61,8 +61,8 @@ public class DynamicCollectionFieldSerializerImpl<
                         T, YS,
                         DynamicCollectionFieldSerializer<
                           T, YS,
-                          SerializingRuntime<WkSzOutputBytestream>,
-                          SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>,
+                          WkSzWritingResult,
                           DynamicCollectionField<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -79,7 +79,7 @@ public class DynamicCollectionFieldSerializerImpl<
       ?,?,?> packetfieldCore,
     SimplifiedDynamicCollectionDefinitionCore<
       T,?,?,?,YS,
-      DynamicCollectionFieldSerializer<T,YS,SerializingRuntime<WkSzOutputBytestream>,SerializingResult,
+      DynamicCollectionFieldSerializer<T,YS,WkSzWritingRuntime<WkSzOutputBytestream>,WkSzWritingResult,
         DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
         ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
       DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
@@ -88,8 +88,8 @@ public class DynamicCollectionFieldSerializerImpl<
                                 T, YS,
                                 DynamicCollectionFieldSerializer<
                                   T, YS,
-                                  SerializingRuntime<WkSzOutputBytestream>,
-                                  SerializingResult,
+                                  WkSzWritingRuntime<WkSzOutputBytestream>,
+                                  WkSzWritingResult,
                                   DynamicCollectionField<
                                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                   ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -130,12 +130,12 @@ public class DynamicCollectionFieldSerializerImpl<
   }
 
   @Override
-  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.operationCore.result();
   }
 

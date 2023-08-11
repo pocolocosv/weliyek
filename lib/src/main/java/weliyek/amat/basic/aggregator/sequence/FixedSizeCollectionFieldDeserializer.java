@@ -21,13 +21,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
@@ -36,23 +36,23 @@ import weliyek.serialization.WkSzDefinition;
 
 public final class FixedSizeCollectionFieldDeserializer<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,EXO>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>>
     implements CollectionAndElementsFieldDeserializer<
                         T,
                         XS,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<T>,
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<T>,
                         FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                         ET, EXD, EXO>,
                 FixedSizeSequenceReading<
                         T,
                         XS,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<T>,
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<T>,
                         FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
 {
 
@@ -102,12 +102,12 @@ public final class FixedSizeCollectionFieldDeserializer<
   }
 
   @Override
-  public SequenceReadingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSzSequenceReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<DeserializingResult<T>> result() {
+  public Optional<WkSzReadingResult<T>> result() {
     return this.operationCore.result();
   }
 

@@ -17,21 +17,21 @@
  */
 package weliyek.amat.base.output;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
 import weliyek.amat.base.WkSzPacketFieldCore;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStructComponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class WkSzPacketWriterFieldCore<
                         T,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        AYO extends WkSzAggregatorWriter<?,?,? extends SerializingRuntime<?>,?,?>>
+                        AYO extends WkSzAggregatorWriter<?,?,? extends WkSzWritingRuntime<?>,?,?>>
     extends WkSzPacketFieldCore<
                         T, YS, YD,
                         WkSzStructComponentCoreBase<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>,

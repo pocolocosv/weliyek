@@ -19,18 +19,18 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.sequence.WkSzSequenceReader;
 
 public interface WkSzCollectionReader<
                         T extends Collection<?>,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WzSzCollectionDefinition<T,?>>
     extends WkSzCollectionOperation<
                         XS, XQ, XR, XD,

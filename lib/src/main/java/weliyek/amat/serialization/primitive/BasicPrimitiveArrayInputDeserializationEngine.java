@@ -19,7 +19,7 @@ package weliyek.amat.serialization.primitive;
 
 import java.util.function.Function;
 
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 import weliyek.ketza.util.array.PrimitiveArrayWrapper;
 
@@ -28,7 +28,7 @@ public abstract class BasicPrimitiveArrayInputDeserializationEngine<
                         V>
   extends SequenceInputSerializationRule<
                         X, V,
-                        SequenceReadingRuntimeControl<?,?,?>>
+                        WkSzSequenceReadingRuntimeControl<?,?,?>>
 {
 
   public static final int STEP_SIZE = 1024;
@@ -36,7 +36,7 @@ public abstract class BasicPrimitiveArrayInputDeserializationEngine<
   protected BasicPrimitiveArrayInputDeserializationEngine(
       Function<V, X> newWrapperFactory,
       int elementByteLength,
-      SequenceReadingRuntimeControl<?,?,?> runtimeCtrl,
+      WkSzSequenceReadingRuntimeControl<?,?,?> runtimeCtrl,
       WkSzPrimitiveArraySerializerReader<X,?,?,?,?> readingOperation) {
     super(newWrapperFactory, elementByteLength, STEP_SIZE, runtimeCtrl, readingOperation);
   }

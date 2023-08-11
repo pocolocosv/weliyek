@@ -22,15 +22,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
-import weliyek.amat.basic.sequence.OptionalLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
+import weliyek.amat.basic.sequence.WkSzOptionalLengthOperationSettings;
 import weliyek.amat.basic.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.ketza.util.array.ByteArrayWrapper;
@@ -38,6 +37,7 @@ import weliyek.ketza.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArrayDeserializing;
 import weliyek.ketza.util.array.VariableSizeByteArraySerializing;
@@ -51,11 +51,11 @@ public class StringWithVariableLengthBytes
 
   public static WkSzStruct<
                       String,
-                      VariableLengthSettings,
+                      WkSzVariableLengthOperationSettings,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesDeserializing,
                       WkSzInputBytestreamBase<?>,
-                      OptionalLengthSettings,
+                      WkSzOptionalLengthOperationSettings,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesSerializing,
                       WkSzOutputBytestreamBase<?>,
@@ -76,11 +76,11 @@ public class StringWithVariableLengthBytes
 
   public static WkSzDefinitionCore<
                       String,
-                      VariableLengthSettings,?,?,
+                      WkSzVariableLengthOperationSettings,?,?,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesDeserializing,
                       WkSzInputBytestreamBase<?>,
-                      OptionalLengthSettings,?,?,
+                      WkSzOptionalLengthOperationSettings,?,?,
                       StringWithVariableLengthBytes,
                       StringWithVariableLengthBytesSerializing,
                       WkSzOutputBytestreamBase<?>,
@@ -95,16 +95,16 @@ public class StringWithVariableLengthBytes
   }
 
   private final SimplifiedStringFromBytesCore<
-                        VariableLengthSettings,
+                        WkSzVariableLengthOperationSettings,
                         StringWithVariableLengthBytesDeserializing,
                         StringWithVariableLengthBytes,
-                        OptionalLengthSettings,
+                        WkSzOptionalLengthOperationSettings,
                         StringWithVariableLengthBytesSerializing,
                         StringWithVariableLengthBytes,
-                        VariableLengthSettings,
+                        WkSzVariableLengthOperationSettings,
                         VariableSizeByteArrayDeserializing,
                         VariableSizeByteArray,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         VariableSizeByteArraySerializing,
                         VariableSizeByteArray,
                         VariableSizeByteArray,
@@ -124,7 +124,7 @@ public class StringWithVariableLengthBytes
                                     bytesLabel,
                                     OperationSubsegmentSettingsFactory.parentSettingsReuser(), // reusing deserializing settings
                                     StringWithVariableLengthBytes::aggragateByteArray,
-                                    OperationSettings::none,
+                                    WkSzOperationSettings::none,
                                     new VariableLengthBytesDissagregatorFromString(),
                                     (pc) -> VariableSizeByteArray.newCore(minSize, maxSize, pc),
                                     this);

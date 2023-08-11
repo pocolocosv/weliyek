@@ -21,11 +21,11 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
@@ -38,41 +38,41 @@ import weliyek.ketza.util.array.DynamicByteArrayDeserializing;
 public class StringWithDynamicSizeBytesDeserializing<
                         ZT extends Number,
                         ZXD extends WkSzNumberDefinition<ZT,ZXO>,
-                        ZXO extends WkSzNumberReader<ZT,OperationSettings,?,?,ZXD>>
+                        ZXO extends WkSzNumberReader<ZT,WkSzOperationSettings,?,?,ZXD>>
     implements WkSzStringFromBytesReader<
-                        OperationSettings,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<String>,
+                        WkSzOperationSettings,
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<String>,
                         StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>>
 {
 
   final SimplifiedStringFromBytesReadingCore<
-                        OperationSettings,
+                        WkSzOperationSettings,
                         StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
                         StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>
                             operationCore;
 
   StringWithDynamicSizeBytesDeserializing(
     int index,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<String,?,StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?>
       deserializingfieldCore,
     SimplifiedStringFromBytesCore<
-      OperationSettings,StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
+      WkSzOperationSettings,StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
       StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?,
-      OperationSettings,DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
+      WkSzOperationSettings,DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
       DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?,?,?> definitionCore) {
     this.operationCore = new SimplifiedStringFromBytesReadingCore<
-        OperationSettings,
+        WkSzOperationSettings,
         StringWithDynamicSizeBytesDeserializing<ZT,ZXD,ZXO>,
         StringWithDynamicSizeBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-        OperationSettings,
+        WkSzOperationSettings,
         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>(
                                       index,
@@ -99,17 +99,17 @@ public class StringWithDynamicSizeBytesDeserializing<
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<DeserializingResult<String>> result() {
+  public Optional<WkSzReadingResult<String>> result() {
     return this.operationCore.result();
   }
 

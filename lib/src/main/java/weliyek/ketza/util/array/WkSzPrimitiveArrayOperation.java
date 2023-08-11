@@ -17,15 +17,15 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.OperationResult;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzCommonOperationRuntime;
+import weliyek.amat.base.WkSzOperationResult;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.serialization.WkSzPacketField;
 
 public interface WkSzPrimitiveArrayOperation<
-                        S extends OperationSettings,
-                        Q extends CommonOperationRuntime<?>,
-                        R extends OperationResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzCommonOperationRuntime<?>,
+                        R extends WkSzOperationResult,
                         D extends WkSzPrimitiveArrayDefinition<?,?>,
                         K extends WkSzPacketField<?,?,?>>
         extends WkSzArrayOperation<S,Q,R,D,K>,

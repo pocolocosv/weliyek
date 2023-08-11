@@ -20,28 +20,28 @@ package weliyek.amat.basic.aggregator;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public abstract class WkSzAggregatorReaderCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends DeserializingRuntime<XB>,
-                        XQC extends ReadingRuntimeControl<XB,XBC,XQ>,
-                        XR extends DeserializingResult<T>,
+                        XQ extends WkSzReadingRuntime<XB>,
+                        XQC extends WkSzReadingRuntimeControl<XB,XBC,XQ>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<T,XS,XQ,XR,XD>,
                         XOC extends WkSzAggregatorReaderCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,
@@ -66,7 +66,7 @@ public abstract class WkSzAggregatorReaderCore<
 
   @SuppressWarnings("unchecked")
   public <ST,
-          SXS extends OperationSettings,
+          SXS extends WkSzOperationSettings,
           SXD extends WkSzDefinition<ST,?>,
           SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>>
   WkSzPacketReaderSubfieldCore<ST,SXS,SXD,SXO,T,XBC,XD,XO> getSubfieldpacketFor(

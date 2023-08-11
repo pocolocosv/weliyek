@@ -19,8 +19,6 @@ package weliyek.serialization;
 
 import java.util.Objects;
 
-import weliyek.base.WkException;
-
 public class WkSzPacketFieldException extends WkSzSegmentException
 {
 

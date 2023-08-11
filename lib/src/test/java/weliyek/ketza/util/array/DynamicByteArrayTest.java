@@ -30,7 +30,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
@@ -50,11 +50,11 @@ public class DynamicByteArrayTest
 
   private static WkSzStruct<
                     ByteArrayWrapper,
-                    OperationSettings,
+                    WkSzOperationSettings,
                     DynamicByteArray<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
                     DynamicByteArrayDeserializing<Integer, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger>,
                     WkSzInputBytestreamBase<?>,
-                    OperationSettings,
+                    WkSzOperationSettings,
                     DynamicByteArray<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
                     DynamicByteArraySerialzing<Integer, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>,
                     WkSzOutputBytestreamBase<?>,
@@ -109,7 +109,7 @@ public class DynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<ByteArrayWrapper, DynamicByteArray<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>, DynamicByteArraySerialzing<Integer, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(SHORT_ARRAY_WRAPPER,
-                                                      OperationSettings.EMPTY,
+                                                      WkSzOperationSettings.EMPTY,
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
@@ -122,7 +122,7 @@ public class DynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<ByteArrayWrapper, DynamicByteArray<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>, DynamicByteArraySerialzing<Integer, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(VALID_ARRAY_WRAPPER,
-                                                      OperationSettings.EMPTY,
+                                                      WkSzOperationSettings.EMPTY,
                                                       outputstream);
     while(serializer.isInProgress()) {
       serializer.processBytestream();
@@ -135,7 +135,7 @@ public class DynamicByteArrayTest
     ByteArrayInputStream inputstream = new ByteArrayInputStream(allbytes);
 
     WkSzInputPacket<ByteArrayWrapper, DynamicByteArray<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>, DynamicByteArrayDeserializing<Integer, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger>>
-      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(OperationSettings.EMPTY, inputstream);
+      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSzOperationSettings.EMPTY, inputstream);
 
     deserializer.processBytestream();
     assertThrows(WkSzOperationException.class, () -> deserializer.processBytestream());
@@ -147,7 +147,7 @@ public class DynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<ByteArrayWrapper, DynamicByteArray<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>, DynamicByteArraySerialzing<Integer, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(VALID_ARRAY_WRAPPER,
-                                                      OperationSettings.EMPTY,
+                                                      WkSzOperationSettings.EMPTY,
                                                       outputstream);
     while(serializer.isInProgress()) {
       serializer.processBytestream();
@@ -160,7 +160,7 @@ public class DynamicByteArrayTest
     ByteArrayInputStream inputstream = new ByteArrayInputStream(allbytes);
 
     WkSzInputPacket<ByteArrayWrapper, DynamicByteArray<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>, DynamicByteArrayDeserializing<Integer, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger>>
-      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(OperationSettings.EMPTY, inputstream);
+      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSzOperationSettings.EMPTY, inputstream);
 
     deserializer.processBytestream();
     assertThrows(WkSzOperationException.class, () -> deserializer.processBytestream());
@@ -172,7 +172,7 @@ public class DynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<ByteArrayWrapper, DynamicByteArray<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>, DynamicByteArraySerialzing<Integer, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(LONG_ARRAY_WRAPPER,
-                                                      OperationSettings.EMPTY,
+                                                      WkSzOperationSettings.EMPTY,
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
@@ -185,7 +185,7 @@ public class DynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<ByteArrayWrapper, DynamicByteArray<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>, DynamicByteArraySerialzing<Integer, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>>
       dynArrayWriting = DYNAMIC_BYTE_ARRAY.newOutputPacket(VALID_ARRAY_WRAPPER,
-                                                           OperationSettings.EMPTY,
+                                                           WkSzOperationSettings.EMPTY,
                                                            outputstream);
     logger.info(dynArrayWriting.name() + " created");
     while(dynArrayWriting.isInProgress()) {
@@ -205,7 +205,7 @@ public class DynamicByteArrayTest
                  dynArrayWriting.previousProcessingSteapResult().get().definition());
     assertEquals(VALID_ARRAY_WRAPPER, dynArrayWriting.firstOperation().get().variableSequence().field().get().firstOperation().get().serializable());
     WkSzInputPacket<ByteArrayWrapper, DynamicByteArray<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>, DynamicByteArrayDeserializing<Integer, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger>>
-      dynArrayReading = DYNAMIC_BYTE_ARRAY.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
+      dynArrayReading = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(DYNAMIC_BYTE_ARRAY.definition().size().field().definition() + " reading started");
     while(dynArrayReading.isInProgress()) {
       dynArrayReading.processBytestream();

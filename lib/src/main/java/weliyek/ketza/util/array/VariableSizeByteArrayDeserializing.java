@@ -22,44 +22,44 @@ import java.util.Optional;
 
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 
 public final class VariableSizeByteArrayDeserializing
     implements ByteArrayReading<
-                        VariableLengthSettings,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<ByteArrayWrapper>,
+                        WkSzVariableLengthOperationSettings,
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<ByteArrayWrapper>,
                         VariableSizeByteArray>,
                VariableSizePrimitiveArraySerializerReading<
                         ByteArrayWrapper,
-                        VariableLengthSettings,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<ByteArrayWrapper>,
+                        WkSzVariableLengthOperationSettings,
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<ByteArrayWrapper>,
                         VariableSizeByteArray>
 {
 
   final SimplifiedPrimitiveArrayDeserializingCore<
                     ByteArrayWrapper,
-                    VariableLengthSettings,
+                    WkSzVariableLengthOperationSettings,
                     VariableSizeByteArray,
                     VariableSizeByteArrayDeserializing> operationCore;
 
   VariableSizeByteArrayDeserializing(
     int index,
-    VariableLengthSettings settings,
+    WkSzVariableLengthOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       ByteArrayWrapper,?,VariableSizeByteArray,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
-      ByteArrayWrapper,VariableLengthSettings,VariableSizeByteArrayDeserializing,?,?,VariableSizeByteArray> definitionCore) {
+      ByteArrayWrapper,WkSzVariableLengthOperationSettings,VariableSizeByteArrayDeserializing,?,?,VariableSizeByteArray> definitionCore) {
     this.operationCore = new SimplifiedPrimitiveArrayDeserializingCore<
         ByteArrayWrapper,
-        VariableLengthSettings,
+        WkSzVariableLengthOperationSettings,
         VariableSizeByteArray,
         VariableSizeByteArrayDeserializing>(
                                     index,
@@ -82,17 +82,17 @@ public final class VariableSizeByteArrayDeserializing
   }
 
   @Override
-  public VariableLengthSettings settings() {
+  public WkSzVariableLengthOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public SequenceReadingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSzSequenceReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<DeserializingResult<ByteArrayWrapper>> result() {
+  public Optional<WkSzReadingResult<ByteArrayWrapper>> result() {
     return this.operationCore.result();
   }
 

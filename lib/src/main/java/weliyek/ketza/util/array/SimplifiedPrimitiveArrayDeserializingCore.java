@@ -20,35 +20,35 @@ package weliyek.ketza.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.PrimitiveArraySerializerDefinition;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 
 public class SimplifiedPrimitiveArrayDeserializingCore<
                         X extends PrimitiveArrayWrapper<?,?>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         D extends PrimitiveArraySerializerDefinition<X,XO>,
                         XO extends WkSzPrimitiveArraySerializerReader<
                                           X,
                                           XS,
-                                          SequenceReadingRuntime<WkSzInputBytestream>,
-                                          DeserializingResult<X>,
+                                          WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                                          WkSzReadingResult<X>,
                                           D>>
     extends PrimitiveArraySerializerReadingCore<
                         X,
                         XS,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        SequenceReadingRuntimeControl<
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzSequenceReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          SequenceReadingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<X>,
+                          WkSzSequenceReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<X>,
                         XO,
                         SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>,
                         D,

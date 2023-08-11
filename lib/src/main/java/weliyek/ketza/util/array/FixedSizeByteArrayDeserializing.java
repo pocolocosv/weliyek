@@ -20,46 +20,46 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public class FixedSizeByteArrayDeserializing
     implements ByteArrayReading<
-                        OperationSettings,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<ByteArrayWrapper>,
+                        WkSzOperationSettings,
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<ByteArrayWrapper>,
                         FixedSizeByteArray>,
                WkSzSerializerReaderFixedSizePrimitiveArray<
                         ByteArrayWrapper,
-                        OperationSettings,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<ByteArrayWrapper>,
+                        WkSzOperationSettings,
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<ByteArrayWrapper>,
                         FixedSizeByteArray>
 {
 
   final SimplifiedPrimitiveArrayDeserializingCore<
                         ByteArrayWrapper,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         FixedSizeByteArray,
                         FixedSizeByteArrayDeserializing> operationCore;
 
   FixedSizeByteArrayDeserializing(
     int index,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
       ByteArrayWrapper,?,FixedSizeByteArray,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
-      ByteArrayWrapper,OperationSettings,FixedSizeByteArrayDeserializing,?,?,FixedSizeByteArray> definitionCore) {
+      ByteArrayWrapper,WkSzOperationSettings,FixedSizeByteArrayDeserializing,?,?,FixedSizeByteArray> definitionCore) {
     this.operationCore = new SimplifiedPrimitiveArrayDeserializingCore<
                                 ByteArrayWrapper,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 FixedSizeByteArray,
                                 FixedSizeByteArrayDeserializing>(
                                     index,
@@ -82,17 +82,17 @@ public class FixedSizeByteArrayDeserializing
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public SequenceReadingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSzSequenceReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<DeserializingResult<ByteArrayWrapper>> result() {
+  public Optional<WkSzReadingResult<ByteArrayWrapper>> result() {
     return this.operationCore.result();
   }
 

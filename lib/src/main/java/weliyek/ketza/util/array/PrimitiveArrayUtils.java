@@ -17,7 +17,7 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat2.protocol.WkSzPacketOperationException;
 import weliyek.serialization.WkSzOperationException;
 
@@ -44,7 +44,7 @@ public class PrimitiveArrayUtils
 
   public static void onVariableSizeDeserilizingInitialization(
     SimplifiedPrimitiveArrayDeserializingCore<
-      ?,? extends VariableLengthSettings,
+      ?,? extends WkSzVariableLengthOperationSettings,
       ? extends VariableSizePrimitiveArraySerializerDefinition<?,?>,
       ? extends VariableSizePrimitiveArraySerializerReading<?,?,?,?,?>> deserializingCore) {
     final int reqLen = deserializingCore.settings().getRequestedLength();

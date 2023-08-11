@@ -19,7 +19,7 @@ package weliyek.amat.basic.number;
 
 import java.io.IOException;
 
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.serializer.BasicPrimitiveSerializerFactory;
 import weliyek.amat.newserialization.basic.LongPrimitiveOutputSerializationRule;
 
@@ -31,7 +31,7 @@ public final class LittleEndianLongOutputSerializationRule
       new BasicPrimitiveSerializerFactory<>("SINT64LE", LittleEndianLongOutputSerializationRule::new);
 
   private LittleEndianLongOutputSerializationRule(
-    WritingRuntimeControl<?,?,?> runtimeControl,
+    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
     WkSzNumberWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

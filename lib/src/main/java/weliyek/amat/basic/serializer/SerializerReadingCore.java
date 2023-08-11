@@ -21,24 +21,24 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
 import weliyek.amat.base.input.WkSzPacketReaderOperationCore;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 
 public abstract class SerializerReadingCore<
                         X,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XQC extends ReadingRuntimeControl<?,?,XQ>,
-                        XR extends DeserializingResult<X>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XQC extends WkSzReadingRuntimeControl<?,?,XQ>,
+                        XR extends WkSzReadingResult<X>,
                         XO extends WkSzPacketReaderOperation<X,XS,XQ,XR,XD>,
                         XOC extends SerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSzDefinition<X,XO>,

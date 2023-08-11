@@ -26,7 +26,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
@@ -49,11 +49,11 @@ public class FilterBuilderTest
 
   private static WkSzStruct<
                       MultipleLists,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       MultipleListInputField,
                       MultipleListReading,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       MultipleListInputField,
                       MultipleListsWriting,
                       WkSzOutputBytestreamBase<?>,
@@ -232,14 +232,14 @@ public class FilterBuilderTest
       KetzaByteOutputStream out = new KetzaByteOutputStream();
 
       WkSzOutputPacket<MultipleLists, MultipleListInputField, MultipleListsWriting>
-        multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, OperationSettings.EMPTY, out);
+        multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSzOperationSettings.EMPTY, out);
 
       while(multiListsSerializer.isInProgress()) {
         multiListsSerializer.processBytestream();
       }
 
       WkSzInputPacket<MultipleLists, MultipleListInputField, MultipleListReading>
-        multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(OperationSettings.EMPTY, out.inputStream(), filter);
+        multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSzOperationSettings.EMPTY, out.inputStream(), filter);
 
       while(multiListsDeserializer.isInProgress()) {
         multiListsDeserializer.processBytestream();

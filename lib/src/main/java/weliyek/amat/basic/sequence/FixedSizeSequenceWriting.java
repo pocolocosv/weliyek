@@ -17,15 +17,15 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 
 public interface FixedSizeSequenceWriting<
                         Y,
-                        S extends OperationSettings,
-                        Q extends SequenceWritingRuntime<?>,
-                        R extends SerializingResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzSequenceWritingRuntime<?>,
+                        R extends WkSzWritingResult,
                         D extends WkSzFixedSizeSequenceDefinition<Y,?>>
     extends WkSzSequenceWriter<Y, S, Q, R, D>,
             WkSzFixedSizeSequenceOperation<

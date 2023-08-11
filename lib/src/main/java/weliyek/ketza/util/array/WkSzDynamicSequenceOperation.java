@@ -17,9 +17,9 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.OperationResult;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzCommonOperationRuntime;
+import weliyek.amat.base.WkSzOperationResult;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorOperation;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceOperation;
 import weliyek.amat.basic.number.WkSzNumberOperation;
@@ -28,9 +28,9 @@ import weliyek.serialization.WkSzPacketField;
 import weliyek.serialization.WkSzPacketSubfield;
 
 public interface WkSzDynamicSequenceOperation<
-                        S extends OperationSettings,
-                        Q extends CommonOperationRuntime<?>,
-                        R extends OperationResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzCommonOperationRuntime<?>,
+                        R extends WkSzOperationResult,
                         D extends WkSzDynamicSequenceDefinition<?,?,?,?,?>,
                         K extends WkSzPacketField<?,?,?>,
                         ZO extends WkSzNumberOperation<?,?,?,?,?>,

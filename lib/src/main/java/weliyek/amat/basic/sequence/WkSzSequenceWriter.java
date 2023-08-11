@@ -17,17 +17,17 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 
 public interface WkSzSequenceWriter<
                         T,
-                        YS extends OperationSettings,
-                        YQ extends SerializingRuntime<?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzWritingRuntime<?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzSequenceDefinition<T,?>>
         extends WkSzPacketWriterOperation<T, YS, YQ, YR, YD>,
                 WkSzSequenceOperation<

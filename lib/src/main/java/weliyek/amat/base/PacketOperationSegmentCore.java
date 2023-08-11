@@ -31,10 +31,10 @@ import weliyek.serialization.WkSzPacketOperation;
 import weliyek.serialization.base.WkSzDefinitionCore;
 
 public abstract class PacketOperationSegmentCore<
-                        S extends OperationSettings,
-                        Q extends CommonOperationRuntime<?>,
-                        QC extends CommonOperationRuntimeControl<?,?,Q>,
-                        R extends OperationResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzCommonOperationRuntime<?>,
+                        QC extends WkSzOperationRuntimeControl<?,?,Q>,
+                        R extends WkSzOperationResult,
                         _D extends WkSzDefinition<?,?>,
                         DC extends WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSzPacketOperation<S,?,R,_D,?>,

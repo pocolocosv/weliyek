@@ -23,33 +23,33 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class WkSzSerializerDefinitionCore<
                         T,
-                        XS extends OperationSettings,
-                        XQC extends ReadingRuntimeControl<?,?,?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQC extends WkSzReadingRuntimeControl<?,?,?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzDefinition<T,XO>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
-                        YQC extends WritingRuntimeControl<?,?,?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQC extends WkSzWritingRuntimeControl<?,?,?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,

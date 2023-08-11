@@ -19,7 +19,7 @@ package weliyek.amat.basic.number;
 
 import java.io.IOException;
 
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.basic.serializer.BasicPrimitiveDeserializerFactory;
 
 public final class SignedByteInputSerialization
@@ -30,7 +30,7 @@ public final class SignedByteInputSerialization
       new BasicPrimitiveDeserializerFactory<>("SINT8", SignedByteInputSerialization::new);
 
   public SignedByteInputSerialization(
-      ReadingRuntimeControl<?,?,?> runtimeCtrl,
+      WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
       WkSzNumberReader<Byte,?,?,?,?> readingOperation) {
     super((i) -> Byte.valueOf((byte) i), runtimeCtrl, readingOperation);
   }

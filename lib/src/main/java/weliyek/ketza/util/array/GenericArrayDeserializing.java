@@ -17,17 +17,17 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.basic.sequence.WkSzSequenceReader;
 
 public interface GenericArrayDeserializing<
                         X extends GenericArrayWrapper<?,?>,
-                        S extends OperationSettings,
-                        Q extends DeserializingRuntime<?>,
-                        R extends DeserializingResult<X>,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzReadingRuntime<?>,
+                        R extends WkSzReadingResult<X>,
                         D extends WkSzArrayDefinition<X,?>>
         extends WkSzSequenceReader<X, S, Q, R, D>,
                 WkSzArrayOperation<

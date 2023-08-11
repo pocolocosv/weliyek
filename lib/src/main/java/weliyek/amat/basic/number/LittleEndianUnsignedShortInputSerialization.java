@@ -19,7 +19,7 @@ package weliyek.amat.basic.number;
 
 import java.io.IOException;
 
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.basic.serializer.BasicPrimitiveDeserializerFactory;
 
 public final class LittleEndianUnsignedShortInputSerialization
@@ -32,7 +32,7 @@ public final class LittleEndianUnsignedShortInputSerialization
               LittleEndianUnsignedShortInputSerialization::new);
 
   private LittleEndianUnsignedShortInputSerialization(
-    ReadingRuntimeControl<?,?,?> runtimeCtrl,
+    WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
     WkSzNumberReader<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }

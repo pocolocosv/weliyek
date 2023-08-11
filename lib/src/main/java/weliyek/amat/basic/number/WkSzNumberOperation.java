@@ -17,17 +17,17 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.CommonOperationRuntime;
-import weliyek.amat.base.OperationResult;
+import weliyek.amat.base.WkSzCommonOperationRuntime;
+import weliyek.amat.base.WkSzOperationResult;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketField;
 import weliyek.serialization.WkSzPacketOperation;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 
 public interface WkSzNumberOperation<
-                        S extends OperationSettings,
-                        Q extends CommonOperationRuntime<?>,
-                        R extends OperationResult,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzCommonOperationRuntime<?>,
+                        R extends WkSzOperationResult,
                         D extends WkSzDefinition<?,?>,
                         K extends WkSzPacketField<?,?,?>>
         extends WkSzNumberSegment,

@@ -21,42 +21,42 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.BasicReadingResult;
-import weliyek.amat.base.input.BasicReadingRuntime;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzBasicReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
-import weliyek.amat.base.output.BasicWritingRuntime;
+import weliyek.amat.base.output.WkSzBasicWritingRuntime;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class SimplifiedAggregatorCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<
                                         T,
                                         XS,
-                                        DeserializingRuntime<WkSzInputBytestream>,
-                                        DeserializingResult<T>,
+                                        WkSzReadingRuntime<WkSzInputBytestream>,
+                                        WkSzReadingResult<T>,
                                         XD>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<
                                         T,
                                         YS,
-                                        SerializingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         YD>,
                         D extends WkSzAggregatorDefinition<T,XO>>
     extends WkSzAggregatorDefinitionCore<
@@ -64,21 +64,21 @@ public class SimplifiedAggregatorCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        ReadingRuntimeControl<
+                        WkSzReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<?>,
-                          DeserializingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<T>,
+                          WkSzReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<T>,
                         XD, XO,
                         WkSzInputBytestreamBase<?>,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WritingRuntimeControl<
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<?>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YD, YO,
                         WkSzOutputBytestreamBase<?>,
                         D,
@@ -100,10 +100,10 @@ public class SimplifiedAggregatorCore<
     Class<T> serializableClass) {
     super(
           componentCore,
-          BasicReadingRuntime::new,
+          WkSzBasicReadingRuntime::new,
           BasicReadingResult::new,
           deserializerFactory,
-          BasicWritingRuntime::new,
+          WkSzBasicWritingRuntime::new,
           BasicWritingResult::empty,
           serializerFactory,
           body,

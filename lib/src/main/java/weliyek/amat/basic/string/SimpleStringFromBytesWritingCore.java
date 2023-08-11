@@ -17,37 +17,37 @@
  */
 package weliyek.amat.basic.string;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.ketza.util.array.WkSzByteArrayDefinition;
 import weliyek.ketza.util.array.ByteArrayWriting;
 
 public class SimpleStringFromBytesWritingCore<
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YO extends WkSzStringFromBytesWriter<
                                       YS,
-                                      SerializingRuntime<WkSzOutputBytestream>,
-                                      SerializingResult,
+                                      WkSzWritingRuntime<WkSzOutputBytestream>,
+                                      WkSzWritingResult,
                                       YD,SYD,SYO>,
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
-                        SYS extends OperationSettings,
+                        SYS extends WkSzOperationSettings,
                         SYO extends ByteArrayWriting<SYS,?,?,SYD>,
                         SYD extends WkSzByteArrayDefinition<?>>
     extends StringFromBytesWritingCore<
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        WritingRuntimeControl<
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SerializingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YO,
                         SimpleStringFromBytesWritingCore<YS,YO,YD,SYS,SYO,SYD>,
                         YD,

@@ -22,11 +22,11 @@ import weliyek.serialization.WkSzPacketOperation;
 @FunctionalInterface
 public interface OperationSubsegmentSettingsFactory<
                         AO extends WkSzPacketOperation<?,?,?,?,?>,
-                        S extends OperationSettings>
+                        S extends WkSzOperationSettings>
 {
 
   static <AO extends WkSzPacketOperation<S,?,?,?,?>,
-          S extends OperationSettings>
+          S extends WkSzOperationSettings>
   OperationSubsegmentSettingsFactory<AO, S> parentSettingsReuser() {
     return new OperationSubsegmentSettingsFactory<AO, S>() {
       @Override

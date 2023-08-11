@@ -20,8 +20,7 @@ package weliyek.ketza.util.array;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
@@ -31,6 +30,7 @@ import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class FixedSizeByteArray
     implements WkSzByteArrayDefinition<
@@ -42,11 +42,11 @@ public class FixedSizeByteArray
 
   public static WkSzStruct<
                       ByteArrayWrapper,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       FixedSizeByteArray,
                       FixedSizeByteArrayDeserializing,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       FixedSizeByteArray,
                       FixedSizeByteArraySerializing,
                       WkSzOutputBytestreamBase<?>,
@@ -63,11 +63,11 @@ public class FixedSizeByteArray
 
   public static WkSzDefinitionCore<
                       ByteArrayWrapper,
-                      OperationSettings,?,?,
+                      WkSzOperationSettings,?,?,
                       FixedSizeByteArray,
                       FixedSizeByteArrayDeserializing,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,?,?,
+                      WkSzOperationSettings,?,?,
                       FixedSizeByteArray,
                       FixedSizeByteArraySerializing,
                       WkSzOutputBytestreamBase<?>,
@@ -80,9 +80,9 @@ public class FixedSizeByteArray
 
   private final SimplifiedPrimitiveArraySerializerCore<
                         ByteArrayWrapper,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         FixedSizeByteArrayDeserializing,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         FixedSizeByteArraySerializing,
                         FixedSizeByteArray> definitionCore;
   private final SequenceFixedSizeParameter<ByteArrayWrapper> fixedSizeParameter;
@@ -92,9 +92,9 @@ public class FixedSizeByteArray
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
         ByteArrayWrapper,
-        OperationSettings,
+        WkSzOperationSettings,
         FixedSizeByteArrayDeserializing,
-        OperationSettings,
+        WkSzOperationSettings,
         FixedSizeByteArraySerializing,
         FixedSizeByteArray>(
                                     1024, // de/serialization step size
@@ -102,7 +102,7 @@ public class FixedSizeByteArray
                                     FixedSizeByteArray::getRxRequestedLengthFromDefinition,
                                     (i,xs,axb,xkc,dc) -> new FixedSizeByteArrayDeserializing(i,xs,axb,xkc,dc).operationCore,
                                     ByteArrayWrapperInputSerialization.FACTORY,
-                                    (SerializingPrimitiveArrayLengthProvider<ByteArrayWrapper,OperationSettings,FixedSizeByteArray>)FixedSizeByteArray::getTxRequestedLengthFromDefinition,
+                                    (SerializingPrimitiveArrayLengthProvider<ByteArrayWrapper,WkSzOperationSettings,FixedSizeByteArray>)FixedSizeByteArray::getTxRequestedLengthFromDefinition,
                                     (i,y,ys,ayb,ykc,dc) -> new FixedSizeByteArraySerializing(i,y,ys,ayb,ykc,dc).operationCore,
                                     ByteArrayWrapperOutputSerialization.FACTORY,
                                     this,
@@ -110,11 +110,11 @@ public class FixedSizeByteArray
     this.fixedSizeParameter = new SequenceFixedSizeParameter<ByteArrayWrapper>(expectedLength, this.definitionCore);
   }
 
-  private static int getRxRequestedLengthFromDefinition(OperationSettings none, FixedSizeByteArray definition) {
+  private static int getRxRequestedLengthFromDefinition(WkSzOperationSettings none, FixedSizeByteArray definition) {
     return definition.getExpectedLength();
   }
 
-  private static int getTxRequestedLengthFromDefinition(ByteArrayWrapper wrapper, OperationSettings none, FixedSizeByteArray definition) {
+  private static int getTxRequestedLengthFromDefinition(ByteArrayWrapper wrapper, WkSzOperationSettings none, FixedSizeByteArray definition) {
     return definition.getExpectedLength();
   }
 

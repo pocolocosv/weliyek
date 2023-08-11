@@ -20,7 +20,7 @@ package weliyek.amat.base.input;
 import java.util.Objects;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.FilterResults;
@@ -28,11 +28,11 @@ import weliyek.serialization.WkSzDefinition;
 
 public class DeserializingSubfieldCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzDefinition<T,?>,
                         XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        AXO extends WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>>
+                        AXO extends WkSzAggregatorReader<?,?,? extends WkSzReadingRuntime<?>,?,?>>
         extends WkSzPacketReaderFieldCore<T, XS, XD, XO, AXBC, AXO>
 {
 

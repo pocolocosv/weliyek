@@ -21,36 +21,36 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzNumberDefinition;
 import weliyek.amat.basic.number.WkSzNumberReader;
 import weliyek.serialization.WkSzDefinition;
 
 public class DynamicCollectionFieldDeserializerImpl<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         ZT extends Number,
-                        ZXS extends OperationSettings,
+                        ZXS extends WkSzOperationSettings,
                         ZXO extends WkSzNumberReader<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZT,?>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        VXS extends VariableLengthSettings>
+                        VXS extends WkSzVariableLengthOperationSettings>
     implements DynamicCollectionFieldDeserializer<
                         T, XS,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<T>,
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<T>,
                         DynamicCollectionField<
                           T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                         ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>
@@ -60,8 +60,8 @@ public class DynamicCollectionFieldDeserializerImpl<
                         T, XS,
                         DynamicCollectionFieldDeserializer<
                           T, XS,
-                          DeserializingRuntime<WkSzInputBytestream>,
-                          DeserializingResult<T>,
+                          WkSzReadingRuntime<WkSzInputBytestream>,
+                          WkSzReadingResult<T>,
                           DynamicCollectionField<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -79,7 +79,7 @@ public class DynamicCollectionFieldDeserializerImpl<
     SimplifiedDynamicCollectionDefinitionCore<
       T,XS,
       DynamicCollectionFieldDeserializer<
-        T,XS,DeserializingRuntime<WkSzInputBytestream>,DeserializingResult<T>,
+        T,XS,WkSzReadingRuntime<WkSzInputBytestream>,WkSzReadingResult<T>,
         DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
         ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
       DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -88,8 +88,8 @@ public class DynamicCollectionFieldDeserializerImpl<
                                 T, XS,
                                 DynamicCollectionFieldDeserializer<
                                 T, XS,
-                                DeserializingRuntime<WkSzInputBytestream>,
-                                DeserializingResult<T>,
+                                WkSzReadingRuntime<WkSzInputBytestream>,
+                                WkSzReadingResult<T>,
                                 DynamicCollectionField<
                                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                 ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -129,12 +129,12 @@ public class DynamicCollectionFieldDeserializerImpl<
   }
 
   @Override
-  public DeserializingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<DeserializingResult<T>> result() {
+  public Optional<WkSzReadingResult<T>> result() {
     return this.operationCore.result();
   }
 

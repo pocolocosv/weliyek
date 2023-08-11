@@ -20,8 +20,7 @@ package weliyek.amat.base.input;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.WkSzPacketSubfieldCore;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
@@ -30,16 +29,17 @@ import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStructComponent;
 import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class WkSzPacketReaderSubfieldCore<
                         ST,
-                        SXS extends OperationSettings,
+                        SXS extends WkSzOperationSettings,
                         SXD extends WkSzDefinition<ST,?>,
                         SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkSzAggregatorDefinition<T,?>,
-                        XO extends WkSzAggregatorReader<T,?,? extends DeserializingRuntime<?>,?,XD>>
+                        XO extends WkSzAggregatorReader<T,?,? extends WkSzReadingRuntime<?>,?,XD>>
     extends WkSzPacketSubfieldCore<
                         SXS, SXD,
                         WkSzSubcomponentCore<ST,SXS,SXD,SXO,?,XBC,XD,XO,?,?,?,?,?,?,? extends SXD,? extends XD>,

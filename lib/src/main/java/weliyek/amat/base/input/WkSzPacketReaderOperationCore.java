@@ -23,15 +23,15 @@ import java.util.function.BiFunction;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
 import weliyek.serialization.base.WkSzDefinitionCore;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.PacketOperationSegmentCore;
 
 public abstract class WkSzPacketReaderOperationCore<
                         T,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XQC extends ReadingRuntimeControl<?,?,XQ>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XQC extends WkSzReadingRuntimeControl<?,?,XQ>,
+                        XR extends WkSzReadingResult<T>,
                         XO extends WkSzPacketReaderOperation<T,XS,XQ,XR,XD>,
                         XOC extends WkSzPacketReaderOperationCore<T,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSzDefinition<T,?>,

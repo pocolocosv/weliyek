@@ -19,14 +19,14 @@ package weliyek.ketza.util.array;
 
 import java.util.function.BiFunction;
 
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.amat.basic.serializer.InputDeserializerFactory;
 import weliyek.amat.basic.serializer.InputSerializationEngine;
 import weliyek.amat.basic.serializer.WkSzPrimitiveArraySerializerReader;
 
 public class PrimitiveArrayDeserializerFactory<
                         X extends PrimitiveArrayWrapper<?,?>,
-                        QC extends SequenceReadingRuntimeControl<?,?,?>,
+                        QC extends WkSzSequenceReadingRuntimeControl<?,?,?>,
                         O extends WkSzPrimitiveArraySerializerReader<X,?,?,?,?>>
   extends InputDeserializerFactory<X, QC, O>
 {

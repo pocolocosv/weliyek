@@ -20,11 +20,11 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
@@ -32,9 +32,9 @@ import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 public final class WkSzSignedByteReader
         implements WkSzNumberReader<
                         Byte,
-                        OperationSettings,
-                        DeserializingRuntime<WkSzInputBytestream>,
-                        DeserializingResult<Byte>,
+                        WkSzOperationSettings,
+                        WkSzReadingRuntime<WkSzInputBytestream>,
+                        WkSzReadingResult<Byte>,
                         WkSzSignedByte>
 {
 
@@ -45,7 +45,7 @@ public final class WkSzSignedByteReader
 
     WkSzSignedByteReader(
       int index,
-      OperationSettings settings,
+      WkSzOperationSettings settings,
       WkSzInputBytestreamBase<?> parentBytestream,
       WkSzPacketReaderFieldCore<Byte,?,WkSzSignedByte,?,?,?> readingfieldCore,
       WkSzSimplifiedNumberSerializerDefinitionCore<
@@ -61,17 +61,17 @@ public final class WkSzSignedByteReader
     }
 
     @Override
-    public OperationSettings settings() {
+    public WkSzOperationSettings settings() {
       return this.operationCore.settings();
     }
 
     @Override
-    public DeserializingRuntime<WkSzInputBytestream> dashboard() {
+    public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
       return this.operationCore.getRuntimeControl().asRuntime();
     }
 
     @Override
-    public Optional<DeserializingResult<Byte>> result() {
+    public Optional<WkSzReadingResult<Byte>> result() {
       return this.operationCore.result();
     }
 

@@ -18,12 +18,12 @@
 package weliyek.amat.base.output;
 
 public class BasicWritingResult
-        implements SerializingResult
+        implements WkSzWritingResult
 {
 
   private static final BasicWritingResult INSTANCE = new BasicWritingResult(null);
 
-  public static SerializingResult empty(WkSzPacketWriterOperation<?,?,?,?,?> operation) {
+  public static WkSzWritingResult empty(WkSzPacketWriterOperation<?,?,?,?,?> operation) {
     return INSTANCE;
   }
 

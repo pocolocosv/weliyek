@@ -20,9 +20,9 @@ package weliyek.amat2.protocol.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.WkSzOperationSettings;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterField;
@@ -39,45 +39,45 @@ import weliyek.amat.basic.number.WkSzSignedLittleEndianIntegerWriter;
 public class PrimitivesGroupListFieldSerializer
     implements DynamicCollectionFieldSerializer<
                         PrimitivesGroupList,
-                        OperationSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         PrimitivesGroupListField,
                         Integer,
                         WkSzSignedLittleEndianIntegerWriter,
                         WkSzSignedLittleEndianInteger,
                         PrimitivesGroup,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupField,
                         PrimitivesGroupSerializer,
-                        OperationSettings>
+                        WkSzOperationSettings>
 {
 
     final SimplifiedDynamicCollectionFieldSerializer<
                         PrimitivesGroupList,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupListFieldSerializer,
                         PrimitivesGroupListField,
                         Integer,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         WkSzSignedLittleEndianIntegerWriter,
                         WkSzSignedLittleEndianInteger,
                         PrimitivesGroup,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupField,
                         PrimitivesGroupSerializer,
-                        OperationSettings> writingCore;
+                        WkSzOperationSettings> writingCore;
 
     PrimitivesGroupListFieldSerializer(
       int index,
       PrimitivesGroupList serializable,
-      OperationSettings settings,
+      WkSzOperationSettings settings,
       WkSzOutputBytestreamBase<?> parentBytestream,
       WkSzPacketWriterFieldCore<PrimitivesGroupList, ?, PrimitivesGroupListField, ?, ?, ?>
         serializerpacketCore,
-      SimplifiedDynamicCollectionDefinitionCore<PrimitivesGroupList, ?, ?, ?, OperationSettings, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, Integer, ?, ?, ?, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, PrimitivesGroup, ?, ?, ?, OperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, ?, ?, OperationSettings, ?>
+      SimplifiedDynamicCollectionDefinitionCore<PrimitivesGroupList, ?, ?, ?, WkSzOperationSettings, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, Integer, ?, ?, ?, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, PrimitivesGroup, ?, ?, ?, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, ?, ?, WkSzOperationSettings, ?>
         definitionCore) {
-      writingCore = new SimplifiedDynamicCollectionFieldSerializer<PrimitivesGroupList, OperationSettings, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, Integer, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, PrimitivesGroup, OperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, OperationSettings>(
+      writingCore = new SimplifiedDynamicCollectionFieldSerializer<PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, WkSzOperationSettings>(
             index, serializable, settings, parentBytestream, serializerpacketCore, definitionCore, this);
     }
 
@@ -90,7 +90,7 @@ public class PrimitivesGroupListFieldSerializer
 
     @Override
     public
-    WkSzPacketWriterSubfield<PrimitivesGroupList, VariableSizeCollectionField<PrimitivesGroupList, ?, OperationSettings, PrimitivesGroup, ?, ?, ?, OperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, ?>, VariableSizeCollectionFieldSerializer<PrimitivesGroupList, OperationSettings, PrimitivesGroup, OperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer>>
+    WkSzPacketWriterSubfield<PrimitivesGroupList, VariableSizeCollectionField<PrimitivesGroupList, ?, WkSzOperationSettings, PrimitivesGroup, ?, ?, ?, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, ?>, VariableSizeCollectionFieldSerializer<PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer>>
     variableSequence() {
       return this.writingCore.variableSequence();
     }
@@ -101,17 +101,17 @@ public class PrimitivesGroupListFieldSerializer
     }
 
     @Override
-    public OperationSettings settings() {
+    public WkSzOperationSettings settings() {
       return this.writingCore.settings();
     }
 
     @Override
-    public SerializingRuntime<WkSzOutputBytestream> dashboard() {
+    public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
       return this.writingCore.dashboard();
     }
 
     @Override
-    public Optional<SerializingResult> result() {
+    public Optional<WkSzWritingResult> result() {
       return this.writingCore.result();
     }
 

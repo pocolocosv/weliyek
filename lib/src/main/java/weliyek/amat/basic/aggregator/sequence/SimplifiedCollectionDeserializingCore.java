@@ -19,30 +19,30 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.serialization.WkSzDefinition;
 
 public final class SimplifiedCollectionDeserializingCore<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
-                                        SequenceReadingRuntime<WkSzInputBytestream>,
-                                        DeserializingResult<T>,
+                                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                                        WkSzReadingResult<T>,
                                         XD,
                                         ET,EXD,EXO>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>>
     extends CollectionAndElementsFieldDeserializerCore<
@@ -50,12 +50,12 @@ public final class SimplifiedCollectionDeserializingCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        SequenceReadingRuntime<WkSzInputBytestream>,
-                        SequenceReadingRuntimeControl<
+                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                        WkSzSequenceReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          SequenceReadingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<T>,
+                          WkSzSequenceReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<T>,
                         XD,
                         XO,
                         SimplifiedCollectionDeserializingCore<T,XS,XD,XO,ET,EXS,EXD,EXO>,

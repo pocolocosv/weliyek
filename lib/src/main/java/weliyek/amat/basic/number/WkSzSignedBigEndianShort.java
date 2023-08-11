@@ -20,8 +20,7 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
@@ -30,6 +29,7 @@ import weliyek.amat2.protocol.filter.FieldTester;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class WkSzSignedBigEndianShort
     implements WkSzNumberDefinition<
@@ -39,11 +39,11 @@ public class WkSzSignedBigEndianShort
 
   public static WkSzStruct<
                       Short,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       WkSzSignedBigEndianShort,
                       WkSzSignedBigEndianShortReader,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       WkSzSignedBigEndianShort,
                       WkSzSignedBigEndianShortWriter,
                       WkSzOutputBytestreamBase<?>,
@@ -58,11 +58,11 @@ public class WkSzSignedBigEndianShort
 
   public static WkSzDefinitionCore<
                       Short,
-                      OperationSettings,?,?,
+                      WkSzOperationSettings,?,?,
                       WkSzSignedBigEndianShort,
                       WkSzSignedBigEndianShortReader,
                       WkSzInputBytestreamBase<?>,
-                      OperationSettings,?,?,
+                      WkSzOperationSettings,?,?,
                       WkSzSignedBigEndianShort,
                       WkSzSignedBigEndianShortWriter,
                       WkSzOutputBytestreamBase<?>,

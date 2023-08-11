@@ -17,10 +17,10 @@
  */
 package weliyek.ketza.util.array;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.dynamic.sequence.WkSzVariableSizeSequenceDefinition;
@@ -31,9 +31,9 @@ import weliyek.amat.basic.sequence.WkSzSequenceWriter;
 
 public interface DynamicSequenceSerializing<
                         T,
-                        YS extends OperationSettings,
-                        YQ extends SerializingRuntime<?>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzWritingRuntime<?>,
+                        YR extends WkSzWritingResult,
                         D extends WkSzDynamicSequenceDefinition<T,?,?,?,?>,
                         ZY extends Number,
                         ZYO extends WkSzNumberWriter<ZY,?,?,?,ZD>,

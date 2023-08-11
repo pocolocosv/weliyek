@@ -22,21 +22,21 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.serializer.OutputSerializationEngine;
 import weliyek.serialization.WkSzOperationException;
 
 public abstract class BasicPrimitiveSerializerEngine<T extends Number>
     extends OutputSerializationEngine<
                         T,
-                        WritingRuntimeControl<?,?,?>,
+                        WkSzWritingRuntimeControl<?,?,?>,
                         WkSzNumberWriter<T,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(BasicPrimitiveSerializerEngine.class);
 
   protected BasicPrimitiveSerializerEngine(
-    WritingRuntimeControl<?,?,?> runtimeControl,
+    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
     WkSzNumberWriter<T,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

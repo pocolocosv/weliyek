@@ -17,20 +17,20 @@
  */
 package weliyek.amat.basic.number;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
 import weliyek.amat.basic.serializer.WkSzSerializerWriterCore;
 
 public abstract class WkSzNumberWriterCore<
                         T extends Number,
-                        YS extends OperationSettings,
-                        YQ extends SerializingRuntime<?>,
-                        YQC extends WritingRuntimeControl<?,?,YQ>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzWritingRuntime<?>,
+                        YQC extends WkSzWritingRuntimeControl<?,?,YQ>,
+                        YR extends WkSzWritingResult,
                         YO extends WkSzNumberWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSzNumberWriterCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSzNumberDefinition<T,?>,

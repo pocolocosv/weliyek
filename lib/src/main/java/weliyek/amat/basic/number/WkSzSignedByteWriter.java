@@ -20,11 +20,11 @@ package weliyek.amat.basic.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
@@ -32,9 +32,9 @@ import weliyek.amat.base.output.WkSzPacketWriterSubfield;
 public final class WkSzSignedByteWriter
     implements WkSzNumberWriter<
                     Byte,
-                    OperationSettings,
-                    SerializingRuntime<WkSzOutputBytestream>,
-                    SerializingResult,
+                    WkSzOperationSettings,
+                    WkSzWritingRuntime<WkSzOutputBytestream>,
+                    WkSzWritingResult,
                     WkSzSignedByte>
 {
 
@@ -44,7 +44,7 @@ public final class WkSzSignedByteWriter
                     WkSzSignedByte> newCore(
     int index,
     Byte serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<Byte,?,WkSzSignedByte,?,?,?> writingfieldCore,
     WkSzSimplifiedNumberSerializerDefinitionCore<
@@ -66,7 +66,7 @@ public final class WkSzSignedByteWriter
   WkSzSignedByteWriter(
     int index,
     Byte serializable,
-    OperationSettings settings,
+    WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<Byte,?,WkSzSignedByte,?,?,?> writingfieldCore,
     WkSzSimplifiedNumberSerializerDefinitionCore<
@@ -88,17 +88,17 @@ public final class WkSzSignedByteWriter
   }
 
   @Override
-  public OperationSettings settings() {
+  public WkSzOperationSettings settings() {
     return this.writingCore.settings();
   }
 
   @Override
-  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.writingCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.writingCore.result();
   }
 

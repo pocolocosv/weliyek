@@ -21,54 +21,54 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.output.WkSzPacketWriterField;
 import weliyek.amat.base.output.WkSzPacketWriterFieldCore;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.base.output.WkSzPacketWriterSubfield;
-import weliyek.amat.basic.sequence.OptionalLengthSettings;
+import weliyek.amat.basic.sequence.WkSzOptionalLengthOperationSettings;
 import weliyek.ketza.util.array.ByteArrayWrapper;
 import weliyek.ketza.util.array.VariableSizeByteArray;
 import weliyek.ketza.util.array.VariableSizeByteArraySerializing;
 
 public class StringWithVariableLengthBytesSerializing
     implements WkSzStringFromBytesWriter<
-                        OptionalLengthSettings,
-                        SerializingRuntime<WkSzOutputBytestream>,
-                        SerializingResult,
+                        WkSzOptionalLengthOperationSettings,
+                        WkSzWritingRuntime<WkSzOutputBytestream>,
+                        WkSzWritingResult,
                         StringWithVariableLengthBytes,
                         VariableSizeByteArray,
                         VariableSizeByteArraySerializing>
 {
 
   final SimpleStringFromBytesWritingCore<
-                        OptionalLengthSettings,
+                        WkSzOptionalLengthOperationSettings,
                         StringWithVariableLengthBytesSerializing,
                         StringWithVariableLengthBytes,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         VariableSizeByteArraySerializing,
                         VariableSizeByteArray> operationCore;
 
   StringWithVariableLengthBytesSerializing(
     int index,
     String serializable,
-    OptionalLengthSettings settings,
+    WkSzOptionalLengthOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
       String,?,StringWithVariableLengthBytes,?,?,?> serializingfieldCore,
     SimplifiedStringFromBytesCore<
-      ?,?,?,OptionalLengthSettings,StringWithVariableLengthBytesSerializing,
-      StringWithVariableLengthBytes,?,?,?,OperationSettings,
+      ?,?,?,WkSzOptionalLengthOperationSettings,StringWithVariableLengthBytesSerializing,
+      StringWithVariableLengthBytes,?,?,?,WkSzOperationSettings,
       VariableSizeByteArraySerializing,VariableSizeByteArray,?,
       ? extends StringWithVariableLengthBytes> definitionCore) {
     this.operationCore = new SimpleStringFromBytesWritingCore<
-                                OptionalLengthSettings,
+                                WkSzOptionalLengthOperationSettings,
                                 StringWithVariableLengthBytesSerializing,
                                 StringWithVariableLengthBytes,
-                                OperationSettings,
+                                WkSzOperationSettings,
                                 VariableSizeByteArraySerializing,
                                 VariableSizeByteArray>(
                                     index,
@@ -93,17 +93,17 @@ public class StringWithVariableLengthBytesSerializing
   }
 
   @Override
-  public OptionalLengthSettings settings() {
+  public WkSzOptionalLengthOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public SerializingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<SerializingResult> result() {
+  public Optional<WkSzWritingResult> result() {
     return this.operationCore.result();
   }
 

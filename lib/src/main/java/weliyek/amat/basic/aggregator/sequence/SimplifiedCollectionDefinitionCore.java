@@ -22,56 +22,56 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.BasicReadingResult;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.BasicWritingResult;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
+import weliyek.amat.base.output.WkSzWritingResult;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.basic.sequence.BasicSequenceReadingRuntime;
-import weliyek.amat.basic.sequence.BasicSequenceWritingRuntime;
+import weliyek.amat.basic.sequence.WkSzBasicSequenceReadingRuntime;
+import weliyek.amat.basic.sequence.WkSzBasicSequenceWritingRuntime;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
-import weliyek.amat.basic.sequence.SequenceWritingRuntime;
-import weliyek.amat.basic.sequence.SequenceWritingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntime;
+import weliyek.amat.basic.sequence.WkSzSequenceWritingRuntimeControl;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class SimplifiedCollectionDefinitionCore<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
-                                        SequenceReadingRuntime<WkSzInputBytestream>,
-                                        DeserializingResult<T>,
+                                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
+                                        WkSzReadingResult<T>,
                                         XD,
                                         ET,EXD,EXO>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,
                                         YS,
-                                        SequenceWritingRuntime<WkSzOutputBytestream>,
-                                        SerializingResult,
+                                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
+                                        WkSzWritingResult,
                                         YD,
                                         ET,EYD,EYO>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
-                        EYS extends OperationSettings,
+                        EYS extends WkSzOperationSettings,
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         ED extends WkSzDefinition<ET,?>,
@@ -81,22 +81,22 @@ public class SimplifiedCollectionDefinitionCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        SequenceReadingRuntimeControl<
+                        WkSzSequenceReadingRuntimeControl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          SequenceReadingRuntime<WkSzInputBytestream>>,
-                        DeserializingResult<T>,
+                          WkSzSequenceReadingRuntime<WkSzInputBytestream>>,
+                        WkSzReadingResult<T>,
                         XD,
                         XO,
                         WkSzInputBytestreamBase<?>,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        SequenceWritingRuntimeControl<
+                        WkSzSequenceWritingRuntimeControl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          SequenceWritingRuntime<WkSzOutputBytestream>>,
-                        SerializingResult,
+                          WkSzSequenceWritingRuntime<WkSzOutputBytestream>>,
+                        WkSzWritingResult,
                         YD,
                         YO,
                         WkSzOutputBytestreamBase<?>,
@@ -134,10 +134,10 @@ public class SimplifiedCollectionDefinitionCore<
     Class<T> serializableClass) {
     super(
           componentCore,
-          BasicSequenceReadingRuntime::new,
+          WkSzBasicSequenceReadingRuntime::new,
           BasicReadingResult::new,
           readingOpFactory,
-          BasicSequenceWritingRuntime::new,
+          WkSzBasicSequenceWritingRuntime::new,
           BasicWritingResult::empty,
           writingOpFactory,
           elementsLabel,

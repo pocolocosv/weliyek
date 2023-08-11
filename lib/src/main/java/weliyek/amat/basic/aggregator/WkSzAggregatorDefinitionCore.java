@@ -25,48 +25,48 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.OperationSubsegmentSettingsFactory;
-import weliyek.amat.base.ProtocolDefinitionFactory;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.PacketInputFieldReadingFactory;
-import weliyek.amat.base.input.ReadingRuntimeControl;
+import weliyek.amat.base.input.WkSzReadingRuntimeControl;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.Disaggregator;
 import weliyek.amat.base.output.PacketOutputFieldWritingFactory;
 import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WritingRuntimeControl;
+import weliyek.amat.base.output.WkSzWritingRuntimeControl;
+import weliyek.serialization.ProtocolDefinitionFactory;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.base.WkSzDefinitionCore;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public abstract class WkSzAggregatorDefinitionCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends ReadingRuntimeControl<XB,XBC,?>,
-                        XR extends DeserializingResult<T>,
+                        XQC extends WkSzReadingRuntimeControl<XB,XBC,?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzAggregatorDefinition<T,?>,
                         XO extends WkSzAggregatorReader<
-                                        T,XS,? extends DeserializingRuntime<XB>,XR,XD>,
+                                        T,XS,? extends WkSzReadingRuntime<XB>,XR,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WritingRuntimeControl<YB,YBC,?>,
-                        YR extends SerializingResult,
+                        YQC extends WkSzWritingRuntimeControl<YB,YBC,?>,
+                        YR extends WkSzWritingResult,
                         YD extends WkSzAggregatorDefinition<T,?>,
                         YO extends WkSzAggregatorWriter<
-                                        T,YS,? extends SerializingRuntime<YB>,YR,YD>,
+                                        T,YS,? extends WkSzWritingRuntime<YB>,YR,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         D extends WkSzAggregatorDefinition<T,XO>,
                         DC extends WkSzAggregatorDefinitionCore<
@@ -129,10 +129,10 @@ public abstract class WkSzAggregatorDefinitionCore<
   }
 
   public <ST,
-          SXS extends OperationSettings,
+          SXS extends WkSzOperationSettings,
           SXD extends WkSzDefinition<ST,?>,
           SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>,
-          SYS extends OperationSettings,
+          SYS extends WkSzOperationSettings,
           SYD extends WkSzDefinition<ST,?>,
           SYO extends WkSzPacketWriterOperation<ST,SYS,?,?,SYD>,
           SD extends WkSzDefinition<ST,?>>
@@ -159,10 +159,10 @@ public abstract class WkSzAggregatorDefinitionCore<
   }
 
   public <ST,
-          SXS extends OperationSettings,
+          SXS extends WkSzOperationSettings,
           SXD extends WkSzDefinition<ST,?>,
           SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>,
-          SYS extends OperationSettings,
+          SYS extends WkSzOperationSettings,
           SYD extends WkSzDefinition<ST,?>,
           SYO extends WkSzPacketWriterOperation<ST,SYS,?,?,SYD>,
           SD extends WkSzDefinition<ST,?>>
@@ -190,10 +190,10 @@ public abstract class WkSzAggregatorDefinitionCore<
   }
 
   public <ST,
-          SXS extends OperationSettings,
+          SXS extends WkSzOperationSettings,
           SXD extends WkSzDefinition<ST,?>,
           SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>,
-          SYS extends OperationSettings,
+          SYS extends WkSzOperationSettings,
           SYD extends WkSzDefinition<ST,?>,
           SYO extends WkSzPacketWriterOperation<ST,SYS,?,?,SYD>,
           SD extends WkSzDefinition<ST,?>>
@@ -221,10 +221,10 @@ public abstract class WkSzAggregatorDefinitionCore<
   }
 
   private <ST,
-           SXS extends OperationSettings,
+           SXS extends WkSzOperationSettings,
            SXD extends WkSzDefinition<ST,?>,
            SXO extends WkSzPacketReaderOperation<ST,SXS,?,?,SXD>,
-           SYS extends OperationSettings,
+           SYS extends WkSzOperationSettings,
            SYD extends WkSzDefinition<ST,?>,
            SYO extends WkSzPacketWriterOperation<ST,SYS,?,?,SYD>,
            SD extends WkSzDefinition<ST,?>>

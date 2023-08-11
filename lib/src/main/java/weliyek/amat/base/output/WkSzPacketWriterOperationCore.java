@@ -23,15 +23,15 @@ import java.util.Optional;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
 import weliyek.serialization.base.WkSzDefinitionCore;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.PacketOperationSegmentCore;
 
 public abstract class WkSzPacketWriterOperationCore<
                         T,
-                        YS extends OperationSettings,
-                        YQ extends SerializingRuntime<?>,
-                        YQC extends WritingRuntimeControl<?,?,YQ>,
-                        YR extends SerializingResult,
+                        YS extends WkSzOperationSettings,
+                        YQ extends WkSzWritingRuntime<?>,
+                        YQC extends WkSzWritingRuntimeControl<?,?,YQ>,
+                        YR extends WkSzWritingResult,
                         YO extends WkSzPacketWriterOperation<T,YS,YQ,YR,YD>,
                         YOC extends WkSzPacketWriterOperationCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSzDefinition<T,?>,

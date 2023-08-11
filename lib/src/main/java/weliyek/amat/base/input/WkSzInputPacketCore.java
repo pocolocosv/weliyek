@@ -20,29 +20,29 @@ package weliyek.amat.base.input;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReader;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat2.protocol.filter.Filter;
 import weliyek.amat2.protocol.filter.FilterResults;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public final class WkSzInputPacketCore<
                         T,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XD extends WkSzDefinition<T,?>,
-                        XO extends WkSzPacketReaderOperation<T,XS,?,? extends DeserializingResult<T>,XD>,
+                        XO extends WkSzPacketReaderOperation<T,XS,?,? extends WkSzReadingResult<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>>
     extends WkSzPacketReaderFieldCore<
                         T, XS, XD, XO, AXBC,
-                        WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>>
+                        WkSzAggregatorReader<?,?,? extends WkSzReadingRuntime<?>,?,?>>
     implements WkSzInputPacket<T, XD, XO>
 {
 
   public static class ReadingPacketParameters<
-                        S extends OperationSettings,
+                        S extends WkSzOperationSettings,
                         ABC extends WkSzInputBytestreamBase<?>>
   {
 
@@ -126,7 +126,7 @@ public Optional<WkSzPacketOperation<?,?,?,?,?>> previousProcessingSteapResult() 
   }
 
   @Override
-  protected WkSzAggregatorReaderCore<?,?,?,AXBC,?,?,?,?,WkSzAggregatorReader<?,?,? extends DeserializingRuntime<?>,?,?>,?,?,?>
+  protected WkSzAggregatorReaderCore<?,?,?,AXBC,?,?,?,?,WkSzAggregatorReader<?,?,? extends WkSzReadingRuntime<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

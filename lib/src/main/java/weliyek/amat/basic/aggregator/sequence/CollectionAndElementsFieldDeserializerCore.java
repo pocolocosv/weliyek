@@ -19,35 +19,35 @@ package weliyek.amat.basic.aggregator.sequence;
 
 import java.util.Collection;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderFieldCore;
 import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.input.DeserializingResult;
+import weliyek.amat.base.input.WkSzReadingResult;
 import weliyek.amat.base.input.WkSzPacketReaderSubfield;
 import weliyek.amat.base.input.WkSzPacketReaderSubfieldCore;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.basic.aggregator.WkSzAggregatorReaderCore;
 import weliyek.amat.basic.sequence.CollectionAndElementsFieldDeserializer;
-import weliyek.amat.basic.sequence.SequenceReadingRuntimeControl;
+import weliyek.amat.basic.sequence.WkSzSequenceReadingRuntimeControl;
 import weliyek.serialization.WkSzDefinition;
 
 public abstract class CollectionAndElementsFieldDeserializerCore<
                         T extends Collection<ET>,
-                        XS extends OperationSettings,
+                        XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends SequenceReadingRuntime<XB>,
-                        XQC extends SequenceReadingRuntimeControl<XB,XBC,XQ>,
-                        XR extends DeserializingResult<T>,
+                        XQ extends WkSzSequenceReadingRuntime<XB>,
+                        XQC extends WkSzSequenceReadingRuntimeControl<XB,XBC,XQ>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<T,XS,XQ,XR,XD,ET,EXD,EXO>,
                         XOC extends CollectionAndElementsFieldDeserializerCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXBC,ET,EXS,EXD,EXO,DC>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         ET,
-                        EXS extends OperationSettings,
+                        EXS extends WkSzOperationSettings,
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         DC extends CollectionAndElementsFieldDefinitionCore<

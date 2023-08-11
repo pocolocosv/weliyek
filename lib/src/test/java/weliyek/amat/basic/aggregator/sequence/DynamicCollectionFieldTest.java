@@ -28,18 +28,18 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.DeserializingRuntime;
+import weliyek.amat.base.WkSzOperationSettings;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzReadingRuntime;
 import weliyek.amat.base.input.WkSzInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.input.WkSzInputPacket;
 import weliyek.amat.base.output.WkSzOutputPacket;
-import weliyek.amat.base.output.SerializingResult;
-import weliyek.amat.base.output.SerializingRuntime;
+import weliyek.amat.base.output.WkSzWritingResult;
+import weliyek.amat.base.output.WkSzWritingRuntime;
 import weliyek.amat.base.output.WkSzOutputBytestream;
 import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShort;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortWriter;
@@ -58,15 +58,15 @@ public class DynamicCollectionFieldTest
                                                                 Short.valueOf((short) 3));
   private static WkSzStruct<
                           List<Short>,
-                          OperationSettings,
-                          DynamicCollectionField<List<Short>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, VariableLengthSettings, ?>,
-                          DynamicCollectionFieldDeserializer<List<Short>, OperationSettings, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<List<Short>>, DynamicCollectionField<List<Short>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, VariableLengthSettings, ?>, Integer, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, VariableLengthSettings>,
+                          WkSzOperationSettings,
+                          DynamicCollectionField<List<Short>, WkSzOperationSettings, ?, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>,
+                          DynamicCollectionFieldDeserializer<List<Short>, WkSzOperationSettings, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<List<Short>>, DynamicCollectionField<List<Short>, WkSzOperationSettings, ?, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, Integer, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, WkSzVariableLengthOperationSettings>,
                           WkSzInputBytestreamBase<?>,
-                          OperationSettings,
-                          DynamicCollectionField<List<Short>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, OperationSettings>,
-                          DynamicCollectionFieldSerializer< List<Short>, OperationSettings, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<List<Short>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, OperationSettings>, Integer, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, OperationSettings>,
+                          WkSzOperationSettings,
+                          DynamicCollectionField<List<Short>, ?, WkSzOperationSettings, Integer, ?, ?, ?, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, WkSzOperationSettings>,
+                          DynamicCollectionFieldSerializer< List<Short>, WkSzOperationSettings, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<List<Short>, ?, WkSzOperationSettings, Integer, ?, ?, ?, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, WkSzOperationSettings>, Integer, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzOperationSettings>,
                           WkSzOutputBytestreamBase<?>,
-                          DynamicCollectionField<List<Short>, OperationSettings, OperationSettings, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianInteger, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, VariableLengthSettings, OperationSettings>>
+                          DynamicCollectionField<List<Short>, WkSzOperationSettings, WkSzOperationSettings, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianInteger, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, WkSzVariableLengthOperationSettings, WkSzOperationSettings>>
                               DYN_LIST_PACKET;
 
   @SuppressWarnings("unchecked")
@@ -74,41 +74,41 @@ public class DynamicCollectionFieldTest
   public static void setUpBeforeClass() throws Exception {
     DYN_LIST_PACKET = DynamicCollectionField.<
                           List<Short>,
-                          OperationSettings,
-                          OperationSettings,
+                          WkSzOperationSettings,
+                          WkSzOperationSettings,
                           Integer,
-                          OperationSettings,
+                          WkSzOperationSettings,
                           WkSzSignedLittleEndianIntegerReader,
                           WkSzSignedLittleEndianInteger,
-                          OperationSettings,
+                          WkSzOperationSettings,
                           WkSzSignedLittleEndianIntegerWriter,
                           WkSzSignedLittleEndianInteger,
                           WkSzSignedLittleEndianInteger,
                           Short,
-                          OperationSettings,
+                          WkSzOperationSettings,
                           WkSzSignedBigEndianShort,
                           WkSzSignedBigEndianShortReader,
-                          OperationSettings,
+                          WkSzOperationSettings,
                           WkSzSignedBigEndianShort,
                           WkSzSignedBigEndianShortWriter,
                           WkSzSignedBigEndianShort,
-                          VariableLengthSettings,
-                          OperationSettings>newPacketStructure(
+                          WkSzVariableLengthOperationSettings,
+                          WkSzOperationSettings>newPacketStructure(
                               "DYN_SHORT_LIST",
                               0,
                               ORIGINAL_LIST.size()+1,
                               "SIZE",
-                              OperationSettings::none,
-                              OperationSettings::none,
+                              WkSzOperationSettings::none,
+                              WkSzOperationSettings::none,
                               Integer::valueOf,
                               WkSzSignedLittleEndianInteger::newCore,
                               "SHORT_LIST",
-                              (i,yo) -> VariableLengthSettings.withLength(yo.size().field().get().firstOperation().get().result().get().deserialized().get().intValue()),
-                              OperationSettings::none,
+                              (i,yo) -> WkSzVariableLengthOperationSettings.withLength(yo.size().field().get().firstOperation().get().result().get().deserialized().get().intValue()),
+                              WkSzOperationSettings::none,
                               "SHORT",
                               WkSzSignedBigEndianShort::newCore,
-                              OperationSettings::none,
-                              OperationSettings::none,
+                              WkSzOperationSettings::none,
+                              WkSzOperationSettings::none,
                               (l) -> l,
                               (Class<List<Short>>)(Class<?>)List.class);
 
@@ -129,15 +129,15 @@ public class DynamicCollectionFieldTest
   @Test
   public void test() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
-    WkSzOutputPacket<List<Short>, DynamicCollectionField<List<Short>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, OperationSettings>, DynamicCollectionFieldSerializer<List<Short>, OperationSettings, SerializingRuntime<WkSzOutputBytestream>, SerializingResult, DynamicCollectionField<List<Short>, ?, OperationSettings, Integer, ?, ?, ?, OperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, OperationSettings>, Integer, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, OperationSettings>>
-      dynlistSerializer = DYN_LIST_PACKET.newOutputPacket(ORIGINAL_LIST, OperationSettings.EMPTY, outputstream);
+    WkSzOutputPacket<List<Short>, DynamicCollectionField<List<Short>, ?, WkSzOperationSettings, Integer, ?, ?, ?, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, WkSzOperationSettings>, DynamicCollectionFieldSerializer<List<Short>, WkSzOperationSettings, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<List<Short>, ?, WkSzOperationSettings, Integer, ?, ?, ?, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, ?, ?, WkSzOperationSettings>, Integer, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzOperationSettings>>
+      dynlistSerializer = DYN_LIST_PACKET.newOutputPacket(ORIGINAL_LIST, WkSzOperationSettings.EMPTY, outputstream);
 
     while(dynlistSerializer.isInProgress()) {
       dynlistSerializer.processBytestream();
     }
 
-    WkSzInputPacket<List<Short>, DynamicCollectionField<List<Short>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, VariableLengthSettings, ?>, DynamicCollectionFieldDeserializer<List<Short>, OperationSettings, DeserializingRuntime<WkSzInputBytestream>, DeserializingResult<List<Short>>, DynamicCollectionField<List<Short>, OperationSettings, ?, Integer, OperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, VariableLengthSettings, ?>, Integer, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, Short, OperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, VariableLengthSettings>>
-      dynlistDeserializer = DYN_LIST_PACKET.newInputPacket(OperationSettings.EMPTY, outputstream.inputStream());
+    WkSzInputPacket<List<Short>, DynamicCollectionField<List<Short>, WkSzOperationSettings, ?, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, DynamicCollectionFieldDeserializer<List<Short>, WkSzOperationSettings, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<List<Short>>, DynamicCollectionField<List<Short>, WkSzOperationSettings, ?, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, Integer, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, WkSzVariableLengthOperationSettings>>
+      dynlistDeserializer = DYN_LIST_PACKET.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
 
     while(dynlistDeserializer.isInProgress()) {
       dynlistDeserializer.processBytestream();

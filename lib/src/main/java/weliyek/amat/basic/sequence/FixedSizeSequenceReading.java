@@ -17,16 +17,16 @@
  */
 package weliyek.amat.basic.sequence;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzPacketReaderField;
-import weliyek.amat.base.input.DeserializingResult;
-import weliyek.amat.base.input.SequenceReadingRuntime;
+import weliyek.amat.base.input.WkSzReadingResult;
+import weliyek.amat.base.input.WkSzSequenceReadingRuntime;
 
 public interface FixedSizeSequenceReading<
                         X,
-                        S extends OperationSettings,
-                        Q extends SequenceReadingRuntime<?>,
-                        R extends DeserializingResult<X>,
+                        S extends WkSzOperationSettings,
+                        Q extends WkSzSequenceReadingRuntime<?>,
+                        R extends WkSzReadingResult<X>,
                         D extends WkSzFixedSizeSequenceDefinition<X,?>>
     extends WkSzSequenceReader<X, S, Q, R, D>,
             WkSzFixedSizeSequenceOperation<

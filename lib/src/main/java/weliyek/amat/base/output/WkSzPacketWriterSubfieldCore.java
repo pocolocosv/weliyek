@@ -19,8 +19,7 @@ package weliyek.amat.base.output;
 
 import java.util.function.Predicate;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.WkSzPacketSubfieldCore;
 import weliyek.amat.basic.aggregator.WkSzAggregatorDefinition;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
@@ -28,16 +27,17 @@ import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.amat.basic.aggregator.WkSzSubcomponentCore;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzStructComponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class WkSzPacketWriterSubfieldCore<
                         ST,
-                        SYS extends OperationSettings,
+                        SYS extends WkSzOperationSettings,
                         SYD extends WkSzDefinition<ST,?>,
                         SYO extends WkSzPacketWriterOperation<ST,SYS,?,?,SYD>,
                         T,
                         YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkSzAggregatorDefinition<T,?>,
-                        YO extends WkSzAggregatorWriter<T,?,? extends SerializingRuntime<?>,?,YD>>
+                        YO extends WkSzAggregatorWriter<T,?,? extends WkSzWritingRuntime<?>,?,YD>>
     extends WkSzPacketSubfieldCore<
                         SYS, SYD,
                         WkSzSubcomponentCore<ST,?,?,?,T,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD>,

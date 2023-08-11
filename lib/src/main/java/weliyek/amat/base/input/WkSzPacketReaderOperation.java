@@ -19,16 +19,16 @@ package weliyek.amat.base.input;
 
 import java.util.List;
 
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat2.protocol.filter.WkSzFilterableSegment;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
 
 public interface WkSzPacketReaderOperation<
                         T,
-                        XS extends OperationSettings,
-                        XQ extends DeserializingRuntime<?>,
-                        XR extends DeserializingResult<T>,
+                        XS extends WkSzOperationSettings,
+                        XQ extends WkSzReadingRuntime<?>,
+                        XR extends WkSzReadingResult<T>,
                         XD extends WkSzDefinition<T,?>>
         extends WkSzPacketOperation<
                         XS, XQ, XR, XD,

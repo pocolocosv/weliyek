@@ -20,28 +20,28 @@ package weliyek.amat.base.output;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzStructComponentCoreBase;
-import weliyek.amat.base.OperationSettings;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriter;
 import weliyek.amat.basic.aggregator.WkSzAggregatorWriterCore;
 import weliyek.serialization.WkSzDefinition;
 import weliyek.serialization.WkSzPacketOperation;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public final class WkSzOutputPacketCore<
                         T,
-                        YS extends OperationSettings,
+                        YS extends WkSzOperationSettings,
                         YD extends WkSzDefinition<T,?>,
                         YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>>
     extends WkSzPacketWriterFieldCore<
                         T, YS, YD, YO, AYBC,
-                        WkSzAggregatorWriter<?,?,? extends SerializingRuntime<?>,?,?>>
+                        WkSzAggregatorWriter<?,?,? extends WkSzWritingRuntime<?>,?,?>>
     implements WkSzOutputPacket<T, YD, YO>
 {
 
   static public class WritingParameters<
                         Y,
-                        S extends OperationSettings,
+                        S extends WkSzOperationSettings,
                         AYB extends WkSzOutputBytestreamBase<?>>
   {
 
@@ -108,7 +108,7 @@ public Optional<WkSzPacketOperation<?,?,?,?,?>> previousProcessingSteapResult() 
   }
 
   @Override
-  protected WkSzAggregatorWriterCore<?,?,?,AYBC,?,?,?,?,WkSzAggregatorWriter<?,?,? extends SerializingRuntime<?>,?,?>,?,?,?>
+  protected WkSzAggregatorWriterCore<?,?,?,AYBC,?,?,?,?,WkSzAggregatorWriter<?,?,? extends WkSzWritingRuntime<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

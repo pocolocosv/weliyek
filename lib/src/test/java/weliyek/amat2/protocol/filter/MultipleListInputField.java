@@ -20,8 +20,7 @@ package weliyek.amat2.protocol.filter;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.OperationSettings;
-import weliyek.amat.base.WkSzStructComponentCoreBase;
+import weliyek.amat.base.WkSzOperationSettings;
 import weliyek.amat.base.input.WkSzCountingInputBytestream;
 import weliyek.amat.base.input.WkSzInputBytestreamBase;
 import weliyek.amat.base.output.WkSzCountingOutputBytestream;
@@ -29,12 +28,13 @@ import weliyek.amat.base.output.WkSzOutputBytestreamBase;
 import weliyek.amat.basic.aggregator.sequence.SimplifiedDynamicCollectionDefinitionCore;
 import weliyek.amat.basic.aggregator.sequence.VariableSizeCollectionField;
 import weliyek.amat.basic.aggregator.sequence.WkSzDynamicCollectionDefinition;
-import weliyek.amat.basic.dynamic.sequence.VariableLengthSettings;
+import weliyek.amat.basic.dynamic.sequence.WkSzVariableLengthOperationSettings;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShort;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortReader;
 import weliyek.amat.basic.number.WkSzSignedBigEndianShortWriter;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.base.WkSzStructComponentCoreBase;
 
 public class MultipleListInputField
     implements WkSzDynamicCollectionDefinition<
@@ -43,24 +43,24 @@ public class MultipleListInputField
                         MultipleListsWriting,
                         WkSzSignedBigEndianShort,
                         PrimitivesGroupList,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupListField,
                         PrimitivesGroupListFieldDeserializer,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         PrimitivesGroupListField,
                         PrimitivesGroupListFieldSerializer,
                         PrimitivesGroupListField,
-                        VariableLengthSettings,
-                        OperationSettings>
+                        WkSzVariableLengthOperationSettings,
+                        WkSzOperationSettings>
 {
 
   public static WkSzStruct<
                         MultipleLists,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         MultipleListInputField,
                         MultipleListReading,
                         WkSzInputBytestreamBase<?>,
-                        OperationSettings,
+                        WkSzOperationSettings,
                         MultipleListInputField,
                         MultipleListsWriting,
                         WkSzOutputBytestreamBase<?>,
@@ -75,53 +75,53 @@ public class MultipleListInputField
 
   private final SimplifiedDynamicCollectionDefinitionCore<
                       MultipleLists,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       MultipleListReading,
                       MultipleListInputField,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       MultipleListsWriting,
                       MultipleListInputField,
                       Short,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       WkSzSignedBigEndianShortReader,
                       WkSzSignedBigEndianShort,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       WkSzSignedBigEndianShortWriter,
                       WkSzSignedBigEndianShort,
                       WkSzSignedBigEndianShort,
                       PrimitivesGroupList,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       PrimitivesGroupListField,
                       PrimitivesGroupListFieldDeserializer,
-                      OperationSettings,
+                      WkSzOperationSettings,
                       PrimitivesGroupListField,
                       PrimitivesGroupListFieldSerializer,
                       PrimitivesGroupListField,
-                      VariableLengthSettings,
-                      OperationSettings,
+                      WkSzVariableLengthOperationSettings,
+                      WkSzOperationSettings,
                       MultipleListInputField> definitionCore;
 
   MultipleListInputField(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
       definitionCore = new SimplifiedDynamicCollectionDefinitionCore<
-                              MultipleLists, OperationSettings, MultipleListReading, MultipleListInputField, OperationSettings, MultipleListsWriting, MultipleListInputField, Short, OperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, OperationSettings, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, WkSzSignedBigEndianShort, PrimitivesGroupList, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, VariableLengthSettings, OperationSettings, MultipleListInputField>(
+                              MultipleLists, WkSzOperationSettings, MultipleListReading, MultipleListInputField, WkSzOperationSettings, MultipleListsWriting, MultipleListInputField, Short, WkSzOperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, WkSzOperationSettings, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort, WkSzSignedBigEndianShort, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, WkSzVariableLengthOperationSettings, WkSzOperationSettings, MultipleListInputField>(
                                   0, // minSize
                                   1024, // maxSize
                                   "SIZE", // sizeFieldLabel
-                                  OperationSettings::none, //sizeDeserializerSettingsFactory,
-                                  OperationSettings::none, //sizeSerializerSettingsFactory,
+                                  WkSzOperationSettings::none, //sizeDeserializerSettingsFactory,
+                                  WkSzOperationSettings::none, //sizeSerializerSettingsFactory,
                                   (i) -> Short.valueOf((short)i), //sizeValueFactory,
                                   WkSzSignedBigEndianShort::newCore,
                                   "VARLIST", //collectionAndElementsFieldLabel,
-                                  (i,axo) -> VariableLengthSettings.withLength(
+                                  (i,axo) -> WkSzVariableLengthOperationSettings.withLength(
                                                   axo.size().field().get()
                                                   .firstOperation().get()
                                                   .result().get()
                                                   .deserialized().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
-                                  OperationSettings::none, //collectionAndElementsSerializerSettingsFactory,
+                                  WkSzOperationSettings::none, //collectionAndElementsSerializerSettingsFactory,
                                   "PRIMITIVELIST", //elementFieldLabel,
                                   (pc) -> new PrimitivesGroupListField(pc).fieldCore,
-                                  OperationSettings::none, //elementDeserializerSettingsFactory,
-                                  OperationSettings::none, //elementSerializerSettingsFactory,
+                                  WkSzOperationSettings::none, //elementDeserializerSettingsFactory,
+                                  WkSzOperationSettings::none, //elementSerializerSettingsFactory,
                                   (i,xs,axb,xkc,xdc) -> new MultipleListReading(i,xs,axb,xkc,xdc).operationCore,
                                   (i,y,ys,ayb,ykc,ydc) -> new MultipleListsWriting(i,y,ys,ayb,ykc,ydc).operationCore,
                                   MultipleLists::new,
@@ -138,7 +138,7 @@ public class MultipleListInputField
 
   @Override
   public
-  WkSzStructSubcomponent<MultipleListReading, MultipleListsWriting, VariableSizeCollectionField<MultipleLists, VariableLengthSettings, OperationSettings, PrimitivesGroupList, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, OperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField>>
+  WkSzStructSubcomponent<MultipleListReading, MultipleListsWriting, VariableSizeCollectionField<MultipleLists, WkSzVariableLengthOperationSettings, WkSzOperationSettings, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField>>
   variableSequence() {
     return this.definitionCore.variableSequence();
   }

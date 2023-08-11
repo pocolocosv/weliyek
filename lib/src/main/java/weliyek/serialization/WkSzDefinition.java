@@ -20,8 +20,7 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.filter.FieldTester;
 
 public interface WkSzDefinition<
                         T,

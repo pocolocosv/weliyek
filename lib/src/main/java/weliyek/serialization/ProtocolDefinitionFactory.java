@@ -19,14 +19,6 @@ package weliyek.serialization;
 
 import java.util.function.Function;
 
-import weliyek.amat.base.WkSzOperationSettings;
-import weliyek.amat.base.input.WkSzInputBytestreamBase;
-import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.serialization.base.WkSzDefinitionCore;
-import weliyek.serialization.base.WkSzStructComponentCoreBase;
-
 public interface ProtocolDefinitionFactory<
                         T,
                         XS extends WkSzOperationSettings,

@@ -21,9 +21,6 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
-import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.output.WkSzPacketWriterOperation;
-
 /**
  * Handles a child {@link WkSzStructComponent} for a given data type {@link WkSzDefinition}.
  *  

@@ -20,10 +20,6 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.amat.base.WkSzCommonOperationRuntime;
-import weliyek.amat.base.WkSzOperationResult;
-import weliyek.amat.base.WkSzOperationSettings;
-
 /**
  * An operation is in charge of managing the data and logic needed to serialize
  * a particular type.

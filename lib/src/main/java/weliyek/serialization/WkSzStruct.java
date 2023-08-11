@@ -22,20 +22,9 @@ import java.io.OutputStream;
 import java.util.Objects;
 import java.util.function.Function;
 
-import weliyek.amat.base.input.WkSzPacketReaderOperation;
-import weliyek.amat.base.WkSzOperationSettings;
-import weliyek.amat.base.input.WkSzInputBytestreamBase;
-import weliyek.amat.base.input.WkSzInputPacket;
-import weliyek.amat.base.input.WkSzInputPacketCore;
-import weliyek.amat.base.input.WkSzInputPacketCore.ReadingPacketParameters;
-import weliyek.amat.base.output.WkSzOutputBytestreamBase;
-import weliyek.amat.base.output.WkSzOutputPacket;
-import weliyek.amat.base.output.WkSzOutputPacketCore;
-import weliyek.amat.base.output.WkSzOutputPacketCore.WritingParameters;
-import weliyek.amat.base.output.WkSzPacketWriterOperation;
-import weliyek.amat2.protocol.filter.Filter;
-import weliyek.serialization.base.WkSzDefinitionCore;
-import weliyek.serialization.base.WkSzStructComponentCoreBase;
+import weliyek.serialization.WkSzInputPacketCore.ReadingPacketParameters;
+import weliyek.serialization.WkSzOutputPacketCore.WritingParameters;
+import weliyek.serialization.filter.Filter;
 
 /**
  * Main type that holds all components that form a self contained struct which defines

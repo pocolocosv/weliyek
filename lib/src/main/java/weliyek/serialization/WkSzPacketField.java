@@ -20,8 +20,8 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.ketza.base.Completable;
-import weliyek.ketza.base.Enableable;
+import weliyek.Completable;
+import weliyek.Enableable;
 
 /**
  * Handles the serialization process of the associated {@link WkSzStructComponent}.

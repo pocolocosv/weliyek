@@ -19,7 +19,7 @@ package weliyek.serialization;
 
 import java.util.function.Predicate;
 
-import weliyek.amat2.protocol.filter.FieldTester;
+import weliyek.serialization.filter.FieldTester;
 
 /**
  * The main segment that defines the serialization rules for a given data type. It has also a

@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-import weliyek.base.WkException;
+import weliyek.WkException;
 
 /**
  * General exception for the serialization portion of the library.

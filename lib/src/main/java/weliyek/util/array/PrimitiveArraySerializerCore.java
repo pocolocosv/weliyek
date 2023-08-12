@@ -26,7 +26,7 @@ import weliyek.serialization.WkSzReadEngineFactory;
 import weliyek.serialization.WkSzWriteEngineFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.PrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
@@ -40,23 +40,23 @@ import weliyek.serialization.WkSzStructComponentCoreBase;
 import weliyek.serialization.WkSzWritingResult;
 
 public abstract class PrimitiveArraySerializerCore<
-                        T extends PrimitiveArrayWrapper<?, ?>,
+                        T extends WkPrimitiveArray<?, ?>,
                         XS extends WkSzOperationSettings,
                         XQC extends WkSzSequenceReadingRuntimeControl<?,?,?>,
                         XR extends WkSzReadingResult<T>,
-                        XD extends PrimitiveArraySerializerDefinition<T,XO>,
+                        XD extends WkSzPrimitiveArraySerializerDefinition<T,XO>,
                         XO extends WkSzPrimitiveArraySerializerReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSzOperationSettings,
                         YQC extends WkSzSequenceWritingRuntimeControl<?,?,?>,
                         YR extends WkSzWritingResult,
-                        YD extends PrimitiveArraySerializerDefinition<T,?>,
+                        YD extends WkSzPrimitiveArraySerializerDefinition<T,?>,
                         YO extends WkSzPrimitiveArraySerializerWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends PrimitiveArraySerializerDefinition<T,XO>,
+                        D extends WkSzPrimitiveArraySerializerDefinition<T,XO>,
                         DC extends PrimitiveArraySerializerCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSzSerializerDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements PrimitiveArraySerializerDefinition<T, XO>
+    implements WkSzPrimitiveArraySerializerDefinition<T, XO>
 {
 
   private final int serializationStepSize;

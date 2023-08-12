@@ -21,16 +21,16 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.util.array.IntArrayWrapper;
+import weliyek.util.array.WkIntArray;
 import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineBase;
 
 public abstract class WkSzIntArrayWrapperWriteEngine
-    extends WkSzBasicPrimitiveArrayWrapperWriteEngineBase<IntArrayWrapper, int[]>
+    extends WkSzBasicPrimitiveArrayWrapperWriteEngineBase<WkIntArray, int[]>
 {
 
   protected WkSzIntArrayWrapperWriteEngine(
     WkSzSequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    WkSzPrimitiveArraySerializerWriter<? extends IntArrayWrapper,?,?,?,?> writingOperation) {
+    WkSzPrimitiveArraySerializerWriter<? extends WkIntArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, Integer.BYTES);
   }
 

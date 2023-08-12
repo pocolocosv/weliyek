@@ -21,21 +21,21 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.util.array.LongArrayWrapper;
+import weliyek.util.array.WkLongArray;
 import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
 
 public final class BigEndianLongArrayOutputSerializationRule
     extends WkSzLongArrayWrapperWriteEngine
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<LongArrayWrapper> FACTORY =
+  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkLongArray> FACTORY =
       new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<>(
             "B_INT64[]",
             BigEndianLongArrayOutputSerializationRule::new);
 
   private BigEndianLongArrayOutputSerializationRule(
     WkSzSequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    WkSzPrimitiveArraySerializerWriter<? extends LongArrayWrapper,?,?,?,?> writingOperation) {
+    WkSzPrimitiveArraySerializerWriter<? extends WkLongArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

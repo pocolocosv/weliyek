@@ -23,7 +23,7 @@ import weliyek.serialization.WkSzReadEngineFactory;
 import weliyek.serialization.WkSzWriteEngineFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.PrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicSequenceReadingRuntime;
 import weliyek.serialization.WkSzBasicWritingResult;
@@ -44,7 +44,7 @@ import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.sequence.WkSzBasicSequenceWritingRuntime;
 
 public class SimplifiedPrimitiveArraySerializerCore<
-                        T extends PrimitiveArrayWrapper<?, ?>,
+                        T extends WkPrimitiveArray<?, ?>,
                         XS extends WkSzOperationSettings,
                         XO extends WkSzPrimitiveArraySerializerReader<
                                         T,
@@ -59,7 +59,7 @@ public class SimplifiedPrimitiveArraySerializerCore<
                                         WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
                                         WkSzWritingResult,
                                         D>,
-                        D extends PrimitiveArraySerializerDefinition<T,XO>>
+                        D extends WkSzPrimitiveArraySerializerDefinition<T,XO>>
     extends PrimitiveArraySerializerCore<
                         T,
                         XS,

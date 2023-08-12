@@ -31,7 +31,7 @@ import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
-import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkByteArray;
 import weliyek.util.array.DynamicByteArray;
 import weliyek.util.array.DynamicByteArrayDeserializing;
 
@@ -86,7 +86,7 @@ public class StringWithDynamicSizeBytesDeserializing<
   @Override
   public
   WkSzPacketReaderSubfield<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZT, ZXO, ZXD>>
   primitiveArray() {
@@ -137,7 +137,7 @@ public class StringWithDynamicSizeBytesDeserializing<
 
   @Override
   public
-  WkSzPacketReaderSubfield<ByteArrayWrapper, DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>, DynamicByteArrayDeserializing<ZT, ZXO, ZXD>>
+  WkSzPacketReaderSubfield<WkByteArray, DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>, DynamicByteArrayDeserializing<ZT, ZXO, ZXD>>
   bytes() {
     return this.operationCore.bytes();
   }

@@ -17,7 +17,7 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.PrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzPacketWriterFieldCore;
@@ -28,14 +28,14 @@ import weliyek.serialization.WkSzSerializerWriterCore;
 import weliyek.serialization.WkSzWritingResult;
 
 public abstract class PrimitiveArraySerializerWritingCore<
-                        Y extends PrimitiveArrayWrapperBase<?,?>,
+                        Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSzOperationSettings,
                         YQ extends WkSzSequenceWritingRuntime<?>,
                         YQC extends WkSzSequenceWritingRuntimeControl<?,?,YQ>,
                         YR extends WkSzWritingResult,
                         YO extends WkSzPrimitiveArraySerializerWriter<Y,YS,YQ,YR,YD>,
                         YOC extends PrimitiveArraySerializerWritingCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends PrimitiveArraySerializerDefinition<Y,?>,
+                        YD extends WkSzPrimitiveArraySerializerDefinition<Y,?>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends PrimitiveArraySerializerCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
         extends WkSzSerializerWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>

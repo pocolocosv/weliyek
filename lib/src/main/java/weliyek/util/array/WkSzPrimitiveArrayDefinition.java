@@ -18,8 +18,8 @@
 package weliyek.util.array;
 
 public interface WkSzPrimitiveArrayDefinition<
-                        T extends PrimitiveArrayWrapper<?, ?>,
-                        XO extends PrimitiveArrayReading<T,?,?,?,?>>
+                        T extends WkPrimitiveArray<?, ?>,
+                        XO extends WkSzPrimitiveArrayReader<T,?,?,?,?>>
         extends WkSzPrimitiveArraySegment,
                 WkSzArrayDefinition<T, XO>
 {

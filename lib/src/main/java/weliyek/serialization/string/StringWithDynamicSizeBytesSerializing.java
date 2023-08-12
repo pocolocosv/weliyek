@@ -31,7 +31,7 @@ import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberWriter;
-import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkByteArray;
 import weliyek.util.array.DynamicByteArray;
 import weliyek.util.array.DynamicByteArraySerialzing;
 
@@ -86,7 +86,7 @@ public class StringWithDynamicSizeBytesSerializing<
 
   @Override
   public
-  WkSzPacketWriterSubfield<ByteArrayWrapper, DynamicByteArray<ZT,?,?,ZYD,ZYO, ? extends ZYD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>>
+  WkSzPacketWriterSubfield<WkByteArray, DynamicByteArray<ZT,?,?,ZYD,ZYO, ? extends ZYD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -140,7 +140,7 @@ public class StringWithDynamicSizeBytesSerializing<
 
   @Override
   public
-  WkSzPacketWriterSubfield<ByteArrayWrapper, DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>>
+  WkSzPacketWriterSubfield<WkByteArray, DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>>
   bytes() {
     return this.operationCore.bytes();
   }

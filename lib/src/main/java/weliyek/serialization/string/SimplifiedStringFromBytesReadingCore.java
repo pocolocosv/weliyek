@@ -24,7 +24,7 @@ import weliyek.serialization.WkSzPacketReaderFieldCore;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzReadingRuntimeControl;
-import weliyek.util.array.ByteArrayReading;
+import weliyek.util.array.WkSzByteArrayReader;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public class SimplifiedStringFromBytesReadingCore<
@@ -36,7 +36,7 @@ public class SimplifiedStringFromBytesReadingCore<
                                       XD,SXD,SXO>,
                         XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends ByteArrayReading<SXS,?,?,SXD>,
+                        SXO extends WkSzByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>>
     extends StringFromBytesReadingCore<
                         XS,

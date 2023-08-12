@@ -27,8 +27,8 @@ import weliyek.serialization.WkSzPacketWriterSubfield;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.ByteArrayWriting;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzByteArrayWriter;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public abstract class StringFromBytesWritingCore<
@@ -43,14 +43,14 @@ public abstract class StringFromBytesWritingCore<
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends ByteArrayWriting<SYS,?,?,SYD>,
+                        SYO extends WkSzByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSzByteArrayDefinition<?>,
                         DC extends WkSzStringFromBytesDefinitionCore<
                                       ?,?,?,?,?,?,?,?,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       ?,?,?,SYS,SYO,SYD,?,?,DC>>
     extends StringFromPrimitiveWritingCore<
-                        YS,YB,YBC,YQ,YQC,YR,YO,YOC,YD,AYB,ByteArrayWrapper,SYS,SYO,SYD,DC>
+                        YS,YB,YBC,YQ,YQC,YR,YO,YOC,YD,AYB,WkByteArray,SYS,SYO,SYD,DC>
     implements WkSzStringFromBytesWriter<YS, YQ, YR, YD, SYD, SYO>
 {
 
@@ -73,7 +73,7 @@ public abstract class StringFromBytesWritingCore<
   }
 
   @Override
-  public final WkSzPacketWriterSubfield<ByteArrayWrapper, SYD, SYO> bytes() {
+  public final WkSzPacketWriterSubfield<WkByteArray, SYD, SYO> bytes() {
     return primitiveArray();
   }
 

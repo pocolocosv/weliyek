@@ -24,7 +24,7 @@ import weliyek.serialization.WkSzPacketWriterFieldCore;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.ByteArrayWriting;
+import weliyek.util.array.WkSzByteArrayWriter;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public class SimpleStringFromBytesWritingCore<
@@ -36,7 +36,7 @@ public class SimpleStringFromBytesWritingCore<
                                       YD,SYD,SYO>,
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends ByteArrayWriting<SYS,?,?,SYD>,
+                        SYO extends WkSzByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSzByteArrayDefinition<?>>
     extends StringFromBytesWritingCore<
                         YS,

@@ -20,7 +20,7 @@ package weliyek.util.array;
 import weliyek.serialization.sequence.WkSzVariableSizeSequenceDefinition;
 
 public interface WkSzVariableSizePrimitiveArrayDefinition<
-                        T extends PrimitiveArrayWrapper<?, ?>,
+                        T extends WkPrimitiveArray<?, ?>,
                         XO extends WkSzVariableSizePrimitiveArrayReader<T,?,?,?,?>>
     extends WkSzVariableSizePrimitiveArraySegment,
             WkSzVariableSizeSequenceDefinition<T, XO>,

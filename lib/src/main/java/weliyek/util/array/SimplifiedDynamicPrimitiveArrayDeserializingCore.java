@@ -29,7 +29,7 @@ import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
 
 public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
-                        T extends PrimitiveArrayWrapper<?,?>,
+                        T extends WkPrimitiveArray<?,?>,
                         XO extends DynamicPrimitiveArrayDeserializing<
                                         T,
                                         WkSzOperationSettings,

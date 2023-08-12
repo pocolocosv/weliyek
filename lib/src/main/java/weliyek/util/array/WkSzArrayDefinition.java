@@ -20,8 +20,8 @@ package weliyek.util.array;
 import weliyek.serialization.sequence.WkSzSequenceDefinition;
 
 public interface WkSzArrayDefinition<
-                        T extends GenericArrayWrapper<?, ?>,
-                        XO extends GenericArrayDeserializing<T,?,?,?,?>>
+                        T extends WkGenericArray<?, ?>,
+                        XO extends WkSzGenericArrayReader<T,?,?,?,?>>
         extends WkSzArraySegment,
                 WkSzSequenceDefinition<T, XO>
 {

@@ -25,17 +25,17 @@ import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
 
 public final class WkSzByteArrayWrapperReadEngine
   extends WkSzBasicPrimitiveArrayWrapperReadEngineBase<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         byte[]>
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperReadEngineFactory<ByteArrayWrapper> FACTORY =
+  public static final WkSzBasicPrimitiveArrayWrapperReadEngineFactory<WkByteArray> FACTORY =
       new WkSzBasicPrimitiveArrayWrapperReadEngineFactory<>("INT8[]", WkSzByteArrayWrapperReadEngine::new);
 
   private WkSzByteArrayWrapperReadEngine(
     WkSzSequenceReadingRuntimeControl<?,?,?> runtimeCtrl,
-    WkSzPrimitiveArraySerializerReader<ByteArrayWrapper,?,?,?,?> readingOperation) {
-    super(ByteArrayWrapper::new, 1, runtimeCtrl, readingOperation);
+    WkSzPrimitiveArraySerializerReader<WkByteArray,?,?,?,?> readingOperation) {
+    super(WkByteArray::new, 1, runtimeCtrl, readingOperation);
   }
 
   @Override

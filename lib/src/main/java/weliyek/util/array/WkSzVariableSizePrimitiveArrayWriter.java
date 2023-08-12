@@ -24,13 +24,13 @@ import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.sequence.VariableSizeSequenceWriting;
 
 public interface WkSzVariableSizePrimitiveArrayWriter<
-                        Y extends PrimitiveArrayWrapper<?,?>,
+                        Y extends WkPrimitiveArray<?,?>,
                         S extends WkSzOperationSettings,
                         Q extends WkSzSequenceWritingRuntime<?>,
                         R extends WkSzWritingResult,
                         D extends WkSzVariableSizePrimitiveArrayDefinition<Y,?>>
     extends VariableSizeSequenceWriting<Y, S, Q, R, D>,
-            PrimitiveArrayWriting<Y, S, Q, R, D>,
+            WkSzPrimitiveArrayWriter<Y, S, Q, R, D>,
             WkSzVariableSizePrimitiveArrayOperation<
                         S, Q, R, D,
                         WkSzPacketWriterField<Y,D,?>>

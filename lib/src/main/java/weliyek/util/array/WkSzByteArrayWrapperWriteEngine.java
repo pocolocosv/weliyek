@@ -23,17 +23,17 @@ import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
 
 public final class WkSzByteArrayWrapperWriteEngine
-    extends WkSzBasicPrimitiveArrayWrapperWriteEngineBase<ByteArrayWrapper, byte[]>
+    extends WkSzBasicPrimitiveArrayWrapperWriteEngineBase<WkByteArray, byte[]>
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<ByteArrayWrapper> FACTORY =
-      new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<ByteArrayWrapper>(
+  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkByteArray> FACTORY =
+      new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkByteArray>(
             "INT8[]",
             WkSzByteArrayWrapperWriteEngine::new);
 
   private WkSzByteArrayWrapperWriteEngine(
     WkSzSequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    WkSzPrimitiveArraySerializerWriter<? extends ByteArrayWrapper,?,?,?,?> writingOperation) {
+    WkSzPrimitiveArraySerializerWriter<? extends WkByteArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, 1);
   }
 

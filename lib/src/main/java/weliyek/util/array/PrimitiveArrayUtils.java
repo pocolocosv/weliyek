@@ -26,13 +26,13 @@ public class PrimitiveArrayUtils
 
   public static void onFixedSizeDeserilizingInitialization(
     SimplifiedPrimitiveArrayDeserializingCore<
-      ?,?,?,? extends WkSzSerializerReaderFixedSizePrimitiveArray<?,?,?,?,?>> deserializing) {
+      ?,?,?,? extends WkSzFixedSizePrimitiveArraySerializerReader<?,?,?,?,?>> deserializing) {
     // Nothing to do.
   }
 
   public static void onFixedSizeSerilizingInitialization(
     SimplifiedPrimitiveArraySerializingCore<
-      ?,?,?,? extends FixedSizePrimitiveArraySerializerWriting<?,?,?,?,?>> serializingCore) {
+      ?,?,?,? extends WkSzFixedSizePrimitiveArraySerializerWriter<?,?,?,?,?>> serializingCore) {
     final int reqLen = serializingCore.serializable().getLength();
     final int expectedLen = serializingCore.getRequestedLength();
     if (reqLen != expectedLen) {
@@ -45,8 +45,8 @@ public class PrimitiveArrayUtils
   public static void onVariableSizeDeserilizingInitialization(
     SimplifiedPrimitiveArrayDeserializingCore<
       ?,? extends WkSzVariableLengthOperationSettings,
-      ? extends VariableSizePrimitiveArraySerializerDefinition<?,?>,
-      ? extends VariableSizePrimitiveArraySerializerReading<?,?,?,?,?>> deserializingCore) {
+      ? extends WkSzVariableSizePrimitiveArraySerializerDefinition<?,?>,
+      ? extends WkSzVariableSizePrimitiveArraySerializerReader<?,?,?,?,?>> deserializingCore) {
     final int reqLen = deserializingCore.settings().getRequestedLength();
     final int minLen = deserializingCore.definition().minimalSize();
     final int maxLen = deserializingCore.definition().maximalSize();
@@ -59,8 +59,8 @@ public class PrimitiveArrayUtils
 
   public static void onVariableSizeSerializingInitialization(
     SimplifiedPrimitiveArraySerializingCore<?,?,
-      ? extends VariableSizePrimitiveArraySerializerDefinition<?,?>,
-      ? extends VariableSizePrimitiveArraySerializerWriting<?,?,?,?,?>> serializingCore) {
+      ? extends WkSzVariableSizePrimitiveArraySerializerDefinition<?,?>,
+      ? extends WkSzVariableSizePrimitiveArraySerializerWriter<?,?,?,?,?>> serializingCore) {
     int reqLen = serializingCore.serializable().getLength();
     final int minLen = serializingCore.definition().minimalSize();
     final int maxLen = serializingCore.definition().maximalSize();

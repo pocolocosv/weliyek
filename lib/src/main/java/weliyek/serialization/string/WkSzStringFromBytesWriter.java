@@ -22,8 +22,8 @@ import weliyek.serialization.WkSzPacketWriterField;
 import weliyek.serialization.WkSzPacketWriterSubfield;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.ByteArrayWriting;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzByteArrayWriter;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public interface WkSzStringFromBytesWriter<
@@ -32,16 +32,16 @@ public interface WkSzStringFromBytesWriter<
                         YR extends WkSzWritingResult,
                         YD extends WkSzStringFromBytesDefinition<?,?,? extends SD>,
                         SD extends WkSzByteArrayDefinition<?>,
-                        SYO extends ByteArrayWriting<?,?,?,SD>>
+                        SYO extends WkSzByteArrayWriter<?,?,?,SD>>
     extends WkSzStringFromPrimitiveWriter<
                         YS, YQ, YR, YD,
-                        ByteArrayWrapper, SD, SYO>,
+                        WkByteArray, SD, SYO>,
             WkSzStringFromBytesOperation<
                         YS, YQ, YR, YD,
                         WkSzPacketWriterField<String,YD,?>,
                         SYO,
-                        WkSzPacketWriterField<ByteArrayWrapper,SD,SYO>,
-                        WkSzPacketWriterSubfield<ByteArrayWrapper,SD,SYO>>
+                        WkSzPacketWriterField<WkByteArray,SD,SYO>,
+                        WkSzPacketWriterSubfield<WkByteArray,SD,SYO>>
 {
 
 }

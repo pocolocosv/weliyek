@@ -21,7 +21,7 @@ import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.number.WkSzNumberDefinition;
 
 public interface WkSzDynamicPrimitiveArrayDefinition<
-                        T extends PrimitiveArrayWrapper<?,?>,
+                        T extends WkPrimitiveArray<?,?>,
                         XO extends DynamicPrimitiveArrayDeserializing<T,?,?,?,?,?,?,?,?,?>,
                         YO extends DynamicPrimitiveArraySerializing<T,?,?,?,?,?,?,?,?,?>,
                         ZD extends WkSzNumberDefinition<?,?>,

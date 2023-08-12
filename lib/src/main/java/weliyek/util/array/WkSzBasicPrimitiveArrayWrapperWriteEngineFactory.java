@@ -23,7 +23,7 @@ import weliyek.serialization.WkSzWriteEngine;
 import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
 
-public class WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<Y extends PrimitiveArrayWrapperBase<?, ?>>
+public class WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<Y extends WkPrimitiveArrayBase<?, ?>>
     extends WkSzPrimitiveArrayWrapperWriteEngineFactory<
                         Y,
                         WkSzSequenceWritingRuntimeControl<?,?,?>,

@@ -46,11 +46,11 @@ public class DynamicByteArray<
     implements WkSzByteArrayDefinition<
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>>,
                WkSzDynamicPrimitiveArrayDefinition<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                         DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                         ZD,
-                        VariableSizeByteArray>
+                        WkSzVariableSizeByteArray>
 {
   public static <ZX extends Number,
                  ZXD extends WkSzNumberDefinition<ZX,ZXO>,
@@ -58,7 +58,7 @@ public class DynamicByteArray<
                  ZYD extends WkSzNumberDefinition<ZX,?>,
                  ZYO extends WkSzNumberWriter<ZX,WkSzOperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
-  WkSzStruct<ByteArrayWrapper,
+  WkSzStruct<WkByteArray,
                   WkSzOperationSettings,
                   DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
@@ -79,7 +79,7 @@ public class DynamicByteArray<
       ZX,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,
       WkSzOperationSettings,ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD>  sizeDefinition)
   {
-    return new WkSzStruct<ByteArrayWrapper,
+    return new WkSzStruct<WkByteArray,
         WkSzOperationSettings,
         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
@@ -102,7 +102,7 @@ public class DynamicByteArray<
                  ZYD extends WkSzNumberDefinition<ZX,?>,
                  ZYO extends WkSzNumberWriter<ZX,WkSzOperationSettings,?,?,ZYD>,
                  ZD extends WkSzNumberDefinition<ZX,ZXO>>
-  WkSzDefinitionCore<ByteArrayWrapper,
+  WkSzDefinitionCore<WkByteArray,
                         WkSzOperationSettings,?,?,
                         DynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZX,ZXO,ZXD>,
@@ -127,17 +127,17 @@ public class DynamicByteArray<
   }
 
   private final SimplifiedDynamicPrimitiveArrayDefinitionCore<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                         ZT, ZXD, ZXO, ZYD, ZYO, ZD,
-                        VariableSizeByteArray,
-                        VariableSizeByteArrayDeserializing,
-                        VariableSizeByteArray,
-                        VariableSizeByteArraySerializing,
-                        VariableSizeByteArray,
+                        WkSzVariableSizeByteArray,
+                        WkSzVariableSizeByteArrayReader,
+                        WkSzVariableSizeByteArray,
+                        WkSzVariableSizeByteArrayWriter,
+                        WkSzVariableSizeByteArray,
                         DynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>> definitionCore;
 
   DynamicByteArray(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
@@ -150,33 +150,33 @@ public class DynamicByteArray<
       ZT,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<?>,WkSzOperationSettings,
       ZYD,ZYO,WkSzOutputBytestreamBase<?>,ZD> sizeComponentDefinitionFactory) {
     this.definitionCore = new SimplifiedDynamicPrimitiveArrayDefinitionCore<
-                                ByteArrayWrapper,
+                                WkByteArray,
                                 DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                                 DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                                 DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                 DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                                 ZT, ZXD, ZXO, ZYD, ZYO, ZD,
-                                VariableSizeByteArray,
-                                VariableSizeByteArrayDeserializing,
-                                VariableSizeByteArray,
-                                VariableSizeByteArraySerializing,
-                                VariableSizeByteArray,
+                                WkSzVariableSizeByteArray,
+                                WkSzVariableSizeByteArrayReader,
+                                WkSzVariableSizeByteArray,
+                                WkSzVariableSizeByteArrayWriter,
+                                WkSzVariableSizeByteArray,
                                 DynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>(
                                     sizeLabel,
                                     wrapperSizeGetter,
                                     sizeComponentDefinitionFactory,
                                     arrayLabel,
-                                    (pc) -> VariableSizeByteArray.newCore(minLength, maxLength, pc),
+                                    (pc) -> WkSzVariableSizeByteArray.newCore(minLength, maxLength, pc),
                                     (i,xs,axb,xkc,dc) -> new DynamicByteArrayDeserializing<ZT,ZXO,ZXD>(i,xs,axb,xkc,dc).operationCore,
                                     (i,y,ys,ayb,ykc,dc) -> new DynamicByteArraySerialzing<ZT,ZYO,ZYD>(i,y,ys,ayb,ykc,dc).operationCore,
                                     componentCore,
                                     this,
-                                    ByteArrayWrapper.class);
+                                    WkByteArray.class);
   }
 
   @Override
-  public Class<ByteArrayWrapper> rxClass() {
-    return ByteArrayWrapper.class;
+  public Class<WkByteArray> rxClass() {
+    return WkByteArray.class;
   }
 
   @Override
@@ -200,7 +200,7 @@ public class DynamicByteArray<
 
   @Override
   public
-      WkSzStructSubcomponent<DynamicByteArrayDeserializing<ZT, ZXO, ZXD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>, VariableSizeByteArray>
+      WkSzStructSubcomponent<DynamicByteArrayDeserializing<ZT, ZXO, ZXD>, DynamicByteArraySerialzing<ZT, ZYO, ZYD>, WkSzVariableSizeByteArray>
       variableSequence() {
     return this.definitionCore.variableSequence();
   }

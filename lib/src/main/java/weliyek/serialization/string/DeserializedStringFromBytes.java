@@ -20,17 +20,17 @@ package weliyek.serialization.string;
 import java.nio.charset.Charset;
 import java.util.Objects;
 
-import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkByteArray;
 
 public class DeserializedStringFromBytes
-    extends DeserializedString<ByteArrayWrapper>
+    extends DeserializedString<WkByteArray>
 {
 
   private final Charset charset;
 
   public DeserializedStringFromBytes(
     String string,
-    ByteArrayWrapper primitiveArray,
+    WkByteArray primitiveArray,
     int paddedLen,
     Charset charset) {
     super(string, primitiveArray, paddedLen);

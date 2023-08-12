@@ -23,8 +23,8 @@ import weliyek.serialization.WkSzPacketWriterField;
 import weliyek.serialization.WkSzPacketWriterSubfield;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.util.array.PrimitiveArrayWrapper;
-import weliyek.util.array.PrimitiveArrayWriting;
+import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkSzPrimitiveArrayWriter;
 import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public interface WkSzStringFromPrimitiveWriter<
@@ -32,9 +32,9 @@ public interface WkSzStringFromPrimitiveWriter<
                         YQ extends WkSzWritingRuntime<?>,
                         YR extends WkSzWritingResult,
                         YD extends WkSzStringFromPrimitiveDefinition<?,?,?>,
-                        SY extends PrimitiveArrayWrapper<?, ?>,
+                        SY extends WkPrimitiveArray<?, ?>,
                         SYD extends WkSzPrimitiveArrayDefinition<SY,?>,
-                        SYO extends PrimitiveArrayWriting<SY,?,?,?,SYD>>
+                        SYO extends WkSzPrimitiveArrayWriter<SY,?,?,?,SYD>>
         extends WkSzStringFromPrimitiveOperation<
                         YS, YQ, YR, YD,
                         WkSzPacketWriterField<String,YD,?>,

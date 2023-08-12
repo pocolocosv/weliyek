@@ -36,17 +36,17 @@ import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.filter.FieldTester;
 import weliyek.serialization.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.VariableSizeByteArray;
-import weliyek.util.array.VariableSizeByteArrayDeserializing;
-import weliyek.util.array.VariableSizeByteArraySerializing;
-import weliyek.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzVariableSizeByteArray;
+import weliyek.util.array.WkSzVariableSizeByteArrayReader;
+import weliyek.util.array.WkSzVariableSizeByteArrayWriter;
+import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 
 public class StringWithVariableLengthBytes
     implements WkSzStringFromBytesDefinition<
                         StringWithVariableLengthBytesDeserializing,
                         StringWithVariableLengthBytesSerializing,
-                        VariableSizeByteArray>
+                        WkSzVariableSizeByteArray>
 {
 
   public static WkSzStruct<
@@ -102,12 +102,12 @@ public class StringWithVariableLengthBytes
                         StringWithVariableLengthBytesSerializing,
                         StringWithVariableLengthBytes,
                         WkSzVariableLengthOperationSettings,
-                        VariableSizeByteArrayDeserializing,
-                        VariableSizeByteArray,
+                        WkSzVariableSizeByteArrayReader,
+                        WkSzVariableSizeByteArray,
                         WkSzOperationSettings,
-                        VariableSizeByteArraySerializing,
-                        VariableSizeByteArray,
-                        VariableSizeByteArray,
+                        WkSzVariableSizeByteArrayWriter,
+                        WkSzVariableSizeByteArray,
+                        WkSzVariableSizeByteArray,
                         StringWithVariableLengthBytes> definitionCore;
 
   StringWithVariableLengthBytes(
@@ -126,14 +126,14 @@ public class StringWithVariableLengthBytes
                                     StringWithVariableLengthBytes::aggragateByteArray,
                                     WkSzOperationSettings::none,
                                     new VariableLengthBytesDissagregatorFromString(),
-                                    (pc) -> VariableSizeByteArray.newCore(minSize, maxSize, pc),
+                                    (pc) -> WkSzVariableSizeByteArray.newCore(minSize, maxSize, pc),
                                     this);
   }
 
   private static String aggragateByteArray(StringWithVariableLengthBytesDeserializing deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
-    ByteArrayWrapper wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().deserialized().get();
+    WkByteArray wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().deserialized().get();
     wrapper.iterateAsIntsBackwardsWhileTrue(zeroPaddingCounter);
     int zeroPaddingLen = zeroPaddingCounter.count();
     int strBytesLen = wrapper.getLength() - zeroPaddingLen;
@@ -143,7 +143,7 @@ public class StringWithVariableLengthBytes
   public static class VariableLengthBytesDissagregatorFromString
       extends ByteArrayFromStringDisaggregator<
                         StringWithVariableLengthBytesSerializing,
-                        VariableSizeByteArray>
+                        WkSzVariableSizeByteArray>
   {
 
     @Override
@@ -161,7 +161,7 @@ public class StringWithVariableLengthBytes
 
   @Override
   public
-  WkSzStructSubcomponent<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, VariableSizeByteArray>
+  WkSzStructSubcomponent<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, WkSzVariableSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
@@ -191,7 +191,7 @@ public class StringWithVariableLengthBytes
 
   @Override
   public
-  WkSzStructSubcomponent<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, VariableSizeByteArray>
+  WkSzStructSubcomponent<StringWithVariableLengthBytesDeserializing, StringWithVariableLengthBytesSerializing, WkSzVariableSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

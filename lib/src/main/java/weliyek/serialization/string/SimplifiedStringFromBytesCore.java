@@ -42,9 +42,9 @@ import weliyek.serialization.WkSzStructComponentCoreBase;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.ByteArrayReading;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.ByteArrayWriting;
+import weliyek.util.array.WkSzByteArrayReader;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzByteArrayWriter;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public class SimplifiedStringFromBytesCore<
@@ -67,10 +67,10 @@ public class SimplifiedStringFromBytesCore<
                                         SYO>,
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends ByteArrayReading<SXS,?,?,SXD>,
+                        SXO extends WkSzByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends ByteArrayWriting<SYS,?,?,SYD>,
+                        SYO extends WkSzByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSzByteArrayDefinition<?>,
                         SD extends WkSzByteArrayDefinition<SXO>,
                         D extends WkSzStringFromBytesDefinition<XO,YO,SD>>
@@ -119,9 +119,9 @@ public class SimplifiedStringFromBytesCore<
     OperationSubsegmentSettingsFactory<XO, SXS> bytesDeserializingSettingsFactory,
     Function<XO,String> bytesDeserializingStringAggregator,
     OperationSubsegmentSettingsFactory<YO, SYS> bytesSerializingSettingsFactory,
-    WkSzPacketWriteDisaggregator<ByteArrayWrapper,SYD,String,YO> bytesSerializingDisaggregator,
+    WkSzPacketWriteDisaggregator<WkByteArray,SYD,String,YO> bytesSerializingDisaggregator,
     ProtocolDefinitionFactory<
-      ByteArrayWrapper,SXS,SXD,SXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+      WkByteArray,SXS,SXD,SXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
       SYS,SYD,SYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,SD>
         bytesDefinitionFactory,
     D definitionBody) {

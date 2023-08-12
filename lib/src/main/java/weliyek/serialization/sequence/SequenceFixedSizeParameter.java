@@ -35,10 +35,10 @@ public class SequenceFixedSizeParameter<T>
                         T,?,?,
                         ? extends WkSzReadingResult<T>,
                         ? extends WkSzFixedSizeSequenceDefinition<T,?>,
-                        ? extends FixedSizeSequenceReading<T,?,?,?,?>,
+                        ? extends WkSzFixedSizeSequenceReader<T,?,?,?,?>,
                         ?,?,?,?,
                         ? extends WkSzFixedSizeSequenceDefinition<T,?>,
-                        ? extends FixedSizeSequenceWriting<T,?,?,?,?>,?,
+                        ? extends WkSzFixedSizeSequenceWriter<T,?,?,?,?>,?,
                         ? extends WkSzFixedSizeSequenceDefinition<T,?>,?> definitionCore;
 
   public SequenceFixedSizeParameter(
@@ -47,10 +47,10 @@ public class SequenceFixedSizeParameter<T>
       T,?,?,
       ? extends WkSzReadingResult<T>,
       ? extends WkSzFixedSizeSequenceDefinition<T,?>,
-      ? extends FixedSizeSequenceReading<T,?,?,?,?>,
+      ? extends WkSzFixedSizeSequenceReader<T,?,?,?,?>,
       ?,?,?,?,
       ? extends WkSzFixedSizeSequenceDefinition<T,?>,
-      ? extends FixedSizeSequenceWriting<T,?,?,?,?>,?,
+      ? extends WkSzFixedSizeSequenceWriter<T,?,?,?,?>,?,
       ? extends WkSzFixedSizeSequenceDefinition<T,?>,?> definitionCore) {
     if (sequenceExpectedSize < 0) {
       throw new WkSzDefinitionCoreException(definitionCore,
@@ -64,7 +64,7 @@ public class SequenceFixedSizeParameter<T>
 
   void onSequenceSerializerCreation(
     WkSzPacketWriterOperationCore<
-      T,?,?,?,?,? extends FixedSizeSequenceWriting<T,?,?,?,?>,
+      T,?,?,?,?,? extends WkSzFixedSizeSequenceWriter<T,?,?,?,?>,
       ?,? extends WkSzFixedSizeSequenceDefinition<T,?>,?,?> serializer) {
     int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
     if (sequenceSize != this.sequenceExpectedSize) {
@@ -76,7 +76,7 @@ public class SequenceFixedSizeParameter<T>
     WkSzPacketReaderOperationCore<
       T,?,?,?,
       ? extends WkSzReadingResult<T>,
-      ? extends FixedSizeSequenceReading<T,?,?,?,?>,?,
+      ? extends WkSzFixedSizeSequenceReader<T,?,?,?,?>,?,
       ? extends WkSzFixedSizeSequenceDefinition<T,?>,?,?> deserializer) {
     T sequence = deserializer.result().get().deserialized().get();
     int seqLen = deserializer.definition().extractLengthFromSerializablesSequence(sequence);

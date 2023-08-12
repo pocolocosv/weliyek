@@ -44,7 +44,7 @@ import weliyek.serialization.number.WkSzNumberReader;
 import weliyek.serialization.number.WkSzNumberWriter;
 
 public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
-                        T extends PrimitiveArrayWrapper<?,?>,
+                        T extends WkPrimitiveArray<?,?>,
                         XD extends WkSzDynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
                         XO extends DynamicPrimitiveArrayDeserializing<
                                         T,

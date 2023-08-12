@@ -24,10 +24,10 @@ import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.WkPrimitiveArray;
 
 public abstract class WkSzPrimitiveArrayWrapperReadEngine<
-                        X extends PrimitiveArrayWrapper<V, ?>,
+                        X extends WkPrimitiveArray<V, ?>,
                         V,
                         QC extends WkSzSequenceReadingRuntimeControl<?,?,?>>
         extends WkSzReadEngine<

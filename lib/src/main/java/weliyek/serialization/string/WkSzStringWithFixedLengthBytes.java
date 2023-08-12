@@ -33,11 +33,11 @@ import weliyek.serialization.WkSzStructComponentCoreBase;
 import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.filter.FieldTester;
 import weliyek.serialization.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.FixedSizeByteArray;
-import weliyek.util.array.FixedSizeByteArrayDeserializing;
-import weliyek.util.array.FixedSizeByteArraySerializing;
-import weliyek.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzFixedSizeByteArray;
+import weliyek.util.array.WkSzFixedSizeByteArrayReader;
+import weliyek.util.array.WkSzFixedSizeByteArrayWriter;
+import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 
 /**
  * Packet structure and data for handling fixed length bytes array. The serialization
@@ -49,7 +49,7 @@ public class WkSzStringWithFixedLengthBytes
     implements WkSzStringFromBytesDefinition<
                         WkSzStringWithFixedLengthBytesReader,
                         WkSzStringWithFixedLengthBytesWriter,
-                        FixedSizeByteArray>
+                        WkSzFixedSizeByteArray>
 {
 
   public static WkSzStruct<
@@ -103,12 +103,12 @@ public class WkSzStringWithFixedLengthBytes
                         WkSzStringWithFixedLengthBytesWriter,
                         WkSzStringWithFixedLengthBytes,
                         WkSzOperationSettings,
-                        FixedSizeByteArrayDeserializing,
-                        FixedSizeByteArray,
+                        WkSzFixedSizeByteArrayReader,
+                        WkSzFixedSizeByteArray,
                         WkSzOperationSettings,
-                        FixedSizeByteArraySerializing,
-                        FixedSizeByteArray,
-                        FixedSizeByteArray,
+                        WkSzFixedSizeByteArrayWriter,
+                        WkSzFixedSizeByteArray,
+                        WkSzFixedSizeByteArray,
                         WkSzStringWithFixedLengthBytes> definitionCore;
 
   private WkSzStringWithFixedLengthBytes(
@@ -127,14 +127,14 @@ public class WkSzStringWithFixedLengthBytes
                                   WkSzStringWithFixedLengthBytes::aggragateByteArray,
                                   WkSzOperationSettings::none,
                                   new FixedLengthBytesDisaggregatorFromString(expectedSize),
-                                  (pc) -> FixedSizeByteArray.newCore(expectedSize, pc),
+                                  (pc) -> WkSzFixedSizeByteArray.newCore(expectedSize, pc),
                                   this);
   }
 
   private static String aggragateByteArray(WkSzStringWithFixedLengthBytesReader deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
-    ByteArrayWrapper wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().deserialized().get();
+    WkByteArray wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().deserialized().get();
     wrapper.iterateAsIntsBackwardsWhileTrue(zeroPaddingCounter);
     int zeroPaddingLen = zeroPaddingCounter.count();
     int strBytesLen = wrapper.getLength() - zeroPaddingLen;
@@ -144,7 +144,7 @@ public class WkSzStringWithFixedLengthBytes
   public static class FixedLengthBytesDisaggregatorFromString
       extends ByteArrayFromStringDisaggregator<
                         WkSzStringWithFixedLengthBytesWriter,
-                        FixedSizeByteArray>
+                        WkSzFixedSizeByteArray>
   {
 
     private final Optional<Integer> fixedLength;
@@ -168,7 +168,7 @@ public class WkSzStringWithFixedLengthBytes
 
   @Override
   public
-  WkSzStructSubcomponent<WkSzStringWithFixedLengthBytesReader, WkSzStringWithFixedLengthBytesWriter, FixedSizeByteArray>
+  WkSzStructSubcomponent<WkSzStringWithFixedLengthBytesReader, WkSzStringWithFixedLengthBytesWriter, WkSzFixedSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
@@ -198,7 +198,7 @@ public class WkSzStringWithFixedLengthBytes
 
   @Override
   public
-  WkSzStructSubcomponent<WkSzStringWithFixedLengthBytesReader, WkSzStringWithFixedLengthBytesWriter, FixedSizeByteArray>
+  WkSzStructSubcomponent<WkSzStringWithFixedLengthBytesReader, WkSzStringWithFixedLengthBytesWriter, WkSzFixedSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

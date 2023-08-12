@@ -27,8 +27,8 @@ import weliyek.serialization.WkSzPacketWriterSubfieldCore;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.PrimitiveArrayWrapper;
-import weliyek.util.array.PrimitiveArrayWriting;
+import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkSzPrimitiveArrayWriter;
 import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public abstract class StringFromPrimitiveWritingCore<
@@ -42,9 +42,9 @@ public abstract class StringFromPrimitiveWritingCore<
                         YOC extends StringFromPrimitiveWritingCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SY,SYS,SYO,SYD,DC>,
                         YD extends WkSzStringFromPrimitiveDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        SY extends PrimitiveArrayWrapper<?,?>,
+                        SY extends WkPrimitiveArray<?,?>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends PrimitiveArrayWriting<SY,SYS,?,?,SYD>,
+                        SYO extends WkSzPrimitiveArrayWriter<SY,SYS,?,?,SYD>,
                         SYD extends WkSzPrimitiveArrayDefinition<SY,?>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
         extends WkSzAggregatorWriterCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>

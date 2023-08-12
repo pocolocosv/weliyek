@@ -44,9 +44,9 @@ import weliyek.serialization.WkSzSubcomponentCore;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.PrimitiveArrayReading;
-import weliyek.util.array.PrimitiveArrayWrapper;
-import weliyek.util.array.PrimitiveArrayWriting;
+import weliyek.util.array.WkSzPrimitiveArrayReader;
+import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkSzPrimitiveArrayWriter;
 import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public abstract class WkSzStringFromPrimitiveDefinitionCore<
@@ -66,12 +66,12 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
                         YO extends WkSzStringFromPrimitiveWriter<YS,? extends WkSzWritingRuntime<YB>,YR,YD,ST,SYD,SYO>,
                         YD extends WkSzStringFromPrimitiveDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        ST extends PrimitiveArrayWrapper<?,?>,
+                        ST extends WkPrimitiveArray<?,?>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends PrimitiveArrayReading<ST,SXS,?,?,SXD>,
+                        SXO extends WkSzPrimitiveArrayReader<ST,SXS,?,?,SXD>,
                         SXD extends WkSzPrimitiveArrayDefinition<ST,SXO>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends PrimitiveArrayWriting<ST,SYS,?,?,SYD>,
+                        SYO extends WkSzPrimitiveArrayWriter<ST,SYS,?,?,SYD>,
                         SYD extends WkSzPrimitiveArrayDefinition<ST,?>,
                         SD extends WkSzPrimitiveArrayDefinition<ST, SXO>,
                         D extends WkSzStringFromPrimitiveDefinition<XO,YO,SD>,
@@ -132,7 +132,7 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
 
   public abstract static class PrimitiveArrayDisaggregatorFromString<
                           YO extends WkSzStringFromPrimitiveWriter<?,?,?,?,ST,SD,?>,
-                          ST extends PrimitiveArrayWrapper<?,?>,
+                          ST extends WkPrimitiveArray<?,?>,
                           SD extends WkSzPrimitiveArrayDefinition<ST,?>,
                           WA>
       implements WkSzPacketWriteDisaggregator<ST, SD, String, YO>

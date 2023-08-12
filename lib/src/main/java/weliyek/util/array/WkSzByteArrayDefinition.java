@@ -17,8 +17,8 @@
  */
 package weliyek.util.array;
 
-public interface WkSzByteArrayDefinition<XO extends ByteArrayReading<?,?,?,?>>
-    extends WkSzPrimitiveArrayDefinition<ByteArrayWrapper, XO>,
+public interface WkSzByteArrayDefinition<XO extends WkSzByteArrayReader<?,?,?,?>>
+    extends WkSzPrimitiveArrayDefinition<WkByteArray, XO>,
             WkSzByteArray
 {
 

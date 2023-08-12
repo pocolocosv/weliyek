@@ -43,9 +43,9 @@ import weliyek.serialization.WkSzStructSubcomponent;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.ByteArrayReading;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.ByteArrayWriting;
+import weliyek.util.array.WkSzByteArrayReader;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzByteArrayWriter;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public abstract class WkSzStringFromBytesDefinitionCore<
@@ -66,10 +66,10 @@ public abstract class WkSzStringFromBytesDefinitionCore<
                         YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends ByteArrayReading<SXS,?,?,SXD>,
+                        SXO extends WkSzByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends ByteArrayWriting<SYS,?,?,SYD>,
+                        SYO extends WkSzByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSzByteArrayDefinition<?>,
                         SD extends WkSzByteArrayDefinition<SXO>,
                         D extends WkSzStringFromBytesDefinition<XO,YO,SD>,
@@ -77,7 +77,7 @@ public abstract class WkSzStringFromBytesDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       SXS,SXO,SXD,SYS,SYO,SYD,SD,D,?>>
-    extends WkSzStringFromPrimitiveDefinitionCore<XS, XB, XBC, XQC, XR, XO, XD, AXB, YS, YB, YBC, YQC, YR, YO, YD, AYB, ByteArrayWrapper, SXS, SXO, SXD, SYS, SYO, SYD, SD, D, DC>
+    extends WkSzStringFromPrimitiveDefinitionCore<XS, XB, XBC, XQC, XR, XO, XD, AXB, YS, YB, YBC, YQC, YR, YO, YD, AYB, WkByteArray, SXS, SXO, SXD, SYS, SYO, SYD, SD, D, DC>
     implements WkSzStringFromBytesDefinition<XO, YO, SD>
 {
 
@@ -98,9 +98,9 @@ public abstract class WkSzStringFromBytesDefinitionCore<
     Function<XO, String> bytesDeserializingStringAggregator,
     Optional<Predicate<? super YO>> bytesSerializationEnablingTest,
     OperationSubsegmentSettingsFactory<YO, SYS> bytesSerializingSettingsFactory,
-    WkSzPacketWriteDisaggregator<ByteArrayWrapper, SYD, String, YO> bytesSerializingDisaggregator,
+    WkSzPacketWriteDisaggregator<WkByteArray, SYD, String, YO> bytesSerializingDisaggregator,
     boolean bytesDeserializedRequired,
-    ProtocolDefinitionFactory<ByteArrayWrapper,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> bytesDefinitionFactory,
+    ProtocolDefinitionFactory<WkByteArray,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> bytesDefinitionFactory,
     D definitionBody) {
     super(
           componentCore,
@@ -128,7 +128,7 @@ public abstract class WkSzStringFromBytesDefinitionCore<
                         SD extends WkSzByteArrayDefinition<?>>
       extends PrimitiveArrayDisaggregatorFromString<
                         YO,
-                        ByteArrayWrapper,
+                        WkByteArray,
                         SD,
                         byte[]>
   {
@@ -146,8 +146,8 @@ public abstract class WkSzStringFromBytesDefinitionCore<
     }
 
     @Override
-    protected final ByteArrayWrapper newPrimitiveArrayWrapper(byte[] primitiveArray) {
-      return new ByteArrayWrapper(primitiveArray);
+    protected final WkByteArray newPrimitiveArrayWrapper(byte[] primitiveArray) {
+      return new WkByteArray(primitiveArray);
     }
 
     @Override

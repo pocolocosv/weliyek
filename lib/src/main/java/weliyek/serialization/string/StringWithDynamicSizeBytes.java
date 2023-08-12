@@ -40,11 +40,11 @@ import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
 import weliyek.serialization.number.WkSzNumberWriter;
 import weliyek.serialization.string.WkSzStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
-import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkByteArray;
 import weliyek.util.array.DynamicByteArray;
 import weliyek.util.array.DynamicByteArrayDeserializing;
 import weliyek.util.array.DynamicByteArraySerialzing;
-import weliyek.util.array.PrimitiveArrayWrapper.ContigousIntsCounter;
+import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 
 public class StringWithDynamicSizeBytes<
                         ZT extends Number,
@@ -201,7 +201,7 @@ public class StringWithDynamicSizeBytes<
   String aggragateByteArray(StringWithDynamicSizeBytesDeserializing<ZX,ZXD,ZXO> deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
-    ByteArrayWrapper wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().deserialized().get();
+    WkByteArray wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().deserialized().get();
     wrapper.iterateAsIntsBackwardsWhileTrue(zeroPaddingCounter);
     int zeroPaddingLen = zeroPaddingCounter.count();
     int strBytesLen = wrapper.getLength() - zeroPaddingLen;

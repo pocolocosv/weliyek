@@ -17,17 +17,17 @@
  */
 package weliyek.serialization;
 
-import weliyek.util.array.PrimitiveArrayWrapper;
-import weliyek.util.array.PrimitiveArrayWriting;
+import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkSzPrimitiveArrayWriter;
 
 public interface WkSzPrimitiveArraySerializerWriter<
-                        Y extends PrimitiveArrayWrapper<?, ?>,
+                        Y extends WkPrimitiveArray<?, ?>,
                         S extends WkSzOperationSettings,
                         Q extends WkSzSequenceWritingRuntime<?>,
                         R extends WkSzWritingResult,
-                        D extends PrimitiveArraySerializerDefinition<Y,?>>
+                        D extends WkSzPrimitiveArraySerializerDefinition<Y,?>>
     extends WkSzSerializerWriter<Y, S, Q, R, D>,
-            PrimitiveArrayWriting<Y, S, Q, R, D>,
+            WkSzPrimitiveArrayWriter<Y, S, Q, R, D>,
             WkSzPrimitiveArraySerializerOperation<
                         S,Q,R,D,
                         WkSzPacketWriterField<Y,D,?>>

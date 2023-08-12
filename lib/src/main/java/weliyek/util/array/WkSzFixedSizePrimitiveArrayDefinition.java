@@ -20,8 +20,8 @@ package weliyek.util.array;
 import weliyek.serialization.sequence.WkSzFixedSizeSequenceDefinition;
 
 public interface WkSzFixedSizePrimitiveArrayDefinition<
-                        T extends PrimitiveArrayWrapper<?, ?>,
-                        XO extends FixedPrimitiveArrayReading<T,?,?,?,?>>
+                        T extends WkPrimitiveArray<?, ?>,
+                        XO extends WkSzFixedSizePrimitiveArrayReader<T,?,?,?,?>>
     extends WkSzFixedSizePrimitiveArray,
             WkSzPrimitiveArrayDefinition<T,XO>,
             WkSzFixedSizeSequenceDefinition<T,XO>

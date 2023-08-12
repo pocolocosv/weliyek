@@ -19,7 +19,7 @@ package weliyek.serialization.sequence;
 
 public interface WkSzFixedSizeSequenceDefinition<
                         T,
-                        XO extends FixedSizeSequenceReading<T,?,?,?,?>>
+                        XO extends WkSzFixedSizeSequenceReader<T,?,?,?,?>>
     extends WkSzSequenceDefinition<T, XO>,
             WkSzFixedSizeSequenceSegment
 {

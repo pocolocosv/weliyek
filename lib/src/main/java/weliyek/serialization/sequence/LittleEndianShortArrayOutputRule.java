@@ -21,21 +21,21 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.util.array.ShortArrayWrapper;
+import weliyek.util.array.WkShortArray;
 import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
 
 public final class LittleEndianShortArrayOutputRule
         extends WkSzShortArrayWrapperWriteEngine
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<ShortArrayWrapper> FACTORY =
+  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkShortArray> FACTORY =
       new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<>(
             "L_INT16[]",
             LittleEndianShortArrayOutputRule::new);
 
   private LittleEndianShortArrayOutputRule(
     WkSzSequenceWritingRuntimeControl<?,?,?> runtimeControl,
-    WkSzPrimitiveArraySerializerWriter<? extends ShortArrayWrapper,?,?,?,?> writingOperation) {
+    WkSzPrimitiveArraySerializerWriter<? extends WkShortArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

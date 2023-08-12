@@ -24,7 +24,7 @@ public interface WkSzPrimitiveArraySerializerOperation<
                         S extends WkSzOperationSettings,
                         Q extends WkSzCommonSequenceOperationRuntime<?>,
                         R extends WkSzOperationResult,
-                        D extends PrimitiveArraySerializerDefinition<?,?>,
+                        D extends WkSzPrimitiveArraySerializerDefinition<?,?>,
                         K extends WkSzPacketField<?,?,?>>
     extends WkSzSerializerOperation<S,Q,R,D,K>,
             WkSzPrimitiveArrayOperation<S,Q,R,D,K>,

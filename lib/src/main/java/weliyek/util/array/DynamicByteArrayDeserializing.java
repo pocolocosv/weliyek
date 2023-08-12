@@ -35,50 +35,50 @@ public class DynamicByteArrayDeserializing<
                         ZT extends Number,
                         ZXO extends WkSzNumberReader<ZT,WkSzOperationSettings,?,?,ZXD>,
                         ZXD extends WkSzNumberDefinition<ZT,ZXO>>
-    implements ByteArrayReading<
+    implements WkSzByteArrayReader<
                         WkSzOperationSettings,
                         WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<ByteArrayWrapper>,
+                        WkSzReadingResult<WkByteArray>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>,
                DynamicPrimitiveArrayDeserializing<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         WkSzOperationSettings,
                         WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<ByteArrayWrapper>,
+                        WkSzReadingResult<WkByteArray>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         ZT,
                         ZXO,
                         ZXD,
-                        VariableSizeByteArrayDeserializing,
-                        VariableSizeByteArray>
+                        WkSzVariableSizeByteArrayReader,
+                        WkSzVariableSizeByteArray>
 {
 
   final SimplifiedDynamicPrimitiveArrayDeserializingCore<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                         DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         ZT, ZXO, ZXD,
-                        VariableSizeByteArrayDeserializing,
-                        VariableSizeByteArray> operationCore;
+                        WkSzVariableSizeByteArrayReader,
+                        WkSzVariableSizeByteArray> operationCore;
 
   DynamicByteArrayDeserializing(
     int index,
     WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
-      ByteArrayWrapper,?,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?> deserializingfieldCore,
+      WkByteArray,?,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?> deserializingfieldCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
-      ByteArrayWrapper,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
+      WkByteArray,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
       DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,?,?,ZT,ZXD,ZXO,?,?,?,
-      VariableSizeByteArray,VariableSizeByteArrayDeserializing,?,?,?,
+      WkSzVariableSizeByteArray,WkSzVariableSizeByteArrayReader,?,?,?,
       ?> definitionCore) {
     this.operationCore = new SimplifiedDynamicPrimitiveArrayDeserializingCore<
-                                ByteArrayWrapper,
+                                WkByteArray,
                                 DynamicByteArrayDeserializing<ZT,ZXO,ZXD>,
                                 DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                                 ZT, ZXO, ZXD,
-                                VariableSizeByteArrayDeserializing,
-                                VariableSizeByteArray>(
+                                WkSzVariableSizeByteArrayReader,
+                                WkSzVariableSizeByteArray>(
                                     index,
                                     settings,
                                     parentBytestream,
@@ -119,7 +119,7 @@ public class DynamicByteArrayDeserializing<
   }
 
   @Override
-  public Optional<WkSzReadingResult<ByteArrayWrapper>> result() {
+  public Optional<WkSzReadingResult<WkByteArray>> result() {
     return this.operationCore.result();
   }
 
@@ -129,7 +129,7 @@ public class DynamicByteArrayDeserializing<
   }
 
   @Override
-  public WkSzPacketReaderField<ByteArrayWrapper,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
+  public WkSzPacketReaderField<WkByteArray,DynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
   packetField() {
     return this.operationCore.packetField();
   }
@@ -146,7 +146,7 @@ public class DynamicByteArrayDeserializing<
 
   @Override
   public
-  WkSzPacketReaderSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayReader>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

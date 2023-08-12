@@ -24,8 +24,8 @@ import weliyek.serialization.WkSzPacketReaderOperation;
 import weliyek.serialization.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.util.array.PrimitiveArrayReading;
-import weliyek.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.WkSzPrimitiveArrayReader;
+import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public interface WkSzStringFromPrimitiveReader<
@@ -33,9 +33,9 @@ public interface WkSzStringFromPrimitiveReader<
                         XQ extends WkSzReadingRuntime<?>,
                         XR extends WkSzReadingResult<String>,
                         XD extends WkSzStringFromPrimitiveDefinition<?,?,? extends SXD>,
-                        SX extends PrimitiveArrayWrapper<?,?>,
+                        SX extends WkPrimitiveArray<?,?>,
                         SXD extends WkSzPrimitiveArrayDefinition<SX, SXO>,
-                        SXO extends PrimitiveArrayReading<SX,?,?,?,SXD>>
+                        SXO extends WkSzPrimitiveArrayReader<SX,?,?,?,SXD>>
         extends WkSzStringFromPrimitiveOperation<
                         XS, XQ, XR, XD,
                         WkSzPacketReaderField<String,XD,?>,

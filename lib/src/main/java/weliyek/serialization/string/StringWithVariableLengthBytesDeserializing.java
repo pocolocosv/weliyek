@@ -29,9 +29,9 @@ import weliyek.serialization.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.VariableSizeByteArray;
-import weliyek.util.array.VariableSizeByteArrayDeserializing;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzVariableSizeByteArray;
+import weliyek.util.array.WkSzVariableSizeByteArrayReader;
 
 public class StringWithVariableLengthBytesDeserializing
     implements WkSzStringFromBytesReader<
@@ -39,8 +39,8 @@ public class StringWithVariableLengthBytesDeserializing
                         WkSzReadingRuntime<WkSzInputBytestream>,
                         WkSzReadingResult<String>,
                         StringWithVariableLengthBytes,
-                        VariableSizeByteArray,
-                        VariableSizeByteArrayDeserializing>
+                        WkSzVariableSizeByteArray,
+                        WkSzVariableSizeByteArrayReader>
 {
 
   final SimplifiedStringFromBytesReadingCore<
@@ -48,8 +48,8 @@ public class StringWithVariableLengthBytesDeserializing
                         StringWithVariableLengthBytesDeserializing,
                         StringWithVariableLengthBytes,
                         WkSzVariableLengthOperationSettings,
-                        VariableSizeByteArrayDeserializing,
-                        VariableSizeByteArray> operationCore;
+                        WkSzVariableSizeByteArrayReader,
+                        WkSzVariableSizeByteArray> operationCore;
 
   StringWithVariableLengthBytesDeserializing(
     int index,
@@ -60,14 +60,14 @@ public class StringWithVariableLengthBytesDeserializing
     SimplifiedStringFromBytesCore<
       WkSzVariableLengthOperationSettings,StringWithVariableLengthBytesDeserializing,
       StringWithVariableLengthBytes,?,?,?,WkSzVariableLengthOperationSettings,
-      VariableSizeByteArrayDeserializing,VariableSizeByteArray,?,?,?,?,?> definitionCore) {
+      WkSzVariableSizeByteArrayReader,WkSzVariableSizeByteArray,?,?,?,?,?> definitionCore) {
     this.operationCore = new SimplifiedStringFromBytesReadingCore<
                                 WkSzVariableLengthOperationSettings,
                                 StringWithVariableLengthBytesDeserializing,
                                 StringWithVariableLengthBytes,
                                 WkSzVariableLengthOperationSettings,
-                                VariableSizeByteArrayDeserializing,
-                                VariableSizeByteArray>(
+                                WkSzVariableSizeByteArrayReader,
+                                WkSzVariableSizeByteArray>(
                                     index,
                                     settings,
                                     parentBytestream,
@@ -78,7 +78,7 @@ public class StringWithVariableLengthBytesDeserializing
 
   @Override
   public
-  WkSzPacketReaderSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayReader>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -125,7 +125,7 @@ public class StringWithVariableLengthBytesDeserializing
 
   @Override
   public
-  WkSzPacketReaderSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayReader>
   bytes() {
     return this.operationCore.bytes();
   }

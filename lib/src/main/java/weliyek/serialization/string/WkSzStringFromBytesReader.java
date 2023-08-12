@@ -22,8 +22,8 @@ import weliyek.serialization.WkSzPacketReaderField;
 import weliyek.serialization.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.util.array.ByteArrayReading;
-import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkSzByteArrayReader;
+import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public interface WkSzStringFromBytesReader<
@@ -32,14 +32,14 @@ public interface WkSzStringFromBytesReader<
                         XR extends WkSzReadingResult<String>,
                         XD extends WkSzStringFromBytesDefinition<?,?,? extends SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,
-                        SXO extends ByteArrayReading<?,?,?,SXD>>
-    extends WkSzStringFromPrimitiveReader<XS, XQ, XR, XD, ByteArrayWrapper, SXD, SXO>,
+                        SXO extends WkSzByteArrayReader<?,?,?,SXD>>
+    extends WkSzStringFromPrimitiveReader<XS, XQ, XR, XD, WkByteArray, SXD, SXO>,
             WkSzStringFromBytesOperation<
                         XS, XQ, XR, XD,
                         WkSzPacketReaderField<String,XD,?>,
                         SXO,
-                        WkSzPacketReaderField<ByteArrayWrapper,SXD,SXO>,
-                        WkSzPacketReaderSubfield<ByteArrayWrapper,SXD,SXO>>
+                        WkSzPacketReaderField<WkByteArray,SXD,SXO>,
+                        WkSzPacketReaderSubfield<WkByteArray,SXD,SXO>>
 {
 
 }

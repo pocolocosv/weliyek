@@ -48,7 +48,7 @@ public final class FixedSizeCollectionFieldSerializer<
                         ET,
                         EYD,
                         EYO>,
-                FixedSizeSequenceWriting<
+                WkSzFixedSizeSequenceWriter<
                         T,
                         YS,
                         WkSzSequenceWritingRuntime<WkSzOutputBytestream>,

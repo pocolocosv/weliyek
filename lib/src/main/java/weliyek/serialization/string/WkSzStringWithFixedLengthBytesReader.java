@@ -29,9 +29,9 @@ import weliyek.serialization.WkSzPacketReaderFieldCore;
 import weliyek.serialization.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.FixedSizeByteArray;
-import weliyek.util.array.FixedSizeByteArrayDeserializing;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzFixedSizeByteArray;
+import weliyek.util.array.WkSzFixedSizeByteArrayReader;
 
 public class WkSzStringWithFixedLengthBytesReader
     implements WkSzStringFromBytesReader<
@@ -39,8 +39,8 @@ public class WkSzStringWithFixedLengthBytesReader
                         WkSzReadingRuntime<WkSzInputBytestream>,
                         WkSzReadingResult<String>,
                         WkSzStringWithFixedLengthBytes,
-                        FixedSizeByteArray,
-                        FixedSizeByteArrayDeserializing>
+                        WkSzFixedSizeByteArray,
+                        WkSzFixedSizeByteArrayReader>
 {
 
   final SimplifiedStringFromBytesReadingCore<
@@ -48,8 +48,8 @@ public class WkSzStringWithFixedLengthBytesReader
                         WkSzStringWithFixedLengthBytesReader,
                         WkSzStringWithFixedLengthBytes,
                         WkSzOperationSettings,
-                        FixedSizeByteArrayDeserializing,
-                        FixedSizeByteArray> operationCore;
+                        WkSzFixedSizeByteArrayReader,
+                        WkSzFixedSizeByteArray> operationCore;
 
   WkSzStringWithFixedLengthBytesReader(
     int index,
@@ -60,15 +60,15 @@ public class WkSzStringWithFixedLengthBytesReader
     SimplifiedStringFromBytesCore<
       WkSzOperationSettings,WkSzStringWithFixedLengthBytesReader,
       WkSzStringWithFixedLengthBytes,?,?,?,WkSzOperationSettings,
-      FixedSizeByteArrayDeserializing,FixedSizeByteArray,?,?,?,?,
+      WkSzFixedSizeByteArrayReader,WkSzFixedSizeByteArray,?,?,?,?,
       ? extends WkSzStringWithFixedLengthBytes> definitionCore) {
     this.operationCore = new SimplifiedStringFromBytesReadingCore<
                                 WkSzOperationSettings,
                                 WkSzStringWithFixedLengthBytesReader,
                                 WkSzStringWithFixedLengthBytes,
                                 WkSzOperationSettings,
-                                FixedSizeByteArrayDeserializing,
-                                FixedSizeByteArray>(
+                                WkSzFixedSizeByteArrayReader,
+                                WkSzFixedSizeByteArray>(
                                   index,
                                   settings,
                                   parentBytestream,
@@ -79,7 +79,7 @@ public class WkSzStringWithFixedLengthBytesReader
 
   @Override
   public
-  WkSzPacketReaderSubfield<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<WkByteArray, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayReader>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -126,7 +126,7 @@ public class WkSzStringWithFixedLengthBytesReader
 
   @Override
   public
-  WkSzPacketReaderSubfield<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArrayDeserializing>
+  WkSzPacketReaderSubfield<WkByteArray, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayReader>
   bytes() {
     return this.operationCore.bytes();
   }

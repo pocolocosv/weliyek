@@ -27,8 +27,8 @@ import weliyek.serialization.WkSzPacketReaderSubfieldCore;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzReadingRuntimeControl;
-import weliyek.util.array.PrimitiveArrayReading;
-import weliyek.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.WkSzPrimitiveArrayReader;
+import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSzPrimitiveArrayDefinition;
 
 public abstract class StringFromPrimitiveReadingCore<
@@ -42,9 +42,9 @@ public abstract class StringFromPrimitiveReadingCore<
                         XOC extends StringFromPrimitiveReadingCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SX,SXS,SXO,SXD,DC>,
                         XD extends WkSzStringFromPrimitiveDefinition<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        SX extends PrimitiveArrayWrapper<?,?>,
+                        SX extends WkPrimitiveArray<?,?>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends PrimitiveArrayReading<SX,SXS,?,?,SXD>,
+                        SXO extends WkSzPrimitiveArrayReader<SX,SXS,?,?,SXD>,
                         SXD extends WkSzPrimitiveArrayDefinition<SX, SXO>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
        extends WkSzAggregatorReaderCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>

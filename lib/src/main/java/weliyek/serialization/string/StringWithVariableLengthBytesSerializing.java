@@ -30,9 +30,9 @@ import weliyek.serialization.WkSzPacketWriterFieldCore;
 import weliyek.serialization.WkSzPacketWriterSubfield;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.VariableSizeByteArray;
-import weliyek.util.array.VariableSizeByteArraySerializing;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzVariableSizeByteArray;
+import weliyek.util.array.WkSzVariableSizeByteArrayWriter;
 
 public class StringWithVariableLengthBytesSerializing
     implements WkSzStringFromBytesWriter<
@@ -40,8 +40,8 @@ public class StringWithVariableLengthBytesSerializing
                         WkSzWritingRuntime<WkSzOutputBytestream>,
                         WkSzWritingResult,
                         StringWithVariableLengthBytes,
-                        VariableSizeByteArray,
-                        VariableSizeByteArraySerializing>
+                        WkSzVariableSizeByteArray,
+                        WkSzVariableSizeByteArrayWriter>
 {
 
   final SimpleStringFromBytesWritingCore<
@@ -49,8 +49,8 @@ public class StringWithVariableLengthBytesSerializing
                         StringWithVariableLengthBytesSerializing,
                         StringWithVariableLengthBytes,
                         WkSzOperationSettings,
-                        VariableSizeByteArraySerializing,
-                        VariableSizeByteArray> operationCore;
+                        WkSzVariableSizeByteArrayWriter,
+                        WkSzVariableSizeByteArray> operationCore;
 
   StringWithVariableLengthBytesSerializing(
     int index,
@@ -62,15 +62,15 @@ public class StringWithVariableLengthBytesSerializing
     SimplifiedStringFromBytesCore<
       ?,?,?,WkSzOptionalLengthOperationSettings,StringWithVariableLengthBytesSerializing,
       StringWithVariableLengthBytes,?,?,?,WkSzOperationSettings,
-      VariableSizeByteArraySerializing,VariableSizeByteArray,?,
+      WkSzVariableSizeByteArrayWriter,WkSzVariableSizeByteArray,?,
       ? extends StringWithVariableLengthBytes> definitionCore) {
     this.operationCore = new SimpleStringFromBytesWritingCore<
                                 WkSzOptionalLengthOperationSettings,
                                 StringWithVariableLengthBytesSerializing,
                                 StringWithVariableLengthBytes,
                                 WkSzOperationSettings,
-                                VariableSizeByteArraySerializing,
-                                VariableSizeByteArray>(
+                                WkSzVariableSizeByteArrayWriter,
+                                WkSzVariableSizeByteArray>(
                                     index,
                                     serializable,
                                     settings,
@@ -82,7 +82,7 @@ public class StringWithVariableLengthBytesSerializing
 
   @Override
   public
-  WkSzPacketWriterSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayWriter>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -134,7 +134,7 @@ public class StringWithVariableLengthBytesSerializing
 
   @Override
   public
-  WkSzPacketWriterSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayWriter>
   bytes() {
     return this.operationCore.bytes();
   }

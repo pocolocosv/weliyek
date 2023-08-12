@@ -35,49 +35,49 @@ public class DynamicByteArraySerialzing<
                         ZT extends Number,
                         ZYO extends WkSzNumberWriter<ZT,WkSzOperationSettings,?,?,ZYD>,
                         ZYD extends WkSzNumberDefinition<ZT,?>>
-    implements ByteArrayWriting<
+    implements WkSzByteArrayWriter<
                         WkSzOperationSettings,
                         WkSzWritingRuntime<WkSzOutputBytestream>,
                         WkSzWritingResult,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>>,
                DynamicPrimitiveArraySerializing<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         WkSzOperationSettings,
                         WkSzWritingRuntime<WkSzOutputBytestream>,
                         WkSzWritingResult,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         ZT, ZYO, ZYD,
-                        VariableSizeByteArraySerializing,
-                        VariableSizeByteArray>
+                        WkSzVariableSizeByteArrayWriter,
+                        WkSzVariableSizeByteArray>
 {
 
   final SimplifiedDynamicPrimitiveArraySerializingCore<
-                        ByteArrayWrapper,
+                        WkByteArray,
                         DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                         DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         ZT, ZYO, ZYD,
-                        VariableSizeByteArraySerializing,
-                        VariableSizeByteArray> operationCore;
+                        WkSzVariableSizeByteArrayWriter,
+                        WkSzVariableSizeByteArray> operationCore;
 
   DynamicByteArraySerialzing(
     int index,
-    ByteArrayWrapper serializable,
+    WkByteArray serializable,
     WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
-      ByteArrayWrapper,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?> serializingfieldCore,
+      WkByteArray,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?> serializingfieldCore,
     SimplifiedDynamicPrimitiveArrayDefinitionCore<
-      ByteArrayWrapper,?,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
+      WkByteArray,?,?,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
       DynamicByteArraySerialzing<ZT,ZYO,ZYD>,ZT,?,?,ZYD,ZYO,?,?,?,
-      VariableSizeByteArray,VariableSizeByteArraySerializing,?,
+      WkSzVariableSizeByteArray,WkSzVariableSizeByteArrayWriter,?,
       ?> definitionCore) {
     this.operationCore = new SimplifiedDynamicPrimitiveArraySerializingCore<
-                                ByteArrayWrapper,
+                                WkByteArray,
                                 DynamicByteArraySerialzing<ZT,ZYO,ZYD>,
                                 DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                 ZT, ZYO, ZYD,
-                                VariableSizeByteArraySerializing,
-                                VariableSizeByteArray>(
+                                WkSzVariableSizeByteArrayWriter,
+                                WkSzVariableSizeByteArray>(
                                     index,
                                     serializable,
                                     settings,
@@ -88,7 +88,7 @@ public class DynamicByteArraySerialzing<
   }
 
   @Override
-  public ByteArrayWrapper serializable() {
+  public WkByteArray serializable() {
     return this.operationCore.serializable();
   }
 
@@ -123,7 +123,7 @@ public class DynamicByteArraySerialzing<
   }
 
   @Override
-  public WkSzPacketWriterField<ByteArrayWrapper,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?>
+  public WkSzPacketWriterField<WkByteArray,DynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?>
   packetField() {
     return this.operationCore.packetField();
   }
@@ -140,7 +140,7 @@ public class DynamicByteArraySerialzing<
 
   @Override
   public
-  WkSzPacketWriterSubfield<ByteArrayWrapper, VariableSizeByteArray, VariableSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayWriter>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

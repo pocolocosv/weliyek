@@ -20,7 +20,7 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.serialization.PrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
@@ -31,9 +31,9 @@ import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
 import weliyek.serialization.WkSzWritingResult;
 
 public class SimplifiedPrimitiveArraySerializingCore<
-                        Y extends PrimitiveArrayWrapperBase<?,?>,
+                        Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSzOperationSettings,
-                        D extends PrimitiveArraySerializerDefinition<Y,?>,
+                        D extends WkSzPrimitiveArraySerializerDefinition<Y,?>,
                         YO extends WkSzPrimitiveArraySerializerWriter<
                                         Y,
                                         YS,

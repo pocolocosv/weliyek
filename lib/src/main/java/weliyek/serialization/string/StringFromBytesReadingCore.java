@@ -27,8 +27,8 @@ import weliyek.serialization.WkSzPacketReaderSubfield;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzReadingRuntimeControl;
-import weliyek.util.array.ByteArrayReading;
-import weliyek.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkSzByteArrayReader;
+import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSzByteArrayDefinition;
 
 public abstract class StringFromBytesReadingCore<
@@ -43,7 +43,7 @@ public abstract class StringFromBytesReadingCore<
                         XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends ByteArrayReading<SXS,?,?,SXD>,
+                        SXO extends WkSzByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSzByteArrayDefinition<SXO>,
                         DC extends WkSzStringFromBytesDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
@@ -51,7 +51,7 @@ public abstract class StringFromBytesReadingCore<
                                       SXS,SXO,SXD,?,?,?,?,?,DC>>
     extends StringFromPrimitiveReadingCore<
                         XS, XB, XBC, XQ, XQC, XR, XO, XOC, XD, AXB,
-                        ByteArrayWrapper, SXS, SXO, SXD, DC>
+                        WkByteArray, SXS, SXO, SXD, DC>
     implements WkSzStringFromBytesReader<XS, XQ, XR, XD, SXD, SXO>
 {
 
@@ -72,7 +72,7 @@ public abstract class StringFromBytesReadingCore<
   }
 
   @Override
-  public final WkSzPacketReaderSubfield<ByteArrayWrapper, SXD, SXO> bytes() {
+  public final WkSzPacketReaderSubfield<WkByteArray, SXD, SXO> bytes() {
     return this.primitiveArray();
   }
 

@@ -29,9 +29,9 @@ import weliyek.serialization.WkSzPacketWriterFieldCore;
 import weliyek.serialization.WkSzPacketWriterSubfield;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.util.array.ByteArrayWrapper;
-import weliyek.util.array.FixedSizeByteArray;
-import weliyek.util.array.FixedSizeByteArraySerializing;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSzFixedSizeByteArray;
+import weliyek.util.array.WkSzFixedSizeByteArrayWriter;
 
 public class WkSzStringWithFixedLengthBytesWriter
     implements WkSzStringFromBytesWriter<
@@ -39,8 +39,8 @@ public class WkSzStringWithFixedLengthBytesWriter
                         WkSzWritingRuntime<WkSzOutputBytestream>,
                         WkSzWritingResult,
                         WkSzStringWithFixedLengthBytes,
-                        FixedSizeByteArray,
-                        FixedSizeByteArraySerializing>
+                        WkSzFixedSizeByteArray,
+                        WkSzFixedSizeByteArrayWriter>
 {
 
   final SimpleStringFromBytesWritingCore<
@@ -48,8 +48,8 @@ public class WkSzStringWithFixedLengthBytesWriter
                         WkSzStringWithFixedLengthBytesWriter,
                         WkSzStringWithFixedLengthBytes,
                         WkSzOperationSettings,
-                        FixedSizeByteArraySerializing,
-                        FixedSizeByteArray> operationCore;
+                        WkSzFixedSizeByteArrayWriter,
+                        WkSzFixedSizeByteArray> operationCore;
 
   WkSzStringWithFixedLengthBytesWriter(
     int index,
@@ -61,14 +61,14 @@ public class WkSzStringWithFixedLengthBytesWriter
     SimplifiedStringFromBytesCore<
       ?,?,?,WkSzOperationSettings,WkSzStringWithFixedLengthBytesWriter,
       WkSzStringWithFixedLengthBytes,?,?,?,WkSzOperationSettings,
-      FixedSizeByteArraySerializing,FixedSizeByteArray,?,
+      WkSzFixedSizeByteArrayWriter,WkSzFixedSizeByteArray,?,
       ? extends WkSzStringWithFixedLengthBytes> definitionCore) {
     this.operationCore = new SimpleStringFromBytesWritingCore<WkSzOperationSettings,
         WkSzStringWithFixedLengthBytesWriter,
         WkSzStringWithFixedLengthBytes,
         WkSzOperationSettings,
-        FixedSizeByteArraySerializing,
-        FixedSizeByteArray>(
+        WkSzFixedSizeByteArrayWriter,
+        WkSzFixedSizeByteArray>(
                                   index,
                                   serializable,
                                   settings,
@@ -80,7 +80,7 @@ public class WkSzStringWithFixedLengthBytesWriter
 
   @Override
   public
-  WkSzPacketWriterSubfield<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<WkByteArray, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayWriter>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -132,7 +132,7 @@ public class WkSzStringWithFixedLengthBytesWriter
 
   @Override
   public
-  WkSzPacketWriterSubfield<ByteArrayWrapper, FixedSizeByteArray, FixedSizeByteArraySerializing>
+  WkSzPacketWriterSubfield<WkByteArray, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayWriter>
   bytes() {
     return this.operationCore.bytes();
   }

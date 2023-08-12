@@ -28,7 +28,7 @@ import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberWriter;
 
 public class SimplifiedDynamicPrimitiveArraySerializingCore<
-                        T extends PrimitiveArrayWrapper<?,?>,
+                        T extends WkPrimitiveArray<?,?>,
                         YO extends DynamicPrimitiveArraySerializing<
                                         T,
                                         WkSzOperationSettings,

@@ -46,7 +46,7 @@ public final class FixedSizeCollectionFieldDeserializer<
                         WkSzReadingResult<T>,
                         FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                         ET, EXD, EXO>,
-                FixedSizeSequenceReading<
+                WkSzFixedSizeSequenceReader<
                         T,
                         XS,
                         WkSzSequenceReadingRuntime<WkSzInputBytestream>,

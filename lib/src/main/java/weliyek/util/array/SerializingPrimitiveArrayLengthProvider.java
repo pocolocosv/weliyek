@@ -17,14 +17,14 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.PrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
 import weliyek.serialization.WkSzOperationSettings;
 
 @FunctionalInterface
 public interface SerializingPrimitiveArrayLengthProvider<
-                        Y extends PrimitiveArrayWrapper<?,?>,
+                        Y extends WkPrimitiveArray<?,?>,
                         YS extends WkSzOperationSettings,
-                        YD extends PrimitiveArraySerializerDefinition<Y, ?>>
+                        YD extends WkSzPrimitiveArraySerializerDefinition<Y, ?>>
 {
 
   int retriveLength(Y wrapper, YS settings, YD definition);

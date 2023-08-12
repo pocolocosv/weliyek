@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.WkPrimitiveArray;
 
 /**
  * Holds the string obtained when deserializing data from a primitive array
@@ -27,7 +27,7 @@ import weliyek.util.array.PrimitiveArrayWrapper;
  *
  * @param <SX> Primitive array wrapper type.
  */
-public class DeserializedString<SX extends PrimitiveArrayWrapper<?,?>>
+public class DeserializedString<SX extends WkPrimitiveArray<?,?>>
     extends StringAndPrimitiveArray<SX>
 {
 

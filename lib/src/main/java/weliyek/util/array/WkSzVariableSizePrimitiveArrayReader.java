@@ -24,13 +24,13 @@ import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.sequence.VariableSizeSequenceReading;
 
 public interface WkSzVariableSizePrimitiveArrayReader<
-                        X extends PrimitiveArrayWrapper<?, ?>,
+                        X extends WkPrimitiveArray<?, ?>,
                         S extends WkSzVariableLengthOperationSettings,
                         Q extends WkSzSequenceReadingRuntime<?>,
                         R extends WkSzReadingResult<X>,
                         D extends WkSzVariableSizePrimitiveArrayDefinition<X,?>>
     extends VariableSizeSequenceReading<X, S, Q, R, D>,
-            PrimitiveArrayReading<X, S, Q, R, D>,
+            WkSzPrimitiveArrayReader<X, S, Q, R, D>,
             WkSzVariableSizePrimitiveArrayOperation<
                         S, Q, R, D,
                         WkSzPacketReaderField<X,D,?>>

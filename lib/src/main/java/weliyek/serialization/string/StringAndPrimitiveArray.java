@@ -19,9 +19,9 @@ package weliyek.serialization.string;
 
 import java.util.Objects;
 
-import weliyek.util.array.PrimitiveArrayWrapper;
+import weliyek.util.array.WkPrimitiveArray;
 
-public class StringAndPrimitiveArray<T extends PrimitiveArrayWrapper<?,?>>
+public class StringAndPrimitiveArray<T extends WkPrimitiveArray<?,?>>
 {
 
   private final String string;

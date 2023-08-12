@@ -45,7 +45,7 @@ public interface DynamicPrimitiveArrayDeserializing<
                         VXO,
                         WkSzPacketReaderField<T,VD,VXO>,
                         WkSzPacketReaderSubfield<T,VD,VXO>>,
-            DynamicSequenceDeserializing<T, XS, XQ, XR, XD, ZT, ZXO, ZD, VXO, VD>
+            WkSzDynamicSequencePacketReaderOperation<T, XS, XQ, XR, XD, ZT, ZXO, ZD, VXO, VD>
 {
 
 }

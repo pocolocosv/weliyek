@@ -34,7 +34,7 @@ import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberWriter;
 
-public class DynamicCollectionFieldSerializerImpl<
+public class WkSzDynamicCollectionPacketWriter<
                         T extends Collection<ET>,
                         YS extends WkSzOperationSettings,
                         YD extends WkSzDynamicCollectionDefinition<
@@ -48,52 +48,52 @@ public class DynamicCollectionFieldSerializerImpl<
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         VYS extends WkSzOperationSettings>
-    implements DynamicCollectionFieldSerializer<
+    implements WkSzDynamicCollectionPacketWriterOperation<
                         T, YS,
                         WkSzWritingRuntime<WkSzOutputBytestream>,
                         WkSzWritingResult,
-                        DynamicCollectionField<
+                        WkSzDynamicCollection<
                           T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                         ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>
 {
 
-  final SimplifiedDynamicCollectionFieldSerializer<
+  final WkSzSimplifiedDynamicSequencePacketWriterCore<
                         T, YS,
-                        DynamicCollectionFieldSerializer<
+                        WkSzDynamicCollectionPacketWriterOperation<
                           T, YS,
                           WkSzWritingRuntime<WkSzOutputBytestream>,
                           WkSzWritingResult,
-                          DynamicCollectionField<
+                          WkSzDynamicCollection<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
-                        DynamicCollectionField<
+                        WkSzDynamicCollection<
                           T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                         ZT, ZYS, ZYO, ZYD, ET, EYS, EYD, EYO, VYS> operationCore;
 
-  DynamicCollectionFieldSerializerImpl(
+  WkSzDynamicCollectionPacketWriter(
     int index,
     T serializable, YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
-      T,?,DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
+      T,?,WkSzDynamicCollection<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
       ?,?,?> packetfieldCore,
-    SimplifiedDynamicCollectionDefinitionCore<
+    WkSzSimplifiedDynamicCollectionStructDefinition<
       T,?,?,?,YS,
-      DynamicCollectionFieldSerializer<T,YS,WkSzWritingRuntime<WkSzOutputBytestream>,WkSzWritingResult,
-        DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
+      WkSzDynamicCollectionPacketWriterOperation<T,YS,WkSzWritingRuntime<WkSzOutputBytestream>,WkSzWritingResult,
+        WkSzDynamicCollection<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
         ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
-      DynamicCollectionField<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
+      WkSzDynamicCollection<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
       ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS,?> definitionCore) {
-    this.operationCore =  new SimplifiedDynamicCollectionFieldSerializer<
+    this.operationCore =  new WkSzSimplifiedDynamicSequencePacketWriterCore<
                                 T, YS,
-                                DynamicCollectionFieldSerializer<
+                                WkSzDynamicCollectionPacketWriterOperation<
                                   T, YS,
                                   WkSzWritingRuntime<WkSzOutputBytestream>,
                                   WkSzWritingResult,
-                                  DynamicCollectionField<
+                                  WkSzDynamicCollection<
                                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                   ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
-                                DynamicCollectionField<
+                                WkSzDynamicCollection<
                                 T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                 ZT, ZYS, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>(
                                     index,
@@ -119,7 +119,7 @@ public class DynamicCollectionFieldSerializerImpl<
 
   @Override
   public
-  DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>
+  WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>
   definition() {
     return this.operationCore.definition();
   }
@@ -146,7 +146,7 @@ public class DynamicCollectionFieldSerializerImpl<
 
   @Override
   public
-  WkSzPacketWriterField<T, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ?>
+  WkSzPacketWriterField<T, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ?>
   packetField() {
     return this.operationCore.packetField();
   }

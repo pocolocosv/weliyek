@@ -36,16 +36,11 @@ import weliyek.serialization.WkSzOperationException;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
-import weliyek.serialization.WkSzPacketOperationException;
 import weliyek.serialization.WkSzStruct;
 import weliyek.serialization.number.WkSzSignedBigEndianInteger;
 import weliyek.serialization.number.WkSzSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSzSignedBigEndianIntegerWriter;
 import weliyek.serialization.util.KetzaByteOutputStream;
-import weliyek.util.array.WkByteArray;
-import weliyek.util.array.DynamicByteArray;
-import weliyek.util.array.DynamicByteArrayDeserializing;
-import weliyek.util.array.DynamicByteArraySerialzing;
 
 public class DynamicByteArrayTest
 {

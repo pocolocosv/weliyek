@@ -32,7 +32,7 @@ import weliyek.serialization.number.WkSzNumberWriter;
 import weliyek.serialization.sequence.VariableSizeSequenceWriting;
 import weliyek.serialization.sequence.WkSzVariableSizeSequenceDefinition;
 
-public abstract class DynamicSequenceSerializingCore<
+public abstract class WkSzDynamicSequencePacketWriterOperationCore<
                         T,
                         YS extends WkSzOperationSettings,
                         YB extends WkSzOutputBytestream,
@@ -40,9 +40,9 @@ public abstract class DynamicSequenceSerializingCore<
                         YQ extends WkSzWritingRuntime<YB>,
                         YQC extends WkSzWritingRuntimeControl<YB,YBC,YQ>,
                         YR extends WkSzWritingResult,
-                        YO extends DynamicSequenceSerializing<
+                        YO extends WkSzDynamicSequencePacketWriterOperation<
                                         T,YS,YQ,YR,YD,ZT,ZYO,ZYD,VYO,VYD>,
-                        YOC extends DynamicSequenceSerializingCore<
+                        YOC extends WkSzDynamicSequencePacketWriterOperationCore<
                                         T,YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYBC,
                                         ZT,ZYS,ZYO,ZYD,
                                         VYS,VYO,VYD,
@@ -56,19 +56,19 @@ public abstract class DynamicSequenceSerializingCore<
                         VYS extends WkSzOperationSettings,
                         VYO extends VariableSizeSequenceWriting<T,VYS,?,?,VYD>,
                         VYD extends WkSzVariableSizeSequenceDefinition<T,?>,
-                        DC extends DynamicSequenceDefinitionCore<
+                        DC extends WkSzDynamicSequenceStructDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYBC,
                                         ZT,?,?,?,ZYS,ZYO,ZYD,
                                         ?,?,?,?,VYS,VYO,VYD,
                                         ?,?,DC>>
     extends WkSzAggregatorWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
-    implements DynamicSequenceSerializing<T, YS, YQ, YR, YD, ZT, ZYO, ZYD, VYO, VYD>
+    implements WkSzDynamicSequencePacketWriterOperation<T, YS, YQ, YR, YD, ZT, ZYO, ZYD, VYO, VYD>
 {
 
   private WkSzPacketWriterSubfieldCore<ZT,ZYS,ZYD,ZYO,T,?,YD,YO> sizeWriteField;
   private WkSzPacketWriterSubfieldCore<T,VYS,VYD,VYO,T,?,YD,YO> varseqWriteField;
 
-  protected DynamicSequenceSerializingCore(
+  protected WkSzDynamicSequencePacketWriterOperationCore(
     int index,
     T serializable,
     YS settings,

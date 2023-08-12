@@ -31,12 +31,12 @@ import weliyek.serialization.WkSzReadingRuntimeControl;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
-import weliyek.util.array.DynamicSequenceDeserializingCore;
+import weliyek.util.array.WkSzDynamicSequencePacketReaderOperationCore;
 
-public final class SimplifiedDynamicCollectionFieldDeserializer<
+public final class WkSzSimplifiedDynamicSequencePacketReaderCore<
                         T extends Collection<ET>,
                         XS extends WkSzOperationSettings,
-                        XO extends DynamicCollectionFieldDeserializer<
+                        XO extends WkSzDynamicCollectionPacketReaderOperation<
                                         T,XS,
                                         WkSzReadingRuntime<WkSzInputBytestream>,
                                         WkSzReadingResult<T>,
@@ -52,7 +52,7 @@ public final class SimplifiedDynamicCollectionFieldDeserializer<
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
-    extends DynamicSequenceDeserializingCore<
+    extends WkSzDynamicSequencePacketReaderOperationCore<
                         T, XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
@@ -63,15 +63,15 @@ public final class SimplifiedDynamicCollectionFieldDeserializer<
                           WkSzReadingRuntime<WkSzInputBytestream>>,
                         WkSzReadingResult<T>,
                         XO,
-                        SimplifiedDynamicCollectionFieldDeserializer<
+                        WkSzSimplifiedDynamicSequencePacketReaderCore<
                           T,XS,XO,XD,ZT,ZXS,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
                         XD,
                         WkSzInputBytestreamBase<?>,
                         ZT, ZXS, ZXO, ZXD, VXS,
                         VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>, // VXO
                         VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>, // VXD
-                        SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?>>
-    implements DynamicCollectionFieldDeserializer<
+                        WkSzSimplifiedDynamicCollectionStructDefinition<T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?>>
+    implements WkSzDynamicCollectionPacketReaderOperation<
                         T, XS,
                         WkSzReadingRuntime<WkSzInputBytestream>,
                         WkSzReadingResult<T>,
@@ -79,12 +79,12 @@ public final class SimplifiedDynamicCollectionFieldDeserializer<
                         VXS>
 {
 
-  public SimplifiedDynamicCollectionFieldDeserializer(
+  public WkSzSimplifiedDynamicSequencePacketReaderCore(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<T,?,XD,?,?,?> packetfieldCore,
-    SimplifiedDynamicCollectionDefinitionCore<
+    WkSzSimplifiedDynamicCollectionStructDefinition<
       T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?> definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);
@@ -105,7 +105,7 @@ public final class SimplifiedDynamicCollectionFieldDeserializer<
 
   @Override
   protected
-  SimplifiedDynamicCollectionFieldDeserializer<T, XS, XO, XD, ZT, ZXS, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>
+  WkSzSimplifiedDynamicSequencePacketReaderCore<T, XS, XO, XD, ZT, ZXS, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>
   getThis() {
     return this;
   }

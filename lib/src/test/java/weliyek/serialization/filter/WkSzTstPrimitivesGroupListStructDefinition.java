@@ -28,36 +28,36 @@ import weliyek.serialization.filter.FieldTester;
 import weliyek.serialization.number.WkSzSignedLittleEndianInteger;
 import weliyek.serialization.number.WkSzSignedLittleEndianIntegerReader;
 import weliyek.serialization.number.WkSzSignedLittleEndianIntegerWriter;
-import weliyek.serialization.sequence.SimplifiedDynamicCollectionDefinitionCore;
+import weliyek.serialization.sequence.WkSzSimplifiedDynamicCollectionStructDefinition;
 import weliyek.serialization.sequence.VariableSizeCollectionField;
 import weliyek.serialization.sequence.WkSzDynamicCollectionDefinition;
 
-public class PrimitivesGroupListField
+public class WkSzTstPrimitivesGroupListStructDefinition
         implements WkSzDynamicCollectionDefinition<
-                        PrimitivesGroupList,
-                        PrimitivesGroupListFieldDeserializer,
-                        PrimitivesGroupListFieldSerializer,
+                        WkSzTstPrimitivesGroupList,
+                        WkSzTstPrimitivesGroupListPacketReader,
+                        WkSzTstPrimitivesGroupListPacketWriter,
                         WkSzSignedLittleEndianInteger,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupDeserializer,
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketReader,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer,
-                        PrimitivesGroupField,
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter,
+                        WkSzTstPrimitivesGroupStructDefinition,
                         WkSzVariableLengthOperationSettings,
                         WkSzOperationSettings>
 {
 
-    final SimplifiedDynamicCollectionDefinitionCore<
-                        PrimitivesGroupList,
+    final WkSzSimplifiedDynamicCollectionStructDefinition<
+                        WkSzTstPrimitivesGroupList,
                         WkSzOperationSettings,
-                        PrimitivesGroupListFieldDeserializer,
-                        PrimitivesGroupListField,
+                        WkSzTstPrimitivesGroupListPacketReader,
+                        WkSzTstPrimitivesGroupListStructDefinition,
                         WkSzOperationSettings,
-                        PrimitivesGroupListFieldSerializer,
-                        PrimitivesGroupListField,
+                        WkSzTstPrimitivesGroupListPacketWriter,
+                        WkSzTstPrimitivesGroupListStructDefinition,
                         Integer,
                         WkSzOperationSettings,
                         WkSzSignedLittleEndianIntegerReader,
@@ -66,21 +66,21 @@ public class PrimitivesGroupListField
                         WkSzSignedLittleEndianIntegerWriter,
                         WkSzSignedLittleEndianInteger,
                         WkSzSignedLittleEndianInteger,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupDeserializer,
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketReader,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer,
-                        PrimitivesGroupField,
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter,
+                        WkSzTstPrimitivesGroupStructDefinition,
                         WkSzVariableLengthOperationSettings,
                         WkSzOperationSettings,
-                        PrimitivesGroupListField> fieldCore;
+                        WkSzTstPrimitivesGroupListStructDefinition> fieldCore;
 
-    PrimitivesGroupListField(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
-        fieldCore = new SimplifiedDynamicCollectionDefinitionCore<
-                            PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListFieldDeserializer, PrimitivesGroupListField, WkSzOperationSettings, PrimitivesGroupListFieldSerializer, PrimitivesGroupListField, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianInteger, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, PrimitivesGroupField, WkSzVariableLengthOperationSettings, WkSzOperationSettings, PrimitivesGroupListField>(
+    WkSzTstPrimitivesGroupListStructDefinition(WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
+        fieldCore = new WkSzSimplifiedDynamicCollectionStructDefinition<
+                            WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroupListPacketReader, WkSzTstPrimitivesGroupListStructDefinition, WkSzOperationSettings, WkSzTstPrimitivesGroupListPacketWriter, WkSzTstPrimitivesGroupListStructDefinition, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, WkSzOperationSettings, WkSzSignedLittleEndianIntegerWriter, WkSzSignedLittleEndianInteger, WkSzSignedLittleEndianInteger, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition, WkSzVariableLengthOperationSettings, WkSzOperationSettings, WkSzTstPrimitivesGroupListStructDefinition>(
                                 0, //minSize,
                                 1024, //maxSize,
                                 "SIZE", //sizeFieldLabel,
@@ -92,32 +92,32 @@ public class PrimitivesGroupListField
                                 (i,axo) -> WkSzVariableLengthOperationSettings.withLength(axo.size().field().get().firstOperation().get().result().get().deserialized().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
                                 WkSzOperationSettings::none, //collectionAndElementsSerializerSettingsFactory,
                                 "PRIMIVITESGROUP", //elementFieldLabel,
-                                (pc) -> new PrimitivesGroupField(pc).definitionCore,
+                                (pc) -> new WkSzTstPrimitivesGroupStructDefinition(pc).definitionCore,
                                 WkSzOperationSettings::none, //elementDeserializerSettingsFactory,
                                 WkSzOperationSettings::none, //elementSerializerSettingsFactory,
-                                (i,xs,axb,xkc,xdc) -> new PrimitivesGroupListFieldDeserializer(i,xs,axb,xkc,xdc).readingCore, //deserializerFactory,
-                                (i,y,ys,ayb,ykc,ydc) -> new PrimitivesGroupListFieldSerializer(i,y,ys,ayb,ykc,ydc).writingCore, //serializerFactory,
-                                (l) -> new PrimitivesGroupList(l),
-                                PrimitivesGroupList.class,
+                                (i,xs,axb,xkc,xdc) -> new WkSzTstPrimitivesGroupListPacketReader(i,xs,axb,xkc,xdc).readingCore, //deserializerFactory,
+                                (i,y,ys,ayb,ykc,ydc) -> new WkSzTstPrimitivesGroupListPacketWriter(i,y,ys,ayb,ykc,ydc).writingCore, //serializerFactory,
+                                (l) -> new WkSzTstPrimitivesGroupList(l),
+                                WkSzTstPrimitivesGroupList.class,
                                 componentCore,
                                 this);
     }
 
     @Override
-    public WkSzStructSubcomponent<PrimitivesGroupListFieldDeserializer, PrimitivesGroupListFieldSerializer, WkSzSignedLittleEndianInteger>
+    public WkSzStructSubcomponent<WkSzTstPrimitivesGroupListPacketReader, WkSzTstPrimitivesGroupListPacketWriter, WkSzSignedLittleEndianInteger>
     size() {
       return this.fieldCore.size();
     }
 
     @Override
     public
-    WkSzStructSubcomponent<PrimitivesGroupListFieldDeserializer, PrimitivesGroupListFieldSerializer, VariableSizeCollectionField<PrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzOperationSettings, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, PrimitivesGroupField>>
+    WkSzStructSubcomponent<WkSzTstPrimitivesGroupListPacketReader, WkSzTstPrimitivesGroupListPacketWriter, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzOperationSettings, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
     variableSequence() {
       return this.fieldCore.variableSequence();
     }
 
     @Override
-    public Class<PrimitivesGroupList> rxClass() {
+    public Class<WkSzTstPrimitivesGroupList> rxClass() {
       return this.fieldCore.rxClass();
     }
 
@@ -128,7 +128,7 @@ public class PrimitivesGroupListField
 
     @Override
     public FieldTester<?,?>
-    makeTester(Predicate<? super PrimitivesGroupListFieldDeserializer> test, String description) {
+    makeTester(Predicate<? super WkSzTstPrimitivesGroupListPacketReader> test, String description) {
       return this.fieldCore.makeTester(test, description);
     }
 

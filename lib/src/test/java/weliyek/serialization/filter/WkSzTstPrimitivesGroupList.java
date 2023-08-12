@@ -24,25 +24,25 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class PrimitivesGroupList extends AbstractList<PrimitivesGroup>
+public class WkSzTstPrimitivesGroupList extends AbstractList<WkSzTstPrimitivesGroup>
 {
 
-    final List<PrimitivesGroup> container;
+    final List<WkSzTstPrimitivesGroup> container;
 
     /**
      * Uses supplied list as a container. Any changes done to the container
      * will be mirrored by this class.
      */
-    PrimitivesGroupList(List<PrimitivesGroup> container) {
+    WkSzTstPrimitivesGroupList(List<WkSzTstPrimitivesGroup> container) {
         this.container = Objects.requireNonNull(container);
     }
 
-    PrimitivesGroupList(Collection<PrimitivesGroup> collection) {
+    WkSzTstPrimitivesGroupList(Collection<WkSzTstPrimitivesGroup> collection) {
         this.container = new ArrayList<>(collection);
     }
 
     @Override
-    public PrimitivesGroup get(int index) {
+    public WkSzTstPrimitivesGroup get(int index) {
         return container.get(index);
     }
 
@@ -53,15 +53,15 @@ public class PrimitivesGroupList extends AbstractList<PrimitivesGroup>
 
     static class Builder {
 
-        private static LinkedList<PrimitivesGroup> builderContainer = new LinkedList<>();
+        private static LinkedList<WkSzTstPrimitivesGroup> builderContainer = new LinkedList<>();
 
-        public PrimitivesGroupList build() {
-            List<PrimitivesGroup> listContainer = new LinkedList<>(builderContainer);
+        public WkSzTstPrimitivesGroupList build() {
+            List<WkSzTstPrimitivesGroup> listContainer = new LinkedList<>(builderContainer);
             builderContainer.clear();
-            return new PrimitivesGroupList(listContainer);
+            return new WkSzTstPrimitivesGroupList(listContainer);
         }
 
-        public Builder addPrimitives(PrimitivesGroup primitive) {
+        public Builder addPrimitives(WkSzTstPrimitivesGroup primitive) {
             builderContainer.add(primitive);
             return this;
         }

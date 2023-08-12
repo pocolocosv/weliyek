@@ -54,18 +54,18 @@ public class FilterBuilderTest
   private static Predicate<WkSzPacketReaderOperation<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().deserialized().get().intValue() == 400;
 
   private static WkSzStruct<
-                      MultipleLists,
+                      WkSzTstMultipleLists,
                       WkSzOperationSettings,
-                      MultipleListInputField,
-                      MultipleListReading,
+                      WkSzTstMultipleListStructDefinition,
+                      WkSzTstMultipleListsPacketReader,
                       WkSzInputBytestreamBase<?>,
                       WkSzOperationSettings,
-                      MultipleListInputField,
-                      MultipleListsWriting,
+                      WkSzTstMultipleListStructDefinition,
+                      WkSzTstMultipleListsPacketWriter,
                       WkSzOutputBytestreamBase<?>,
-                      MultipleListInputField> MULTIPLE_LIST_PACKET;
-  private static PrimitivesGroupListField PRIMITIVELIST_FIELD;
-  private static PrimitivesGroupField PRIMITIVEGROUP_FIELD;
+                      WkSzTstMultipleListStructDefinition> MULTIPLE_LIST_PACKET;
+  private static WkSzTstPrimitivesGroupListStructDefinition PRIMITIVELIST_FIELD;
+  private static WkSzTstPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
   private static WkSzSignedByte BYTE_FIELD;
   private static WkSzSignedBigEndianInteger INT_FIELD;
   private static WkSzSignedBigEndianLong LONG_FIELD;
@@ -92,7 +92,7 @@ public class FilterBuilderTest
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    MULTIPLE_LIST_PACKET = MultipleListInputField.newPacketStructure();
+    MULTIPLE_LIST_PACKET = WkSzTstMultipleListStructDefinition.newPacketStructure();
     PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().field().definition().element().field().definition();
     PRIMITIVEGROUP_FIELD = PRIMITIVELIST_FIELD.variableSequence().field().definition().element().field().definition();
     BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.field().definition();
@@ -154,46 +154,46 @@ public class FilterBuilderTest
                                    .build();
       assertNotNull(filter);
 
-      final PrimitivesGroup primitive00 = new PrimitivesGroup(0, "zero");
-      final PrimitivesGroup primitive01 = new PrimitivesGroup(1, "one");
-      final PrimitivesGroup primitive02 = new PrimitivesGroup(2, "two");
-      final PrimitivesGroup primitive03 = new PrimitivesGroup(3, "three");
-      final PrimitivesGroup primitive04 = new PrimitivesGroup(4, "four");
-      final PrimitivesGroup primitive05 = new PrimitivesGroup(5, "five");
-      final PrimitivesGroup primitive06 = new PrimitivesGroup(6, "six");
-      final PrimitivesGroup primitive07 = new PrimitivesGroup(7, "seven");
+      final WkSzTstPrimitivesGroup primitive00 = new WkSzTstPrimitivesGroup(0, "zero");
+      final WkSzTstPrimitivesGroup primitive01 = new WkSzTstPrimitivesGroup(1, "one");
+      final WkSzTstPrimitivesGroup primitive02 = new WkSzTstPrimitivesGroup(2, "two");
+      final WkSzTstPrimitivesGroup primitive03 = new WkSzTstPrimitivesGroup(3, "three");
+      final WkSzTstPrimitivesGroup primitive04 = new WkSzTstPrimitivesGroup(4, "four");
+      final WkSzTstPrimitivesGroup primitive05 = new WkSzTstPrimitivesGroup(5, "five");
+      final WkSzTstPrimitivesGroup primitive06 = new WkSzTstPrimitivesGroup(6, "six");
+      final WkSzTstPrimitivesGroup primitive07 = new WkSzTstPrimitivesGroup(7, "seven");
 
-      PrimitivesGroupList.Builder primitiveListBuilder = new PrimitivesGroupList.Builder();
+      WkSzTstPrimitivesGroupList.Builder primitiveListBuilder = new WkSzTstPrimitivesGroupList.Builder();
 
-      final PrimitivesGroupList listNone = primitiveListBuilder.build();
-      final PrimitivesGroupList list00 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList listNone = primitiveListBuilder.build();
+      final WkSzTstPrimitivesGroupList list00 = primitiveListBuilder.addPrimitives(primitive00)
                                                         .build();
-      final PrimitivesGroupList list00_to_01 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList list00_to_01 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .build();
-      final PrimitivesGroupList list00_to_02 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList list00_to_02 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .build();
-      final PrimitivesGroupList list00_to_03 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList list00_to_03 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
                                                               .build();
-      final PrimitivesGroupList list00_to_04 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList list00_to_04 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
                                                               .addPrimitives(primitive04)
                                                               .build();
-      final PrimitivesGroupList list00_to_05 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList list00_to_05 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
                                                               .addPrimitives(primitive04)
                                                               .addPrimitives(primitive05)
                                                               .build();
-      final PrimitivesGroupList list00_to_06 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList list00_to_06 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
@@ -201,7 +201,7 @@ public class FilterBuilderTest
                                                               .addPrimitives(primitive05)
                                                               .addPrimitives(primitive06)
                                                               .build();
-      final PrimitivesGroupList list00_to_07 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSzTstPrimitivesGroupList list00_to_07 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
@@ -211,9 +211,9 @@ public class FilterBuilderTest
                                                               .addPrimitives(primitive07)
                                                               .build();
 
-      MultipleLists.Builder multiplePrimitiveListBuilder = new MultipleLists.Builder();
+      WkSzTstMultipleLists.Builder multiplePrimitiveListBuilder = new WkSzTstMultipleLists.Builder();
 
-      final MultipleLists msgWrite = multiplePrimitiveListBuilder.addPrimitivesList(listNone)
+      final WkSzTstMultipleLists msgWrite = multiplePrimitiveListBuilder.addPrimitivesList(listNone)
                                                                  .addPrimitivesList(list00)
                                                                  .addPrimitivesList(list00_to_01)
                                                                  .addPrimitivesList(list00_to_02)
@@ -237,14 +237,14 @@ public class FilterBuilderTest
 
       KetzaByteOutputStream out = new KetzaByteOutputStream();
 
-      WkSzOutputPacket<MultipleLists, MultipleListInputField, MultipleListsWriting>
+      WkSzOutputPacket<WkSzTstMultipleLists, WkSzTstMultipleListStructDefinition, WkSzTstMultipleListsPacketWriter>
         multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSzOperationSettings.EMPTY, out);
 
       while(multiListsSerializer.isInProgress()) {
         multiListsSerializer.processBytestream();
       }
 
-      WkSzInputPacket<MultipleLists, MultipleListInputField, MultipleListReading>
+      WkSzInputPacket<WkSzTstMultipleLists, WkSzTstMultipleListStructDefinition, WkSzTstMultipleListsPacketReader>
         multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSzOperationSettings.EMPTY, out.inputStream(), filter);
 
       while(multiListsDeserializer.isInProgress()) {
@@ -252,7 +252,7 @@ public class FilterBuilderTest
       }
 
       if (multiListsDeserializer.firstOperation().get().result().get().deserialized().isPresent()) {
-        final MultipleLists readRes = multiListsDeserializer.firstOperation().get().result().get().deserialized().get();
+        final WkSzTstMultipleLists readRes = multiListsDeserializer.firstOperation().get().result().get().deserialized().get();
 
         assertNotNull(readRes);
         assertEquals(listNone, readRes.get(0));

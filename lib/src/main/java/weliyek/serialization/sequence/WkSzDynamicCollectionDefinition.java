@@ -30,8 +30,8 @@ import weliyek.util.array.WkSzDynamicSequenceDefinition;
 
 public interface WkSzDynamicCollectionDefinition<
                         T extends Collection<ET>,
-                        XO extends DynamicCollectionFieldDeserializer<T,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        YO extends DynamicCollectionFieldSerializer<T,?,?,?,?,?,?,?,?,?,?,?,?>,
+                        XO extends WkSzDynamicCollectionPacketReaderOperation<T,?,?,?,?,?,?,?,?,?,?,?,?>,
+                        YO extends WkSzDynamicCollectionPacketWriterOperation<T,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZD extends WkSzNumberDefinition<?,?>,
                         ET,
                         EXS extends WkSzOperationSettings,

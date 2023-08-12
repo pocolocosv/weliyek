@@ -45,82 +45,82 @@ import weliyek.serialization.string.StringWithDynamicSizeBytesDeserializing;
 import weliyek.serialization.string.WkSzStringWithFixedLengthBytes;
 import weliyek.serialization.string.WkSzStringWithFixedLengthBytesReader;
 
-public class PrimitivesGroupDeserializer
+public class WkSzTstPrimitivesGroupPacketReader
         implements WkSzAggregatorReader<
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
                         WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<PrimitivesGroup>,
-                        PrimitivesGroupField>
+                        WkSzReadingResult<WkSzTstPrimitivesGroup>,
+                        WkSzTstPrimitivesGroupStructDefinition>
 {
 
   final SimplifiedAggregatorDeserializingCore<
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupDeserializer> operationCore;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketReader> operationCore;
   final WkSzPacketReaderSubfieldCore<Byte,
                                          WkSzOperationSettings,
                                          WkSzSignedByte,
                                          WkSzSignedByteReader,
-                                         PrimitivesGroup,
+                                         WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                         PrimitivesGroupField,
-                                         PrimitivesGroupDeserializer> byteReadingSubfield;
+                                         WkSzTstPrimitivesGroupStructDefinition,
+                                         WkSzTstPrimitivesGroupPacketReader> byteReadingSubfield;
   final WkSzPacketReaderSubfieldCore<Short,
                                          WkSzOperationSettings,
                                          WkSzSignedBigEndianShort,
                                          WkSzSignedBigEndianShortReader,
-                                         PrimitivesGroup,
+                                         WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                         PrimitivesGroupField,
-                                         PrimitivesGroupDeserializer> shortReadingSubfield;
+                                         WkSzTstPrimitivesGroupStructDefinition,
+                                         WkSzTstPrimitivesGroupPacketReader> shortReadingSubfield;
   final WkSzPacketReaderSubfieldCore<Integer,
                                          WkSzOperationSettings,
                                          WkSzSignedBigEndianInteger,
                                          WkSzSignedBigEndianIntegerReader,
-                                         PrimitivesGroup,
+                                         WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                         PrimitivesGroupField,
-                                         PrimitivesGroupDeserializer> intReadingSubfield;
+                                         WkSzTstPrimitivesGroupStructDefinition,
+                                         WkSzTstPrimitivesGroupPacketReader> intReadingSubfield;
   final WkSzPacketReaderSubfieldCore<Long,
                                          WkSzOperationSettings,
                                          WkSzSignedBigEndianLong,
                                          WkSzSignedBigEndianLongReader,
-                                         PrimitivesGroup,
+                                         WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                         PrimitivesGroupField,
-                                         PrimitivesGroupDeserializer> longReadingSubfield;
+                                         WkSzTstPrimitivesGroupStructDefinition,
+                                         WkSzTstPrimitivesGroupPacketReader> longReadingSubfield;
   final WkSzPacketReaderSubfieldCore<String,
                                          WkSzOperationSettings,
                                          WkSzStringWithFixedLengthBytes,
                                          WkSzStringWithFixedLengthBytesReader,
-                                         PrimitivesGroup,
+                                         WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                         PrimitivesGroupField,
-                                         PrimitivesGroupDeserializer> fixedStrReadingSubfield;
+                                         WkSzTstPrimitivesGroupStructDefinition,
+                                         WkSzTstPrimitivesGroupPacketReader> fixedStrReadingSubfield;
   final WkSzPacketReaderSubfieldCore<String,
                                          WkSzOperationSettings,
                                          StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
                                          StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
-                                         PrimitivesGroup,
+                                         WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                         PrimitivesGroupField,
-                                         PrimitivesGroupDeserializer> dynStrReadingSubfield;
+                                         WkSzTstPrimitivesGroupStructDefinition,
+                                         WkSzTstPrimitivesGroupPacketReader> dynStrReadingSubfield;
 
-  PrimitivesGroupDeserializer(
+  WkSzTstPrimitivesGroupPacketReader(
     int index,
     WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
-      PrimitivesGroup,?,PrimitivesGroupField,?,?,?> deserializingFieldCore,
-    SimplifiedAggregatorCore<PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, ?, ?, ?, PrimitivesGroupField>
+      WkSzTstPrimitivesGroup,?,WkSzTstPrimitivesGroupStructDefinition,?,?,?> deserializingFieldCore,
+    SimplifiedAggregatorCore<WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, WkSzTstPrimitivesGroupStructDefinition>
       definitionCore) {
     this.operationCore = new SimplifiedAggregatorDeserializingCore<
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzOperationSettings,
-                                PrimitivesGroupField,
-                                PrimitivesGroupDeserializer>(
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketReader>(
                                     index,
                                     settings,
                                     parentBytestream,
@@ -136,7 +136,7 @@ public class PrimitivesGroupDeserializer
   }
 
   @Override
-  public PrimitivesGroupField definition() {
+  public WkSzTstPrimitivesGroupStructDefinition definition() {
     return this.operationCore.definition();
   }
 
@@ -151,7 +151,7 @@ public class PrimitivesGroupDeserializer
   }
 
   @Override
-  public Optional<WkSzReadingResult<PrimitivesGroup>> result() {
+  public Optional<WkSzReadingResult<WkSzTstPrimitivesGroup>> result() {
     return this.operationCore.result();
   }
 
@@ -161,7 +161,7 @@ public class PrimitivesGroupDeserializer
   }
 
   @Override
-  public WkSzPacketReaderField<PrimitivesGroup, PrimitivesGroupField, ?> packetField() {
+  public WkSzPacketReaderField<WkSzTstPrimitivesGroup, WkSzTstPrimitivesGroupStructDefinition, ?> packetField() {
     return this.operationCore.packetField();
   }
 

@@ -31,53 +31,53 @@ import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzSignedLittleEndianInteger;
 import weliyek.serialization.number.WkSzSignedLittleEndianIntegerReader;
-import weliyek.serialization.sequence.DynamicCollectionFieldDeserializer;
-import weliyek.serialization.sequence.SimplifiedDynamicCollectionDefinitionCore;
-import weliyek.serialization.sequence.SimplifiedDynamicCollectionFieldDeserializer;
+import weliyek.serialization.sequence.WkSzDynamicCollectionPacketReaderOperation;
+import weliyek.serialization.sequence.WkSzSimplifiedDynamicCollectionStructDefinition;
+import weliyek.serialization.sequence.WkSzSimplifiedDynamicSequencePacketReaderCore;
 import weliyek.serialization.sequence.VariableSizeCollectionField;
 import weliyek.serialization.sequence.VariableSizeCollectionFieldDeserializer;
 
-public class PrimitivesGroupListFieldDeserializer
-    implements DynamicCollectionFieldDeserializer<
-                        PrimitivesGroupList,
+public class WkSzTstPrimitivesGroupListPacketReader
+    implements WkSzDynamicCollectionPacketReaderOperation<
+                        WkSzTstPrimitivesGroupList,
                         WkSzOperationSettings,
                         WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<PrimitivesGroupList>,
-                        PrimitivesGroupListField,
+                        WkSzReadingResult<WkSzTstPrimitivesGroupList>,
+                        WkSzTstPrimitivesGroupListStructDefinition,
                         Integer,
                         WkSzSignedLittleEndianIntegerReader,
                         WkSzSignedLittleEndianInteger,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupDeserializer,
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketReader,
                         WkSzVariableLengthOperationSettings>
 {
 
-    final SimplifiedDynamicCollectionFieldDeserializer<
-                        PrimitivesGroupList,
+    final WkSzSimplifiedDynamicSequencePacketReaderCore<
+                        WkSzTstPrimitivesGroupList,
                         WkSzOperationSettings,
-                        PrimitivesGroupListFieldDeserializer,
-                        PrimitivesGroupListField,
+                        WkSzTstPrimitivesGroupListPacketReader,
+                        WkSzTstPrimitivesGroupListStructDefinition,
                         Integer,
                         WkSzOperationSettings,
                         WkSzSignedLittleEndianIntegerReader,
                         WkSzSignedLittleEndianInteger,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupDeserializer,
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketReader,
                         WkSzVariableLengthOperationSettings> readingCore;
 
-    PrimitivesGroupListFieldDeserializer(
+    WkSzTstPrimitivesGroupListPacketReader(
       int index,
       WkSzOperationSettings settings,
       WkSzInputBytestreamBase<?> parentBytestream,
-      WkSzPacketReaderFieldCore<PrimitivesGroupList, ?, PrimitivesGroupListField, ?, ?, ?>
+      WkSzPacketReaderFieldCore<WkSzTstPrimitivesGroupList, ?, WkSzTstPrimitivesGroupListStructDefinition, ?, ?, ?>
         packetfieldCore,
-      SimplifiedDynamicCollectionDefinitionCore<PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListFieldDeserializer, PrimitivesGroupListField, ?, ?, ?, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?, ?>
+      WkSzSimplifiedDynamicCollectionStructDefinition<WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroupListPacketReader, WkSzTstPrimitivesGroupListStructDefinition, ?, ?, ?, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, ?, ?, ?, ?, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?, ?>
         definitionCore) {
-      readingCore = new SimplifiedDynamicCollectionFieldDeserializer<PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListFieldDeserializer, PrimitivesGroupListField, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, WkSzVariableLengthOperationSettings>(
+      readingCore = new WkSzSimplifiedDynamicSequencePacketReaderCore<WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroupListPacketReader, WkSzTstPrimitivesGroupListStructDefinition, Integer, WkSzOperationSettings, WkSzSignedLittleEndianIntegerReader, WkSzSignedLittleEndianInteger, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSzVariableLengthOperationSettings>(
           index, settings, parentBytestream, packetfieldCore, definitionCore, this);
     }
 
@@ -90,13 +90,13 @@ public class PrimitivesGroupListFieldDeserializer
 
     @Override
     public
-    WkSzPacketReaderSubfield<PrimitivesGroupList, VariableSizeCollectionField<PrimitivesGroupList, WkSzVariableLengthOperationSettings, ?, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<PrimitivesGroupList, WkSzVariableLengthOperationSettings, PrimitivesGroup, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupDeserializer>>
+    WkSzPacketReaderSubfield<WkSzTstPrimitivesGroupList, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader>>
     variableSequence() {
       return this.readingCore.variableSequence();
     }
 
     @Override
-    public PrimitivesGroupListField definition() {
+    public WkSzTstPrimitivesGroupListStructDefinition definition() {
       return this.readingCore.definition();
     }
 
@@ -111,7 +111,7 @@ public class PrimitivesGroupListFieldDeserializer
     }
 
     @Override
-    public Optional<WkSzReadingResult<PrimitivesGroupList>> result() {
+    public Optional<WkSzReadingResult<WkSzTstPrimitivesGroupList>> result() {
       return this.readingCore.result();
     }
 
@@ -121,7 +121,7 @@ public class PrimitivesGroupListFieldDeserializer
     }
 
     @Override
-    public WkSzPacketReaderField<PrimitivesGroupList, PrimitivesGroupListField, ?> packetField() {
+    public WkSzPacketReaderField<WkSzTstPrimitivesGroupList, WkSzTstPrimitivesGroupListStructDefinition, ?> packetField() {
       return this.readingCore.packetField();
     }
 

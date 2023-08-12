@@ -26,7 +26,7 @@ import weliyek.serialization.number.WkSzNumberOperation;
 import weliyek.util.array.WkSzDynamicSequenceDefinition;
 import weliyek.util.array.WkSzDynamicSequenceOperation;
 
-public interface WkSzDynamicCollectionOperation<
+public interface WkSzDynamicCollectionPacketOperation<
                         S extends WkSzOperationSettings,
                         Q extends WkSzCommonOperationRuntime<?>,
                         R extends WkSzOperationResult,

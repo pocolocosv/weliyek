@@ -45,7 +45,7 @@ public interface DynamicPrimitiveArraySerializing<
                         VYO,
                         WkSzPacketWriterField<T,VD,VYO>,
                         WkSzPacketWriterSubfield<T,VD,VYO>>,
-            DynamicSequenceSerializing<T, YS, YQ, YR, D, ZT, ZYO, ZD, VYO, VD>
+            WkSzDynamicSequencePacketWriterOperation<T, YS, YQ, YR, D, ZT, ZYO, ZD, VYO, VD>
 {
 
 }

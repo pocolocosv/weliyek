@@ -48,7 +48,7 @@ public class SimplifiedDynamicPrimitiveArrayDeserializingCore<
                                         WkSzVariableLengthOperationSettings,
                                         ?,?,VXD>,
                         VXD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>>
-    extends DynamicSequenceDeserializingCore<
+    extends WkSzDynamicSequencePacketReaderOperationCore<
                         T,
                         WkSzOperationSettings,
                         WkSzInputBytestream,

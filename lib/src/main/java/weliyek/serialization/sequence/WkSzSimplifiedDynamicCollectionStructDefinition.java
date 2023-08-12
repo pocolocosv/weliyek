@@ -49,12 +49,12 @@ import weliyek.serialization.WkSzWritingRuntimeControl;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
 import weliyek.serialization.number.WkSzNumberWriter;
-import weliyek.util.array.DynamicSequenceDefinitionCore;
+import weliyek.util.array.WkSzDynamicSequenceStructDefinitionCore;
 
-public final class SimplifiedDynamicCollectionDefinitionCore<
+public final class WkSzSimplifiedDynamicCollectionStructDefinition<
                         T extends Collection<ET>,
                         XS extends WkSzOperationSettings,
-                        XO extends DynamicCollectionFieldDeserializer<
+                        XO extends WkSzDynamicCollectionPacketReaderOperation<
                                         T,XS,
                                         WkSzReadingRuntime<WkSzInputBytestream>,
                                         WkSzReadingResult<T>,
@@ -62,7 +62,7 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
                         XD extends WkSzDynamicCollectionDefinition<
                                         T,XO,?,?,?,?,?,?,?,?,?,?,?,?>,
                         YS extends WkSzOperationSettings,
-                        YO extends DynamicCollectionFieldSerializer<
+                        YO extends WkSzDynamicCollectionPacketWriterOperation<
                                         T,YS,
                                         WkSzWritingRuntime<WkSzOutputBytestream>,
                                         WkSzWritingResult,
@@ -90,7 +90,7 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
                         D extends WkSzDynamicCollectionDefinition<
                                       T, XO, YO, ZD, ET, EXS, EXD, EXO,
                                       EYS, EYD, EYO, ED, VXS, VYS>>
-    extends DynamicSequenceDefinitionCore<
+    extends WkSzDynamicSequenceStructDefinitionCore<
                         T, XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
@@ -120,12 +120,12 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
                         VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>, // VYD
                         VariableSizeCollectionField<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,
                         D,
-                        SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>>
+                        WkSzSimplifiedDynamicCollectionStructDefinition<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>>
     implements WkSzDynamicCollectionDefinition<
                         T, XO, YO, ZD, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED, VXS, VYS>
 {
 
-  public SimplifiedDynamicCollectionDefinitionCore(
+  public WkSzSimplifiedDynamicCollectionStructDefinition(
     int minSize,
     int maxSize,
     String sizeFieldLabel,
@@ -147,12 +147,12 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
     //Function<InputBytestreamGeneralBase<?>, ReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>, DeserializingRuntime<InputBytestream>>>
     //  deserializerRuntimeFactory,
     //BiFunction<XO, T, DeserializingResult<T>> deserializerResultFactory,
-    WkSzPacketReaderOperationCoreFactory<T, XS, XD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, XO, WkSzInputBytestreamBase<?>>
+    WkSzPacketReaderOperationCoreFactory<T, XS, XD, WkSzSimplifiedDynamicCollectionStructDefinition<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, XO, WkSzInputBytestreamBase<?>>
       deserializerFactory,
     //Function<OutputBytestreamGeneralBase<?>, WritingRuntimeControl<OutputBytestream, OutputBytestreamGeneralBase<? extends OutputBytestream>, SerializingRuntime<OutputBytestream>>>
     //  serializerRuntimeFactory,
     //Function<YO, SerializingResult> serializerResultFactory,
-    WkSzPacketWriterOperationCoreFactory<T, YS, YD, SimplifiedDynamicCollectionDefinitionCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, YO, WkSzOutputBytestreamBase<?>>
+    WkSzPacketWriterOperationCoreFactory<T, YS, YD, WkSzSimplifiedDynamicCollectionStructDefinition<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>, YO, WkSzOutputBytestreamBase<?>>
       serializerFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> serializableClass,
@@ -192,7 +192,7 @@ public final class SimplifiedDynamicCollectionDefinitionCore<
 
   @Override
   protected
-  SimplifiedDynamicCollectionDefinitionCore<T, XS, XO, XD, YS, YO, YD, ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED, VXS, VYS, D>
+  WkSzSimplifiedDynamicCollectionStructDefinition<T, XS, XO, XD, YS, YO, YD, ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED, VXS, VYS, D>
   getThis() {
     return this;
   }

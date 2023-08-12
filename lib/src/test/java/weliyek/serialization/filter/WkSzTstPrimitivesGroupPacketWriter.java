@@ -45,89 +45,89 @@ import weliyek.serialization.string.StringWithDynamicSizeBytesSerializing;
 import weliyek.serialization.string.WkSzStringWithFixedLengthBytes;
 import weliyek.serialization.string.WkSzStringWithFixedLengthBytesWriter;
 
-public class PrimitivesGroupSerializer
+public class WkSzTstPrimitivesGroupPacketWriter
         implements WkSzAggregatorWriter<
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
                         WkSzWritingRuntime<WkSzOutputBytestream>,
                         WkSzWritingResult,
-                        PrimitivesGroupField>
+                        WkSzTstPrimitivesGroupStructDefinition>
 {
 
   final SimplifiedAggregatorSerializingCore<
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer> operationCore;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter> operationCore;
   final WkSzPacketWriterSubfieldCore<
                         Byte,
                         WkSzOperationSettings,
                         WkSzSignedByte,
                         WkSzSignedByteWriter,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer> byteWritingSubfield;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter> byteWritingSubfield;
   final WkSzPacketWriterSubfieldCore<
                         Short,
                         WkSzOperationSettings,
                         WkSzSignedBigEndianShort,
                         WkSzSignedBigEndianShortWriter,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer> shortWritingSubfield;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter> shortWritingSubfield;
   final WkSzPacketWriterSubfieldCore<
                         Integer,
                         WkSzOperationSettings,
                         WkSzSignedBigEndianInteger,
                         WkSzSignedBigEndianIntegerWriter,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer> intWritingSubfield;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter> intWritingSubfield;
   final WkSzPacketWriterSubfieldCore<
                         Long,
                         WkSzOperationSettings,
                         WkSzSignedBigEndianLong,
                         WkSzSignedBigEndianLongWriter,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer> longWritingSubfield;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter> longWritingSubfield;
   final WkSzPacketWriterSubfieldCore<
                         String,
                         WkSzOperationSettings,
                         WkSzStringWithFixedLengthBytes,
                         WkSzStringWithFixedLengthBytesWriter,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer> fixedStrWritingSubfield;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter> fixedStrWritingSubfield;
   final WkSzPacketWriterSubfieldCore<
                         String,
                         WkSzOperationSettings,
                         StringWithDynamicSizeBytes<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
                         StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer> dynStrWritingSubfield;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter> dynStrWritingSubfield;
 
-  PrimitivesGroupSerializer(
+  WkSzTstPrimitivesGroupPacketWriter(
     int index,
-    PrimitivesGroup serializable,
+    WkSzTstPrimitivesGroup serializable,
     WkSzOperationSettings settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSzPacketWriterFieldCore<
-      PrimitivesGroup,?,PrimitivesGroupField,?,?,?> serializingFieldCore,
-    SimplifiedAggregatorCore<PrimitivesGroup, ?, ?, ?, WkSzOperationSettings, PrimitivesGroupField, PrimitivesGroupSerializer, ? extends PrimitivesGroupField>
+      WkSzTstPrimitivesGroup,?,WkSzTstPrimitivesGroupStructDefinition,?,?,?> serializingFieldCore,
+    SimplifiedAggregatorCore<WkSzTstPrimitivesGroup, ?, ?, ?, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ? extends WkSzTstPrimitivesGroupStructDefinition>
       definitionCore) {
     this.operationCore = new SimplifiedAggregatorSerializingCore<
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzOperationSettings,
-                                PrimitivesGroupField,
-                                PrimitivesGroupSerializer>(
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketWriter>(
                                     index,
                                     serializable,
                                     settings,
@@ -145,7 +145,7 @@ public class PrimitivesGroupSerializer
   }
 
   @Override
-  public PrimitivesGroupField definition() {
+  public WkSzTstPrimitivesGroupStructDefinition definition() {
     return this.operationCore.definition();
   }
 
@@ -170,7 +170,7 @@ public class PrimitivesGroupSerializer
   }
 
   @Override
-  public WkSzPacketWriterField<PrimitivesGroup, PrimitivesGroupField, ?> packetField() {
+  public WkSzPacketWriterField<WkSzTstPrimitivesGroup, WkSzTstPrimitivesGroupStructDefinition, ?> packetField() {
     return this.operationCore.packetField();
   }
 
@@ -185,7 +185,7 @@ public class PrimitivesGroupSerializer
   }
 
   @Override
-  public PrimitivesGroup serializable() {
+  public WkSzTstPrimitivesGroup serializable() {
     return this.operationCore.serializable();
   }
 

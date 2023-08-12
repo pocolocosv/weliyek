@@ -43,12 +43,6 @@ import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzSignedBigEndianInteger;
 import weliyek.serialization.number.WkSzSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSzSignedBigEndianIntegerWriter;
-import weliyek.serialization.sequence.FixedSizeCollectionField;
-import weliyek.serialization.sequence.FixedSizeCollectionFieldDeserializer;
-import weliyek.serialization.sequence.FixedSizeCollectionFieldSerializer;
-import weliyek.serialization.sequence.VariableSizeCollectionField;
-import weliyek.serialization.sequence.VariableSizeCollectionFieldDeserializer;
-import weliyek.serialization.sequence.VariableSizeCollectionFieldSerializer;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class FixedAndVariableSizeCollectionFieldsTest

@@ -54,143 +54,143 @@ import weliyek.serialization.string.WkSzStringWithFixedLengthBytes;
 import weliyek.serialization.string.WkSzStringWithFixedLengthBytesReader;
 import weliyek.serialization.string.WkSzStringWithFixedLengthBytesWriter;
 
-public class PrimitivesGroupField
+public class WkSzTstPrimitivesGroupStructDefinition
         implements WkSzAggregatorDefinition<
-                        PrimitivesGroup,
-                        PrimitivesGroupDeserializer>
+                        WkSzTstPrimitivesGroup,
+                        WkSzTstPrimitivesGroupPacketReader>
 {
 
   final SimplifiedAggregatorCore<
-                        PrimitivesGroup,
+                        WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupDeserializer,
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketReader,
                         WkSzOperationSettings,
-                        PrimitivesGroupField,
-                        PrimitivesGroupSerializer,
-                        PrimitivesGroupField> definitionCore;
+                        WkSzTstPrimitivesGroupStructDefinition,
+                        WkSzTstPrimitivesGroupPacketWriter,
+                        WkSzTstPrimitivesGroupStructDefinition> definitionCore;
 
   final WkSzSubcomponentCore<Byte,
                                 WkSzOperationSettings,
                                 WkSzSignedByte,
                                 WkSzSignedByteReader,
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupDeserializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketReader,
                                 WkSzOperationSettings,
                                 WkSzSignedByte,
                                 WkSzSignedByteWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupSerializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketWriter,
                                 WkSzSignedByte,
-                                PrimitivesGroupField> byteSubcomponent;
+                                WkSzTstPrimitivesGroupStructDefinition> byteSubcomponent;
 
   final WkSzSubcomponentCore<Short,
                                 WkSzOperationSettings,
                                 WkSzSignedBigEndianShort,
                                 WkSzSignedBigEndianShortReader,
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupDeserializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketReader,
                                 WkSzOperationSettings,
                                 WkSzSignedBigEndianShort,
                                 WkSzSignedBigEndianShortWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupSerializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketWriter,
                                 WkSzSignedBigEndianShort,
-                                PrimitivesGroupField> shortSubcomponent;
+                                WkSzTstPrimitivesGroupStructDefinition> shortSubcomponent;
 
   final WkSzSubcomponentCore<Integer,
                                 WkSzOperationSettings,
                                 WkSzSignedBigEndianInteger,
                                 WkSzSignedBigEndianIntegerReader,
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupDeserializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketReader,
                                 WkSzOperationSettings,
                                 WkSzSignedBigEndianInteger,
                                 WkSzSignedBigEndianIntegerWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupSerializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketWriter,
                                 WkSzSignedBigEndianInteger,
-                                PrimitivesGroupField> intSubcomponent;
+                                WkSzTstPrimitivesGroupStructDefinition> intSubcomponent;
 
   final WkSzSubcomponentCore<Long,
                                 WkSzOperationSettings,
                                 WkSzSignedBigEndianLong,
                                 WkSzSignedBigEndianLongReader,
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupDeserializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketReader,
                                 WkSzOperationSettings,
                                 WkSzSignedBigEndianLong,
                                 WkSzSignedBigEndianLongWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupSerializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketWriter,
                                 WkSzSignedBigEndianLong,
-                                PrimitivesGroupField> longSubcomponent;
+                                WkSzTstPrimitivesGroupStructDefinition> longSubcomponent;
 
   final WkSzSubcomponentCore<String,
                                 WkSzOperationSettings,
                                 WkSzStringWithFixedLengthBytes,
                                 WkSzStringWithFixedLengthBytesReader,
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupDeserializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketReader,
                                 WkSzOperationSettings,
                                 WkSzStringWithFixedLengthBytes,
                                 WkSzStringWithFixedLengthBytesWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupSerializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketWriter,
                                 WkSzStringWithFixedLengthBytes,
-                                PrimitivesGroupField> fixedStrSubcomponent;
+                                WkSzTstPrimitivesGroupStructDefinition> fixedStrSubcomponent;
 
   final WkSzSubcomponentCore<String,
                                 WkSzOperationSettings,
                                 StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
                                 StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
-                                PrimitivesGroup,
+                                WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupDeserializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketReader,
                                 WkSzOperationSettings,
                                 StringWithDynamicSizeBytes<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
                                 StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                                PrimitivesGroupField,
-                                PrimitivesGroupSerializer,
+                                WkSzTstPrimitivesGroupStructDefinition,
+                                WkSzTstPrimitivesGroupPacketWriter,
                                 StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>,
-                                PrimitivesGroupField> dynStrSubcomponent;
+                                WkSzTstPrimitivesGroupStructDefinition> dynStrSubcomponent;
 
-  PrimitivesGroupField(
+  WkSzTstPrimitivesGroupStructDefinition(
     WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedAggregatorCore<
-                                  PrimitivesGroup,
+                                  WkSzTstPrimitivesGroup,
                                   WkSzOperationSettings,
-                                  PrimitivesGroupField,
-                                  PrimitivesGroupDeserializer,
+                                  WkSzTstPrimitivesGroupStructDefinition,
+                                  WkSzTstPrimitivesGroupPacketReader,
                                   WkSzOperationSettings,
-                                  PrimitivesGroupField,
-                                  PrimitivesGroupSerializer,
-                                  PrimitivesGroupField>(
-                                      (i,xs,axb,xpc,dc) -> new PrimitivesGroupDeserializer(i,xs,axb,xpc,dc).operationCore,
-                                      (i,y,ys,ayb,ypc,dc) -> new PrimitivesGroupSerializer(i,y,ys,ayb,ypc,dc).operationCore,
+                                  WkSzTstPrimitivesGroupStructDefinition,
+                                  WkSzTstPrimitivesGroupPacketWriter,
+                                  WkSzTstPrimitivesGroupStructDefinition>(
+                                      (i,xs,axb,xpc,dc) -> new WkSzTstPrimitivesGroupPacketReader(i,xs,axb,xpc,dc).operationCore,
+                                      (i,y,ys,ayb,ypc,dc) -> new WkSzTstPrimitivesGroupPacketWriter(i,y,ys,ayb,ypc,dc).operationCore,
                                       componentCore,
                                       (oc) -> {},
-                                      (oc) -> new PrimitivesGroup(oc.body()),
+                                      (oc) -> new WkSzTstPrimitivesGroup(oc.body()),
                                       (oc) -> {},
                                       this,
-                                      PrimitivesGroup.class);
+                                      WkSzTstPrimitivesGroup.class);
     this.byteSubcomponent = addByteSubcomponent();
     this.shortSubcomponent = addShortSubcomponent();
     this.intSubcomponent = addIntSubcomponent();
@@ -204,18 +204,18 @@ public class PrimitivesGroupField
               WkSzOperationSettings,
               WkSzSignedByte,
               WkSzSignedByteReader,
-              PrimitivesGroup,
+              WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupDeserializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketReader,
               WkSzOperationSettings,
               WkSzSignedByte,
               WkSzSignedByteWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupSerializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketWriter,
               WkSzSignedByte,
-              PrimitivesGroupField>
+              WkSzTstPrimitivesGroupStructDefinition>
   addByteSubcomponent() {
     return this.definitionCore.<Byte, WkSzOperationSettings, WkSzSignedByte, WkSzSignedByteReader, WkSzOperationSettings, WkSzSignedByte, WkSzSignedByteWriter, WkSzSignedByte>
                                addSubcomponent(
@@ -236,18 +236,18 @@ public class PrimitivesGroupField
               WkSzOperationSettings,
               WkSzSignedBigEndianShort,
               WkSzSignedBigEndianShortReader,
-              PrimitivesGroup,
+              WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupDeserializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketReader,
               WkSzOperationSettings,
               WkSzSignedBigEndianShort,
               WkSzSignedBigEndianShortWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupSerializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketWriter,
               WkSzSignedBigEndianShort,
-              PrimitivesGroupField>
+              WkSzTstPrimitivesGroupStructDefinition>
   addShortSubcomponent() {
     return this.definitionCore.<Short, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortReader, WkSzOperationSettings, WkSzSignedBigEndianShort, WkSzSignedBigEndianShortWriter, WkSzSignedBigEndianShort>
                     addSubcomponent(
@@ -268,18 +268,18 @@ public class PrimitivesGroupField
               WkSzOperationSettings,
               WkSzSignedBigEndianInteger,
               WkSzSignedBigEndianIntegerReader,
-              PrimitivesGroup,
+              WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupDeserializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketReader,
               WkSzOperationSettings,
               WkSzSignedBigEndianInteger,
               WkSzSignedBigEndianIntegerWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupSerializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketWriter,
               WkSzSignedBigEndianInteger,
-              PrimitivesGroupField>
+              WkSzTstPrimitivesGroupStructDefinition>
   addIntSubcomponent() {
     return this.definitionCore.<Integer, WkSzOperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzOperationSettings, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>
                     addSubcomponent(
@@ -300,18 +300,18 @@ public class PrimitivesGroupField
               WkSzOperationSettings,
               WkSzSignedBigEndianLong,
               WkSzSignedBigEndianLongReader,
-              PrimitivesGroup,
+              WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupDeserializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketReader,
               WkSzOperationSettings,
               WkSzSignedBigEndianLong,
               WkSzSignedBigEndianLongWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupSerializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketWriter,
               WkSzSignedBigEndianLong,
-              PrimitivesGroupField>
+              WkSzTstPrimitivesGroupStructDefinition>
   addLongSubcomponent() {
     return this.definitionCore.<Long, WkSzOperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongReader, WkSzOperationSettings, WkSzSignedBigEndianLong, WkSzSignedBigEndianLongWriter, WkSzSignedBigEndianLong>
                       addSubcomponent(
@@ -332,21 +332,21 @@ public class PrimitivesGroupField
               WkSzOperationSettings,
               WkSzStringWithFixedLengthBytes,
               WkSzStringWithFixedLengthBytesReader,
-              PrimitivesGroup,
+              WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupDeserializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketReader,
               WkSzOperationSettings,
               WkSzStringWithFixedLengthBytes,
               WkSzStringWithFixedLengthBytesWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupSerializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketWriter,
               WkSzStringWithFixedLengthBytes,
-              PrimitivesGroupField>
+              WkSzTstPrimitivesGroupStructDefinition>
   addFixedStrSubcomponent() {
     String bytesLabel = "BYTES";
-    int expectedSize = PrimitivesGroup.FIXED_STRING_LENGTH;
+    int expectedSize = WkSzTstPrimitivesGroup.FIXED_STRING_LENGTH;
     Charset defaultCharset = StandardCharsets.US_ASCII;
     return this.definitionCore.<String,
                                 WkSzOperationSettings,
@@ -373,18 +373,18 @@ public class PrimitivesGroupField
               WkSzOperationSettings,
               StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
               StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
-              PrimitivesGroup,
+              WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupDeserializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketReader,
               WkSzOperationSettings,
               StringWithDynamicSizeBytes<Integer, ?, ?, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, ? extends WkSzSignedBigEndianInteger>,
               StringWithDynamicSizeBytesSerializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter>,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-              PrimitivesGroupField,
-              PrimitivesGroupSerializer,
+              WkSzTstPrimitivesGroupStructDefinition,
+              WkSzTstPrimitivesGroupPacketWriter,
               StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerWriter, WkSzSignedBigEndianInteger>,
-              PrimitivesGroupField>
+              WkSzTstPrimitivesGroupStructDefinition>
   addDynStrSubcomponent() {
     String bytesLabel = "BYTES";
     String sizeLabel = "SIZE";
@@ -429,7 +429,7 @@ public class PrimitivesGroupField
 
   @Override
   public FieldTester<?,?>
-  makeTester(Predicate<? super PrimitivesGroupDeserializer> test, String description) {
+  makeTester(Predicate<? super WkSzTstPrimitivesGroupPacketReader> test, String description) {
     return this.definitionCore.makeTester(test, description);
   }
 
@@ -439,8 +439,8 @@ public class PrimitivesGroupField
   }
 
   @Override
-  public Class<PrimitivesGroup> rxClass() {
-    return PrimitivesGroup.class;
+  public Class<WkSzTstPrimitivesGroup> rxClass() {
+    return WkSzTstPrimitivesGroup.class;
   }
 
 }

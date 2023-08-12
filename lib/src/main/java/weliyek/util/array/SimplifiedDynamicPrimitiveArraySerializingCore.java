@@ -47,7 +47,7 @@ public class SimplifiedDynamicPrimitiveArraySerializingCore<
                                         WkSzOperationSettings,
                                         ?,?,VYD>,
                         VYD extends WkSzVariableSizePrimitiveArrayDefinition<T,?>>
-    extends DynamicSequenceSerializingCore<
+    extends WkSzDynamicSequencePacketWriterOperationCore<
                         T,
                         WkSzOperationSettings,
                         WkSzOutputBytestream,

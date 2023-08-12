@@ -49,7 +49,7 @@ import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
 import weliyek.serialization.number.WkSzNumberWriter;
 
-public class DynamicCollectionField<
+public class WkSzDynamicCollection<
                         T extends Collection<ET>,
                         XS extends WkSzOperationSettings,
                         YS extends WkSzOperationSettings,
@@ -73,18 +73,18 @@ public class DynamicCollectionField<
                         VYS extends WkSzOperationSettings>
     implements WkSzDynamicCollectionDefinition<
                         T,
-                        DynamicCollectionFieldDeserializer<
+                        WkSzDynamicCollectionPacketReaderOperation<
                           T, XS,
                           WkSzReadingRuntime<WkSzInputBytestream>,
                           WkSzReadingResult<T>,
-                          DynamicCollectionField<
+                          WkSzDynamicCollection<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
-                        DynamicCollectionFieldSerializer<
+                        WkSzDynamicCollectionPacketWriterOperation<
                           T, YS,
                           WkSzWritingRuntime<WkSzOutputBytestream>,
                           WkSzWritingResult,
-                          DynamicCollectionField<
+                          WkSzDynamicCollection<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
                         ZD, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED, VXS, VYS>
@@ -113,28 +113,28 @@ public class DynamicCollectionField<
                  VYS extends WkSzOperationSettings>
   WkSzStruct<
                 T, XS,
-                DynamicCollectionField<
+                WkSzDynamicCollection<
                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
-                DynamicCollectionFieldDeserializer<
+                WkSzDynamicCollectionPacketReaderOperation<
                   T, XS,
                   WkSzReadingRuntime<WkSzInputBytestream>,
                   WkSzReadingResult<T>,
-                  DynamicCollectionField<
+                  WkSzDynamicCollection<
                     T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                   ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
                 WkSzInputBytestreamBase<?>,
                 YS,
-                DynamicCollectionField<
+                WkSzDynamicCollection<
                   T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
-                DynamicCollectionFieldSerializer<
+                WkSzDynamicCollectionPacketWriterOperation<
                   T, YS,
                   WkSzWritingRuntime<WkSzOutputBytestream>,
                   WkSzWritingResult,
-                  DynamicCollectionField<
+                  WkSzDynamicCollection<
                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                   ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
                 WkSzOutputBytestreamBase<?>,
-                DynamicCollectionField<
+                WkSzDynamicCollection<
                 T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                 ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>>
   newPacketStructure(
@@ -142,17 +142,17 @@ public class DynamicCollectionField<
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     ProtocolDefinitionFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -165,7 +165,7 @@ public class DynamicCollectionField<
     Class<T> collectionClass) {
     return new WkSzStruct<>(
                   dynamicCollectionLabel,
-                  (pc) -> DynamicCollectionField.newCore(
+                  (pc) -> WkSzDynamicCollection.newCore(
                       minSize,
                       maxSize,
                       sizeFieldLabel,
@@ -210,45 +210,45 @@ public class DynamicCollectionField<
                  VYS extends WkSzOperationSettings>
   WkSzDefinitionCore<
                  T, XS,?,?,
-                 DynamicCollectionField<
+                 WkSzDynamicCollection<
                    T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
-                 DynamicCollectionFieldDeserializer<
+                 WkSzDynamicCollectionPacketReaderOperation<
                    T, XS,
                    WkSzReadingRuntime<WkSzInputBytestream>,
                    WkSzReadingResult<T>,
-                   DynamicCollectionField<
+                   WkSzDynamicCollection<
                      T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                    ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
                  WkSzInputBytestreamBase<?>,
                  YS,?,?,
-                 DynamicCollectionField<
+                 WkSzDynamicCollection<
                    T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
-                 DynamicCollectionFieldSerializer<
+                 WkSzDynamicCollectionPacketWriterOperation<
                    T, YS,
                    WkSzWritingRuntime<WkSzOutputBytestream>,
                    WkSzWritingResult,
-                   DynamicCollectionField<
+                   WkSzDynamicCollection<
                      T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                    ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
                  WkSzOutputBytestreamBase<?>,
-                 DynamicCollectionField<
+                 WkSzDynamicCollection<
                    T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                    ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>,?>
   newCore(
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     ProtocolDefinitionFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -260,7 +260,7 @@ public class DynamicCollectionField<
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
     WkSzStructComponentCoreBase<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
-    return new DynamicCollectionField<
+    return new WkSzDynamicCollection<
                  T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                  ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>(
                      minSize,
@@ -282,49 +282,49 @@ public class DynamicCollectionField<
                      componentCore).definitionCore;
   }
 
-  private final SimplifiedDynamicCollectionDefinitionCore<
+  private final WkSzSimplifiedDynamicCollectionStructDefinition<
                         T, XS,
-                        DynamicCollectionFieldDeserializer<
+                        WkSzDynamicCollectionPacketReaderOperation<
                           T, XS,
                           WkSzReadingRuntime<WkSzInputBytestream>,
                           WkSzReadingResult<T>,
-                          DynamicCollectionField<
+                          WkSzDynamicCollection<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
-                        DynamicCollectionField<
+                        WkSzDynamicCollection<
                           T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                         YS,
-                        DynamicCollectionFieldSerializer<
+                        WkSzDynamicCollectionPacketWriterOperation<
                           T, YS,
                           WkSzWritingRuntime<WkSzOutputBytestream>,
                           WkSzWritingResult,
-                          DynamicCollectionField<
+                          WkSzDynamicCollection<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
-                        DynamicCollectionField<
+                        WkSzDynamicCollection<
                           T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                         ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD,
                         ET, EXS, EXD, EXO, EYS, EYD, EYO, ED, VXS, VYS,
-                        DynamicCollectionField<
+                        WkSzDynamicCollection<
                           T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                           ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>>
                     definitionCore;
 
-  private DynamicCollectionField(
+  private WkSzDynamicCollection(
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     ProtocolDefinitionFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    OperationSubsegmentSettingsFactory<DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    OperationSubsegmentSettingsFactory<WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     ProtocolDefinitionFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -336,30 +336,30 @@ public class DynamicCollectionField<
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
     WkSzStructComponentCoreBase<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore) {
-    this.definitionCore = new SimplifiedDynamicCollectionDefinitionCore<
+    this.definitionCore = new WkSzSimplifiedDynamicCollectionStructDefinition<
                                   T, XS,
-                                  DynamicCollectionFieldDeserializer<
+                                  WkSzDynamicCollectionPacketReaderOperation<
                                     T, XS,
                                     WkSzReadingRuntime<WkSzInputBytestream>,
                                     WkSzReadingResult<T>,
-                                    DynamicCollectionField<
+                                    WkSzDynamicCollection<
                                       T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                     ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
-                                  DynamicCollectionField<
+                                  WkSzDynamicCollection<
                                     T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                   YS,
-                                  DynamicCollectionFieldSerializer<
+                                  WkSzDynamicCollectionPacketWriterOperation<
                                     T, YS,
                                     WkSzWritingRuntime<WkSzOutputBytestream>,
                                     WkSzWritingResult,
-                                    DynamicCollectionField<
+                                    WkSzDynamicCollection<
                                       T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                     ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
-                                  DynamicCollectionField<
+                                  WkSzDynamicCollection<
                                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                   ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD,
                                   ET, EXS, EXD, EXO, EYS, EYD, EYO, ED, VXS, VYS,
-                                  DynamicCollectionField<
+                                  WkSzDynamicCollection<
                                     T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                                     ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>>(
                                         minSize,
@@ -378,10 +378,10 @@ public class DynamicCollectionField<
                                         elementSerializerSettingsFactory,
                                         //BasicReadingRuntime::new,
                                         //BasicReadingResult::new,
-                                        (i,xs,axb,xkc,xdc) -> new DynamicCollectionFieldDeserializerImpl<>(i,xs,axb,xkc,xdc).operationCore,
+                                        (i,xs,axb,xkc,xdc) -> new WkSzDynamicCollectionPacketReader<>(i,xs,axb,xkc,xdc).operationCore,
                                         //BasicWritingRuntime::new,
                                         //BasicWritingResult::empty,
-                                        (i,y,ys,ayb,ykc,ydc) -> new DynamicCollectionFieldSerializerImpl<>(i,y,ys,ayb,ykc,ydc).operationCore,
+                                        (i,y,ys,ayb,ykc,ydc) -> new WkSzDynamicCollectionPacketWriter<>(i,y,ys,ayb,ykc,ydc).operationCore,
                                         collectionFactory,
                                         collectionClass,
                                         componentCore,
@@ -390,14 +390,14 @@ public class DynamicCollectionField<
 
   @Override
   public
-  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
+  WkSzStructSubcomponent<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
   size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-  WkSzStructSubcomponent<DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, DynamicCollectionFieldSerializer<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, DynamicCollectionField<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
+  WkSzStructSubcomponent<WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkSzDynamicCollectionPacketWriterOperation<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkSzDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
   variableSequence() {
     return this.definitionCore.variableSequence();
   }
@@ -414,7 +414,7 @@ public class DynamicCollectionField<
 
   @Override
   public FieldTester<?, ?> makeTester(
-  Predicate<? super DynamicCollectionFieldDeserializer<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>> test,
+  Predicate<? super WkSzDynamicCollectionPacketReaderOperation<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>> test,
   String description) {
     return this.definitionCore.makeTester(test, description);
   }

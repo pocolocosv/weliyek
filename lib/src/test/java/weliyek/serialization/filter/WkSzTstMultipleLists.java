@@ -24,23 +24,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class MultipleLists extends AbstractList<PrimitivesGroupList>
+public class WkSzTstMultipleLists extends AbstractList<WkSzTstPrimitivesGroupList>
 {
 
     public final static String SERIALIZER_LABEL = "MULTIPLEGROUPLISTS";
 
-    final List<PrimitivesGroupList> container;
+    final List<WkSzTstPrimitivesGroupList> container;
 
-    MultipleLists(List<PrimitivesGroupList> container) {
+    WkSzTstMultipleLists(List<WkSzTstPrimitivesGroupList> container) {
         this.container = Objects.requireNonNull(container);
     }
 
-    MultipleLists(Collection<PrimitivesGroupList> col) {
+    WkSzTstMultipleLists(Collection<WkSzTstPrimitivesGroupList> col) {
         this.container = new ArrayList<>(col);
     }
 
     @Override
-    public PrimitivesGroupList get(int index) {
+    public WkSzTstPrimitivesGroupList get(int index) {
         return container.get(index);
     }
 
@@ -49,34 +49,34 @@ public class MultipleLists extends AbstractList<PrimitivesGroupList>
         return container.size();
     }
 
-    public static class Builder extends AbstractList<PrimitivesGroupList>
+    public static class Builder extends AbstractList<WkSzTstPrimitivesGroupList>
     {
 
-        private LinkedList<PrimitivesGroupList> builderContainer = new LinkedList<>();
+        private LinkedList<WkSzTstPrimitivesGroupList> builderContainer = new LinkedList<>();
 
-        public MultipleLists build() {
-            ArrayList<PrimitivesGroupList> listContainer = new ArrayList<>(builderContainer);
+        public WkSzTstMultipleLists build() {
+            ArrayList<WkSzTstPrimitivesGroupList> listContainer = new ArrayList<>(builderContainer);
             builderContainer.clear();
-            return new MultipleLists(listContainer);
+            return new WkSzTstMultipleLists(listContainer);
         }
 
-        public Builder addPrimitivesList(PrimitivesGroupList list) {
+        public Builder addPrimitivesList(WkSzTstPrimitivesGroupList list) {
             this.add(list);
             return this;
         }
 
         @Override
-        public void add(int index, PrimitivesGroupList element) {
+        public void add(int index, WkSzTstPrimitivesGroupList element) {
             this.builderContainer.add(index, element);
         }
 
         @Override
-        public PrimitivesGroupList set(int index, PrimitivesGroupList element) {
+        public WkSzTstPrimitivesGroupList set(int index, WkSzTstPrimitivesGroupList element) {
             return this.builderContainer.set(index, element);
         }
 
         @Override
-        public PrimitivesGroupList get(int index) {
+        public WkSzTstPrimitivesGroupList get(int index) {
             return this.builderContainer.get(index);
         }
 

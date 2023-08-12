@@ -33,7 +33,7 @@ import weliyek.serialization.number.WkSzNumberReader;
 import weliyek.serialization.sequence.VariableSizeSequenceReading;
 import weliyek.serialization.sequence.WkSzVariableSizeSequenceDefinition;
 
-public abstract class DynamicSequenceDeserializingCore<
+public abstract class WkSzDynamicSequencePacketReaderOperationCore<
                         T,
                         XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
@@ -41,8 +41,8 @@ public abstract class DynamicSequenceDeserializingCore<
                         XQ extends WkSzReadingRuntime<XB>,
                         XQC extends WkSzReadingRuntimeControl<XB,XBC,XQ>,
                         XR extends WkSzReadingResult<T>,
-                        XO extends DynamicSequenceDeserializing<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
-                        XOC extends DynamicSequenceDeserializingCore<
+                        XO extends WkSzDynamicSequencePacketReaderOperation<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
+                        XOC extends WkSzDynamicSequencePacketReaderOperationCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,
                                         ZT,ZXS,ZXO,ZXD,
                                         VXS,VXO,VXD,
@@ -56,14 +56,14 @@ public abstract class DynamicSequenceDeserializingCore<
                         VXS extends WkSzVariableLengthOperationSettings,
                         VXO extends VariableSizeSequenceReading<T,VXS,?,?,VXD>,
                         VXD extends WkSzVariableSizeSequenceDefinition<T,VXO>,
-                        DC extends DynamicSequenceDefinitionCore<
+                        DC extends WkSzDynamicSequenceStructDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                         ?,?,?,?,?,?,?,?,
                                         ZT,ZXS,ZXO,ZXD,?,?,?,?,
                                         VXS,VXO,VXD,?,?,?,?,
                                         ?,DC>>
     extends WkSzAggregatorReaderCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
-    implements DynamicSequenceDeserializing<T, XS, XQ, XR, XD, ZT, ZXO, ZXD, VXO, VXD>
+    implements WkSzDynamicSequencePacketReaderOperation<T, XS, XQ, XR, XD, ZT, ZXO, ZXD, VXO, VXD>
 {
 
   private WkSzPacketReaderSubfieldCore<ZT,ZXS,ZXD,ZXO,T,XBC,XD,XO>
@@ -71,7 +71,7 @@ public abstract class DynamicSequenceDeserializingCore<
   private WkSzPacketReaderSubfieldCore<T,VXS,VXD,VXO,T,XBC,XD,XO>
                         varseqReadFieldHandler;
 
-  protected DynamicSequenceDeserializingCore(
+  protected WkSzDynamicSequencePacketReaderOperationCore(
     int index,
     XS settings,
     AXB parentBytestream,

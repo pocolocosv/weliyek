@@ -29,7 +29,7 @@ import weliyek.serialization.sequence.VariableSizeSequenceWriting;
 import weliyek.serialization.sequence.WkSzSequenceWriter;
 import weliyek.serialization.sequence.WkSzVariableSizeSequenceDefinition;
 
-public interface DynamicSequenceSerializing<
+public interface WkSzDynamicSequencePacketWriterOperation<
                         T,
                         YS extends WkSzOperationSettings,
                         YQ extends WkSzWritingRuntime<?>,

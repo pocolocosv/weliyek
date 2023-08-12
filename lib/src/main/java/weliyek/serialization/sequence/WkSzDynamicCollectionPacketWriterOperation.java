@@ -28,9 +28,9 @@ import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberWriter;
-import weliyek.util.array.DynamicSequenceSerializing;
+import weliyek.util.array.WkSzDynamicSequencePacketWriterOperation;
 
-public interface DynamicCollectionFieldSerializer<
+public interface WkSzDynamicCollectionPacketWriterOperation<
                         T extends Collection<ET>,
                         YS extends WkSzOperationSettings,
                         YQ extends WkSzWritingRuntime<?>,
@@ -44,7 +44,7 @@ public interface DynamicCollectionFieldSerializer<
                         EYD extends WkSzDefinition<ET,?>,
                         EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
                         VYS extends WkSzOperationSettings>
-    extends WkSzDynamicCollectionOperation<
+    extends WkSzDynamicCollectionPacketOperation<
                         YS, YQ, YR, YD,
                         WkSzPacketWriterField<T,YD,?>,
                         ZYO,
@@ -58,7 +58,7 @@ public interface DynamicCollectionFieldSerializer<
                         WkSzPacketWriterSubfield<T,
                         VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
                           VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>>>,
-            DynamicSequenceSerializing<T, YS, YQ, YR, YD, ZT, ZYO, ZYD,
+            WkSzDynamicSequencePacketWriterOperation<T, YS, YQ, YR, YD, ZT, ZYO, ZYD,
                         VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>,
                         VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>>
 {

@@ -25,8 +25,8 @@ import weliyek.serialization.sequence.WkSzVariableSizeSequenceDefinition;
 
 public interface WkSzDynamicSequenceDefinition<
                         T,
-                        XO extends DynamicSequenceDeserializing<T,?,?,?,?,?,?,?,?,?>,
-                        YO extends DynamicSequenceSerializing<T,?,?,?,?,?,?,?,?,?>,
+                        XO extends WkSzDynamicSequencePacketReaderOperation<T,?,?,?,?,?,?,?,?,?>,
+                        YO extends WkSzDynamicSequencePacketWriterOperation<T,?,?,?,?,?,?,?,?,?>,
                         ZD extends WkSzNumberDefinition<?,?>,
                         VD extends WkSzVariableSizeSequenceDefinition<T,?>>
     extends WkSzDynamicSequenceSegment<

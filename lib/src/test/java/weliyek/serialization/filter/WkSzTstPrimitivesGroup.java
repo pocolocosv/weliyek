@@ -19,7 +19,7 @@ package weliyek.serialization.filter;
 
 import java.util.Objects;
 
-public class PrimitivesGroup
+public class WkSzTstPrimitivesGroup
 {
 
     public final byte b;
@@ -31,7 +31,7 @@ public class PrimitivesGroup
 
     public static final int FIXED_STRING_LENGTH = 10;
 
-    PrimitivesGroup(int i, String str) {
+    WkSzTstPrimitivesGroup(int i, String str) {
         this.b = (byte)i;
         this.s = (short)(10*i);
         this.i = 100*i;
@@ -40,7 +40,7 @@ public class PrimitivesGroup
         this.varLengthStr = Objects.requireNonNull(str);
     }
 
-    PrimitivesGroup(PrimitivesGroupDeserializer deserializer) {
+    WkSzTstPrimitivesGroup(WkSzTstPrimitivesGroupPacketReader deserializer) {
       this(
           deserializer.byteReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get().byteValue(),
           deserializer.shortReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get().shortValue(),
@@ -50,7 +50,7 @@ public class PrimitivesGroup
           deserializer.dynStrReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get());
     }
 
-    PrimitivesGroup(byte b, short s, int i, long l, String fixedLengthStr, String varLengthStr) {
+    WkSzTstPrimitivesGroup(byte b, short s, int i, long l, String fixedLengthStr, String varLengthStr) {
         this.b = b;
         this.s = s;
         this.i = i;
@@ -78,9 +78,9 @@ public class PrimitivesGroup
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof PrimitivesGroup))
+        if (!(obj instanceof WkSzTstPrimitivesGroup))
             return false;
-        PrimitivesGroup other = (PrimitivesGroup) obj;
+        WkSzTstPrimitivesGroup other = (WkSzTstPrimitivesGroup) obj;
         if (b != other.b)
             return false;
         if (!fixedLengthStr.equals(other.fixedLengthStr))

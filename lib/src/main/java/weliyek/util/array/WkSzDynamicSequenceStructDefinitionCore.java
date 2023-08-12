@@ -49,14 +49,14 @@ import weliyek.serialization.sequence.VariableSizeSequenceReading;
 import weliyek.serialization.sequence.VariableSizeSequenceWriting;
 import weliyek.serialization.sequence.WkSzVariableSizeSequenceDefinition;
 
-public abstract class DynamicSequenceDefinitionCore<
+public abstract class WkSzDynamicSequenceStructDefinitionCore<
                         T,
                         XS extends WkSzOperationSettings,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends WkSzReadingRuntimeControl<XB,XBC,?>,
                         XR extends WkSzReadingResult<T>,
-                        XO extends DynamicSequenceDeserializing<
+                        XO extends WkSzDynamicSequencePacketReaderOperation<
                                         T, XS,
                                         ? extends WkSzReadingRuntime<XB>,
                                         XR, XD, ?, ?, ?, ?, ?>,
@@ -67,7 +67,7 @@ public abstract class DynamicSequenceDefinitionCore<
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WkSzWritingRuntimeControl<YB,YBC,?>,
                         YR extends WkSzWritingResult,
-                        YO extends DynamicSequenceSerializing<
+                        YO extends WkSzDynamicSequencePacketWriterOperation<
                                         T, YS,
                                         ? extends WkSzWritingRuntime<YB>,
                                         YR, YD, ?, ?, ?, ?, ?>,
@@ -89,7 +89,7 @@ public abstract class DynamicSequenceDefinitionCore<
                         VYD extends WkSzVariableSizeSequenceDefinition<T,?>,
                         VD extends WkSzVariableSizeSequenceDefinition<T,VXO>,
                         D extends WkSzDynamicSequenceDefinition<T,XO,YO,ZD,VD>,
-                        DC extends DynamicSequenceDefinitionCore<
+                        DC extends WkSzDynamicSequenceStructDefinitionCore<
                                       T,XS,XB,XBC,XQC,XR,XO,XD,AXBC,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYBC,
                                       ZX,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
@@ -106,7 +106,7 @@ public abstract class DynamicSequenceDefinitionCore<
   final WkSzSubcomponentCore<T,VXS,VXD,VXO,T,XBC,XD,XO,VYS,VYD,VYO,YBC,YD,YO,VD,D>
                         varseqComponent;
 
-  protected DynamicSequenceDefinitionCore(
+  protected WkSzDynamicSequenceStructDefinitionCore(
     String sizeComponentLabel,
     OperationSubsegmentSettingsFactory<XO,ZXS> sizeComponentRxSettingsFactory,
     OperationSubsegmentSettingsFactory<YO, ZYS> sizeComponentTxSettingsFactory,

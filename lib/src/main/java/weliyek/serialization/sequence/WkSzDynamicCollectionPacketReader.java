@@ -35,7 +35,7 @@ import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
 
-public class DynamicCollectionFieldDeserializerImpl<
+public class WkSzDynamicCollectionPacketReader<
                         T extends Collection<ET>,
                         XS extends WkSzOperationSettings,
                         ZT extends Number,
@@ -47,53 +47,53 @@ public class DynamicCollectionFieldDeserializerImpl<
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
-    implements DynamicCollectionFieldDeserializer<
+    implements WkSzDynamicCollectionPacketReaderOperation<
                         T, XS,
                         WkSzReadingRuntime<WkSzInputBytestream>,
                         WkSzReadingResult<T>,
-                        DynamicCollectionField<
+                        WkSzDynamicCollection<
                           T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                         ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>
 {
 
-  final SimplifiedDynamicCollectionFieldDeserializer<
+  final WkSzSimplifiedDynamicSequencePacketReaderCore<
                         T, XS,
-                        DynamicCollectionFieldDeserializer<
+                        WkSzDynamicCollectionPacketReaderOperation<
                           T, XS,
                           WkSzReadingRuntime<WkSzInputBytestream>,
                           WkSzReadingResult<T>,
-                          DynamicCollectionField<
+                          WkSzDynamicCollection<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
-                        DynamicCollectionField<
+                        WkSzDynamicCollection<
                           T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                         ZT, ZXS, ZXO, ZXD, ET, EXS, EXD, EXO, VXS> operationCore;
 
-  DynamicCollectionFieldDeserializerImpl(
+  WkSzDynamicCollectionPacketReader(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSzPacketReaderFieldCore<
-      T,?,DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
+      T,?,WkSzDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
       ?,?,?> packetfieldCore,
-    SimplifiedDynamicCollectionDefinitionCore<
+    WkSzSimplifiedDynamicCollectionStructDefinition<
       T,XS,
-      DynamicCollectionFieldDeserializer<
+      WkSzDynamicCollectionPacketReaderOperation<
         T,XS,WkSzReadingRuntime<WkSzInputBytestream>,WkSzReadingResult<T>,
-        DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
+        WkSzDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
         ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
-      DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
+      WkSzDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
       ?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?> definitionCore) {
-    this.operationCore = new SimplifiedDynamicCollectionFieldDeserializer<
+    this.operationCore = new WkSzSimplifiedDynamicSequencePacketReaderCore<
                                 T, XS,
-                                DynamicCollectionFieldDeserializer<
+                                WkSzDynamicCollectionPacketReaderOperation<
                                 T, XS,
                                 WkSzReadingRuntime<WkSzInputBytestream>,
                                 WkSzReadingResult<T>,
-                                DynamicCollectionField<
+                                WkSzDynamicCollection<
                                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                 ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
-                                DynamicCollectionField<
+                                WkSzDynamicCollection<
                                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                 ZT, ZXS, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>(
                                     index,
@@ -118,7 +118,7 @@ public class DynamicCollectionFieldDeserializerImpl<
 
   @Override
   public
-  DynamicCollectionField<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>
+  WkSzDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>
   definition() {
     return this.operationCore.definition();
   }
@@ -145,7 +145,7 @@ public class DynamicCollectionFieldDeserializerImpl<
 
   @Override
   public
-  WkSzPacketReaderField<T, DynamicCollectionField<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ?>
+  WkSzPacketReaderField<T, WkSzDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ?>
   packetField() {
     return this.operationCore.packetField();
   }

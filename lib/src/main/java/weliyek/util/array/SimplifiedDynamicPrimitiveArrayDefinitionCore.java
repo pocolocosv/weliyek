@@ -78,7 +78,7 @@ public final class SimplifiedDynamicPrimitiveArrayDefinitionCore<
                                         T,WkSzOperationSettings,?,?,VYD>,
                         VD extends WkSzVariableSizePrimitiveArrayDefinition<T,VXO>,
                         D extends WkSzDynamicPrimitiveArrayDefinition<T,XO,YO,ZD,VD>>
-    extends DynamicSequenceDefinitionCore<
+    extends WkSzDynamicSequenceStructDefinitionCore<
                         T,
                         WkSzOperationSettings,
                         WkSzInputBytestream,

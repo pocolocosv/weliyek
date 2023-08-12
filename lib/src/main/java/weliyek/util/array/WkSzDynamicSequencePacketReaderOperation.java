@@ -29,7 +29,7 @@ import weliyek.serialization.sequence.VariableSizeSequenceReading;
 import weliyek.serialization.sequence.WkSzSequenceReader;
 import weliyek.serialization.sequence.WkSzVariableSizeSequenceDefinition;
 
-public interface DynamicSequenceDeserializing<
+public interface WkSzDynamicSequencePacketReaderOperation<
                         T,
                         XS extends WkSzOperationSettings,
                         XQ extends WkSzReadingRuntime<?>,

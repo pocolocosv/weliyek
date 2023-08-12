@@ -29,9 +29,9 @@ import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzNumberDefinition;
 import weliyek.serialization.number.WkSzNumberReader;
-import weliyek.util.array.DynamicSequenceDeserializing;
+import weliyek.util.array.WkSzDynamicSequencePacketReaderOperation;
 
-public interface DynamicCollectionFieldDeserializer<
+public interface WkSzDynamicCollectionPacketReaderOperation<
                         T extends Collection<ET>,
                         XS extends WkSzOperationSettings,
                         XQ extends WkSzReadingRuntime<?>,
@@ -45,7 +45,7 @@ public interface DynamicCollectionFieldDeserializer<
                         EXD extends WkSzDefinition<ET,?>,
                         EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
-    extends WkSzDynamicCollectionOperation<
+    extends WkSzDynamicCollectionPacketOperation<
                         XS, XQ, XR, XD,
                         WkSzPacketReaderField<T,XD,?>,
                         ZXO,
@@ -59,7 +59,7 @@ public interface DynamicCollectionFieldDeserializer<
                           T,
                           VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                           VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>>>,
-            DynamicSequenceDeserializing<
+            WkSzDynamicSequencePacketReaderOperation<
                         T, XS, XQ, XR, XD, ZT, ZXO, ZXD,
                         VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>,
                         VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>>

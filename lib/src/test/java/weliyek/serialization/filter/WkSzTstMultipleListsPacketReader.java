@@ -31,54 +31,54 @@ import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSzSignedBigEndianShort;
 import weliyek.serialization.number.WkSzSignedBigEndianShortReader;
-import weliyek.serialization.sequence.DynamicCollectionFieldDeserializer;
-import weliyek.serialization.sequence.SimplifiedDynamicCollectionDefinitionCore;
-import weliyek.serialization.sequence.SimplifiedDynamicCollectionFieldDeserializer;
+import weliyek.serialization.sequence.WkSzDynamicCollectionPacketReaderOperation;
+import weliyek.serialization.sequence.WkSzSimplifiedDynamicCollectionStructDefinition;
+import weliyek.serialization.sequence.WkSzSimplifiedDynamicSequencePacketReaderCore;
 import weliyek.serialization.sequence.VariableSizeCollectionField;
 import weliyek.serialization.sequence.VariableSizeCollectionFieldDeserializer;
 
-public class MultipleListReading
-        implements DynamicCollectionFieldDeserializer<
-                        MultipleLists,
+public class WkSzTstMultipleListsPacketReader
+        implements WkSzDynamicCollectionPacketReaderOperation<
+                        WkSzTstMultipleLists,
                         WkSzOperationSettings,
                         WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<MultipleLists>,
-                        MultipleListInputField,
+                        WkSzReadingResult<WkSzTstMultipleLists>,
+                        WkSzTstMultipleListStructDefinition,
                         Short,
                         WkSzSignedBigEndianShortReader,
                         WkSzSignedBigEndianShort,
-                        PrimitivesGroupList,
+                        WkSzTstPrimitivesGroupList,
                         WkSzOperationSettings,
-                        PrimitivesGroupListField,
-                        PrimitivesGroupListFieldDeserializer,
+                        WkSzTstPrimitivesGroupListStructDefinition,
+                        WkSzTstPrimitivesGroupListPacketReader,
                         WkSzVariableLengthOperationSettings>
 {
 
-    final SimplifiedDynamicCollectionFieldDeserializer<
-                        MultipleLists,
+    final WkSzSimplifiedDynamicSequencePacketReaderCore<
+                        WkSzTstMultipleLists,
                         WkSzOperationSettings,
-                        MultipleListReading,
-                        MultipleListInputField,
+                        WkSzTstMultipleListsPacketReader,
+                        WkSzTstMultipleListStructDefinition,
                         Short,
                         WkSzOperationSettings,
                         WkSzSignedBigEndianShortReader,
                         WkSzSignedBigEndianShort,
-                        PrimitivesGroupList,
+                        WkSzTstPrimitivesGroupList,
                         WkSzOperationSettings,
-                        PrimitivesGroupListField,
-                        PrimitivesGroupListFieldDeserializer,
+                        WkSzTstPrimitivesGroupListStructDefinition,
+                        WkSzTstPrimitivesGroupListPacketReader,
                         WkSzVariableLengthOperationSettings>
                         operationCore;
 
-  MultipleListReading(
+  WkSzTstMultipleListsPacketReader(
     int index,
     WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
-    WkSzPacketReaderFieldCore<MultipleLists, ?, MultipleListInputField, ?, ?, ?> packetfieldCore,
-    SimplifiedDynamicCollectionDefinitionCore<MultipleLists, WkSzOperationSettings, MultipleListReading, MultipleListInputField, ?, ?, ?, Short, WkSzOperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, ?, ?, ?, ?, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?, ?>
+    WkSzPacketReaderFieldCore<WkSzTstMultipleLists, ?, WkSzTstMultipleListStructDefinition, ?, ?, ?> packetfieldCore,
+    WkSzSimplifiedDynamicCollectionStructDefinition<WkSzTstMultipleLists, WkSzOperationSettings, WkSzTstMultipleListsPacketReader, WkSzTstMultipleListStructDefinition, ?, ?, ?, Short, WkSzOperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, ?, ?, ?, ?, WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroupListStructDefinition, WkSzTstPrimitivesGroupListPacketReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?, ?>
       definitionCore) {
-    this.operationCore = new SimplifiedDynamicCollectionFieldDeserializer<
-                                MultipleLists, WkSzOperationSettings, MultipleListReading, MultipleListInputField, Short, WkSzOperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, WkSzVariableLengthOperationSettings>(
+    this.operationCore = new WkSzSimplifiedDynamicSequencePacketReaderCore<
+                                WkSzTstMultipleLists, WkSzOperationSettings, WkSzTstMultipleListsPacketReader, WkSzTstMultipleListStructDefinition, Short, WkSzOperationSettings, WkSzSignedBigEndianShortReader, WkSzSignedBigEndianShort, WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroupListStructDefinition, WkSzTstPrimitivesGroupListPacketReader, WkSzVariableLengthOperationSettings>(
                                     index, settings, parentBytestream, packetfieldCore, definitionCore, this);
   }
 
@@ -91,13 +91,13 @@ public class MultipleListReading
 
   @Override
   public
-  WkSzPacketReaderSubfield<MultipleLists, VariableSizeCollectionField<MultipleLists, WkSzVariableLengthOperationSettings, ?, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<MultipleLists, WkSzVariableLengthOperationSettings, PrimitivesGroupList, WkSzOperationSettings, PrimitivesGroupListField, PrimitivesGroupListFieldDeserializer>>
+  WkSzPacketReaderSubfield<WkSzTstMultipleLists, VariableSizeCollectionField<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroupListStructDefinition, WkSzTstPrimitivesGroupListPacketReader, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroupListStructDefinition, WkSzTstPrimitivesGroupListPacketReader>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }
 
   @Override
-  public MultipleListInputField definition() {
+  public WkSzTstMultipleListStructDefinition definition() {
     return this.operationCore.definition();
   }
 
@@ -112,7 +112,7 @@ public class MultipleListReading
   }
 
   @Override
-  public Optional<WkSzReadingResult<MultipleLists>> result() {
+  public Optional<WkSzReadingResult<WkSzTstMultipleLists>> result() {
     return this.operationCore.result();
   }
 
@@ -122,7 +122,7 @@ public class MultipleListReading
   }
 
   @Override
-  public WkSzPacketReaderField<MultipleLists, MultipleListInputField, ?> packetField() {
+  public WkSzPacketReaderField<WkSzTstMultipleLists, WkSzTstMultipleListStructDefinition, ?> packetField() {
     return this.operationCore.packetField();
   }
 

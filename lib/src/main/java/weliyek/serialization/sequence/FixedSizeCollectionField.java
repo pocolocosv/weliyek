@@ -36,7 +36,7 @@ import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 
 public final class FixedSizeCollectionField<
                         T extends Collection<ET>,
@@ -233,7 +233,7 @@ public final class FixedSizeCollectionField<
   }
 
   @Override
-  public FieldTester<?, ?> makeTester(
+  public WkSrlzPacketNodePredicate<?, ?> makeTester(
     Predicate<? super FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>> test,
     String description) {
     return this.definitionCore.makeTester(test, description);

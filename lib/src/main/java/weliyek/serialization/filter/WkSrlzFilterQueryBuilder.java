@@ -18,16 +18,16 @@
 package weliyek.serialization.filter;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.filter.FilterPredicateRule.ExclusiveOption;
+import weliyek.serialization.filter.WkSrlzFilterPredicateRule.ExclusiveOption;
 
-public class FilterQueryBuilder
+public class WkSrlzFilterQueryBuilder
 {
 
     private WkSrlzStructDefinitionFrameNode<?,?> searchedField;
-    private FilterPredicateRuleBase rule;
+    private WkSrlzFilterPredicateRuleBase rule;
     private String desc;
 
-    public FilterQueryBuilder() {
+    public WkSrlzFilterQueryBuilder() {
         reset();
     }
 
@@ -37,33 +37,33 @@ public class FilterQueryBuilder
         this.desc = "";
     }
 
-    public FilterQueryBuilder search(WkSrlzStructDefinitionFrameNode<?,?> searchedField) {
+    public WkSrlzFilterQueryBuilder search(WkSrlzStructDefinitionFrameNode<?,?> searchedField) {
         this.searchedField = searchedField;
         return this;
     }
 
-    public FilterQueryBuilder where(FilterPredicateRuleBase rule) {
+    public WkSrlzFilterQueryBuilder where(WkSrlzFilterPredicateRuleBase rule) {
         this.rule = rule;
         return this;
     }
 
-    public <V> FilterQueryBuilder whereAny(FieldTester<?,?> matcher) {
-        this.rule = new FilterPredicateRuleField(matcher, ExclusiveOption.ANY);
+    public <V> WkSrlzFilterQueryBuilder whereAny(WkSrlzPacketNodePredicate<?,?> matcher) {
+        this.rule = new WkSrlzFilterRule(matcher, ExclusiveOption.ANY);
         return this;
     }
 
-    public <V> FilterQueryBuilder whereAll(FieldTester<?,?> matcher) {
-        this.rule = new FilterPredicateRuleField(matcher, ExclusiveOption.ALL);
+    public <V> WkSrlzFilterQueryBuilder whereAll(WkSrlzPacketNodePredicate<?,?> matcher) {
+        this.rule = new WkSrlzFilterRule(matcher, ExclusiveOption.ALL);
         return this;
     }
 
-    public FilterQueryBuilder withDescription(String desc) {
+    public WkSrlzFilterQueryBuilder withDescription(String desc) {
         this.desc = desc;
         return this;
     }
 
-    public FilterQuery build() {
-        final FilterQuery q = new FilterQuery(searchedField, desc, rule);
+    public WkSrlzFilterQuery build() {
+        final WkSrlzFilterQuery q = new WkSrlzFilterQuery(searchedField, desc, rule);
         reset();
         return q;
     }

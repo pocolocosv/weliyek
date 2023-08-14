@@ -24,48 +24,48 @@ import java.util.Set;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
-public class FilterPredicateRuleField
-        extends FilterPredicateRuleBase
+public class WkSrlzFilterRule
+        extends WkSrlzFilterPredicateRuleBase
 {
 
-    private final FieldTester<?,?> tester;
-    private final List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets;
-    private final List<FieldTester<?,?>> testers;
+    private final WkSrlzPacketNodePredicate<?,?> nodePredicate;
+    private final List<WkSrlzStructDefinitionFrameNode<?,?>> structDefinitionTargetList;
+    private final List<WkSrlzPacketNodePredicate<?,?>> nodePredicateList;
     final ExclusiveOption option;
 
-    public FilterPredicateRuleField(
-      FieldTester<?,?> tester,
-      ExclusiveOption opt) {
-        super(tester.toString());
-        this.tester = Objects.requireNonNull(tester);
-        this.option = Objects.requireNonNull(opt);
+    public WkSrlzFilterRule(
+      WkSrlzPacketNodePredicate<?,?> nodePredicate,
+      ExclusiveOption option) {
+        super(nodePredicate.toString());
+        this.nodePredicate = Objects.requireNonNull(nodePredicate);
+        this.option = Objects.requireNonNull(option);
 
-        this.matchTargets = Collections.singletonList(tester.targetProtocolField());
-        this.testers = Collections.singletonList(tester);
+        this.structDefinitionTargetList = Collections.singletonList(nodePredicate.targetProtocolField());
+        this.nodePredicateList = Collections.singletonList(nodePredicate);
     }
 
     @Override
     public List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets() {
-        return this.matchTargets;
+        return this.structDefinitionTargetList;
     }
 
     @Override
-    List<FieldTester<?,?>> testers() {
-        return testers;
+    List<WkSrlzPacketNodePredicate<?,?>> testers() {
+        return nodePredicateList;
     }
 
-    FieldTester<?,?> onlyTester() {
-        return this.tester;
+    WkSrlzPacketNodePredicate<?,?> onlyTester() {
+        return this.nodePredicate;
     }
 
     @Override
-    public Set<? extends FilterPredicateRuleBase> subrules() {
+    public Set<? extends WkSrlzFilterPredicateRuleBase> subrules() {
         return Collections.emptySet();
     }
 
     @Override
-    FilterPredicateRuleBaseResult newResult() {
-        return new FilterPredicateRuleFieldResult(this);
+    WkSrlzPacketNodePredicateEvaluatorBase newResult() {
+        return new WkSrlzFilterRuleEvaluator(this);
     }
 
 }

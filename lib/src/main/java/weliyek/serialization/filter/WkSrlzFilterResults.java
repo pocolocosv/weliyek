@@ -25,35 +25,35 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
-public class FilterResults
+public class WkSrlzFilterResults
 {
 
-  private static final Logger logger = LoggerFactory.getLogger(FilterResults.class);
+  private static final Logger logger = LoggerFactory.getLogger(WkSrlzFilterResults.class);
 
-    private final Filter filter;
+    private final WkSrlzFilter filter;
 
-    private final Map<FilterQuery, FilterQueryResults> resultListsByQuery = new HashMap<>();
+    private final Map<WkSrlzFilterQuery, WkSrlzFilterQueryResults> resultListsByQuery = new HashMap<>();
 
-    FilterResults(Filter filter) {
+    WkSrlzFilterResults(WkSrlzFilter filter) {
         this.filter = filter;
-        for (FilterQuery query : filter.queries()) {
-            resultListsByQuery.put(query, new FilterQueryResults(query));
+        for (WkSrlzFilterQuery query : filter.queries()) {
+            resultListsByQuery.put(query, new WkSrlzFilterQueryResults(query));
         }
     }
 
-    public FilterQueryResults allResultsForQuery(FilterQuery query) {
+    public WkSrlzFilterQueryResults allResultsForQuery(WkSrlzFilterQuery query) {
         return resultListsByQuery.get(query);
     }
 
     public void runTestOnOpRes(WkSrlzPacketFilterableFrameNode opRes) {
-        for (FilterQueryResults queryResults : resultListsByQuery.values()) {
+        for (WkSrlzFilterQueryResults queryResults : resultListsByQuery.values()) {
           logger.debug("Testing \"" + opRes.toString() + "\" against query \"" + queryResults.query().toString() + "\"");
           queryResults.test(opRes);
         }
     }
 
     public boolean fieldMustBeMatched(WkSrlzStructDefinitionFrameNode<?,?> field) {
-        for (FilterQueryResults queryResults : resultListsByQuery.values()) {
+        for (WkSrlzFilterQueryResults queryResults : resultListsByQuery.values()) {
           if (queryResults.query().matchTargetFields().contains(field)) {
             return true;
           }
@@ -61,7 +61,7 @@ public class FilterResults
         return false;
     }
 
-    public Filter filter() {
+    public WkSrlzFilter filter() {
       return this.filter;
     }
 

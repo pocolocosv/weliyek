@@ -25,8 +25,8 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.serialization.filter.FieldTester;
-import weliyek.serialization.filter.PacketInputFieldOperationPredicate;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
+import weliyek.serialization.filter.WkSrlzReadingPacketNodePredicate;
 
 public abstract class WkSrlzStructDefinitionFrameNodeCore<
                         T,
@@ -217,8 +217,8 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
 
     @SuppressWarnings("unchecked")
     @Override
-    public FieldTester<?,?> makeTester(Predicate<? super XO> test, String description) {
-    return new PacketInputFieldOperationPredicate<XD,XO>((XD) definitionBody, test, description);
+    public WkSrlzPacketNodePredicate<?,?> makeTester(Predicate<? super XO> test, String description) {
+    return new WkSrlzReadingPacketNodePredicate<XD,XO>((XD) definitionBody, test, description);
     }
 
     @Override

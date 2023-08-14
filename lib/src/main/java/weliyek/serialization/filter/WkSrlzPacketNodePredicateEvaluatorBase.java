@@ -21,15 +21,15 @@ import java.util.Collection;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
-public abstract class FilterPredicateRuleBaseResult
-        implements FilterTesterResult,
-                   FilterPredicateRule
+public abstract class WkSrlzPacketNodePredicateEvaluatorBase
+        implements WkSrlzPacketNodePredicateResult,
+                   WkSrlzFilterPredicateRule
 {
 
-    private final FilterPredicateRuleBase rule;
+    private final WkSrlzFilterPredicateRuleBase rule;
     private final String desc;
 
-    FilterPredicateRuleBaseResult(FilterPredicateRuleBase rule) {
+    WkSrlzPacketNodePredicateEvaluatorBase(WkSrlzFilterPredicateRuleBase rule) {
         this.rule = rule;
         this.desc = "RESULT:" + rule.name();
     }
@@ -40,11 +40,11 @@ public abstract class FilterPredicateRuleBaseResult
         return onTest(info);
     }
 
-    void process(WkSrlzPacketFilterableFrameNode segment, FilterQuery query) {
+    void process(WkSrlzPacketFilterableFrameNode segment, WkSrlzFilterQuery query) {
       if (isPremiseFound()) {
         return;
       }
-      WkSrlzStructDefinitionFrameNode<?,?> definitionUnderTest = FieldTester.extractProtocolDefinitionFrom(segment);
+      WkSrlzStructDefinitionFrameNode<?,?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segment);
       if (query.rule.matchTargets().contains(definitionUnderTest)) {
         onTest(segment);
       }
@@ -63,11 +63,11 @@ public abstract class FilterPredicateRuleBaseResult
     }
 
     @Override
-    public FilterPredicateRuleBase rule() {
+    public WkSrlzFilterPredicateRuleBase rule() {
         return rule;
     }
 
-    abstract Collection<FilterPredicateRuleBaseResult> subresults();
+    abstract Collection<WkSrlzPacketNodePredicateEvaluatorBase> subresults();
 
     @Override
     public int hashCode() {
@@ -83,9 +83,9 @@ public abstract class FilterPredicateRuleBaseResult
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof FilterPredicateRuleBaseResult))
+        if (!(obj instanceof WkSrlzPacketNodePredicateEvaluatorBase))
             return false;
-        FilterPredicateRuleBaseResult other = (FilterPredicateRuleBaseResult) obj;
+        WkSrlzPacketNodePredicateEvaluatorBase other = (WkSrlzPacketNodePredicateEvaluatorBase) obj;
         if ( ! rule.equals(other.rule))
             return false;
         return true;

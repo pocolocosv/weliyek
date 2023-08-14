@@ -427,7 +427,7 @@ public class WkSzTstPrimitivesGroupStructDefinition
   }
 
   @Override
-  public FieldTester<?,?>
+  public WkSrlzPacketNodePredicate<?,?>
   makeTester(Predicate<? super WkSzTstPrimitivesGroupPacketReader> test, String description) {
     return this.definitionCore.makeTester(test, description);
   }

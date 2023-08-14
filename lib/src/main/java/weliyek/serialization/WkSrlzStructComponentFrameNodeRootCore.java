@@ -24,7 +24,7 @@ import java.util.function.Function;
 
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeRootCore.ReadingPacketParameters;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeRootCore.WritingParameters;
-import weliyek.serialization.filter.Filter;
+import weliyek.serialization.filter.WkSrlzFilter;
 
 /**
  * Main type that holds all components that form a self contained struct which defines
@@ -73,22 +73,22 @@ public final class WkSrlzStructComponentFrameNodeRootCore<
 
   public WkSzInputPacket<T, XD, XO>
   newInputPacket(XS settings, InputStream inputstream) {
-    return newInputPacket(settings, inputstream, Filter.getEmptyFilter());
+    return newInputPacket(settings, inputstream, WkSrlzFilter.getEmptyFilter());
   }
 
   public WkSzInputPacket<T, XD, XO>
-  newInputPacket(XS settings, InputStream inputstream, Filter filter) {
+  newInputPacket(XS settings, InputStream inputstream, WkSrlzFilter filter) {
     AXBC inBytestream = inputbytestreamFactory.apply(inputstream);
     return newInputPacket(settings, inBytestream, filter);
   }
 
   public WkSzInputPacket<T, XD, XO>
   newInputPacket(XS settings, AXBC inputBytestream) {
-    return newInputPacket(settings, inputBytestream, Filter.getEmptyFilter());
+    return newInputPacket(settings, inputBytestream, WkSrlzFilter.getEmptyFilter());
   }
 
   public WkSzInputPacket<T, XD, XO>
-  newInputPacket(XS settings, AXBC inputBytestream, Filter filter) {
+  newInputPacket(XS settings, AXBC inputBytestream, WkSrlzFilter filter) {
     ReadingPacketParameters<XS, AXBC> params = new WkSrlzInputPacketFieldFrameNodeRootCore.ReadingPacketParameters<XS, AXBC>(
                                                                         settings,
                                                                         inputBytestream,
@@ -103,16 +103,16 @@ public final class WkSrlzStructComponentFrameNodeRootCore<
   public WkSzOutputPacket<T, YD, YO>
   newOutputPacket(T serializable, YS settings, OutputStream outputstream)  {
     AYBC outBytestream = outputbytestreamFactory.apply(outputstream);
-    return newOutputPacket(serializable, settings, outBytestream, Filter.getEmptyFilter());
+    return newOutputPacket(serializable, settings, outBytestream, WkSrlzFilter.getEmptyFilter());
   }
 
   public WkSzOutputPacket<T, YD, YO>
   newOutputPacket(T serializable, YS settings, AYBC outputBytestream)  {
-    return newOutputPacket(serializable, settings, outputBytestream, Filter.getEmptyFilter());
+    return newOutputPacket(serializable, settings, outputBytestream, WkSrlzFilter.getEmptyFilter());
   }
 
   public WkSzOutputPacket<T, YD, YO>
-  newOutputPacket(T serializable, YS settings, AYBC outputBytestream, Filter filter)  {
+  newOutputPacket(T serializable, YS settings, AYBC outputBytestream, WkSrlzFilter filter)  {
     WritingParameters<T,YS,AYBC> writingParams = new WkSrlzOutputPacketFieldFrameNodeRootCore.WritingParameters<T,YS,AYBC>(
                                                                         serializable,
                                                                         settings,

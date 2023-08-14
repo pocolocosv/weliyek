@@ -37,7 +37,7 @@ import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 
 public final class VariableSizeCollectionField<
                         T extends Collection<ET>,
@@ -233,7 +233,7 @@ public final class VariableSizeCollectionField<
   }
 
   @Override
-  public FieldTester<?, ?>
+  public WkSrlzPacketNodePredicate<?, ?>
   makeTester(
     Predicate<? super VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>> test,
     String description) {

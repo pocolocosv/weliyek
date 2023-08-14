@@ -34,7 +34,7 @@ import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 import weliyek.serialization.string.WkStringFromBytesSrlzStructDefinitionFrameNodeCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkVariableSizeByteArraySrlzStructNode;
@@ -182,7 +182,7 @@ public class WkStringWithVariableBytesSrlzStructNode
   }
 
   @Override
-  public FieldTester<?, ?>
+  public WkSrlzPacketNodePredicate<?, ?>
   makeTester(
     Predicate<? super WkStringWithVariableBytesSrlzInputNode> test,
     String description) {

@@ -22,18 +22,18 @@ import java.util.Objects;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
-public class FilterQuery
+public class WkSrlzFilterQuery
 {
 
-    final FilterPredicateRuleBase rule;
+    final WkSrlzFilterPredicateRuleBase rule;
 
     private final WkSrlzStructDefinitionFrameNode<?,?> mySearchTargetField;
 
     private final String description;
 
-    FilterQuery(WkSrlzStructDefinitionFrameNode<?,?> searchedField,
+    WkSrlzFilterQuery(WkSrlzStructDefinitionFrameNode<?,?> searchedField,
                 String desc,
-                FilterPredicateRuleBase rule) {
+                WkSrlzFilterPredicateRuleBase rule) {
         this.mySearchTargetField = Objects.requireNonNull(searchedField);
         this.rule = Objects.requireNonNull(rule);
         this.description = "Query:" + Objects.requireNonNull(desc);

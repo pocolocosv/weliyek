@@ -22,21 +22,21 @@ import java.util.Set;
 
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 
-public class FilterBuilder
+public class WkSrlzFilterBuilder
 {
 
-    private final Set<FilterQuery> builderContainer = new LinkedHashSet<>();
+    private final Set<WkSrlzFilterQuery> builderContainer = new LinkedHashSet<>();
 
-    public FilterBuilder() {
+    public WkSrlzFilterBuilder() {
     }
 
-    FilterBuilder setProtocol(WkSrlzStructComponentFrameNodeRootCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> packetStructure) {
+    WkSrlzFilterBuilder setProtocol(WkSrlzStructComponentFrameNodeRootCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> packetStructure) {
       // TODO: Set structure to be used to verify that all added queries do apply for
       // said structure.
         return this;
     }
 
-    FilterBuilder addQuery(FilterQuery query) {
+    WkSrlzFilterBuilder addQuery(WkSrlzFilterQuery query) {
         this.builderContainer.add(query);
         return this;
     }
@@ -45,8 +45,8 @@ public class FilterBuilder
         this.builderContainer.clear();
     }
 
-    public Filter build() {
-        final Filter filter = Filter.buildFilter(builderContainer);
+    public WkSrlzFilter build() {
+        final WkSrlzFilter filter = WkSrlzFilter.buildFilter(builderContainer);
         reset();
         return filter;
     }

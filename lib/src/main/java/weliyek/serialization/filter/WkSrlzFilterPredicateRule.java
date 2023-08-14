@@ -17,42 +17,40 @@
  */
 package weliyek.serialization.filter;
 
-import java.util.AbstractSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Inherits from {@link AbstractSet} in order to have most helper logic
- * available to both derived classes.
- */
-public abstract class FilterPredicateRuleBase
-        implements FilterPredicateRule
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+
+public interface WkSrlzFilterPredicateRule
 {
 
-    final String desc;
+    public enum ExclusiveOption {
+        ANY,
+        ALL;
 
-    protected FilterPredicateRuleBase(String desc) {
-        if (null == desc || desc.isEmpty())
-            this.desc = "Anonymous " + this.getClass().getSimpleName();
-        else
-            this.desc = desc;
+        public boolean isAny() {
+            return this.equals(ANY);
+        }
+
+        public boolean isAll() {
+            return this.equals(ALL);
+        }
+
+        public boolean accumulativeResult(boolean current, boolean accumulated) {
+            if (isAny())
+                return current | accumulated;
+            else if (isAll())
+                return current & accumulated;
+            throw new IllegalStateException();
+        }
+
     }
 
-    @Override
-    public String name() {
-        return this.desc;
-    }
+    String name();  // Optional name
 
-    abstract List<FieldTester<?,?>> testers();
+    Set<? extends WkSrlzFilterPredicateRule> subrules();
 
-    @Override
-    public String toString() {
-        return this.desc;
-    }
-
-    @Override
-    public abstract Set<? extends FilterPredicateRuleBase> subrules();
-
-    abstract FilterPredicateRuleBaseResult newResult();
+    List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets();
 
 }

@@ -19,7 +19,7 @@ package weliyek.serialization;
 
 import java.util.function.Predicate;
 
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 
 /**
  * The main node that defines the serialization rules for a given data type.
@@ -38,6 +38,6 @@ public interface WkSrlzStructComponentFrameNode<
 
   String name();
 
-  FieldTester<?, ?> makeTester(Predicate<WkSrlzPacketFieldFrameNode<?,?,?>> test, String description);
+  WkSrlzPacketNodePredicate<?, ?> makeTester(Predicate<WkSrlzPacketFieldFrameNode<?,?,?>> test, String description);
 
 }

@@ -44,7 +44,7 @@ import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
@@ -413,7 +413,7 @@ public class WkDynamicCollectionSrlzStructNode<
   }
 
   @Override
-  public FieldTester<?, ?> makeTester(
+  public WkSrlzPacketNodePredicate<?, ?> makeTester(
   Predicate<? super WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>> test,
   String description) {
     return this.definitionCore.makeTester(test, description);

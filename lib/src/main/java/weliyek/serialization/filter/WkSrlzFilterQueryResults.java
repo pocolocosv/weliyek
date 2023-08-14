@@ -27,33 +27,31 @@ import org.slf4j.LoggerFactory;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 
-public class FilterQueryResults
+public class WkSrlzFilterQueryResults
 {
 
-    private static final Logger logger = LoggerFactory.getLogger(FilterQueryResults.class);
+    private final WkSrlzFilterQuery query;
 
-    private final FilterQuery query;
-
-    private LinkedHashMap<WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>, FilterPredicateRuleBaseResult>
+    private LinkedHashMap<WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>, WkSrlzPacketNodePredicateEvaluatorBase>
                       matchedTargetAndTests = new LinkedHashMap<>();
 
-    private FilterPredicateRuleBaseResult currentResult;
+    private WkSrlzPacketNodePredicateEvaluatorBase currentResult;
 
-    FilterQueryResults(FilterQuery query) {
+    WkSrlzFilterQueryResults(WkSrlzFilterQuery query) {
         this.query = Objects.requireNonNull(query);
         this.currentResult = query.rule.newResult();
     }
 
-    public FilterQuery query() {
+    public WkSrlzFilterQuery query() {
         return this.query;
     }
 
-    public Collection<FilterPredicateRuleBaseResult> results() {
+    public Collection<WkSrlzPacketNodePredicateEvaluatorBase> results() {
         return this.matchedTargetAndTests.values();
     }
 
     public void test(WkSrlzPacketFilterableFrameNode segmentUnderTest) {
-      WkSrlzStructDefinitionFrameNode<?,?> definitionUnderTest = FieldTester.extractProtocolDefinitionFrom(segmentUnderTest);
+      WkSrlzStructDefinitionFrameNode<?,?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segmentUnderTest);
       final boolean definitionUnderTestIsBeingSearched = query.searchedField().equals(definitionUnderTest);
       final boolean definitionUnderTestIsASubfield = query.searchedField().isASubfield(definitionUnderTest);
       final boolean isNeitherSearchedOrASubfield =    (! definitionUnderTestIsBeingSearched)
@@ -76,7 +74,7 @@ public class FilterQueryResults
 
     }
 
-    FilterPredicateRuleBaseResult currentResult() {
+    WkSrlzPacketNodePredicateEvaluatorBase currentResult() {
         return this.currentResult;
     }
 

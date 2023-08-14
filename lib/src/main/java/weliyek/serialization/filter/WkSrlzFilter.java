@@ -24,33 +24,33 @@ import java.util.stream.Stream;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
-public class Filter
+public class WkSrlzFilter
 {
 
-    public static Filter buildFilter(Set<FilterQuery> queries) {
+    public static WkSrlzFilter buildFilter(Set<WkSrlzFilterQuery> queries) {
         if (queries.isEmpty())
             return EMPTY_FILTER;
         else
-            return new Filter(queries);
+            return new WkSrlzFilter(queries);
     }
 
-    private static final Filter EMPTY_FILTER = new Filter(Collections.emptySet());
+    private static final WkSrlzFilter EMPTY_FILTER = new WkSrlzFilter(Collections.emptySet());
 
-    public static Filter getEmptyFilter() { return EMPTY_FILTER; }
+    public static WkSrlzFilter getEmptyFilter() { return EMPTY_FILTER; }
 
-    private static final FilterResults EMPTY_RESULTS = new FilterResults(EMPTY_FILTER);
+    private static final WkSrlzFilterResults EMPTY_RESULTS = new WkSrlzFilterResults(EMPTY_FILTER);
 
-    private final Set<FilterQuery> queries;
+    private final Set<WkSrlzFilterQuery> queries;
 
     private final Set<WkSrlzStructDefinitionFrameNode<?,?>> fieldsToBeMatched;
 
-    private final Set<FieldTester<?, ?>> matchers;
+    private final Set<WkSrlzPacketNodePredicate<?, ?>> matchers;
 
-    private Filter(Set<FilterQuery> queries) {
+    private WkSrlzFilter(Set<WkSrlzFilterQuery> queries) {
         this.queries = Collections.unmodifiableSet(new LinkedHashSet<>(queries));
         Set<WkSrlzStructDefinitionFrameNode<?,?>> toBeMatched = new LinkedHashSet<>();
-        Set<FieldTester<?, ?>> matchersSet = new LinkedHashSet<>();
-        for (FilterQuery query : queries) {
+        Set<WkSrlzPacketNodePredicate<?, ?>> matchersSet = new LinkedHashSet<>();
+        for (WkSrlzFilterQuery query : queries) {
             toBeMatched.addAll(query.rule.matchTargets());
             matchersSet.addAll(query.rule.testers());
         }
@@ -58,11 +58,11 @@ public class Filter
         matchers = Collections.unmodifiableSet(matchersSet);
     }
 
-    public final FilterResults buildNewResults() {
+    public final WkSrlzFilterResults buildNewResults() {
         if (this.queries.isEmpty())
             return EMPTY_RESULTS;
         else
-            return new FilterResults(this);
+            return new WkSrlzFilterResults(this);
     }
 
     public boolean hasToBeDeserialized(WkSrlzStructDefinitionFrameNode<?,?> definition) {
@@ -73,7 +73,7 @@ public class Filter
     }
 
     public boolean isSearhed(WkSrlzStructDefinitionFrameNode<?,?> definition) {
-      for (FilterQuery query : queries) {
+      for (WkSrlzFilterQuery query : queries) {
         if (query.searchedField().equals(definition)) {
           return true;
         } else if (query.searchedField().isASubfield(definition)) {
@@ -87,11 +87,11 @@ public class Filter
         return fieldsToBeMatched.contains(protocolField);
     }
 
-    final Stream<FieldTester<?, ?>> valueTests() {
+    final Stream<WkSrlzPacketNodePredicate<?, ?>> valueTests() {
         return matchers.stream();
     }
 
-    public final Set<FilterQuery> queries() {
+    public final Set<WkSrlzFilterQuery> queries() {
         return this.queries;
     }
 

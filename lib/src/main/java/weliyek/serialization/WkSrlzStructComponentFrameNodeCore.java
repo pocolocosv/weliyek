@@ -20,7 +20,7 @@ package weliyek.serialization;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 
 public abstract class WkSrlzStructComponentFrameNodeCore<
                         T,
@@ -67,7 +67,7 @@ public abstract class WkSrlzStructComponentFrameNodeCore<
       }
 
       @Override
-      public FieldTester<?, ?>
+      public WkSrlzPacketNodePredicate<?, ?>
           makeTester(Predicate<WkSrlzPacketFieldFrameNode<?, ?, ?>> test, String description) {
         return WkSrlzStructComponentFrameNodeCore.this.makeTester(test, description);
       }
@@ -128,7 +128,7 @@ public abstract class WkSrlzStructComponentFrameNodeCore<
   }
 
   @Override
-  public FieldTester<?, ?> makeTester(Predicate<WkSrlzPacketFieldFrameNode<?, ?, ?>> test, String description) {
+  public WkSrlzPacketNodePredicate<?, ?> makeTester(Predicate<WkSrlzPacketFieldFrameNode<?, ?, ?>> test, String description) {
     // TODO Auto-generated method stub
     return null;
   }

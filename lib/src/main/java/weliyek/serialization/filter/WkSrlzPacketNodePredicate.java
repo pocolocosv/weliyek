@@ -24,7 +24,7 @@ import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 
-public abstract class FieldTester<
+public abstract class WkSrlzPacketNodePredicate<
                         D extends WkSrlzStructDefinitionFrameNode<?,?>,
                         M extends WkSrlzPacketFilterableFrameNode>
 {
@@ -33,27 +33,27 @@ public abstract class FieldTester<
   private final Predicate<? super M> predicate;
   private String description;
 
-  protected FieldTester(
-    D protocolFieldDefinition,
+  protected WkSrlzPacketNodePredicate(
+    D structDefinition,
     Predicate<? super M> predicate,
     String description) {
-    this.definition = Objects.requireNonNull(protocolFieldDefinition);
+    this.definition = Objects.requireNonNull(structDefinition);
     this.predicate = Objects.requireNonNull(predicate);
     this.description = null == description ? "" : description;
   }
 
-  public abstract boolean canBeTestedAgainst(WkSrlzPacketFilterableFrameNode segment);
+  public abstract boolean canBeTestedAgainst(WkSrlzPacketFilterableFrameNode node);
 
   @SuppressWarnings("unchecked")
-  boolean testIfProperSegmentOrFalseOtherwise(WkSrlzPacketFilterableFrameNode segment) {
-    if (canBeTestedAgainst(segment)) {
-      return test((M)segment);
+  boolean testIfProperSegmentOrFalseOtherwise(WkSrlzPacketFilterableFrameNode node) {
+    if (canBeTestedAgainst(node)) {
+      return test((M)node);
     }
     return false;
   }
 
-  boolean test(M segment) {
-    return this.predicate.test(segment);
+  boolean test(M node) {
+    return this.predicate.test(node);
   }
 
   public final D targetProtocolField() {
@@ -67,31 +67,31 @@ public abstract class FieldTester<
   public abstract boolean deserializedIsRequired();
 
   static WkSrlzStructDefinitionFrameNode<?,?>
-  extractProtocolDefinitionFrom(WkSrlzPacketFilterableFrameNode segment) {
-    if (isSegmentAReadingOperation(segment)) {
-      return extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)segment);
-    } else if (isSegmentAPacketField(segment)) {
-      return extractDefinition((WkSrlzInputPacketFieldFrameNode<?,?,?>)segment);
+  extractProtocolDefinitionFrom(WkSrlzPacketFilterableFrameNode node) {
+    if (isAnInputPacketReadingNode(node)) {
+      return extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)node);
+    } else if (isAnInputPacketFieldNode(node)) {
+      return extractDefinition((WkSrlzInputPacketFieldFrameNode<?,?,?>)node);
     }
     throw new IllegalArgumentException();
   }
 
-  protected static boolean isSegmentAReadingOperation(WkSrlzPacketFilterableFrameNode segment) {
-    return segment instanceof WkSrlzInputPacketDecoderFrameNode;
+  protected static boolean isAnInputPacketReadingNode(WkSrlzPacketFilterableFrameNode node) {
+    return node instanceof WkSrlzInputPacketDecoderFrameNode;
   }
 
-  protected static boolean isSegmentAPacketField(WkSrlzPacketFilterableFrameNode segment) {
-    return segment instanceof WkSrlzInputPacketFieldFrameNode;
-  }
-
-  protected static WkSrlzStructDefinitionFrameNode<?,?> extractDefinition(
-    WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?> operationSegment) {
-    return operationSegment.definition();
+  protected static boolean isAnInputPacketFieldNode(WkSrlzPacketFilterableFrameNode node) {
+    return node instanceof WkSrlzInputPacketFieldFrameNode;
   }
 
   protected static WkSrlzStructDefinitionFrameNode<?,?> extractDefinition(
-    WkSrlzInputPacketFieldFrameNode<?,?,?> packetfield) {
-    return packetfield.structComponent().definition();
+    WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?> opNode) {
+    return opNode.definition();
+  }
+
+  protected static WkSrlzStructDefinitionFrameNode<?,?> extractDefinition(
+    WkSrlzInputPacketFieldFrameNode<?,?,?> fieldNode) {
+    return fieldNode.structComponent().definition();
   }
 
   public String description() {

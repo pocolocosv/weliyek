@@ -17,10 +17,10 @@
  */
 package weliyek.serialization.filter;
 
-public interface FilterTesterResult
+public interface WkSrlzPacketNodePredicateResult
 {
 
-    FilterPredicateRule rule();
+    WkSrlzFilterPredicateRule rule();
 
     boolean isPremiseFound();
 

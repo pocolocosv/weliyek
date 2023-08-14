@@ -126,7 +126,7 @@ public class WkTstPrimitivesGroupListSrlzStructNode
     }
 
     @Override
-    public FieldTester<?,?>
+    public WkSrlzPacketNodePredicate<?,?>
     makeTester(Predicate<? super WkTstPrimitivesGroupListSrlzInputNode> test, String description) {
       return this.fieldCore.makeTester(test, description);
     }

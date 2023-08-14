@@ -154,7 +154,7 @@ public class WkTstMultipleListSrlzStructNode
   }
 
   @Override
-  public FieldTester<?,?>
+  public WkSrlzPacketNodePredicate<?,?>
   makeTester(Predicate<? super WkTstMultipleListSrlzInputNode> test, String description) {
     return this.definitionCore.makeTester(test, description);
   }

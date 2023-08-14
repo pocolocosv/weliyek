@@ -29,7 +29,7 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 import weliyek.serialization.sequence.SequenceFixedSizeParameter;
 
 public class WkFixedSizeByteArraySrlzStructNode
@@ -129,7 +129,7 @@ public class WkFixedSizeByteArraySrlzStructNode
   }
 
   @Override
-  public FieldTester<?, ?>
+  public WkSrlzPacketNodePredicate<?, ?>
   makeTester(Predicate<? super WkFixedSizeByteArraySrlzInputNode> test, String description) {
     return this.definitionCore.makeTester(test, description);
   }

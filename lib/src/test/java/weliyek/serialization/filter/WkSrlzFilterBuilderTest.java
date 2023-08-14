@@ -38,7 +38,7 @@ import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedByteSrlzStructNode;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-public class WkFilterBuilderTest
+public class WkSrlzFilterBuilderTest
 {
 
   private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().deserialized().get().byteValue() == (byte)1;
@@ -64,11 +64,11 @@ public class WkFilterBuilderTest
   private static WkSignedBigEndianIntegerSrlzStructNode INT_FIELD;
   private static WkSignedBigEndianLongSrlzStructNode LONG_FIELD;
 
-  private static FieldTester<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE;
-  private static FieldTester<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO;
-  private static FieldTester<?,?> PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE;
-  private static FieldTester<?,?> PRIMITIVE_HAS_INT_EQUAL_TO_400;
-  private static FieldTester<?,?> MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE;
+  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE;
+  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO;
+  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE;
+  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_INT_EQUAL_TO_400;
+  private static WkSrlzPacketNodePredicate<?,?> MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE;
 
   /*
   private static PrimitivesGroupListField GROUPS_INPUT = GROUPS_LIST_INPUT.element();
@@ -107,7 +107,7 @@ public class WkFilterBuilderTest
 
   @Test
   public void test() {
-      final FilterQueryBuilder queryBuilder = new FilterQueryBuilder();
+      final WkSrlzFilterQueryBuilder queryBuilder = new WkSrlzFilterQueryBuilder();
 
       //queryBuilder.search(MultiplePrimitivesListsField.PROTOCOL.message().primitiveList());
       // Tested fields must be held by searched fields as descendants.
@@ -128,18 +128,18 @@ public class WkFilterBuilderTest
                                                                                 .build();
       */
 
-      final FilterQuery selectListWithPrimitiveByteEqualToOne = queryBuilder.withDescription("SELECT_ALL_LISTS_WITH_PRIMITIVE_BYTE_EQUAL_TO_ONE")
+      final WkSrlzFilterQuery selectListWithPrimitiveByteEqualToOne = queryBuilder.withDescription("SELECT_ALL_LISTS_WITH_PRIMITIVE_BYTE_EQUAL_TO_ONE")
                                                                             .search(PRIMITIVELIST_FIELD)
                                                                             .whereAny(PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE)
                                                                             .build();
 
-      final FilterQuery selectAllListWithPrimitivesIntEqualTo400 = queryBuilder.withDescription("SELECT_ALL_LISTS_WITHOUT_INT_EQUAL_TO_400")
+      final WkSrlzFilterQuery selectAllListWithPrimitivesIntEqualTo400 = queryBuilder.withDescription("SELECT_ALL_LISTS_WITHOUT_INT_EQUAL_TO_400")
                                                                                      .search(PRIMITIVELIST_FIELD)
                                                                                      .whereAll(PRIMITIVE_HAS_INT_EQUAL_TO_400)
                                                                                      .build();
 
-      final FilterBuilder filterBuilder = new FilterBuilder();
-      Filter filter = filterBuilder.setProtocol(MULTIPLE_LIST_PACKET)
+      final WkSrlzFilterBuilder filterBuilder = new WkSrlzFilterBuilder();
+      WkSrlzFilter filter = filterBuilder.setProtocol(MULTIPLE_LIST_PACKET)
                                    //.addQuery(selectMsgWithPrimitiveByteEqualToOne)
                                    //.addQuery(selectMsgWithPrimitiveByteNotEqualToOne)
                                    //.addQuery(selectMsgWithPrimitiveByteEqualToOneOrTwo)
@@ -261,11 +261,11 @@ public class WkFilterBuilderTest
         assertEquals(msgWrite, readRes);
       }
 
-      FilterQueryResults allListWithIntEqualTo400 = multiListsDeserializer.filterResults().allResultsForQuery(selectAllListWithPrimitivesIntEqualTo400);
+      WkSrlzFilterQueryResults allListWithIntEqualTo400 = multiListsDeserializer.filterResults().allResultsForQuery(selectAllListWithPrimitivesIntEqualTo400);
       assertNotNull(allListWithIntEqualTo400);
       assertEquals(4, allListWithIntEqualTo400.results().size());
 
-      FilterQueryResults allListsWithIntEqto1 = multiListsDeserializer.filterResults().allResultsForQuery(selectListWithPrimitiveByteEqualToOne);
+      WkSrlzFilterQueryResults allListsWithIntEqto1 = multiListsDeserializer.filterResults().allResultsForQuery(selectListWithPrimitiveByteEqualToOne);
       assertNotNull(allListsWithIntEqto1);
       assertEquals(7, allListsWithIntEqto1.results().size());
   }

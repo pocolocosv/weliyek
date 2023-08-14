@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-import weliyek.serialization.filter.FilterResults;
+import weliyek.serialization.filter.WkSrlzFilterResults;
 
 public abstract class WkSrlzInputPacketFieldFrameNodeCore<
                         T,
@@ -67,7 +67,7 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
     return result.deserialized().get();
   }
 
-  protected abstract FilterResults filterResults();
+  protected abstract WkSrlzFilterResults filterResults();
 
   @Override
   public boolean deserializedRequiredByFilter() {

@@ -20,7 +20,7 @@ package weliyek.serialization;
 import java.util.Objects;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.filter.FilterResults;
+import weliyek.serialization.filter.WkSrlzFilterResults;
 
 public class WkSrlzInputPacketFieldFrameNodeNonrootCore<
                         T,
@@ -42,7 +42,7 @@ public class WkSrlzInputPacketFieldFrameNodeNonrootCore<
   }
 
   @Override
-  protected FilterResults filterResults() {
+  protected WkSrlzFilterResults filterResults() {
     return this.myHandler.parentOperationCore().packetFieldCore().filterResults();
   }
 

@@ -29,7 +29,7 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 import weliyek.serialization.sequence.WkSignedLittleEndianIntegerSrlzEngineEncoder;
 
 public class WkSignedLittleEndianIntegerSrlzStructNode
@@ -105,7 +105,7 @@ public class WkSignedLittleEndianIntegerSrlzStructNode
   }
 
   @Override
-  public FieldTester<?, ?>
+  public WkSrlzPacketNodePredicate<?, ?>
   makeTester(Predicate<? super WkSignedLittleEndianIntegerSrlzInputNode> test, String description) {
     return this.definitionCore.makeTester(test, description);
   }

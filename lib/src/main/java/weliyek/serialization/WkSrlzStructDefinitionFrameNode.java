@@ -20,7 +20,7 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.serialization.filter.FieldTester;
+import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 
 public interface WkSrlzStructDefinitionFrameNode<
                         T,
@@ -70,6 +70,6 @@ public interface WkSrlzStructDefinitionFrameNode<
   }
 
 
-  FieldTester<?,?> makeTester(Predicate<? super XO> test, String description);
+  WkSrlzPacketNodePredicate<?,?> makeTester(Predicate<? super XO> test, String description);
 
 }

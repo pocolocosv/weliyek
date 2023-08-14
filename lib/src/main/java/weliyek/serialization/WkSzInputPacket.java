@@ -19,7 +19,7 @@ package weliyek.serialization;
 
 import java.util.Optional;
 
-import weliyek.serialization.filter.FilterResults;
+import weliyek.serialization.filter.WkSrlzFilterResults;
 
 public interface WkSzInputPacket<
                         X,
@@ -28,7 +28,7 @@ public interface WkSzInputPacket<
     extends WkSrlzInputPacketFieldFrameNode<X, XD, XO>
 {
 
-  FilterResults filterResults();
+  WkSrlzFilterResults filterResults();
 
   void processBytestream();
 

@@ -27,16 +27,16 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
-public class FilterPredicateRuleFieldResult
-        extends FilterPredicateRuleBaseResult
+public class WkSrlzFilterRuleEvaluator
+        extends WkSrlzPacketNodePredicateEvaluatorBase
 {
 
-    private static final Logger logger = LoggerFactory.getLogger(FilterPredicateRuleFieldResult.class);
+    private static final Logger logger = LoggerFactory.getLogger(WkSrlzFilterRuleEvaluator.class);
 
     private WkSrlzPacketFilterableFrameNode fulfillingSegment;
 
-    FilterPredicateRuleFieldResult(
-        FilterPredicateRuleField rule) {
+    WkSrlzFilterRuleEvaluator(
+        WkSrlzFilterRule rule) {
         super(rule);
     }
 
@@ -72,18 +72,18 @@ public class FilterPredicateRuleFieldResult
     }
 
     @Override
-    Collection<FilterPredicateRuleBaseResult> subresults() {
+    Collection<WkSrlzPacketNodePredicateEvaluatorBase> subresults() {
         return Collections.emptyList();
     }
 
     @Override
-    public Set<? extends FilterPredicateRule> subrules() {
+    public Set<? extends WkSrlzFilterPredicateRule> subrules() {
         return rule().subrules();
     }
 
     @Override
-    public final FilterPredicateRuleField rule() {
-        return (FilterPredicateRuleField) super.rule();
+    public final WkSrlzFilterRule rule() {
+        return (WkSrlzFilterRule) super.rule();
     }
 
 }

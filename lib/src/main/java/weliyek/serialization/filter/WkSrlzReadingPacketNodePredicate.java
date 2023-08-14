@@ -22,15 +22,15 @@ import java.util.function.Predicate;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 
-public class PacketInputFieldOperationPredicate<
+public class WkSrlzReadingPacketNodePredicate<
                         D extends WkSrlzStructDefinitionFrameNode<?,?>,
                         O extends WkSrlzInputPacketDecoderFrameNode<?,?,?,?,D>>
-    extends FieldTester<D, O>
+    extends WkSrlzPacketNodePredicate<D, O>
 {
 
-  public PacketInputFieldOperationPredicate(
-      D field, Predicate<? super O> predicate, String description) {
-    super(field, predicate, description);
+  public WkSrlzReadingPacketNodePredicate(
+      D structDefinition, Predicate<? super O> readingPredicate, String description) {
+    super(structDefinition, readingPredicate, description);
   }
 
   @Override
@@ -39,10 +39,10 @@ public class PacketInputFieldOperationPredicate<
   }
 
   @Override
-  public boolean canBeTestedAgainst(WkSrlzPacketFilterableFrameNode segment) {
-    if (isSegmentAReadingOperation(segment)) {
-      WkSrlzStructDefinitionFrameNode<?,?> segmentDef = extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)segment);
-      return targetProtocolField().equals(segmentDef);
+  public boolean canBeTestedAgainst(WkSrlzPacketFilterableFrameNode node) {
+    if (isAnInputPacketReadingNode(node)) {
+      WkSrlzStructDefinitionFrameNode<?,?> structDef = extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)node);
+      return targetProtocolField().equals(structDef);
     }
     return false;
   }

@@ -20,8 +20,8 @@ package weliyek.serialization;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.serialization.filter.Filter;
-import weliyek.serialization.filter.FilterResults;
+import weliyek.serialization.filter.WkSrlzFilter;
+import weliyek.serialization.filter.WkSrlzFilterResults;
 
 public final class WkSrlzInputPacketFieldFrameNodeRootCore<
                         T,
@@ -42,9 +42,9 @@ public final class WkSrlzInputPacketFieldFrameNodeRootCore<
 
     final S settings;
     final ABC bytestream;
-    final FilterResults filterResults;
+    final WkSrlzFilterResults filterResults;
 
-    public ReadingPacketParameters(S settings, ABC bytestream, Filter filter) {
+    public ReadingPacketParameters(S settings, ABC bytestream, WkSrlzFilter filter) {
       this.settings = Objects.requireNonNull(settings);
       this.bytestream = Objects.requireNonNull(bytestream);
       this.filterResults = Objects.requireNonNull(filter).buildNewResults();
@@ -85,7 +85,7 @@ public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousProcessingSte
   */
 
   @Override
-  public FilterResults filterResults() {
+  public WkSrlzFilterResults filterResults() {
     return this.parameters.filterResults;
   }
 

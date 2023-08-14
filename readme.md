@@ -22,14 +22,14 @@ Bitcoin node.
 See the following unit test for examples how the serialization is performed. Also see 
 FilterBuilderTest.java for an example on how a search can be done.
 
-- weliyek/lib/src/test/java/welikey.amat.basic.aggregator.sequence.DynamicCollectionFieldTest.java
-- weliyek/lib/src/test/java/welikey.amat.basic.aggregator.sequence.FixedAndVariableSizeCollectionFieldsTest.java
-- weliyek/lib/src/test/java/welikey.amat.basic.number.PrimitiveSerializationTests.java
-- weliyek/lib/src/test/java/welikey.amat.basic.string.StringWithDynamicSizeBytesTest.java
-- weliyek/lib/src/test/java/welikey.amat.basic.string.StringWithFixedLengthBytesTest.java
-- weliyek/lib/src/test/java/welikey.ketza.util.array.ByteArrayWrapperTest.java
-- weliyek/lib/src/test/java/welikey.ketza.util.array.DynamicByteArrayTest.java
-- weliyek/lib/src/test/java/weliyek.amat2.protocol.filter.FilterBuilderTest.java
+- [WkDynamicCollectionTest](lib/src/test/java/weliyek/serialization/sequence/WkDynamicCollectionTest.java)
+- [WkFixedAndVariableSizeCollectionTest](lib/src/test/java/weliyek/serialization/sequence/WkFixedAndVariableSizeCollectionTest.java)
+- [WkPrimitiveSerializationTests](lib/src/test/java/weliyek/serialization/number/WkPrimitiveSerializationTests.java)
+- [WkStringWithDynamicSizeBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithDynamicSizeBytesTest.java)
+- [WkStringWithFixedBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithFixedBytesTest.java)
+- [WkByteArrayTest](lib/src/test/java/weliyek/util/array/WkByteArrayTest.java)
+- [WkDynamicByteArrayTest](lib/src/test/java/weliyek/util/array/WkDynamicByteArrayTest.java)
+- [WkFilterBuilderTest](lib/src/test/java/weliyek/serialization/filter/WkFilterBuilderTest.java)
 
 To run the test, clone this Git repo and import the code as a Gradle project. Two projects then
 should be available, weliyek and lib. Gradle should retrieve all necessary dependencies

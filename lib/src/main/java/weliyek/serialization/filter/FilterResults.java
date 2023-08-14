@@ -23,7 +23,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
 public class FilterResults
 {
@@ -45,14 +45,14 @@ public class FilterResults
         return resultListsByQuery.get(query);
     }
 
-    public void runTestOnOpRes(WkSzFilterableSegment opRes) {
+    public void runTestOnOpRes(WkSrlzPacketFilterableFrameNode opRes) {
         for (FilterQueryResults queryResults : resultListsByQuery.values()) {
           logger.debug("Testing \"" + opRes.toString() + "\" against query \"" + queryResults.query().toString() + "\"");
           queryResults.test(opRes);
         }
     }
 
-    public boolean fieldMustBeMatched(WkSzDefinition<?,?> field) {
+    public boolean fieldMustBeMatched(WkSrlzStructDefinitionFrameNode<?,?> field) {
         for (FilterQueryResults queryResults : resultListsByQuery.values()) {
           if (queryResults.query().matchTargetFields().contains(field)) {
             return true;

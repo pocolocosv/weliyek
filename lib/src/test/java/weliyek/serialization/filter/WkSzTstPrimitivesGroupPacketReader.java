@@ -20,33 +20,33 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.SimplifiedAggregatorCore;
-import weliyek.serialization.SimplifiedAggregatorDeserializingCore;
-import weliyek.serialization.WkSzAggregatorReader;
+import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore;
+import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderField;
-import weliyek.serialization.WkSzPacketReaderFieldCore;
-import weliyek.serialization.WkSzPacketReaderSubfield;
-import weliyek.serialization.WkSzPacketReaderSubfieldCore;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.number.WkSzSignedBigEndianInteger;
-import weliyek.serialization.number.WkSzSignedBigEndianIntegerReader;
-import weliyek.serialization.number.WkSzSignedBigEndianLong;
-import weliyek.serialization.number.WkSzSignedBigEndianLongReader;
-import weliyek.serialization.number.WkSzSignedBigEndianShort;
-import weliyek.serialization.number.WkSzSignedBigEndianShortReader;
-import weliyek.serialization.number.WkSzSignedByte;
-import weliyek.serialization.number.WkSzSignedByteReader;
-import weliyek.serialization.string.StringWithDynamicSizeBytes;
-import weliyek.serialization.string.StringWithDynamicSizeBytesDeserializing;
-import weliyek.serialization.string.WkSzStringWithFixedLengthBytes;
-import weliyek.serialization.string.WkSzStringWithFixedLengthBytesReader;
+import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
+import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianLongSrlzInputNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
+import weliyek.serialization.number.WkSignedByteSrlzStructNode;
+import weliyek.serialization.number.WkSignedByteSrlzInputNode;
+import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
+import weliyek.serialization.string.WkStringWithDynamicBytesSrlzInputNode;
+import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
+import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzInputNode;
 
 public class WkSzTstPrimitivesGroupPacketReader
-        implements WkSzAggregatorReader<
+        implements WkAggregatorSrlzInputPacketDecoderFrameNode<
                         WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
                         WkSzReadingRuntime<WkSzInputBytestream>,
@@ -54,55 +54,55 @@ public class WkSzTstPrimitivesGroupPacketReader
                         WkSzTstPrimitivesGroupStructDefinition>
 {
 
-  final SimplifiedAggregatorDeserializingCore<
+  final WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         WkSzTstPrimitivesGroup,
                         WkSzOperationSettings,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketReader> operationCore;
-  final WkSzPacketReaderSubfieldCore<Byte,
+  final WkSrlzInputPacketSubfieldFrameNodeCore<Byte,
                                          WkSzOperationSettings,
-                                         WkSzSignedByte,
-                                         WkSzSignedByteReader,
+                                         WkSignedByteSrlzStructNode,
+                                         WkSignedByteSrlzInputNode,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,
                                          WkSzTstPrimitivesGroupPacketReader> byteReadingSubfield;
-  final WkSzPacketReaderSubfieldCore<Short,
+  final WkSrlzInputPacketSubfieldFrameNodeCore<Short,
                                          WkSzOperationSettings,
-                                         WkSzSignedBigEndianShort,
-                                         WkSzSignedBigEndianShortReader,
+                                         WkSignedBigEndianShortSrlzStructNode,
+                                         WkSignedBigEndianShortSrlzInputNode,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,
                                          WkSzTstPrimitivesGroupPacketReader> shortReadingSubfield;
-  final WkSzPacketReaderSubfieldCore<Integer,
+  final WkSrlzInputPacketSubfieldFrameNodeCore<Integer,
                                          WkSzOperationSettings,
-                                         WkSzSignedBigEndianInteger,
-                                         WkSzSignedBigEndianIntegerReader,
+                                         WkSignedBigEndianIntegerSrlzStructNode,
+                                         WkSignedBigEndianIntegerSrlzInputNode,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,
                                          WkSzTstPrimitivesGroupPacketReader> intReadingSubfield;
-  final WkSzPacketReaderSubfieldCore<Long,
+  final WkSrlzInputPacketSubfieldFrameNodeCore<Long,
                                          WkSzOperationSettings,
-                                         WkSzSignedBigEndianLong,
-                                         WkSzSignedBigEndianLongReader,
+                                         WkSignedBigEndianLongSrlzStructNode,
+                                         WkSignedBigEndianLongSrlzInputNode,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,
                                          WkSzTstPrimitivesGroupPacketReader> longReadingSubfield;
-  final WkSzPacketReaderSubfieldCore<String,
+  final WkSrlzInputPacketSubfieldFrameNodeCore<String,
                                          WkSzOperationSettings,
-                                         WkSzStringWithFixedLengthBytes,
-                                         WkSzStringWithFixedLengthBytesReader,
+                                         WkStringWithFixedLengthBytesSrlzStructNode,
+                                         WkStringWithFixedLengthBytesSrlzInputNode,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,
                                          WkSzTstPrimitivesGroupPacketReader> fixedStrReadingSubfield;
-  final WkSzPacketReaderSubfieldCore<String,
+  final WkSrlzInputPacketSubfieldFrameNodeCore<String,
                                          WkSzOperationSettings,
-                                         StringWithDynamicSizeBytes<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader, ?, ?, ? extends WkSzSignedBigEndianInteger>,
-                                         StringWithDynamicSizeBytesDeserializing<Integer, WkSzSignedBigEndianInteger, WkSzSignedBigEndianIntegerReader>,
+                                         WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
+                                         WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,
@@ -112,11 +112,11 @@ public class WkSzTstPrimitivesGroupPacketReader
     int index,
     WkSzOperationSettings settings,
     WkSzInputBytestreamBase<?> parentBytestream,
-    WkSzPacketReaderFieldCore<
+    WkSrlzInputPacketFieldFrameNodeCore<
       WkSzTstPrimitivesGroup,?,WkSzTstPrimitivesGroupStructDefinition,?,?,?> deserializingFieldCore,
-    SimplifiedAggregatorCore<WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, WkSzTstPrimitivesGroupStructDefinition>
+    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, WkSzTstPrimitivesGroupStructDefinition>
       definitionCore) {
-    this.operationCore = new SimplifiedAggregatorDeserializingCore<
+    this.operationCore = new WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                                 WkSzTstPrimitivesGroup,
                                 WkSzOperationSettings,
                                 WkSzTstPrimitivesGroupStructDefinition,
@@ -161,12 +161,12 @@ public class WkSzTstPrimitivesGroupPacketReader
   }
 
   @Override
-  public WkSzPacketReaderField<WkSzTstPrimitivesGroup, WkSzTstPrimitivesGroupStructDefinition, ?> packetField() {
+  public WkSrlzInputPacketFieldFrameNode<WkSzTstPrimitivesGroup, WkSzTstPrimitivesGroupStructDefinition, ?> packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<WkSzPacketReaderSubfield<?, ?, ?>> subfields() {
+  public List<WkSrlzInputPacketSubfieldFrameNode<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 

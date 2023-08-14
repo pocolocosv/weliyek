@@ -21,14 +21,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketWriterField;
-import weliyek.serialization.WkSzPacketWriterFieldCore;
-import weliyek.serialization.WkSzPacketWriterOperation;
-import weliyek.serialization.WkSzPacketWriterSubfield;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzWritingResult;
 
@@ -37,8 +37,8 @@ public final class FixedSizeCollectionFieldSerializer<
                         YS extends WkSzOperationSettings,
                         ET,
                         EYS extends WkSzOperationSettings,
-                        EYD extends WkSzDefinition<ET,?>,
-                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>>
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
     implements CollectionAndElementsFieldSerializer<
                         T,
                         YS,
@@ -48,7 +48,7 @@ public final class FixedSizeCollectionFieldSerializer<
                         ET,
                         EYD,
                         EYO>,
-                WkSzFixedSizeSequenceWriter<
+                WkFixedSizeSequenceSrlzOutputPacketEncoderFrameNode<
                         T,
                         YS,
                         WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
@@ -67,7 +67,7 @@ public final class FixedSizeCollectionFieldSerializer<
     T serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSzPacketWriterFieldCore<
+    WkSrlzOutputPacketFieldFrameNodeCore<
       T,?,FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
       ?,?,?> serializingfieldCore,
     SimplifiedCollectionDefinitionCore<
@@ -89,7 +89,7 @@ public final class FixedSizeCollectionFieldSerializer<
   }
 
   @Override
-  public WkSzPacketWriterSubfield<ET, EYD, EYO> element() {
+  public WkSrlzOutputPacketSubfieldFrameNode<ET, EYD, EYO> element() {
     return this.operationCore.element();
   }
 
@@ -119,13 +119,13 @@ public final class FixedSizeCollectionFieldSerializer<
   }
 
   @Override
-  public WkSzPacketWriterField<T, FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,?>
+  public WkSrlzOutputPacketFieldFrameNode<T, FixedSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,?>
   packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<WkSzPacketWriterSubfield<?,?,?>> subfields() {
+  public List<WkSrlzOutputPacketSubfieldFrameNode<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 

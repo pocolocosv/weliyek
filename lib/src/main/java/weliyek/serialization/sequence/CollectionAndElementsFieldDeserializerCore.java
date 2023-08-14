@@ -19,15 +19,15 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSzAggregatorReaderCore;
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderFieldCore;
-import weliyek.serialization.WkSzPacketReaderOperation;
-import weliyek.serialization.WkSzPacketReaderSubfield;
-import weliyek.serialization.WkSzPacketReaderSubfieldCore;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntime;
 import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
@@ -47,24 +47,24 @@ public abstract class CollectionAndElementsFieldDeserializerCore<
                         AXBC extends WkSzInputBytestreamBase<?>,
                         ET,
                         EXS extends WkSzOperationSettings,
-                        EXD extends WkSzDefinition<ET,?>,
-                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         DC extends CollectionAndElementsFieldDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXBC,
                                         ?,?,?,?,?,?,?,?,
                                         ET,EXS,EXD,EXO,
                                         ?,?,?,?,?,DC>>
-        extends WkSzAggregatorReaderCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXBC, DC>
+        extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXBC, DC>
         implements CollectionAndElementsFieldDeserializer<T, XS, XQ, XR, XD, ET, EXD, EXO>
 {
 
-  private WkSzPacketReaderSubfieldCore<ET,EXS,EXD,EXO,T,XBC,XD,XO> elementPacketSubfield;
+  private WkSrlzInputPacketSubfieldFrameNodeCore<ET,EXS,EXD,EXO,T,XBC,XD,XO> elementPacketSubfield;
 
   protected CollectionAndElementsFieldDeserializerCore(
     int index,
     XS settings,
     AXBC parentBytestream,
-    WkSzPacketReaderFieldCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> packetfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);
@@ -89,7 +89,7 @@ public abstract class CollectionAndElementsFieldDeserializerCore<
   }
 
   @Override
-  public final WkSzPacketReaderSubfield<ET, EXD, EXO> element() {
+  public final WkSrlzInputPacketSubfieldFrameNode<ET, EXD, EXO> element() {
     return this.elementPacketSubfield.asSubfield();
   }
 

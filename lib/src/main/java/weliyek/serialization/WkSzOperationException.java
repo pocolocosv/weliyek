@@ -27,47 +27,47 @@ public class WkSzOperationException extends WkSzPacketFieldException
 
     private static final long serialVersionUID = 2019_05_18_000L;
 
-    private final WkSzPacketOperation<?,?,?,?,?> operation;
+    private final WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation;
     private final Explanation explanation;
 
-    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation) {
+    public WkSzOperationException(WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation) {
         super(operation.packetField());
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation) {
+    public WkSzOperationException(WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation, Explanation explanation) {
         super(operation.packetField());
         this.operation = operation;
         this.explanation = explanation;
     }
 
-    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message) {
+    public WkSzOperationException(WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation, String message) {
         super(operation.packetField(), message);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, Explanation explanation, String message) {
+    public WkSzOperationException(WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation, Explanation explanation, String message) {
         super(operation.packetField(), message);
         this.operation = operation;
         this.explanation = explanation;
     }
 
-    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, Throwable cause) {
+    public WkSzOperationException(WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation, Throwable cause) {
         super(operation.packetField(), cause);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public WkSzOperationException(WkSzPacketOperation<?,?,?,?,?> operation, String message, Throwable cause) {
+    public WkSzOperationException(WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation, String message, Throwable cause) {
         super(operation.packetField(), message, cause);
         this.operation = operation;
         this.explanation = Explanation.UNEXPLAINED;
     }
 
     public WkSzOperationException(
-        WkSzPacketOperation<?,?,?,?,?> operation,
+        WkSrlzPacketOperationFrameNode<?,?,?,?,?> operation,
         String message,
         Throwable cause,
         boolean enableSuppression,
@@ -77,7 +77,7 @@ public class WkSzOperationException extends WkSzPacketFieldException
         this.explanation = Explanation.UNEXPLAINED;
     }
 
-    public WkSzPacketOperation<?,?,?,?,?> getOperation() {
+    public WkSrlzPacketOperationFrameNode<?,?,?,?,?> getOperation() {
         return this.operation;
     }
 

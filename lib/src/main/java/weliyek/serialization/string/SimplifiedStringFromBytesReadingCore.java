@@ -20,25 +20,25 @@ package weliyek.serialization.string;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderFieldCore;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzReadingRuntimeControl;
-import weliyek.util.array.WkSzByteArrayReader;
-import weliyek.util.array.WkSzByteArrayDefinition;
+import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
+import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public class SimplifiedStringFromBytesReadingCore<
                         XS extends WkSzOperationSettings,
-                        XO extends WkSzStringFromBytesReader<
+                        XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                                       XS,
                                       WkSzReadingRuntime<WkSzInputBytestream>,
                                       WkSzReadingResult<String>,
                                       XD,SXD,SXO>,
-                        XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
+                        XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends WkSzByteArrayReader<SXS,?,?,SXD>,
-                        SXD extends WkSzByteArrayDefinition<SXO>>
-    extends StringFromBytesReadingCore<
+                        SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
+                        SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>>
+    extends WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
@@ -59,7 +59,7 @@ public class SimplifiedStringFromBytesReadingCore<
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
-    WkSzPacketReaderFieldCore<String,?,XD,?,?,?> packetfieldCore,
+    WkSrlzInputPacketFieldFrameNodeCore<String,?,XD,?,?,?> packetfieldCore,
     SimplifiedStringFromBytesCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
     XO operationBody) {
     super(

@@ -26,17 +26,17 @@ import weliyek.serialization.WkSzReadEngineFactory;
 import weliyek.serialization.WkSzWriteEngineFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPrimitiveArraySerializerReader;
-import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
+import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.WkSzSerializerDefinitionCore;
-import weliyek.serialization.WkSzStructComponentCoreBase;
+import weliyek.serialization.WkSrlzStructDefinitionFrameLeafNodeCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSzWritingResult;
 
 public abstract class PrimitiveArraySerializerCore<
@@ -44,19 +44,19 @@ public abstract class PrimitiveArraySerializerCore<
                         XS extends WkSzOperationSettings,
                         XQC extends WkSzSequenceReadingRuntimeControl<?,?,?>,
                         XR extends WkSzReadingResult<T>,
-                        XD extends WkSzPrimitiveArraySerializerDefinition<T,XO>,
-                        XO extends WkSzPrimitiveArraySerializerReader<T,XS,?,XR,XD>,
+                        XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,XO>,
+                        XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSzOperationSettings,
                         YQC extends WkSzSequenceWritingRuntimeControl<?,?,?>,
                         YR extends WkSzWritingResult,
-                        YD extends WkSzPrimitiveArraySerializerDefinition<T,?>,
-                        YO extends WkSzPrimitiveArraySerializerWriter<T,YS,?,YR,YD>,
+                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,?>,
+                        YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSzPrimitiveArraySerializerDefinition<T,XO>,
+                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,XO>,
                         DC extends PrimitiveArraySerializerCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
-    extends WkSzSerializerDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkSzPrimitiveArraySerializerDefinition<T, XO>
+    extends WkSrlzStructDefinitionFrameLeafNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
+    implements WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T, XO>
 {
 
   private final int serializationStepSize;
@@ -66,7 +66,7 @@ public abstract class PrimitiveArraySerializerCore<
 
   protected PrimitiveArraySerializerCore(
     int stepSize,
-    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,

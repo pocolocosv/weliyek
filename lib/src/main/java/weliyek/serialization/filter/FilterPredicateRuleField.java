@@ -22,14 +22,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
 public class FilterPredicateRuleField
         extends FilterPredicateRuleBase
 {
 
     private final FieldTester<?,?> tester;
-    private final List<WkSzDefinition<?,?>> matchTargets;
+    private final List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets;
     private final List<FieldTester<?,?>> testers;
     final ExclusiveOption option;
 
@@ -45,7 +45,7 @@ public class FilterPredicateRuleField
     }
 
     @Override
-    public List<WkSzDefinition<?,?>> matchTargets() {
+    public List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets() {
         return this.matchTargets;
     }
 

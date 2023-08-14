@@ -19,12 +19,12 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderFieldCore;
-import weliyek.serialization.WkSzPacketReaderOperation;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntime;
 import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
@@ -42,8 +42,8 @@ public final class SimplifiedCollectionDeserializingCore<
                                         ET,EXD,EXO>,
                         ET,
                         EXS extends WkSzOperationSettings,
-                        EXD extends WkSzDefinition<ET,?>,
-                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>>
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
     extends CollectionAndElementsFieldDeserializerCore<
                         T,
                         XS,
@@ -70,7 +70,7 @@ public final class SimplifiedCollectionDeserializingCore<
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
-    WkSzPacketReaderFieldCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> packetfieldCore,
     SimplifiedCollectionDefinitionCore<
       T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore,
     XO operationBody) {

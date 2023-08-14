@@ -22,11 +22,11 @@ import java.util.function.BiFunction;
 public class WkSzReadEngineFactory<
                         T,
                         QC extends WkSzReadingRuntimeControl<?,?,?>,
-                        O extends WkSzPacketReaderOperation<T,?,?,?,?>>
+                        O extends WkSrlzInputPacketDecoderFrameNode<T,?,?,?,?>>
     extends WkSzEngineFactoryBase<
                         QC,
                         O,
-                        WkSzReadEngine<T, ? super QC, ? super O>>
+                        WkSrlzEngineDecoder<T, ? super QC, ? super O>>
 {
 
   public WkSzReadEngineFactory(
@@ -34,7 +34,7 @@ public class WkSzReadEngineFactory<
       BiFunction<
         QC,
         O,
-        WkSzReadEngine<T,? super QC,? super O>> engineSupplier) {
+        WkSrlzEngineDecoder<T,? super QC,? super O>> engineSupplier) {
     super(label, engineSupplier);
   }
 

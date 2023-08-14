@@ -20,12 +20,12 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketWriterFieldCore;
-import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.serialization.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
 import weliyek.serialization.WkSzWritingResult;
@@ -33,8 +33,8 @@ import weliyek.serialization.WkSzWritingResult;
 public class SimplifiedPrimitiveArraySerializingCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSzOperationSettings,
-                        D extends WkSzPrimitiveArraySerializerDefinition<Y,?>,
-                        YO extends WkSzPrimitiveArraySerializerWriter<
+                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>,
+                        YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                                         Y,
                                         YS,
                                         WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
@@ -64,7 +64,7 @@ public class SimplifiedPrimitiveArraySerializingCore<
     Y serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSzPacketWriterFieldCore<Y,?,D,?,?,?> serializingfieldCore,
+    WkSrlzOutputPacketFieldFrameNodeCore<Y,?,D,?,?,?> serializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,
     Consumer<? super SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>> onInitializing) {

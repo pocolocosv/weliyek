@@ -17,14 +17,14 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketWriterFieldCore;
-import weliyek.serialization.WkSzPrimitiveArraySerializerWriter;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.serialization.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.WkSzSerializerWriterCore;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameLeafNodeCore;
 import weliyek.serialization.WkSzWritingResult;
 
 public abstract class PrimitiveArraySerializerWritingCore<
@@ -33,13 +33,13 @@ public abstract class PrimitiveArraySerializerWritingCore<
                         YQ extends WkSzSequenceWritingRuntime<?>,
                         YQC extends WkSzSequenceWritingRuntimeControl<?,?,YQ>,
                         YR extends WkSzWritingResult,
-                        YO extends WkSzPrimitiveArraySerializerWriter<Y,YS,YQ,YR,YD>,
+                        YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<Y,YS,YQ,YR,YD>,
                         YOC extends PrimitiveArraySerializerWritingCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends WkSzPrimitiveArraySerializerDefinition<Y,?>,
+                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends PrimitiveArraySerializerCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
-        extends WkSzSerializerWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
-        implements WkSzPrimitiveArraySerializerWriter<Y, YS, YQ, YR, YD>
+        extends WkSrlzOutputPacketEncoderFrameLeafNodeCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
+        implements WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<Y, YS, YQ, YR, YD>
 {
 
   private final int requestedLength;
@@ -49,7 +49,7 @@ public abstract class PrimitiveArraySerializerWritingCore<
     Y serializable,
     YS settings,
     AYB parentBytestream,
-    WkSzPacketWriterFieldCore<Y,?,YD,?,?,?> serializingfieldCore,
+    WkSrlzOutputPacketFieldFrameNodeCore<Y,?,YD,?,?,?> serializingfieldCore,
     DC definitionCore,
     YO operationBody) {
     super(

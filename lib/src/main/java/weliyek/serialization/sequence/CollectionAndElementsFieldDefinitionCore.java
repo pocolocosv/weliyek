@@ -25,26 +25,26 @@ import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.OperationSubsegmentSettingsFactory;
+import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.ProtocolDefinitionFactory;
-import weliyek.serialization.WkSzAggregatorDefinitionCore;
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
+import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketReaderOperation;
-import weliyek.serialization.WkSzPacketWriterField;
-import weliyek.serialization.WkSzPacketWriterOperation;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
-import weliyek.serialization.WkSzStructComponentCoreBase;
-import weliyek.serialization.WkSzStructSubcomponent;
-import weliyek.serialization.WkSzSubcomponentCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
@@ -71,29 +71,29 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EXS extends WkSzOperationSettings,
-                        EXD extends WkSzDefinition<ET,?>,
-                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSzOperationSettings,
-                        EYD extends WkSzDefinition<ET,?>,
-                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
-                        ED extends WkSzDefinition<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
+                        ED extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         D extends WkSzCollectionAndElementsDefinition<T,XO,YO,ET,ED>,
                         DC extends CollectionAndElementsFieldDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
                                         YS,YB,YBC,YQC,YR,YD,YO,AYB,
                                         ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D,?>>
-    extends WkSzAggregatorDefinitionCore<
+    extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXB,
                         YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
     implements WkSzCollectionAndElementsDefinition<T, XO, YO, ET, ED>
 {
 
-  final WkSzSubcomponentCore<ET,EXS,EXD,EXO,T,XBC,XD,XO,EYS,EYD,EYO,YBC,YD,YO,ED,D>
+  final WkSrlzStructSubcomponentFrameNodeCore<ET,EXS,EXD,EXO,T,XBC,XD,XO,EYS,EYD,EYO,YBC,YD,YO,ED,D>
                         elementComponent;
   final Function<XO, T> collectionSerializingFactory;
 
   protected CollectionAndElementsFieldDefinitionCore(
-    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB, XQC> rxRuntimeFactory,
     BiFunction<XO, T, XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<T, XS, XD, DC, XO, AXB> readingOpFactory,
@@ -102,10 +102,10 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
     WkSzPacketWriterOperationCoreFactory<T, YS, YD, DC, YO, AYB> writingOpFactory,
     String elementsLabel,
     ToIntFunction<? super XO> elementsDeserializingNumOfOps,
-    OperationSubsegmentSettingsFactory<XO, EXS> elementsRxSettingsFactory,
-    OperationSubsegmentSettingsFactory<YO, EYS> elementsTxSettingsFactory,
+    WkOperationSettingsFactory<XO, EXS> elementsRxSettingsFactory,
+    WkOperationSettingsFactory<YO, EYS> elementsTxSettingsFactory,
     WkSzPacketWriteDisaggregator<ET,EYD,T,YO> elementsDisaggregator,
-    ProtocolDefinitionFactory<ET,EXS,EXD,EXO,XBC,EYS,EYD,EYO,YBC,ED> elementsDefinitionFactory,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<ET,EXS,EXD,EXO,XBC,EYS,EYD,EYO,YBC,ED> elementsDefinitionFactory,
     Function<XO,T> collectionSerializingFactory,
     D definitionBody,
     Class<T> serializableClass) {
@@ -136,9 +136,9 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
   private static <T extends Collection<ET>,
                   YO extends CollectionAndElementsFieldSerializer<T,?,?,?,?,ET,EYD,?>,
                   ET,
-                  EYD extends WkSzDefinition<ET,?>>
+                  EYD extends WkSrlzStructDefinitionFrameNode<ET,?>>
   ET disaggregateCollection(
-    WkSzPacketWriterField<ET,EYD,?> serializingField,
+    WkSrlzOutputPacketFieldFrameNode<ET,EYD,?> serializingField,
     YO collectionWritingOp,
     int index) {
     if (collectionWritingOp.serializableAsList().size() <= index) {
@@ -148,7 +148,7 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
   }
 
   @Override
-  public WkSzStructSubcomponent<XO, YO, ED> element() {
+  public WkSrlzStructSubcomponentFrameNode<XO, YO, ED> element() {
     return this.elementComponent.body();
   }
 

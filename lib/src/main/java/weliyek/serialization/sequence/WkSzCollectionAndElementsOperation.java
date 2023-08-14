@@ -19,21 +19,21 @@ package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkSzOperationResult;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketField;
-import weliyek.serialization.WkSzPacketOperation;
-import weliyek.serialization.WkSzPacketSubfield;
+import weliyek.serialization.WkSrlzPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzPacketOperationFrameNode;
+import weliyek.serialization.WkSrlzPacketSubfieldFrameNode;
 
 public interface WkSzCollectionAndElementsOperation<
                         S extends WkSzOperationSettings,
                         Q extends WkSzCommonSequenceOperationRuntime<?>,
                         R extends WkSzOperationResult,
                         D extends WkSzCollectionAndElementsDefinition<?,?,?,?,?>,
-                        K extends WkSzPacketField<?,?,?>,
-                        EO extends WkSzPacketOperation<?,?,?,?,?>,
-                        EK extends WkSzPacketField<?,EO,?>,
-                        EJ extends WkSzPacketSubfield<EK>>
+                        K extends WkSrlzPacketFieldFrameNode<?,?,?>,
+                        EO extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>,
+                        EK extends WkSrlzPacketFieldFrameNode<?,EO,?>,
+                        EJ extends WkSrlzPacketSubfieldFrameNode<EK>>
         extends WkSzCollectionAndElementsSegment<EJ>,
-                WkSzCollectionOperation<S, Q, R, D, K>
+                WkCollectionSrlzPacketOperationFrameNode<S, Q, R, D, K>
 {
 
 }

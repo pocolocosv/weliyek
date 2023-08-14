@@ -23,11 +23,11 @@ public class WkSzBasicWritingResult
 
   private static final WkSzBasicWritingResult INSTANCE = new WkSzBasicWritingResult(null);
 
-  public static WkSzWritingResult empty(WkSzPacketWriterOperation<?,?,?,?,?> operation) {
+  public static WkSzWritingResult empty(WkSrlzOutputPacketEncoderFrameNode<?,?,?,?,?> operation) {
     return INSTANCE;
   }
 
-  private WkSzBasicWritingResult(WkSzPacketWriterOperation<?,?,?,?,?> operation) {
+  private WkSzBasicWritingResult(WkSrlzOutputPacketEncoderFrameNode<?,?,?,?,?> operation) {
   }
 
 }

@@ -22,13 +22,13 @@ import java.util.function.BiFunction;
 public class WkSzWriteEngineFactory<
                         T,
                         QC extends WkSzWritingRuntimeControl<?,?,?>,
-                        O extends WkSzPacketWriterOperation<? extends T,?,?,?,?>>
-    extends WkSzEngineFactoryBase<QC, O, WkSzWriteEngine<T,QC,O>>
+                        O extends WkSrlzOutputPacketEncoderFrameNode<? extends T,?,?,?,?>>
+    extends WkSzEngineFactoryBase<QC, O, WkSrlzEngineEncoder<T,QC,O>>
 {
 
   public WkSzWriteEngineFactory(
       String label,
-      BiFunction<QC, O, WkSzWriteEngine<T, QC, O>> engineSupplier) {
+      BiFunction<QC, O, WkSrlzEngineEncoder<T, QC, O>> engineSupplier) {
     super(label, engineSupplier);
   }
 

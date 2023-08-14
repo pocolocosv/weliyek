@@ -17,12 +17,12 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
-import weliyek.serialization.SerializerReadingCore;
+import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderFieldCore;
-import weliyek.serialization.WkSzPrimitiveArraySerializerReader;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntime;
 import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
@@ -33,13 +33,13 @@ public abstract class PrimitiveArraySerializerReadingCore<
                         XQ extends WkSzSequenceReadingRuntime<?>,
                         XQC extends WkSzSequenceReadingRuntimeControl<?,?,XQ>,
                         XR extends WkSzReadingResult<X>,
-                        XO extends WkSzPrimitiveArraySerializerReader<X,XS,XQ,XR,XD>,
+                        XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
                         XOC extends PrimitiveArraySerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkSzPrimitiveArraySerializerDefinition<X,XO>,
+                        XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X,XO>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends PrimitiveArraySerializerCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
-        extends SerializerReadingCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
-        implements WkSzPrimitiveArraySerializerReader<X, XS, XQ, XR, XD>
+        extends WkSrlzInputPacketDecoderFrameLeafNodeCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
+        implements WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X, XS, XQ, XR, XD>
 {
 
   private final int requestedLength;
@@ -48,7 +48,7 @@ public abstract class PrimitiveArraySerializerReadingCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSzPacketReaderFieldCore<X,?,XD,?,?,?> deserializingfieldCore,
+    WkSrlzInputPacketFieldFrameNodeCore<X,?,XD,?,?,?> deserializingfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, deserializingfieldCore, definitionCore, operationBody);

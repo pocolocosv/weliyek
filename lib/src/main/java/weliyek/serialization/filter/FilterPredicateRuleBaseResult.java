@@ -19,7 +19,7 @@ package weliyek.serialization.filter;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
 public abstract class FilterPredicateRuleBaseResult
         implements FilterTesterResult,
@@ -34,23 +34,23 @@ public abstract class FilterPredicateRuleBaseResult
         this.desc = "RESULT:" + rule.name();
     }
 
-    final boolean test(WkSzFilterableSegment info) {
+    final boolean test(WkSrlzPacketFilterableFrameNode info) {
         //if (this.isEvaluationCompleted())
         //    return result();
         return onTest(info);
     }
 
-    void process(WkSzFilterableSegment segment, FilterQuery query) {
+    void process(WkSrlzPacketFilterableFrameNode segment, FilterQuery query) {
       if (isPremiseFound()) {
         return;
       }
-      WkSzDefinition<?,?> definitionUnderTest = FieldTester.extractProtocolDefinitionFrom(segment);
+      WkSrlzStructDefinitionFrameNode<?,?> definitionUnderTest = FieldTester.extractProtocolDefinitionFrom(segment);
       if (query.rule.matchTargets().contains(definitionUnderTest)) {
         onTest(segment);
       }
     }
 
-    abstract boolean onTest(WkSzFilterableSegment segment);
+    abstract boolean onTest(WkSrlzPacketFilterableFrameNode segment);
 
     @Override
     public final String name() {

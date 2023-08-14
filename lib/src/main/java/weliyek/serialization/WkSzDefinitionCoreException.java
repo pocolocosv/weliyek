@@ -22,30 +22,30 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
 
   private static final long serialVersionUID = 2022_05_26_0000L;
   
-  private final WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
+  private final WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
 
   public WkSzDefinitionCoreException(
-    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
+    WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
     super(definitionCore.componentCore());
     this.definitionCore = definitionCore;
   }
 
   public WkSzDefinitionCoreException(
-    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message) {
     super(definitionCore.componentCore(), message);
     this.definitionCore = definitionCore;
   }
 
   public WkSzDefinitionCoreException(
-    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     Throwable cause) {
     super(definitionCore.componentCore(), cause);
     this.definitionCore = definitionCore;
   }
 
   public WkSzDefinitionCoreException(
-    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause) {
     super(definitionCore.componentCore(), message, cause);
@@ -53,7 +53,7 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
   }
 
   public WkSzDefinitionCoreException(
-    WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -62,7 +62,7 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
     this.definitionCore = definitionCore;
   }
   
-  public WkSzDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> getDefinitionCore() {
+  public WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> getDefinitionCore() {
     return this.definitionCore;
   }
 

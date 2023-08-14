@@ -21,19 +21,19 @@ package weliyek.serialization;
 public interface WkSzPacketWriterOperationCoreFactory<
                         T,
                         YS extends WkSzOperationSettings,
-                        YD extends WkSzDefinition<T,?>,
-                        DC extends WkSzDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
-                        YO extends WkSzPacketWriterOperation<T,YS,?,?,YD>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        DC extends WkSrlzStructDefinitionFrameNodeCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
+                        YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         YAB extends WkSzOutputBytestreamBase<?>>
     extends WkSzOperationFactory
 {
 
-  WkSzPacketWriterOperationCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
+  WkSrlzOutputPacketEncoderFrameNodeCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
     int index,
     T serializable,
     YS settings,
     YAB parentBytestream,
-    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packet,
+    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packet,
     DC definitionCore);
 
 }

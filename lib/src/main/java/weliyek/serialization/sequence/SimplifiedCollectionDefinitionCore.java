@@ -22,27 +22,27 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.OperationSubsegmentSettingsFactory;
+import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.ProtocolDefinitionFactory;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicSequenceReadingRuntime;
 import weliyek.serialization.WkSzBasicWritingResult;
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketReaderOperation;
-import weliyek.serialization.WkSzPacketWriterOperation;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntime;
 import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
 import weliyek.serialization.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.WkSzStructComponentCoreBase;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSzWritingResult;
 
 public class SimplifiedCollectionDefinitionCore<
@@ -67,12 +67,12 @@ public class SimplifiedCollectionDefinitionCore<
                                         ET,EYD,EYO>,
                         ET,
                         EXS extends WkSzOperationSettings,
-                        EXD extends WkSzDefinition<ET,?>,
-                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSzOperationSettings,
-                        EYD extends WkSzDefinition<ET,?>,
-                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
-                        ED extends WkSzDefinition<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
+                        ED extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         D extends WkSzCollectionAndElementsDefinition<T,XO,YO,ET,ED>>
     extends CollectionAndElementsFieldDefinitionCore<
                         T,
@@ -113,7 +113,7 @@ public class SimplifiedCollectionDefinitionCore<
 {
 
   protected SimplifiedCollectionDefinitionCore(
-    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     WkSzPacketReaderOperationCoreFactory<
       T,XS,XD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
       XO,WkSzInputBytestreamBase<?>> readingOpFactory,
@@ -122,9 +122,9 @@ public class SimplifiedCollectionDefinitionCore<
       YO,WkSzOutputBytestreamBase<?>> writingOpFactory,
     String elementsLabel,
     ToIntFunction<? super XO> elementsDeserializingNumOfOps,
-    OperationSubsegmentSettingsFactory<XO, EXS> elementsRxSettingsFactory,
-    OperationSubsegmentSettingsFactory<YO, EYS> elementsTxSettingsFactory,
-    ProtocolDefinitionFactory<
+    WkOperationSettingsFactory<XO, EXS> elementsRxSettingsFactory,
+    WkOperationSettingsFactory<YO, EYS> elementsTxSettingsFactory,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<
       ET,EXS,EXD,EXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,EYS,EYD,EYO,
       WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,

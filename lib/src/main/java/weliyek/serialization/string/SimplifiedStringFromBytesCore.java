@@ -22,10 +22,10 @@ import java.util.Optional;
 import java.util.function.Function;
 
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.OperationSubsegmentSettingsFactory;
+import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.ProtocolDefinitionFactory;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSzBasicReadingResult;
 import weliyek.serialization.WkSzBasicReadingRuntime;
 import weliyek.serialization.WkSzBasicWritingResult;
@@ -38,43 +38,43 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzReadingRuntime;
 import weliyek.serialization.WkSzReadingRuntimeControl;
-import weliyek.serialization.WkSzStructComponentCoreBase;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.WkSzByteArrayReader;
+import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSzByteArrayWriter;
-import weliyek.util.array.WkSzByteArrayDefinition;
+import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
+import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public class SimplifiedStringFromBytesCore<
                         XS extends WkSzOperationSettings,
-                        XO extends WkSzStringFromBytesReader<
+                        XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                                         XS,
                                         WkSzReadingRuntime<WkSzInputBytestream>,
                                         WkSzReadingResult<String>,
                                         XD,
                                         SXD,
                                         SXO>,
-                        XD extends WkSzStringFromBytesDefinition<XO,?,? extends SXD>,
+                        XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
                         YS extends WkSzOperationSettings,
-                        YO extends WkSzStringFromBytesWriter<
+                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                                         YS,
                                         WkSzWritingRuntime<WkSzOutputBytestream>,
                                         WkSzWritingResult,
                                         YD,
                                         SYD,
                                         SYO>,
-                        YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
+                        YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SXS extends WkSzOperationSettings,
-                        SXO extends WkSzByteArrayReader<SXS,?,?,SXD>,
-                        SXD extends WkSzByteArrayDefinition<SXO>,
+                        SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
+                        SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends WkSzByteArrayWriter<SYS,?,?,SYD>,
-                        SYD extends WkSzByteArrayDefinition<?>,
-                        SD extends WkSzByteArrayDefinition<SXO>,
-                        D extends WkSzStringFromBytesDefinition<XO,YO,SD>>
-    extends WkSzStringFromBytesDefinitionCore<
+                        SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
+                        SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>,
+                        SD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
+                        D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>>
+    extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
@@ -106,7 +106,7 @@ public class SimplifiedStringFromBytesCore<
 
   protected SimplifiedStringFromBytesCore(
     Charset defaultCharset,
-    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     WkSzPacketReaderOperationCoreFactory<
       String,XS,XD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       XO,WkSzInputBytestreamBase<?>>
@@ -116,11 +116,11 @@ public class SimplifiedStringFromBytesCore<
       YO,WkSzOutputBytestreamBase<?>>
         writingOpFactory,
     String bytesLabel,
-    OperationSubsegmentSettingsFactory<XO, SXS> bytesDeserializingSettingsFactory,
+    WkOperationSettingsFactory<XO, SXS> bytesDeserializingSettingsFactory,
     Function<XO,String> bytesDeserializingStringAggregator,
-    OperationSubsegmentSettingsFactory<YO, SYS> bytesSerializingSettingsFactory,
+    WkOperationSettingsFactory<YO, SYS> bytesSerializingSettingsFactory,
     WkSzPacketWriteDisaggregator<WkByteArray,SYD,String,YO> bytesSerializingDisaggregator,
-    ProtocolDefinitionFactory<
+    WkSrlzStructDefinitionFrameNodeCoreFactory<
       WkByteArray,SXS,SXD,SXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
       SYS,SYD,SYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,SD>
         bytesDefinitionFactory,

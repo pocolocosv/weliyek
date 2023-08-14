@@ -20,9 +20,9 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSzPacketWriteDisaggregator<
                         T,
-                        D extends WkSzDefinition<T,?>,
+                        D extends WkSrlzStructDefinitionFrameNode<T,?>,
                         AT,
-                        AO extends WkSzPacketWriterOperation<? extends AT,?,?,?,?>>
+                        AO extends WkSrlzOutputPacketEncoderFrameNode<? extends AT,?,?,?,?>>
 {
 
   /**
@@ -34,7 +34,7 @@ public interface WkSzPacketWriteDisaggregator<
    * @return The disaggregated value that will be used by the writing operation.
    */
   T disaggregate(
-    WkSzPacketWriterField<T,D,?> packetField,
+    WkSrlzOutputPacketFieldFrameNode<T,D,?> packetField,
     AO parentOperation,
     int i);
 

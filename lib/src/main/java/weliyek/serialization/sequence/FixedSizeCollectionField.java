@@ -22,20 +22,20 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.serialization.OperationSubsegmentSettingsFactory;
-import weliyek.serialization.ProtocolDefinitionFactory;
+import weliyek.serialization.WkOperationSettingsFactory;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzDefinition;
-import weliyek.serialization.WkSzDefinitionCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketReaderOperation;
-import weliyek.serialization.WkSzPacketWriterOperation;
-import weliyek.serialization.WkSzStruct;
-import weliyek.serialization.WkSzStructComponentCoreBase;
-import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.filter.FieldTester;
 
 public final class FixedSizeCollectionField<
@@ -44,18 +44,18 @@ public final class FixedSizeCollectionField<
                         YS extends WkSzOperationSettings,
                         ET,
                         EXS extends WkSzOperationSettings,
-                        EXD extends WkSzDefinition<ET,EXO>,
-                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
+                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSzOperationSettings,
-                        EYD extends WkSzDefinition<ET,?>,
-                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
-                        ED extends WkSzDefinition<ET,EXO>>
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
+                        ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>>
     implements WkSzCollectionAndElementsDefinition<
                         T,
                         FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
                         FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
                         ET, ED>,
-                WkSzFixedSizeSequenceDefinition<
+                WkFixedSizeSequenceSrlzStructDefinitionFrameNode<
                         T,
                         FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>>
 {
@@ -65,13 +65,13 @@ public final class FixedSizeCollectionField<
                  YS extends WkSzOperationSettings,
                  ET,
                  EXS extends WkSzOperationSettings,
-                 EXD extends WkSzDefinition<ET,EXO>,
-                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
+                 EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                  EYS extends WkSzOperationSettings,
-                 EYD extends WkSzDefinition<ET,?>,
-                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
-                 ED extends WkSzDefinition<ET,EXO>>
-  WkSzStruct<T,
+                 EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                 EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
+                 ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>>
+  WkSrlzStructComponentFrameNodeRootCore<T,
                   XS,
                   FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                   FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
@@ -87,16 +87,16 @@ public final class FixedSizeCollectionField<
     int expectedCollectionSize,
     Class<T> collectionClass,
     Function<List<ET>, T> collectionFactory,
-    OperationSubsegmentSettingsFactory<
+    WkOperationSettingsFactory<
       FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
       EXS> elementsRxSettingsFactory,
-    OperationSubsegmentSettingsFactory<
+    WkOperationSettingsFactory<
       FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
-    ProtocolDefinitionFactory<
+    WkSrlzStructDefinitionFrameNodeCoreFactory<
       ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
       EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory) {
-    return new WkSzStruct<>(
+    return new WkSrlzStructComponentFrameNodeRootCore<>(
                       label,
                       (pc) -> FixedSizeCollectionField.newCore(
                                     expectedCollectionSize,
@@ -116,13 +116,13 @@ public final class FixedSizeCollectionField<
                  YS extends WkSzOperationSettings,
                  ET,
                  EXS extends WkSzOperationSettings,
-                 EXD extends WkSzDefinition<ET,EXO>,
-                 EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>,
+                 EXD extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
+                 EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                  EYS extends WkSzOperationSettings,
-                 EYD extends WkSzDefinition<ET,?>,
-                 EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
-                 ED extends WkSzDefinition<ET,EXO>>
-  WkSzDefinitionCore<
+                 EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                 EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
+                 ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>>
+  WkSrlzStructDefinitionFrameNodeCore<
                       T,
                       XS,?,?,
                       FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -138,16 +138,16 @@ public final class FixedSizeCollectionField<
     String elementsLabel,
     Class<T> collectionClass,
     Function<List<ET>, T> collectionFactory,
-    OperationSubsegmentSettingsFactory<
+    WkOperationSettingsFactory<
       FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
       EXS> elementsRxSettingsFactory,
-    OperationSubsegmentSettingsFactory<
+    WkOperationSettingsFactory<
       FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
-    ProtocolDefinitionFactory<
+    WkSrlzStructDefinitionFrameNodeCoreFactory<
       ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
       EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
-    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new FixedSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>(
                         expectedCollectionSize,
                         componentCore,
@@ -172,17 +172,17 @@ public final class FixedSizeCollectionField<
 
   private FixedSizeCollectionField(
     int expectedCollectionSize,
-    WkSzStructComponentCoreBase<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     Function<List<ET>, T> collectionFactory,
-    OperationSubsegmentSettingsFactory<
+    WkOperationSettingsFactory<
       FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
       EXS> elementsRxSettingsFactory,
-    OperationSubsegmentSettingsFactory<
+    WkOperationSettingsFactory<
       FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
-    ProtocolDefinitionFactory<
+    WkSrlzStructDefinitionFrameNodeCoreFactory<
       ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
       EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory) {
     this.definitionCore = new SimplifiedCollectionDefinitionCore<
@@ -210,7 +210,7 @@ public final class FixedSizeCollectionField<
 
   @Override
   public
-  WkSzStructSubcomponent<
+  WkSrlzStructSubcomponentFrameNode<
     FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
     FixedSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,ED>
   element() {
@@ -218,7 +218,7 @@ public final class FixedSizeCollectionField<
   }
 
   @Override
-  public List<WkSzStructSubcomponent<?, ?, ?>> requiredSubfields() {
+  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -228,7 +228,7 @@ public final class FixedSizeCollectionField<
   }
 
   @Override
-  public List<WkSzStructSubcomponent<?, ?, ?>> subfields() {
+  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

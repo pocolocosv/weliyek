@@ -18,7 +18,6 @@
 package weliyek.util.array;
 
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSzPacketOperationException;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 
 public class PrimitiveArrayUtils
@@ -26,13 +25,13 @@ public class PrimitiveArrayUtils
 
   public static void onFixedSizeDeserilizingInitialization(
     SimplifiedPrimitiveArrayDeserializingCore<
-      ?,?,?,? extends WkSzFixedSizePrimitiveArraySerializerReader<?,?,?,?,?>> deserializing) {
+      ?,?,?,? extends WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<?,?,?,?,?>> deserializing) {
     // Nothing to do.
   }
 
   public static void onFixedSizeSerilizingInitialization(
     SimplifiedPrimitiveArraySerializingCore<
-      ?,?,?,? extends WkSzFixedSizePrimitiveArraySerializerWriter<?,?,?,?,?>> serializingCore) {
+      ?,?,?,? extends WkFixedSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<?,?,?,?,?>> serializingCore) {
     final int reqLen = serializingCore.serializable().getLength();
     final int expectedLen = serializingCore.getRequestedLength();
     if (reqLen != expectedLen) {
@@ -45,8 +44,8 @@ public class PrimitiveArrayUtils
   public static void onVariableSizeDeserilizingInitialization(
     SimplifiedPrimitiveArrayDeserializingCore<
       ?,? extends WkSzVariableLengthOperationSettings,
-      ? extends WkSzVariableSizePrimitiveArraySerializerDefinition<?,?>,
-      ? extends WkSzVariableSizePrimitiveArraySerializerReader<?,?,?,?,?>> deserializingCore) {
+      ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?,?>,
+      ? extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<?,?,?,?,?>> deserializingCore) {
     final int reqLen = deserializingCore.settings().getRequestedLength();
     final int minLen = deserializingCore.definition().minimalSize();
     final int maxLen = deserializingCore.definition().maximalSize();
@@ -59,8 +58,8 @@ public class PrimitiveArrayUtils
 
   public static void onVariableSizeSerializingInitialization(
     SimplifiedPrimitiveArraySerializingCore<?,?,
-      ? extends WkSzVariableSizePrimitiveArraySerializerDefinition<?,?>,
-      ? extends WkSzVariableSizePrimitiveArraySerializerWriter<?,?,?,?,?>> serializingCore) {
+      ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?,?>,
+      ? extends WkVaribleSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<?,?,?,?,?>> serializingCore) {
     int reqLen = serializingCore.serializable().getLength();
     final int minLen = serializingCore.definition().minimalSize();
     final int maxLen = serializingCore.definition().maximalSize();

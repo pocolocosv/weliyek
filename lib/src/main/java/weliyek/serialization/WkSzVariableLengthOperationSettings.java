@@ -20,10 +20,10 @@ package weliyek.serialization;
 public interface WkSzVariableLengthOperationSettings extends WkSzOperationSettings
 {
 
-  static <AO extends WkSzPacketOperation<WkSzVariableLengthOperationSettings,?,?,?,?>>
-  OperationSubsegmentSettingsFactory<AO, WkSzVariableLengthOperationSettings>
+  static <AO extends WkSrlzPacketOperationFrameNode<WkSzVariableLengthOperationSettings,?,?,?,?>>
+  WkOperationSettingsFactory<AO, WkSzVariableLengthOperationSettings>
   builderWithLength(int length) {
-    return new OperationSubsegmentSettingsFactory<AO, WkSzVariableLengthOperationSettings>() {
+    return new WkOperationSettingsFactory<AO, WkSzVariableLengthOperationSettings>() {
       @Override
       public WkSzVariableLengthOperationSettings newSettings(int i, AO parentOperation) {
         return WkSzVariableLengthOperationSettings.withLength(length);

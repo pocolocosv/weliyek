@@ -5,29 +5,29 @@ public class WkSzSegmentException extends WkSzException
 
   private static final long serialVersionUID = 2018_03_05_000L;
 
-  private final WkSzSegment segment;
+  private final WkSrlzFrameNode segment;
 
-  public WkSzSegmentException(WkSzSegment segment) {
+  public WkSzSegmentException(WkSrlzFrameNode segment) {
     this.segment = segment;
   }
 
-  public WkSzSegmentException(WkSzSegment segment, String message) {
+  public WkSzSegmentException(WkSrlzFrameNode segment, String message) {
     super(message);
     this.segment = segment;
   }
 
-  public WkSzSegmentException(WkSzSegment segment, Throwable cause) {
+  public WkSzSegmentException(WkSrlzFrameNode segment, Throwable cause) {
     super(cause);
     this.segment = segment;
   }
 
-  public WkSzSegmentException(WkSzSegment segment, String message, Throwable cause) {
+  public WkSzSegmentException(WkSrlzFrameNode segment, String message, Throwable cause) {
     super(message, cause);
     this.segment = segment;
   }
 
   public WkSzSegmentException(
-    WkSzSegment segment,
+    WkSrlzFrameNode segment,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -36,7 +36,7 @@ public class WkSzSegmentException extends WkSzException
     this.segment = segment;
   }
 
-  public WkSzSegment getSegment() {
+  public WkSrlzFrameNode getSegment() {
     return this.segment;
   }
 

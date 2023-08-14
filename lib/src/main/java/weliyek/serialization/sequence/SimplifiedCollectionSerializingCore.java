@@ -19,12 +19,12 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketWriterFieldCore;
-import weliyek.serialization.WkSzPacketWriterOperation;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
 import weliyek.serialization.WkSzWritingResult;
@@ -42,8 +42,8 @@ public final class SimplifiedCollectionSerializingCore<
                                         ET,EYD,EYO>,
                         ET,
                         EYS extends WkSzOperationSettings,
-                        EYD extends WkSzDefinition<ET,?>,
-                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>>
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
     extends CollectionAndElementsFieldSerializerCore<
                         T,
                         YS,
@@ -73,7 +73,7 @@ public final class SimplifiedCollectionSerializingCore<
     T serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
     SimplifiedCollectionDefinitionCore<
       T,?,?,?,YS,YD,YO,ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore,
     YO operationBody) {

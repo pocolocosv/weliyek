@@ -19,12 +19,12 @@ package weliyek.serialization.filter;
 
 import java.util.function.Predicate;
 
-import weliyek.serialization.WkSzDefinition;
-import weliyek.serialization.WkSzPacketReaderOperation;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 
 public class PacketInputFieldOperationPredicate<
-                        D extends WkSzDefinition<?,?>,
-                        O extends WkSzPacketReaderOperation<?,?,?,?,D>>
+                        D extends WkSrlzStructDefinitionFrameNode<?,?>,
+                        O extends WkSrlzInputPacketDecoderFrameNode<?,?,?,?,D>>
     extends FieldTester<D, O>
 {
 
@@ -39,9 +39,9 @@ public class PacketInputFieldOperationPredicate<
   }
 
   @Override
-  public boolean canBeTestedAgainst(WkSzFilterableSegment segment) {
+  public boolean canBeTestedAgainst(WkSrlzPacketFilterableFrameNode segment) {
     if (isSegmentAReadingOperation(segment)) {
-      WkSzDefinition<?,?> segmentDef = extractDefinition((WkSzPacketReaderOperation<?,?,?,?,?>)segment);
+      WkSrlzStructDefinitionFrameNode<?,?> segmentDef = extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)segment);
       return targetProtocolField().equals(segmentDef);
     }
     return false;

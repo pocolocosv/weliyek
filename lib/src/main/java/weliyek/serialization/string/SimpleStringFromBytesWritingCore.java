@@ -20,25 +20,25 @@ package weliyek.serialization.string;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketWriterFieldCore;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzWritingResult;
 import weliyek.serialization.WkSzWritingRuntime;
 import weliyek.serialization.WkSzWritingRuntimeControl;
-import weliyek.util.array.WkSzByteArrayWriter;
-import weliyek.util.array.WkSzByteArrayDefinition;
+import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
+import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public class SimpleStringFromBytesWritingCore<
                         YS extends WkSzOperationSettings,
-                        YO extends WkSzStringFromBytesWriter<
+                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                                       YS,
                                       WkSzWritingRuntime<WkSzOutputBytestream>,
                                       WkSzWritingResult,
                                       YD,SYD,SYO>,
-                        YD extends WkSzStringFromBytesDefinition<?,YO,? extends SYD>,
+                        YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SYS extends WkSzOperationSettings,
-                        SYO extends WkSzByteArrayWriter<SYS,?,?,SYD>,
-                        SYD extends WkSzByteArrayDefinition<?>>
-    extends StringFromBytesWritingCore<
+                        SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
+                        SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>>
+    extends WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -61,7 +61,7 @@ public class SimpleStringFromBytesWritingCore<
     String serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSzPacketWriterFieldCore<String,?,YD,?,?,?> packetHandlerCore,
+    WkSrlzOutputPacketFieldFrameNodeCore<String,?,YD,?,?,?> packetHandlerCore,
     SimplifiedStringFromBytesCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
     YO operationBody) {
     super(

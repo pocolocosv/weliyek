@@ -19,24 +19,24 @@ package weliyek.serialization;
 
 import java.util.function.BiFunction;
 
-import weliyek.serialization.number.WkSzNumberReader;
+import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 
 public class WkSzPrimitiveReadEngineFactory<X extends Number>
     extends WkSzReadEngineFactory<
                         X,
                         WkSzReadingRuntimeControl<?,?,?>,
-                        WkSzNumberReader<X,?,?,?,?>>
+                        WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>
 {
 
   public WkSzPrimitiveReadEngineFactory(
       String label,
       BiFunction<
         WkSzReadingRuntimeControl<?,?,?>,
-        WkSzNumberReader<X,?,?,?,?>,
-        WkSzReadEngine<
+        WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>,
+        WkSrlzEngineDecoder<
           X,
           ? super WkSzReadingRuntimeControl<?,?,?>,
-          ? super WkSzNumberReader<X,?,?,?,?>>> engineSupplier) {
+          ? super WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

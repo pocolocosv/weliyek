@@ -19,11 +19,11 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderField;
-import weliyek.serialization.WkSzPacketReaderOperation;
-import weliyek.serialization.WkSzPacketReaderSubfield;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntime;
 
@@ -34,15 +34,15 @@ public interface CollectionAndElementsFieldDeserializer<
                         XR extends WkSzReadingResult<T>,
                         XD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
                         ET,
-                        EXD extends WkSzDefinition<ET,?>,
-                        EXO extends WkSzPacketReaderOperation<ET,?,?,?,EXD>>
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,?,?,?,EXD>>
         extends WkSzCollectionAndElementsOperation<
                         XS, XQ, XR, XD,
-                        WkSzPacketReaderField<T,XD,?>,
+                        WkSrlzInputPacketFieldFrameNode<T,XD,?>,
                         EXO,
-                        WkSzPacketReaderField<ET,EXD,EXO>,
-                        WkSzPacketReaderSubfield<ET,EXD,EXO>>,
-                WkSzCollectionReader<T, XS, XQ, XR, XD>
+                        WkSrlzInputPacketFieldFrameNode<ET,EXD,EXO>,
+                        WkSrlzInputPacketSubfieldFrameNode<ET,EXD,EXO>>,
+                WkCollectionSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD>
 {
 
 }

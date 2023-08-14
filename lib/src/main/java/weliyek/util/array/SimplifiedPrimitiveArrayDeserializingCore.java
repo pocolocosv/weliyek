@@ -20,12 +20,12 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.serialization.WkSzPrimitiveArraySerializerDefinition;
+import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderFieldCore;
-import weliyek.serialization.WkSzPrimitiveArraySerializerReader;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntime;
 import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
@@ -33,8 +33,8 @@ import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
 public class SimplifiedPrimitiveArrayDeserializingCore<
                         X extends WkPrimitiveArray<?,?>,
                         XS extends WkSzOperationSettings,
-                        D extends WkSzPrimitiveArraySerializerDefinition<X,XO>,
-                        XO extends WkSzPrimitiveArraySerializerReader<
+                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X,XO>,
+                        XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
                                           X,
                                           XS,
                                           WkSzSequenceReadingRuntime<WkSzInputBytestream>,
@@ -63,7 +63,7 @@ public class SimplifiedPrimitiveArrayDeserializingCore<
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
-    WkSzPacketReaderFieldCore<X,?,D,?,?,?> deserializingfieldCore,
+    WkSrlzInputPacketFieldFrameNodeCore<X,?,D,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<X,XS,XO,?,?,D> definitionCore,
     XO operationBody,
     Consumer<? super SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>> onInitializing) {

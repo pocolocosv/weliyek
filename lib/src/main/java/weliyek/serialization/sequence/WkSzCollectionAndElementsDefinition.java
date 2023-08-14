@@ -19,17 +19,17 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSzDefinition;
-import weliyek.serialization.WkSzStructSubcomponent;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 
 public interface WkSzCollectionAndElementsDefinition<
                         T extends Collection<ET>,
                         XO extends CollectionAndElementsFieldDeserializer<T,?,?,?,?,?,?,?>,
                         YO extends CollectionAndElementsFieldSerializer<T,?,?,?,?,?,?,?>,
                         ET,
-                        ED extends WkSzDefinition<ET,?>>
-        extends WkSzCollectionAndElementsSegment<WkSzStructSubcomponent<XO, YO, ED>>,
-                WzSzCollectionDefinition<T, XO>
+                        ED extends WkSrlzStructDefinitionFrameNode<ET,?>>
+        extends WkSzCollectionAndElementsSegment<WkSrlzStructSubcomponentFrameNode<XO, YO, ED>>,
+                WkCollectionSrlzStructDefinitionFrameNode<T, XO>
 {
 
   @Override

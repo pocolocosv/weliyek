@@ -23,15 +23,15 @@ import weliyek.serialization.filter.FilterResults;
 
 public interface WkSzInputPacket<
                         X,
-                        XD extends WkSzDefinition<X,?>,
-                        XO extends WkSzPacketReaderOperation<X,?,?,?,XD>>
-    extends WkSzPacketReaderField<X, XD, XO>
+                        XD extends WkSrlzStructDefinitionFrameNode<X,?>,
+                        XO extends WkSrlzInputPacketDecoderFrameNode<X,?,?,?,XD>>
+    extends WkSrlzInputPacketFieldFrameNode<X, XD, XO>
 {
 
   FilterResults filterResults();
 
   void processBytestream();
 
-  Optional<WkSzPacketOperation<?,?,?,?,?>> previousProcessingSteapResult();
+  Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousProcessingSteapResult();
 
 }

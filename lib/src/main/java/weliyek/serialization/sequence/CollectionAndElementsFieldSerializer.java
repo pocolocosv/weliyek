@@ -22,11 +22,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketWriterField;
-import weliyek.serialization.WkSzPacketWriterOperation;
-import weliyek.serialization.WkSzPacketWriterSubfield;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzWritingResult;
 
@@ -37,15 +37,15 @@ public interface CollectionAndElementsFieldSerializer<
                         YR extends WkSzWritingResult,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
                         ET,
-                        EYD extends WkSzDefinition<ET,?>,
-                        EYO extends WkSzPacketWriterOperation<ET,?,?,?,EYD>>
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,?,?,?,EYD>>
         extends WkSzCollectionAndElementsOperation<
                         YS, YQ, YR, YD,
-                        WkSzPacketWriterField<T,YD,?>,
+                        WkSrlzOutputPacketFieldFrameNode<T,YD,?>,
                         EYO,
-                        WkSzPacketWriterField<ET,EYD,EYO>,
-                        WkSzPacketWriterSubfield<ET,EYD,EYO>>,
-                WkSzCollectionWriter<T, YS, YQ, YR, YD>
+                        WkSrlzOutputPacketFieldFrameNode<ET,EYD,EYO>,
+                        WkSrlzOutputPacketSubfieldFrameNode<ET,EYD,EYO>>,
+                WkCollectionSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>
 {
 
   List<ET> serializableAsList();

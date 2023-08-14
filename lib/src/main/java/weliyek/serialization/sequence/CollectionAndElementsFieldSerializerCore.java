@@ -20,15 +20,15 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 import java.util.List;
 
-import weliyek.serialization.WkSzAggregatorWriterCore;
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNodeCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzPacketWriterFieldCore;
-import weliyek.serialization.WkSzPacketWriterOperation;
-import weliyek.serialization.WkSzPacketWriterSubfield;
-import weliyek.serialization.WkSzPacketWriterSubfieldCore;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzSequenceWritingRuntime;
 import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
 import weliyek.serialization.WkSzWritingResult;
@@ -47,25 +47,25 @@ public abstract class CollectionAndElementsFieldSerializerCore<
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EYS extends WkSzOperationSettings,
-                        EYD extends WkSzDefinition<ET,?>,
-                        EYO extends WkSzPacketWriterOperation<ET,EYS,?,?,EYD>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         DC extends CollectionAndElementsFieldDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYBC,
                                         ET,?,?,?,EYS,EYD,EYO,?,?,DC>>
-        extends WkSzAggregatorWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
+        extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
         implements CollectionAndElementsFieldSerializer<T, YS, YQ, YR, YD, ET, EYD, EYO>
 {
 
   private final List<ET> serializableAsList;
 
-  private WkSzPacketWriterSubfieldCore<ET,EYS,EYD,EYO,T,YBC,YD,YO> elementPacketSubfield;
+  private WkSrlzOutputPacketSubfieldFrameNodeCore<ET,EYS,EYD,EYO,T,YBC,YD,YO> elementPacketSubfield;
 
   protected CollectionAndElementsFieldSerializerCore(
     int index,
     T serializable,
     YS settings,
     AYBC parentBytestream,
-    WkSzPacketWriterFieldCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
@@ -86,7 +86,7 @@ public abstract class CollectionAndElementsFieldSerializerCore<
   protected abstract void onCollectionWritingInitialization();
 
   @Override
-  public final WkSzPacketWriterSubfield<ET,EYD,EYO> element() {
+  public final WkSrlzOutputPacketSubfieldFrameNode<ET,EYD,EYO> element() {
     return this.elementPacketSubfield.asSubfield();
   }
 

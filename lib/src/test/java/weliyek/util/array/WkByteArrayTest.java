@@ -35,7 +35,7 @@ import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSzOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
-import weliyek.serialization.WkSzStruct;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
@@ -75,11 +75,11 @@ public class WkByteArrayTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSzStruct<WkByteArray, WkSzOperationSettings, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayReader, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayWriter, WkSzOutputBytestreamBase<?>, WkSzFixedSizeByteArray>
-        fixeSizeByteArray = WkSzFixedSizeByteArray.newPacketStructure("FIXED_BYTEARRAY", sequenceLenght);
+      WkSrlzStructComponentFrameNodeRootCore<WkByteArray, WkSzOperationSettings, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzOutputNode, WkSzOutputBytestreamBase<?>, WkFixedSizeByteArraySrlzStructNode>
+        fixeSizeByteArray = WkFixedSizeByteArraySrlzStructNode.newPacketStructure("FIXED_BYTEARRAY", sequenceLenght);
       logger.info(fixeSizeByteArray + " output protocol created");
 
-      WkSzOutputPacket<WkByteArray, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayWriter>
+      WkSzOutputPacket<WkByteArray, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzOutputNode>
         byteArrayWriting = fixeSizeByteArray.newOutputPacket(outputWrapper, WkSzOperationSettings.EMPTY, outputstream);
 
       logger.info(byteArrayWriting.toString());
@@ -102,7 +102,7 @@ public class WkByteArrayTest
 
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
-      WkSzInputPacket<WkByteArray, WkSzFixedSizeByteArray, WkSzFixedSizeByteArrayReader>
+      WkSzInputPacket<WkByteArray, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzInputNode>
         byteArrayReading = fixeSizeByteArray.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
 
       logger.info(byteArrayReading + " input op created");
@@ -134,10 +134,10 @@ public class WkByteArrayTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSzStruct<WkByteArray, WkSzVariableLengthOperationSettings, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayReader, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayWriter, WkSzOutputBytestreamBase<?>, WkSzVariableSizeByteArray>
-        outputProtocol = WkSzVariableSizeByteArray.newPacketStructure("DYNAMIC_BYTEARRAY", 0, 100);
+      WkSrlzStructComponentFrameNodeRootCore<WkByteArray, WkSzVariableLengthOperationSettings, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzOutputNode, WkSzOutputBytestreamBase<?>, WkVariableSizeByteArraySrlzStructNode>
+        outputProtocol = WkVariableSizeByteArraySrlzStructNode.newPacketStructure("DYNAMIC_BYTEARRAY", 0, 100);
 
-      WkSzOutputPacket<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayWriter>
+      WkSzOutputPacket<WkByteArray, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzOutputNode>
         wrapperWriting = outputProtocol.newOutputPacket(outputWrapper, WkSzOperationSettings.EMPTY, outputstream);
 
       assertFalse(wrapperWriting.isCompleted());
@@ -148,7 +148,7 @@ public class WkByteArrayTest
 
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
-      WkSzInputPacket<WkByteArray, WkSzVariableSizeByteArray, WkSzVariableSizeByteArrayReader>
+      WkSzInputPacket<WkByteArray, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzInputNode>
         wrapperReading = outputProtocol.newInputPacket(WkSzVariableLengthOperationSettings.withLength(sequenceLenght), outputstream.inputStream());
 
       logger.info(wrapperReading + " input op created");
@@ -173,21 +173,21 @@ public class WkByteArrayTest
     public void test04_VariableSizeByteArray_InvalidLowerBound() {
       assertThrows(
           WkSzDefinitionCoreException.class,
-          () -> WkSzVariableSizeByteArray.newPacketStructure("INVALID", -1, 10));
+          () -> WkVariableSizeByteArraySrlzStructNode.newPacketStructure("INVALID", -1, 10));
     }
 
     @Test
     public void test05_VariableSizeByteArray_InvalidHigherBound() {
       assertThrows(
           WkSzDefinitionCoreException.class,
-          () -> WkSzVariableSizeByteArray.newPacketStructure("INVALID", 1, -1));
+          () -> WkVariableSizeByteArraySrlzStructNode.newPacketStructure("INVALID", 1, -1));
     }
 
     @Test
     public void test06_VariableSizeByteArray_InvalidBounds() {
       assertThrows(
           WkSzDefinitionCoreException.class,
-          () -> WkSzVariableSizeByteArray.newPacketStructure("INVALID", 22, 11));
+          () -> WkVariableSizeByteArraySrlzStructNode.newPacketStructure("INVALID", 22, 11));
     }
 
 

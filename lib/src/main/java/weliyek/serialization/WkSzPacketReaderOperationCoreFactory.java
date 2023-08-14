@@ -21,18 +21,18 @@ package weliyek.serialization;
 public interface WkSzPacketReaderOperationCoreFactory<
                         T,
                         XS extends WkSzOperationSettings,
-                        XD extends WkSzDefinition<T,?>,
-                        DC extends WkSzDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
-                        XO extends WkSzPacketReaderOperation<T,XS,?,?,XD>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        DC extends WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
+                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,?,XD>,
                         AXB extends WkSzInputBytestreamBase<?>>
     extends WkSzOperationFactory
 {
 
-  WkSzPacketReaderOperationCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
+  WkSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSzPacketReaderFieldCore<T,?,XD,?,?,?> ownerPacket,
+    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> ownerPacket,
     DC definitionCore);
 
 }

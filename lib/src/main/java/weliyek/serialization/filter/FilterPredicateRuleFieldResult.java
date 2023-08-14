@@ -25,7 +25,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
 public class FilterPredicateRuleFieldResult
         extends FilterPredicateRuleBaseResult
@@ -33,7 +33,7 @@ public class FilterPredicateRuleFieldResult
 
     private static final Logger logger = LoggerFactory.getLogger(FilterPredicateRuleFieldResult.class);
 
-    private WkSzFilterableSegment fulfillingSegment;
+    private WkSrlzPacketFilterableFrameNode fulfillingSegment;
 
     FilterPredicateRuleFieldResult(
         FilterPredicateRuleField rule) {
@@ -41,7 +41,7 @@ public class FilterPredicateRuleFieldResult
     }
 
     @Override
-    protected boolean onTest(WkSzFilterableSegment segment) {
+    protected boolean onTest(WkSrlzPacketFilterableFrameNode segment) {
       if (isPremiseFound()) {
         // Segment that fulfills the rule was found. Nothing else to do.
         return true;
@@ -67,7 +67,7 @@ public class FilterPredicateRuleFieldResult
     }
 
     @Override
-    public List<WkSzDefinition<?,?>> matchTargets() {
+    public List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets() {
         return rule().matchTargets();
     }
 

@@ -34,8 +34,8 @@ import weliyek.Resetable;
 
 public class WkSzPacketOperationCoreList<
                         T,
-                        O extends WkSzPacketOperation<?, ?, ?, ?, ?>,
-                        OC extends WkSzPacketOperationCore<?,?,?,?,?,?,O,?,?,?,?>>
+                        O extends WkSrlzPacketOperationFrameNode<?, ?, ?, ?, ?>,
+                        OC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,O,?,?,?,?>>
         extends AbstractList<OC>
         implements Initializable, Completable, Resetable
 {
@@ -44,7 +44,7 @@ public class WkSzPacketOperationCoreList<
 
     private static final int UNINITIALIZED_LIST = -1;
 
-    private final WkSzPacketFieldCore<?,?,?,?,?,?,?,?,?> ownerField;
+    private final WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,?,?,?> ownerField;
     private final IntFunction<OC> operationFactory;
     private final Function<? super O, T> valueExtractor;
 
@@ -54,7 +54,7 @@ public class WkSzPacketOperationCoreList<
     private OC currentOpCore;
 
     public WkSzPacketOperationCoreList(
-      WkSzPacketFieldCore<?,?,?,?,?,?,?,?,?> ownerField,
+      WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,?,?,?> ownerField,
       IntFunction<OC> operationFactory,
       int initialCapacity,
       Function<? super O, T> valueExtractor) {
@@ -133,7 +133,7 @@ public class WkSzPacketOperationCoreList<
       this.operationList.add(this.currentOpCore.body());
     }
 
-    public Optional<WkSzPacketOperation<?,?,?,?,?>> processingBytestream() {
+    public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> processingBytestream() {
         if (isUnitialized()) {
           throw new IllegalStateException();
         }
@@ -143,7 +143,7 @@ public class WkSzPacketOperationCoreList<
           // core is available.
           return Optional.empty();
         }
-        Optional<WkSzPacketOperation<?,?,?,?,?>> lastOp = this.currentOpCore.processBytestream();
+        Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> lastOp = this.currentOpCore.processBytestream();
         if (this.currentOpCore.isCompleted()) {
           if (this.coreContainer.size() < this.expectedSize) {
             // Still operation left to perform.

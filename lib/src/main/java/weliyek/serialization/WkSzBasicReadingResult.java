@@ -31,7 +31,7 @@ public class WkSzBasicReadingResult<X>
     private final Optional<X> deserialized;
 
     public WkSzBasicReadingResult(
-            WkSzPacketReaderOperation<X,?,?,?,?> operation,
+            WkSrlzInputPacketDecoderFrameNode<X,?,?,?,?> operation,
             X deserialized) {
         this.deserialized = Optional.ofNullable(deserialized);
     }

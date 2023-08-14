@@ -21,14 +21,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzDefinition;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzPacketReaderField;
-import weliyek.serialization.WkSzPacketReaderFieldCore;
-import weliyek.serialization.WkSzPacketReaderOperation;
-import weliyek.serialization.WkSzPacketReaderSubfield;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzReadingResult;
 import weliyek.serialization.WkSzSequenceReadingRuntime;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
@@ -38,8 +38,8 @@ public final class VariableSizeCollectionFieldDeserializer<
                         XS extends WkSzVariableLengthOperationSettings,
                         ET,
                         EXS extends WkSzOperationSettings,
-                        EXD extends WkSzDefinition<ET,?>,
-                        EXO extends WkSzPacketReaderOperation<ET,EXS,?,?,EXD>>
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
     implements CollectionAndElementsFieldDeserializer<
                         T,
                         XS,
@@ -49,7 +49,7 @@ public final class VariableSizeCollectionFieldDeserializer<
                         ET,
                         EXD,
                         EXO>,
-               VariableSizeSequenceReading<
+               WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<
                         T,
                         XS,
                         WkSzSequenceReadingRuntime<WkSzInputBytestream>,
@@ -71,7 +71,7 @@ public final class VariableSizeCollectionFieldDeserializer<
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
-    WkSzPacketReaderFieldCore<
+    WkSrlzInputPacketFieldFrameNodeCore<
       T,?,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?,?,?> deserializingfieldCore,
     SimplifiedCollectionDefinitionCore<
       T,XS,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -92,7 +92,7 @@ public final class VariableSizeCollectionFieldDeserializer<
   }
 
   @Override
-  public WkSzPacketReaderSubfield<ET, EXD, EXO> element() {
+  public WkSrlzInputPacketSubfieldFrameNode<ET, EXD, EXO> element() {
     return this.operationCore.element();
   }
 
@@ -123,13 +123,13 @@ public final class VariableSizeCollectionFieldDeserializer<
 
   @Override
   public
-  WkSzPacketReaderField<T,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
+  WkSrlzInputPacketFieldFrameNode<T,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
   packetField() {
     return this.operationCore.packetField();
   }
 
   @Override
-  public List<WkSzPacketReaderSubfield<?, ?, ?>> subfields() {
+  public List<WkSrlzInputPacketSubfieldFrameNode<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 

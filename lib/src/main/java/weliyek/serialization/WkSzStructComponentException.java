@@ -24,25 +24,25 @@ public class WkSzStructComponentException extends WkSzSegmentException
 
   private static final long serialVersionUID = 2018_03_05_000L;
 
-  private final WkSzStructComponent<?> structComponent;
+  private final WkSrlzStructComponentFrameNode<?> structComponent;
 
-  public WkSzStructComponentException(WkSzStructComponent<?> structComponent) {
+  public WkSzStructComponentException(WkSrlzStructComponentFrameNode<?> structComponent) {
     super(structComponent);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
-  public WkSzStructComponentException(WkSzStructComponent<?> structComponent, String message) {
+  public WkSzStructComponentException(WkSrlzStructComponentFrameNode<?> structComponent, String message) {
     super(structComponent, message);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
-  public WkSzStructComponentException(WkSzStructComponent<?> structComponent, Throwable cause) {
+  public WkSzStructComponentException(WkSrlzStructComponentFrameNode<?> structComponent, Throwable cause) {
     super(structComponent, cause);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
   public WkSzStructComponentException(
-    WkSzStructComponent<?> structComponent,
+    WkSrlzStructComponentFrameNode<?> structComponent,
     String message,
     Throwable cause) {
     super(structComponent, message, cause);
@@ -50,7 +50,7 @@ public class WkSzStructComponentException extends WkSzSegmentException
   }
 
   public WkSzStructComponentException(
-    WkSzStructComponent<?> structComponent,
+    WkSrlzStructComponentFrameNode<?> structComponent,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -59,7 +59,7 @@ public class WkSzStructComponentException extends WkSzSegmentException
     this.structComponent = Objects.requireNonNull(structComponent);
   }
   
-  public WkSzStructComponent<?> getStructComponent() {
+  public WkSrlzStructComponentFrameNode<?> getStructComponent() {
     return this.structComponent;
   }
 

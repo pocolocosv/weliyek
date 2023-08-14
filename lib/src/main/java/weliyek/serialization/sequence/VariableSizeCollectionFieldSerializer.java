@@ -22,28 +22,28 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public final class VariableSizeCollectionFieldSerializer<
                         T extends Collection<ET>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         ET,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
     implements CollectionAndElementsFieldSerializer<
                         T,
                         YS,
-                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                         ET,
                         EYD,
@@ -51,8 +51,8 @@ public final class VariableSizeCollectionFieldSerializer<
                WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<
                         T,
                         YS,
-                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
 {
 
@@ -104,12 +104,12 @@ public final class VariableSizeCollectionFieldSerializer<
   }
 
   @Override
-  public WkSzSequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzWritingResult> result() {
+  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
     return this.operationCore.result();
   }
 

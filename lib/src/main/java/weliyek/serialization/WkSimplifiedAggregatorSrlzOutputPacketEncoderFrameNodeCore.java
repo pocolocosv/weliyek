@@ -22,24 +22,24 @@ import java.util.function.Consumer;
 
 public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         T,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,YS,
-                                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD>>
     extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         T,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YD,
                         YO,
                         WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>,

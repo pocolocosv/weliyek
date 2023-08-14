@@ -19,35 +19,35 @@ package weliyek.serialization.string;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public class SimplifiedStringFromBytesReadingCore<
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                                       XS,
-                                      WkSzReadingRuntime<WkSzInputBytestream>,
-                                      WkSzReadingResult<String>,
+                                      WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                      WkDecodingResultSrlzPacketOperationData<String>,
                                       XD,SXD,SXO>,
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
-                        SXS extends WkSzOperationSettings,
+                        SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
                         SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>>
     extends WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingRuntimeControl<
+                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<String>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<String>,
                         XO,
                         SimplifiedStringFromBytesReadingCore<XS,XO,XD,SXS,SXO,SXD>,
                         XD,

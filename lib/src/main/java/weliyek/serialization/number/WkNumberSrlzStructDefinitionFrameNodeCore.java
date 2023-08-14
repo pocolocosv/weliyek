@@ -25,26 +25,26 @@ import weliyek.serialization.WkSzWriteEngineFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructDefinitionFrameLeafNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkNumberSrlzStructDefinitionFrameNodeCore<
                         T extends Number,
-                        XS extends WkSzOperationSettings,
-                        XQC extends WkSzReadingRuntimeControl<?,?,?>,
-                        XR extends WkSzReadingResult<T>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkNumberSrlzStructDefinitionFrameLeafNode<T,XO>,
                         XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSzOperationSettings,
-                        YQC extends WkSzWritingRuntimeControl<?,?,?>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkNumberSrlzStructDefinitionFrameLeafNode<T,?>,
                         YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,

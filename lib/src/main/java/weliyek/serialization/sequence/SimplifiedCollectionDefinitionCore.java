@@ -26,50 +26,50 @@ import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSzBasicReadingResult;
-import weliyek.serialization.WkSzBasicSequenceReadingRuntime;
-import weliyek.serialization.WkSzBasicWritingResult;
+import weliyek.serialization.WkBasicDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkBasicSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkBasicEncodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
-import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public class SimplifiedCollectionDefinitionCore<
                         T extends Collection<ET>,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
-                                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                                        WkSzReadingResult<T>,
+                                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                        WkDecodingResultSrlzPacketOperationData<T>,
                                         XD,
                                         ET,EXD,EXO>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,
                                         YS,
-                                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD,
                                         ET,EYD,EYO>,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,?>,
@@ -79,22 +79,22 @@ public class SimplifiedCollectionDefinitionCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkSzSequenceReadingRuntimeControl<
+                        WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzSequenceReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<T>,
+                          WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         XD,
                         XO,
                         WkSzInputBytestreamBase<?>,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzSequenceWritingRuntimeControl<
+                        WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzSequenceWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YD,
                         YO,
                         WkSzOutputBytestreamBase<?>,
@@ -132,11 +132,11 @@ public class SimplifiedCollectionDefinitionCore<
     Class<T> serializableClass) {
     super(
           componentCore,
-          WkSzBasicSequenceReadingRuntime::new,
-          WkSzBasicReadingResult::new,
+          WkBasicSequenceDecodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicDecodingResultSrlzPacketOperationData::new,
           readingOpFactory,
-          WkSzBasicSequenceWritingRuntime::new,
-          WkSzBasicWritingResult::empty,
+          WkSimplifiedSequenceEncodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicEncodingResultSrlzPacketOperationData::empty,
           writingOpFactory,
           elementsLabel,
           elementsDeserializingNumOfOps,

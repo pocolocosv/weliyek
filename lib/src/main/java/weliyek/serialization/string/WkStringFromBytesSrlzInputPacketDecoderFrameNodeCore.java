@@ -21,28 +21,28 @@ import java.nio.charset.Charset;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public abstract class WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends WkSzReadingRuntime<XB>,
-                        XQC extends WkSzReadingRuntimeControl<XB,XBC,XQ>,
-                        XR extends WkSzReadingResult<String>,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<String>,
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<XS,XQ,XR,XD,SXD,SXO>,
                         XOC extends WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        SXS extends WkSzOperationSettings,
+                        SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
                         SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
                         DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<

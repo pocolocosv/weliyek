@@ -19,15 +19,15 @@ package weliyek.serialization.number;
 
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 
 public interface WkNumberSrlzInputPacketDecoderFrameLeafNode<
                         T extends Number,
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzReadingRuntime<?>,
-                        R extends WkSzReadingResult<T>,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkDecodingRuntimeSrlzPacketOperationData<?>,
+                        R extends WkDecodingResultSrlzPacketOperationData<T>,
                         D extends WkNumberSrlzStructDefinitionFrameLeafNode<T,?>>
         extends WkNumberSrlzPacketOperationFrameLeafNode<
                         S, Q, R, D,

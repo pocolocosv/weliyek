@@ -24,7 +24,7 @@ import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
 import weliyek.serialization.WkSzOperationException;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.WkSzReadingResult;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 
 public class SequenceFixedSizeParameter<T>
 {
@@ -32,7 +32,7 @@ public class SequenceFixedSizeParameter<T>
   private final int sequenceExpectedSize;
   private final WkSrlzStructDefinitionFrameNodeCore<
                         T,?,?,
-                        ? extends WkSzReadingResult<T>,
+                        ? extends WkDecodingResultSrlzPacketOperationData<T>,
                         ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
                         ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,
                         ?,?,?,?,
@@ -44,7 +44,7 @@ public class SequenceFixedSizeParameter<T>
     int sequenceExpectedSize,
     WkSrlzStructDefinitionFrameNodeCore<
       T,?,?,
-      ? extends WkSzReadingResult<T>,
+      ? extends WkDecodingResultSrlzPacketOperationData<T>,
       ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
       ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,
       ?,?,?,?,
@@ -74,7 +74,7 @@ public class SequenceFixedSizeParameter<T>
   void onAfterFullCompletionDeserialization(
     WkSrlzInputPacketDecoderFrameNodeCore<
       T,?,?,?,
-      ? extends WkSzReadingResult<T>,
+      ? extends WkDecodingResultSrlzPacketOperationData<T>,
       ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,?,
       ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,?,?> deserializer) {
     T sequence = deserializer.result().get().deserialized().get();

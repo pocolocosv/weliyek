@@ -20,28 +20,28 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public final class SimplifiedCollectionSerializingCore<
                         T extends Collection<ET>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<
                                         T,
                                         YS,
-                                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD,
                                         ET,EYD,EYO>,
                         ET,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
     extends CollectionAndElementsFieldSerializerCore<
@@ -49,12 +49,12 @@ public final class SimplifiedCollectionSerializingCore<
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                        WkSzSequenceWritingRuntimeControl<
+                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzSequenceWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YD,
                         YO,
                         SimplifiedCollectionSerializingCore<T,YS,YD,YO,ET,EYS,EYD,EYO>,

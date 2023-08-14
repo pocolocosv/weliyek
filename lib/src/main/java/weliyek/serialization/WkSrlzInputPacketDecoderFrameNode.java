@@ -23,9 +23,9 @@ import weliyek.serialization.filter.WkSrlzPacketFilterableFrameNode;
 
 public interface WkSrlzInputPacketDecoderFrameNode<
                         T,
-                        XS extends WkSzOperationSettings,
-                        XQ extends WkSzReadingRuntime<?>,
-                        XR extends WkSzReadingResult<T>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkSrlzStructDefinitionFrameNode<T,?>>
         extends WkSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,

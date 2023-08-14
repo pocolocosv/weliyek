@@ -31,7 +31,7 @@ import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
@@ -61,23 +61,23 @@ public class WkSzTstPrimitivesGroupStructDefinition
 
   final WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                         WkSzTstPrimitivesGroup,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketReader,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter,
                         WkSzTstPrimitivesGroupStructDefinition> definitionCore;
 
   final WkSrlzStructSubcomponentFrameNodeCore<Byte,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedByteSrlzStructNode,
                                 WkSignedByteSrlzInputNode,
                                 WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketReader,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedByteSrlzStructNode,
                                 WkSignedByteSrlzOutputNode,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -87,14 +87,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSzTstPrimitivesGroupStructDefinition> byteSubcomponent;
 
   final WkSrlzStructSubcomponentFrameNodeCore<Short,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedBigEndianShortSrlzStructNode,
                                 WkSignedBigEndianShortSrlzInputNode,
                                 WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketReader,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedBigEndianShortSrlzStructNode,
                                 WkSignedBigEndianShortSrlzOutputNode,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -104,14 +104,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSzTstPrimitivesGroupStructDefinition> shortSubcomponent;
 
   final WkSrlzStructSubcomponentFrameNodeCore<Integer,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedBigEndianIntegerSrlzStructNode,
                                 WkSignedBigEndianIntegerSrlzInputNode,
                                 WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketReader,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedBigEndianIntegerSrlzStructNode,
                                 WkSignedBigEndianIntegerSrlzOutputNode,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -121,14 +121,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSzTstPrimitivesGroupStructDefinition> intSubcomponent;
 
   final WkSrlzStructSubcomponentFrameNodeCore<Long,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedBigEndianLongSrlzStructNode,
                                 WkSignedBigEndianLongSrlzInputNode,
                                 WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketReader,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkSignedBigEndianLongSrlzStructNode,
                                 WkSignedBigEndianLongSrlzOutputNode,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -138,14 +138,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSzTstPrimitivesGroupStructDefinition> longSubcomponent;
 
   final WkSrlzStructSubcomponentFrameNodeCore<String,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithFixedLengthBytesSrlzStructNode,
                                 WkStringWithFixedLengthBytesSrlzInputNode,
                                 WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketReader,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithFixedLengthBytesSrlzStructNode,
                                 WkStringWithFixedLengthBytesSrlzOutputNode,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -155,14 +155,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSzTstPrimitivesGroupStructDefinition> fixedStrSubcomponent;
 
   final WkSrlzStructSubcomponentFrameNodeCore<String,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
                                 WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
                                 WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketReader,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithDynamicBytesSrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
                                 WkStringWithDynamicBytesSrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -175,10 +175,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                                   WkSzTstPrimitivesGroup,
-                                  WkSzOperationSettings,
+                                  WkSettingsSrlzPacketOperationData,
                                   WkSzTstPrimitivesGroupStructDefinition,
                                   WkSzTstPrimitivesGroupPacketReader,
-                                  WkSzOperationSettings,
+                                  WkSettingsSrlzPacketOperationData,
                                   WkSzTstPrimitivesGroupStructDefinition,
                                   WkSzTstPrimitivesGroupPacketWriter,
                                   WkSzTstPrimitivesGroupStructDefinition>(
@@ -200,14 +200,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
 
   private WkSrlzStructSubcomponentFrameNodeCore<
               Byte,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedByteSrlzStructNode,
               WkSignedByteSrlzInputNode,
               WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketReader,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedByteSrlzStructNode,
               WkSignedByteSrlzOutputNode,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -216,15 +216,15 @@ public class WkSzTstPrimitivesGroupStructDefinition
               WkSignedByteSrlzStructNode,
               WkSzTstPrimitivesGroupStructDefinition>
   addByteSubcomponent() {
-    return this.definitionCore.<Byte, WkSzOperationSettings, WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode, WkSzOperationSettings, WkSignedByteSrlzStructNode, WkSignedByteSrlzOutputNode, WkSignedByteSrlzStructNode>
+    return this.definitionCore.<Byte, WkSettingsSrlzPacketOperationData, WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedByteSrlzStructNode, WkSignedByteSrlzOutputNode, WkSignedByteSrlzStructNode>
                                addSubcomponent(
                                     "BYTE",
                                     Optional.empty(),
                                     WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                                    WkSzOperationSettings::none,
+                                    WkSettingsSrlzPacketOperationData::none,
                                     Optional.empty(),
                                     WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                                    WkSzOperationSettings::none,
+                                    WkSettingsSrlzPacketOperationData::none,
                                     (k,ao,i) -> ao.serializable().b,
                                     false,
                                     WkSignedByteSrlzStructNode::newCore);
@@ -232,14 +232,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
 
   private WkSrlzStructSubcomponentFrameNodeCore<
               Short,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedBigEndianShortSrlzStructNode,
               WkSignedBigEndianShortSrlzInputNode,
               WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketReader,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedBigEndianShortSrlzStructNode,
               WkSignedBigEndianShortSrlzOutputNode,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -248,15 +248,15 @@ public class WkSzTstPrimitivesGroupStructDefinition
               WkSignedBigEndianShortSrlzStructNode,
               WkSzTstPrimitivesGroupStructDefinition>
   addShortSubcomponent() {
-    return this.definitionCore.<Short, WkSzOperationSettings, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, WkSzOperationSettings, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, WkSignedBigEndianShortSrlzStructNode>
+    return this.definitionCore.<Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, WkSignedBigEndianShortSrlzStructNode>
                     addSubcomponent(
                           "SHORT",
                           Optional.empty(),
                           WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                          WkSzOperationSettings::none,
+                          WkSettingsSrlzPacketOperationData::none,
                           Optional.empty(),
                           WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                          WkSzOperationSettings::none,
+                          WkSettingsSrlzPacketOperationData::none,
                           (k,ao,i) -> ao.serializable().s,
                           false,
                           WkSignedBigEndianShortSrlzStructNode::newCore);
@@ -264,14 +264,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
 
   private WkSrlzStructSubcomponentFrameNodeCore<
               Integer,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedBigEndianIntegerSrlzStructNode,
               WkSignedBigEndianIntegerSrlzInputNode,
               WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketReader,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedBigEndianIntegerSrlzStructNode,
               WkSignedBigEndianIntegerSrlzOutputNode,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -280,15 +280,15 @@ public class WkSzTstPrimitivesGroupStructDefinition
               WkSignedBigEndianIntegerSrlzStructNode,
               WkSzTstPrimitivesGroupStructDefinition>
   addIntSubcomponent() {
-    return this.definitionCore.<Integer, WkSzOperationSettings, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSzOperationSettings, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>
+    return this.definitionCore.<Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>
                     addSubcomponent(
                             "INT",
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().i,
                             false,
                             WkSignedBigEndianIntegerSrlzStructNode::newCore);
@@ -296,14 +296,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
 
   private WkSrlzStructSubcomponentFrameNodeCore<
               Long,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedBigEndianLongSrlzStructNode,
               WkSignedBigEndianLongSrlzInputNode,
               WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketReader,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkSignedBigEndianLongSrlzStructNode,
               WkSignedBigEndianLongSrlzOutputNode,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -312,15 +312,15 @@ public class WkSzTstPrimitivesGroupStructDefinition
               WkSignedBigEndianLongSrlzStructNode,
               WkSzTstPrimitivesGroupStructDefinition>
   addLongSubcomponent() {
-    return this.definitionCore.<Long, WkSzOperationSettings, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzInputNode, WkSzOperationSettings, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzOutputNode, WkSignedBigEndianLongSrlzStructNode>
+    return this.definitionCore.<Long, WkSettingsSrlzPacketOperationData, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzOutputNode, WkSignedBigEndianLongSrlzStructNode>
                       addSubcomponent(
                             "LONG",
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().l,
                             false,
                             WkSignedBigEndianLongSrlzStructNode::newCore);
@@ -328,14 +328,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
 
   private WkSrlzStructSubcomponentFrameNodeCore<
               String,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkStringWithFixedLengthBytesSrlzStructNode,
               WkStringWithFixedLengthBytesSrlzInputNode,
               WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketReader,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkStringWithFixedLengthBytesSrlzStructNode,
               WkStringWithFixedLengthBytesSrlzOutputNode,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -348,20 +348,20 @@ public class WkSzTstPrimitivesGroupStructDefinition
     int expectedSize = WkSzTstPrimitivesGroup.FIXED_STRING_LENGTH;
     Charset defaultCharset = StandardCharsets.US_ASCII;
     return this.definitionCore.<String,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithFixedLengthBytesSrlzStructNode,
                                 WkStringWithFixedLengthBytesSrlzInputNode,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithFixedLengthBytesSrlzStructNode,
                                 WkStringWithFixedLengthBytesSrlzOutputNode,
                                 WkStringWithFixedLengthBytesSrlzStructNode>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,
                             (pc) -> WkStringWithFixedLengthBytesSrlzStructNode.newCore(bytesLabel, expectedSize, defaultCharset, pc));
@@ -369,14 +369,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
 
   private WkSrlzStructSubcomponentFrameNodeCore<
               String,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
               WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
               WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketReader,
-              WkSzOperationSettings,
+              WkSettingsSrlzPacketOperationData,
               WkStringWithDynamicBytesSrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
               WkStringWithDynamicBytesSrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -392,20 +392,20 @@ public class WkSzTstPrimitivesGroupStructDefinition
     int maxLength = 1000;
     Charset charset = StandardCharsets.US_ASCII;
     return this.definitionCore.<String,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
                                 WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkStringWithDynamicBytesSrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
                                 WkStringWithDynamicBytesSrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>,
                                 WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
                             WkAggregatorSrlzStructDefinitionFrameNodeCore.singleOperation(),
-                            WkSzOperationSettings::none,
+                            WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,
                             (pc) -> WkStringWithDynamicBytesSrlzStructNode.<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>

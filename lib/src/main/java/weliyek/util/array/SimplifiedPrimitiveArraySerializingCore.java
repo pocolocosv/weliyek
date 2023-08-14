@@ -21,34 +21,34 @@ import java.util.Objects;
 import java.util.function.Consumer;
 
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public class SimplifiedPrimitiveArraySerializingCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>,
                         YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                                         Y,
                                         YS,
-                                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         D>>
     extends PrimitiveArraySerializerWritingCore<
                         Y,
                         YS,
-                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                        WkSzSequenceWritingRuntimeControl<
+                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzSequenceWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YO,
                         SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>,
                         D,

@@ -21,7 +21,7 @@ import java.util.function.BiFunction;
 
 public class WkSzReadEngineFactory<
                         T,
-                        QC extends WkSzReadingRuntimeControl<?,?,?>,
+                        QC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         O extends WkSrlzInputPacketDecoderFrameNode<T,?,?,?,?>>
     extends WkSzEngineFactoryBase<
                         QC,

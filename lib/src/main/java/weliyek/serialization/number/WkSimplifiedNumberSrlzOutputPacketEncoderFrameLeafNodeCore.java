@@ -17,32 +17,32 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends Number,
                         YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                                         Y,
-                                        WkSzOperationSettings,
-                                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkSettingsSrlzPacketOperationData,
+                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD>,
                         YD extends WkNumberSrlzStructDefinitionFrameLeafNode<Y,?>>
     extends WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y,
-                        WkSzOperationSettings,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkSettingsSrlzPacketOperationData,
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YO,
                         WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<Y,YO,YD>,
                         YD,
@@ -53,7 +53,7 @@ public class WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
   WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore(
     int index,
     Y serializable,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<Y,?,YD,?,?,?> packetHandlerCore,
     WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<Y,?,YO,YD> definitionCore,

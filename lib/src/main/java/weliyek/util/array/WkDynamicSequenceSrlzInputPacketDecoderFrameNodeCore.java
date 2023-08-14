@@ -20,13 +20,13 @@ package weliyek.util.array;
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
@@ -35,12 +35,12 @@ import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinition
 
 public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends WkSzReadingRuntime<XB>,
-                        XQC extends WkSzReadingRuntimeControl<XB,XBC,XQ>,
-                        XR extends WkSzReadingResult<T>,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XO extends WkDynamicSequenceSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XOC extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,
@@ -50,7 +50,7 @@ public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         XD extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,XO,?,?,?>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         ZT extends Number,
-                        ZXS extends WkSzOperationSettings,
+                        ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         VXS extends WkSzVariableLengthOperationSettings,

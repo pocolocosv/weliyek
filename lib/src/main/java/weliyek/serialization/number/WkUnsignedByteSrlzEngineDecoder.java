@@ -20,7 +20,7 @@ package weliyek.serialization.number;
 import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveReadEngineFactory;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 
 public final class WkUnsignedByteSrlzEngineDecoder
     extends WkIntSrlzEngineDecoder<Integer>
@@ -30,7 +30,7 @@ public final class WkUnsignedByteSrlzEngineDecoder
       new WkSzPrimitiveReadEngineFactory<>("UINT8", WkUnsignedByteSrlzEngineDecoder::new);
 
   private WkUnsignedByteSrlzEngineDecoder(
-    WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
+    WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
     WkNumberSrlzInputPacketDecoderFrameLeafNode<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }

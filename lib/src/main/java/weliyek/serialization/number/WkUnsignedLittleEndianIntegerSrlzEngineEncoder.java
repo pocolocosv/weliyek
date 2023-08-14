@@ -20,7 +20,7 @@ package weliyek.serialization.number;
 import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveWriteEngineFactory;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkUnsignedLittleEndianIntegerSrlzEngineEncoder
     extends WkPrimitiveSrlzEngineEncoder<Long>
@@ -30,7 +30,7 @@ public class WkUnsignedLittleEndianIntegerSrlzEngineEncoder
       new WkSzPrimitiveWriteEngineFactory<>("UINT32LE", WkUnsignedLittleEndianIntegerSrlzEngineEncoder::new);
 
   private WkUnsignedLittleEndianIntegerSrlzEngineEncoder(
-    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
+    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
     WkNumberSrlzOutputPacketEncoderFrameLeafNode<Long, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

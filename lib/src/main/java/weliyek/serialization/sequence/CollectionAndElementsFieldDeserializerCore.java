@@ -23,30 +23,30 @@ import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
-import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class CollectionAndElementsFieldDeserializerCore<
                         T extends Collection<ET>,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends WkSzSequenceReadingRuntime<XB>,
-                        XQC extends WkSzSequenceReadingRuntimeControl<XB,XBC,XQ>,
-                        XR extends WkSzReadingResult<T>,
+                        XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<XB>,
+                        XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<T,XS,XQ,XR,XD,ET,EXD,EXO>,
                         XOC extends CollectionAndElementsFieldDeserializerCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXBC,ET,EXS,EXD,EXO,DC>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         DC extends CollectionAndElementsFieldDefinitionCore<

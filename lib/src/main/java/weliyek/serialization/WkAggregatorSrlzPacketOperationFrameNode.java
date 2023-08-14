@@ -18,9 +18,9 @@
 package weliyek.serialization;
 
 public interface WkAggregatorSrlzPacketOperationFrameNode<
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzCommonOperationRuntime<?>,
-                        R extends WkSzOperationResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
+                        R extends WkResultSrlzPacketOperationData,
                         D extends WkAggregatorSrlzStructDefinitionFrameNode<?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
         extends WkAggregatorSrlzFrameNode,

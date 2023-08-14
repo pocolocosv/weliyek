@@ -18,21 +18,21 @@
 package weliyek.util.array;
 
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameLeafNodeCore;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public abstract class PrimitiveArraySerializerWritingCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
-                        YS extends WkSzOperationSettings,
-                        YQ extends WkSzSequenceWritingRuntime<?>,
-                        YQC extends WkSzSequenceWritingRuntimeControl<?,?,YQ>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
+                        YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<Y,YS,YQ,YR,YD>,
                         YOC extends PrimitiveArraySerializerWritingCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>,

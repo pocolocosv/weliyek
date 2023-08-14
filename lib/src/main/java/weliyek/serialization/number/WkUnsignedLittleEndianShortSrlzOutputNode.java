@@ -20,21 +20,21 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 
 public class WkUnsignedLittleEndianShortSrlzOutputNode
     implements WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                         Integer,
-                        WkSzOperationSettings,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSettingsSrlzPacketOperationData,
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         WkUnsignedLittleEndianShortSrlzStructNode>
 {
 
@@ -46,7 +46,7 @@ public class WkUnsignedLittleEndianShortSrlzOutputNode
   public WkUnsignedLittleEndianShortSrlzOutputNode(
     int index,
     Integer serializable,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
       Integer,?,WkUnsignedLittleEndianShortSrlzStructNode,?,?,?> deserializingfieldCore,
@@ -68,17 +68,17 @@ public class WkUnsignedLittleEndianShortSrlzOutputNode
   }
 
   @Override
-  public WkSzOperationSettings settings() {
+  public WkSettingsSrlzPacketOperationData settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzWritingResult> result() {
+  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
     return this.operationCore.result();
   }
 

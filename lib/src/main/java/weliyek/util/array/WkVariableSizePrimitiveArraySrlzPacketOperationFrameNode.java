@@ -17,16 +17,16 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSzOperationResult;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzPacketFieldFrameNode;
-import weliyek.serialization.sequence.WkSzCommonSequenceOperationRuntime;
+import weliyek.serialization.sequence.WkCommonSequenceRuntimeSrlzPacketOperationData;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzPacketOperationFrameNode;
 
 public interface WkVariableSizePrimitiveArraySrlzPacketOperationFrameNode<
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzCommonSequenceOperationRuntime<?>,
-                        R extends WkSzOperationResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkCommonSequenceRuntimeSrlzPacketOperationData<?>,
+                        R extends WkResultSrlzPacketOperationData,
                         D extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
     extends WkVariableSizePrimitiveArraySrlzFrameNode,

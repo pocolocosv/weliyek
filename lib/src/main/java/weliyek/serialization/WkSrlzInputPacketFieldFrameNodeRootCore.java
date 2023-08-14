@@ -25,18 +25,18 @@ import weliyek.serialization.filter.FilterResults;
 
 public final class WkSrlzInputPacketFieldFrameNodeRootCore<
                         T,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSrlzStructDefinitionFrameNode<T,?>,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,? extends WkSzReadingResult<T>,XD>,
+                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,? extends WkDecodingResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>>
     extends WkSrlzInputPacketFieldFrameNodeCore<
                         T, XS, XD, XO, AXBC,
-                        WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkSzReadingRuntime<?>,?,?>>
+                        WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
     implements WkSzInputPacket<T, XD, XO>
 {
 
   public static class ReadingPacketParameters<
-                        S extends WkSzOperationSettings,
+                        S extends WkSettingsSrlzPacketOperationData,
                         ABC extends WkSzInputBytestreamBase<?>>
   {
 
@@ -120,7 +120,7 @@ public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousProcessingSte
   }
 
   @Override
-  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkSzReadingRuntime<?>,?,?>,?,?,?>
+  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

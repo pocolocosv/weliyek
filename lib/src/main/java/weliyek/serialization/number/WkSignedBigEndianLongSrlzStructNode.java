@@ -24,7 +24,7 @@ import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -39,11 +39,11 @@ public class WkSignedBigEndianLongSrlzStructNode
 
   public static WkSrlzStructComponentFrameNodeRootCore<
                         Long,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSignedBigEndianLongSrlzStructNode,
                         WkSignedBigEndianLongSrlzInputNode,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSignedBigEndianLongSrlzStructNode,
                         WkSignedBigEndianLongSrlzOutputNode,
                         WkSzOutputBytestreamBase<?>,
@@ -58,11 +58,11 @@ public class WkSignedBigEndianLongSrlzStructNode
 
   public static WkSrlzStructDefinitionFrameNodeCore<
                         Long,
-                        WkSzOperationSettings,?,?,
+                        WkSettingsSrlzPacketOperationData,?,?,
                         WkSignedBigEndianLongSrlzStructNode,
                         WkSignedBigEndianLongSrlzInputNode,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,?,?,
+                        WkSettingsSrlzPacketOperationData,?,?,
                         WkSignedBigEndianLongSrlzStructNode,
                         WkSignedBigEndianLongSrlzOutputNode,
                         WkSzOutputBytestreamBase<?>,

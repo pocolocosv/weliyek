@@ -22,44 +22,44 @@ import java.util.Optional;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 
 public class WkFixedSizeByteArraySrlzInputNode
     implements WkByteArraySrlzInputPacketDecoderFrameNode<
-                        WkSzOperationSettings,
-                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<WkByteArray>,
+                        WkSettingsSrlzPacketOperationData,
+                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<WkByteArray>,
                         WkFixedSizeByteArraySrlzStructNode>,
                WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
                         WkByteArray,
-                        WkSzOperationSettings,
-                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<WkByteArray>,
+                        WkSettingsSrlzPacketOperationData,
+                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<WkByteArray>,
                         WkFixedSizeByteArraySrlzStructNode>
 {
 
   final SimplifiedPrimitiveArrayDeserializingCore<
                         WkByteArray,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzStructNode,
                         WkFixedSizeByteArraySrlzInputNode> operationCore;
 
   WkFixedSizeByteArraySrlzInputNode(
     int index,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
       WkByteArray,?,WkFixedSizeByteArraySrlzStructNode,?,?,?> deserializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
-      WkByteArray,WkSzOperationSettings,WkFixedSizeByteArraySrlzInputNode,?,?,WkFixedSizeByteArraySrlzStructNode> definitionCore) {
+      WkByteArray,WkSettingsSrlzPacketOperationData,WkFixedSizeByteArraySrlzInputNode,?,?,WkFixedSizeByteArraySrlzStructNode> definitionCore) {
     this.operationCore = new SimplifiedPrimitiveArrayDeserializingCore<
                                 WkByteArray,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkFixedSizeByteArraySrlzStructNode,
                                 WkFixedSizeByteArraySrlzInputNode>(
                                     index,
@@ -82,17 +82,17 @@ public class WkFixedSizeByteArraySrlzInputNode
   }
 
   @Override
-  public WkSzOperationSettings settings() {
+  public WkSettingsSrlzPacketOperationData settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkSzSequenceReadingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzReadingResult<WkByteArray>> result() {
+  public Optional<WkDecodingResultSrlzPacketOperationData<WkByteArray>> result() {
     return this.operationCore.result();
   }
 

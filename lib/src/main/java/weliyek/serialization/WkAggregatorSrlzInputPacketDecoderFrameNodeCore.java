@@ -22,12 +22,12 @@ import java.util.Optional;
 
 public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         T,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends WkSzReadingRuntime<XB>,
-                        XQC extends WkSzReadingRuntimeControl<XB,XBC,XQ>,
-                        XR extends WkSzReadingResult<T>,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>,
                         XOC extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,
@@ -52,7 +52,7 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
 
   @SuppressWarnings("unchecked")
   public <ST,
-          SXS extends WkSzOperationSettings,
+          SXS extends WkSettingsSrlzPacketOperationData,
           SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
           SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>>
   WkSrlzInputPacketSubfieldFrameNodeCore<ST,SXS,SXD,SXO,T,XBC,XD,XO> getSubfieldpacketFor(

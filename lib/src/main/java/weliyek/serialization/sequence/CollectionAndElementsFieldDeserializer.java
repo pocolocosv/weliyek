@@ -20,18 +20,18 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 
 public interface CollectionAndElementsFieldDeserializer<
                         T extends Collection<ET>,
-                        XS extends WkSzOperationSettings,
-                        XQ extends WkSzSequenceReadingRuntime<?>,
-                        XR extends WkSzReadingResult<T>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
                         ET,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,

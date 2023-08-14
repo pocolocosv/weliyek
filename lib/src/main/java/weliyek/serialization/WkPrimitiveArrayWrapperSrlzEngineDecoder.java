@@ -29,7 +29,7 @@ import weliyek.util.array.WkPrimitiveArray;
 public abstract class WkPrimitiveArrayWrapperSrlzEngineDecoder<
                         X extends WkPrimitiveArray<V, ?>,
                         V,
-                        QC extends WkSzSequenceReadingRuntimeControl<?,?,?>>
+                        QC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>>
         extends WkSrlzEngineDecoder<
                         X,
                         QC,

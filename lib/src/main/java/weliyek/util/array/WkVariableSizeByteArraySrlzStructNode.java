@@ -24,7 +24,7 @@ import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -47,7 +47,7 @@ public class WkVariableSizeByteArraySrlzStructNode
                       WkVariableSizeByteArraySrlzStructNode,
                       WkVariableSizeByteArraySrlzInputNode,
                       WkSzInputBytestreamBase<?>,
-                      WkSzOperationSettings,
+                      WkSettingsSrlzPacketOperationData,
                       WkVariableSizeByteArraySrlzStructNode,
                       WkVariableSizeByteArraySrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
@@ -67,7 +67,7 @@ public class WkVariableSizeByteArraySrlzStructNode
                       WkVariableSizeByteArraySrlzStructNode,
                       WkVariableSizeByteArraySrlzInputNode,
                       WkSzInputBytestreamBase<?>,
-                      WkSzOperationSettings,?,?,
+                      WkSettingsSrlzPacketOperationData,?,?,
                       WkVariableSizeByteArraySrlzStructNode,
                       WkVariableSizeByteArraySrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
@@ -83,7 +83,7 @@ public class WkVariableSizeByteArraySrlzStructNode
                         WkByteArray,
                         WkSzVariableLengthOperationSettings,
                         WkVariableSizeByteArraySrlzInputNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkVariableSizeByteArraySrlzOutputNode,
                         WkVariableSizeByteArraySrlzStructNode> definitionCore;
   private final SequenceSizeParameters<WkByteArray> sizeLimits;
@@ -96,7 +96,7 @@ public class WkVariableSizeByteArraySrlzStructNode
         WkByteArray,
         WkSzVariableLengthOperationSettings,
         WkVariableSizeByteArraySrlzInputNode,
-        WkSzOperationSettings,
+        WkSettingsSrlzPacketOperationData,
         WkVariableSizeByteArraySrlzOutputNode,
         WkVariableSizeByteArraySrlzStructNode>(
                                   1024, // de/serialization step size
@@ -104,7 +104,7 @@ public class WkVariableSizeByteArraySrlzStructNode
                                   WkVariableSizeByteArraySrlzStructNode::getRxRequestedLength,
                                   (i,xs,axb,xkc,dc) -> new WkVariableSizeByteArraySrlzInputNode(i,xs,axb,xkc,dc).operationCore,
                                   WkBasicByteArraySrlzEngineDecoder.FACTORY,
-                                  (SerializingPrimitiveArrayLengthProvider<WkByteArray,WkSzOperationSettings,WkVariableSizeByteArraySrlzStructNode>)WkVariableSizeByteArraySrlzStructNode::getTxRequestedLength,
+                                  (SerializingPrimitiveArrayLengthProvider<WkByteArray,WkSettingsSrlzPacketOperationData,WkVariableSizeByteArraySrlzStructNode>)WkVariableSizeByteArraySrlzStructNode::getTxRequestedLength,
                                   (i,y,ys,ayb,ykc,dc) -> new WkVariableSizeByteArraySrlzOutputNode(i,y,ys,ayb,ykc,dc).operationCore,
                                   WkByteArraySrlzEngineEncoder.FACTORY,
                                   this,
@@ -118,7 +118,7 @@ public class WkVariableSizeByteArraySrlzStructNode
 
   private static int getTxRequestedLength(
     WkByteArray wrapper,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkVariableSizeByteArraySrlzStructNode definition) {
     return wrapper.getLength();
   }

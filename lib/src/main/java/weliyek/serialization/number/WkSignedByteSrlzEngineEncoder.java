@@ -20,7 +20,7 @@ package weliyek.serialization.number;
 import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveWriteEngineFactory;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public final class WkSignedByteSrlzEngineEncoder
     extends WkPrimitiveSrlzEngineEncoder<Byte>
@@ -30,7 +30,7 @@ public final class WkSignedByteSrlzEngineEncoder
       new WkSzPrimitiveWriteEngineFactory<>("SINT8", WkSignedByteSrlzEngineEncoder::new);
 
   private WkSignedByteSrlzEngineEncoder(
-    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
+    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
     WkNumberSrlzOutputPacketEncoderFrameLeafNode<Byte,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

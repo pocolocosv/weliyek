@@ -20,47 +20,47 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.util.array.WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore;
 
 public final class WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<
                         T extends Collection<ET>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YO extends WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                                         T,YS,
-                                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD,ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
                         YD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<
                                         T,?,YO,?,ET,?,?,?,EYS,?,EYO,?,?,VYS>,
                         ZT extends Number,
-                        ZYS extends WkSzOperationSettings,
+                        ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         ET,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        VYS extends WkSzOperationSettings>
+                        VYS extends WkSettingsSrlzPacketOperationData>
     extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         T, YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YO,
                         WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<
                           T,YS,YO,YD,ZT,ZYS,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
@@ -74,8 +74,8 @@ public final class WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNode
     implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         T,
                         YS,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YD, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>
 {
 

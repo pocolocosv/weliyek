@@ -18,7 +18,7 @@
 package weliyek.serialization.sequence;
 
 public class WkSzSequenceOnlyOperationRuntimeControlModule
-    implements WkSzSequenceOnlyOperationRuntimeControl
+    implements WkSequenceOnlySrlzPacketOperationCtrl
 {
 
   private long currentPos;

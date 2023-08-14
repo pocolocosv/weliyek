@@ -18,15 +18,15 @@
 package weliyek.util.array;
 
 import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode;
@@ -34,12 +34,12 @@ import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinition
 
 public abstract class WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         T,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends WkSzWritingRuntime<YB>,
-                        YQC extends WkSzWritingRuntimeControl<YB,YBC,YQ>,
-                        YR extends WkSzWritingResult,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
+                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YO extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<
                                         T,YS,YQ,YR,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YOC extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
@@ -50,10 +50,10 @@ public abstract class WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         YD extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,?,YO,?,?>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ZT extends Number,
-                        ZYS extends WkSzOperationSettings,
+                        ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
-                        VYS extends WkSzOperationSettings,
+                        VYS extends WkSettingsSrlzPacketOperationData,
                         VYO extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,VYS,?,?,VYD>,
                         VYD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<

@@ -26,10 +26,10 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
-                        XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,?,? extends WkSzReadingRuntime<?>,?,XD>,
+                        XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
-                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,?,? extends WkSzWritingRuntime<?>,?,YD>>
+                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
     extends AbstractList<WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
 {
 
@@ -48,7 +48,7 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
     <YYD extends WkAggregatorSrlzStructDefinitionFrameNode<YY,?>,
      YY,
      YYB extends WkSzOutputBytestreamBase<?>,
-     YYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<YY,?,? extends WkSzWritingRuntime<?>,?,YYD>>
+     YYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
     WkSrlzOutputPacketSubfieldList<YY,YYB,YYD,YYO> newSerializingHandlers(
       WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
       List<WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
@@ -67,7 +67,7 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
     <XXD extends WkAggregatorSrlzStructDefinitionFrameNode<XX,?>,
      XX,
      XXB extends WkSzInputBytestreamBase<?>,
-     XXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<XX,?,? extends WkSzReadingRuntime<?>,?,XXD>>
+     XXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>
     WkSrlzInputPacketSubfieldList<XX,XXB,XXD,XXO> newDeserializingHandlers(
       WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
       List<WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();

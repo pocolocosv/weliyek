@@ -26,50 +26,50 @@ import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSzBasicReadingResult;
-import weliyek.serialization.WkSzBasicReadingRuntime;
-import weliyek.serialization.WkSzBasicWritingResult;
-import weliyek.serialization.WkSzBasicWritingRuntime;
+import weliyek.serialization.WkBasicDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkBasicEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public class SimplifiedStringFromBytesCore<
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                                         XS,
-                                        WkSzReadingRuntime<WkSzInputBytestream>,
-                                        WkSzReadingResult<String>,
+                                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                        WkDecodingResultSrlzPacketOperationData<String>,
                                         XD,
                                         SXD,
                                         SXO>,
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                                         YS,
-                                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD,
                                         SYD,
                                         SYO>,
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
-                        SXS extends WkSzOperationSettings,
+                        SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
                         SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
-                        SYS extends WkSzOperationSettings,
+                        SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
                         SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>,
                         SD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
@@ -78,21 +78,21 @@ public class SimplifiedStringFromBytesCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkSzReadingRuntimeControl<
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<String>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<String>,
                         XO, XD,
                         WkSzInputBytestreamBase<?>,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YO, YD,
                         WkSzOutputBytestreamBase<?>,
                         SXS,
@@ -128,11 +128,11 @@ public class SimplifiedStringFromBytesCore<
     super(
           defaultCharset,
           componentCore,
-          WkSzBasicReadingRuntime::new,
-          WkSzBasicReadingResult::new,
+          WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicDecodingResultSrlzPacketOperationData::new,
           readingOpFactory,
-          WkSzBasicWritingRuntime::new,
-          WkSzBasicWritingResult::empty,
+          WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicEncodingResultSrlzPacketOperationData::empty,
           writingOpFactory,
           bytesLabel,
           Optional.empty(),

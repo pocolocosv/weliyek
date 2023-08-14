@@ -20,14 +20,14 @@ package weliyek.serialization.number;
 import java.io.IOException;
 
 import weliyek.serialization.WkPrimitiveSrlzEngineDecoder;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkLongSrlzEngineDecoder
     extends WkPrimitiveSrlzEngineDecoder<Long>
 {
 
   protected WkLongSrlzEngineDecoder(
-    WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
+    WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
     WkNumberSrlzInputPacketDecoderFrameLeafNode<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }

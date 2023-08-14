@@ -29,7 +29,7 @@ import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
@@ -42,12 +42,12 @@ import weliyek.serialization.filter.FieldTester;
 public final class VariableSizeCollectionField<
                         T extends Collection<ET>,
                         XS extends WkSzVariableLengthOperationSettings,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,?>>
@@ -64,12 +64,12 @@ public final class VariableSizeCollectionField<
 
   public static <T extends Collection<ET>,
                  XS extends WkSzVariableLengthOperationSettings,
-                 YS extends WkSzOperationSettings,
+                 YS extends WkSettingsSrlzPacketOperationData,
                  ET,
-                 EXS extends WkSzOperationSettings,
+                 EXS extends WkSettingsSrlzPacketOperationData,
                  EXD extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
                  EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                 EYS extends WkSzOperationSettings,
+                 EYS extends WkSettingsSrlzPacketOperationData,
                  EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                  ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>>
@@ -116,12 +116,12 @@ public final class VariableSizeCollectionField<
 
   public static <T extends Collection<ET>,
                  XS extends WkSzVariableLengthOperationSettings,
-                 YS extends WkSzOperationSettings,
+                 YS extends WkSettingsSrlzPacketOperationData,
                  ET,
-                 EXS extends WkSzOperationSettings,
+                 EXS extends WkSettingsSrlzPacketOperationData,
                  EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                 EYS extends WkSzOperationSettings,
+                 EYS extends WkSettingsSrlzPacketOperationData,
                  EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                  ED extends WkSrlzStructDefinitionFrameNode<ET,?>>

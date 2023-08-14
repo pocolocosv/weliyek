@@ -22,9 +22,9 @@ import weliyek.util.array.WkPrimitiveArraySrlzOutputPacketEncoderFrameNode;
 
 public interface WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                         Y extends WkPrimitiveArray<?, ?>,
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzSequenceWritingRuntime<?>,
-                        R extends WkSzWritingResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
+                        R extends WkEncodingResultSrlzPacketOperationData,
                         D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>>
     extends WkSrlzOutputPacketEncoderFrameLeafNode<Y, S, Q, R, D>,
             WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<Y, S, Q, R, D>,

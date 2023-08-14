@@ -20,7 +20,7 @@ package weliyek.serialization.number;
 import java.io.IOException;
 
 import weliyek.serialization.WkSzPrimitiveWriteEngineFactory;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.sequence.WkLongPrimitiveSrlzEngineEncoder;
 
 public final class WkSignedBigEndianLongSrlzEngineEncoder
@@ -31,7 +31,7 @@ public final class WkSignedBigEndianLongSrlzEngineEncoder
       new WkSzPrimitiveWriteEngineFactory<>("SINT64BE", WkSignedBigEndianLongSrlzEngineEncoder::new);
 
   private WkSignedBigEndianLongSrlzEngineEncoder(
-    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
+    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
     WkNumberSrlzOutputPacketEncoderFrameLeafNode<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

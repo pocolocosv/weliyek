@@ -21,9 +21,9 @@ import java.util.List;
 
 public interface WkSrlzOutputPacketEncoderFrameNode<
                         T,
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzWritingRuntime<?>,
-                        R extends WkSzWritingResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkEncodingRuntimeSrlzPacketOperationData<?>,
+                        R extends WkEncodingResultSrlzPacketOperationData,
                         D extends WkSrlzStructDefinitionFrameNode<T,?>>
         extends WkSrlzPacketOperationFrameNode<
                         S, Q, R, D,

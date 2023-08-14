@@ -22,10 +22,10 @@ import java.util.Optional;
 
 public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
                         T,
-                        YS extends WkSzOperationSettings,
-                        YQ extends WkSzWritingRuntime<?>,
-                        YQC extends WkSzWritingRuntimeControl<?,?,YQ>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
+                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD>,
                         YOC extends WkSrlzOutputPacketEncoderFrameNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSrlzStructDefinitionFrameNode<T,?>,

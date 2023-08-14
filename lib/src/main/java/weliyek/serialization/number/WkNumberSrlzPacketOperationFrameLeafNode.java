@@ -19,14 +19,14 @@ package weliyek.serialization.number;
 
 import weliyek.serialization.WkSrlzPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzPacketOperationFrameLeafNode;
-import weliyek.serialization.WkSzCommonOperationRuntime;
-import weliyek.serialization.WkSzOperationResult;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 
 public interface WkNumberSrlzPacketOperationFrameLeafNode<
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzCommonOperationRuntime<?>,
-                        R extends WkSzOperationResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
+                        R extends WkResultSrlzPacketOperationData,
                         D extends WkNumberSrlzStructDefinitionFrameLeafNode<?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
         extends WkNumberSrlzFrameLeafNode,

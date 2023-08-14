@@ -24,19 +24,19 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.serialization.WkSrlzEngineEncoder;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkPrimitiveSrlzEngineEncoder<T extends Number>
     extends WkSrlzEngineEncoder<
                         T,
-                        WkSzWritingRuntimeControl<?,?,?>,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveSrlzEngineEncoder.class);
 
   protected WkPrimitiveSrlzEngineEncoder(
-    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
+    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
     WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

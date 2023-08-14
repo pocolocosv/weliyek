@@ -19,30 +19,30 @@ package weliyek.serialization.number;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 
 public final class WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends Number,
                         XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<
                                       X,
-                                      WkSzOperationSettings,
-                                      WkSzReadingRuntime<WkSzInputBytestream>,
-                                      WkSzReadingResult<X>,
+                                      WkSettingsSrlzPacketOperationData,
+                                      WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                      WkDecodingResultSrlzPacketOperationData<X>,
                                       XD>,
                         XD extends WkNumberSrlzStructDefinitionFrameLeafNode<X,XO>>
     extends WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         X,
-                        WkSzOperationSettings,
-                        WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingRuntimeControl<
+                        WkSettingsSrlzPacketOperationData,
+                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<X>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<X>,
                         XO,
                         WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<X,XO,XD>,
                         XD,
@@ -52,7 +52,7 @@ public final class WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<
 
   public WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore(
     int index,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<X,?,XD,?,?,?> readingfieldCore,
     WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<X,XO,?,XD> definitionCore,

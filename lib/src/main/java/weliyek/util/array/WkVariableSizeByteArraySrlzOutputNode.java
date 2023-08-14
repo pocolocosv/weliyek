@@ -20,47 +20,47 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public class WkVariableSizeByteArraySrlzOutputNode
     implements WkByteArraySrlzOutputPacketEncoderFrameNode<
-                        WkSzOperationSettings,
-                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSettingsSrlzPacketOperationData,
+                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         WkVariableSizeByteArraySrlzStructNode>,
                WkVaribleSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                         WkByteArray,
-                        WkSzOperationSettings,
-                        WkSzSequenceWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSettingsSrlzPacketOperationData,
+                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         WkVariableSizeByteArraySrlzStructNode>
 {
 
   final SimplifiedPrimitiveArraySerializingCore<
                     WkByteArray,
-                    WkSzOperationSettings,
+                    WkSettingsSrlzPacketOperationData,
                     WkVariableSizeByteArraySrlzStructNode,
                     WkVariableSizeByteArraySrlzOutputNode> operationCore;
 
   WkVariableSizeByteArraySrlzOutputNode(
     int index,
     WkByteArray serializable,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
       WkByteArray,?,WkVariableSizeByteArraySrlzStructNode,?,?,?> serializingfieldCore,
     SimplifiedPrimitiveArraySerializerCore<
-      WkByteArray,?,?,WkSzOperationSettings,WkVariableSizeByteArraySrlzOutputNode,WkVariableSizeByteArraySrlzStructNode> definitionCore) {
+      WkByteArray,?,?,WkSettingsSrlzPacketOperationData,WkVariableSizeByteArraySrlzOutputNode,WkVariableSizeByteArraySrlzStructNode> definitionCore) {
     this.operationCore = new SimplifiedPrimitiveArraySerializingCore<
                                 WkByteArray,
-                                WkSzOperationSettings,
+                                WkSettingsSrlzPacketOperationData,
                                 WkVariableSizeByteArraySrlzStructNode,
                                 WkVariableSizeByteArraySrlzOutputNode>(
                                     index,
@@ -79,17 +79,17 @@ public class WkVariableSizeByteArraySrlzOutputNode
   }
 
   @Override
-  public WkSzOperationSettings settings() {
+  public WkSettingsSrlzPacketOperationData settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkSzSequenceWritingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzWritingResult> result() {
+  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
     return this.operationCore.result();
   }
 

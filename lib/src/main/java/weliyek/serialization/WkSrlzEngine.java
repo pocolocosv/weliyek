@@ -20,7 +20,7 @@ package weliyek.serialization;
 import java.util.Objects;
 
 public abstract class WkSrlzEngine<
-                        QC extends WkSzOperationRuntimeControl<?,?,?>,
+                        QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         O extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>>
 {
 

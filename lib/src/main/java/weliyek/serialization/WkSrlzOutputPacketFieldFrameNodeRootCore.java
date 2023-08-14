@@ -22,19 +22,19 @@ import java.util.Optional;
 
 public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
                         T,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkSrlzStructDefinitionFrameNode<T,?>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>>
     extends WkSrlzOutputPacketFieldFrameNodeCore<
                         T, YS, YD, YO, AYBC,
-                        WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkSzWritingRuntime<?>,?,?>>
+                        WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
     implements WkSzOutputPacket<T, YD, YO>
 {
 
   static public class WritingParameters<
                         Y,
-                        S extends WkSzOperationSettings,
+                        S extends WkSettingsSrlzPacketOperationData,
                         AYB extends WkSzOutputBytestreamBase<?>>
   {
 
@@ -101,7 +101,7 @@ public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousProcessingSte
   }
 
   @Override
-  protected WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkSzWritingRuntime<?>,?,?>,?,?,?>
+  protected WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

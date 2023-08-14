@@ -20,19 +20,19 @@ package weliyek.util.array;
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
-import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class PrimitiveArraySerializerReadingCore<
                         X extends WkPrimitiveArray<?,?>,
-                        XS extends WkSzOperationSettings,
-                        XQ extends WkSzSequenceReadingRuntime<?>,
-                        XQC extends WkSzSequenceReadingRuntimeControl<?,?,XQ>,
-                        XR extends WkSzReadingResult<X>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
+                        XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<X>,
                         XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
                         XOC extends PrimitiveArraySerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X,XO>,

@@ -21,23 +21,23 @@ import java.util.function.BiFunction;
 
 import weliyek.serialization.WkSrlzEngineEncoder;
 import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<Y extends WkPrimitiveArrayBase<?, ?>>
     extends WkSzPrimitiveArrayWrapperWriteEngineFactory<
                         Y,
-                        WkSzSequenceWritingRuntimeControl<?,?,?>,
+                        WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>>
 {
 
   public WkSzBasicPrimitiveArrayWrapperWriteEngineFactory(
       String label,
       BiFunction<
-        WkSzSequenceWritingRuntimeControl<?,?,?>,
+        WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
         WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>,
         WkSrlzEngineEncoder<
           Y,
-          WkSzSequenceWritingRuntimeControl<?,?,?>,
+          WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
           WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }

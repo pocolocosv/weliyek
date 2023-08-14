@@ -22,26 +22,26 @@ import java.util.Collection;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
-import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public final class SimplifiedCollectionDeserializingCore<
                         T extends Collection<ET>,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
                         XO extends CollectionAndElementsFieldDeserializer<
                                         T,
                                         XS,
-                                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                                        WkSzReadingResult<T>,
+                                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                        WkDecodingResultSrlzPacketOperationData<T>,
                                         XD,
                                         ET,EXD,EXO>,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
     extends CollectionAndElementsFieldDeserializerCore<
@@ -49,12 +49,12 @@ public final class SimplifiedCollectionDeserializingCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                        WkSzSequenceReadingRuntimeControl<
+                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzSequenceReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<T>,
+                          WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         XD,
                         XO,
                         SimplifiedCollectionDeserializingCore<T,XS,XD,XO,ET,EXS,EXD,EXO>,

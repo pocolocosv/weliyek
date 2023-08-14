@@ -18,12 +18,12 @@
 package weliyek.util.array;
 
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 
 @FunctionalInterface
 public interface SerializingPrimitiveArrayLengthProvider<
                         Y extends WkPrimitiveArray<?,?>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y, ?>>
 {
 

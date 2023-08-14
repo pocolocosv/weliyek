@@ -31,9 +31,9 @@ import java.util.Optional;
  * @param <K> Packet handler objects of this operation.
  */
 public interface WkSrlzPacketOperationFrameNode<
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzCommonOperationRuntime<?>,
-                        R extends WkSzOperationResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
+                        R extends WkResultSrlzPacketOperationData,
                         D extends WkSrlzStructDefinitionFrameNode<?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
         extends WkSrlzPacketFrameNode,

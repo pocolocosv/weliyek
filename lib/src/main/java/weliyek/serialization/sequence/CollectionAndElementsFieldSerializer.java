@@ -23,18 +23,18 @@ import java.util.Collections;
 import java.util.List;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public interface CollectionAndElementsFieldSerializer<
                         T extends Collection<ET>,
-                        YS extends WkSzOperationSettings,
-                        YQ extends WkSzSequenceWritingRuntime<?>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
                         ET,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,

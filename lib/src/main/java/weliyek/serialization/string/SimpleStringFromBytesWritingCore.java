@@ -17,37 +17,37 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public class SimpleStringFromBytesWritingCore<
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                                       YS,
-                                      WkSzWritingRuntime<WkSzOutputBytestream>,
-                                      WkSzWritingResult,
+                                      WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                      WkEncodingResultSrlzPacketOperationData,
                                       YD,SYD,SYO>,
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
-                        SYS extends WkSzOperationSettings,
+                        SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
                         SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>>
     extends WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YO,
                         SimpleStringFromBytesWritingCore<YS,YO,YD,SYS,SYO,SYD>,
                         YD,

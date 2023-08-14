@@ -24,7 +24,7 @@ import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -39,11 +39,11 @@ public class WkUnsignedBigEndianIntegerSrlzStructNode
 
   public static WkSrlzStructComponentFrameNodeRootCore<
                         Long,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkUnsignedBigEndianIntegerSrlzStructNode,
                         WkUnsignedBigEndianIntegerSrlzInputNode,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkUnsignedBigEndianIntegerSrlzStructNode,
                         WkUnsignedBigEndianIntegerSrlzOutputNode,
                         WkSzOutputBytestreamBase<?>,
@@ -58,11 +58,11 @@ public class WkUnsignedBigEndianIntegerSrlzStructNode
 
   public static WkSrlzStructDefinitionFrameNodeCore<
                         Long,
-                        WkSzOperationSettings,?,?,
+                        WkSettingsSrlzPacketOperationData,?,?,
                         WkUnsignedBigEndianIntegerSrlzStructNode,
                         WkUnsignedBigEndianIntegerSrlzInputNode,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,?,?,
+                        WkSettingsSrlzPacketOperationData,?,?,
                         WkUnsignedBigEndianIntegerSrlzStructNode,
                         WkUnsignedBigEndianIntegerSrlzOutputNode,
                         WkSzOutputBytestreamBase<?>,

@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 public abstract class WkSzEngineFactoryBase<
-                        QC extends WkSzOperationRuntimeControl<?,?,?>,
+                        QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         O extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>,
                         T extends WkSrlzEngine<? super QC, ? super O>>
 {

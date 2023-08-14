@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.function.IntFunction;
 
 import weliyek.serialization.WkPrimitiveSrlzEngineDecoder;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkIntSrlzEngineDecoder<X extends Number>
     extends WkPrimitiveSrlzEngineDecoder<X>
@@ -32,7 +32,7 @@ public abstract class WkIntSrlzEngineDecoder<X extends Number>
 
   protected WkIntSrlzEngineDecoder(
       IntFunction<X> converter,
-      WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
+      WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
       WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.converter = Objects.requireNonNull(converter);

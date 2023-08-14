@@ -19,7 +19,7 @@ package weliyek.serialization;
 
 import java.util.Optional;
 
-public interface WkSzOptionalLengthOperationSettings extends WkSzOperationSettings
+public interface WkSzOptionalLengthOperationSettings extends WkSettingsSrlzPacketOperationData
 {
 
   static WkSzOptionalLengthOperationSettings newSettings(int len) {

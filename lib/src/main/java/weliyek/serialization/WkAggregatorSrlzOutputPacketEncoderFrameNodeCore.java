@@ -22,12 +22,12 @@ import java.util.Optional;
 
 public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         T,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends WkSzWritingRuntime<YB>,
-                        YQC extends WkSzWritingRuntimeControl<YB,YBC,YQ>,
-                        YR extends WkSzWritingResult,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
+                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD>,
                         YOC extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYB,DC>,
@@ -75,7 +75,7 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
 
   @SuppressWarnings("unchecked")
   public <SY,
-             SYS extends WkSzOperationSettings,
+             SYS extends WkSettingsSrlzPacketOperationData,
              SYD extends WkSrlzStructDefinitionFrameNode<SY,?>,
              SYO extends WkSrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,T,YBC,YD,YO> getSubfieldpacketFor(

@@ -27,23 +27,23 @@ import java.util.function.ToIntFunction;
 
 public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
                         T,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends WkSzReadingRuntimeControl<XB,XBC,?>,
-                        XR extends WkSzReadingResult<T>,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
-                                        T,XS,? extends WkSzReadingRuntime<XB>,XR,XD>,
+                                        T,XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WkSzWritingRuntimeControl<YB,YBC,?>,
-                        YR extends WkSzWritingResult,
+                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
-                                        T,YS,? extends WkSzWritingRuntime<YB>,YR,YD>,
+                                        T,YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         D extends WkAggregatorSrlzStructDefinitionFrameNode<T,XO>,
                         DC extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
@@ -106,10 +106,10 @@ public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
   }
 
   public <ST,
-          SXS extends WkSzOperationSettings,
+          SXS extends WkSettingsSrlzPacketOperationData,
           SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
           SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
-          SYS extends WkSzOperationSettings,
+          SYS extends WkSettingsSrlzPacketOperationData,
           SYD extends WkSrlzStructDefinitionFrameNode<ST,?>,
           SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
           SD extends WkSrlzStructDefinitionFrameNode<ST,?>>
@@ -136,10 +136,10 @@ public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
   }
 
   public <ST,
-          SXS extends WkSzOperationSettings,
+          SXS extends WkSettingsSrlzPacketOperationData,
           SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
           SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
-          SYS extends WkSzOperationSettings,
+          SYS extends WkSettingsSrlzPacketOperationData,
           SYD extends WkSrlzStructDefinitionFrameNode<ST,?>,
           SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
           SD extends WkSrlzStructDefinitionFrameNode<ST,?>>
@@ -167,10 +167,10 @@ public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
   }
 
   public <ST,
-          SXS extends WkSzOperationSettings,
+          SXS extends WkSettingsSrlzPacketOperationData,
           SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
           SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
-          SYS extends WkSzOperationSettings,
+          SYS extends WkSettingsSrlzPacketOperationData,
           SYD extends WkSrlzStructDefinitionFrameNode<ST,?>,
           SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
           SD extends WkSrlzStructDefinitionFrameNode<ST,?>>
@@ -198,10 +198,10 @@ public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
   }
 
   private <ST,
-           SXS extends WkSzOperationSettings,
+           SXS extends WkSettingsSrlzPacketOperationData,
            SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
            SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
-           SYS extends WkSzOperationSettings,
+           SYS extends WkSettingsSrlzPacketOperationData,
            SYD extends WkSrlzStructDefinitionFrameNode<ST,?>,
            SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
            SD extends WkSrlzStructDefinitionFrameNode<ST,?>>

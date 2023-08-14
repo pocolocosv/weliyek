@@ -22,23 +22,23 @@ import java.util.function.IntFunction;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSzBasicReadingResult;
-import weliyek.serialization.WkSzBasicReadingRuntime;
-import weliyek.serialization.WkSzBasicWritingResult;
-import weliyek.serialization.WkSzBasicWritingRuntime;
+import weliyek.serialization.WkBasicDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkBasicEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
@@ -48,67 +48,67 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
                         XD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,?,? extends ZXD,? extends VXD>,
                         XO extends WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                                         T,
-                                        WkSzOperationSettings,
-                                        WkSzReadingRuntime<WkSzInputBytestream>,
-                                        WkSzReadingResult<T>,
+                                        WkSettingsSrlzPacketOperationData,
+                                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                        WkDecodingResultSrlzPacketOperationData<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         YD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,?,YO,? extends ZYD,? extends VYD>,
                         YO extends WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                                         T,
-                                        WkSzOperationSettings,
-                                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkSettingsSrlzPacketOperationData,
+                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         ZT extends Number,
                         ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<
                                         ZT,
-                                        WkSzOperationSettings,?,
+                                        WkSettingsSrlzPacketOperationData,?,
                                         ?,ZXD>,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                                         ZT,
-                                        WkSzOperationSettings,?,?,ZYD>,
+                                        WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                         ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
                         VXD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,VXO>,
                         VXO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<
                                         T,WkSzVariableLengthOperationSettings,?,?,VXD>,
                         VYD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,?>,
                         VYO extends WkVariableSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<
-                                        T,WkSzOperationSettings,?,?,VYD>,
+                                        T,WkSettingsSrlzPacketOperationData,?,?,VYD>,
                         VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,VXO>,
                         D extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,YO,ZD,VD>>
     extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                         T,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkSzReadingRuntimeControl<
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<T>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         XO, XD,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YO, YD,
                         WkSzOutputBytestreamBase<?>,
                         ZT,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         ZXO, ZXD,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         ZYO, ZYD,
                         ZD,
                         WkSzVariableLengthOperationSettings,
                         VXO, VXD,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         VYO, VYD,
                         VD,
                         D,
@@ -121,18 +121,18 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
     String sizeComponentLabel,
     IntFunction<ZT> sizeComponentIntToNumber,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZT,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
+      ZT,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,
       ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeComponentDefinitionFactory,
     String varseqComponentLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      T,WkSzVariableLengthOperationSettings,VXD,VXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
+      T,WkSzVariableLengthOperationSettings,VXD,VXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,
       VYD,VYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,VD> varseqComponentDefinitionFactory,
     WkSzPacketReaderOperationCoreFactory<
-      T,WkSzOperationSettings,XD,
+      T,WkSettingsSrlzPacketOperationData,XD,
       WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       XO,WkSzInputBytestreamBase<?>> readingOpFactory,
     WkSzPacketWriterOperationCoreFactory<
-      T,WkSzOperationSettings,YD,
+      T,WkSettingsSrlzPacketOperationData,YD,
       WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<T,XD,XO,YD,YO,ZT,ZXD,ZXO,ZYD,ZYO,ZD,VXD,VXO,VYD,VYO,VD,D>,
       YO,WkSzOutputBytestreamBase<?>> writingOpFactory,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
@@ -140,8 +140,8 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
     Class<T> serializableClass) {
     super(
           sizeComponentLabel,
-          WkSzOperationSettings::none,
-          WkSzOperationSettings::none,
+          WkSettingsSrlzPacketOperationData::none,
+          WkSettingsSrlzPacketOperationData::none,
           (zk,yo,i) -> sizeComponentIntToNumber.apply(yo.serializable().getLength()), // Set size component value from wrapper length.
           sizeComponentDefinitionFactory,
           varseqComponentLabel,
@@ -152,15 +152,15 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
                                      .deserialized().get();
             return WkSzVariableLengthOperationSettings.withLength(sizeNumber.intValue());
           },
-          WkSzOperationSettings::none,
+          WkSettingsSrlzPacketOperationData::none,
           (vk,yo,i) -> yo.serializable(),
           varseqComponentDefinitionFactory,
           componentCore,
-          WkSzBasicReadingRuntime::new,
-          WkSzBasicReadingResult::new,
+          WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicDecodingResultSrlzPacketOperationData::new,
           readingOpFactory,
-          WkSzBasicWritingRuntime::new,
-          WkSzBasicWritingResult::empty,
+          WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicEncodingResultSrlzPacketOperationData::empty,
           writingOpFactory,
           definitionBody,
           serializableClass);

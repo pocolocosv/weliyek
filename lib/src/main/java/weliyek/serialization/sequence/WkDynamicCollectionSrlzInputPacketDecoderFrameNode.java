@@ -20,12 +20,12 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
@@ -33,15 +33,15 @@ import weliyek.util.array.WkDynamicSequenceSrlzInputPacketDecoderFrameNode;
 
 public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         T extends Collection<ET>,
-                        XS extends WkSzOperationSettings,
-                        XQ extends WkSzReadingRuntime<?>,
-                        XR extends WkSzReadingResult<T>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,?,?,?,ZXD>,
                         ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>

@@ -22,11 +22,11 @@ import java.util.function.BiFunction;
 import weliyek.serialization.WkSzReadEngineFactory;
 import weliyek.serialization.WkSrlzEngineDecoder;
 import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSzPrimitiveArrayWrapperReadEngineFactory<
                         X extends WkPrimitiveArray<?,?>,
-                        QC extends WkSzSequenceReadingRuntimeControl<?,?,?>,
+                        QC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         O extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>
   extends WkSzReadEngineFactory<X, QC, O>
 {

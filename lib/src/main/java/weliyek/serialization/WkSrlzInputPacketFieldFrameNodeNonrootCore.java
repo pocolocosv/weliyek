@@ -24,11 +24,11 @@ import weliyek.serialization.filter.FilterResults;
 
 public class WkSrlzInputPacketFieldFrameNodeNonrootCore<
                         T,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSrlzStructDefinitionFrameNode<T,?>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        AXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkSzReadingRuntime<?>,?,?>>
+                        AXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
         extends WkSrlzInputPacketFieldFrameNodeCore<T, XS, XD, XO, AXBC, AXO>
 {
 

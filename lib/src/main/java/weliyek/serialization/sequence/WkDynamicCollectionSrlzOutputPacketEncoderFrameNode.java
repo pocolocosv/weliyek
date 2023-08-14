@@ -20,30 +20,30 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.util.array.WkDynamicSequenceSrlzOutputPacketEncoderFrameNode;
 
 public interface WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         T extends Collection<ET>,
-                        YS extends WkSzOperationSettings,
-                        YQ extends WkSzWritingRuntime<?>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,?,?,?,ZYD>,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         ET,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        VYS extends WkSzOperationSettings>
+                        VYS extends WkSettingsSrlzPacketOperationData>
     extends WkDynamicCollectionSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,?>,

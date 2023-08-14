@@ -21,52 +21,52 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkFixedSizeByteArraySrlzStructNode;
 import weliyek.util.array.WkFixedSizeByteArraySrlzOutputNode;
 
 public class WkStringWithFixedLengthBytesSrlzOutputNode
     implements WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
-                        WkSzOperationSettings,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSettingsSrlzPacketOperationData,
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzStructNode,
                         WkFixedSizeByteArraySrlzStructNode,
                         WkFixedSizeByteArraySrlzOutputNode>
 {
 
   final SimpleStringFromBytesWritingCore<
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzOutputNode,
                         WkStringWithFixedLengthBytesSrlzStructNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzOutputNode,
                         WkFixedSizeByteArraySrlzStructNode> operationCore;
 
   WkStringWithFixedLengthBytesSrlzOutputNode(
     int index,
     String serializable,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
       String,?,WkStringWithFixedLengthBytesSrlzStructNode,?,?,?> serializingfieldCore,
     SimplifiedStringFromBytesCore<
-      ?,?,?,WkSzOperationSettings,WkStringWithFixedLengthBytesSrlzOutputNode,
-      WkStringWithFixedLengthBytesSrlzStructNode,?,?,?,WkSzOperationSettings,
+      ?,?,?,WkSettingsSrlzPacketOperationData,WkStringWithFixedLengthBytesSrlzOutputNode,
+      WkStringWithFixedLengthBytesSrlzStructNode,?,?,?,WkSettingsSrlzPacketOperationData,
       WkFixedSizeByteArraySrlzOutputNode,WkFixedSizeByteArraySrlzStructNode,?,
       ? extends WkStringWithFixedLengthBytesSrlzStructNode> definitionCore) {
-    this.operationCore = new SimpleStringFromBytesWritingCore<WkSzOperationSettings,
+    this.operationCore = new SimpleStringFromBytesWritingCore<WkSettingsSrlzPacketOperationData,
         WkStringWithFixedLengthBytesSrlzOutputNode,
         WkStringWithFixedLengthBytesSrlzStructNode,
-        WkSzOperationSettings,
+        WkSettingsSrlzPacketOperationData,
         WkFixedSizeByteArraySrlzOutputNode,
         WkFixedSizeByteArraySrlzStructNode>(
                                   index,
@@ -91,17 +91,17 @@ public class WkStringWithFixedLengthBytesSrlzOutputNode
   }
 
   @Override
-  public WkSzOperationSettings settings() {
+  public WkSettingsSrlzPacketOperationData settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzWritingResult> result() {
+  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
     return this.operationCore.result();
   }
 

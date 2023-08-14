@@ -24,18 +24,18 @@ import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 public class WkSzPrimitiveReadEngineFactory<X extends Number>
     extends WkSzReadEngineFactory<
                         X,
-                        WkSzReadingRuntimeControl<?,?,?>,
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>
 {
 
   public WkSzPrimitiveReadEngineFactory(
       String label,
       BiFunction<
-        WkSzReadingRuntimeControl<?,?,?>,
+        WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
         WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>,
         WkSrlzEngineDecoder<
           X,
-          ? super WkSzReadingRuntimeControl<?,?,?>,
+          ? super WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
           ? super WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }

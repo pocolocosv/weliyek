@@ -22,19 +22,19 @@ import java.util.Optional;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 
 public final class WkSignedLittleEndianLongSrlzInputNode
         implements WkNumberSrlzInputPacketDecoderFrameLeafNode<
                         Long,
-                        WkSzOperationSettings,
-                        WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<Long>,
+                        WkSettingsSrlzPacketOperationData,
+                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<Long>,
                         WkSignedLittleEndianLongSrlzStructNode>
 {
 
@@ -45,7 +45,7 @@ public final class WkSignedLittleEndianLongSrlzInputNode
 
   WkSignedLittleEndianLongSrlzInputNode(
     int index,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
       Long,?,WkSignedLittleEndianLongSrlzStructNode,?,?,?> deserializingfieldCore,
@@ -61,17 +61,17 @@ public final class WkSignedLittleEndianLongSrlzInputNode
   }
 
   @Override
-  public WkSzOperationSettings settings() {
+  public WkSettingsSrlzPacketOperationData settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
+  public WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzReadingResult<Long>> result() {
+  public Optional<WkDecodingResultSrlzPacketOperationData<Long>> result() {
     return this.operationCore.result();
   }
 

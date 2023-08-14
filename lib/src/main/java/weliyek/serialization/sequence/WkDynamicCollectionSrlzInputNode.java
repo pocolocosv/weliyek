@@ -24,33 +24,33 @@ import java.util.Optional;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 
 public class WkDynamicCollectionSrlzInputNode<
                         T extends Collection<ET>,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         ZT extends Number,
-                        ZXS extends WkSzOperationSettings,
+                        ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
     implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         T, XS,
-                        WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<T>,
+                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         WkDynamicCollectionSrlzStructNode<
                           T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                         ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>
@@ -60,8 +60,8 @@ public class WkDynamicCollectionSrlzInputNode<
                         T, XS,
                         WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                           T, XS,
-                          WkSzReadingRuntime<WkSzInputBytestream>,
-                          WkSzReadingResult<T>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                          WkDecodingResultSrlzPacketOperationData<T>,
                           WkDynamicCollectionSrlzStructNode<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -79,7 +79,7 @@ public class WkDynamicCollectionSrlzInputNode<
     WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<
       T,XS,
       WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
-        T,XS,WkSzReadingRuntime<WkSzInputBytestream>,WkSzReadingResult<T>,
+        T,XS,WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,WkDecodingResultSrlzPacketOperationData<T>,
         WkDynamicCollectionSrlzStructNode<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
         ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
       WkDynamicCollectionSrlzStructNode<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -88,8 +88,8 @@ public class WkDynamicCollectionSrlzInputNode<
                                 T, XS,
                                 WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                                 T, XS,
-                                WkSzReadingRuntime<WkSzInputBytestream>,
-                                WkSzReadingResult<T>,
+                                WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                WkDecodingResultSrlzPacketOperationData<T>,
                                 WkDynamicCollectionSrlzStructNode<
                                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                 ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -129,12 +129,12 @@ public class WkDynamicCollectionSrlzInputNode<
   }
 
   @Override
-  public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
+  public WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzReadingResult<T>> result() {
+  public Optional<WkDecodingResultSrlzPacketOperationData<T>> result() {
     return this.operationCore.result();
   }
 

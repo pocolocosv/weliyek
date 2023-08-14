@@ -22,19 +22,19 @@ import java.util.Optional;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 
 public final class WkSignedLittleEndianShortSrlzInputNode
         implements WkNumberSrlzInputPacketDecoderFrameLeafNode<
                         Short,
-                        WkSzOperationSettings,
-                        WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<Short>,
+                        WkSettingsSrlzPacketOperationData,
+                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<Short>,
                         WkSignedLittleEndianShortSrlzStructNode>
 {
 
@@ -45,7 +45,7 @@ public final class WkSignedLittleEndianShortSrlzInputNode
 
     WkSignedLittleEndianShortSrlzInputNode(
       int index,
-      WkSzOperationSettings settings,
+      WkSettingsSrlzPacketOperationData settings,
       WkSzInputBytestreamBase<?> parentBytestream,
       WkSrlzInputPacketFieldFrameNodeCore<
         Short,?,WkSignedLittleEndianShortSrlzStructNode,?,?,?> deserializingpacketCore,
@@ -59,17 +59,17 @@ public final class WkSignedLittleEndianShortSrlzInputNode
     }
 
     @Override
-    public WkSzOperationSettings settings() {
+    public WkSettingsSrlzPacketOperationData settings() {
       return this.operationCore.settings();
     }
 
     @Override
-    public WkSzReadingRuntime<WkSzInputBytestream> dashboard() {
+    public WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
       return this.operationCore.dashboard();
     }
 
     @Override
-    public Optional<WkSzReadingResult<Short>> result() {
+    public Optional<WkDecodingResultSrlzPacketOperationData<Short>> result() {
       return this.operationCore.result();
     }
 

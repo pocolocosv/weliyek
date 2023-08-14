@@ -23,21 +23,21 @@ import java.util.function.Function;
 
 public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                         T,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
                                         T,
                                         XS,
-                                        WkSzReadingRuntime<WkSzInputBytestream>,
-                                        WkSzReadingResult<T>,
+                                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                        WkDecodingResultSrlzPacketOperationData<T>,
                                         XD>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,
                                         YS,
-                                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD>,
                         D extends WkAggregatorSrlzStructDefinitionFrameNode<T,XO>>
     extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
@@ -45,21 +45,21 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkSzReadingRuntimeControl<
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<?>,
-                          WkSzReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<T>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         XD, XO,
                         WkSzInputBytestreamBase<?>,
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<?>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YD, YO,
                         WkSzOutputBytestreamBase<?>,
                         D,
@@ -81,11 +81,11 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
     Class<T> serializableClass) {
     super(
           componentCore,
-          WkSzBasicReadingRuntime::new,
-          WkSzBasicReadingResult::new,
+          WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicDecodingResultSrlzPacketOperationData::new,
           deserializerFactory,
-          WkSzBasicWritingRuntime::new,
-          WkSzBasicWritingResult::empty,
+          WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicEncodingResultSrlzPacketOperationData::empty,
           serializerFactory,
           body,
           serializableClass);

@@ -19,9 +19,9 @@ package weliyek.serialization;
 
 public interface WkAggregatorSrlzOutputPacketEncoderFrameNode<
                         T,
-                        YS extends WkSzOperationSettings,
-                        YQ extends WkSzWritingRuntime<?>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>>
         extends WkAggregatorSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,

@@ -24,7 +24,7 @@ import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -42,11 +42,11 @@ public class WkFixedSizeByteArraySrlzStructNode
 
   public static WkSrlzStructComponentFrameNodeRootCore<
                       WkByteArray,
-                      WkSzOperationSettings,
+                      WkSettingsSrlzPacketOperationData,
                       WkFixedSizeByteArraySrlzStructNode,
                       WkFixedSizeByteArraySrlzInputNode,
                       WkSzInputBytestreamBase<?>,
-                      WkSzOperationSettings,
+                      WkSettingsSrlzPacketOperationData,
                       WkFixedSizeByteArraySrlzStructNode,
                       WkFixedSizeByteArraySrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
@@ -63,11 +63,11 @@ public class WkFixedSizeByteArraySrlzStructNode
 
   public static WkSrlzStructDefinitionFrameNodeCore<
                       WkByteArray,
-                      WkSzOperationSettings,?,?,
+                      WkSettingsSrlzPacketOperationData,?,?,
                       WkFixedSizeByteArraySrlzStructNode,
                       WkFixedSizeByteArraySrlzInputNode,
                       WkSzInputBytestreamBase<?>,
-                      WkSzOperationSettings,?,?,
+                      WkSettingsSrlzPacketOperationData,?,?,
                       WkFixedSizeByteArraySrlzStructNode,
                       WkFixedSizeByteArraySrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
@@ -80,9 +80,9 @@ public class WkFixedSizeByteArraySrlzStructNode
 
   private final SimplifiedPrimitiveArraySerializerCore<
                         WkByteArray,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzInputNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzOutputNode,
                         WkFixedSizeByteArraySrlzStructNode> definitionCore;
   private final SequenceFixedSizeParameter<WkByteArray> fixedSizeParameter;
@@ -92,9 +92,9 @@ public class WkFixedSizeByteArraySrlzStructNode
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
         WkByteArray,
-        WkSzOperationSettings,
+        WkSettingsSrlzPacketOperationData,
         WkFixedSizeByteArraySrlzInputNode,
-        WkSzOperationSettings,
+        WkSettingsSrlzPacketOperationData,
         WkFixedSizeByteArraySrlzOutputNode,
         WkFixedSizeByteArraySrlzStructNode>(
                                     1024, // de/serialization step size
@@ -102,7 +102,7 @@ public class WkFixedSizeByteArraySrlzStructNode
                                     WkFixedSizeByteArraySrlzStructNode::getRxRequestedLengthFromDefinition,
                                     (i,xs,axb,xkc,dc) -> new WkFixedSizeByteArraySrlzInputNode(i,xs,axb,xkc,dc).operationCore,
                                     WkBasicByteArraySrlzEngineDecoder.FACTORY,
-                                    (SerializingPrimitiveArrayLengthProvider<WkByteArray,WkSzOperationSettings,WkFixedSizeByteArraySrlzStructNode>)WkFixedSizeByteArraySrlzStructNode::getTxRequestedLengthFromDefinition,
+                                    (SerializingPrimitiveArrayLengthProvider<WkByteArray,WkSettingsSrlzPacketOperationData,WkFixedSizeByteArraySrlzStructNode>)WkFixedSizeByteArraySrlzStructNode::getTxRequestedLengthFromDefinition,
                                     (i,y,ys,ayb,ykc,dc) -> new WkFixedSizeByteArraySrlzOutputNode(i,y,ys,ayb,ykc,dc).operationCore,
                                     WkByteArraySrlzEngineEncoder.FACTORY,
                                     this,
@@ -110,11 +110,11 @@ public class WkFixedSizeByteArraySrlzStructNode
     this.fixedSizeParameter = new SequenceFixedSizeParameter<WkByteArray>(expectedLength, this.definitionCore);
   }
 
-  private static int getRxRequestedLengthFromDefinition(WkSzOperationSettings none, WkFixedSizeByteArraySrlzStructNode definition) {
+  private static int getRxRequestedLengthFromDefinition(WkSettingsSrlzPacketOperationData none, WkFixedSizeByteArraySrlzStructNode definition) {
     return definition.getExpectedLength();
   }
 
-  private static int getTxRequestedLengthFromDefinition(WkByteArray wrapper, WkSzOperationSettings none, WkFixedSizeByteArraySrlzStructNode definition) {
+  private static int getTxRequestedLengthFromDefinition(WkByteArray wrapper, WkSettingsSrlzPacketOperationData none, WkFixedSizeByteArraySrlzStructNode definition) {
     return definition.getExpectedLength();
   }
 

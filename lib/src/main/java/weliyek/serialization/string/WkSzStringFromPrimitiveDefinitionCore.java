@@ -31,46 +31,46 @@ import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkPrimitiveArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkPrimitiveArraySrlzOutputPacketEncoderFrameNode;
 import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
 
 public abstract class WkSzStringFromPrimitiveDefinitionCore<
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends WkSzReadingRuntimeControl<XB,XBC,?>,
-                        XR extends WkSzReadingResult<String>,
-                        XO extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS,? extends WkSzReadingRuntime<XB>,XR,XD,ST,SXD,SXO>,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<String>,
+                        XO extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,ST,SXD,SXO>,
                         XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WkSzWritingRuntimeControl<YB,YBC,?>,
-                        YR extends WkSzWritingResult,
-                        YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<YS,? extends WkSzWritingRuntime<YB>,YR,YD,ST,SYD,SYO>,
+                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,ST,SYD,SYO>,
                         YD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ST extends WkPrimitiveArray<?,?>,
-                        SXS extends WkSzOperationSettings,
+                        SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkPrimitiveArraySrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
                         SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST,SXO>,
-                        SYS extends WkSzOperationSettings,
+                        SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
                         SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST,?>,
                         SD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST, SXO>,

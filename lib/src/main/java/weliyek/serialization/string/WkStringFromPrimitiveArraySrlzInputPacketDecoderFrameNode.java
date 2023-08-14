@@ -18,20 +18,20 @@
 package weliyek.serialization.string;
 
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.util.array.WkPrimitiveArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
 
 public interface WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<
-                        XS extends WkSzOperationSettings,
-                        XQ extends WkSzReadingRuntime<?>,
-                        XR extends WkSzReadingResult<String>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<String>,
                         XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,? extends SXD>,
                         SX extends WkPrimitiveArray<?,?>,
                         SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SX, SXO>,

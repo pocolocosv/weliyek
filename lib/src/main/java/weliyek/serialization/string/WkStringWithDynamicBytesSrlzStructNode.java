@@ -29,7 +29,7 @@ import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
@@ -49,9 +49,9 @@ import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 public class WkStringWithDynamicBytesSrlzStructNode<
                         ZT extends Number,
                         ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
-                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,WkSzOperationSettings,?,?,ZXD>,
+                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
-                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,WkSzOperationSettings,?,?,ZYD>,
+                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                         ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>>
     implements WkStringFromBytesSrlzStructDefinitionFrameNode<
                         WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
@@ -61,16 +61,16 @@ public class WkStringWithDynamicBytesSrlzStructNode<
 
   public static <ZX extends Number,
                  ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,ZXO>,
-                 ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSzOperationSettings,?,?,ZXD>,
+                 ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
                  ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,?>,
-                 ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSzOperationSettings,?,?,ZYD>,
+                 ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                  ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,ZXO>>
   WkSrlzStructComponentFrameNodeRootCore<String,
-                  WkSzOperationSettings,
+                  WkSettingsSrlzPacketOperationData,
                   WkStringWithDynamicBytesSrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   WkStringWithDynamicBytesSrlzInputNode<ZX,ZXD,ZXO>,
                   WkSzInputBytestreamBase<?>,
-                  WkSzOperationSettings,
+                  WkSettingsSrlzPacketOperationData,
                   WkStringWithDynamicBytesSrlzStructNode<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                   WkStringWithDynamicBytesSrlzOutputNode<ZX,ZYD,ZYO>,
                   WkSzOutputBytestreamBase<?>,
@@ -85,7 +85,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
     Charset defaultCharset,
     IntFunction<ZX> wrapperSizeGetter,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZX,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
+      ZX,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,
       ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
     return new WkSrlzStructComponentFrameNodeRootCore<>(
                   label,
@@ -97,17 +97,17 @@ public class WkStringWithDynamicBytesSrlzStructNode<
 
   public static <ZX extends Number,
                  ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,ZXO>,
-                 ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSzOperationSettings,?,?,ZXD>,
+                 ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
                  ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,?>,
-                 ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSzOperationSettings,?,?,ZYD>,
+                 ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                  ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,ZXO>>
   WkSrlzStructDefinitionFrameNodeCore<
                         String,
-                        WkSzOperationSettings,?,?,
+                        WkSettingsSrlzPacketOperationData,?,?,
                         WkStringWithDynamicBytesSrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         WkStringWithDynamicBytesSrlzInputNode<ZX,ZXD,ZXO>,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,?,?,
+                        WkSettingsSrlzPacketOperationData,?,?,
                         WkStringWithDynamicBytesSrlzStructNode<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                         WkStringWithDynamicBytesSrlzOutputNode<ZX,ZYD,ZYO>,
                         WkSzOutputBytestreamBase<?>,
@@ -122,7 +122,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
     Charset defaultCharset,
     IntFunction<ZX> wrapperSizeGetter,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZX,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,
+      ZX,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,
       ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
     return new WkStringWithDynamicBytesSrlzStructNode<ZX,ZXD,ZXO,ZYD,ZYO,ZD>(
                         defaultCharset,
@@ -137,16 +137,16 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   }
 
   private final SimplifiedStringFromBytesCore<
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
                         WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkStringWithDynamicBytesSrlzOutputNode<ZT,ZYD,ZYO>,
                         WkStringWithDynamicBytesSrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
                         WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
                         WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
@@ -163,19 +163,19 @@ public class WkStringWithDynamicBytesSrlzStructNode<
     int minLength,
     int maxLength,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZT,WkSzOperationSettings,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSzOperationSettings,ZYD,ZYO,
+      ZT,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,ZYD,ZYO,
       WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
     this.definitionCore = new SimplifiedStringFromBytesCore<
-                                  WkSzOperationSettings,
+                                  WkSettingsSrlzPacketOperationData,
                                   WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
                                   WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                                  WkSzOperationSettings,
+                                  WkSettingsSrlzPacketOperationData,
                                   WkStringWithDynamicBytesSrlzOutputNode<ZT,ZYD,ZYO>,
                                   WkStringWithDynamicBytesSrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                                  WkSzOperationSettings,
+                                  WkSettingsSrlzPacketOperationData,
                                   WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
                                   WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                                  WkSzOperationSettings,
+                                  WkSettingsSrlzPacketOperationData,
                                   WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
                                   WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                   WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
@@ -185,9 +185,9 @@ public class WkStringWithDynamicBytesSrlzStructNode<
                                       (i,xs,axb,xpc,dc) -> new WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>(i,xs,axb,xpc,dc).operationCore,
                                       (i,y,ys,ayb,ypc,dc) -> new WkStringWithDynamicBytesSrlzOutputNode<ZT,ZYD,ZYO>(i,y,ys,ayb,ypc,dc).operationCore,
                                       bytesLabel,
-                                      WkSzOperationSettings::none,
+                                      WkSettingsSrlzPacketOperationData::none,
                                       WkStringWithDynamicBytesSrlzStructNode::aggragateByteArray,
-                                      WkSzOperationSettings::none,
+                                      WkSettingsSrlzPacketOperationData::none,
                                       new BytesFromDynamicStringDisaggregator<ZT,ZYD,ZYO>(),
                                       (pc) -> WkDynamicByteArraySrlzStructNode.<ZT,ZXD,ZXO,ZYD,ZYO,ZD>newCore(
                                           pc, szieLabel, wrapperSizeGetter, arrayLabel,
@@ -197,7 +197,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
 
   private static <ZX extends Number,
                   ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,ZXO>,
-                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSzOperationSettings,?,?,ZXD>>
+                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>>
   String aggragateByteArray(WkStringWithDynamicBytesSrlzInputNode<ZX,ZXD,ZXO> deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
@@ -212,7 +212,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   class BytesFromDynamicStringDisaggregator<
                         ZY extends Number,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZY,?>,
-                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZY,WkSzOperationSettings,?,?,ZYD>>
+                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZY,WkSettingsSrlzPacketOperationData,?,?,ZYD>>
       extends ByteArrayFromStringDisaggregator<
                         WkStringWithDynamicBytesSrlzOutputNode<ZY,ZYD,ZYO>,
                         WkDynamicByteArraySrlzStructNode<ZY,?,?,ZYD,ZYO,? extends ZYD>>

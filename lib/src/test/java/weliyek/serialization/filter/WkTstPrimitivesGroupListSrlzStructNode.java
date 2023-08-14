@@ -22,7 +22,7 @@ import java.util.function.Predicate;
 
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
@@ -38,62 +38,62 @@ public class WkTstPrimitivesGroupListSrlzStructNode
                         WkTstPrimitivesGroupListSrlzOutputNode,
                         WkSignedLittleEndianIntegerSrlzStructNode,
                         WkSzTstPrimitivesGroup,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketReader,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzVariableLengthOperationSettings,
-                        WkSzOperationSettings>
+                        WkSettingsSrlzPacketOperationData>
 {
 
     final WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<
                         WkSzTstPrimitivesGroupList,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzInputNode,
                         WkTstPrimitivesGroupListSrlzStructNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzOutputNode,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         Integer,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSignedLittleEndianIntegerSrlzInputNode,
                         WkSignedLittleEndianIntegerSrlzStructNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSignedLittleEndianIntegerSrlzOutputNode,
                         WkSignedLittleEndianIntegerSrlzStructNode,
                         WkSignedLittleEndianIntegerSrlzStructNode,
                         WkSzTstPrimitivesGroup,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketReader,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzVariableLengthOperationSettings,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzStructNode> fieldCore;
 
     WkTstPrimitivesGroupListSrlzStructNode(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
         fieldCore = new WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<
-                            WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzStructNode, WkSzOperationSettings, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSzOperationSettings, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSzOperationSettings, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition, WkSzVariableLengthOperationSettings, WkSzOperationSettings, WkTstPrimitivesGroupListSrlzStructNode>(
+                            WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzStructNode, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode>(
                                 0, //minSize,
                                 1024, //maxSize,
                                 "SIZE", //sizeFieldLabel,
-                                WkSzOperationSettings::none, //sizeDeserializerSettingsFactory,
-                                WkSzOperationSettings::none, //sizeSerializerSettingsFactory,
+                                WkSettingsSrlzPacketOperationData::none, //sizeDeserializerSettingsFactory,
+                                WkSettingsSrlzPacketOperationData::none, //sizeSerializerSettingsFactory,
                                 Integer::valueOf, //sizeValueFactory,
                                 WkSignedLittleEndianIntegerSrlzStructNode::newCore, //sizeDefinitionFactory,
                                 "VARLIST", //collectionAndElementsFieldLabel,
                                 (i,axo) -> WkSzVariableLengthOperationSettings.withLength(axo.size().field().get().firstOperation().get().result().get().deserialized().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
-                                WkSzOperationSettings::none, //collectionAndElementsSerializerSettingsFactory,
+                                WkSettingsSrlzPacketOperationData::none, //collectionAndElementsSerializerSettingsFactory,
                                 "PRIMIVITESGROUP", //elementFieldLabel,
                                 (pc) -> new WkSzTstPrimitivesGroupStructDefinition(pc).definitionCore,
-                                WkSzOperationSettings::none, //elementDeserializerSettingsFactory,
-                                WkSzOperationSettings::none, //elementSerializerSettingsFactory,
+                                WkSettingsSrlzPacketOperationData::none, //elementDeserializerSettingsFactory,
+                                WkSettingsSrlzPacketOperationData::none, //elementSerializerSettingsFactory,
                                 (i,xs,axb,xkc,xdc) -> new WkTstPrimitivesGroupListSrlzInputNode(i,xs,axb,xkc,xdc).readingCore, //deserializerFactory,
                                 (i,y,ys,ayb,ykc,ydc) -> new WkTstPrimitivesGroupListSrlzOutputNode(i,y,ys,ayb,ykc,ydc).writingCore, //serializerFactory,
                                 (l) -> new WkSzTstPrimitivesGroupList(l),
@@ -110,7 +110,7 @@ public class WkTstPrimitivesGroupListSrlzStructNode
 
     @Override
     public
-    WkSrlzStructSubcomponentFrameNode<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzOperationSettings, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
+    WkSrlzStructSubcomponentFrameNode<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
     variableSequence() {
       return this.fieldCore.variableSequence();
     }

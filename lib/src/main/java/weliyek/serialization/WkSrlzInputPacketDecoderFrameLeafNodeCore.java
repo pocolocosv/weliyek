@@ -23,10 +23,10 @@ import java.util.Optional;
 
 public abstract class WkSrlzInputPacketDecoderFrameLeafNodeCore<
                         X,
-                        XS extends WkSzOperationSettings,
-                        XQ extends WkSzReadingRuntime<?>,
-                        XQC extends WkSzReadingRuntimeControl<?,?,XQ>,
-                        XR extends WkSzReadingResult<X>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<X>,
                         XO extends WkSrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
                         XOC extends WkSrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSrlzStructDefinitionFrameLeafNode<X,XO>,

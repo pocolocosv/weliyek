@@ -26,7 +26,7 @@ import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -54,11 +54,11 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
 
   public static WkSrlzStructComponentFrameNodeRootCore<
                       String,
-                      WkSzOperationSettings,
+                      WkSettingsSrlzPacketOperationData,
                       WkStringWithFixedLengthBytesSrlzStructNode,
                       WkStringWithFixedLengthBytesSrlzInputNode,
                       WkSzInputBytestreamBase<?>,
-                      WkSzOperationSettings,
+                      WkSettingsSrlzPacketOperationData,
                       WkStringWithFixedLengthBytesSrlzStructNode,
                       WkStringWithFixedLengthBytesSrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
@@ -78,11 +78,11 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
 
   public static WkSrlzStructDefinitionFrameNodeCore<
                       String,
-                      WkSzOperationSettings,?,?,
+                      WkSettingsSrlzPacketOperationData,?,?,
                       WkStringWithFixedLengthBytesSrlzStructNode,
                       WkStringWithFixedLengthBytesSrlzInputNode,
                       WkSzInputBytestreamBase<?>,
-                      WkSzOperationSettings,?,?,
+                      WkSettingsSrlzPacketOperationData,?,?,
                       WkStringWithFixedLengthBytesSrlzStructNode,
                       WkStringWithFixedLengthBytesSrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
@@ -96,16 +96,16 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
   }
 
   private final SimplifiedStringFromBytesCore<
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzInputNode,
                         WkStringWithFixedLengthBytesSrlzStructNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzOutputNode,
                         WkStringWithFixedLengthBytesSrlzStructNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzInputNode,
                         WkFixedSizeByteArraySrlzStructNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzOutputNode,
                         WkFixedSizeByteArraySrlzStructNode,
                         WkFixedSizeByteArraySrlzStructNode,
@@ -123,9 +123,9 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
                                   (i,xs,axb,xpc,dc) -> new WkStringWithFixedLengthBytesSrlzInputNode(i,xs,axb,xpc,dc).operationCore,
                                   (i,y,ys,ayb,ypc,dc) -> new WkStringWithFixedLengthBytesSrlzOutputNode(i,y,ys,ayb,ypc,dc).operationCore,
                                   bytesLabel,
-                                  WkSzOperationSettings::none,
+                                  WkSettingsSrlzPacketOperationData::none,
                                   WkStringWithFixedLengthBytesSrlzStructNode::aggragateByteArray,
-                                  WkSzOperationSettings::none,
+                                  WkSettingsSrlzPacketOperationData::none,
                                   new FixedLengthBytesDisaggregatorFromString(expectedSize),
                                   (pc) -> WkFixedSizeByteArraySrlzStructNode.newCore(expectedSize, pc),
                                   this);

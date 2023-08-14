@@ -22,31 +22,31 @@ import java.util.List;
 
 import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSzSequenceWritingRuntime;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
-import weliyek.serialization.WkSzWritingResult;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public abstract class CollectionAndElementsFieldSerializerCore<
                         T extends Collection<ET>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends WkSzSequenceWritingRuntime<YB>,
-                        YQC extends WkSzSequenceWritingRuntimeControl<YB,YBC,YQ>,
-                        YR extends WkSzWritingResult,
+                        YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<YB>,
+                        YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
                         YO extends CollectionAndElementsFieldSerializer<T,YS,YQ,YR,YD,ET,EYD,EYO>,
                         YOC extends CollectionAndElementsFieldSerializerCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYBC,ET,EYS,EYD,EYO,DC>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ET,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         DC extends CollectionAndElementsFieldDefinitionCore<

@@ -27,7 +27,7 @@ import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOptionalLengthOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
@@ -104,7 +104,7 @@ public class WkStringWithVariableBytesSrlzStructNode
                         WkSzVariableLengthOperationSettings,
                         WkVariableSizeByteArraySrlzInputNode,
                         WkVariableSizeByteArraySrlzStructNode,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkVariableSizeByteArraySrlzOutputNode,
                         WkVariableSizeByteArraySrlzStructNode,
                         WkVariableSizeByteArraySrlzStructNode,
@@ -124,7 +124,7 @@ public class WkStringWithVariableBytesSrlzStructNode
                                     bytesLabel,
                                     WkOperationSettingsFactory.parentSettingsReuser(), // reusing deserializing settings
                                     WkStringWithVariableBytesSrlzStructNode::aggragateByteArray,
-                                    WkSzOperationSettings::none,
+                                    WkSettingsSrlzPacketOperationData::none,
                                     new VariableLengthBytesDissagregatorFromString(),
                                     (pc) -> WkVariableSizeByteArraySrlzStructNode.newCore(minSize, maxSize, pc),
                                     this);

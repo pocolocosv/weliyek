@@ -21,54 +21,54 @@ import weliyek.serialization.WkSzReadEngineFactory;
 import weliyek.serialization.WkSzWriteEngineFactory;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.WkSzBasicReadingResult;
-import weliyek.serialization.WkSzBasicReadingRuntime;
-import weliyek.serialization.WkSzBasicWritingResult;
-import weliyek.serialization.WkSzBasicWritingRuntime;
+import weliyek.serialization.WkBasicDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkBasicEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public final class WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
                         T extends Number,
                         XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<
                                       T,
-                                      WkSzOperationSettings,
-                                      WkSzReadingRuntime<WkSzInputBytestream>,
-                                      WkSzReadingResult<T>,
+                                      WkSettingsSrlzPacketOperationData,
+                                      WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                      WkDecodingResultSrlzPacketOperationData<T>,
                                       D>,
                         YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                                       T,
-                                      WkSzOperationSettings,
-                                      WkSzWritingRuntime<WkSzOutputBytestream>,
-                                      WkSzWritingResult,
+                                      WkSettingsSrlzPacketOperationData,
+                                      WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                      WkEncodingResultSrlzPacketOperationData,
                                       D>,
                         D extends WkNumberSrlzStructDefinitionFrameLeafNode<T,XO>>
     extends WkNumberSrlzStructDefinitionFrameNodeCore<
                         T,
-                        WkSzOperationSettings,
-                        WkSzReadingRuntimeControl<
+                        WkSettingsSrlzPacketOperationData,
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<T>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         D, XO,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,
-                        WkSzWritingRuntimeControl<
+                        WkSettingsSrlzPacketOperationData,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         D, YO,
                         WkSzOutputBytestreamBase<?>,
                         D,
@@ -78,27 +78,27 @@ public final class WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
   public WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore(
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     WkSzPacketReaderOperationCoreFactory<
-      T, WkSzOperationSettings, D, WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<T,XO,YO,D>,
+      T, WkSettingsSrlzPacketOperationData, D, WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<T,XO,YO,D>,
       XO, WkSzInputBytestreamBase<?>> rxOpFactory,
     WkSzReadEngineFactory<
-      T, ? super WkSzReadingRuntimeControl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-      WkSzReadingRuntime<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
+      T, ? super WkDecodingRuntimeSrlzPacketOperationCtrl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
+      WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
     WkSzPacketWriterOperationCoreFactory<
-      T, WkSzOperationSettings, D, WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<T,XO,YO,D>,
+      T, WkSettingsSrlzPacketOperationData, D, WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<T,XO,YO,D>,
       YO, WkSzOutputBytestreamBase<?>> txOpFactory,
     WkSzWriteEngineFactory<
-      T, ? super WkSzWritingRuntimeControl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-      WkSzWritingRuntime<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
+      T, ? super WkEncodingRuntimeSrlzPacketOperationCtrl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+      WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(
           componentCore,
-          WkSzBasicReadingRuntime::new,
-          WkSzBasicReadingResult::new,
+          WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicDecodingResultSrlzPacketOperationData::new,
           rxOpFactory,
           rxSerializerFactory,
-          WkSzBasicWritingRuntime::new,
-          WkSzBasicWritingResult::empty,
+          WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl::new,
+          WkBasicEncodingResultSrlzPacketOperationData::empty,
           txOpFactory,
           txSerializerFactory,
           definitionBody,

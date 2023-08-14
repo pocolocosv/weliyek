@@ -23,32 +23,32 @@ import java.util.function.Consumer;
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
-import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public class SimplifiedPrimitiveArrayDeserializingCore<
                         X extends WkPrimitiveArray<?,?>,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X,XO>,
                         XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
                                           X,
                                           XS,
-                                          WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                                          WkSzReadingResult<X>,
+                                          WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                          WkDecodingResultSrlzPacketOperationData<X>,
                                           D>>
     extends PrimitiveArraySerializerReadingCore<
                         X,
                         XS,
-                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                        WkSzSequenceReadingRuntimeControl<
+                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzSequenceReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<X>,
+                          WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<X>,
                         XO,
                         SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>,
                         D,

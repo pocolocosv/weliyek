@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
@@ -51,7 +51,7 @@ public class WkStringWithDynamicSizeBytesTest
 
   private static WkSrlzStructComponentFrameNodeRootCore<
                           String,
-                          WkSzOperationSettings,
+                          WkSettingsSrlzPacketOperationData,
                           WkStringWithDynamicBytesSrlzStructNode<Integer,
                                     WkSignedBigEndianIntegerSrlzStructNode,
                                     WkSignedBigEndianIntegerSrlzInputNode,
@@ -59,7 +59,7 @@ public class WkStringWithDynamicSizeBytesTest
                                     ? extends WkSignedBigEndianIntegerSrlzStructNode>,
                           WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
                           WkSzInputBytestreamBase<?>,
-                          WkSzOperationSettings,
+                          WkSettingsSrlzPacketOperationData,
                           WkStringWithDynamicBytesSrlzStructNode<
                                     Integer, ?, ?,
                                     WkSignedBigEndianIntegerSrlzStructNode,
@@ -123,7 +123,7 @@ public class WkStringWithDynamicSizeBytesTest
                 WkStringWithDynamicBytesSrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>>
       dynstrWriting = DYNAMIC_STR_STRUCT.newOutputPacket(
                                               originalStr,
-                                              WkSzOperationSettings.EMPTY,
+                                              WkSettingsSrlzPacketOperationData.EMPTY,
                                               outputstream);
     logger.info(dynstrWriting.name() + " created");
     while(dynstrWriting.isInProgress()) {
@@ -160,7 +160,7 @@ public class WkStringWithDynamicSizeBytesTest
           String,
           WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode,?,?,? extends WkSignedBigEndianIntegerSrlzStructNode>,
           WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>>
-      dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
     while(dynstrReading.isInProgress()) {
       dynstrReading.processBytestream();

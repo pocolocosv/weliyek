@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-public interface WkSzVariableLengthOperationSettings extends WkSzOperationSettings
+public interface WkSzVariableLengthOperationSettings extends WkSettingsSrlzPacketOperationData
 {
 
   static <AO extends WkSrlzPacketOperationFrameNode<WkSzVariableLengthOperationSettings,?,?,?,?>>

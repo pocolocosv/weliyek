@@ -25,21 +25,21 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzSequenceReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 
 public final class WkVariableSizeByteArraySrlzInputNode
     implements WkByteArraySrlzInputPacketDecoderFrameNode<
                         WkSzVariableLengthOperationSettings,
-                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<WkByteArray>,
+                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<WkByteArray>,
                         WkVariableSizeByteArraySrlzStructNode>,
                WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
                         WkByteArray,
                         WkSzVariableLengthOperationSettings,
-                        WkSzSequenceReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<WkByteArray>,
+                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<WkByteArray>,
                         WkVariableSizeByteArraySrlzStructNode>
 {
 
@@ -87,12 +87,12 @@ public final class WkVariableSizeByteArraySrlzInputNode
   }
 
   @Override
-  public WkSzSequenceReadingRuntime<WkSzInputBytestream> dashboard() {
+  public WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzReadingResult<WkByteArray>> result() {
+  public Optional<WkDecodingResultSrlzPacketOperationData<WkByteArray>> result() {
     return this.operationCore.result();
   }
 

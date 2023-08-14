@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.util.KetzaByteOutputStream;
@@ -46,11 +46,11 @@ public class WkStringWithFixedBytesTest
 
     private WkSrlzStructComponentFrameNodeRootCore<
                         String,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzStructNode,
                         WkStringWithFixedLengthBytesSrlzInputNode,
                         WkSzInputBytestreamBase<?>,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzStructNode,
                         WkStringWithFixedLengthBytesSrlzOutputNode,
                         WkSzOutputBytestreamBase<?>,
@@ -76,7 +76,7 @@ public class WkStringWithFixedBytesTest
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
         WkSzOutputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzOutputNode>
-          stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(shortStr, WkSzOperationSettings.EMPTY, outputstream);
+          stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(shortStr, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
         logger.info(stringWithFixedSizeSerializing.name() + " created");
 
         assertFalse(stringWithFixedSizeSerializing.isCompleted());
@@ -97,7 +97,7 @@ public class WkStringWithFixedBytesTest
         assertTrue(outputstream.equals(expectedByteArray));
 
         WkSzInputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzInputNode>
-          stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+          stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 
         i = 1;
@@ -127,7 +127,7 @@ public class WkStringWithFixedBytesTest
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
         WkSzOutputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzOutputNode>
-        stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(longStr, WkSzOperationSettings.EMPTY, outputstream);
+        stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(longStr, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
 
         logger.info(stringWithFixedSizeSerializing.name() + " created");
 
@@ -149,7 +149,7 @@ public class WkStringWithFixedBytesTest
         assertTrue(outputstream.equals(expectedByteArray));
 
         WkSzInputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzInputNode>
-          stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+          stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 
         i = 1;

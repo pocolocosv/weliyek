@@ -19,14 +19,14 @@ package weliyek.serialization.number;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkIntPrimiviteSrlzEngineEncoder
     extends WkPrimitiveSrlzEngineEncoder<Integer>
 {
 
   protected WkIntPrimiviteSrlzEngineEncoder(
-    WkSzWritingRuntimeControl<?,?,?> runtimeControl,
+    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
     WkNumberSrlzOutputPacketEncoderFrameLeafNode<Integer,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

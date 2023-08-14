@@ -34,7 +34,7 @@ import weliyek.serialization.WkSrlzPacketOperationFrameNode;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.util.KetzaByteOutputStream;
@@ -49,13 +49,13 @@ public class WkPrimitiveSerializationTests {
     Byte b = Byte.valueOf((byte) 0xFF);
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Byte, WkSzOperationSettings, WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSignedByteSrlzStructNode, WkSignedByteSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedByteSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Byte, WkSettingsSrlzPacketOperationData, WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedByteSrlzStructNode, WkSignedByteSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedByteSrlzStructNode>
       signedBytePacketStructure = WkSignedByteSrlzStructNode.newPacketStructure("SINGLE_SINT8");
 
     logger.info(signedBytePacketStructure.name() + " created");
 
     WkSzOutputPacket<Byte, WkSignedByteSrlzStructNode, WkSignedByteSrlzOutputNode>
-      byteOutput = signedBytePacketStructure.newOutputPacket(b, WkSzOperationSettings.EMPTY, outputBuffer);
+      byteOutput = signedBytePacketStructure.newOutputPacket(b, WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer);
 
     logger.info(byteOutput.name() + " created");
 
@@ -75,7 +75,7 @@ public class WkPrimitiveSerializationTests {
     assertEquals(1, outputBuffer.size());
 
     WkSzInputPacket<Byte, WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>
-      signedByteReading = signedBytePacketStructure.newInputPacket(WkSzOperationSettings.EMPTY, outputBuffer.inputStream());
+      signedByteReading = signedBytePacketStructure.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer.inputStream());
 
     logger.info(signedByteReading.name() + " created");
 
@@ -97,11 +97,11 @@ public class WkPrimitiveSerializationTests {
     Integer b = Integer.valueOf(0xFF);
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSzOperationSettings, WkUnsignedByteSrlzStructNode, WkUnsignedByteSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkUnsignedByteSrlzStructNode, WkUnsignedByteSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedByteSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSettingsSrlzPacketOperationData, WkUnsignedByteSrlzStructNode, WkUnsignedByteSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkUnsignedByteSrlzStructNode, WkUnsignedByteSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedByteSrlzStructNode>
       unsignedBytePacketStructure = WkUnsignedByteSrlzStructNode.newPacketStructure("SINGLE_UINT8");
 
     WkSzOutputPacket<Integer, WkUnsignedByteSrlzStructNode, WkUnsignedByteSrlzOutputNode>
-      byteOutput = unsignedBytePacketStructure.newOutputPacket(b, WkSzOperationSettings.EMPTY, outputBuffer);
+      byteOutput = unsignedBytePacketStructure.newOutputPacket(b, WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer);
 
     logger.info(byteOutput.name() + " created");
 
@@ -122,7 +122,7 @@ public class WkPrimitiveSerializationTests {
     assertEquals(1, outputBuffer.size());
 
     WkSzInputPacket<Integer, WkUnsignedByteSrlzStructNode, WkUnsignedByteSrlzInputNode>
-      unsignedByteReading = unsignedBytePacketStructure.newInputPacket(WkSzOperationSettings.EMPTY, outputBuffer.inputStream());
+      unsignedByteReading = unsignedBytePacketStructure.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer.inputStream());
 
     logger.info(unsignedByteReading.name() + " created");
 
@@ -143,13 +143,13 @@ public class WkPrimitiveSerializationTests {
     Short s = Short.valueOf((short) 0xFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Short, WkSzOperationSettings, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedBigEndianShortSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedBigEndianShortSrlzStructNode>
       signedBigEndianShort = WkSignedBigEndianShortSrlzStructNode.newPacketStructure("SINGLE_SINT16BE");
 
     logger.info(signedBigEndianShort.name() + " created");
 
     WkSzOutputPacket<Short, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode>
-      bigEndianUnsignedShortSerializing = signedBigEndianShort.newOutputPacket(s, WkSzOperationSettings.EMPTY, outputstream);
+      bigEndianUnsignedShortSerializing = signedBigEndianShort.newOutputPacket(s, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(bigEndianUnsignedShortSerializing.name() + " created");
 
     assertFalse(bigEndianUnsignedShortSerializing.isCompleted());
@@ -163,7 +163,7 @@ public class WkPrimitiveSerializationTests {
     assertEquals(2, outputstream.size());
 
     WkSzInputPacket<Short, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode>
-      bigEndianSignedShortDeserializing = signedBigEndianShort.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      bigEndianSignedShortDeserializing = signedBigEndianShort.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(bigEndianSignedShortDeserializing.name() + " created");
 
     assertFalse(bigEndianSignedShortDeserializing.isCompleted());
@@ -184,12 +184,12 @@ public class WkPrimitiveSerializationTests {
     Short s = Short.valueOf((short) 0xFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Short, WkSzOperationSettings, WkSignedLittleEndianShortSrlzStructNode, WkSignedLittleEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSignedLittleEndianShortSrlzStructNode, WkSignedLittleEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedLittleEndianShortSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Short, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianShortSrlzStructNode, WkSignedLittleEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianShortSrlzStructNode, WkSignedLittleEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedLittleEndianShortSrlzStructNode>
       signedLittleEndianShort = WkSignedLittleEndianShortSrlzStructNode.newPacketStructure("SINGLE_SINT16LE");
     logger.info(signedLittleEndianShort.name() + " created");
 
     WkSzOutputPacket<Short, WkSignedLittleEndianShortSrlzStructNode, WkSignedLittleEndianShortSrlzOutputNode>
-      littleEndianShortOutput = signedLittleEndianShort.newOutputPacket(s, WkSzOperationSettings.EMPTY, outputstream);
+      littleEndianShortOutput = signedLittleEndianShort.newOutputPacket(s, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(littleEndianShortOutput.name() + " created");
 
     assertFalse(littleEndianShortOutput.isCompleted());
@@ -203,7 +203,7 @@ public class WkPrimitiveSerializationTests {
     assertEquals(2,outputstream.size());
 
     WkSzInputPacket<Short, WkSignedLittleEndianShortSrlzStructNode, WkSignedLittleEndianShortSrlzInputNode>
-      littleEndianSignedShortReading = signedLittleEndianShort.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      littleEndianSignedShortReading = signedLittleEndianShort.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(littleEndianSignedShortReading.name() + " created");
 
     assertFalse(littleEndianSignedShortReading.isCompleted());
@@ -224,12 +224,12 @@ public class WkPrimitiveSerializationTests {
     Integer s = Integer.valueOf(0xFABC);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSzOperationSettings, WkUnsignedBigEndianShortSrlzStructNode, WkUnsignedBigEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkUnsignedBigEndianShortSrlzStructNode, WkUnsignedBigEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedBigEndianShortSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSettingsSrlzPacketOperationData, WkUnsignedBigEndianShortSrlzStructNode, WkUnsignedBigEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkUnsignedBigEndianShortSrlzStructNode, WkUnsignedBigEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedBigEndianShortSrlzStructNode>
       unsignedBigEndianShort = WkUnsignedBigEndianShortSrlzStructNode.newPacketStructure("SINGLE_UINT16BE");
     logger.info(unsignedBigEndianShort.name() + " created");
 
     WkSzOutputPacket<Integer, WkUnsignedBigEndianShortSrlzStructNode, WkUnsignedBigEndianShortSrlzOutputNode>
-      bigEndianUnsignedShortWriting = unsignedBigEndianShort.newOutputPacket(s, WkSzOperationSettings.EMPTY, outputstream);
+      bigEndianUnsignedShortWriting = unsignedBigEndianShort.newOutputPacket(s, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(bigEndianUnsignedShortWriting.name() + " created");
 
     assertFalse(bigEndianUnsignedShortWriting.isCompleted());
@@ -244,7 +244,7 @@ public class WkPrimitiveSerializationTests {
     assertTrue(outputstream.equals(new byte[] {(byte) 0xFA, (byte) 0xBC}));
 
     WkSzInputPacket<Integer, WkUnsignedBigEndianShortSrlzStructNode, WkUnsignedBigEndianShortSrlzInputNode>
-      bigEndianUnsignedShortReading = unsignedBigEndianShort.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      bigEndianUnsignedShortReading = unsignedBigEndianShort.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
     assertFalse(bigEndianUnsignedShortReading.isCompleted());
     assertTrue(bigEndianUnsignedShortReading.firstOperation().get().result().isEmpty());
@@ -264,12 +264,12 @@ public class WkPrimitiveSerializationTests {
     Integer s = Integer.valueOf(0x0000FABC);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSzOperationSettings, WkUnsignedLittleEndianShortSrlzStructNode, WkUnsignedLittleEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkUnsignedLittleEndianShortSrlzStructNode, WkUnsignedLittleEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedLittleEndianShortSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSettingsSrlzPacketOperationData, WkUnsignedLittleEndianShortSrlzStructNode, WkUnsignedLittleEndianShortSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkUnsignedLittleEndianShortSrlzStructNode, WkUnsignedLittleEndianShortSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedLittleEndianShortSrlzStructNode>
       shortOutputProtocol = WkUnsignedLittleEndianShortSrlzStructNode.newPacketStructure("SINGLE_UINT16LE");
     logger.info(shortOutputProtocol.name() + " created");
 
     WkSzOutputPacket<Integer, WkUnsignedLittleEndianShortSrlzStructNode, WkUnsignedLittleEndianShortSrlzOutputNode>
-      littleEndianShortWriting = shortOutputProtocol.newOutputPacket(s, WkSzOperationSettings.EMPTY, outputstream);
+      littleEndianShortWriting = shortOutputProtocol.newOutputPacket(s, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(littleEndianShortWriting.name() + " created");
 
     assertFalse(littleEndianShortWriting.isCompleted());
@@ -284,7 +284,7 @@ public class WkPrimitiveSerializationTests {
     assertTrue(outputstream.equals(new byte[] {(byte) 0xBC, (byte) 0xFA}));
 
     WkSzInputPacket<Integer, WkUnsignedLittleEndianShortSrlzStructNode, WkUnsignedLittleEndianShortSrlzInputNode>
-      littleEndianUnsignedShortReading = shortOutputProtocol.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      littleEndianUnsignedShortReading = shortOutputProtocol.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(littleEndianUnsignedShortReading.name() + " created");
 
     assertFalse(littleEndianUnsignedShortReading.isCompleted());
@@ -305,12 +305,12 @@ public class WkPrimitiveSerializationTests {
     Integer i = Integer.valueOf(0xFFFFFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSzOperationSettings, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedBigEndianIntegerSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedBigEndianIntegerSrlzStructNode>
       signedBigEndianInt = WkSignedBigEndianIntegerSrlzStructNode.newPacketStructure("SINGLE_SINT32BE");
     logger.info(signedBigEndianInt.name() + " created");
 
     WkSzOutputPacket<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>
-      signedBigEndianIntSerializing = signedBigEndianInt.newOutputPacket(i, WkSzOperationSettings.EMPTY, outputstream);
+      signedBigEndianIntSerializing = signedBigEndianInt.newOutputPacket(i, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(signedBigEndianIntSerializing.name() + " created");
 
     assertFalse(signedBigEndianIntSerializing.isCompleted());
@@ -324,7 +324,7 @@ public class WkPrimitiveSerializationTests {
     assertEquals(4, outputstream.size());
 
     WkSzInputPacket<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>
-      signedBigEndianIntDeserializing = signedBigEndianInt.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      signedBigEndianIntDeserializing = signedBigEndianInt.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(signedBigEndianIntDeserializing.name() + " created");
 
     assertFalse(signedBigEndianIntDeserializing.isCompleted());
@@ -345,12 +345,12 @@ public class WkPrimitiveSerializationTests {
     Integer i = Integer.valueOf(0xFFFFFFFF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSzOperationSettings, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedLittleEndianIntegerSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedLittleEndianIntegerSrlzStructNode>
       signedLittleEndianInt = WkSignedLittleEndianIntegerSrlzStructNode.newPacketStructure("SINGLE_SINT32LE");
     logger.info(signedLittleEndianInt.name() + " created");
 
     WkSzOutputPacket<Integer, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzOutputNode>
-      signedLittleEndianIntSerializing = signedLittleEndianInt.newOutputPacket(i, WkSzOperationSettings.EMPTY, outputstream);
+      signedLittleEndianIntSerializing = signedLittleEndianInt.newOutputPacket(i, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(signedLittleEndianIntSerializing.name() + " created");
 
     assertFalse(signedLittleEndianIntSerializing.isCompleted());
@@ -364,7 +364,7 @@ public class WkPrimitiveSerializationTests {
     assertEquals(4, outputstream.size());
 
     WkSzInputPacket<Integer, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzInputNode>
-      signedLittleEndianIntDeserializing = signedLittleEndianInt.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      signedLittleEndianIntDeserializing = signedLittleEndianInt.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(signedLittleEndianIntDeserializing.name() + " created");
 
     assertFalse(signedLittleEndianIntDeserializing.isCompleted());
@@ -385,12 +385,12 @@ public class WkPrimitiveSerializationTests {
     Long i = Long.valueOf(0xFFAB_CDEF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Long, WkSzOperationSettings, WkUnsignedBigEndianIntegerSrlzStructNode, WkUnsignedBigEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkUnsignedBigEndianIntegerSrlzStructNode, WkUnsignedBigEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedBigEndianIntegerSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Long, WkSettingsSrlzPacketOperationData, WkUnsignedBigEndianIntegerSrlzStructNode, WkUnsignedBigEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkUnsignedBigEndianIntegerSrlzStructNode, WkUnsignedBigEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedBigEndianIntegerSrlzStructNode>
       unsignedBigEndianInt = WkUnsignedBigEndianIntegerSrlzStructNode.newPacketStructure("SINGLE_UINT32BE");
     logger.info(unsignedBigEndianInt.name() + " created");
 
     WkSzOutputPacket<Long, WkUnsignedBigEndianIntegerSrlzStructNode, WkUnsignedBigEndianIntegerSrlzOutputNode>
-      bigEndianShortWriting = unsignedBigEndianInt.newOutputPacket(i, WkSzOperationSettings.EMPTY, outputstream);
+      bigEndianShortWriting = unsignedBigEndianInt.newOutputPacket(i, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(bigEndianShortWriting.name() + " created");
 
     assertFalse(bigEndianShortWriting.isCompleted());
@@ -406,7 +406,7 @@ public class WkPrimitiveSerializationTests {
         outputstream.equals(new byte[] {(byte) 0xFF, (byte) 0xAB, (byte) 0xCD, (byte) 0xEF}));
 
     WkSzInputPacket<Long, WkUnsignedBigEndianIntegerSrlzStructNode, WkUnsignedBigEndianIntegerSrlzInputNode>
-      bigEndianUnsignedIntReading = unsignedBigEndianInt.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      bigEndianUnsignedIntReading = unsignedBigEndianInt.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
     assertFalse(bigEndianUnsignedIntReading.isCompleted());
     assertTrue(bigEndianUnsignedIntReading.firstOperation().get().result().isEmpty());
@@ -431,12 +431,12 @@ public class WkPrimitiveSerializationTests {
     Long i = Long.valueOf(0xFFABCDEF);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Long, WkSzOperationSettings, WkUnsignedLittleEndianIntegerSrlzStructNode, WkUnsignedLittleEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkUnsignedLittleEndianIntegerSrlzStructNode, WkUnsignedLittleEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedLittleEndianIntegerSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Long, WkSettingsSrlzPacketOperationData, WkUnsignedLittleEndianIntegerSrlzStructNode, WkUnsignedLittleEndianIntegerSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkUnsignedLittleEndianIntegerSrlzStructNode, WkUnsignedLittleEndianIntegerSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkUnsignedLittleEndianIntegerSrlzStructNode>
       unsignedLittleEndianInt = WkUnsignedLittleEndianIntegerSrlzStructNode.newPacketStructure("SINGLE_UINT32LE");
     logger.info(unsignedLittleEndianInt.name() + " created");
 
     WkSzOutputPacket<Long, WkUnsignedLittleEndianIntegerSrlzStructNode, WkUnsignedLittleEndianIntegerSrlzOutputNode>
-      littleEndianShortWriting = unsignedLittleEndianInt.newOutputPacket(i, WkSzOperationSettings.EMPTY, outputstream);
+      littleEndianShortWriting = unsignedLittleEndianInt.newOutputPacket(i, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(littleEndianShortWriting.name() + " created");
 
     assertFalse(littleEndianShortWriting.isCompleted());
@@ -451,7 +451,7 @@ public class WkPrimitiveSerializationTests {
     assertTrue(outputstream.equals(new byte[] {(byte) 0xEF, (byte) 0xCD, (byte) 0xAB, (byte) 0xFF}));
 
     WkSzInputPacket<Long, WkUnsignedLittleEndianIntegerSrlzStructNode, WkUnsignedLittleEndianIntegerSrlzInputNode>
-      littleEndianUnsignedShortReading = unsignedLittleEndianInt.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      littleEndianUnsignedShortReading = unsignedLittleEndianInt.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
     assertFalse(littleEndianUnsignedShortReading.isCompleted());
     assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().isEmpty());
@@ -476,12 +476,12 @@ public class WkPrimitiveSerializationTests {
     Long l = Long.valueOf(0x01234567_89ABCDEFL);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Long, WkSzOperationSettings, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedBigEndianLongSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Long, WkSettingsSrlzPacketOperationData, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedBigEndianLongSrlzStructNode>
       signedBigEndianLong = WkSignedBigEndianLongSrlzStructNode.newPacketStructure("SINGLE_SINT64BE");
     logger.info(signedBigEndianLong.name() + " created");
 
     WkSzOutputPacket<Long, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzOutputNode>
-      signedBigEndianLongSerializing = signedBigEndianLong.newOutputPacket(l, WkSzOperationSettings.EMPTY, outputstream);
+      signedBigEndianLongSerializing = signedBigEndianLong.newOutputPacket(l, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(signedBigEndianLongSerializing.name() + " created");
 
     assertFalse(signedBigEndianLongSerializing.isCompleted());
@@ -498,7 +498,7 @@ public class WkPrimitiveSerializationTests {
                                         (byte) 0x89, (byte) 0xAB, (byte) 0xCD, (byte) 0xEF}));
 
     WkSzInputPacket<Long, WkSignedBigEndianLongSrlzStructNode, WkSignedBigEndianLongSrlzInputNode>
-      signedBigEndianLongDeserializing = signedBigEndianLong.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      signedBigEndianLongDeserializing = signedBigEndianLong.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(signedBigEndianLongDeserializing.name() + " created");
 
     assertFalse(signedBigEndianLongDeserializing.isCompleted());
@@ -524,12 +524,12 @@ public class WkPrimitiveSerializationTests {
     Long l = Long.valueOf(0x01234567_89ABCDEFL);
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSrlzStructComponentFrameNodeRootCore<Long, WkSzOperationSettings, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzInputNode, WkSzInputBytestreamBase<?>, WkSzOperationSettings, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedLittleEndianLongSrlzStructNode>
+    WkSrlzStructComponentFrameNodeRootCore<Long, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedLittleEndianLongSrlzStructNode>
       signedLittleEndianLong = WkSignedLittleEndianLongSrlzStructNode.newPacketStructure("SINGLE_SINT64LE");
     logger.info(signedLittleEndianLong.name() + " created");
 
     WkSzOutputPacket<Long, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzOutputNode>
-      signedLittleEndianLongSerializing = signedLittleEndianLong.newOutputPacket(l, WkSzOperationSettings.EMPTY, outputstream);
+      signedLittleEndianLongSerializing = signedLittleEndianLong.newOutputPacket(l, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
     logger.info(signedLittleEndianLongSerializing.name() + " created");
 
     assertFalse(signedLittleEndianLongSerializing.isCompleted());
@@ -546,7 +546,7 @@ public class WkPrimitiveSerializationTests {
                                         (byte) 0x67, (byte) 0x45, (byte) 0x23, (byte) 0x01}));
 
     WkSzInputPacket<Long, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzInputNode>
-      signedLittleEndianLongDeserializing = signedLittleEndianLong.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      signedLittleEndianLongDeserializing = signedLittleEndianLong.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(signedLittleEndianLongDeserializing.name() + " created");
 
     assertFalse(signedLittleEndianLongDeserializing.isCompleted());

@@ -19,9 +19,9 @@ package weliyek.serialization;
 
 public interface WkSrlzOutputPacketEncoderFrameLeafNode<
                         Y,
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzWritingRuntime<?>,
-                        R extends WkSzWritingResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkEncodingRuntimeSrlzPacketOperationData<?>,
+                        R extends WkEncodingResultSrlzPacketOperationData,
                         D extends WkSrlzStructDefinitionFrameLeafNode<Y,?>>
     extends WkSrlzPacketOperationFrameLeafNode<
                         S, Q, R, D,

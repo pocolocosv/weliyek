@@ -20,16 +20,16 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 
 public interface WkCollectionSrlzOutputPacketEncoderFrameNode<
                         T extends Collection<?>,
-                        YS extends WkSzOperationSettings,
-                        YQ extends WkSzWritingRuntime<?>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkCollectionSrlzStructDefinitionFrameNode<T,?>>
     extends WkCollectionSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,

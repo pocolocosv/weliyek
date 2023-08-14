@@ -30,7 +30,7 @@ import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
@@ -49,11 +49,11 @@ public class WkFilterBuilderTest
 
   private static WkSrlzStructComponentFrameNodeRootCore<
                       WkSzTstMultipleLists,
-                      WkSzOperationSettings,
+                      WkSettingsSrlzPacketOperationData,
                       WkTstMultipleListSrlzStructNode,
                       WkTstMultipleListSrlzInputNode,
                       WkSzInputBytestreamBase<?>,
-                      WkSzOperationSettings,
+                      WkSettingsSrlzPacketOperationData,
                       WkTstMultipleListSrlzStructNode,
                       WkTstMultipleListSrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
@@ -232,14 +232,14 @@ public class WkFilterBuilderTest
       KetzaByteOutputStream out = new KetzaByteOutputStream();
 
       WkSzOutputPacket<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzOutputNode>
-        multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSzOperationSettings.EMPTY, out);
+        multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSettingsSrlzPacketOperationData.EMPTY, out);
 
       while(multiListsSerializer.isInProgress()) {
         multiListsSerializer.processBytestream();
       }
 
       WkSzInputPacket<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzInputNode>
-        multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSzOperationSettings.EMPTY, out.inputStream(), filter);
+        multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, out.inputStream(), filter);
 
       while(multiListsDeserializer.isInProgress()) {
         multiListsDeserializer.processBytestream();

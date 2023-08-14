@@ -18,11 +18,11 @@
 package weliyek.util.array;
 
 import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode;
@@ -31,9 +31,9 @@ import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinition
 
 public interface WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<
                         T,
-                        YS extends WkSzOperationSettings,
-                        YQ extends WkSzWritingRuntime<?>,
-                        YR extends WkSzWritingResult,
+                        YS extends WkSettingsSrlzPacketOperationData,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         D extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZY extends Number,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZY,?,?,?,ZD>,

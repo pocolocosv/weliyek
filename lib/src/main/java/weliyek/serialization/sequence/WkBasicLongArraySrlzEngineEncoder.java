@@ -20,7 +20,7 @@ package weliyek.serialization.sequence;
 import java.io.IOException;
 
 import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkLongArray;
 import weliyek.util.array.WkBasicPrimitiveArrayWrapperSrlzEngineEncoder;
 
@@ -29,7 +29,7 @@ public abstract class WkBasicLongArraySrlzEngineEncoder
 {
 
   protected WkBasicLongArraySrlzEngineEncoder(
-    WkSzSequenceWritingRuntimeControl<?,?,?> runtimeControl,
+    WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
     WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends WkLongArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, Long.BYTES);
   }

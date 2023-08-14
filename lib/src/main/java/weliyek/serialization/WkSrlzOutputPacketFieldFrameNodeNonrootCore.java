@@ -21,12 +21,12 @@ import java.util.function.ToIntFunction;
 
 public class WkSrlzOutputPacketFieldFrameNodeNonrootCore<
                         T,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkSrlzStructDefinitionFrameNode<T,?>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AY,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        AYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<AY,?,? extends WkSzWritingRuntime<?>,?,?>>
+                        AYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<AY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
         extends WkSrlzOutputPacketFieldFrameNodeCore<T, YS, YD, YO, AYBC, AYO>
 {
 

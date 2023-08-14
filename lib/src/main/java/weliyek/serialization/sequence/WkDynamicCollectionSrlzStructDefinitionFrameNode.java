@@ -20,7 +20,7 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
@@ -34,15 +34,15 @@ public interface WkDynamicCollectionSrlzStructDefinitionFrameNode<
                         YO extends WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?,?>,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
                         VXS extends WkSzVariableLengthOperationSettings,
-                        VYS extends WkSzOperationSettings>
+                        VYS extends WkSettingsSrlzPacketOperationData>
     extends WkDynamicCollectionSrlzFrameNode<
                         WkSrlzStructSubcomponentFrameNode<XO, YO, ZD>,
                         WkSrlzStructSubcomponentFrameNode<

@@ -27,10 +27,10 @@ import weliyek.Completable;
 import weliyek.Initializable;
 
 public abstract class WkSrlzPacketOperationFrameNodeCore<
-                        S extends WkSzOperationSettings,
-                        Q extends WkSzCommonOperationRuntime<?>,
-                        QC extends WkSzOperationRuntimeControl<?,?,Q>,
-                        R extends WkSzOperationResult,
+                        S extends WkSettingsSrlzPacketOperationData,
+                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
+                        QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,Q>,
+                        R extends WkResultSrlzPacketOperationData,
                         _D extends WkSrlzStructDefinitionFrameNode<?,?>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSrlzPacketOperationFrameNode<S,?,R,_D,?>,

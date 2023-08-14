@@ -20,14 +20,14 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzOutputPacketEncoderFrameNode;
@@ -39,45 +39,45 @@ import weliyek.serialization.sequence.VariableSizeCollectionFieldSerializer;
 public class WkTstPrimitivesGroupListSrlzOutputNode
     implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         WkSzTstPrimitivesGroupList,
-                        WkSzOperationSettings,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSettingsSrlzPacketOperationData,
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         Integer,
                         WkSignedLittleEndianIntegerSrlzOutputNode,
                         WkSignedLittleEndianIntegerSrlzStructNode,
                         WkSzTstPrimitivesGroup,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter,
-                        WkSzOperationSettings>
+                        WkSettingsSrlzPacketOperationData>
 {
 
     final WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<
                         WkSzTstPrimitivesGroupList,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzOutputNode,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         Integer,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSignedLittleEndianIntegerSrlzOutputNode,
                         WkSignedLittleEndianIntegerSrlzStructNode,
                         WkSzTstPrimitivesGroup,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter,
-                        WkSzOperationSettings> writingCore;
+                        WkSettingsSrlzPacketOperationData> writingCore;
 
     WkTstPrimitivesGroupListSrlzOutputNode(
       int index,
       WkSzTstPrimitivesGroupList serializable,
-      WkSzOperationSettings settings,
+      WkSettingsSrlzPacketOperationData settings,
       WkSzOutputBytestreamBase<?> parentBytestream,
       WkSrlzOutputPacketFieldFrameNodeCore<WkSzTstPrimitivesGroupList, ?, WkTstPrimitivesGroupListSrlzStructNode, ?, ?, ?>
         serializerpacketCore,
-      WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<WkSzTstPrimitivesGroupList, ?, ?, ?, WkSzOperationSettings, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, ?, ?, ?, WkSzOperationSettings, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, WkSzTstPrimitivesGroup, ?, ?, ?, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?, ?, WkSzOperationSettings, ?>
+      WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?, ?, WkSettingsSrlzPacketOperationData, ?>
         definitionCore) {
-      writingCore = new WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSzOperationSettings, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzOperationSettings>(
+      writingCore = new WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSettingsSrlzPacketOperationData>(
             index, serializable, settings, parentBytestream, serializerpacketCore, definitionCore, this);
     }
 
@@ -90,7 +90,7 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
 
     @Override
     public
-    WkSrlzOutputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, ?, WkSzOperationSettings, WkSzTstPrimitivesGroup, ?, ?, ?, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, VariableSizeCollectionFieldSerializer<WkSzTstPrimitivesGroupList, WkSzOperationSettings, WkSzTstPrimitivesGroup, WkSzOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>
+    WkSrlzOutputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, VariableSizeCollectionFieldSerializer<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>
     variableSequence() {
       return this.writingCore.variableSequence();
     }
@@ -101,17 +101,17 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
     }
 
     @Override
-    public WkSzOperationSettings settings() {
+    public WkSettingsSrlzPacketOperationData settings() {
       return this.writingCore.settings();
     }
 
     @Override
-    public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
+    public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
       return this.writingCore.dashboard();
     }
 
     @Override
-    public Optional<WkSzWritingResult> result() {
+    public Optional<WkEncodingResultSrlzPacketOperationData> result() {
       return this.writingCore.result();
     }
 

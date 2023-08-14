@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import weliyek.serialization.WkBasicPrimitiveArrayWrapperSrlzEngineDecoder;
 import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceReadingRuntimeControl;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public final class WkBasicByteArraySrlzEngineDecoder
   extends WkBasicPrimitiveArrayWrapperSrlzEngineDecoder<
@@ -33,7 +33,7 @@ public final class WkBasicByteArraySrlzEngineDecoder
       new WkSzBasicPrimitiveArrayWrapperReadEngineFactory<>("INT8[]", WkBasicByteArraySrlzEngineDecoder::new);
 
   private WkBasicByteArraySrlzEngineDecoder(
-    WkSzSequenceReadingRuntimeControl<?,?,?> runtimeCtrl,
+    WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
     WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<WkByteArray,?,?,?,?> readingOperation) {
     super(WkByteArray::new, 1, runtimeCtrl, readingOperation);
   }

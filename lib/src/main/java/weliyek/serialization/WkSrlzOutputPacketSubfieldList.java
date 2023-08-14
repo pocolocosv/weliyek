@@ -23,7 +23,7 @@ public class WkSrlzOutputPacketSubfieldList<
                         Y,
                         YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<Y,?>,
-                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<Y,?,? extends WkSzWritingRuntime<?>,?,YD>>
+                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<Y,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
         extends WkSrlzPacketSubfieldList<
                         WkSrlzOutputPacketSubfieldFrameNode<?,?,?>,
                         WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YD,YO>,
@@ -37,7 +37,7 @@ public class WkSrlzOutputPacketSubfieldList<
 
   @SuppressWarnings("unchecked")
   <SY,
-   SYS extends WkSzOperationSettings,
+   SYS extends WkSettingsSrlzPacketOperationData,
    SYD extends WkSrlzStructDefinitionFrameNode<SY,?>,
    SYO extends WkSrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(

@@ -33,7 +33,7 @@ import weliyek.Resetable;
 
 public abstract class WkSrlzPacketFieldFrameNodeCore<
                         T,
-                        S extends WkSzOperationSettings,
+                        S extends WkSettingsSrlzPacketOperationData,
                         D extends WkSrlzStructDefinitionFrameNode<?,?>, // Not needed directly but
                         // used nonetheless to simplify the declaration of PacketFieldCore<>
                         // elsewhere where ProtocolField<D> is used.

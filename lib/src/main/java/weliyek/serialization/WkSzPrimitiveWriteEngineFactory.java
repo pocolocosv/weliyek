@@ -24,18 +24,18 @@ import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode
 public class WkSzPrimitiveWriteEngineFactory<T extends Number>
     extends WkSzWriteEngineFactory<
                         T,
-                        WkSzWritingRuntimeControl<?,?,?>,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,?,?,?,?>>
 {
 
   public WkSzPrimitiveWriteEngineFactory(
     String label,
     BiFunction<
-      WkSzWritingRuntimeControl<?,?,?>,
+      WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
       WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,?,?,?,?>,
       WkSrlzEngineEncoder<
         T,
-        WkSzWritingRuntimeControl<?,?,?>,
+        WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
         WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }

@@ -27,7 +27,7 @@ import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 public abstract class WkPrimitiveSrlzEngineDecoder<X extends Number>
     extends WkSrlzEngineDecoder<
                         X,
-                        WkSzReadingRuntimeControl<?,?,?>,
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>
 {
 
@@ -36,7 +36,7 @@ public abstract class WkPrimitiveSrlzEngineDecoder<X extends Number>
   private X deserializedNumber;
 
   protected WkPrimitiveSrlzEngineDecoder(
-      WkSzReadingRuntimeControl<?,?,?> runtimeCtrl,
+      WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
       WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }

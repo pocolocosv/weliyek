@@ -17,13 +17,13 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
 
@@ -31,42 +31,42 @@ public class WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
                         T extends WkPrimitiveArray<?,?>,
                         YO extends WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                                         T,
-                                        WkSzOperationSettings,
-                                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                                        WkSzWritingResult,
+                                        WkSettingsSrlzPacketOperationData,
+                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                        WkEncodingResultSrlzPacketOperationData,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,?,YO,? extends ZYD,? extends VYD>,
                         ZT extends Number,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                                         ZT,
-                                        WkSzOperationSettings,
+                                        WkSettingsSrlzPacketOperationData,
                                         ?,?,ZYD>,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         VYO extends WkVariableSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<
                                         T,
-                                        WkSzOperationSettings,
+                                        WkSettingsSrlzPacketOperationData,
                                         ?,?,VYD>,
                         VYD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,?>>
     extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         T,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingRuntimeControl<
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingRuntimeSrlzPacketOperationCtrl<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSzWritingRuntime<WkSzOutputBytestream>>,
-                        WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YO,
                         WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<T,YO,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD,
                         WkSzOutputBytestreamBase<?>,
                         ZT,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         ZYO,
                         ZYD,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         VYO,
                         VYD,
                         WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
@@ -75,16 +75,16 @@ public class WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
                           ?,?,VYD,VYO,?,?>>
     implements WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         T,
-                        WkSzOperationSettings,
-                        WkSzWritingRuntime<WkSzOutputBytestream>,
-                        WkSzWritingResult,
+                        WkSettingsSrlzPacketOperationData,
+                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                        WkEncodingResultSrlzPacketOperationData,
                         YD, ZT, ZYO, ZYD, VYO, VYD>
 {
 
   public WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore(
     int index,
     T serializable,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
     WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<

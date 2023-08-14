@@ -19,30 +19,30 @@ package weliyek.serialization.string;
 
 import java.nio.charset.Charset;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
-import weliyek.serialization.WkSzWritingRuntimeControl;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public abstract class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends WkSzWritingRuntime<YB>,
-                        YQC extends WkSzWritingRuntimeControl<YB,YBC,YQ>,
-                        YR extends WkSzWritingResult,
+                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
+                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
+                        YR extends WkEncodingResultSrlzPacketOperationData,
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<YS,YQ,YR,YD,SYD,SYO>,
                         YOC extends WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SYS,SYO,SYD,DC>,
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        SYS extends WkSzOperationSettings,
+                        SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
                         SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>,
                         DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<

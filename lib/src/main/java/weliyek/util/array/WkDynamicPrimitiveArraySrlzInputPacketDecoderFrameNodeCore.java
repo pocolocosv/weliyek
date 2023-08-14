@@ -19,11 +19,11 @@ package weliyek.util.array;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
-import weliyek.serialization.WkSzReadingRuntimeControl;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
@@ -32,15 +32,15 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                         T extends WkPrimitiveArray<?,?>,
                         XO extends WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                                         T,
-                                        WkSzOperationSettings,
-                                        WkSzReadingRuntime<WkSzInputBytestream>,
-                                        WkSzReadingResult<T>,
+                                        WkSettingsSrlzPacketOperationData,
+                                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                        WkDecodingResultSrlzPacketOperationData<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,?,? extends ZXD,? extends VXD>,
                         ZT extends Number,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<
                                         ZT,
-                                        WkSzOperationSettings,
+                                        WkSettingsSrlzPacketOperationData,
                                         ?,?,ZXD>,
                         ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
                         VXO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<
@@ -50,21 +50,21 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                         VXD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,VXO>>
     extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingRuntimeControl<
+                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingRuntimeSrlzPacketOperationCtrl<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSzReadingRuntime<WkSzInputBytestream>>,
-                        WkSzReadingResult<T>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         XO,
                         WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<T,XO,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD,
                         WkSzInputBytestreamBase<?>,
                         ZT,
-                        WkSzOperationSettings,
+                        WkSettingsSrlzPacketOperationData,
                         ZXO,
                         ZXD,
                         WkSzVariableLengthOperationSettings,
@@ -76,15 +76,15 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                           VXD,VXO,?,?,?,?>>
     implements WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         T,
-                        WkSzOperationSettings,
-                        WkSzReadingRuntime<WkSzInputBytestream>,
-                        WkSzReadingResult<T>,
+                        WkSettingsSrlzPacketOperationData,
+                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                        WkDecodingResultSrlzPacketOperationData<T>,
                         XD, ZT, ZXO, ZXD, VXO, VXD>
 {
 
   public WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore(
     int index,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> deserializingfieldCore,
     WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<

@@ -20,21 +20,21 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 
 public final class WkSignedByteSrlzOutputNode
     implements WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                     Byte,
-                    WkSzOperationSettings,
-                    WkSzWritingRuntime<WkSzOutputBytestream>,
-                    WkSzWritingResult,
+                    WkSettingsSrlzPacketOperationData,
+                    WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                    WkEncodingResultSrlzPacketOperationData,
                     WkSignedByteSrlzStructNode>
 {
 
@@ -44,7 +44,7 @@ public final class WkSignedByteSrlzOutputNode
                     WkSignedByteSrlzStructNode> newCore(
     int index,
     Byte serializable,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<Byte,?,WkSignedByteSrlzStructNode,?,?,?> writingfieldCore,
     WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
@@ -66,7 +66,7 @@ public final class WkSignedByteSrlzOutputNode
   WkSignedByteSrlzOutputNode(
     int index,
     Byte serializable,
-    WkSzOperationSettings settings,
+    WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<Byte,?,WkSignedByteSrlzStructNode,?,?,?> writingfieldCore,
     WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
@@ -88,17 +88,17 @@ public final class WkSignedByteSrlzOutputNode
   }
 
   @Override
-  public WkSzOperationSettings settings() {
+  public WkSettingsSrlzPacketOperationData settings() {
     return this.writingCore.settings();
   }
 
   @Override
-  public WkSzWritingRuntime<WkSzOutputBytestream> dashboard() {
+  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
     return this.writingCore.dashboard();
   }
 
   @Override
-  public Optional<WkSzWritingResult> result() {
+  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
     return this.writingCore.result();
   }
 

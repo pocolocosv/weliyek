@@ -31,19 +31,19 @@ import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkSzReadingResult;
-import weliyek.serialization.WkSzReadingRuntime;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.WkSzWritingResult;
-import weliyek.serialization.WkSzWritingRuntime;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.filter.FieldTester;
 import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
@@ -51,39 +51,39 @@ import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode
 
 public class WkDynamicCollectionSrlzStructNode<
                         T extends Collection<ET>,
-                        XS extends WkSzOperationSettings,
-                        YS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         ZT extends Number,
-                        ZXS extends WkSzOperationSettings,
+                        ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
-                        ZYS extends WkSzOperationSettings,
+                        ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                         ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
                         ET,
-                        EXS extends WkSzOperationSettings,
+                        EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                        EYS extends WkSzOperationSettings,
+                        EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
                         VXS extends WkSzVariableLengthOperationSettings,
-                        VYS extends WkSzOperationSettings>
+                        VYS extends WkSettingsSrlzPacketOperationData>
     implements WkDynamicCollectionSrlzStructDefinitionFrameNode<
                         T,
                         WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                           T, XS,
-                          WkSzReadingRuntime<WkSzInputBytestream>,
-                          WkSzReadingResult<T>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                          WkDecodingResultSrlzPacketOperationData<T>,
                           WkDynamicCollectionSrlzStructNode<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
                         WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                           T, YS,
-                          WkSzWritingRuntime<WkSzOutputBytestream>,
-                          WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                          WkEncodingResultSrlzPacketOperationData,
                           WkDynamicCollectionSrlzStructNode<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -91,34 +91,34 @@ public class WkDynamicCollectionSrlzStructNode<
 {
 
   public static <T extends Collection<ET>,
-                 XS extends WkSzOperationSettings,
-                 YS extends WkSzOperationSettings,
+                 XS extends WkSettingsSrlzPacketOperationData,
+                 YS extends WkSettingsSrlzPacketOperationData,
                  ZT extends Number,
-                 ZXS extends WkSzOperationSettings,
+                 ZXS extends WkSettingsSrlzPacketOperationData,
                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
                  ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
-                 ZYS extends WkSzOperationSettings,
+                 ZYS extends WkSettingsSrlzPacketOperationData,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
                  ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                  ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
                  ET,
-                 EXS extends WkSzOperationSettings,
+                 EXS extends WkSettingsSrlzPacketOperationData,
                  EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                 EYS extends WkSzOperationSettings,
+                 EYS extends WkSettingsSrlzPacketOperationData,
                  EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                  ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
                  VXS extends WkSzVariableLengthOperationSettings,
-                 VYS extends WkSzOperationSettings>
+                 VYS extends WkSettingsSrlzPacketOperationData>
   WkSrlzStructComponentFrameNodeRootCore<
                 T, XS,
                 WkDynamicCollectionSrlzStructNode<
                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                 WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                   T, XS,
-                  WkSzReadingRuntime<WkSzInputBytestream>,
-                  WkSzReadingResult<T>,
+                  WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                  WkDecodingResultSrlzPacketOperationData<T>,
                   WkDynamicCollectionSrlzStructNode<
                     T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                   ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -128,8 +128,8 @@ public class WkDynamicCollectionSrlzStructNode<
                   T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                 WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                   T, YS,
-                  WkSzWritingRuntime<WkSzOutputBytestream>,
-                  WkSzWritingResult,
+                  WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                  WkEncodingResultSrlzPacketOperationData,
                   WkDynamicCollectionSrlzStructNode<
                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                   ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -142,17 +142,17 @@ public class WkDynamicCollectionSrlzStructNode<
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -188,34 +188,34 @@ public class WkDynamicCollectionSrlzStructNode<
   }
 
   public static <T extends Collection<ET>,
-                 XS extends WkSzOperationSettings,
-                 YS extends WkSzOperationSettings,
+                 XS extends WkSettingsSrlzPacketOperationData,
+                 YS extends WkSettingsSrlzPacketOperationData,
                  ZT extends Number,
-                 ZXS extends WkSzOperationSettings,
+                 ZXS extends WkSettingsSrlzPacketOperationData,
                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
                  ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
-                 ZYS extends WkSzOperationSettings,
+                 ZYS extends WkSettingsSrlzPacketOperationData,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
                  ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
                  ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
                  ET,
-                 EXS extends WkSzOperationSettings,
+                 EXS extends WkSettingsSrlzPacketOperationData,
                  EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
-                 EYS extends WkSzOperationSettings,
+                 EYS extends WkSettingsSrlzPacketOperationData,
                  EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                  ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
                  VXS extends WkSzVariableLengthOperationSettings,
-                 VYS extends WkSzOperationSettings>
+                 VYS extends WkSettingsSrlzPacketOperationData>
   WkSrlzStructDefinitionFrameNodeCore<
                  T, XS,?,?,
                  WkDynamicCollectionSrlzStructNode<
                    T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                  WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                    T, XS,
-                   WkSzReadingRuntime<WkSzInputBytestream>,
-                   WkSzReadingResult<T>,
+                   WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                   WkDecodingResultSrlzPacketOperationData<T>,
                    WkDynamicCollectionSrlzStructNode<
                      T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                    ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
@@ -225,8 +225,8 @@ public class WkDynamicCollectionSrlzStructNode<
                    T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                  WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                    T, YS,
-                   WkSzWritingRuntime<WkSzOutputBytestream>,
-                   WkSzWritingResult,
+                   WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                   WkEncodingResultSrlzPacketOperationData,
                    WkDynamicCollectionSrlzStructNode<
                      T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                    ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -238,17 +238,17 @@ public class WkDynamicCollectionSrlzStructNode<
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -286,8 +286,8 @@ public class WkDynamicCollectionSrlzStructNode<
                         T, XS,
                         WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                           T, XS,
-                          WkSzReadingRuntime<WkSzInputBytestream>,
-                          WkSzReadingResult<T>,
+                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                          WkDecodingResultSrlzPacketOperationData<T>,
                           WkDynamicCollectionSrlzStructNode<
                             T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                           ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
@@ -296,8 +296,8 @@ public class WkDynamicCollectionSrlzStructNode<
                         YS,
                         WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                           T, YS,
-                          WkSzWritingRuntime<WkSzOutputBytestream>,
-                          WkSzWritingResult,
+                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                          WkEncodingResultSrlzPacketOperationData,
                           WkDynamicCollectionSrlzStructNode<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -314,17 +314,17 @@ public class WkDynamicCollectionSrlzStructNode<
     int minSize,
     int maxSize,
     String sizeFieldLabel,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, ZXS>
       sizeDeserializerSettingsFactory,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZYS>
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ZT, ZXS, ZXD, ZXO, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, ZYS, ZYD, ZYO, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, ZD>
       sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
-    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
+    WkOperationSettingsFactory<WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VYS>
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
@@ -340,8 +340,8 @@ public class WkDynamicCollectionSrlzStructNode<
                                   T, XS,
                                   WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                                     T, XS,
-                                    WkSzReadingRuntime<WkSzInputBytestream>,
-                                    WkSzReadingResult<T>,
+                                    WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
+                                    WkDecodingResultSrlzPacketOperationData<T>,
                                     WkDynamicCollectionSrlzStructNode<
                                       T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
                                     ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
@@ -350,8 +350,8 @@ public class WkDynamicCollectionSrlzStructNode<
                                   YS,
                                   WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                                     T, YS,
-                                    WkSzWritingRuntime<WkSzOutputBytestream>,
-                                    WkSzWritingResult,
+                                    WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
+                                    WkEncodingResultSrlzPacketOperationData,
                                     WkDynamicCollectionSrlzStructNode<
                                       T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                     ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -390,14 +390,14 @@ public class WkDynamicCollectionSrlzStructNode<
 
   @Override
   public
-  WkSrlzStructSubcomponentFrameNode<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
+  WkSrlzStructSubcomponentFrameNode<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
   size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-  WkSrlzStructSubcomponentFrameNode<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkSzWritingRuntime<WkSzOutputBytestream>, WkSzWritingResult, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
+  WkSrlzStructSubcomponentFrameNode<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkEncodingResultSrlzPacketOperationData, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, VariableSizeCollectionField<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
   variableSequence() {
     return this.definitionCore.variableSequence();
   }
@@ -414,7 +414,7 @@ public class WkDynamicCollectionSrlzStructNode<
 
   @Override
   public FieldTester<?, ?> makeTester(
-  Predicate<? super WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkSzReadingRuntime<WkSzInputBytestream>, WkSzReadingResult<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>> test,
+  Predicate<? super WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkDecodingResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>> test,
   String description) {
     return this.definitionCore.makeTester(test, description);
   }

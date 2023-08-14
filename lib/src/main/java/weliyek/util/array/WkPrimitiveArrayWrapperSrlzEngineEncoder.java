@@ -25,12 +25,12 @@ import org.slf4j.LoggerFactory;
 import weliyek.serialization.WkSrlzEngineEncoder;
 import weliyek.serialization.WkSzOperationException;
 import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
                         Y extends WkPrimitiveArrayBase<V, ?>,
                         V,
-                        QC extends WkSzSequenceWritingRuntimeControl<?,?,?>>
+                        QC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>>
         extends WkSrlzEngineEncoder<
                         Y,
                         QC,

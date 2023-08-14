@@ -26,7 +26,7 @@ public abstract class WkBasicPrimitiveArrayWrapperSrlzEngineDecoder<
                         V>
   extends WkPrimitiveArrayWrapperSrlzEngineDecoder<
                         X, V,
-                        WkSzSequenceReadingRuntimeControl<?,?,?>>
+                        WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>>
 {
 
   public static final int STEP_SIZE = 1024;
@@ -34,7 +34,7 @@ public abstract class WkBasicPrimitiveArrayWrapperSrlzEngineDecoder<
   protected WkBasicPrimitiveArrayWrapperSrlzEngineDecoder(
       Function<V, X> newWrapperFactory,
       int elementByteLength,
-      WkSzSequenceReadingRuntimeControl<?,?,?> runtimeCtrl,
+      WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
       WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?> readingOperation) {
     super(newWrapperFactory, elementByteLength, STEP_SIZE, runtimeCtrl, readingOperation);
   }

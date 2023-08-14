@@ -20,7 +20,7 @@ package weliyek.serialization.sequence;
 import java.io.IOException;
 
 import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkSzSequenceWritingRuntimeControl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkShortArray;
 import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
 
@@ -34,7 +34,7 @@ public final class WkBigEndianShortArraySrlzEngineEncoder
             WkBigEndianShortArraySrlzEngineEncoder::new);
 
   private WkBigEndianShortArraySrlzEngineEncoder(
-    WkSzSequenceWritingRuntimeControl<?,?,?> runtimeControl,
+    WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
     WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends WkShortArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

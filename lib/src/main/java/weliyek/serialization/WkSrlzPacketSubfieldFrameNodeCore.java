@@ -24,7 +24,7 @@ import weliyek.Initializable;
 import weliyek.Resetable;
 
 public abstract class WkSrlzPacketSubfieldFrameNodeCore<
-                        S extends WkSzOperationSettings,
+                        S extends WkSettingsSrlzPacketOperationData,
                         TD extends WkSrlzStructDefinitionFrameNode<?,?>,
                         NC extends WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>,

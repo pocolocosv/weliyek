@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSzOperationSettings;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
@@ -49,11 +49,11 @@ public class WkDynamicByteArrayTest
 
   private static WkSrlzStructComponentFrameNodeRootCore<
                     WkByteArray,
-                    WkSzOperationSettings,
+                    WkSettingsSrlzPacketOperationData,
                     WkDynamicByteArraySrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
                     WkDynamicByteArraySrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzInputNode, WkSignedBigEndianIntegerSrlzStructNode>,
                     WkSzInputBytestreamBase<?>,
-                    WkSzOperationSettings,
+                    WkSettingsSrlzPacketOperationData,
                     WkDynamicByteArraySrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
                     WkDynamicByteArraySrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>,
                     WkSzOutputBytestreamBase<?>,
@@ -108,7 +108,7 @@ public class WkDynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(SHORT_ARRAY_WRAPPER,
-                                                      WkSzOperationSettings.EMPTY,
+                                                      WkSettingsSrlzPacketOperationData.EMPTY,
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
@@ -121,7 +121,7 @@ public class WkDynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(VALID_ARRAY_WRAPPER,
-                                                      WkSzOperationSettings.EMPTY,
+                                                      WkSettingsSrlzPacketOperationData.EMPTY,
                                                       outputstream);
     while(serializer.isInProgress()) {
       serializer.processBytestream();
@@ -134,7 +134,7 @@ public class WkDynamicByteArrayTest
     ByteArrayInputStream inputstream = new ByteArrayInputStream(allbytes);
 
     WkSzInputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzInputNode, WkSignedBigEndianIntegerSrlzStructNode>>
-      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSzOperationSettings.EMPTY, inputstream);
+      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, inputstream);
 
     deserializer.processBytestream();
     assertThrows(WkSzOperationException.class, () -> deserializer.processBytestream());
@@ -146,7 +146,7 @@ public class WkDynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(VALID_ARRAY_WRAPPER,
-                                                      WkSzOperationSettings.EMPTY,
+                                                      WkSettingsSrlzPacketOperationData.EMPTY,
                                                       outputstream);
     while(serializer.isInProgress()) {
       serializer.processBytestream();
@@ -159,7 +159,7 @@ public class WkDynamicByteArrayTest
     ByteArrayInputStream inputstream = new ByteArrayInputStream(allbytes);
 
     WkSzInputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzInputNode, WkSignedBigEndianIntegerSrlzStructNode>>
-      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSzOperationSettings.EMPTY, inputstream);
+      deserializer = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, inputstream);
 
     deserializer.processBytestream();
     assertThrows(WkSzOperationException.class, () -> deserializer.processBytestream());
@@ -171,7 +171,7 @@ public class WkDynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
       serializer = DYNAMIC_BYTE_ARRAY.newOutputPacket(LONG_ARRAY_WRAPPER,
-                                                      WkSzOperationSettings.EMPTY,
+                                                      WkSettingsSrlzPacketOperationData.EMPTY,
                                                       outputstream);
     // This call will trigger serialization of the size part and initialize the
     // variable array which will trigger the exception.
@@ -184,7 +184,7 @@ public class WkDynamicByteArrayTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
       dynArrayWriting = DYNAMIC_BYTE_ARRAY.newOutputPacket(VALID_ARRAY_WRAPPER,
-                                                           WkSzOperationSettings.EMPTY,
+                                                           WkSettingsSrlzPacketOperationData.EMPTY,
                                                            outputstream);
     logger.info(dynArrayWriting.name() + " created");
     while(dynArrayWriting.isInProgress()) {
@@ -204,7 +204,7 @@ public class WkDynamicByteArrayTest
                  dynArrayWriting.previousProcessingSteapResult().get().definition());
     assertEquals(VALID_ARRAY_WRAPPER, dynArrayWriting.firstOperation().get().variableSequence().field().get().firstOperation().get().serializable());
     WkSzInputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>, WkDynamicByteArraySrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzInputNode, WkSignedBigEndianIntegerSrlzStructNode>>
-      dynArrayReading = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSzOperationSettings.EMPTY, outputstream.inputStream());
+      dynArrayReading = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(DYNAMIC_BYTE_ARRAY.definition().size().field().definition() + " reading started");
     while(dynArrayReading.isInProgress()) {
       dynArrayReading.processBytestream();

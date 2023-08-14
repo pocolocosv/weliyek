@@ -24,11 +24,11 @@ import weliyek.serialization.filter.FieldTester;
 
 public abstract class WkSrlzStructComponentFrameNodeCore<
                         T,
-                        XS extends WkSzOperationSettings,
+                        XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSrlzStructDefinitionFrameNode<T,?>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSzOperationSettings,
+                        YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkSrlzStructDefinitionFrameNode<T,?>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,

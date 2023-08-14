@@ -22,10 +22,10 @@ import java.util.function.BiFunction;
 
 public abstract class WkSrlzInputPacketDecoderFrameNodeCore<
                         T,
-                        XS extends WkSzOperationSettings,
-                        XQ extends WkSzReadingRuntime<?>,
-                        XQC extends WkSzReadingRuntimeControl<?,?,XQ>,
-                        XR extends WkSzReadingResult<T>,
+                        XS extends WkSettingsSrlzPacketOperationData,
+                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
+                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
+                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>,
                         XOC extends WkSrlzInputPacketDecoderFrameNodeCore<T,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSrlzStructDefinitionFrameNode<T,?>,

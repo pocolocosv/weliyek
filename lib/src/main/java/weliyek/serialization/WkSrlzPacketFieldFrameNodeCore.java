@@ -26,11 +26,6 @@ import java.util.function.Function;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.Completable;
-import weliyek.Enableable;
-import weliyek.Initializable;
-import weliyek.Resetable;
-
 public abstract class WkSrlzPacketFieldFrameNodeCore<
                         T,
                         S extends WkSettingsSrlzPacketOperationData,
@@ -43,11 +38,7 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
                         K extends WkSrlzPacketFieldFrameNode<T,O,?>,
                         AB extends WkSzBytestreamBase<?,?>,
                         AOC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?>>
-    implements Initializable,
-               Enableable,
-               Completable,
-               Resetable,
-               WkSrlzPacketFieldFrameNode<T,O,D>
+    implements WkSrlzPacketFieldFrameNode<T,O,D>
 {
 
     @SuppressWarnings("unused")
@@ -76,7 +67,6 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
 
     protected abstract int computeExpectedNumberOfOperations();
 
-    @Override
     public boolean isInitialized() {
         return null != this.enabled;
     }
@@ -88,7 +78,7 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
     }
 
     @Override
-    public boolean isCompleted() {
+    public boolean isCompleted() {      
         throwIfUnitialized();
         return this.operationListManager.isCompleted();
     }
@@ -119,7 +109,6 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
     /** Only executed when the packet field has been enabled and operations will be created. */
     protected abstract void onPacketFieldSucccessfullyEnabled();
 
-    @Override
     public void reset() {
       this.operationListManager.reset();
       this.enabled = null;
@@ -215,16 +204,9 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
     }
 
     protected void throwIfUnitialized() {
-      if (isUnitialized()) {
+      if ( ! isInitialized()) {
           throw new IllegalStateException();
       }
     }
-
-    /*
-    @Override
-    public ComponentSegment<D> protocolField() {
-      return protocolFieldCore().asProtocolField();
-    }
-    */
 
 }

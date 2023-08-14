@@ -20,9 +20,6 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.Completable;
-import weliyek.Enableable;
-
 /**
  * Handles the serialization process of the associated {@link WkSrlzStructComponentFrameNode}.
  * 
@@ -35,9 +32,7 @@ public interface WkSrlzPacketFieldFrameNode<
                         O extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>,
                         D extends WkSrlzStructDefinitionFrameNode<?,?>>
     extends WkSrlzPacketFrameNode,
-            WkSrlzCtrlFrameNode,
-            Completable,
-            Enableable
+            WkSrlzCtrlFrameNode
 {
 
   WkSrlzStructComponentFrameNode<? extends D> structComponent();
@@ -56,6 +51,14 @@ public interface WkSrlzPacketFieldFrameNode<
   List<O> operationList();
 
   List<T> collectAllOperationValues();
+  
+  boolean isCompleted();
+  
+  default boolean isInProgress() {
+    return ! isCompleted();
+  }
+  
+  boolean isEnabled();
 
   default Optional<O> firstOperation() {
     return Optional.ofNullable(operationList().isEmpty()?null:operationList().get(0));

@@ -20,9 +20,6 @@ package weliyek.serialization;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.Initializable;
-import weliyek.Resetable;
-
 public abstract class WkSrlzPacketSubfieldFrameNodeCore<
                         S extends WkSettingsSrlzPacketOperationData,
                         TD extends WkSrlzStructDefinitionFrameNode<?,?>,
@@ -32,9 +29,7 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
                         J extends WkSrlzPacketSubfieldFrameNode<?>,
                         AOC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,AD,?,?,?,?,?,?>,
                         AD extends WkSrlzStructDefinitionFrameNode<?,?>>
-    implements WkSrlzPacketSubfieldFrameNode<K>,
-               Initializable,
-               Resetable
+    implements WkSrlzPacketSubfieldFrameNode<K>
 {
 
   private NC protocolSubfieldCore = null;
@@ -63,7 +58,6 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
 
   protected abstract void onInitialization();
 
-  @Override
   public boolean isInitialized() {
     return null != this.protocolSubfieldCore;
   }
@@ -85,7 +79,7 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
   }
 
   public void activateField() {
-    if (isUnitialized()) {
+    if (! isInitialized()) {
       throw new IllegalStateException();
     }
     if (isFieldOptional()) {
@@ -107,7 +101,6 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
 
   protected abstract boolean testIfOptionalFieldIsToBeEnabled();
 
-  @Override
   public void reset() {
     onReset();
     this.protocolSubfieldCore = null;

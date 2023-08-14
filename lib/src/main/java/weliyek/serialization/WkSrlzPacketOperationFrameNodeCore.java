@@ -23,9 +23,6 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.Completable;
-import weliyek.Initializable;
-
 public abstract class WkSrlzPacketOperationFrameNodeCore<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
@@ -38,9 +35,7 @@ public abstract class WkSrlzPacketOperationFrameNodeCore<
                         AB extends WkSzBytestreamBase<?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>,
                         KC extends WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,? extends K,?,?>>
-        implements Completable,
-                   Initializable,
-                   WkSrlzPacketOperationFrameNode<S,Q,R,_D,K>
+        implements WkSrlzPacketOperationFrameNode<S,Q,R,_D,K>
 {
 
     private static final Logger logger = LoggerFactory.getLogger(WkSrlzPacketOperationFrameNodeCore.class);
@@ -104,17 +99,14 @@ public abstract class WkSrlzPacketOperationFrameNodeCore<
 
     public abstract long expectedBytes();
 
-    @Override
     public boolean isInitialized() {
       return ! this.uninitialized;
     }
 
-    @Override
     public final boolean isCompleted() {
         return result().isPresent();
     }
 
-    @Override
     public final boolean isInProgress() {
       return ! isCompleted();
     }
@@ -188,7 +180,7 @@ public abstract class WkSrlzPacketOperationFrameNodeCore<
     public String toString() {
       StringBuilder strB = new StringBuilder(name());
       strB.append(':');
-      if (isUnitialized()) {
+      if ( ! isInitialized()) {
         strB.append("UNINITIALIZED");
       } else {
         if (isInProgress()) {

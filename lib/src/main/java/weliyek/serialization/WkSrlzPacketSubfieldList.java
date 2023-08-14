@@ -24,14 +24,11 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Optional;
 
-import weliyek.Completable;
-
 public abstract class WkSrlzPacketSubfieldList<
                         SJ extends WkSrlzPacketSubfieldFrameNode<?>,
                         SJC extends WkSrlzPacketSubfieldFrameNodeCore<?,?,?,?,?,? extends SJ,?,?>,
                         O extends WkAggregatorSrlzPacketOperationFrameNode<?,?,?,?,?>>
     extends AbstractList<SJC>
-    implements Completable
 {
 
     private final List<SJC> packetCoreListContainer;
@@ -75,7 +72,6 @@ public abstract class WkSrlzPacketSubfieldList<
         return completed;
     }
 
-    @Override
     public boolean isCompleted() {
       return hasStarted() && (! handlerIter.hasNext()) && currentHandler.field().get().isCompleted();
     }

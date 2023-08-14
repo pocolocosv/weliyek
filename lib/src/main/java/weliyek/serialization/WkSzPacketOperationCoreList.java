@@ -28,16 +28,11 @@ import java.util.function.IntFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.Completable;
-import weliyek.Initializable;
-import weliyek.Resetable;
-
 public class WkSzPacketOperationCoreList<
                         T,
                         O extends WkSrlzPacketOperationFrameNode<?, ?, ?, ?, ?>,
                         OC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,O,?,?,?,?>>
         extends AbstractList<OC>
-        implements Initializable, Completable, Resetable
 {
 
     private static final Logger logger = LoggerFactory.getLogger(WkSzPacketOperationCoreList.class);
@@ -64,14 +59,12 @@ public class WkSzPacketOperationCoreList<
         reset();
     }
 
-    @Override
     public boolean isInitialized() {
         return UNINITIALIZED_LIST < this.expectedSize;
     }
 
-    @Override
     public boolean isCompleted() {
-        if (isUnitialized()) {
+        if ( ! isInitialized()) {
             return false;
         }
         if (0 == this.expectedSize) {
@@ -94,7 +87,6 @@ public class WkSzPacketOperationCoreList<
         }
     }
 
-    @Override
     public void reset() {
       this.expectedSize = UNINITIALIZED_LIST;
       this.currentOpCore = null;
@@ -102,7 +94,7 @@ public class WkSzPacketOperationCoreList<
     }
 
     public int expectedSize() {
-      if (isUnitialized()) {
+      if ( ! isInitialized()) {
         throw new IllegalStateException();
       }
       return this.expectedSize;
@@ -110,7 +102,7 @@ public class WkSzPacketOperationCoreList<
 
     @Override
     public OC get(int index) {
-      if (isUnitialized()) {
+      if ( ! isInitialized()) {
         throw new IllegalStateException();
       }
       return this.coreContainer.get(index);
@@ -118,7 +110,7 @@ public class WkSzPacketOperationCoreList<
 
     @Override
     public int size() {
-      if (isUnitialized()) {
+      if ( ! isInitialized()) {
         throw new IllegalStateException();
       }
       return coreContainer.size();
@@ -134,7 +126,7 @@ public class WkSzPacketOperationCoreList<
     }
 
     public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> processingBytestream() {
-        if (isUnitialized()) {
+        if ( ! isInitialized()) {
           throw new IllegalStateException();
         }
         if (isCompleted()) {
@@ -158,7 +150,7 @@ public class WkSzPacketOperationCoreList<
     }
 
     public List<T> collectAllOperationsValues() {
-        if (isUnitialized()) {
+        if ( ! isInitialized()) {
           throw new IllegalStateException();
         }
         ArrayList<T> vals = operationList.stream()

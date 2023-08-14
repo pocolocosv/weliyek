@@ -9,7 +9,7 @@ only serialization logic is present.
 To do:
 
 - [x] Import serialization code
-- [ ] Refactor serialization code
+- [x] Refactor serialization code
 - [ ] Add Bitcoin serialization logic
 - [ ] Add Bitcoin protocol client
 - [ ] Add Bitcoin test infrastructure using docker.
@@ -22,13 +22,13 @@ Bitcoin node.
 See the following unit test for examples how the serialization is performed. Also see 
 FilterBuilderTest.java for an example on how a search can be done.
 
-- [WkDynamicCollectionTest](lib/src/test/java/weliyek/serialization/sequence/WkDynamicCollectionTest.java)
-- [WkFixedAndVariableSizeCollectionTest](lib/src/test/java/weliyek/serialization/sequence/WkFixedAndVariableSizeCollectionTest.java)
 - [WkPrimitiveSerializationTests](lib/src/test/java/weliyek/serialization/number/WkPrimitiveSerializationTests.java)
-- [WkStringWithDynamicSizeBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithDynamicSizeBytesTest.java)
-- [WkStringWithFixedBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithFixedBytesTest.java)
 - [WkByteArrayTest](lib/src/test/java/weliyek/util/array/WkByteArrayTest.java)
 - [WkDynamicByteArrayTest](lib/src/test/java/weliyek/util/array/WkDynamicByteArrayTest.java)
+- [WkDynamicCollectionTest](lib/src/test/java/weliyek/serialization/sequence/WkDynamicCollectionTest.java)
+- [WkFixedAndVariableSizeCollectionTest](lib/src/test/java/weliyek/serialization/sequence/WkFixedAndVariableSizeCollectionTest.java)
+- [WkStringWithDynamicSizeBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithDynamicSizeBytesTest.java)
+- [WkStringWithFixedBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithFixedBytesTest.java)
 - [WkFilterBuilderTest](lib/src/test/java/weliyek/serialization/filter/WkFilterBuilderTest.java)
 
 To run the test, clone this Git repo and import the code as a Gradle project. Two projects then

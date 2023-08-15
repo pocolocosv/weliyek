@@ -30,6 +30,7 @@ import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
@@ -65,7 +66,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
                  ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,?>,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                  ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,ZXO>>
-  WkSrlzStructComponentFrameNodeRootCore<String,
+  WkSrlzStruct<String,
                   WkSettingsSrlzPacketOperationData,
                   WkStringWithDynamicBytesSrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   WkStringWithDynamicBytesSrlzInputNode<ZX,ZXD,ZXO>,
@@ -75,7 +76,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
                   WkStringWithDynamicBytesSrlzOutputNode<ZX,ZYD,ZYO>,
                   WkSzOutputBytestreamBase<?>,
                   WkStringWithDynamicBytesSrlzStructNode<ZX,ZXD,ZXO,ZYD,ZYO,ZD>>
-  newPacketStructure(
+  newStruct(
     String label,
     String bytesLabel,
     String sizeLabel,

@@ -27,6 +27,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
@@ -47,7 +48,7 @@ public class WkSrlzFilterBuilderTest
 
   private static Predicate<WkSrlzInputPacketDecoderFrameNode<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().deserialized().get().intValue() == 400;
 
-  private static WkSrlzStructComponentFrameNodeRootCore<
+  private static WkSrlzStruct<
                       WkSzTstMultipleLists,
                       WkSettingsSrlzPacketOperationData,
                       WkTstMultipleListSrlzStructNode,
@@ -86,7 +87,7 @@ public class WkSrlzFilterBuilderTest
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    MULTIPLE_LIST_PACKET = WkTstMultipleListSrlzStructNode.newPacketStructure();
+    MULTIPLE_LIST_PACKET = WkTstMultipleListSrlzStructNode.newStruct();
     PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().field().definition().elements().field().definition();
     PRIMITIVEGROUP_FIELD = PRIMITIVELIST_FIELD.variableSequence().field().definition().elements().field().definition();
     BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.field().definition();

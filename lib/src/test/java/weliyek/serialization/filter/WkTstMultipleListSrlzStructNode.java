@@ -24,6 +24,7 @@ import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -54,7 +55,7 @@ public class WkTstMultipleListSrlzStructNode
                         WkSettingsSrlzPacketOperationData>
 {
 
-  public static WkSrlzStructComponentFrameNodeRootCore<
+  public static WkSrlzStruct<
                         WkSzTstMultipleLists,
                         WkSettingsSrlzPacketOperationData,
                         WkTstMultipleListSrlzStructNode,
@@ -65,7 +66,7 @@ public class WkTstMultipleListSrlzStructNode
                         WkTstMultipleListSrlzOutputNode,
                         WkSzOutputBytestreamBase<?>,
                         WkTstMultipleListSrlzStructNode>
-  newPacketStructure() {
+  newStruct() {
     return new WkSrlzStructComponentFrameNodeRootCore<>(
                         "MULTILIST",
                         (pc) -> new WkTstMultipleListSrlzStructNode(pc).definitionCore,

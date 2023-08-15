@@ -36,6 +36,7 @@ import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
@@ -111,7 +112,7 @@ public class WkDynamicCollectionSrlzStructNode<
                  ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
                  VXS extends WkSzVariableLengthOperationSettings,
                  VYS extends WkSettingsSrlzPacketOperationData>
-  WkSrlzStructComponentFrameNodeRootCore<
+  WkSrlzStruct<
                 T, XS,
                 WkDynamicCollectionSrlzStructNode<
                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -137,7 +138,7 @@ public class WkDynamicCollectionSrlzStructNode<
                 WkDynamicCollectionSrlzStructNode<
                 T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                 ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>>
-  newPacketStructure(
+  newStruct(
     String dynamicCollectionLabel,
     int minSize,
     int maxSize,

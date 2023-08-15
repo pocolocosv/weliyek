@@ -28,6 +28,7 @@ import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzOptionalLengthOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
@@ -49,7 +50,7 @@ public class WkStringWithVariableBytesSrlzStructNode
                         WkVariableSizeByteArraySrlzStructNode>
 {
 
-  public static WkSrlzStructComponentFrameNodeRootCore<
+  public static WkSrlzStruct<
                       String,
                       WkSzVariableLengthOperationSettings,
                       WkStringWithVariableBytesSrlzStructNode,
@@ -60,7 +61,7 @@ public class WkStringWithVariableBytesSrlzStructNode
                       WkStringWithVariableBytesSrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
                       WkStringWithVariableBytesSrlzStructNode>
-  newPacketStructure(
+  newStruct(
     String label,
     String bytesLabel,
     int minimalLength,

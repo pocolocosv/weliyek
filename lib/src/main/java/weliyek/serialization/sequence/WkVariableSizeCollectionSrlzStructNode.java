@@ -33,6 +33,7 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
@@ -73,7 +74,7 @@ public final class WkVariableSizeCollectionSrlzStructNode<
                  EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                  EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                  ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>>
-  WkSrlzStructComponentFrameNodeRootCore<
+  WkSrlzStruct<
                  T,
                  XS,
                  WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -84,7 +85,7 @@ public final class WkVariableSizeCollectionSrlzStructNode<
                  WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                  WkSzOutputBytestreamBase<?>,
                  WkVariableSizeCollectionSrlzStructNode<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
-  newPacketStructure(
+  newStruct(
     String label,
     String elementsLabel,
     int minSize,

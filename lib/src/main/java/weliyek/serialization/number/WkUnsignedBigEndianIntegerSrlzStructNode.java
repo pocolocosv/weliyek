@@ -25,6 +25,7 @@ import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -37,7 +38,7 @@ public class WkUnsignedBigEndianIntegerSrlzStructNode
                         WkUnsignedBigEndianIntegerSrlzInputNode>
 {
 
-  public static WkSrlzStructComponentFrameNodeRootCore<
+  public static WkSrlzStruct<
                         Long,
                         WkSettingsSrlzPacketOperationData,
                         WkUnsignedBigEndianIntegerSrlzStructNode,
@@ -48,7 +49,7 @@ public class WkUnsignedBigEndianIntegerSrlzStructNode
                         WkUnsignedBigEndianIntegerSrlzOutputNode,
                         WkSzOutputBytestreamBase<?>,
                         WkUnsignedBigEndianIntegerSrlzStructNode>
-  newPacketStructure(String label) {
+  newStruct(String label) {
     return new WkSrlzStructComponentFrameNodeRootCore<>(
                       label,
                       WkUnsignedBigEndianIntegerSrlzStructNode::newCore,

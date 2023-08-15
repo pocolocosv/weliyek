@@ -27,6 +27,7 @@ import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
@@ -58,7 +59,7 @@ public class WkDynamicByteArraySrlzStructNode<
                  ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,?>,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                  ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,ZXO>>
-  WkSrlzStructComponentFrameNodeRootCore<WkByteArray,
+  WkSrlzStruct<WkByteArray,
                   WkSettingsSrlzPacketOperationData,
                   WkDynamicByteArraySrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   WkDynamicByteArraySrlzInputNode<ZX,ZXO,ZXD>,
@@ -68,7 +69,7 @@ public class WkDynamicByteArraySrlzStructNode<
                   WkDynamicByteArraySrlzOutputNode<ZX,ZYO,ZYD>,
                   WkSzOutputBytestreamBase<?>,
                   WkDynamicByteArraySrlzStructNode<ZX,ZXD,ZXO,ZYD,ZYO,ZD>>
-  newPacketStructure(
+  newStruct(
     String label,
     String sizeLabel,
     String bytearrayLabel,

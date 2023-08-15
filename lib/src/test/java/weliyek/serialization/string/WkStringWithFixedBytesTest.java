@@ -29,10 +29,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.util.KetzaByteOutputStream;
@@ -44,7 +44,7 @@ public class WkStringWithFixedBytesTest
 
     private int numBytesToReadWrite;
 
-    private WkSrlzStructComponentFrameNodeRootCore<
+    private WkSrlzStruct<
                         String,
                         WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzStructNode,
@@ -60,7 +60,7 @@ public class WkStringWithFixedBytesTest
     public void setUp() throws Exception {
         numBytesToReadWrite = 10;
         stringWithFixedSizeBytes = WkStringWithFixedLengthBytesSrlzStructNode
-                                .newPacketStructure(
+                                .newStruct(
                                     "FIXED_LEN_STRING_" + numBytesToReadWrite,
                                     "BYTES",
                                     numBytesToReadWrite,

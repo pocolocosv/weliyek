@@ -32,17 +32,17 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzOutputNode;
+import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkFixedAndVariableSizeCollectionTest
@@ -53,7 +53,7 @@ public class WkFixedAndVariableSizeCollectionTest
   public static final List<Integer> ORIGINAL_LIST = Arrays.asList(Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
   public static final int LIST_SIZE = ORIGINAL_LIST.size();
 
-  private static WkSrlzStructComponentFrameNodeRootCore<
+  private static WkSrlzStruct<
                         List<Integer>,
                         WkSettingsSrlzPacketOperationData,
                         WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ?, ?>,
@@ -66,7 +66,7 @@ public class WkFixedAndVariableSizeCollectionTest
                         WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
                           FIXED_SIZE_INT_LIST;
 
-  private static WkSrlzStructComponentFrameNodeRootCore<
+  private static WkSrlzStruct<
                         List<Integer>,
                         WkSzVariableLengthOperationSettings,
                         WkVariableSizeCollectionSrlzStructNode<List<Integer>, WkSzVariableLengthOperationSettings, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ?, ?>,
@@ -94,7 +94,7 @@ public class WkFixedAndVariableSizeCollectionTest
                               WkSettingsSrlzPacketOperationData,
                               WkSignedBigEndianIntegerSrlzStructNode,
                               WkSignedBigEndianIntegerSrlzOutputNode,
-                              WkSignedBigEndianIntegerSrlzStructNode>newPacketStructure(
+                              WkSignedBigEndianIntegerSrlzStructNode>newStruct(
                                   "FIXEDINTLIST",
                                   "INT",
                                   ORIGINAL_LIST.size(),
@@ -115,7 +115,7 @@ public class WkFixedAndVariableSizeCollectionTest
                               WkSettingsSrlzPacketOperationData,
                               WkSignedBigEndianIntegerSrlzStructNode,
                               WkSignedBigEndianIntegerSrlzOutputNode,
-                              WkSignedBigEndianIntegerSrlzStructNode>newPacketStructure(
+                              WkSignedBigEndianIntegerSrlzStructNode>newStruct(
                                 "FIXEDINTLIST",
                                 "INT",
                                 0,

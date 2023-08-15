@@ -28,25 +28,25 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
-import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
+import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkDynamicCollectionTest
@@ -56,7 +56,7 @@ public class WkDynamicCollectionTest
                                                                 Short.valueOf((short) 1),
                                                                 Short.valueOf((short) 2),
                                                                 Short.valueOf((short) 3));
-  private static WkSrlzStructComponentFrameNodeRootCore<
+  private static WkSrlzStruct<
                           List<Short>,
                           WkSettingsSrlzPacketOperationData,
                           WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>,
@@ -93,7 +93,7 @@ public class WkDynamicCollectionTest
                           WkSignedBigEndianShortSrlzOutputNode,
                           WkSignedBigEndianShortSrlzStructNode,
                           WkSzVariableLengthOperationSettings,
-                          WkSettingsSrlzPacketOperationData>newPacketStructure(
+                          WkSettingsSrlzPacketOperationData>newStruct(
                               "DYN_SHORT_LIST",
                               0,
                               ORIGINAL_LIST.size()+1,

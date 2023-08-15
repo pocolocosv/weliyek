@@ -30,16 +30,16 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzOutputNode;
+import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkDynamicByteArrayTest
@@ -47,7 +47,7 @@ public class WkDynamicByteArrayTest
 
   private static final Logger logger = LoggerFactory.getLogger(WkDynamicByteArrayTest.class);
 
-  private static WkSrlzStructComponentFrameNodeRootCore<
+  private static WkSrlzStruct<
                     WkByteArray,
                     WkSettingsSrlzPacketOperationData,
                     WkDynamicByteArraySrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
@@ -80,7 +80,7 @@ public class WkDynamicByteArrayTest
     LONG_ARRAY_WRAPPER = new WkByteArray(LONG_BYTE_ARRAY);
 
     DYNAMIC_BYTE_ARRAY = WkDynamicByteArraySrlzStructNode.
-                                          newPacketStructure(
+                                          newStruct(
                                               "DYNBYTEARRAY",
                                               "SIZENUM",
                                               "VARBYTEARRAY",

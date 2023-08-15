@@ -31,10 +31,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
@@ -49,7 +49,7 @@ public class WkStringWithDynamicSizeBytesTest
 
   private static Charset defaultCharset = StandardCharsets.UTF_8;
 
-  private static WkSrlzStructComponentFrameNodeRootCore<
+  private static WkSrlzStruct<
                           String,
                           WkSettingsSrlzPacketOperationData,
                           WkStringWithDynamicBytesSrlzStructNode<Integer,
@@ -90,7 +90,7 @@ public class WkStringWithDynamicSizeBytesTest
                             WkSignedBigEndianIntegerSrlzInputNode,
                             WkSignedBigEndianIntegerSrlzStructNode,
                             WkSignedBigEndianIntegerSrlzOutputNode,
-                            WkSignedBigEndianIntegerSrlzStructNode>newPacketStructure(
+                            WkSignedBigEndianIntegerSrlzStructNode>newStruct(
                                 "DYNAMICSTR",
                                 "BYTES",
                                 "ARRAYSIZE",

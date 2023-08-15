@@ -30,7 +30,7 @@ import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
-public class SimplifiedPrimitiveArraySerializingCore<
+public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>,
@@ -40,7 +40,7 @@ public class SimplifiedPrimitiveArraySerializingCore<
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkEncodingResultSrlzPacketOperationData,
                                         D>>
-    extends PrimitiveArraySerializerWritingCore<
+    extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y,
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -50,24 +50,24 @@ public class SimplifiedPrimitiveArraySerializingCore<
                           WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
                         WkEncodingResultSrlzPacketOperationData,
                         YO,
-                        SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>,
+                        WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>,
                         D,
                         WkSzOutputBytestreamBase<?>,
-                        SimplifiedPrimitiveArraySerializerCore<Y,?,?,YS,YO,D>>
+                        WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<Y,?,?,YS,YO,D>>
 {
 
-  private final Consumer<? super SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>>
+  private final Consumer<? super WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>>
                     onInitializing;
 
-  public SimplifiedPrimitiveArraySerializingCore(
+  public WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore(
     int index,
     Y serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<Y,?,D,?,?,?> serializingfieldCore,
-    SimplifiedPrimitiveArraySerializerCore<Y,?,?,YS,YO,D> definitionCore,
+    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,
-    Consumer<? super SimplifiedPrimitiveArraySerializingCore<Y,YS,D,YO>> onInitializing) {
+    Consumer<? super WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>> onInitializing) {
     super(index, serializable, settings, parentBytestream, serializingfieldCore, definitionCore, operationBody);
     this.onInitializing = Objects.requireNonNull(onInitializing);
   }
@@ -78,7 +78,7 @@ public class SimplifiedPrimitiveArraySerializingCore<
   }
 
   @Override
-  protected SimplifiedPrimitiveArraySerializingCore<Y, YS, D, YO> getThis() {
+  protected WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y, YS, D, YO> getThis() {
     return this;
   }
 

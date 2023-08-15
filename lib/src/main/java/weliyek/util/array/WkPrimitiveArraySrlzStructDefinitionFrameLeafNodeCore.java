@@ -24,6 +24,7 @@ import java.util.function.ToIntBiFunction;
 
 import weliyek.serialization.WkSzReadEngineFactory;
 import weliyek.serialization.WkSzWriteEngineFactory;
+import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
@@ -39,7 +40,7 @@ import weliyek.serialization.WkSrlzStructDefinitionFrameLeafNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
-public abstract class PrimitiveArraySerializerCore<
+public abstract class WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                         T extends WkPrimitiveArray<?, ?>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
@@ -54,7 +55,7 @@ public abstract class PrimitiveArraySerializerCore<
                         YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,XO>,
-                        DC extends PrimitiveArraySerializerCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
+                        DC extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSrlzStructDefinitionFrameLeafNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
     implements WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T, XO>
 {
@@ -62,9 +63,9 @@ public abstract class PrimitiveArraySerializerCore<
   private final int serializationStepSize;
 
   final ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator;
-  final SerializingPrimitiveArrayLengthProvider<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator;
+  final WkPrimitiveArrayLengthGetter<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator;
 
-  protected PrimitiveArraySerializerCore(
+  protected WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore(
     int stepSize,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator,
@@ -72,7 +73,7 @@ public abstract class PrimitiveArraySerializerCore<
     BiFunction<XO,T,XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
     WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
-    SerializingPrimitiveArrayLengthProvider<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator,
+    WkPrimitiveArrayLengthGetter<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator,
     Function<AYB,YQC> txRuntimeFactory,
     Function<YO,YR> txResultFactory,
     WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,

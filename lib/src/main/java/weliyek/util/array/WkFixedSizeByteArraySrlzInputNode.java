@@ -22,6 +22,7 @@ import java.util.Optional;
 
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
@@ -43,7 +44,7 @@ public class WkFixedSizeByteArraySrlzInputNode
                         WkFixedSizeByteArraySrlzStructNode>
 {
 
-  final SimplifiedPrimitiveArrayDeserializingCore<
+  final WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         WkByteArray,
                         WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzStructNode,
@@ -55,9 +56,9 @@ public class WkFixedSizeByteArraySrlzInputNode
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
       WkByteArray,?,WkFixedSizeByteArraySrlzStructNode,?,?,?> deserializingfieldCore,
-    SimplifiedPrimitiveArraySerializerCore<
+    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
       WkByteArray,WkSettingsSrlzPacketOperationData,WkFixedSizeByteArraySrlzInputNode,?,?,WkFixedSizeByteArraySrlzStructNode> definitionCore) {
-    this.operationCore = new SimplifiedPrimitiveArrayDeserializingCore<
+    this.operationCore = new WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                                 WkByteArray,
                                 WkSettingsSrlzPacketOperationData,
                                 WkFixedSizeByteArraySrlzStructNode,
@@ -68,7 +69,7 @@ public class WkFixedSizeByteArraySrlzInputNode
                                     deserializingfieldCore,
                                     definitionCore,
                                     this,
-                                    PrimitiveArrayUtils::onFixedSizeDeserilizingInitialization);
+                                    WkPrimitiveArraySrlzUtils::onFixedSizeDeserilizingInitialization);
   }
 
   @Override

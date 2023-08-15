@@ -30,7 +30,7 @@ import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
-public class SimplifiedPrimitiveArrayDeserializingCore<
+public class WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends WkPrimitiveArray<?,?>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X,XO>,
@@ -40,7 +40,7 @@ public class SimplifiedPrimitiveArrayDeserializingCore<
                                           WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                           WkDecodingResultSrlzPacketOperationData<X>,
                                           D>>
-    extends PrimitiveArraySerializerReadingCore<
+    extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         X,
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
@@ -50,23 +50,23 @@ public class SimplifiedPrimitiveArrayDeserializingCore<
                           WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
                         WkDecodingResultSrlzPacketOperationData<X>,
                         XO,
-                        SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>,
+                        WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,D,XO>,
                         D,
                         WkSzInputBytestreamBase<?>,
-                        SimplifiedPrimitiveArraySerializerCore<X,XS,XO,?,?,D>>
+                        WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<X,XS,XO,?,?,D>>
 {
 
-  private final Consumer<? super SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>>
+  private final Consumer<? super WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,D,XO>>
                     onInitializing;
 
-  public SimplifiedPrimitiveArrayDeserializingCore(
+  public WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<X,?,D,?,?,?> deserializingfieldCore,
-    SimplifiedPrimitiveArraySerializerCore<X,XS,XO,?,?,D> definitionCore,
+    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<X,XS,XO,?,?,D> definitionCore,
     XO operationBody,
-    Consumer<? super SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO>> onInitializing) {
+    Consumer<? super WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,D,XO>> onInitializing) {
     super(index, settings, parentBytestream, deserializingfieldCore, definitionCore, operationBody);
     this.onInitializing = Objects.requireNonNull(onInitializing);
   }
@@ -82,7 +82,7 @@ public class SimplifiedPrimitiveArrayDeserializingCore<
   }
 
   @Override
-  protected SimplifiedPrimitiveArrayDeserializingCore<X,XS,D,XO> getThis() {
+  protected WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,D,XO> getThis() {
     return this;
   }
 

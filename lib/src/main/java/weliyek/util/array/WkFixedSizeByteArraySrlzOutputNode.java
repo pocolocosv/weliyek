@@ -23,6 +23,7 @@ import java.util.Optional;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
@@ -43,7 +44,7 @@ public class WkFixedSizeByteArraySrlzOutputNode
                         WkFixedSizeByteArraySrlzStructNode>
 {
 
-  final SimplifiedPrimitiveArraySerializingCore<
+  final WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         WkByteArray,
                         WkSettingsSrlzPacketOperationData,
                         WkFixedSizeByteArraySrlzStructNode,
@@ -56,9 +57,9 @@ public class WkFixedSizeByteArraySrlzOutputNode
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
       WkByteArray,?,WkFixedSizeByteArraySrlzStructNode,?,?,?> serializingfieldCore,
-    SimplifiedPrimitiveArraySerializerCore<
+    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
       WkByteArray,?,?,WkSettingsSrlzPacketOperationData,WkFixedSizeByteArraySrlzOutputNode,WkFixedSizeByteArraySrlzStructNode> definitionCore) {
-    this.operationCore = new SimplifiedPrimitiveArraySerializingCore<
+    this.operationCore = new WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                                   WkByteArray,
                                   WkSettingsSrlzPacketOperationData,
                                   WkFixedSizeByteArraySrlzStructNode,
@@ -70,7 +71,7 @@ public class WkFixedSizeByteArraySrlzOutputNode
                                       serializingfieldCore,
                                       definitionCore,
                                       this,
-                                      PrimitiveArrayUtils::onFixedSizeSerilizingInitialization);
+                                      WkPrimitiveArraySrlzUtils::onFixedSizeSerilizingInitialization);
   }
 
   @Override

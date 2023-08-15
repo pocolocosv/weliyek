@@ -28,6 +28,7 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 
 public final class WkVariableSizeByteArraySrlzInputNode
     implements WkByteArraySrlzInputPacketDecoderFrameNode<
@@ -43,7 +44,7 @@ public final class WkVariableSizeByteArraySrlzInputNode
                         WkVariableSizeByteArraySrlzStructNode>
 {
 
-  final SimplifiedPrimitiveArrayDeserializingCore<
+  final WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                     WkByteArray,
                     WkSzVariableLengthOperationSettings,
                     WkVariableSizeByteArraySrlzStructNode,
@@ -55,9 +56,9 @@ public final class WkVariableSizeByteArraySrlzInputNode
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
       WkByteArray,?,WkVariableSizeByteArraySrlzStructNode,?,?,?> deserializingfieldCore,
-    SimplifiedPrimitiveArraySerializerCore<
+    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
       WkByteArray,WkSzVariableLengthOperationSettings,WkVariableSizeByteArraySrlzInputNode,?,?,WkVariableSizeByteArraySrlzStructNode> definitionCore) {
-    this.operationCore = new SimplifiedPrimitiveArrayDeserializingCore<
+    this.operationCore = new WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
         WkByteArray,
         WkSzVariableLengthOperationSettings,
         WkVariableSizeByteArraySrlzStructNode,
@@ -68,7 +69,7 @@ public final class WkVariableSizeByteArraySrlzInputNode
                                     deserializingfieldCore,
                                     definitionCore,
                                     this,
-                                    PrimitiveArrayUtils::onVariableSizeDeserilizingInitialization);
+                                    WkPrimitiveArraySrlzUtils::onVariableSizeDeserilizingInitialization);
   }
 
   @Override

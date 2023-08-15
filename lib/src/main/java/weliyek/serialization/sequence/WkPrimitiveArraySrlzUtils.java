@@ -15,22 +15,29 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.util.array;
+package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkSzOperationException;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.util.array.WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
+import weliyek.util.array.WkFixedSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.util.array.WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore;
+import weliyek.util.array.WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore;
+import weliyek.util.array.WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
+import weliyek.util.array.WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode;
+import weliyek.util.array.WkVaribleSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
 
-public class PrimitiveArrayUtils
+public class WkPrimitiveArraySrlzUtils
 {
 
   public static void onFixedSizeDeserilizingInitialization(
-    SimplifiedPrimitiveArrayDeserializingCore<
+    WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
       ?,?,?,? extends WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<?,?,?,?,?>> deserializing) {
     // Nothing to do.
   }
 
   public static void onFixedSizeSerilizingInitialization(
-    SimplifiedPrimitiveArraySerializingCore<
+    WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
       ?,?,?,? extends WkFixedSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<?,?,?,?,?>> serializingCore) {
     final int reqLen = serializingCore.serializable().getLength();
     final int expectedLen = serializingCore.getRequestedLength();
@@ -42,7 +49,7 @@ public class PrimitiveArrayUtils
   }
 
   public static void onVariableSizeDeserilizingInitialization(
-    SimplifiedPrimitiveArrayDeserializingCore<
+    WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
       ?,? extends WkSzVariableLengthOperationSettings,
       ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?,?>,
       ? extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<?,?,?,?,?>> deserializingCore) {
@@ -57,7 +64,7 @@ public class PrimitiveArrayUtils
   }
 
   public static void onVariableSizeSerializingInitialization(
-    SimplifiedPrimitiveArraySerializingCore<?,?,
+    WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<?,?,
       ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?,?>,
       ? extends WkVaribleSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<?,?,?,?,?>> serializingCore) {
     int reqLen = serializingCore.serializable().getLength();

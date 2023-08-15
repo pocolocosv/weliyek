@@ -41,9 +41,10 @@ import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
 import weliyek.serialization.sequence.WkSimplifiedSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
-public class SimplifiedPrimitiveArraySerializerCore<
+public class WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                         T extends WkPrimitiveArray<?, ?>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
@@ -60,7 +61,7 @@ public class SimplifiedPrimitiveArraySerializerCore<
                                         WkEncodingResultSrlzPacketOperationData,
                                         D>,
                         D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,XO>>
-    extends PrimitiveArraySerializerCore<
+    extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                         T,
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<
@@ -79,17 +80,17 @@ public class SimplifiedPrimitiveArraySerializerCore<
                         D, YO,
                         WkSzOutputBytestreamBase<?>,
                         D,
-                        SimplifiedPrimitiveArraySerializerCore<T,XS,XO,YS,YO,D>>
+                        WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<T,XS,XO,YS,YO,D>>
 {
 
-  public SimplifiedPrimitiveArraySerializerCore(
+  public WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore(
     int stepSize,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, D> rxRequestedLengthEvaluator,
-    WkSzPacketReaderOperationCoreFactory<T, XS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, XO, WkSzInputBytestreamBase<?>> readingOpFactory,
+    WkSzPacketReaderOperationCoreFactory<T, XS, D, WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<T, XS, XO, YS, YO, D>, XO, WkSzInputBytestreamBase<?>> readingOpFactory,
     WkSzReadEngineFactory<T, ? super WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<WkSzInputBytestream, WkSzInputBytestreamBase<? extends WkSzInputBytestream>, WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>, ? super XO> rxSerializerFactory,
-    SerializingPrimitiveArrayLengthProvider<? super T,? super YS,? super D> txRequestedLengthEvaluator,
-    WkSzPacketWriterOperationCoreFactory<T, YS, D, SimplifiedPrimitiveArraySerializerCore<T, XS, XO, YS, YO, D>, YO, WkSzOutputBytestreamBase<?>> writingOpFactory,
+    WkPrimitiveArrayLengthGetter<? super T,? super YS,? super D> txRequestedLengthEvaluator,
+    WkSzPacketWriterOperationCoreFactory<T, YS, D, WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<T, XS, XO, YS, YO, D>, YO, WkSzOutputBytestreamBase<?>> writingOpFactory,
     WkSzWriteEngineFactory<T, ? super WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<WkSzOutputBytestream, WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
@@ -111,7 +112,7 @@ public class SimplifiedPrimitiveArraySerializerCore<
   }
 
   @Override
-  protected SimplifiedPrimitiveArraySerializerCore<T,XS,XO,YS,YO,D> getThis() {
+  protected WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<T,XS,XO,YS,YO,D> getThis() {
     return this;
   }
 

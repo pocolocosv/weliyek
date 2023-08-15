@@ -32,6 +32,7 @@ import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 import weliyek.serialization.sequence.SequenceSizeParameters;
+import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
 
 public class WkVariableSizeByteArraySrlzStructNode
     implements WkByteArraySrlzStructDefinitionFrameNode<
@@ -79,7 +80,7 @@ public class WkVariableSizeByteArraySrlzStructNode
     return new WkVariableSizeByteArraySrlzStructNode(minSize, maxSize, componentCore).definitionCore;
   }
 
-  private final SimplifiedPrimitiveArraySerializerCore<
+  private final WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                         WkByteArray,
                         WkSzVariableLengthOperationSettings,
                         WkVariableSizeByteArraySrlzInputNode,
@@ -92,7 +93,7 @@ public class WkVariableSizeByteArraySrlzStructNode
     int minSize,
     int maxSize,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
-    this.definitionCore = new SimplifiedPrimitiveArraySerializerCore<
+    this.definitionCore = new WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
         WkByteArray,
         WkSzVariableLengthOperationSettings,
         WkVariableSizeByteArraySrlzInputNode,
@@ -104,7 +105,7 @@ public class WkVariableSizeByteArraySrlzStructNode
                                   WkVariableSizeByteArraySrlzStructNode::getRxRequestedLength,
                                   (i,xs,axb,xkc,dc) -> new WkVariableSizeByteArraySrlzInputNode(i,xs,axb,xkc,dc).operationCore,
                                   WkBasicByteArraySrlzEngineDecoder.FACTORY,
-                                  (SerializingPrimitiveArrayLengthProvider<WkByteArray,WkSettingsSrlzPacketOperationData,WkVariableSizeByteArraySrlzStructNode>)WkVariableSizeByteArraySrlzStructNode::getTxRequestedLength,
+                                  (WkPrimitiveArrayLengthGetter<WkByteArray,WkSettingsSrlzPacketOperationData,WkVariableSizeByteArraySrlzStructNode>)WkVariableSizeByteArraySrlzStructNode::getTxRequestedLength,
                                   (i,y,ys,ayb,ykc,dc) -> new WkVariableSizeByteArraySrlzOutputNode(i,y,ys,ayb,ykc,dc).operationCore,
                                   WkByteArraySrlzEngineEncoder.FACTORY,
                                   this,

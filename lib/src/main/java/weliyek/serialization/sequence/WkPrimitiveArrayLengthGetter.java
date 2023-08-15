@@ -15,13 +15,14 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.util.array;
+package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.util.array.WkPrimitiveArray;
 
 @FunctionalInterface
-public interface SerializingPrimitiveArrayLengthProvider<
+public interface WkPrimitiveArrayLengthGetter<
                         Y extends WkPrimitiveArray<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y, ?>>

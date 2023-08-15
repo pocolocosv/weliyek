@@ -27,24 +27,24 @@ import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
-public abstract class PrimitiveArraySerializerReadingCore<
+public abstract class WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends WkPrimitiveArray<?,?>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
                         XR extends WkDecodingResultSrlzPacketOperationData<X>,
                         XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
-                        XOC extends PrimitiveArraySerializerReadingCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
+                        XOC extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X,XO>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        DC extends PrimitiveArraySerializerCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
+                        DC extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends WkSrlzInputPacketDecoderFrameLeafNodeCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
         implements WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X, XS, XQ, XR, XD>
 {
 
   private final int requestedLength;
 
-  protected PrimitiveArraySerializerReadingCore(
+  protected WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore(
     int index,
     XS settings,
     AXB parentBytestream,

@@ -21,11 +21,8 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
 public class WkSrlzFilterQueryResults
 {

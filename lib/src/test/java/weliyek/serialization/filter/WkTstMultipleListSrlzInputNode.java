@@ -34,8 +34,8 @@ import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.sequence.VariableSizeCollectionField;
-import weliyek.serialization.sequence.VariableSizeCollectionFieldDeserializer;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzInputNode;
 
 public class WkTstMultipleListSrlzInputNode
         implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
@@ -91,7 +91,7 @@ public class WkTstMultipleListSrlzInputNode
 
   @Override
   public
-  WkSrlzInputPacketSubfieldFrameNode<WkSzTstMultipleLists, VariableSizeCollectionField<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode>>
+  WkSrlzInputPacketSubfieldFrameNode<WkSzTstMultipleLists, WkVariableSizeCollectionSrlzStructNode<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

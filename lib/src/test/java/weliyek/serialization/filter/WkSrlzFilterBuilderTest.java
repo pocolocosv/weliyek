@@ -87,8 +87,8 @@ public class WkSrlzFilterBuilderTest
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
     MULTIPLE_LIST_PACKET = WkTstMultipleListSrlzStructNode.newPacketStructure();
-    PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().field().definition().element().field().definition();
-    PRIMITIVEGROUP_FIELD = PRIMITIVELIST_FIELD.variableSequence().field().definition().element().field().definition();
+    PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().field().definition().elements().field().definition();
+    PRIMITIVEGROUP_FIELD = PRIMITIVELIST_FIELD.variableSequence().field().definition().elements().field().definition();
     BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.field().definition();
     INT_FIELD = PRIMITIVEGROUP_FIELD.intSubcomponent.field().definition();
     LONG_FIELD = PRIMITIVEGROUP_FIELD.longSubcomponent.field().definition();

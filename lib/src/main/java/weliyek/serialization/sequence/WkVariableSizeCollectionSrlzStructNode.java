@@ -39,7 +39,7 @@ import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 
-public final class VariableSizeCollectionField<
+public final class WkVariableSizeCollectionSrlzStructNode<
                         T extends Collection<ET>,
                         XS extends WkSzVariableLengthOperationSettings,
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -51,15 +51,15 @@ public final class VariableSizeCollectionField<
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,?>>
-    implements WkSzCollectionAndElementsDefinition<
+    implements WkCollectionAndElementsSrlzStructDefinitionFrameNode<
                         T,
-                        VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
-                        VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+                        WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
+                        WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                         ET,
                         ED>,
                WkVariableSizeSequenceSrlzStructDefinitionFrameNode<
                         T,
-                        VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>>
+                        WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>>
 {
 
   public static <T extends Collection<ET>,
@@ -76,14 +76,14 @@ public final class VariableSizeCollectionField<
   WkSrlzStructComponentFrameNodeRootCore<
                  T,
                  XS,
-                 VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                 VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                 WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                 WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                  WkSzInputBytestreamBase<?>,
                  YS,
-                 VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-                 VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+                 WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                 WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                  WkSzOutputBytestreamBase<?>,
-                 VariableSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
+                 WkVariableSizeCollectionSrlzStructNode<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
   newPacketStructure(
     String label,
     String elementsLabel,
@@ -94,13 +94,13 @@ public final class VariableSizeCollectionField<
       ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
       EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
     WkOperationSettingsFactory<
-      VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
+      WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
     WkOperationSettingsFactory<
-      VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
+      WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     Function<List<ET>, T> collectionFactory) {
     return new WkSrlzStructComponentFrameNodeRootCore<>(
                   label,
-        (pc) -> VariableSizeCollectionField.newCore(
+        (pc) -> WkVariableSizeCollectionSrlzStructNode.newCore(
                     elementsLabel,
                     minSize,
                     maxSize,
@@ -128,72 +128,72 @@ public final class VariableSizeCollectionField<
   WkSrlzStructDefinitionFrameNodeCore<
                  T,
                  XS,?,?,
-                 VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                 VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                 WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                 WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                  WkSzInputBytestreamBase<?>,
                  YS,?,?,
-                 VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-                 VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+                 WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                 WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                  WkSzOutputBytestreamBase<?>,
-                 VariableSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,?>
+                 WkVariableSizeCollectionSrlzStructNode<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,?>
   newCore(
     String elementsLabel,
     int minSize,
     int maxSize,
     Class<T> collectionClass,
     WkOperationSettingsFactory<
-      VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
+      WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
     WkOperationSettingsFactory<
-      VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
+      WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
       ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
       EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
-    return new VariableSizeCollectionField<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
+    return new WkVariableSizeCollectionSrlzStructNode<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
   }
 
-  private final SimplifiedCollectionDefinitionCore<
+  private final WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         T,
                         XS,
-                        VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                        VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                        WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                        WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                         YS,
-                        VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-                        VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+                        WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                        WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                         ET, EXS, EXD, EXO, EYS, EYD, EYO, ED,
-                        VariableSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>> definitionCore;
+                        WkVariableSizeCollectionSrlzStructNode<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>> definitionCore;
   private final SequenceSizeParameters<T> sizeLimits;
 
-  private VariableSizeCollectionField(
+  private WkVariableSizeCollectionSrlzStructNode(
     int minSize,
     int maxSize,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     WkOperationSettingsFactory<
-      VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
+      WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
     WkOperationSettingsFactory<
-      VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
+      WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
       ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
       EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory) {
-    this.definitionCore = new SimplifiedCollectionDefinitionCore<
+    this.definitionCore = new WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                 T,
                                 XS,
-                                VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                                VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                                WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                                WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                                 YS,
-                                VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-                                VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+                                WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                                WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                                 ET, EXS, EXD, EXO, EYS, EYD, EYO, ED,
-                                VariableSizeCollectionField<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>(
+                                WkVariableSizeCollectionSrlzStructNode<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>(
                                     componentCore,
-                                    (i,s,axb,xkc,dc) -> new VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>(i,s,axb,xkc,dc).operationCore,
-                                    (i,y,s,ayb,ykc,dc) -> new VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>(i,y,s,ayb,ykc,dc).operationCore,
+                                    (i,s,axb,xkc,dc) -> new WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>(i,s,axb,xkc,dc).operationCore,
+                                    (i,y,s,ayb,ykc,dc) -> new WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>(i,y,s,ayb,ykc,dc).operationCore,
                                     elementsLabel,
-                                    VariableSizeCollectionField::getNumberOfDeserializingOperations,
+                                    WkVariableSizeCollectionSrlzStructNode::getNumberOfDeserializingOperations,
                                     elementsRxSettingsFactory,
                                     elementsTxSettingsFactory,
                                     elementsDefinitionFactory,
@@ -204,17 +204,17 @@ public final class VariableSizeCollectionField<
   }
 
   private static <XS extends WkSzVariableLengthOperationSettings>
-  int getNumberOfDeserializingOperations(VariableSizeCollectionFieldDeserializer<?,XS,?,?,?,?> aggregatingDeserializer) {
+  int getNumberOfDeserializingOperations(WkVariableSizeCollectionSrlzInputNode<?,XS,?,?,?,?> aggregatingDeserializer) {
     return aggregatingDeserializer.settings().getRequestedLength();
   }
 
   @Override
   public
   WkSrlzStructSubcomponentFrameNode<
-    VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
-    VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>, ED>
-  element() {
-    return this.definitionCore.element();
+    WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
+    WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>, ED>
+  elements() {
+    return this.definitionCore.elements();
   }
 
   @Override
@@ -235,7 +235,7 @@ public final class VariableSizeCollectionField<
   @Override
   public WkSrlzPacketNodePredicate<?, ?>
   makeTester(
-    Predicate<? super VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>> test,
+    Predicate<? super WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>> test,
     String description) {
     return this.definitionCore.makeTester(test, description);
   }

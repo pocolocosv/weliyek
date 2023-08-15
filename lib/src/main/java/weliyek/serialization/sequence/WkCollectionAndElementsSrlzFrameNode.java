@@ -17,10 +17,10 @@
  */
 package weliyek.serialization.sequence;
 
-public interface WkSzCollectionAndElementsSegment<S>
+public interface WkCollectionAndElementsSrlzFrameNode<S>
     extends WkCollectionSrlzFrameNode
 {
 
-  S element();
+  S elements();
 
 }

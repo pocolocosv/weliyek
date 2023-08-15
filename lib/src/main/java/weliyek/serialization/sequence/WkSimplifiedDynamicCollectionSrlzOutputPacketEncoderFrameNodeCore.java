@@ -67,8 +67,8 @@ public final class WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNode
                         YD,
                         WkSzOutputBytestreamBase<?>,
                         ZT, ZYS, ZYO, ZYD, VYS,
-                        VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>, // VYO
-                        VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>, // VYD
+                        WkVariableSizeCollectionSrlzOutputNode<T,VYS,ET,EYS,EYD,EYO>, // VYO
+                        WkVariableSizeCollectionSrlzStructNode<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>, // VYD
                         WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<
                           T,?,?,?,YS,YO,YD,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS,?>>
     implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<

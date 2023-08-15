@@ -112,7 +112,7 @@ public class WkDynamicCollectionSrlzOutputNode<
 
   @Override
   public
-  WkSrlzOutputPacketSubfieldFrameNode<T, VariableSizeCollectionField<T, ?, VYS, ET, ?, ?, ?, EYS, EYD, EYO, ?>, VariableSizeCollectionFieldSerializer<T, VYS, ET, EYS, EYD, EYO>>
+  WkSrlzOutputPacketSubfieldFrameNode<T, WkVariableSizeCollectionSrlzStructNode<T, ?, VYS, ET, ?, ?, ?, EYS, EYD, EYO, ?>, WkVariableSizeCollectionSrlzOutputNode<T, VYS, ET, EYS, EYD, EYO>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

@@ -32,49 +32,49 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 
-public final class FixedSizeCollectionFieldDeserializer<
+public final class WkFixedSizeCollectionSrlzInputNode<
                         T extends Collection<ET>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
-    implements CollectionAndElementsFieldDeserializer<
+    implements WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         T,
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkDecodingResultSrlzPacketOperationData<T>,
-                        FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                        WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                         ET, EXD, EXO>,
                 WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<
                         T,
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkDecodingResultSrlzPacketOperationData<T>,
-                        FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
+                        WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
 {
 
-  final SimplifiedCollectionDeserializingCore<
+  final WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore<
                         T, XS,
-                        FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                        FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                        WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                        WkFixedSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                         ET, EXS, EXD, EXO> operationCore;
 
-  FixedSizeCollectionFieldDeserializer(
+  WkFixedSizeCollectionSrlzInputNode(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
-      T,?,FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+      T,?,WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
       ?,?,?> deserializingfieldCore,
-    SimplifiedCollectionDefinitionCore<
-      T,XS,FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-      FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+    WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
+      T,XS,WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+      WkFixedSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
       ?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore) {
-    this.operationCore = new SimplifiedCollectionDeserializingCore<
+    this.operationCore = new WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore<
                                 T, XS,
-                                FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                                FixedSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                                WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                                WkFixedSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                                 ET, EXS, EXD, EXO>(
                                     index,
                                     settings,
@@ -85,12 +85,12 @@ public final class FixedSizeCollectionFieldDeserializer<
   }
 
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<ET,EXD,EXO> element() {
-    return this.operationCore.element();
+  public WkSrlzInputPacketSubfieldFrameNode<ET,EXD,EXO> elements() {
+    return this.operationCore.elements();
   }
 
   @Override
-  public FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?> definition() {
+  public WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?> definition() {
     return this.operationCore.definition();
   }
 
@@ -115,7 +115,7 @@ public final class FixedSizeCollectionFieldDeserializer<
   }
 
   @Override
-  public WkSrlzInputPacketFieldFrameNode<T, FixedSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
+  public WkSrlzInputPacketFieldFrameNode<T, WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
   packetField() {
     return this.operationCore.packetField();
   }

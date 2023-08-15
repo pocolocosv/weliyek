@@ -23,16 +23,16 @@ import weliyek.serialization.WkSrlzPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzPacketOperationFrameNode;
 import weliyek.serialization.WkSrlzPacketSubfieldFrameNode;
 
-public interface WkSzCollectionAndElementsOperation<
+public interface WkCollectionAndElementsSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonSequenceRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData,
-                        D extends WkSzCollectionAndElementsDefinition<?,?,?,?,?>,
+                        D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<?,?,?,?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>,
                         EO extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>,
                         EK extends WkSrlzPacketFieldFrameNode<?,EO,?>,
                         EJ extends WkSrlzPacketSubfieldFrameNode<EK>>
-        extends WkSzCollectionAndElementsSegment<EJ>,
+        extends WkCollectionAndElementsSrlzFrameNode<EJ>,
                 WkCollectionSrlzPacketOperationFrameNode<S, Q, R, D, K>
 {
 

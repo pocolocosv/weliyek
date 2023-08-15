@@ -46,11 +46,11 @@ public interface WkDynamicCollectionSrlzStructDefinitionFrameNode<
     extends WkDynamicCollectionSrlzFrameNode<
                         WkSrlzStructSubcomponentFrameNode<XO, YO, ZD>,
                         WkSrlzStructSubcomponentFrameNode<
-                          XO, YO, VariableSizeCollectionField<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>>,
+                          XO, YO, WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>>,
             WkCollectionSrlzStructDefinitionFrameNode<T, XO>,
             WkDynamicSequenceSrlzStructDefinitionFrameNode<
                         T, XO, YO, ZD,
-                        VariableSizeCollectionField<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
+                        WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
 {
 
   @Override

@@ -27,7 +27,7 @@ import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
-import weliyek.serialization.sequence.VariableSizeCollectionField;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzStructDefinitionFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 
@@ -110,7 +110,7 @@ public class WkTstPrimitivesGroupListSrlzStructNode
 
     @Override
     public
-    WkSrlzStructSubcomponentFrameNode<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
+    WkSrlzStructSubcomponentFrameNode<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
     variableSequence() {
       return this.fieldCore.variableSequence();
     }

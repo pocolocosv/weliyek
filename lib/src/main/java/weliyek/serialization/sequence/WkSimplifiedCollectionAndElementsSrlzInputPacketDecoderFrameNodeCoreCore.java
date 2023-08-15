@@ -29,11 +29,11 @@ import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
-public final class SimplifiedCollectionDeserializingCore<
+public final class WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore<
                         T extends Collection<ET>,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
-                        XO extends CollectionAndElementsFieldDeserializer<
+                        XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,?,ET,?>,
+                        XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                                         T,
                                         XS,
                                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
@@ -44,7 +44,7 @@ public final class SimplifiedCollectionDeserializingCore<
                         EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
-    extends CollectionAndElementsFieldDeserializerCore<
+    extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNodeCore<
                         T,
                         XS,
                         WkSzInputBytestream,
@@ -57,21 +57,21 @@ public final class SimplifiedCollectionDeserializingCore<
                         WkDecodingResultSrlzPacketOperationData<T>,
                         XD,
                         XO,
-                        SimplifiedCollectionDeserializingCore<T,XS,XD,XO,ET,EXS,EXD,EXO>,
+                        WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore<T,XS,XD,XO,ET,EXS,EXD,EXO>,
                         WkSzInputBytestreamBase<?>,
                         ET,
                         EXS,
                         EXD,
                         EXO,
-                        SimplifiedCollectionDefinitionCore<T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?>>
+                        WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?>>
 {
 
-  SimplifiedCollectionDeserializingCore(
+  WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> packetfieldCore,
-    SimplifiedCollectionDefinitionCore<
+    WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
       T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);
@@ -83,7 +83,7 @@ public final class SimplifiedCollectionDeserializingCore<
   }
 
   @Override
-  protected SimplifiedCollectionDeserializingCore<T,XS,XD,XO,ET,EXS,EXD,EXO> getThis() {
+  protected WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore<T,XS,XD,XO,ET,EXS,EXD,EXO> getThis() {
     return this;
   }
 

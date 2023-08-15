@@ -68,8 +68,8 @@ public final class WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeC
                         XD,
                         WkSzInputBytestreamBase<?>,
                         ZT, ZXS, ZXO, ZXD, VXS,
-                        VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>, // VXO
-                        VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>, // VXD
+                        WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>, // VXO
+                        WkVariableSizeCollectionSrlzStructNode<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>, // VXD
                         WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?>>
     implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         T, XS,

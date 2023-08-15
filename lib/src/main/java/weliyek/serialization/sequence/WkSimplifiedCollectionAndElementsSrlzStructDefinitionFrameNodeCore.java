@@ -45,11 +45,11 @@ import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
-public class SimplifiedCollectionDefinitionCore<
+public class WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         T extends Collection<ET>,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
-                        XO extends CollectionAndElementsFieldDeserializer<
+                        XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,?,ET,?>,
+                        XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                                         T,
                                         XS,
                                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
@@ -57,8 +57,8 @@ public class SimplifiedCollectionDefinitionCore<
                                         XD,
                                         ET,EXD,EXO>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
-                        YO extends CollectionAndElementsFieldSerializer<
+                        YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,YO,ET,?>,
+                        YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                                         T,
                                         YS,
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -73,8 +73,8 @@ public class SimplifiedCollectionDefinitionCore<
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,?>,
-                        D extends WkSzCollectionAndElementsDefinition<T,XO,YO,ET,ED>>
-    extends CollectionAndElementsFieldDefinitionCore<
+                        D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,YO,ET,ED>>
+    extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         T,
                         XS,
                         WkSzInputBytestream,
@@ -107,18 +107,18 @@ public class SimplifiedCollectionDefinitionCore<
                         EYO,
                         ED,
                         D,
-                        SimplifiedCollectionDefinitionCore<
+                        WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                           T,XS,XD,XO,YS,YD,YO,
                           ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>>
 {
 
-  protected SimplifiedCollectionDefinitionCore(
+  protected WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore(
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     WkSzPacketReaderOperationCoreFactory<
-      T,XS,XD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
+      T,XS,XD,WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
       XO,WkSzInputBytestreamBase<?>> readingOpFactory,
     WkSzPacketWriterOperationCoreFactory<
-      T,YS,YD,SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
+      T,YS,YD,WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D>,
       YO,WkSzOutputBytestreamBase<?>> writingOpFactory,
     String elementsLabel,
     ToIntFunction<? super XO> elementsDeserializingNumOfOps,
@@ -144,13 +144,13 @@ public class SimplifiedCollectionDefinitionCore<
           elementsTxSettingsFactory,
           (k,yo,i) -> yo.serializableAsList().get(i),
           elementsDefinitionFactory,
-          (xo) -> collectionFactory.apply(xo.element().field().get().collectAllOperationValues()),
+          (xo) -> collectionFactory.apply(xo.elements().field().get().collectAllOperationValues()),
           definitionBody,
           serializableClass);
   }
 
   @Override
-  protected SimplifiedCollectionDefinitionCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D> getThis() {
+  protected WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<T,XS,XD,XO,YS,YD,YO,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D> getThis() {
     return this;
   }
 

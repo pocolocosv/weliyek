@@ -51,19 +51,19 @@ public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         ZXO,
                         WkSrlzInputPacketFieldFrameNode<ZT,ZXD,ZXO>,
                         WkSrlzInputPacketSubfieldFrameNode<ZT,ZXD,ZXO>,
-                        VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>,
+                        WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>,
                         WkSrlzInputPacketFieldFrameNode<T,
-                          VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                          VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>>,
+                          WkVariableSizeCollectionSrlzStructNode<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                          WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>>,
                           WkSrlzInputPacketSubfieldFrameNode<
                           T,
-                          VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                          VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>>>,
+                          WkVariableSizeCollectionSrlzStructNode<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                          WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>>>,
             WkCollectionSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD>,
             WkDynamicSequenceSrlzInputPacketDecoderFrameNode<
                         T, XS, XQ, XR, XD, ZT, ZXO, ZXD,
-                        VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>,
-                        VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>>
+                        WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>,
+                        WkVariableSizeCollectionSrlzStructNode<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>>
 {
 
 }

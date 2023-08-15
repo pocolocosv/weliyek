@@ -27,16 +27,16 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 
-public interface CollectionAndElementsFieldDeserializer<
+public interface WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         T extends Collection<ET>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
+                        XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,?,ET,?>,
                         ET,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,?,?,?,EXD>>
-        extends WkSzCollectionAndElementsOperation<
+        extends WkCollectionAndElementsSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>,
                         EXO,

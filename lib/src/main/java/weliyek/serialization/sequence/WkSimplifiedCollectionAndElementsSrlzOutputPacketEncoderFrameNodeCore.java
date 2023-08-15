@@ -29,11 +29,11 @@ import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
-public final class SimplifiedCollectionSerializingCore<
+public final class WkSimplifiedCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<
                         T extends Collection<ET>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
-                        YO extends CollectionAndElementsFieldSerializer<
+                        YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,YO,ET,?>,
+                        YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                                         T,
                                         YS,
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -44,7 +44,7 @@ public final class SimplifiedCollectionSerializingCore<
                         EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
-    extends CollectionAndElementsFieldSerializerCore<
+    extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<
                         T,
                         YS,
                         WkSzOutputBytestream,
@@ -57,24 +57,24 @@ public final class SimplifiedCollectionSerializingCore<
                         WkEncodingResultSrlzPacketOperationData,
                         YD,
                         YO,
-                        SimplifiedCollectionSerializingCore<T,YS,YD,YO,ET,EYS,EYD,EYO>,
+                        WkSimplifiedCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO,ET,EYS,EYD,EYO>,
                         WkSzOutputBytestreamBase<?>,
                         ET,
                         EYS,
                         EYD,
                         EYO,
-                        SimplifiedCollectionDefinitionCore<
+                        WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                           T,?,?,?,YS,YD,YO,
                           ET,?,?,?,EYS,EYD,EYO,?,?>>
 {
 
-  SimplifiedCollectionSerializingCore(
+  WkSimplifiedCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore(
     int index,
     T serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
-    SimplifiedCollectionDefinitionCore<
+    WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
       T,?,?,?,YS,YD,YO,ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
@@ -87,7 +87,7 @@ public final class SimplifiedCollectionSerializingCore<
   }
 
   @Override
-  protected SimplifiedCollectionSerializingCore<T,YS,YD,YO,ET,EYS,EYD,EYO> getThis() {
+  protected WkSimplifiedCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO,ET,EYS,EYD,EYO> getThis() {
     return this;
   }
 

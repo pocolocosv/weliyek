@@ -33,19 +33,19 @@ import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 
-public final class VariableSizeCollectionFieldDeserializer<
+public final class WkVariableSizeCollectionSrlzInputNode<
                         T extends Collection<ET>,
                         XS extends WkSzVariableLengthOperationSettings,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
                         EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
-    implements CollectionAndElementsFieldDeserializer<
+    implements WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         T,
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkDecodingResultSrlzPacketOperationData<T>,
-                        VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                        WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                         ET,
                         EXD,
                         EXO>,
@@ -54,34 +54,34 @@ public final class VariableSizeCollectionFieldDeserializer<
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkDecodingResultSrlzPacketOperationData<T>,
-                        VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
+                        WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
 {
 
-  final SimplifiedCollectionDeserializingCore<
+  final WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore<
                         T,
                         XS,
-                        VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                        VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                        WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                        WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                         ET,
                         EXS,
                         EXD,
                         EXO> operationCore;
 
-  VariableSizeCollectionFieldDeserializer(
+  WkVariableSizeCollectionSrlzInputNode(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
-      T,?,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?,?,?> deserializingfieldCore,
-    SimplifiedCollectionDefinitionCore<
-      T,XS,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-      VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+      T,?,WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?,?,?> deserializingfieldCore,
+    WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
+      T,XS,WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+      WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
       ?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore) {
-    this.operationCore = new SimplifiedCollectionDeserializingCore<
+    this.operationCore = new WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameNodeCoreCore<
                                 T,
                                 XS,
-                                VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                                VariableSizeCollectionFieldDeserializer<T,XS,ET,EXS,EXD,EXO>,
+                                WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                                WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                                 ET,EXS,EXD,EXO>(
                                     index,
                                     settings,
@@ -92,12 +92,12 @@ public final class VariableSizeCollectionFieldDeserializer<
   }
 
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<ET, EXD, EXO> element() {
-    return this.operationCore.element();
+  public WkSrlzInputPacketSubfieldFrameNode<ET, EXD, EXO> elements() {
+    return this.operationCore.elements();
   }
 
   @Override
-  public VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?> definition() {
+  public WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?> definition() {
     return this.operationCore.definition();
   }
 
@@ -123,7 +123,7 @@ public final class VariableSizeCollectionFieldDeserializer<
 
   @Override
   public
-  WkSrlzInputPacketFieldFrameNode<T,VariableSizeCollectionField<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
+  WkSrlzInputPacketFieldFrameNode<T,WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
   packetField() {
     return this.operationCore.packetField();
   }

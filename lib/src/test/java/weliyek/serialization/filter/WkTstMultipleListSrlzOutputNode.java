@@ -33,8 +33,8 @@ import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.sequence.VariableSizeCollectionField;
-import weliyek.serialization.sequence.VariableSizeCollectionFieldSerializer;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzOutputNode;
 
 public class WkTstMultipleListSrlzOutputNode
         implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
@@ -90,7 +90,7 @@ public class WkTstMultipleListSrlzOutputNode
 
   @Override
   public
-  WkSrlzOutputPacketSubfieldFrameNode<WkSzTstMultipleLists, VariableSizeCollectionField<WkSzTstMultipleLists, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, VariableSizeCollectionFieldSerializer<WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>
+  WkSrlzOutputPacketSubfieldFrameNode<WkSzTstMultipleLists, WkVariableSizeCollectionSrlzStructNode<WkSzTstMultipleLists, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, WkVariableSizeCollectionSrlzOutputNode<WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

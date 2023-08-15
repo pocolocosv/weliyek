@@ -22,13 +22,13 @@ import java.util.Collection;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 
-public interface WkSzCollectionAndElementsDefinition<
+public interface WkCollectionAndElementsSrlzStructDefinitionFrameNode<
                         T extends Collection<ET>,
-                        XO extends CollectionAndElementsFieldDeserializer<T,?,?,?,?,?,?,?>,
-                        YO extends CollectionAndElementsFieldSerializer<T,?,?,?,?,?,?,?>,
+                        XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?>,
+                        YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?>,
                         ET,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,?>>
-        extends WkSzCollectionAndElementsSegment<WkSrlzStructSubcomponentFrameNode<XO, YO, ED>>,
+        extends WkCollectionAndElementsSrlzFrameNode<WkSrlzStructSubcomponentFrameNode<XO, YO, ED>>,
                 WkCollectionSrlzStructDefinitionFrameNode<T, XO>
 {
 

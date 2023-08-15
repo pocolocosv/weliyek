@@ -32,19 +32,19 @@ import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
-public final class VariableSizeCollectionFieldSerializer<
+public final class WkVariableSizeCollectionSrlzOutputNode<
                         T extends Collection<ET>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
-    implements CollectionAndElementsFieldSerializer<
+    implements WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                         T,
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                         WkEncodingResultSrlzPacketOperationData,
-                        VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                        WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                         ET,
                         EYD,
                         EYO>,
@@ -53,31 +53,31 @@ public final class VariableSizeCollectionFieldSerializer<
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                         WkEncodingResultSrlzPacketOperationData,
-                        VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
+                        WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
 {
 
-  final SimplifiedCollectionSerializingCore<
+  final WkSimplifiedCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<
                         T, YS,
-                        VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-                        VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+                        WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                        WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                         ET,EYS,EYD,EYO> operationCore;
 
-  VariableSizeCollectionFieldSerializer(
+  WkVariableSizeCollectionSrlzOutputNode(
     int index,
     T serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
-      T,?,VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,?,?,?> serializingfieldCore,
-    SimplifiedCollectionDefinitionCore<
-      T,?,?,?,YS,VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-      VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+      T,?,WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,?,?,?> serializingfieldCore,
+    WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
+      T,?,?,?,YS,WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+      WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
       ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore) {
-    this.operationCore = new SimplifiedCollectionSerializingCore<
+    this.operationCore = new WkSimplifiedCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<
                                 T,
                                 YS,
-                                VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-                                VariableSizeCollectionFieldSerializer<T,YS,ET,EYS,EYD,EYO>,
+                                WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                                WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                                 ET,EYS,EYD,EYO>(
                                     index,
                                     serializable,
@@ -89,12 +89,12 @@ public final class VariableSizeCollectionFieldSerializer<
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<ET, EYD, EYO> element() {
-    return this.operationCore.element();
+  public WkSrlzOutputPacketSubfieldFrameNode<ET, EYD, EYO> elements() {
+    return this.operationCore.elements();
   }
 
   @Override
-  public VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?> definition() {
+  public WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?> definition() {
     return this.operationCore.definition();
   }
 
@@ -119,7 +119,7 @@ public final class VariableSizeCollectionFieldSerializer<
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<T, VariableSizeCollectionField<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>, ?>
+  public WkSrlzOutputPacketFieldFrameNode<T, WkVariableSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>, ?>
   packetField() {
     return this.operationCore.packetField();
   }

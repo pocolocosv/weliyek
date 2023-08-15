@@ -113,12 +113,12 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
                         WkSzOutputBytestreamBase<?>,
                         ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD,
                         VXS,
-                        VariableSizeCollectionFieldDeserializer<T,VXS,ET,EXS,EXD,EXO>, // VXO
-                        VariableSizeCollectionField<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>, // VXD
+                        WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>, // VXO
+                        WkVariableSizeCollectionSrlzStructNode<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>, // VXD
                         VYS,
-                        VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>, // VYO
-                        VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>, // VYD
-                        VariableSizeCollectionField<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,
+                        WkVariableSizeCollectionSrlzOutputNode<T,VYS,ET,EYS,EYD,EYO>, // VYO
+                        WkVariableSizeCollectionSrlzStructNode<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>, // VYD
+                        WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,
                         D,
                         WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<T,XS,XO,XD,YS,YO,YD,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS,D>>
     implements WkDynamicCollectionSrlzStructDefinitionFrameNode<
@@ -140,9 +140,9 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
     String elementFieldLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ET, EXS, EXD, EXO, WkSzInputBytestreamBase<?>, EYS, EYD, EYO, WkSzOutputBytestreamBase<?>, ED>
       elementsDefinitionFactory,
-    WkOperationSettingsFactory<VariableSizeCollectionFieldDeserializer<T, VXS, ET, EXS, EXD, EXO>, EXS>
+    WkOperationSettingsFactory<WkVariableSizeCollectionSrlzInputNode<T, VXS, ET, EXS, EXD, EXO>, EXS>
       elementDeserializerSettingsFactory,
-    WkOperationSettingsFactory<VariableSizeCollectionFieldSerializer<T, VYS, ET, EYS, EYD, EYO>, EYS>
+    WkOperationSettingsFactory<WkVariableSizeCollectionSrlzOutputNode<T, VYS, ET, EYS, EYD, EYO>, EYS>
       elementSerializerSettingsFactory,
     //Function<InputBytestreamGeneralBase<?>, ReadingRuntimeControl<InputBytestream, InputBytestreamGeneralBase<? extends InputBytestream>, DeserializingRuntime<InputBytestream>>>
     //  deserializerRuntimeFactory,
@@ -168,7 +168,7 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
           collectionAndElementsDeserializerSettingsFactory,
           collectionAndElementsSerializerSettingsFactory,
           (yk, ayo, i) -> ayo.serializable(),
-          (pc) -> VariableSizeCollectionField.
+          (pc) -> WkVariableSizeCollectionSrlzStructNode.
                         <T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>newCore(
                                 elementFieldLabel,
                                 minSize,

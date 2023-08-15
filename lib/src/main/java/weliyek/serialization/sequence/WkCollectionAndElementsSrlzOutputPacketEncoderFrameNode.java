@@ -30,16 +30,16 @@ import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
-public interface CollectionAndElementsFieldSerializer<
+public interface WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                         T extends Collection<ET>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkSzCollectionAndElementsDefinition<T,?,?,ET,?>,
+                        YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,?,ET,?>,
                         ET,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,?,?,?,EYD>>
-        extends WkSzCollectionAndElementsOperation<
+        extends WkCollectionAndElementsSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,?>,
                         EYO,

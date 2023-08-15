@@ -33,7 +33,7 @@ import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
-public abstract class CollectionAndElementsFieldSerializerCore<
+public abstract class WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<
                         T extends Collection<ET>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
@@ -41,26 +41,26 @@ public abstract class CollectionAndElementsFieldSerializerCore<
                         YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
-                        YO extends CollectionAndElementsFieldSerializer<T,YS,YQ,YR,YD,ET,EYD,EYO>,
-                        YOC extends CollectionAndElementsFieldSerializerCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYBC,ET,EYS,EYD,EYO,DC>,
+                        YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,YO,ET,?>,
+                        YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD,ET,EYD,EYO>,
+                        YOC extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYBC,ET,EYS,EYD,EYO,DC>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        DC extends CollectionAndElementsFieldDefinitionCore<
+                        DC extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYBC,
                                         ET,?,?,?,EYS,EYD,EYO,?,?,DC>>
         extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
-        implements CollectionAndElementsFieldSerializer<T, YS, YQ, YR, YD, ET, EYD, EYO>
+        implements WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD, ET, EYD, EYO>
 {
 
   private final List<ET> serializableAsList;
 
   private WkSrlzOutputPacketSubfieldFrameNodeCore<ET,EYS,EYD,EYO,T,YBC,YD,YO> elementPacketSubfield;
 
-  protected CollectionAndElementsFieldSerializerCore(
+  protected WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore(
     int index,
     T serializable,
     YS settings,
@@ -69,7 +69,7 @@ public abstract class CollectionAndElementsFieldSerializerCore<
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
-    this.serializableAsList = CollectionAndElementsFieldSerializer.collectionToList(serializable);
+    this.serializableAsList = WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode.collectionToList(serializable);
     this.elementPacketSubfield = getSubfieldpacketFor(definitionCore().elementComponent);
   }
 
@@ -86,7 +86,7 @@ public abstract class CollectionAndElementsFieldSerializerCore<
   protected abstract void onCollectionWritingInitialization();
 
   @Override
-  public final WkSrlzOutputPacketSubfieldFrameNode<ET,EYD,EYO> element() {
+  public final WkSrlzOutputPacketSubfieldFrameNode<ET,EYD,EYO> elements() {
     return this.elementPacketSubfield.asSubfield();
   }
 

@@ -34,8 +34,8 @@ import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.sequence.VariableSizeCollectionField;
-import weliyek.serialization.sequence.VariableSizeCollectionFieldDeserializer;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzInputNode;
 
 public class WkTstPrimitivesGroupListSrlzInputNode
     implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
@@ -90,7 +90,7 @@ public class WkTstPrimitivesGroupListSrlzInputNode
 
     @Override
     public
-    WkSrlzInputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?>, VariableSizeCollectionFieldDeserializer<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader>>
+    WkSrlzInputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader>>
     variableSequence() {
       return this.readingCore.variableSequence();
     }

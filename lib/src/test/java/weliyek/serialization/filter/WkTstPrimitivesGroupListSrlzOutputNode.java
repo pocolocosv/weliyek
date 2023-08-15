@@ -33,8 +33,8 @@ import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.sequence.VariableSizeCollectionField;
-import weliyek.serialization.sequence.VariableSizeCollectionFieldSerializer;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzOutputNode;
 
 public class WkTstPrimitivesGroupListSrlzOutputNode
     implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
@@ -90,7 +90,7 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
 
     @Override
     public
-    WkSrlzOutputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, VariableSizeCollectionField<WkSzTstPrimitivesGroupList, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, VariableSizeCollectionFieldSerializer<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>
+    WkSrlzOutputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, WkVariableSizeCollectionSrlzOutputNode<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>
     variableSequence() {
       return this.writingCore.variableSequence();
     }

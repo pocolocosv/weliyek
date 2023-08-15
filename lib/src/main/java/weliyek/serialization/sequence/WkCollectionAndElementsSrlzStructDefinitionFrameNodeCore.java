@@ -49,15 +49,15 @@ import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
-public abstract class CollectionAndElementsFieldDefinitionCore<
+public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         T extends Collection<ET>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkSzCollectionAndElementsDefinition<T,XO,?,ET,?>,
-                        XO extends CollectionAndElementsFieldDeserializer<
+                        XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,?,ET,?>,
+                        XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                                         T,XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,ET,EXD,EXO>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -65,8 +65,8 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkSzCollectionAndElementsDefinition<T,?,YO,ET,?>,
-                        YO extends CollectionAndElementsFieldSerializer<
+                        YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,YO,ET,?>,
+                        YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                                         T,YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,ET,EYD,EYO>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ET,
@@ -77,22 +77,22 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
                         EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         ED extends WkSrlzStructDefinitionFrameNode<ET,?>,
-                        D extends WkSzCollectionAndElementsDefinition<T,XO,YO,ET,ED>,
-                        DC extends CollectionAndElementsFieldDefinitionCore<
+                        D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,YO,ET,ED>,
+                        DC extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
                                         YS,YB,YBC,YQC,YR,YD,YO,AYB,
                                         ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D,?>>
     extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXB,
                         YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkSzCollectionAndElementsDefinition<T, XO, YO, ET, ED>
+    implements WkCollectionAndElementsSrlzStructDefinitionFrameNode<T, XO, YO, ET, ED>
 {
 
   final WkSrlzStructSubcomponentFrameNodeCore<ET,EXS,EXD,EXO,T,XBC,XD,XO,EYS,EYD,EYO,YBC,YD,YO,ED,D>
                         elementComponent;
   final Function<XO, T> collectionSerializingFactory;
 
-  protected CollectionAndElementsFieldDefinitionCore(
+  protected WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore(
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB, XQC> rxRuntimeFactory,
     BiFunction<XO, T, XR> rxResultFactory,
@@ -128,13 +128,13 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
                                       Optional.empty(),
                                       (yo) -> yo.serializable().size(),
                                       elementsTxSettingsFactory,
-                                      CollectionAndElementsFieldDefinitionCore::disaggregateCollection,
+                                      WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore::disaggregateCollection,
                                       false,
                                       elementsDefinitionFactory);
   }
 
   private static <T extends Collection<ET>,
-                  YO extends CollectionAndElementsFieldSerializer<T,?,?,?,?,ET,EYD,?>,
+                  YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,ET,EYD,?>,
                   ET,
                   EYD extends WkSrlzStructDefinitionFrameNode<ET,?>>
   ET disaggregateCollection(
@@ -148,7 +148,7 @@ public abstract class CollectionAndElementsFieldDefinitionCore<
   }
 
   @Override
-  public WkSrlzStructSubcomponentFrameNode<XO, YO, ED> element() {
+  public WkSrlzStructSubcomponentFrameNode<XO, YO, ED> elements() {
     return this.elementComponent.body();
   }
 

@@ -50,18 +50,18 @@ public interface WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         ZYO,
                         WkSrlzOutputPacketFieldFrameNode<ZT,ZYD,ZYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<ZT,ZYD,ZYO>,
-                        VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>,
+                        WkVariableSizeCollectionSrlzOutputNode<T,VYS,ET,EYS,EYD,EYO>,
                         WkSrlzOutputPacketFieldFrameNode<
                           T,
-                          VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
-                          VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>>,
+                          WkVariableSizeCollectionSrlzStructNode<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
+                          WkVariableSizeCollectionSrlzOutputNode<T,VYS,ET,EYS,EYD,EYO>>,
                         WkSrlzOutputPacketSubfieldFrameNode<T,
-                        VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
-                          VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>>>,
+                        WkVariableSizeCollectionSrlzStructNode<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
+                          WkVariableSizeCollectionSrlzOutputNode<T,VYS,ET,EYS,EYD,EYO>>>,
             WkCollectionSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>,
             WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD, ZT, ZYO, ZYD,
-                        VariableSizeCollectionFieldSerializer<T,VYS,ET,EYS,EYD,EYO>,
-                        VariableSizeCollectionField<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>>
+                        WkVariableSizeCollectionSrlzOutputNode<T,VYS,ET,EYS,EYD,EYO>,
+                        WkVariableSizeCollectionSrlzStructNode<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>>
 {
 
 }

@@ -29,7 +29,6 @@ import weliyek.amat2.protocol.field.basic.SimpleSubfield;
 import weliyek.amat2.protocol.field.basic.UnsignedLittleEndianIntegerField;
 import weliyek.amat2.protocol.field.data.ReadData;
 import weliyek.amat2.protocol.field.data.WriteData;
-import weliyek.bitcoin.protocol.BtcProtoFieldHash;
 
 public class BitcoinOutpointProtoField<C extends MessageContext>
         extends GroupAggregratorField

@@ -29,7 +29,7 @@ FilterBuilderTest.java for an example on how a search can be done.
 - [WkFixedAndVariableSizeCollectionTest](lib/src/test/java/weliyek/serialization/sequence/WkFixedAndVariableSizeCollectionTest.java)
 - [WkStringWithDynamicSizeBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithDynamicSizeBytesTest.java)
 - [WkStringWithFixedBytesTest](lib/src/test/java/weliyek/serialization/string/WkStringWithFixedBytesTest.java)
-- [WkFilterBuilderTest](lib/src/test/java/weliyek/serialization/filter/WkFilterBuilderTest.java)
+- [WkSrlzFilterBuilderTest](lib/src/test/java/weliyek/serialization/filter/WkSrlzFilterBuilderTest.java)
 
 To run the test, clone this Git repo and import the code as a Gradle project. Two projects then
 should be available, weliyek and lib. Gradle should retrieve all necessary dependencies

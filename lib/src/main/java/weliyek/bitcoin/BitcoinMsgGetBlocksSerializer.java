@@ -42,7 +42,7 @@ public class BitcoinMsgGetBlocksSerializer
         BitcoinProtocolIOVarInt.from(rwKernel.list.size()).writeTo(out, listSizeNmspc);
         final AmatNamespace listElementNmspc = BitcoinProtocolName.GETBLOCKS_HEADER_HASH_LIST_ELEMENT.appendTo(listNmspc);
         listElementNmspc.enableCounter(rwKernel.headerHashes().size());
-        for (BitcoinHash hash : rwKernel.headerHashes()) {
+        for (WkBitcoinHash hash : rwKernel.headerHashes()) {
             hash.writeTo(out, listElementNmspc);
             listElementNmspc.increaseCount();
         }
@@ -65,12 +65,12 @@ public class BitcoinMsgGetBlocksSerializer
         final AmatNamespace listElementNmspc = BitcoinProtocolName.GETBLOCKS_HEADER_HASH_LIST_ELEMENT.appendTo(listNmspc);
         listElementNmspc.enableCounter(elemNum);
         for(int i = 0; i < elemNum; i++) {
-            final BitcoinHash hash = BitcoinHash.readFrom(in, listElementNmspc);
+            final WkBitcoinHash hash = WkBitcoinHash.readFrom(in, listElementNmspc);
             roKernel.modifiableHeaderHashList().add(hash);
             listElementNmspc.increaseCount();
         }
         final AmatNamespace stopHashNmspc = BitcoinProtocolName.GETBLOCKS_STOP_HASH.appendTo(listNmspc);
-        roKernel.stopHash = BitcoinHash.readFrom(in, stopHashNmspc);
+        roKernel.stopHash = WkBitcoinHash.readFrom(in, stopHashNmspc);
     }
 
 }

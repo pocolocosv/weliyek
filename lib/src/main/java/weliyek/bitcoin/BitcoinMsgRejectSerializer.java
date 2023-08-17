@@ -127,7 +127,7 @@ public class BitcoinMsgRejectSerializer
                           final AmatNamespace rejectNmspc)
     {
         final AmatNamespace dataNmspc = BitcoinProtocolName.REJECT_DATA.appendTo(rejectNmspc);
-        final Optional<BitcoinCommandName> rejectedCmd = roKernel.messageAsCommand();
+        final Optional<WkBitcoinCommandName> rejectedCmd = roKernel.messageAsCommand();
         if ( ! rejectedCmd.isPresent()) {
             // We don't have a BitcoinMessageCommand for the rejected command.
             // It's assumed that we know about all the commands being used.

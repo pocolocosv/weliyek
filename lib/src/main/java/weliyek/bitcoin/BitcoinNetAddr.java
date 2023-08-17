@@ -58,7 +58,7 @@ public class BitcoinNetAddr
     }
 
     public void writeTo(BitcoinProtocolVersion version,
-                        BitcoinCommand command,
+                        WkBitcoinCommand command,
                         OutputStream   out,
                         AmatNamespace  timeNamespace,
                         AmatNamespace  servicesNamespace,
@@ -72,7 +72,7 @@ public class BitcoinNetAddr
     }
 
     private void writeTime(BitcoinProtocolVersion version,
-                           BitcoinCommand         command,
+                           WkBitcoinCommand         command,
                            OutputStream           out,
                            AmatNamespace          timeNamespace)
     {
@@ -87,13 +87,13 @@ public class BitcoinNetAddr
         }
     }
 
-    private static boolean expectTimeField(BitcoinProtocolVersion version, BitcoinCommand command) {
-        return    ( ! command.equals(BitcoinCommand.VERSION))
+    private static boolean expectTimeField(BitcoinProtocolVersion version, WkBitcoinCommand command) {
+        return    ( ! command.equals(WkBitcoinCommand.VERSION))
                && (version.value >= BitcoinProtocolVersion.CADDR_TIME.value);
     }
 
     public static BitcoinNetAddr readFrom(BitcoinProtocolVersion version,
-                                          BitcoinCommand         command,
+                                          WkBitcoinCommand         command,
                                           InputStream            in,
                                           AmatNamespace          timeNamespace,
                                           AmatNamespace          servicesNamespace,
@@ -107,7 +107,7 @@ public class BitcoinNetAddr
         return new BitcoinNetAddr(addr, srvcs, prt, time);
     }
 
-    private static Optional<Long> readTime(BitcoinProtocolVersion version, BitcoinCommand command, InputStream in, final AmatNamespace timeNamespace) {
+    private static Optional<Long> readTime(BitcoinProtocolVersion version, WkBitcoinCommand command, InputStream in, final AmatNamespace timeNamespace) {
         if (expectTimeField(version, command))
         {
             long time = AmatProtocolUtil.readLittleEndianInt(in, timeNamespace);

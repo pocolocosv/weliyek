@@ -27,9 +27,9 @@ public class BitcoinMsgGetBlocksKernelRO
                    PayloadCoreKernelRO
 {
 
-    protected List<BitcoinHash> list = new ArrayList<>();
+    protected List<WkBitcoinHash> list = new ArrayList<>();
 
-    protected List<BitcoinHash> unmodifiableList = Collections.unmodifiableList(list);
+    protected List<WkBitcoinHash> unmodifiableList = Collections.unmodifiableList(list);
 
     public BitcoinMsgGetBlocksKernelRO(BitcoinMsgGetBlocksKernelROCommissioner c) {
         super(c);
@@ -41,12 +41,12 @@ public class BitcoinMsgGetBlocksKernelRO
     }
 
     @Override
-    protected List<BitcoinHash> modifiableHeaderHashList() {
+    protected List<WkBitcoinHash> modifiableHeaderHashList() {
         return list;
     }
 
     @Override
-    protected List<BitcoinHash> publicHeaderHashList() {
+    protected List<WkBitcoinHash> publicHeaderHashList() {
         return unmodifiableList;
     }
 

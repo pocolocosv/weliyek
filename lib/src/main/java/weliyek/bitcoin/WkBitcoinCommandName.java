@@ -20,7 +20,7 @@ package weliyek.bitcoin;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum BitcoinCommandName {
+public enum WkBitcoinCommandName {
     VERSION    ("version"),
     VERACK     ("verack"),
     ADDR       ("addr"),
@@ -57,7 +57,7 @@ public enum BitcoinCommandName {
 
     final String text;
 
-    private static final Map<String, BitcoinCommandName> NAME_BY_TEXT_MAP;
+    private static final Map<String, WkBitcoinCommandName> NAME_BY_TEXT_MAP;
 
     static {
         NAME_BY_TEXT_MAP = new HashMap<>();
@@ -93,7 +93,7 @@ public enum BitcoinCommandName {
         NAME_BY_TEXT_MAP.put(BLOCKTXN.text,    BLOCKTXN);
     }
 
-    BitcoinCommandName(final String text) {
+    WkBitcoinCommandName(final String text) {
         this.text = text;
     }
 
@@ -102,10 +102,10 @@ public enum BitcoinCommandName {
         return text;
     }
 
-    public static BitcoinCommandName fromString(String str) {
-        BitcoinCommandName name = NAME_BY_TEXT_MAP.get(str);
+    public static WkBitcoinCommandName fromString(String str) {
+        WkBitcoinCommandName name = NAME_BY_TEXT_MAP.get(str);
         if (null == name) {
-            return BitcoinCommandName.UNKNOWN;
+            return WkBitcoinCommandName.UNKNOWN;
         }
         return name;
     }

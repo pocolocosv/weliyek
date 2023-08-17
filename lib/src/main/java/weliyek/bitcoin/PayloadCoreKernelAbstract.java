@@ -64,7 +64,7 @@ public abstract class PayloadCoreKernelAbstract<K extends PayloadCoreKernelAbstr
     }
 
     @Override
-    public BitcoinCommand command() {
+    public WkBitcoinCommand command() {
         return ownerCore.command();
     }
 

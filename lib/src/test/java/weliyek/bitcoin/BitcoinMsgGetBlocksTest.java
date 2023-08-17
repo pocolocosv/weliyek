@@ -34,9 +34,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.protocol.TestAmatInfo;
-import weliyek.bitcoin.BitcoinCommandName;
+import weliyek.bitcoin.WkBitcoinCommandName;
 import weliyek.bitcoin.BitcoinConfig;
-import weliyek.bitcoin.BitcoinHash;
+import weliyek.bitcoin.WkBitcoinHash;
 import weliyek.bitcoin.BitcoinMessageMagicName;
 import weliyek.bitcoin.BitcoinMsg;
 import weliyek.bitcoin.BitcoinMsgGetBlocks;
@@ -91,9 +91,9 @@ public class BitcoinMsgGetBlocksTest
 
     public static final int MSG_GETBLOCKS_VERSION;
     public static final int MSG_GETBLOCKS_HASH_LIST_SIZE;
-    public static final BitcoinHash MSG_GETBLOCKS_HASH_LIST_ELEMENT_0;
-    public static final BitcoinHash MSG_GETBLOCKS_HASH_LIST_ELEMENT_1;
-    public static final BitcoinHash MSG_GETBLOCKS_STOP_HASH;
+    public static final WkBitcoinHash MSG_GETBLOCKS_HASH_LIST_ELEMENT_0;
+    public static final WkBitcoinHash MSG_GETBLOCKS_HASH_LIST_ELEMENT_1;
+    public static final WkBitcoinHash MSG_GETBLOCKS_STOP_HASH;
 
     static {
         logger.info("Setting up static test attributes");
@@ -147,7 +147,7 @@ public class BitcoinMsgGetBlocksTest
     public void testSerialization() {
         KetzaByteOutputStream out = new KetzaByteOutputStream();
         logger.info("Serialization test " + BitcoinMsgGetBlocks.class.getSimpleName());
-        rwKernel.commissionWithRWArgs(msgRWBody, new MessageRWArgs(BitcoinMessageMagicName.TESTNET, BitcoinCommandName.NOTFOUND));
+        rwKernel.commissionWithRWArgs(msgRWBody, new MessageRWArgs(BitcoinMessageMagicName.TESTNET, WkBitcoinCommandName.NOTFOUND));
         rwKernel.version = MSG_GETBLOCKS_VERSION;
         rwKernel.modifiableHeaderHashList().add(MSG_GETBLOCKS_HASH_LIST_ELEMENT_0);
         rwKernel.modifiableHeaderHashList().add(MSG_GETBLOCKS_HASH_LIST_ELEMENT_1);
@@ -160,7 +160,7 @@ public class BitcoinMsgGetBlocksTest
     public void testRWCommission() throws NoSuchAlgorithmException, IOException {
         logger.info("new RW and its serialization test " + BitcoinMsgGetBlocks.class.getSimpleName());
         BitcoinMsg creator = new BitcoinMsg(TestAmatInfo.newNamespace());
-        final Prospective<BitcoinMsgRW> rwMsg = creator.newRW(unknownVersionConfig, BitcoinMessageMagicName.TESTNET, BitcoinCommandName.GETBLOCKS);
+        final Prospective<BitcoinMsgRW> rwMsg = creator.newRW(unknownVersionConfig, BitcoinMessageMagicName.TESTNET, WkBitcoinCommandName.GETBLOCKS);
 
         assertTrue(rwMsg.isPresent());
         assertTrue(rwMsg.get().isGetBlocks());

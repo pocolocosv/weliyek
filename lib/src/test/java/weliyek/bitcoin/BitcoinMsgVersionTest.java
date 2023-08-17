@@ -33,7 +33,7 @@ import org.junit.Test;
 
 import weliyek.amat.base.protocol.TestAmatInfo;
 import weliyek.amat.bitcoin.protocol.BitcoinNodeServiceFlag;
-import weliyek.bitcoin.BitcoinCommandName;
+import weliyek.bitcoin.WkBitcoinCommandName;
 import weliyek.bitcoin.BitcoinConfig;
 import weliyek.bitcoin.BitcoinMessageMagicName;
 import weliyek.bitcoin.BitcoinMsg;
@@ -119,7 +119,7 @@ public class BitcoinMsgVersionTest
                                                                 ARRAY_MSG_VERSION_START_HEIGHT);
 
     public final static   BitcoinMessageMagicName MSG_MAGIC = TestUtils.toMagic(ARRAY_MSG_MAGIC);
-    public final static BitcoinCommandName MSG_COMMAND = TestUtils.toCommand(ARRAY_MSG_COMMAND);
+    public final static WkBitcoinCommandName MSG_COMMAND = TestUtils.toCommand(ARRAY_MSG_COMMAND);
     public final static     int MSG_PAYLOAD_CHECKSUM = TestUtils.toSignedInt(ARRAY_MSG_PAYLOAD_CHECKSUM);
     public final static     int MSG_VERSION_NUMBER = TestUtils.toSignedInt(ARRAY_MSG_VERSION_VERSIONVALUE);
     public final static EnumSet<BitcoinNodeServiceFlag> MSG_VERSION_SERVICES = TestUtils.toServices(ARRAY_MSG_VERSION_SERVICES);
@@ -193,7 +193,7 @@ public class BitcoinMsgVersionTest
         // BitcoinMsgRW
         BitcoinConfig knownVersionConfig = BitcoinConfig.newConfig(MSG_VERSION_NUMBER);
         newRW = creator.newRW(knownVersionConfig, BitcoinMessageMagicName.MAIN,
-                              BitcoinCommandName.VERSION);
+                              WkBitcoinCommandName.VERSION);
         assertTrue(newRW.isPresent());
         newVersionRW = newRW.get().asVersion();
         assertTrue(newVersionRW.isPresent());
@@ -239,7 +239,7 @@ public class BitcoinMsgVersionTest
             int expectedStartHeight,
             Boolean expectedRelay)
     {
-        assertEquals(BitcoinCommandName.VERSION, version.asCommandName().get());
+        assertEquals(WkBitcoinCommandName.VERSION, version.asCommandName().get());
         assertEquals(expectedMagic, version.asMagicName().get());
         assertEquals(expectedVersion, version.version());
         assertEquals(expectedServices, version.services());

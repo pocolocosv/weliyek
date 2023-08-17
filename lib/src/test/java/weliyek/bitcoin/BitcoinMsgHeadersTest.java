@@ -32,7 +32,7 @@ import com.google.common.io.LittleEndianDataInputStream;
 import weliyek.amat.base.protocol.TestAmatInfo;
 import weliyek.amat.bitcoin.protocol.Complexity;
 import weliyek.bitcoin.BitcoinConfig;
-import weliyek.bitcoin.BitcoinHash;
+import weliyek.bitcoin.WkBitcoinHash;
 import weliyek.bitcoin.BitcoinMsg;
 import weliyek.bitcoin.BitcoinMsgHeadersROCoreKernel;
 import weliyek.bitcoin.BitcoinMsgHeadersROCoreKernelCommissioner;
@@ -88,8 +88,8 @@ public class BitcoinMsgHeadersTest
 
     public static final         int MSG_HEADER_COUNT;
     public static final         int MSG_HEADER_VERSION;
-    public static final BitcoinHash MSG_HEADER_PREV_BLOCK;
-    public static final BitcoinHash MSG_HEADER_MERKLE_ROOT;
+    public static final WkBitcoinHash MSG_HEADER_PREV_BLOCK;
+    public static final WkBitcoinHash MSG_HEADER_MERKLE_ROOT;
     public static final        long MSG_HEADER_TIMESTAMP;
     public static final  Complexity MSG_HEADER_COMPLEXITY;
     public static final        long MSG_HEADER_NONCE;

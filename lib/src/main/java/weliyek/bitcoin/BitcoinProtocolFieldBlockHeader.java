@@ -42,7 +42,7 @@ public class BitcoinProtocolFieldBlockHeader
 
     public final AmatProtocolFieldUnsignedInt timestamp;
 
-    public final BitcoinComplexity complexity;
+    public final WkBitcoinComplexity complexity;
 
     public final AmatProtocolFieldUnsignedInt nonce;
 
@@ -54,7 +54,7 @@ public class BitcoinProtocolFieldBlockHeader
         prevBlock = new BitcoinProtocolFieldHash(namespace().newDescendant(BitcoinProtocolName.BLOCK_HEADER_PREV_HASH));
         merkleRoot = new BitcoinProtocolFieldHash(namespace().newDescendant(BitcoinProtocolName.BLOCK_HEADER_MERKLE_HASH));
         timestamp = new AmatProtocolFieldUnsignedInt(namespace().newDescendant(BitcoinProtocolName.BLOCK_HEADER_TIMESTAMP), ENDIANNESS.LITTLE);
-        complexity = new BitcoinComplexity(namespace().newDescendant(BitcoinProtocolName.COMPLEXITY));
+        complexity = new WkBitcoinComplexity(namespace().newDescendant(BitcoinProtocolName.COMPLEXITY));
         nonce = new AmatProtocolFieldUnsignedInt(namespace().newDescendant(BitcoinProtocolName.BLOCK_HEADER_NONCE), ENDIANNESS.LITTLE);
         txnCount = new BitcoinProtocolFieldVarInt(namespace().newDescendant(BitcoinProtocolName.BLOCK_HEADER_TXN_COUNT));
         reset();

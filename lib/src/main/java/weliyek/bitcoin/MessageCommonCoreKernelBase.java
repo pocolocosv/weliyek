@@ -33,7 +33,7 @@ public class MessageCommonCoreKernelBase
 
     private BitcoinMessageMagic magic;
 
-    private BitcoinCommand command;
+    private WkBitcoinCommand command;
 
     protected MessageCommonCoreKernelBase(MessageUnpackedCore<?, ?, ?> owner) {
         this.ownerCore = owner;
@@ -51,7 +51,7 @@ public class MessageCommonCoreKernelBase
         this.command = null;
     }
 
-    void commissionWithMagicAndCommand(BitcoinMessageMagic magic, BitcoinCommand command) {
+    void commissionWithMagicAndCommand(BitcoinMessageMagic magic, WkBitcoinCommand command) {
         this.magic = magic;
         this.command = command;
     }
@@ -62,7 +62,7 @@ public class MessageCommonCoreKernelBase
     }
 
     @Override
-    public BitcoinCommand command() {
+    public WkBitcoinCommand command() {
         return this.command;
     }
 

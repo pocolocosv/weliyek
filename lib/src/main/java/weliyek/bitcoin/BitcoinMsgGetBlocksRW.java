@@ -24,6 +24,6 @@ public interface BitcoinMsgGetBlocksRW
 
     void setVersion(int v);
 
-    void setStopHash(BitcoinHash h);
+    void setStopHash(WkBitcoinHash h);
 
 }

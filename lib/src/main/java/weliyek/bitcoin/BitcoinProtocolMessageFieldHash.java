@@ -21,7 +21,7 @@ import weliyek.amat.base.namespace.AmatNamespace;
 import weliyek.amat.base.protocol.message.field.AmatProtocolMessageFieldValue;
 
 public class BitcoinProtocolMessageFieldHash
-        extends AmatProtocolMessageFieldValue<BitcoinHash,
+        extends AmatProtocolMessageFieldValue<WkBitcoinHash,
                                               AmatNamespace>
 {
 

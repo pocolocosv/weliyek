@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.amat.base.protocol.TestAmatInfo;
-import weliyek.bitcoin.BitcoinCommandName;
+import weliyek.bitcoin.WkBitcoinCommandName;
 import weliyek.bitcoin.BitcoinConfig;
 import weliyek.bitcoin.BitcoinInventoryVector;
 import weliyek.bitcoin.BitcoinMessageMagicName;
@@ -56,7 +56,7 @@ public class BitcoinMsgGetDataTest
 
     public final static byte[] ARRAY_MSG_MAGIC = BitcoinMsgVersionTest.ARRAY_MSG_MAGIC;
 
-    public final static byte[] ARRAY_MSG_COMMAND = BitcoinCommandName.GETDATA.toMsgArray();
+    public final static byte[] ARRAY_MSG_COMMAND = WkBitcoinCommandName.GETDATA.toMsgArray();
 
 
 
@@ -87,7 +87,7 @@ public class BitcoinMsgGetDataTest
                                                                 ARRAY_MSG_GETDATA_PAYLOAD);
 
     public final static   BitcoinMessageMagicName MSG_MAGIC = TestUtils.toMagic(ARRAY_MSG_MAGIC);
-    public final static BitcoinCommandName MSG_COMMAND = TestUtils.toCommand(ARRAY_MSG_COMMAND);
+    public final static WkBitcoinCommandName MSG_COMMAND = TestUtils.toCommand(ARRAY_MSG_COMMAND);
     public final static                   int MSG_PAYLOAD_CHECKSUM = TestUtils.toSignedInt(ARRAY_MSG_PAYLOAD_CHECKSUM);
     public final static                   int MSG_GETDATA_COUNT = TestUtils.toVarInt(ARRAY_MSG_GETDATA_COUNT, TestAmatInfo.newNamespace()).intValue();
     public final static BitcoinInventoryVector MSG_GETDATA_INV1 = TestUtils.toInventory(ARRAY_MSG_GETDATA_INV1_TYPE, ARRAY_MSG_GETDATA_INV1_HASH, TestAmatInfo.newNamespace());

@@ -39,7 +39,7 @@ import weliyek.amat2.protocol.field.data.ReadData;
 import weliyek.amat2.protocol.field.data.ReadDataBuilder;
 import weliyek.amat2.protocol.field.data.WriteData;
 import weliyek.amat2.protocol.field.data.WriteDataBuilder;
-import weliyek.bitcoin.BitcoinComplexity;
+import weliyek.bitcoin.WkBitcoinComplexity;
 import weliyek.bitcoin.BtcProtoContext;
 import weliyek.bitcoin.BtcProtoFieldComplexity;
 import weliyek.ketza.util.KetzaByteOutputStream;
@@ -59,19 +59,19 @@ public class BtcProtoFieldComplexityTest
 
     private static Protocol<BtcProtoContext,
                             BtcProtoFieldComplexity<BtcProtoContext>,
-                            BitcoinComplexity,
-                            BitcoinComplexity,
-                            WriteData<BtcProtoContext, BitcoinComplexity>,
-                            ReadData<BtcProtoContext, BitcoinComplexity>,
+                            WkBitcoinComplexity,
+                            WkBitcoinComplexity,
+                            WriteData<BtcProtoContext, WkBitcoinComplexity>,
+                            ReadData<BtcProtoContext, WkBitcoinComplexity>,
                             WriteDataBuilder
                                 <BtcProtoContext,
-                                 BitcoinComplexity,
-                                 WriteData<BtcProtoContext, BitcoinComplexity>,
+                                 WkBitcoinComplexity,
+                                 WriteData<BtcProtoContext, WkBitcoinComplexity>,
                                  BtcProtoFieldComplexity<BtcProtoContext>>,
                             ReadDataBuilder
                                 <BtcProtoContext,
-                                 BitcoinComplexity,
-                                 ReadData<BtcProtoContext, BitcoinComplexity>,
+                                 WkBitcoinComplexity,
+                                 ReadData<BtcProtoContext, WkBitcoinComplexity>,
                                  BtcProtoFieldComplexity<BtcProtoContext>>> PROTOCOL;
 
     @BeforeClass
@@ -86,24 +86,24 @@ public class BtcProtoFieldComplexityTest
 
     @Test
     public void test() {
-        logger.info("=== Reading compact int into " + BitcoinComplexity.class.getSimpleName() + " ===");
+        logger.info("=== Reading compact int into " + WkBitcoinComplexity.class.getSimpleName() + " ===");
         ByteArrayInputStream compact1Input = new ByteArrayInputStream(COMPACT1_BYTES);
         ReadOperationDataStore<BtcProtoContext> allReadInfo = PROTOCOL.read(mock(BtcProtoContext.class), compact1Input, (a,b) -> {});
         assertNotNull(allReadInfo);
-        ReadOperationSequence<BtcProtoContext, BitcoinComplexity> compact1ReadList = allReadInfo.getLastReadSequenceFor(COMPLEXITY_FIELD);
+        ReadOperationSequence<BtcProtoContext, WkBitcoinComplexity> compact1ReadList = allReadInfo.getLastReadSequenceFor(COMPLEXITY_FIELD);
         assertTrue(compact1ReadList.getLatestOpResult().isPresent());
-        ReadData<BtcProtoContext, BitcoinComplexity> readCompact1Info = compact1ReadList.getLatestOpResult().get();
+        ReadData<BtcProtoContext, WkBitcoinComplexity> readCompact1Info = compact1ReadList.getLatestOpResult().get();
         assertTrue(readCompact1Info.deserialized().isPresent());
-        BitcoinComplexity readComplexity1 = readCompact1Info.deserialized().get();
+        WkBitcoinComplexity readComplexity1 = readCompact1Info.deserialized().get();
 
-        logger.info("=== Writing " + BitcoinComplexity.class.getSimpleName() + " to an OutputStream ===");
+        logger.info("=== Writing " + WkBitcoinComplexity.class.getSimpleName() + " to an OutputStream ===");
         KetzaByteOutputStream output = new KetzaByteOutputStream();
         PROTOCOL.write(mock(BtcProtoContext.class), readComplexity1, output, (a,b) -> {});
         assertEquals(4, output.size());
 
-        logger.info("=== Reading " + BitcoinComplexity.class.getSimpleName() + " back from OutputStream ===");
+        logger.info("=== Reading " + WkBitcoinComplexity.class.getSimpleName() + " back from OutputStream ===");
         ReadOperationDataStore<BtcProtoContext> allReadInfo2 = PROTOCOL.read(mock(BtcProtoContext.class), output.inputStream(), (a,b) -> {});
-        BitcoinComplexity readComplexity1B = allReadInfo2.getLatestDeserializedOrThrow(COMPLEXITY_FIELD);
+        WkBitcoinComplexity readComplexity1B = allReadInfo2.getLatestDeserializedOrThrow(COMPLEXITY_FIELD);
         assertEquals(readComplexity1, readComplexity1B);
     }
 

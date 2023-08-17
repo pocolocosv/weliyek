@@ -63,7 +63,7 @@ public class BitcoinMsgRWBody
     }
 
     @Override
-    public BitcoinCommand command() {
+    public WkBitcoinCommand command() {
         return commonKernel.command();
     }
 

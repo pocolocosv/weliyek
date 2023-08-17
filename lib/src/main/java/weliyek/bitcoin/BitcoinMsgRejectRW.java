@@ -22,7 +22,7 @@ import weliyek.ketza.util.ByteSequence;
 public interface BitcoinMsgRejectRW extends BitcoinMsgReject, BitcoinMsgPayloadRW
 {
 
-    BitcoinMsgRejectRW setMessage(BitcoinCommandName cmd);
+    BitcoinMsgRejectRW setMessage(WkBitcoinCommandName cmd);
 
     BitcoinMsgRejectRW setCCode(CCodeName ccode);
 

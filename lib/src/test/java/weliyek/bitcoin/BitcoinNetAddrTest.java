@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 import weliyek.amat.base.namespace.AmatNamespace;
 import weliyek.amat.base.namespace.AmatNamespaceFactoryWithSimpleCache;
 import weliyek.amat.base.protocol.TestAmatName;
-import weliyek.bitcoin.BitcoinCommand;
+import weliyek.bitcoin.WkBitcoinCommand;
 import weliyek.bitcoin.BitcoinNetAddr;
 import weliyek.bitcoin.BitcoinNodeServices;
 import weliyek.bitcoin.BitcoinProtocolName;
@@ -80,10 +80,10 @@ public class BitcoinNetAddrTest
         final BitcoinNetAddr netaddr = new BitcoinNetAddr(address, services, port, time);
 
         KetzaByteOutputStream out = new KetzaByteOutputStream();
-        netaddr.writeTo(BitcoinProtocolVersion.CADDR_TIME, BitcoinCommand.TX, out,
+        netaddr.writeTo(BitcoinProtocolVersion.CADDR_TIME, WkBitcoinCommand.TX, out,
                         timeNamespace, servicesNamespace, inetAddrNamespace, portNamespace);
 
-        final BitcoinNetAddr netaddr2 = BitcoinNetAddr.readFrom(BitcoinProtocolVersion.CADDR_TIME, BitcoinCommand.TX, out.inputStream(),
+        final BitcoinNetAddr netaddr2 = BitcoinNetAddr.readFrom(BitcoinProtocolVersion.CADDR_TIME, WkBitcoinCommand.TX, out.inputStream(),
                                                                 timeNamespace, servicesNamespace, inetAddrNamespace, portNamespace);
 
         assertEquals(netaddr, netaddr2);

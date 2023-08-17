@@ -34,17 +34,17 @@ import weliyek.ketza.util.array.ByteArrayWrapper;
 public class BitcoinCommandReading
         implements BitcoinReading<
                         Object,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         InputConfig,
                         ReadingSettings<Object, InputConfig>,
-                        BasicReadingResult<BitcoinCommand>,
+                        BasicReadingResult<WkBitcoinCommand>,
                         BitcoinCommandInputField>,
                    SoleValueAggregatorReading<
                         Object,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         InputConfig,
                         ReadingSettings<Object, InputConfig>,
-                        BasicReadingResult<BitcoinCommand>,
+                        BasicReadingResult<WkBitcoinCommand>,
                         BitcoinCommandInputField>
 {
 
@@ -53,11 +53,11 @@ public class BitcoinCommandReading
                         SizeProviderReadingConfig,
                         BasicByteArrayWrapperReading,
                         BasicByteArrayWrapperInputField,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         InputConfig,
                         ReadingSettings<Object, InputConfig>,
-                        BasicReadingResult<BitcoinCommand>,
+                        BasicReadingResult<WkBitcoinCommand>,
                         BitcoinCommandReading,
                         BitcoinCommandInputField> readingCore;
 
@@ -67,11 +67,11 @@ public class BitcoinCommandReading
                 SizeProviderReadingConfig,
                 BasicByteArrayWrapperReading,
                 BasicByteArrayWrapperInputField,
-                BitcoinCommand,
+                WkBitcoinCommand,
                 Object,
                 InputConfig,
                 ReadingSettings<Object, InputConfig>,
-                BasicReadingResult<BitcoinCommand>,
+                BasicReadingResult<WkBitcoinCommand>,
                 BitcoinCommandReading,
                 BitcoinCommandInputField> inputFieldCore) {
         readingCore = new BasicSoleValueAggregatorReadingCore<>(this, inputFieldCore);
@@ -83,7 +83,7 @@ public class BitcoinCommandReading
     }
 
     @Override
-    public Class<BitcoinCommand> serializableClass() {
+    public Class<WkBitcoinCommand> serializableClass() {
         return readingCore.serializableClass();
     }
 
@@ -108,7 +108,7 @@ public class BitcoinCommandReading
     }
 
     @Override
-    public Optional<BasicReadingResult<BitcoinCommand>> result() {
+    public Optional<BasicReadingResult<WkBitcoinCommand>> result() {
         return readingCore.isPremiseFound();
     }
 
@@ -117,11 +117,11 @@ public class BitcoinCommandReading
         SizeProviderReadingConfig,
         BasicByteArrayWrapperReading,
         BasicByteArrayWrapperInputField,
-        BitcoinCommand,
+        WkBitcoinCommand,
         Object,
         InputConfig,
         ReadingSettings<Object, InputConfig>,
-        BasicReadingResult<BitcoinCommand>,
+        BasicReadingResult<WkBitcoinCommand>,
         BitcoinCommandReading,
         BitcoinCommandInputField>
     getCore() {

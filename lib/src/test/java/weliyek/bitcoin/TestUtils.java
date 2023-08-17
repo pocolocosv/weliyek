@@ -30,8 +30,8 @@ import weliyek.amat.base.namespace.AmatNamespace;
 import weliyek.amat.bitcoin.protocol.BitcoinNodeServiceFlag;
 import weliyek.amat.bitcoin.protocol.Complexity;
 import weliyek.amat.bitcoin.protocol.VarStr;
-import weliyek.bitcoin.BitcoinCommandName;
-import weliyek.bitcoin.BitcoinHash;
+import weliyek.bitcoin.WkBitcoinCommandName;
+import weliyek.bitcoin.WkBitcoinHash;
 import weliyek.bitcoin.BitcoinInventoryVector;
 import weliyek.bitcoin.BitcoinMessageMagicName;
 import weliyek.bitcoin.BitcoinNetAddr;
@@ -80,8 +80,8 @@ public class TestUtils
         return val;
     }
 
-    public static BitcoinHash toBitcoinHash(byte[] array, AmatNamespace namespace) {
-        BitcoinHash hash = BitcoinHash.readFrom(TestUtils.toLittleEndian(array), namespace);
+    public static WkBitcoinHash toBitcoinHash(byte[] array, AmatNamespace namespace) {
+        WkBitcoinHash hash = WkBitcoinHash.readFrom(TestUtils.toLittleEndian(array), namespace);
         return hash;
     }
 
@@ -121,9 +121,9 @@ public class TestUtils
         return magic;
     }
 
-    public static BitcoinCommandName toCommand(byte[] array) {
-        final String str = BitcoinCommandName.convertCanonicalBufferToString(array);
-        return BitcoinCommandName.fromString(str).get();
+    public static WkBitcoinCommandName toCommand(byte[] array) {
+        final String str = WkBitcoinCommandName.convertCanonicalBufferToString(array);
+        return WkBitcoinCommandName.fromString(str).get();
     }
 
     public static EnumSet<BitcoinNodeServiceFlag> toServices(byte[] array) {
@@ -144,7 +144,7 @@ public class TestUtils
         return BitcoinProtocolScriptAbstract.readFrom(TestUtils.toLittleEndian(array), namespace);
     }
 
-    public static BitcoinNetAddr toNetAddr(int version, BitcoinCommandName command, byte[] array, AmatNamespace namespace) {
+    public static BitcoinNetAddr toNetAddr(int version, WkBitcoinCommandName command, byte[] array, AmatNamespace namespace) {
         LittleEndianDataInputStream in = toLittleEndian(array);
         BitcoinNetAddr netAddr = BitcoinNetAddr.readFrom(version, command, in, namespace);
         return netAddr;

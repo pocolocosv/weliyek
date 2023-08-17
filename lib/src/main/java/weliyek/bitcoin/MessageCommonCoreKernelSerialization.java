@@ -34,7 +34,7 @@ public class MessageCommonCoreKernelSerialization
                                   BitcoinProtocolMessageConfig    config)
     {
         final BitcoinMessageMagic magic = BitcoinMessageMagic.readFrom(in, commonKernel.magicNamespace);
-        final BitcoinCommand command = BitcoinCommand.readFrom(in, commonKernel.commandNamespace);
+        final WkBitcoinCommand command = WkBitcoinCommand.readFrom(in, commonKernel.commandNamespace);
         commonKernel.commissionWithMagicAndCommand(magic, command);
     }
 

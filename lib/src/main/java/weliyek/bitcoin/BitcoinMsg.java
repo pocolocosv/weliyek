@@ -48,7 +48,7 @@ public class BitcoinMsg
     public Prospective<BitcoinMsgRW> newRW(
             BitcoinConfig config,
             BitcoinMessageMagicName magic,
-            BitcoinCommandName command) {
+            WkBitcoinCommandName command) {
         Possible<BitcoinMsgRWBody> vb = newVariantBody(config, new MessageRWArgs(magic, command));
         return Prospective.ofSealableBody(vb);
     }

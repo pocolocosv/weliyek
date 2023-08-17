@@ -30,11 +30,11 @@ public abstract class BitcoinMsgGetBlocksKernelAbstract
 
     int version;
 
-    BitcoinHash stopHash;
+    WkBitcoinHash stopHash;
 
-    protected abstract List<BitcoinHash> modifiableHeaderHashList();
+    protected abstract List<WkBitcoinHash> modifiableHeaderHashList();
 
-    protected abstract List<BitcoinHash> publicHeaderHashList();
+    protected abstract List<WkBitcoinHash> publicHeaderHashList();
 
     public BitcoinMsgGetBlocksKernelAbstract(PayloadCoreKernelCommissioner<XB, XK> c) {
         super(c);
@@ -61,12 +61,12 @@ public abstract class BitcoinMsgGetBlocksKernelAbstract
     }
 
     @Override
-    public BitcoinHash stopHash() {
+    public WkBitcoinHash stopHash() {
         return stopHash;
     }
 
     @Override
-    public List<BitcoinHash> headerHashes() {
+    public List<WkBitcoinHash> headerHashes() {
         return publicHeaderHashList();
     }
 

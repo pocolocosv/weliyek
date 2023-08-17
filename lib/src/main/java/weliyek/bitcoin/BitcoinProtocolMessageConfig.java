@@ -27,6 +27,6 @@ public interface BitcoinProtocolMessageConfig
 
     BitcoinProtocolVersion protocolVersion();
 
-    BitcoinCommand messageCommand();
+    WkBitcoinCommand messageCommand();
 
 }

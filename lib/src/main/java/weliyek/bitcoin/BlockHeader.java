@@ -29,9 +29,9 @@ public class BlockHeader
 
     public final int version;
 
-    public final BitcoinHash prevBlockHash;
+    public final WkBitcoinHash prevBlockHash;
 
-    public final BitcoinHash merkleRootHash;
+    public final WkBitcoinHash merkleRootHash;
 
     public final long timestamp;
 
@@ -42,8 +42,8 @@ public class BlockHeader
     public final int txnCount;
 
     BlockHeader(int version,
-                BitcoinHash prevBlock,
-                BitcoinHash merkleRoot,
+                WkBitcoinHash prevBlock,
+                WkBitcoinHash merkleRoot,
                 long timestamp,
                 Complexity complexity,
                 long nonce,
@@ -102,8 +102,8 @@ public class BlockHeader
     public static BlockHeader readFrom(InputStream in, final AmatNamespace parentNmspc) {
         final AmatNamespace headerNmspc = BitcoinProtocolName.BLOCK_HEADER.appendTo(parentNmspc);
         int version = readHeaderVersion(in, headerNmspc);
-        BitcoinHash prevBlockHash = readPrevBlockHash(in, headerNmspc);
-        BitcoinHash merkleRootHash = readMerkleRootHash(in, headerNmspc);
+        WkBitcoinHash prevBlockHash = readPrevBlockHash(in, headerNmspc);
+        WkBitcoinHash merkleRootHash = readMerkleRootHash(in, headerNmspc);
         long timestamp = readTimestamp(in, headerNmspc);
         Complexity complexity = Complexity.readFrom(in, headerNmspc);
         long nonce = readNonce(in, headerNmspc);
@@ -117,15 +117,15 @@ public class BlockHeader
         return version;
     }
 
-    private static BitcoinHash readPrevBlockHash(InputStream in, final AmatNamespace headerNmspc) {
+    private static WkBitcoinHash readPrevBlockHash(InputStream in, final AmatNamespace headerNmspc) {
         final AmatNamespace prevHashNmspc = BitcoinProtocolName.BLOCK_HEADER_PREV_HASH.appendTo(headerNmspc);
-        BitcoinHash prevBlockHash = BitcoinHash.readFrom(in, prevHashNmspc);
+        WkBitcoinHash prevBlockHash = WkBitcoinHash.readFrom(in, prevHashNmspc);
         return prevBlockHash;
     }
 
-    private static BitcoinHash readMerkleRootHash(InputStream in, final AmatNamespace headerNmspc) {
+    private static WkBitcoinHash readMerkleRootHash(InputStream in, final AmatNamespace headerNmspc) {
         final AmatNamespace merkleNmspc = BitcoinProtocolName.BLOCK_HEADER_MERKLE_HASH.appendTo(headerNmspc);
-        BitcoinHash merkleRootHash = BitcoinHash.readFrom(in, merkleNmspc);
+        WkBitcoinHash merkleRootHash = WkBitcoinHash.readFrom(in, merkleNmspc);
         return merkleRootHash;
     }
 

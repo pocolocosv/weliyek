@@ -26,23 +26,23 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
-import weliyek.ketza.util.array.ByteArrayWrapper;
+import weliyek.util.array.WkByteArray;
 
-public class BitcoinCommand
+public class WkBitcoinCommand
 {
 
-    public static BitcoinCommand newCommand(byte[] array, int offset, int length) {
+    public static WkBitcoinCommand newCommand(byte[] array, int offset, int length) {
         byte[] array_copy = Arrays.copyOfRange(array, offset, offset + length);
-        ByteArrayWrapper wrapper = new ByteArrayWrapper(array_copy);
+        WkByteArray wrapper = new WkByteArray(array_copy);
         return newCommand(wrapper);
     }
 
-    public static BitcoinCommand newCommand(ByteArrayWrapper wrapper) {
+    public static WkBitcoinCommand newCommand(WkByteArray wrapper) {
         if (CANONICAL_LENGTH != wrapper.getLength())
             throw new IllegalArgumentException();
-        BitcoinCommand cmd = CMD_BY_NAME.get(wrapper);
+        WkBitcoinCommand cmd = CMD_BY_NAME.get(wrapper);
         if (null == cmd)
-            cmd = new BitcoinCommand(wrapper);
+            cmd = new WkBitcoinCommand(wrapper);
         return cmd;
     }
 
@@ -52,38 +52,38 @@ public class BitcoinCommand
 
     public static final int CANONICAL_LENGTH = 12;
 
-    public static final BitcoinCommand VERSION     = new BitcoinCommand(BitcoinCommandName.VERSION);
-    public static final BitcoinCommand VERACK      = new BitcoinCommand(BitcoinCommandName.VERACK);
-    public static final BitcoinCommand ADDR        = new BitcoinCommand(BitcoinCommandName.ADDR);
-    public static final BitcoinCommand INV         = new BitcoinCommand(BitcoinCommandName.INV);
-    public static final BitcoinCommand GETDATA     = new BitcoinCommand(BitcoinCommandName.GETDATA);
-    public static final BitcoinCommand NOTFOUND    = new BitcoinCommand(BitcoinCommandName.NOTFOUND);
-    public static final BitcoinCommand GETBLOCKS   = new BitcoinCommand(BitcoinCommandName.GETBLOCKS);
-    public static final BitcoinCommand GETHEADERS  = new BitcoinCommand(BitcoinCommandName.GETHEADERS);
-    public static final BitcoinCommand TX          = new BitcoinCommand(BitcoinCommandName.TX);
-    public static final BitcoinCommand BLOCK       = new BitcoinCommand(BitcoinCommandName.BLOCK);
-    public static final BitcoinCommand HEADERS     = new BitcoinCommand(BitcoinCommandName.HEADERS);
-    public static final BitcoinCommand GETADDR     = new BitcoinCommand(BitcoinCommandName.GETADDR);
-    public static final BitcoinCommand MEMPOOL     = new BitcoinCommand(BitcoinCommandName.MEMPOOL);
-    public static final BitcoinCommand CHECKORDER  = new BitcoinCommand(BitcoinCommandName.CHECKORDER);
-    public static final BitcoinCommand SUBMITORDER = new BitcoinCommand(BitcoinCommandName.SUBMITORDER);
-    public static final BitcoinCommand REPLY       = new BitcoinCommand(BitcoinCommandName.REPLY);
-    public static final BitcoinCommand PING        = new BitcoinCommand(BitcoinCommandName.PING);
-    public static final BitcoinCommand PONG        = new BitcoinCommand(BitcoinCommandName.PONG);
-    public static final BitcoinCommand REJECT      = new BitcoinCommand(BitcoinCommandName.REJECT);
-    public static final BitcoinCommand FILTERLOAD  = new BitcoinCommand(BitcoinCommandName.FILTERLOAD);
-    public static final BitcoinCommand FILTERADD   = new BitcoinCommand(BitcoinCommandName.FILTERADD);
-    public static final BitcoinCommand FILTERCLEAR = new BitcoinCommand(BitcoinCommandName.FILTERCLEAR);
-    public static final BitcoinCommand MERKLEBLOCK = new BitcoinCommand(BitcoinCommandName.MERKLEBLOCK);
-    public static final BitcoinCommand ALERT       = new BitcoinCommand(BitcoinCommandName.ALERT);
-    public static final BitcoinCommand SENDHEADERS = new BitcoinCommand(BitcoinCommandName.SENDHEADERS);
-    public static final BitcoinCommand FEEFILTER   = new BitcoinCommand(BitcoinCommandName.FEEFILTER);
-    public static final BitcoinCommand SENDCMPCT   = new BitcoinCommand(BitcoinCommandName.SENDCMPCT);
-    public static final BitcoinCommand CMPCTBLOCK  = new BitcoinCommand(BitcoinCommandName.CMPCTBLOCK);
-    public static final BitcoinCommand GETBLOCKTXN = new BitcoinCommand(BitcoinCommandName.GETBLOCKTXN);
-    public static final BitcoinCommand BLOCKTXN    = new BitcoinCommand(BitcoinCommandName.BLOCKTXN);
+    public static final WkBitcoinCommand VERSION     = new WkBitcoinCommand(WkBitcoinCommandName.VERSION);
+    public static final WkBitcoinCommand VERACK      = new WkBitcoinCommand(WkBitcoinCommandName.VERACK);
+    public static final WkBitcoinCommand ADDR        = new WkBitcoinCommand(WkBitcoinCommandName.ADDR);
+    public static final WkBitcoinCommand INV         = new WkBitcoinCommand(WkBitcoinCommandName.INV);
+    public static final WkBitcoinCommand GETDATA     = new WkBitcoinCommand(WkBitcoinCommandName.GETDATA);
+    public static final WkBitcoinCommand NOTFOUND    = new WkBitcoinCommand(WkBitcoinCommandName.NOTFOUND);
+    public static final WkBitcoinCommand GETBLOCKS   = new WkBitcoinCommand(WkBitcoinCommandName.GETBLOCKS);
+    public static final WkBitcoinCommand GETHEADERS  = new WkBitcoinCommand(WkBitcoinCommandName.GETHEADERS);
+    public static final WkBitcoinCommand TX          = new WkBitcoinCommand(WkBitcoinCommandName.TX);
+    public static final WkBitcoinCommand BLOCK       = new WkBitcoinCommand(WkBitcoinCommandName.BLOCK);
+    public static final WkBitcoinCommand HEADERS     = new WkBitcoinCommand(WkBitcoinCommandName.HEADERS);
+    public static final WkBitcoinCommand GETADDR     = new WkBitcoinCommand(WkBitcoinCommandName.GETADDR);
+    public static final WkBitcoinCommand MEMPOOL     = new WkBitcoinCommand(WkBitcoinCommandName.MEMPOOL);
+    public static final WkBitcoinCommand CHECKORDER  = new WkBitcoinCommand(WkBitcoinCommandName.CHECKORDER);
+    public static final WkBitcoinCommand SUBMITORDER = new WkBitcoinCommand(WkBitcoinCommandName.SUBMITORDER);
+    public static final WkBitcoinCommand REPLY       = new WkBitcoinCommand(WkBitcoinCommandName.REPLY);
+    public static final WkBitcoinCommand PING        = new WkBitcoinCommand(WkBitcoinCommandName.PING);
+    public static final WkBitcoinCommand PONG        = new WkBitcoinCommand(WkBitcoinCommandName.PONG);
+    public static final WkBitcoinCommand REJECT      = new WkBitcoinCommand(WkBitcoinCommandName.REJECT);
+    public static final WkBitcoinCommand FILTERLOAD  = new WkBitcoinCommand(WkBitcoinCommandName.FILTERLOAD);
+    public static final WkBitcoinCommand FILTERADD   = new WkBitcoinCommand(WkBitcoinCommandName.FILTERADD);
+    public static final WkBitcoinCommand FILTERCLEAR = new WkBitcoinCommand(WkBitcoinCommandName.FILTERCLEAR);
+    public static final WkBitcoinCommand MERKLEBLOCK = new WkBitcoinCommand(WkBitcoinCommandName.MERKLEBLOCK);
+    public static final WkBitcoinCommand ALERT       = new WkBitcoinCommand(WkBitcoinCommandName.ALERT);
+    public static final WkBitcoinCommand SENDHEADERS = new WkBitcoinCommand(WkBitcoinCommandName.SENDHEADERS);
+    public static final WkBitcoinCommand FEEFILTER   = new WkBitcoinCommand(WkBitcoinCommandName.FEEFILTER);
+    public static final WkBitcoinCommand SENDCMPCT   = new WkBitcoinCommand(WkBitcoinCommandName.SENDCMPCT);
+    public static final WkBitcoinCommand CMPCTBLOCK  = new WkBitcoinCommand(WkBitcoinCommandName.CMPCTBLOCK);
+    public static final WkBitcoinCommand GETBLOCKTXN = new WkBitcoinCommand(WkBitcoinCommandName.GETBLOCKTXN);
+    public static final WkBitcoinCommand BLOCKTXN    = new WkBitcoinCommand(WkBitcoinCommandName.BLOCKTXN);
 
-    private static final Map<ByteArrayWrapper, BitcoinCommand> CMD_BY_NAME;
+    private static final Map<WkByteArray, WkBitcoinCommand> CMD_BY_NAME;
 
     static {
         CMD_BY_NAME = new HashMap<>();
@@ -119,9 +119,9 @@ public class BitcoinCommand
         CMD_BY_NAME.put(BLOCKTXN.bytes,    BLOCKTXN);
     }
 
-    public final Optional<BitcoinCommandName> name;
+    public final Optional<WkBitcoinCommandName> name;
 
-    public final ByteArrayWrapper bytes;
+    public final WkByteArray bytes;
 
     /**
      * Cached hash code.
@@ -129,15 +129,15 @@ public class BitcoinCommand
     private final int hashCode;
 
     /**
-     * Creates a new instance from the {@link BitcoinCommandName} string value. The bytes are
+     * Creates a new instance from the {@link WkBitcoinCommandName} string value. The bytes are
      * generated from the string value.
      *
      * @param name Is the already defined Bitcoin commmand name.
      */
-    private BitcoinCommand(BitcoinCommandName name) {
+    private WkBitcoinCommand(WkBitcoinCommandName name) {
         this.name = Optional.of(name);
         final byte[] buff = asCanonicalByteArray(name.text);
-        this.bytes  = new ByteArrayWrapper(buff);
+        this.bytes  = new WkByteArray(buff);
         this.hashCode = computeHashCode();
     }
 
@@ -146,7 +146,7 @@ public class BitcoinCommand
      *
      * @param wrapper Is the byte array wrapper with the command bytes.
      */
-    private BitcoinCommand(ByteArrayWrapper wrapper) {
+    private WkBitcoinCommand(WkByteArray wrapper) {
         this.name = Optional.empty();
         this.bytes = Objects.requireNonNull(wrapper);
         this.hashCode = computeHashCode();
@@ -179,9 +179,9 @@ public class BitcoinCommand
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof BitcoinCommand))
+        if (!(obj instanceof WkBitcoinCommand))
             return false;
-        BitcoinCommand other = (BitcoinCommand) obj;
+        WkBitcoinCommand other = (WkBitcoinCommand) obj;
         if ( ! bytes.equals(other.bytes))
             return false;
         if ( ! name.isPresent()) {

@@ -29,7 +29,7 @@ import org.junit.Test;
 
 import ricvgx.builder.ByteInputStream;
 import weliyek.amat.base.protocol.TestAmatInfo;
-import weliyek.bitcoin.BitcoinCommandName;
+import weliyek.bitcoin.WkBitcoinCommandName;
 import weliyek.bitcoin.BitcoinConfig;
 import weliyek.bitcoin.BitcoinMessageMagicName;
 import weliyek.bitcoin.BitcoinMsg;
@@ -85,7 +85,7 @@ public class BitcoinMsgTest
         assertNotNull(ro);
         assertTrue(ro.isPresent());
         assertEquals(BitcoinMessageMagicName.MAIN, ro.get().asMagicName().get());
-        assertEquals(BitcoinCommandName.VERACK, ro.get().asCommandName().get());
+        assertEquals(WkBitcoinCommandName.VERACK, ro.get().asCommandName().get());
         assertEquals(0xE2E0F65D, ro.get().checksum());
     }
 
@@ -95,11 +95,11 @@ public class BitcoinMsgTest
         BitcoinConfig msgConfig = BitcoinConfig.newConfig(BitcoinMsg.LATEST_VERSION);
         Prospective<BitcoinMsgRW> rw = creator.newRW(msgConfig,
                                                      BitcoinMessageMagicName.MAIN,
-                                                     BitcoinCommandName.VERACK);
+                                                     WkBitcoinCommandName.VERACK);
         assertNotNull(rw);
         assertTrue(rw.isPresent());
         assertEquals(BitcoinMessageMagicName.MAIN, rw.get().asMagicName().get());
-        assertEquals(BitcoinCommandName.VERACK, rw.get().asCommandName().get());
+        assertEquals(WkBitcoinCommandName.VERACK, rw.get().asCommandName().get());
         Prospective<BitcoinMsgStream> stream = rw.get().msgStream();
         assertNotNull(stream);
         assertTrue(stream.isPresent());
@@ -107,7 +107,7 @@ public class BitcoinMsgTest
         assertNotNull(ro);
         assertTrue(ro.isPresent());
         assertEquals(BitcoinMessageMagicName.MAIN, ro.get().asMagicName().get());
-        assertEquals(BitcoinCommandName.VERACK, ro.get().asCommandName().get());
+        assertEquals(WkBitcoinCommandName.VERACK, ro.get().asCommandName().get());
         assertEquals(0xE2E0F65D, ro.get().checksum());
     }
 
@@ -117,10 +117,10 @@ public class BitcoinMsgTest
         BitcoinConfig msgConfig = BitcoinConfig.newConfig(BitcoinMsg.LATEST_VERSION);
         Prospective<BitcoinMsgRW> rw = creator.newRW(msgConfig,
                                                      BitcoinMessageMagicName.MAIN,
-                                                     BitcoinCommandName.MEMPOOL);
+                                                     WkBitcoinCommandName.MEMPOOL);
         assertTrue(rw.isPresent());
         assertEquals(BitcoinMessageMagicName.MAIN, rw.get().asMagicName().get());
-        assertEquals(BitcoinCommandName.MEMPOOL, rw.get().asCommandName().get());
+        assertEquals(WkBitcoinCommandName.MEMPOOL, rw.get().asCommandName().get());
         Prospective<BitcoinMsgStream> stream = rw.get().msgStream();
         assertNotNull(stream);
         assertTrue(stream.isPresent());
@@ -128,7 +128,7 @@ public class BitcoinMsgTest
         assertNotNull(ro);
         assertTrue(ro.isPresent());
         assertEquals(BitcoinMessageMagicName.MAIN, ro.get().asMagicName().get());
-        assertEquals(BitcoinCommandName.MEMPOOL, ro.get().asCommandName().get());
+        assertEquals(WkBitcoinCommandName.MEMPOOL, ro.get().asCommandName().get());
     }
 
 }

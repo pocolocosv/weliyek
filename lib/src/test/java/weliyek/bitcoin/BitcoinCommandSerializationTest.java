@@ -30,7 +30,7 @@ import weliyek.amat.newserialization.operation.BasicInputConfig;
 import weliyek.amat.newserialization.operation.BasicOutputConfig;
 import weliyek.amat.newserialization.operation.InputConfig;
 import weliyek.amat.newserialization.operation.OutputConfig;
-import weliyek.bitcoin.BitcoinCommand;
+import weliyek.bitcoin.WkBitcoinCommand;
 import weliyek.bitcoin.BitcoinCommandInputField;
 import weliyek.bitcoin.BitcoinCommandOutputField;
 import weliyek.bitcoin.BitcoinCommandReading;
@@ -56,20 +56,20 @@ class BitcoinCommandSerializationTest
     @Test
     void testAddr() {
         byte[] buff = new byte[] {'a','d','d','r',0,0,0,0,0,0,0,0};
-        readWriteRead(buff, BitcoinCommand.ADDR);
+        readWriteRead(buff, WkBitcoinCommand.ADDR);
     }
 
     @Test
     void testVersion() {
         byte[] buff = new byte[] {'v','e','r','s','i','o','n',0,0,0,0,0};
-        readWriteRead(buff, BitcoinCommand.VERSION);
+        readWriteRead(buff, WkBitcoinCommand.VERSION);
     }
 
-    private void readWriteRead(byte[] buff, BitcoinCommand target) {
+    private void readWriteRead(byte[] buff, WkBitcoinCommand target) {
         final ByteArrayInputStream stream = new ByteArrayInputStream(buff);
 
         ProtocolReading<
-            BitcoinCommand,
+            WkBitcoinCommand,
             Object,
             InputConfig,
             BitcoinCommandReading,
@@ -84,7 +84,7 @@ class BitcoinCommandSerializationTest
         KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
         ProtocolWriting<
-            BitcoinCommand,
+            WkBitcoinCommand,
             Object,
             OutputConfig,
             BitcoinCommandWriting,
@@ -97,7 +97,7 @@ class BitcoinCommandSerializationTest
         SerializationTester.assertWritingHasCompleted(target, cmd_writing);
 
         ProtocolReading<
-            BitcoinCommand,
+            WkBitcoinCommand,
             Object,
             InputConfig,
             BitcoinCommandReading,

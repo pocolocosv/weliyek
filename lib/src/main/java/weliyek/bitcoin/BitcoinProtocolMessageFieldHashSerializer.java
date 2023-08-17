@@ -42,7 +42,7 @@ public class BitcoinProtocolMessageFieldHashSerializer
                                   InputStream in,
                                   SerializableConfig config)
     {
-        BitcoinHash hash = BitcoinHash.readFrom(in, hashField.namespace());
+        WkBitcoinHash hash = WkBitcoinHash.readFrom(in, hashField.namespace());
         hashField.commissionWithValue(hash);
     }
 

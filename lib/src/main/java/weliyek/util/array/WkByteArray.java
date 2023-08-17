@@ -17,6 +17,7 @@
  */
 package weliyek.util.array;
 
+import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.function.ToIntFunction;
@@ -51,6 +52,10 @@ public class WkByteArray
 
   public String convertToString(Charset charset, int offset, int length) {
     return new String(getArray(), offset, length, charset);
+  }
+  
+  public BigInteger convertToBigInteger() {
+    return new BigInteger(getArray(), getOffset(), getTo());
   }
 
   @Override
@@ -107,5 +112,24 @@ public class WkByteArray
   protected final SubrangeEqualityComparator<byte[]> getEqualityComparator() {
     return equalityComparator;
   }
+
+  public String bytesToHexStr() {
+    return WkByteArray.bytesToHexStr(getArray(), getOffset(), getTo());
+  }
+  
+  /* Retrieved from: https://stackoverflow.com/a/9855338 */
+  private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
+  public static String bytesToHexStr(byte[] array, int from, int to) {
+    WKArrayUtil.throwIfBoundsAreInvalid(array.length, from, to);
+    final int len = to - from;
+    char[] hexChars = new char[len * 2];
+    for (int j = from; j < to; j++) {
+      int v = array[j] & 0xFF;
+      hexChars[j * 2] = hexArray[v >>> 4];
+      hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+    }
+    return new String(hexChars);
+  }
+
 
 }

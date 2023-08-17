@@ -24,9 +24,9 @@ public class MessageRWArgs implements SecondDuoScionArgs
 
     public final BitcoinMessageMagic magic;
 
-    public final BitcoinCommand command;
+    public final WkBitcoinCommand command;
 
-    public MessageRWArgs(BitcoinMessageMagic magic, BitcoinCommand command) {
+    public MessageRWArgs(BitcoinMessageMagic magic, WkBitcoinCommand command) {
         this.magic = magic;
         this.command = command;
     }

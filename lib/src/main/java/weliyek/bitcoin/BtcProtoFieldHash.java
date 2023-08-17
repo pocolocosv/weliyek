@@ -29,18 +29,18 @@ import weliyek.ketza.util.ByteSequence;
 public class BtcProtoFieldHash<C extends MessageContext>
         extends AbstractByteSequenceField
                         <C,
-                         BitcoinHash,
+                         WkBitcoinHash,
                          WriteData<C, ByteSequence>,
-                         ReadData<C, BitcoinHash>>
+                         ReadData<C, WkBitcoinHash>>
 {
 
     public BtcProtoFieldHash(Collection<Field<C, ?, ?>> requiredFields) {
         super(
                 "HASH",
-                BitcoinHash.class,
-                (w) -> BitcoinHash.CANONICAL_BYTE_LENGTH,
-                (r) -> BitcoinHash.CANONICAL_BYTE_LENGTH,
-                (di,l) -> BitcoinHash.build(di),
+                WkBitcoinHash.class,
+                (w) -> WkBitcoinHash.CANONICAL_BYTE_LENGTH,
+                (r) -> WkBitcoinHash.CANONICAL_BYTE_LENGTH,
+                (di,l) -> WkBitcoinHash.build(di),
                 requiredFields);
     }
 

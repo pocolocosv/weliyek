@@ -32,9 +32,9 @@ import org.junit.Test;
 import com.google.common.io.LittleEndianDataInputStream;
 
 import weliyek.amat.base.protocol.TestAmatInfo;
-import weliyek.bitcoin.BitcoinCommandName;
+import weliyek.bitcoin.WkBitcoinCommandName;
 import weliyek.bitcoin.BitcoinConfig;
-import weliyek.bitcoin.BitcoinHash;
+import weliyek.bitcoin.WkBitcoinHash;
 import weliyek.bitcoin.BitcoinMessageMagicName;
 import weliyek.bitcoin.BitcoinMsg;
 import weliyek.bitcoin.BitcoinMsgRO;
@@ -58,7 +58,7 @@ public class BitcoinMsgRejectTest
 
     static final byte[] VERSION_MSG_ARRAY = BitcoinMsgVersionTest.ARRAY_MSG;
 
-    public static final BitcoinHash TX_ID = TestUtils.toBitcoinHash(TXID_ARRAY, TestAmatInfo.newNamespace());
+    public static final WkBitcoinHash TX_ID = TestUtils.toBitcoinHash(TXID_ARRAY, TestAmatInfo.newNamespace());
 
     BitcoinConfig latestVersionConfig = BitcoinConfig.newConfig(BitcoinMsg.LATEST_VERSION);
 
@@ -80,7 +80,7 @@ public class BitcoinMsgRejectTest
         assertFalse(incompleteVersionMsgRO.isPresent());
         assertTrue(incompleteVersionMsgRO.getIncompleteResult().isPresent());
         assertEquals(BitcoinMessageMagicName.MAIN, incompleteVersionMsgRO.getIncompleteResult().get().asMagicName().get());
-        assertEquals(BitcoinCommandName.VERSION, incompleteVersionMsgRO.getIncompleteResult().get().asCommandName().get());
+        assertEquals(WkBitcoinCommandName.VERSION, incompleteVersionMsgRO.getIncompleteResult().get().asCommandName().get());
     }
 
     @Test
@@ -92,11 +92,11 @@ public class BitcoinMsgRejectTest
         // Message RW --------------------------------------------------------
         final Prospective<BitcoinMsgRW> msgRW = creator.newRW(latestVersionConfig,
                                                               magic,
-                                                              BitcoinCommandName.REJECT);
+                                                              WkBitcoinCommandName.REJECT);
         assertNotNull(msgRW);
         assertTrue(msgRW.isPresent());
         assertEquals(magic, msgRW.get().asMagicName().get());
-        assertEquals(BitcoinCommandName.REJECT, msgRW.get().asCommandName().get());
+        assertEquals(WkBitcoinCommandName.REJECT, msgRW.get().asCommandName().get());
 
         // Reject RW ---------------------------------------------------------
         final Optional<BitcoinMsgRejectRW> rejectRW = msgRW.get().asReject();
@@ -111,7 +111,7 @@ public class BitcoinMsgRejectTest
         assertEquals("", rejectRW.get().reason());
         assertEquals(ByteSequenceWrapper.EMPTY, rejectRW.get().data());
 
-        rejectRW.get().setMessage(BitcoinCommandName.TX);
+        rejectRW.get().setMessage(WkBitcoinCommandName.TX);
         rejectRW.get().setCCode(CCodeName.REJECT_DUPLICATE);
         rejectRW.get().setReason(reason);
         rejectRW.get().setData(TX_ID.toByteArray());

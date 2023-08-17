@@ -24,9 +24,9 @@ public class BitcoinInventoryVector
 
     private final BitcoinInventoryVectorType type;
 
-    private final BitcoinHash hash;
+    private final WkBitcoinHash hash;
 
-    public BitcoinInventoryVector(BitcoinInventoryVectorType t, BitcoinHash hash) {
+    public BitcoinInventoryVector(BitcoinInventoryVectorType t, WkBitcoinHash hash) {
         this.type = Objects.requireNonNull(t);
         this.hash = Objects.requireNonNull(hash);
     }
@@ -35,7 +35,7 @@ public class BitcoinInventoryVector
         return type;
     }
 
-    public BitcoinHash getHash() {
+    public WkBitcoinHash getHash() {
         return hash;
     }
 

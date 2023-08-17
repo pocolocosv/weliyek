@@ -41,13 +41,13 @@ import weliyek.ketza.util.array.ByteArrayWrapper;
 
 public class BitcoinCommandOutputField
         implements BitcoinOutputField<
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         OutputConfig,
                         BitcoinCommandWriting,
                         BitcoinCommandOutputField>,
                    SoleValueAggregatorOutputField<
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         OutputConfig,
                         BitcoinCommandWriting,
@@ -59,7 +59,7 @@ public class BitcoinCommandOutputField
                         SizeProviderAndPaddingElementWritingConfig<Byte>,
                         BasicByteArrayWrapperWriting<Object>,
                         BasicByteArrayWrapperOutputField<Object>,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         OutputConfig,
                         BitcoinCommandWriting,
@@ -73,7 +73,7 @@ public class BitcoinCommandOutputField
                             SizeProviderAndPaddingElementWritingConfig<Byte>,
                             BasicByteArrayWrapperWriting<Object>,
                             BasicByteArrayWrapperOutputField<Object>,
-                            BitcoinCommand,
+                            WkBitcoinCommand,
                             Object,
                             OutputConfig,
                             BitcoinCommandWriting,
@@ -81,36 +81,36 @@ public class BitcoinCommandOutputField
                                     this,
                                     label,
                                     Optional.ofNullable(parentField),
-                                    BitcoinCommand.class,
+                                    WkBitcoinCommand.class,
                                     (fCore) -> new BitcoinCommandWriting(fCore).core(),
                                     (f) -> new BasicByteArrayWrapperOutputField<>(
                                             "BYTES",
                                             Optional.empty(),
-                                            BitcoinCommand.CANONICAL_LENGTH,
-                                            BitcoinCommand.CANONICAL_LENGTH,
+                                            WkBitcoinCommand.CANONICAL_LENGTH,
+                                            WkBitcoinCommand.CANONICAL_LENGTH,
                                             f),
                                     (commandWriting) -> commandWriting.settings().get().getSerializable().bytes,
-                                    (commandWriting) -> new BasicSequenceWritingConfig<>(BitcoinCommand.CANONICAL_LENGTH, Optional.empty()));
+                                    (commandWriting) -> new BasicSequenceWritingConfig<>(WkBitcoinCommand.CANONICAL_LENGTH, Optional.empty()));
     }
 
     @Override
-    public Class<BitcoinCommand> serializedClass() {
+    public Class<WkBitcoinCommand> serializedClass() {
         return fieldCore.serializedClass();
     }
 
     @Override
     public <Y_, W_ extends AggregatorWriting<Object, Y_, ?, ?, ?, ?>>
-            SoleValueOutputSubfield<Object, Y_, W_, BitcoinCommand, OutputConfig, BitcoinCommandWriting, ?, BitcoinCommandOutputField, ?>
+            SoleValueOutputSubfield<Object, Y_, W_, WkBitcoinCommand, OutputConfig, BitcoinCommandWriting, ?, BitcoinCommandOutputField, ?>
             asSoleValueOutputSubfield(
                 Predicate<W_> activationTest,
-                Function<W_, BitcoinCommand> disaggregator,
+                Function<W_, WkBitcoinCommand> disaggregator,
                 Function<W_, OutputConfig> configBuilder) {
         return fieldCore.asSoleValueOutputSubfield(activationTest, disaggregator, configBuilder);
     }
 
     @Override
-    public <Y_ extends Collection<? extends BitcoinCommand>, W_ extends AggregatorWriting<Object, Y_, ?, ?, ?, ?>>
-            CollectionOutputSubfield<Object, Y_, W_, BitcoinCommand, OutputConfig, BitcoinCommandWriting, ?, BitcoinCommandOutputField, ?>
+    public <Y_ extends Collection<? extends WkBitcoinCommand>, W_ extends AggregatorWriting<Object, Y_, ?, ?, ?, ?>>
+            CollectionOutputSubfield<Object, Y_, W_, WkBitcoinCommand, OutputConfig, BitcoinCommandWriting, ?, BitcoinCommandOutputField, ?>
             asCollectionElementSubfield(
                 ToIntFunction<W_> sequenceSize,
                 Predicate<W_> activationTest,
@@ -119,8 +119,8 @@ public class BitcoinCommandOutputField
     }
 
     @Override
-    public <W_ extends AggregatorWriting<Object, BitcoinCommand[], ?, ?, ?, ?>>
-            ArrayOutputSubfield<Object, W_, BitcoinCommand, OutputConfig, BitcoinCommandWriting, ?, BitcoinCommandOutputField, ?>
+    public <W_ extends AggregatorWriting<Object, WkBitcoinCommand[], ?, ?, ?, ?>>
+            ArrayOutputSubfield<Object, W_, WkBitcoinCommand, OutputConfig, BitcoinCommandWriting, ?, BitcoinCommandOutputField, ?>
             asArrayOutputSubfield(
                 ToIntFunction<W_> sequenceSize,
                 Predicate<W_> activationTest,
@@ -129,9 +129,9 @@ public class BitcoinCommandOutputField
     }
 
     @Override
-    public ProtocolWriting<BitcoinCommand, Object, OutputConfig, BitcoinCommandWriting, BitcoinCommandOutputField>
+    public ProtocolWriting<WkBitcoinCommand, Object, OutputConfig, BitcoinCommandWriting, BitcoinCommandOutputField>
             startWriting(
-                BitcoinCommand serializable,
+                WkBitcoinCommand serializable,
                 Object context,
                 OutputConfig config,
                 OutputStream output) {

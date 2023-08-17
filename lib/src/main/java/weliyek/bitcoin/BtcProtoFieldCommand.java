@@ -37,28 +37,28 @@ public class BtcProtoFieldCommand<C extends MessageContext>
                          ByteSequence,
                          ByteSequence,
                          ByteSequenceField<C>,
-                         BitcoinCommand,
-                         BitcoinCommand,
+                         WkBitcoinCommand,
+                         WkBitcoinCommand,
                          DeserializedBuilder
-                                 <BitcoinCommand,
-                                  ReadData<C, BitcoinCommand>,
+                                 <WkBitcoinCommand,
+                                  ReadData<C, WkBitcoinCommand>,
                                   BtcProtoFieldCommand<C>>,
-                         WriteData<C, BitcoinCommand>,
-                         ReadData<C, BitcoinCommand>,
+                         WriteData<C, WkBitcoinCommand>,
+                         ReadData<C, WkBitcoinCommand>,
                          BtcProtoFieldCommand<C>>
 {
 
     public BtcProtoFieldCommand(Collection<Field<C, ?, ?>> requiredFields) {
         super(
                 "COMMAND",
-                BitcoinCommand.class,
-                BitcoinCommand.class,
-                () -> (f,r) -> BitcoinCommand.newCommand(r.getLatestDeserializedOrThrow(f.subfield())),
+                WkBitcoinCommand.class,
+                WkBitcoinCommand.class,
+                () -> (f,r) -> WkBitcoinCommand.newCommand(r.getLatestDeserializedOrThrow(f.subfield())),
                 SimpleSubfield.withFixedSizingFieldData(
                         new ByteSequenceField<>(Collections.emptyList()),
                         (bc,c) -> bc.bytes, // Dissaggregator<BitcoinCommand, C, ByteSequence>
-                        BitcoinCommand.CANONICAL_LENGTH,
-                        BitcoinCommand.CANONICAL_LENGTH),
+                        WkBitcoinCommand.CANONICAL_LENGTH,
+                        WkBitcoinCommand.CANONICAL_LENGTH),
                 RecyclingBytesreamBuilder.INSTANCE,
                 requiredFields);
     }

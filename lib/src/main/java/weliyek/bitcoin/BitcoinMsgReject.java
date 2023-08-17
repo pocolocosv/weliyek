@@ -62,7 +62,7 @@ public interface BitcoinMsgReject extends BitcoinMsgPayload
 
     String message();
 
-    Optional<BitcoinCommandName> messageAsCommand();
+    Optional<WkBitcoinCommandName> messageAsCommand();
 
     byte ccode();
 

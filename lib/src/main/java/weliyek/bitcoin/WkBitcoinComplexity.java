@@ -20,26 +20,26 @@ package weliyek.bitcoin;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-public class BitcoinComplexity extends BitcoinHash
+public class WkBitcoinComplexity extends WkBitcoinHash
 {
 
-    private BitcoinComplexity(byte[] bytes) {
+    private WkBitcoinComplexity(byte[] bytes) {
         super(bytes);
     }
 
-    private BitcoinComplexity(byte[] buff, int offset) {
+    private WkBitcoinComplexity(byte[] buff, int offset) {
         super(buff, offset);
     }
 
-    public static BitcoinComplexity ofCompact(int compact) {
+    public static WkBitcoinComplexity ofCompact(int compact) {
         final BigInteger bigInt = convertCompactToBigInteger(compact);
         final byte[] bigIntByteArray = bigInt.toByteArray();
-        if (BitcoinHash.CANONICAL_BYTE_LENGTH < bigIntByteArray.length)
+        if (WkBitcoinHash.CANONICAL_BYTE_LENGTH < bigIntByteArray.length)
             throw new IllegalArgumentException("Length of derived byte array is longer that expected");
         byte[] hashBytes = bigIntByteArray;
-        if (bigIntByteArray.length < BitcoinHash.CANONICAL_BYTE_LENGTH)
+        if (bigIntByteArray.length < WkBitcoinHash.CANONICAL_BYTE_LENGTH)
             hashBytes = Arrays.copyOf(bigIntByteArray, CANONICAL_BYTE_LENGTH);
-        return new BitcoinComplexity(hashBytes);
+        return new WkBitcoinComplexity(hashBytes);
     }
 
     public int toCompact() {

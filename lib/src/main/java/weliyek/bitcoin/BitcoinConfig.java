@@ -26,8 +26,8 @@ public class BitcoinConfig implements MessageContext
 
     private final BitcoinProtocolVersion version;
 
-    private BitcoinCommandName previousSentCommand;
-    private Optional<BitcoinCommandName> currentTxCommand;
+    private WkBitcoinCommandName previousSentCommand;
+    private Optional<WkBitcoinCommandName> currentTxCommand;
 
     public static BitcoinConfig newConfig(BitcoinProtocolVersion version) {
         return new BitcoinConfig(version);
@@ -53,22 +53,22 @@ public class BitcoinConfig implements MessageContext
         return latestSupportedVersion();
     }
 
-    public Optional<BitcoinCommandName> previousSentCommand() {
+    public Optional<WkBitcoinCommandName> previousSentCommand() {
         return Optional.ofNullable(this.previousSentCommand);
     }
 
-    void setPreviousSentMessage(BitcoinCommandName roCmd) {
+    void setPreviousSentMessage(WkBitcoinCommandName roCmd) {
         if (null != roCmd) {
             throw new IllegalArgumentException();
         }
         this.previousSentCommand = roCmd;
     }
 
-    public Optional<BitcoinCommandName> currentTxCommand() {
+    public Optional<WkBitcoinCommandName> currentTxCommand() {
         return this.currentTxCommand;
     }
 
-    void setCurrentTxCommand(BitcoinCommandName cmd) {
+    void setCurrentTxCommand(WkBitcoinCommandName cmd) {
         this.currentTxCommand = Optional.ofNullable(cmd);
     }
 

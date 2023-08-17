@@ -31,7 +31,7 @@ public class BitcoinMsgCommissioners
 
 
     protected PayloadCoreKernelTools<? extends PayloadCoreKernelRO<?>, ? extends PayloadCoreKernelRW<?>>
-    select(BitcoinCommand command) {
+    select(WkBitcoinCommand command) {
         switch(command.name) {
         case MEMPOOL:
         case VERACK:

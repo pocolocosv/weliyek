@@ -24,13 +24,13 @@ public class BitcoinOutpoint implements Comparable<BitcoinOutpoint>
 
     public static final BitcoinOutpoint NULL = new BitcoinOutpoint();
 
-    public final BitcoinHash hash;
+    public final WkBitcoinHash hash;
 
     public final long index;
 
     private final int hashCode;
 
-    public static BitcoinOutpoint buildFrom(BitcoinHash hash, long index) {
+    public static BitcoinOutpoint buildFrom(WkBitcoinHash hash, long index) {
         if (null == hash) // ignore index and return NULL
             return NULL;
         else
@@ -43,7 +43,7 @@ public class BitcoinOutpoint implements Comparable<BitcoinOutpoint>
         this.hashCode = Objects.hash(index);
     }
 
-    BitcoinOutpoint(BitcoinHash hash, long index) {
+    BitcoinOutpoint(WkBitcoinHash hash, long index) {
         if (null == hash || index == -1) {
             throw new IllegalArgumentException();
         }
@@ -52,7 +52,7 @@ public class BitcoinOutpoint implements Comparable<BitcoinOutpoint>
         this.hashCode = Objects.hash(hash, index);
     }
 
-    public BitcoinHash hash() {
+    public WkBitcoinHash hash() {
         return hash;
     }
 

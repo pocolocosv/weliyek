@@ -25,7 +25,7 @@ public class BitcoinMsgGetBlocksKernelRW
         implements BitcoinMsgGetBlocksRW, PayloadCoreKernelRW<BitcoinMsgGetBlocksKernelRO>
 {
 
-    protected List<BitcoinHash> list = new ArrayList<>();
+    protected List<WkBitcoinHash> list = new ArrayList<>();
 
     public BitcoinMsgGetBlocksKernelRW(PayloadCoreKernelCommissioner<BitcoinMsgRWBody, BitcoinMsgGetBlocksKernelRW> c) {
         super(c);
@@ -50,7 +50,7 @@ public class BitcoinMsgGetBlocksKernelRW
     }
 
     @Override
-    public void setStopHash(BitcoinHash h) {
+    public void setStopHash(WkBitcoinHash h) {
         if (null == h) {
             throw new IllegalArgumentException();
         }
@@ -58,12 +58,12 @@ public class BitcoinMsgGetBlocksKernelRW
     }
 
     @Override
-    protected List<BitcoinHash> modifiableHeaderHashList() {
+    protected List<WkBitcoinHash> modifiableHeaderHashList() {
         return list;
     }
 
     @Override
-    protected List<BitcoinHash> publicHeaderHashList() {
+    protected List<WkBitcoinHash> publicHeaderHashList() {
         return list;
     }
 

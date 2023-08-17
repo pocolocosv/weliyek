@@ -44,7 +44,7 @@ public class BitcoinMsgRejectRWKernel
     }
 
     @Override
-    public BitcoinMsgRejectRW setMessage(BitcoinCommandName cmd) {
+    public BitcoinMsgRejectRW setMessage(WkBitcoinCommandName cmd) {
         setMessageString(cmd.toString());
         return this;
     }

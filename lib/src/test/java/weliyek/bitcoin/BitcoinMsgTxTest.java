@@ -29,9 +29,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import weliyek.amat.base.protocol.TestAmatInfo;
-import weliyek.bitcoin.BitcoinCommandName;
+import weliyek.bitcoin.WkBitcoinCommandName;
 import weliyek.bitcoin.BitcoinConfig;
-import weliyek.bitcoin.BitcoinHash;
+import weliyek.bitcoin.WkBitcoinHash;
 import weliyek.bitcoin.BitcoinMessageMagicName;
 import weliyek.bitcoin.BitcoinMsg;
 import weliyek.bitcoin.BitcoinMsgRO;
@@ -160,11 +160,11 @@ public class BitcoinMsgTxTest
     static final byte[] ARRAY_MSG;
 
     public static final BitcoinMessageMagicName TX_MAGIC;
-    public static final BitcoinCommandName TX_COMMAND;
+    public static final WkBitcoinCommandName TX_COMMAND;
     public static final    int TX_PAYLOAD_CHECKSUM;
     public static final    int TX_TXVERSION;
     public static final    int TX_TXIN_NUM;
-    public static final BitcoinHash TX_TXIN_OUTPOINT_HASH;
+    public static final WkBitcoinHash TX_TXIN_OUTPOINT_HASH;
     public static final    int TX_TXIN_OUTPOINT_INDEX;
     public static final    int TX_TXIN_SCRIPT_SIZE;
     public static final BitcoinProtocolScriptAbstract TX_TXIN_SCRIPT;

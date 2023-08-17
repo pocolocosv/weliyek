@@ -34,16 +34,16 @@ import weliyek.ketza.util.array.ByteArrayWrapper;
 public class BitcoinCommandWriting
         implements BitcoinWriting<
                         Object,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         OutputConfig,
-                        WritingSettings<Object,BitcoinCommand,OutputConfig>,
+                        WritingSettings<Object,WkBitcoinCommand,OutputConfig>,
                         BasicWritingResult,
                         BitcoinCommandOutputField>,
                    SoleValueAggregatorWriting<
                         Object,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         OutputConfig,
-                        WritingSettings<Object,BitcoinCommand,OutputConfig>,
+                        WritingSettings<Object,WkBitcoinCommand,OutputConfig>,
                         BasicWritingResult,
                         BitcoinCommandOutputField>
 {
@@ -53,7 +53,7 @@ public class BitcoinCommandWriting
                         SizeProviderAndPaddingElementWritingConfig<Byte>,
                         BasicByteArrayWrapperWriting<Object>,
                         BasicByteArrayWrapperOutputField<Object>,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         OutputConfig,
                         BitcoinCommandWriting,
@@ -65,7 +65,7 @@ public class BitcoinCommandWriting
                 SizeProviderAndPaddingElementWritingConfig<Byte>,
                 BasicByteArrayWrapperWriting<Object>,
                 BasicByteArrayWrapperOutputField<Object>,
-                BitcoinCommand,
+                WkBitcoinCommand,
                 Object,
                 OutputConfig,
                 BitcoinCommandWriting,
@@ -74,7 +74,7 @@ public class BitcoinCommandWriting
         SizeProviderAndPaddingElementWritingConfig<Byte>,
         BasicByteArrayWrapperWriting<Object>,
         BasicByteArrayWrapperOutputField<Object>,
-        BitcoinCommand,
+        WkBitcoinCommand,
         Object,
         OutputConfig,
         BitcoinCommandWriting,
@@ -87,7 +87,7 @@ public class BitcoinCommandWriting
     }
 
     @Override
-    public Class<BitcoinCommand> serializableClass() {
+    public Class<WkBitcoinCommand> serializableClass() {
         return writingCore.serializableClass();
     }
 
@@ -107,7 +107,7 @@ public class BitcoinCommandWriting
     }
 
     @Override
-    public Optional<WritingSettings<Object, BitcoinCommand, OutputConfig>> settings() {
+    public Optional<WritingSettings<Object, WkBitcoinCommand, OutputConfig>> settings() {
         return writingCore.settings();
     }
 
@@ -121,7 +121,7 @@ public class BitcoinCommandWriting
         SizeProviderAndPaddingElementWritingConfig<Byte>,
         BasicByteArrayWrapperWriting<Object>,
         BasicByteArrayWrapperOutputField<Object>,
-        BitcoinCommand,
+        WkBitcoinCommand,
         Object,
         OutputConfig,
         BitcoinCommandWriting,

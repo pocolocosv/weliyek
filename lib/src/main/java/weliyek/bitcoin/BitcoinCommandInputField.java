@@ -45,13 +45,13 @@ import weliyek.ketza.util.array.ByteArrayWrapper;
 
 public class BitcoinCommandInputField
         implements BitcoinInputField<
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         InputConfig,
                         BitcoinCommandReading,
                         BitcoinCommandInputField>,
                    SoleValueAggregatorInputField<
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         InputConfig,
                         BitcoinCommandReading,
@@ -63,11 +63,11 @@ public class BitcoinCommandInputField
                         SizeProviderReadingConfig,
                         BasicByteArrayWrapperReading,
                         BasicByteArrayWrapperInputField,
-                        BitcoinCommand,
+                        WkBitcoinCommand,
                         Object,
                         InputConfig,
                         ReadingSettings<Object, InputConfig>,
-                        BasicReadingResult<BitcoinCommand>,
+                        BasicReadingResult<WkBitcoinCommand>,
                         BitcoinCommandReading,
                         BitcoinCommandInputField> fieldCore;
 
@@ -76,30 +76,30 @@ public class BitcoinCommandInputField
                             label,
                             this,
                             Optional.ofNullable(parentField),
-                            BitcoinCommand.class,
+                            WkBitcoinCommand.class,
                             (fCore) -> new BitcoinCommandReading(fCore).getCore(),
-                            (bytewrapper) -> BitcoinCommand.newCommand(bytewrapper),
+                            (bytewrapper) -> WkBitcoinCommand.newCommand(bytewrapper),
                             (f) -> new BasicByteArrayWrapperInputField(
                                         "BYTES",
-                                        BitcoinCommand.CANONICAL_LENGTH,
-                                        BitcoinCommand.CANONICAL_LENGTH,
+                                        WkBitcoinCommand.CANONICAL_LENGTH,
+                                        WkBitcoinCommand.CANONICAL_LENGTH,
                                         f),
-                            (agReading) -> new BasicSequenceReadingConfig(BitcoinCommand.CANONICAL_LENGTH));
+                            (agReading) -> new BasicSequenceReadingConfig(WkBitcoinCommand.CANONICAL_LENGTH));
     }
 
     @Override
-    public Class<BitcoinCommand> serializedClass() {
+    public Class<WkBitcoinCommand> serializedClass() {
         return fieldCore.serializedClass();
     }
 
     @Override
-    public FilterMatcher<BitcoinCommand> testIf(Predicate<BitcoinCommand> test, String desc) {
+    public FilterMatcher<WkBitcoinCommand> testIf(Predicate<WkBitcoinCommand> test, String desc) {
         return fieldCore.testIf(test, desc);
     }
 
     @Override
     public <R_ extends InputFieldReading<Object, ?, ?, ?, ?, ?>>
-            SoleValueInputSubfield<Object, R_, BitcoinCommand, InputConfig, BitcoinCommandReading, ?, BitcoinCommandInputField, ?>
+            SoleValueInputSubfield<Object, R_, WkBitcoinCommand, InputConfig, BitcoinCommandReading, ?, BitcoinCommandInputField, ?>
             asSoleValueSubfield(
                 Predicate<R_> activationTest,
                 boolean forceFullRead,
@@ -110,7 +110,7 @@ public class BitcoinCommandInputField
 
     @Override
     public <R_ extends InputFieldReading<Object, ?, ?, ?, ?, ?>>
-            SequenceInputSubfield<Object, R_, BitcoinCommand, InputConfig, BitcoinCommandReading, ?, BitcoinCommandInputField, ?>
+            SequenceInputSubfield<Object, R_, WkBitcoinCommand, InputConfig, BitcoinCommandReading, ?, BitcoinCommandInputField, ?>
             asSequenceSubfield(
                 ToIntFunction<R_> expectedSequenceSize,
                 Predicate<R_> activationTest,
@@ -121,13 +121,13 @@ public class BitcoinCommandInputField
     }
 
     @Override
-    public ProtocolReading<BitcoinCommand, Object, InputConfig, BitcoinCommandReading, BitcoinCommandInputField>
+    public ProtocolReading<WkBitcoinCommand, Object, InputConfig, BitcoinCommandReading, BitcoinCommandInputField>
             newFullReadOperation(Object context, InputConfig config, InputStream input) {
         return fieldCore.newFullReadOperation(context, config, input);
     }
 
     @Override
-    public ProtocolReading<BitcoinCommand, Object, InputConfig, BitcoinCommandReading, BitcoinCommandInputField>
+    public ProtocolReading<WkBitcoinCommand, Object, InputConfig, BitcoinCommandReading, BitcoinCommandInputField>
             newPartialReadOperation(
                 Object context,
                 InputConfig config,

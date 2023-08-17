@@ -40,7 +40,7 @@ public class BitcoinMsgAddrSerialization
         listElementNmspc.enableCounter(rwKernel.size());
         for (BitcoinNetAddr netAddr : rwKernel) {
             netAddr.writeTo(config.version(),
-                            BitcoinCommandName.ADDR,
+                            WkBitcoinCommandName.ADDR,
                             out,
                             listElementNmspc);
             listElementNmspc.increaseCount();
@@ -61,7 +61,7 @@ public class BitcoinMsgAddrSerialization
         listElementNmspc.enableCounter(listSize);
         for(int i = 0; i < listSize; i++) {
             BitcoinNetAddr netAddr = BitcoinNetAddr.readFrom(config.version(),
-                                               BitcoinCommandName.ADDR,
+                                               WkBitcoinCommandName.ADDR,
                                                in,
                                                listElementNmspc);
             roKernel.modifiableList().add(netAddr);

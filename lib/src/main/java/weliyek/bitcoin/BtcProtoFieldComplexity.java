@@ -36,23 +36,23 @@ public class BtcProtoFieldComplexity<C extends MessageContext>
                          Integer,
                          Number,
                          UnsignedLittleEndianIntegerField<C>,
-                         BitcoinComplexity,
-                         BitcoinComplexity,
+                         WkBitcoinComplexity,
+                         WkBitcoinComplexity,
                          DeserializedBuilder
-                             <BitcoinComplexity,
-                              ReadData<C, BitcoinComplexity>,
+                             <WkBitcoinComplexity,
+                              ReadData<C, WkBitcoinComplexity>,
                               BtcProtoFieldComplexity<C>>,
-                         WriteData<C, BitcoinComplexity>,
-                         ReadData<C, BitcoinComplexity>,
+                         WriteData<C, WkBitcoinComplexity>,
+                         ReadData<C, WkBitcoinComplexity>,
                          BtcProtoFieldComplexity<C>>
 {
 
     public BtcProtoFieldComplexity(Collection<Field<C, ?, ?>> requiredFields) {
         super(
                 "COMPLEXITY",
-                BitcoinComplexity.class,
-                BitcoinComplexity.class,
-                () -> (f,r) -> BitcoinComplexity.ofCompact(r.getLatestDeserializedOrThrow(f.subfield())
+                WkBitcoinComplexity.class,
+                WkBitcoinComplexity.class,
+                () -> (f,r) -> WkBitcoinComplexity.ofCompact(r.getLatestDeserializedOrThrow(f.subfield())
                                                             .intValue()),
                 SimpleSubfield.withStandardFieldData(
                         new UnsignedLittleEndianIntegerField<>(Collections.emptyList()),

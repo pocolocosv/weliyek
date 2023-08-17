@@ -46,7 +46,7 @@ public class BitcoinProtocolMessageFieldComplexitySerializer
                                   SerializableConfig config)
     {
         int compact = (int) AmatProtocolUtil.readLittleEndianInt(in, complexityField.namespace());
-        BitcoinComplexity complexity = new BitcoinComplexity(compact);
+        WkBitcoinComplexity complexity = new WkBitcoinComplexity(compact);
         complexityField.commissionWithValue(complexity);
     }
 

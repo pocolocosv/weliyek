@@ -24,8 +24,8 @@ public interface BitcoinMsgGetBlocks extends BitcoinMsgPayload
 
     int version();
 
-    List<BitcoinHash> headerHashes();
+    List<WkBitcoinHash> headerHashes();
 
-    BitcoinHash stopHash();
+    WkBitcoinHash stopHash();
 
 }

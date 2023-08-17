@@ -57,8 +57,8 @@ public abstract  class BitcoinMsgRejectKernelAbstract
     }
 
     @Override
-    public Optional<BitcoinCommandName> messageAsCommand() {
-        return BitcoinCommandName.fromString(message);
+    public Optional<WkBitcoinCommandName> messageAsCommand() {
+        return WkBitcoinCommandName.fromString(message);
     }
 
     @Override

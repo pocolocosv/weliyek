@@ -17,8 +17,10 @@
  */
 package weliyek.util.array;
 
+import weliyek.serialization.sequence.WkSequenceSrlzFrameNode;
+
 public interface WkPrimitiveArraySrlzFrameNode
-    extends WkArraySrlzFrameNode
+    extends WkSequenceSrlzFrameNode
 {
 
 }

@@ -22,8 +22,21 @@ import java.util.function.IntPredicate;
 import java.util.function.LongPredicate;
 
 public interface WkPrimitiveArray<A, W extends WkPrimitiveArray<A, ?>>
-    extends WkGenericArray<A, W>
 {
+
+  A copyOfArray();
+
+  A copyOfArray(int from, int to);
+
+  W subrange(int from, int to);
+
+  int getLength();
+
+  int compare(A otherArray);
+
+  int compare(int myFrom, int myTo, A otherArray, int otherFrom, int otherTo);
+
+  boolean equalsToArray(A otherArray, int from);
 
   byte getAsByte(int index);
 
@@ -36,10 +49,6 @@ public interface WkPrimitiveArray<A, W extends WkPrimitiveArray<A, ?>>
   float getAsFloat(int index);
 
   double getAsDouble(int index);
-
-  int compare(A otherArray);
-
-  int compare(int myFrom, int myTo, A otherArray, int otherFrom, int otherTo);
 
   void iterateAsIntsWhileTrue(IntPredicate visitor);
 

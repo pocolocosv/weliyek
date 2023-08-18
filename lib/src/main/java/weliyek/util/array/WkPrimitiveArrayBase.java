@@ -34,7 +34,7 @@ public abstract class WkPrimitiveArrayBase<A, W extends WkPrimitiveArrayBase<A, 
     boolean isEqual(A thisArray, int thisFrom, int thisTo, A otherArray, int otherFrom, int otherTo);
   }
 
-  interface WrapperSupplier<A, W extends WkGenericArray<A,?>> {
+  interface WrapperSupplier<A, W extends WkPrimitiveArray<A,?>> {
     W getWrapper(A array, int from, int to);
   }
 

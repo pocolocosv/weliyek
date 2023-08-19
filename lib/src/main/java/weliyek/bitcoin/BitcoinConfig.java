@@ -24,32 +24,32 @@ import weliyek.amat2.protocol.field.MessageContext;
 public class BitcoinConfig implements MessageContext
 {
 
-    private final BitcoinProtocolVersion version;
+    private final WkBitcoinProtocolVersion version;
 
     private WkBitcoinCommandName previousSentCommand;
     private Optional<WkBitcoinCommandName> currentTxCommand;
 
-    public static BitcoinConfig newConfig(BitcoinProtocolVersion version) {
+    public static BitcoinConfig newConfig(WkBitcoinProtocolVersion version) {
         return new BitcoinConfig(version);
     }
 
     public static BitcoinConfig newConfig(int version) {
-        return new BitcoinConfig(new BitcoinProtocolVersion(version));
+        return new BitcoinConfig(new WkBitcoinProtocolVersion(version));
     }
 
     public static BitcoinConfig newWithLatestVersion() {
-        return new BitcoinConfig(BitcoinProtocolVersion.LATEST);
+        return new BitcoinConfig(WkBitcoinProtocolVersion.LATEST);
     }
 
-    private BitcoinConfig(BitcoinProtocolVersion version) {
+    private BitcoinConfig(WkBitcoinProtocolVersion version) {
         this.version = version;
     }
 
-    public BitcoinProtocolVersion latestSupportedVersion() {
+    public WkBitcoinProtocolVersion latestSupportedVersion() {
         return version;
     }
 
-    public BitcoinProtocolVersion effectiveVersion() {
+    public WkBitcoinProtocolVersion effectiveVersion() {
         return latestSupportedVersion();
     }
 

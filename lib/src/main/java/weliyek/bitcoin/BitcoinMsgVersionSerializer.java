@@ -31,7 +31,7 @@ public class BitcoinMsgVersionSerializer
                                   InputStream                  in,
                                   BitcoinProtocolMessageConfig config)
     {
-        final BitcoinProtocolVersion ver = BitcoinProtocolVersion.readFrom(in, versionKernel.versionValueNamespace);
+        final WkBitcoinProtocolVersion ver = WkBitcoinProtocolVersion.readFrom(in, versionKernel.versionValueNamespace);
         versionKernel.setVersion(ver);
         final BitcoinNodeServices services = BitcoinNodeServices.readFrom(in, versionKernel.servicesNamespace);
         versionKernel.setServices(services);

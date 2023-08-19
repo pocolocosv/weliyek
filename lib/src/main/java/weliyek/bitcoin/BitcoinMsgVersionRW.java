@@ -22,7 +22,7 @@ public interface BitcoinMsgVersionRW
                 BitcoinMsgPayloadRW
 {
 
-    void setVersion(BitcoinProtocolVersion v);
+    void setVersion(WkBitcoinProtocolVersion v);
 
     /**
      * Sets features to be enabled for the connection

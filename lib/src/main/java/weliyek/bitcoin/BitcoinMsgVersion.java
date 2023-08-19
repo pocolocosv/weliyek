@@ -20,7 +20,7 @@ package weliyek.bitcoin;
 public interface BitcoinMsgVersion extends BitcoinMsgPayload
 {
 
-    BitcoinProtocolVersion version();
+    WkBitcoinProtocolVersion version();
 
     /**
      * @return Features to be enabled for the connection

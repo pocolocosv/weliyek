@@ -57,7 +57,7 @@ public class BitcoinNetAddr
         this.time = Objects.requireNonNull(time);
     }
 
-    public void writeTo(BitcoinProtocolVersion version,
+    public void writeTo(WkBitcoinProtocolVersion version,
                         WkBitcoinCommand command,
                         OutputStream   out,
                         AmatNamespace  timeNamespace,
@@ -71,7 +71,7 @@ public class BitcoinNetAddr
         AmatProtocolUtil.writeBigEndianShort(out, port, portNamespace);
     }
 
-    private void writeTime(BitcoinProtocolVersion version,
+    private void writeTime(WkBitcoinProtocolVersion version,
                            WkBitcoinCommand         command,
                            OutputStream           out,
                            AmatNamespace          timeNamespace)
@@ -87,12 +87,12 @@ public class BitcoinNetAddr
         }
     }
 
-    private static boolean expectTimeField(BitcoinProtocolVersion version, WkBitcoinCommand command) {
+    private static boolean expectTimeField(WkBitcoinProtocolVersion version, WkBitcoinCommand command) {
         return    ( ! command.equals(WkBitcoinCommand.VERSION))
-               && (version.value >= BitcoinProtocolVersion.CADDR_TIME.value);
+               && (version.value >= WkBitcoinProtocolVersion.CADDR_TIME.value);
     }
 
-    public static BitcoinNetAddr readFrom(BitcoinProtocolVersion version,
+    public static BitcoinNetAddr readFrom(WkBitcoinProtocolVersion version,
                                           WkBitcoinCommand         command,
                                           InputStream            in,
                                           AmatNamespace          timeNamespace,
@@ -107,7 +107,7 @@ public class BitcoinNetAddr
         return new BitcoinNetAddr(addr, srvcs, prt, time);
     }
 
-    private static Optional<Long> readTime(BitcoinProtocolVersion version, WkBitcoinCommand command, InputStream in, final AmatNamespace timeNamespace) {
+    private static Optional<Long> readTime(WkBitcoinProtocolVersion version, WkBitcoinCommand command, InputStream in, final AmatNamespace timeNamespace) {
         if (expectTimeField(version, command))
         {
             long time = AmatProtocolUtil.readLittleEndianInt(in, timeNamespace);

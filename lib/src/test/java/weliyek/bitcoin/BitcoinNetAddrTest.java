@@ -36,7 +36,7 @@ import weliyek.bitcoin.WkBitcoinCommand;
 import weliyek.bitcoin.BitcoinNetAddr;
 import weliyek.bitcoin.BitcoinNodeServices;
 import weliyek.bitcoin.BitcoinProtocolName;
-import weliyek.bitcoin.BitcoinProtocolVersion;
+import weliyek.bitcoin.WkBitcoinProtocolVersion;
 import weliyek.bitcoin.BitcoinServiceFlag;
 import weliyek.ketza.util.KetzaByteOutputStream;
 
@@ -80,10 +80,10 @@ public class BitcoinNetAddrTest
         final BitcoinNetAddr netaddr = new BitcoinNetAddr(address, services, port, time);
 
         KetzaByteOutputStream out = new KetzaByteOutputStream();
-        netaddr.writeTo(BitcoinProtocolVersion.CADDR_TIME, WkBitcoinCommand.TX, out,
+        netaddr.writeTo(WkBitcoinProtocolVersion.CADDR_TIME, WkBitcoinCommand.TX, out,
                         timeNamespace, servicesNamespace, inetAddrNamespace, portNamespace);
 
-        final BitcoinNetAddr netaddr2 = BitcoinNetAddr.readFrom(BitcoinProtocolVersion.CADDR_TIME, WkBitcoinCommand.TX, out.inputStream(),
+        final BitcoinNetAddr netaddr2 = BitcoinNetAddr.readFrom(WkBitcoinProtocolVersion.CADDR_TIME, WkBitcoinCommand.TX, out.inputStream(),
                                                                 timeNamespace, servicesNamespace, inetAddrNamespace, portNamespace);
 
         assertEquals(netaddr, netaddr2);

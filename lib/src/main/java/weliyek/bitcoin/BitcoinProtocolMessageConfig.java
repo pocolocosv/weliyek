@@ -25,7 +25,7 @@ public interface BitcoinProtocolMessageConfig
                 AmatProtocolSerializationConfig
 {
 
-    BitcoinProtocolVersion protocolVersion();
+    WkBitcoinProtocolVersion protocolVersion();
 
     WkBitcoinCommand messageCommand();
 

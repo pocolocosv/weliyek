@@ -48,7 +48,7 @@ public class BitcoinMsgVersionCoreKernel
     public final AmatNamespace fromInetAddrNamespace;
     public final AmatNamespace fromPortNamespace;
 
-    private BitcoinProtocolVersion versionValue;
+    private WkBitcoinProtocolVersion versionValue;
     private BitcoinNodeServices services;
     private long timestamp;
     private BitcoinNetAddr recv;
@@ -125,12 +125,12 @@ public class BitcoinMsgVersionCoreKernel
     }
 
     @Override
-    public BitcoinProtocolVersion version() {
+    public WkBitcoinProtocolVersion version() {
         return versionValue;
     }
 
     @Override
-    public void setVersion(BitcoinProtocolVersion v) {
+    public void setVersion(WkBitcoinProtocolVersion v) {
         this.versionValue = Objects.requireNonNull(v);
     }
 

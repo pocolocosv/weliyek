@@ -33,7 +33,7 @@ public interface WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,?>,
                         SY extends WkPrimitiveArray<?, ?>,
-                        SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SY,?>,
+                        SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SY>,
                         SYO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<SY,?,?,?,SYD>>
         extends WkStringFromPrimitiveArraySrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,

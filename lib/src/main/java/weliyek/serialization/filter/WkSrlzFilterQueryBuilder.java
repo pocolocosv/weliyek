@@ -23,7 +23,7 @@ import weliyek.serialization.filter.WkSrlzFilterPredicateRule.ExclusiveOption;
 public class WkSrlzFilterQueryBuilder
 {
 
-    private WkSrlzStructDefinitionFrameNode<?,?> searchedField;
+    private WkSrlzStructDefinitionFrameNode<?> searchedField;
     private WkSrlzFilterPredicateRuleBase rule;
     private String desc;
 
@@ -37,7 +37,7 @@ public class WkSrlzFilterQueryBuilder
         this.desc = "";
     }
 
-    public WkSrlzFilterQueryBuilder search(WkSrlzStructDefinitionFrameNode<?,?> searchedField) {
+    public WkSrlzFilterQueryBuilder search(WkSrlzStructDefinitionFrameNode<?> searchedField) {
         this.searchedField = searchedField;
         return this;
     }

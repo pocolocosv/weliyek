@@ -29,7 +29,7 @@ public class WkSrlzFilterRule
 {
 
     private final WkSrlzPacketNodePredicate<?,?> nodePredicate;
-    private final List<WkSrlzStructDefinitionFrameNode<?,?>> structDefinitionTargetList;
+    private final List<WkSrlzStructDefinitionFrameNode<?>> structDefinitionTargetList;
     private final List<WkSrlzPacketNodePredicate<?,?>> nodePredicateList;
     final ExclusiveOption option;
 
@@ -45,7 +45,7 @@ public class WkSrlzFilterRule
     }
 
     @Override
-    public List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets() {
+    public List<WkSrlzStructDefinitionFrameNode<?>> matchTargets() {
         return this.structDefinitionTargetList;
     }
 

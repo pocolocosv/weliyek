@@ -23,7 +23,7 @@ import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 
 public class WkSrlzReadingPacketNodePredicate<
-                        D extends WkSrlzStructDefinitionFrameNode<?,?>,
+                        D extends WkSrlzStructDefinitionFrameNode<?>,
                         O extends WkSrlzInputPacketDecoderFrameNode<?,?,?,?,D>>
     extends WkSrlzPacketNodePredicate<D, O>
 {
@@ -41,7 +41,7 @@ public class WkSrlzReadingPacketNodePredicate<
   @Override
   public boolean canBeTestedAgainst(WkSrlzPacketFilterableFrameNode node) {
     if (isAnInputPacketReadingNode(node)) {
-      WkSrlzStructDefinitionFrameNode<?,?> structDef = extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)node);
+      WkSrlzStructDefinitionFrameNode<?> structDef = extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)node);
       return targetProtocolField().equals(structDef);
     }
     return false;

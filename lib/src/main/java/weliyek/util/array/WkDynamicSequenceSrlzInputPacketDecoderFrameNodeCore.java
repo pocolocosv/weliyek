@@ -52,10 +52,10 @@ public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VXO extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<T,VXS,?,?,VXD>,
-                        VXD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T,VXO>,
+                        VXD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                         ?,?,?,?,?,?,?,?,

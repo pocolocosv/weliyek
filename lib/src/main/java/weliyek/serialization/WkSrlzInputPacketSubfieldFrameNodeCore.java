@@ -23,11 +23,11 @@ import java.util.function.Predicate;
 public class WkSrlzInputPacketSubfieldFrameNodeCore<
                         ST,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
+                        SXD extends WkSrlzStructDefinitionFrameNode<ST>,
                         SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SXS, SXD,
@@ -49,7 +49,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   @Override
   protected void onInitialization() {
     final WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,?,?,XD,XO,?,?,?> parentOpCore = parentOperationCore();
-    WkAggregatorSrlzStructDefinitionFrameNode<?,?> parentDef = parentOpCore.definition();
+    WkAggregatorSrlzStructDefinitionFrameNode<?> parentDef = parentOpCore.definition();
     List<WkSrlzStructSubcomponentFrameNode<?,?,?>> requiredSubfields = parentDef.requiredSubfields();
     if(-1 != requiredSubfields.indexOf(subcomponentHandlerCore().body())) {
       this.isRequiredByProto = true;

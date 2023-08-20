@@ -23,7 +23,7 @@ import java.util.Optional;
 public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>>
     extends WkSrlzOutputPacketFieldFrameNodeCore<

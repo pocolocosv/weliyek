@@ -31,7 +31,7 @@ public interface WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,?,? extends SD>,
-                        SD extends WkByteArraySrlzStructDefinitionFrameNode<?>,
+                        SD extends WkByteArraySrlzStructDefinitionFrameNode,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<?,?,?,SD>>
     extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         YS, YQ, YR, YD,

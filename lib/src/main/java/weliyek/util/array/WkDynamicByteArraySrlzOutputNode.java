@@ -34,7 +34,7 @@ import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode
 public class WkDynamicByteArraySrlzOutputNode<
                         ZT extends Number,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>>
+                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>>
     implements WkByteArraySrlzOutputPacketEncoderFrameNode<
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

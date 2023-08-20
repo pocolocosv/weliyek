@@ -27,7 +27,7 @@ public interface WkSequenceSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData,
-                        D extends WkSequenceSrlzStructDefinitionFrameNode<?,?>,
+                        D extends WkSequenceSrlzStructDefinitionFrameNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
         extends WkSequenceSrlzFrameNode,
                 WkSrlzPacketOperationFrameNode<S, Q, R, D, K>

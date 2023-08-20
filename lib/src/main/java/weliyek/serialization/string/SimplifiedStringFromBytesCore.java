@@ -68,11 +68,11 @@ public class SimplifiedStringFromBytesCore<
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
-                        SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
+                        SXD extends WkByteArraySrlzStructDefinitionFrameNode,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
-                        SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>,
-                        SD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
+                        SYD extends WkByteArraySrlzStructDefinitionFrameNode,
+                        SD extends WkByteArraySrlzStructDefinitionFrameNode,
                         D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>>
     extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         XS,

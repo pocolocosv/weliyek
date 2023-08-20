@@ -21,12 +21,10 @@ import java.util.Collection;
 
 import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNode;
 
-public interface WkCollectionSrlzStructDefinitionFrameNode<
-                        T extends Collection<?>,
-                        XO extends WkCollectionSrlzInputPacketDecoderFrameNode<T,?,?,?,?>>
+public interface WkCollectionSrlzStructDefinitionFrameNode<T extends Collection<?>>
   extends WkCollectionSrlzFrameNode,
-          WkAggregatorSrlzStructDefinitionFrameNode<T, XO>,
-          WkSequenceSrlzStructDefinitionFrameNode<T, XO>
+          WkAggregatorSrlzStructDefinitionFrameNode<T>,
+          WkSequenceSrlzStructDefinitionFrameNode<T>
 {
 
 }

@@ -69,11 +69,11 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
                         ST extends WkPrimitiveArray<?,?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkPrimitiveArraySrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
-                        SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST,SXO>,
+                        SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
-                        SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST,?>,
-                        SD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST, SXO>,
+                        SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST>,
+                        SD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST>,
                         D extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO,YO,SD>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
@@ -133,7 +133,7 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
   public abstract static class PrimitiveArrayDisaggregatorFromString<
                           YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<?,?,?,?,ST,SD,?>,
                           ST extends WkPrimitiveArray<?,?>,
-                          SD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST,?>,
+                          SD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<ST>,
                           WA>
       implements WkSzPacketWriteDisaggregator<ST, SD, String, YO>
   {

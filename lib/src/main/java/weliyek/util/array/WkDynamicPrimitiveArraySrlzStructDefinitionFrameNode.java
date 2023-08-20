@@ -24,8 +24,8 @@ public interface WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<
                         T extends WkPrimitiveArray<?,?>,
                         XO extends WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
                         YO extends WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?,?>,
-                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,?>>
+                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?>,
+                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>>
     extends WkDynamicPrimitiveArraySrlzFrameNode<
                         WkSrlzStructSubcomponentFrameNode<XO, YO, ZD>,
                         WkSrlzStructSubcomponentFrameNode<XO, YO, VD>>,

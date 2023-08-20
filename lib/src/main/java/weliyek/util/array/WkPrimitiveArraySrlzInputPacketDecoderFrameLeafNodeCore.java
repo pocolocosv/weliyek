@@ -35,7 +35,7 @@ public abstract class WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         XR extends WkDecodingResultSrlzPacketOperationData<X>,
                         XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
                         XOC extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X,XO>,
+                        XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends WkSrlzInputPacketDecoderFrameLeafNodeCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>

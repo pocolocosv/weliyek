@@ -21,7 +21,7 @@ package weliyek.serialization;
 public interface WkSzPacketReaderOperationCoreFactory<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,?,XD>,
                         AXB extends WkSzInputBytestreamBase<?>>

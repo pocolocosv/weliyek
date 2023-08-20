@@ -28,7 +28,7 @@ public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
                         YR extends WkEncodingResultSrlzPacketOperationData,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD>,
                         YOC extends WkSrlzOutputPacketEncoderFrameNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<
                                       T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,?,DC>>

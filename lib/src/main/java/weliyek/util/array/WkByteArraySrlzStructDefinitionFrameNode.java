@@ -17,8 +17,8 @@
  */
 package weliyek.util.array;
 
-public interface WkByteArraySrlzStructDefinitionFrameNode<XO extends WkByteArraySrlzInputPacketDecoderFrameNode<?,?,?,?>>
-    extends WkPrimitiveArraySrlzStructDefinitionFrameNode<WkByteArray, XO>,
+public interface WkByteArraySrlzStructDefinitionFrameNode
+    extends WkPrimitiveArraySrlzStructDefinitionFrameNode<WkByteArray>,
             WkByteArraySrlzFrameNode
 {
 

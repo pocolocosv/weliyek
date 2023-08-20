@@ -42,7 +42,7 @@ public final class WkSimplifiedCollectionAndElementsSrlzOutputPacketEncoderFrame
                                         ET,EYD,EYO>,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
     extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<
                         T,

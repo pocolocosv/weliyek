@@ -37,7 +37,7 @@ public class SimplifiedStringFromBytesReadingCore<
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
-                        SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>>
+                        SXD extends WkByteArraySrlzStructDefinitionFrameNode>
     extends WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
                         XS,
                         WkSzInputBytestream,

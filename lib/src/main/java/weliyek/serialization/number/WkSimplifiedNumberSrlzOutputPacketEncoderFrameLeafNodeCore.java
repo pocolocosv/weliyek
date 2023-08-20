@@ -33,7 +33,7 @@ public class WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkEncodingResultSrlzPacketOperationData,
                                         YD>,
-                        YD extends WkNumberSrlzStructDefinitionFrameLeafNode<Y,?>>
+                        YD extends WkNumberSrlzStructDefinitionFrameLeafNode<Y>>
     extends WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y,
                         WkSettingsSrlzPacketOperationData,

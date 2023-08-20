@@ -21,7 +21,7 @@ public interface WkAggregatorSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData,
-                        D extends WkAggregatorSrlzStructDefinitionFrameNode<?,?>,
+                        D extends WkAggregatorSrlzStructDefinitionFrameNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
         extends WkAggregatorSrlzFrameNode,
                 WkSrlzPacketOperationFrameNode<S, Q, R, D, K>

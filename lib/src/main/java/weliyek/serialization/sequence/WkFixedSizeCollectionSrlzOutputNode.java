@@ -37,7 +37,7 @@ public final class WkFixedSizeCollectionSrlzOutputNode<
                         YS extends WkSettingsSrlzPacketOperationData,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>>
     implements WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                         T,

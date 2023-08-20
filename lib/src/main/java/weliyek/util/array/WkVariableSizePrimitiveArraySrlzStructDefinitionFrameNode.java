@@ -20,11 +20,10 @@ package weliyek.util.array;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinitionFrameNode;
 
 public interface WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<
-                        T extends WkPrimitiveArray<?, ?>,
-                        XO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<T,?,?,?,?>>
+                        T extends WkPrimitiveArray<?, ?>>
     extends WkVariableSizePrimitiveArraySrlzFrameNode,
-            WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T, XO>,
-            WkPrimitiveArraySrlzStructDefinitionFrameNode<T, XO>
+            WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>,
+            WkPrimitiveArraySrlzStructDefinitionFrameNode<T>
 {
 
 }

@@ -22,7 +22,7 @@ import java.util.function.ToIntFunction;
 public class WkSrlzOutputPacketFieldFrameNodeNonrootCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AY,
                         AYBC extends WkSzOutputBytestreamBase<?>,

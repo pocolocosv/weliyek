@@ -32,22 +32,22 @@ public interface WkDynamicCollectionSrlzStructDefinitionFrameNode<
                         T extends Collection<ET>,
                         XO extends WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?>,
                         YO extends WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?,?>,
+                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
+                        ED extends WkSrlzStructDefinitionFrameNode<ET>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VYS extends WkSettingsSrlzPacketOperationData>
     extends WkDynamicCollectionSrlzFrameNode<
                         WkSrlzStructSubcomponentFrameNode<XO, YO, ZD>,
                         WkSrlzStructSubcomponentFrameNode<
                           XO, YO, WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>>,
-            WkCollectionSrlzStructDefinitionFrameNode<T, XO>,
+            WkCollectionSrlzStructDefinitionFrameNode<T>,
             WkDynamicSequenceSrlzStructDefinitionFrameNode<
                         T, XO, YO, ZD,
                         WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>

@@ -22,7 +22,7 @@ public interface WkAggregatorSrlzInputPacketDecoderFrameNode<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>>
+                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>>
         extends WkAggregatorSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>>,

@@ -18,18 +18,17 @@
 package weliyek.serialization.filter;
 
 import java.util.List;
-import java.util.function.Predicate;
 
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzStructDefinitionFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 
 public class WkTstPrimitivesGroupListSrlzStructNode
         implements WkDynamicCollectionSrlzStructDefinitionFrameNode<
@@ -123,12 +122,6 @@ public class WkTstPrimitivesGroupListSrlzStructNode
     @Override
     public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
       return this.fieldCore.subfields();
-    }
-
-    @Override
-    public WkSrlzPacketNodePredicate<?,?>
-    makeTester(Predicate<? super WkTstPrimitivesGroupListSrlzInputNode> test, String description) {
-      return this.fieldCore.makeTester(test, description);
     }
 
     @Override

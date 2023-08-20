@@ -27,7 +27,7 @@ import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
  * @param <D> Serialization characteristics and rules for the target data type.
  */
 public interface WkSrlzStructComponentFrameNode<
-                        D extends WkSrlzStructDefinitionFrameNode<?,?>>
+                        D extends WkSrlzStructDefinitionFrameNode<?>>
     extends WkSrlzStructFrameNode,
             WkSrlzCtrlFrameNode
 {

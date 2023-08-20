@@ -24,7 +24,7 @@ import java.util.function.Function;
 public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
                                         T,
                                         XS,
@@ -32,14 +32,14 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                                         WkDecodingResultSrlzPacketOperationData<T>,
                                         XD>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,
                                         YS,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkEncodingResultSrlzPacketOperationData,
                                         YD>,
-                        D extends WkAggregatorSrlzStructDefinitionFrameNode<T,XO>>
+                        D extends WkAggregatorSrlzStructDefinitionFrameNode<T>>
     extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
                         T,
                         XS,

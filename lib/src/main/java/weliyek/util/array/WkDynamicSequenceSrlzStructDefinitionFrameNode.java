@@ -27,13 +27,13 @@ public interface WkDynamicSequenceSrlzStructDefinitionFrameNode<
                         T,
                         XO extends WkDynamicSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
                         YO extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?,?>,
-                        VD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T,?>>
+                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?>,
+                        VD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>>
     extends WkDynamicSequenceSrlzFrameNode<
                         WkSrlzStructSubcomponentFrameNode<XO, YO, ZD>,
                         WkSrlzStructSubcomponentFrameNode<XO, YO, VD>>,
-            WkSequenceSrlzStructDefinitionFrameNode<T, XO>,
-            WkAggregatorSrlzStructDefinitionFrameNode<T, XO>
+            WkSequenceSrlzStructDefinitionFrameNode<T>,
+            WkAggregatorSrlzStructDefinitionFrameNode<T>
 {
 
 }

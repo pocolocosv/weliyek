@@ -25,7 +25,7 @@ import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 public interface WkStringFromBytesSrlzStructDefinitionFrameNode<
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<?,?,?,?,?,?>,
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<?,?,?,?,?,?>,
-                        SD extends WkByteArraySrlzStructDefinitionFrameNode<?>>
+                        SD extends WkByteArraySrlzStructDefinitionFrameNode>
     extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO, YO, SD>,
             WkSzStringFromBytesSrlzFrameNode<WkSrlzStructSubcomponentFrameNode<XO, YO, SD>>
 {

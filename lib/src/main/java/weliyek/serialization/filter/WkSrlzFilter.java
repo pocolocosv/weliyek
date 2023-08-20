@@ -42,13 +42,13 @@ public class WkSrlzFilter
 
     private final Set<WkSrlzFilterQuery> queries;
 
-    private final Set<WkSrlzStructDefinitionFrameNode<?,?>> fieldsToBeMatched;
+    private final Set<WkSrlzStructDefinitionFrameNode<?>> fieldsToBeMatched;
 
     private final Set<WkSrlzPacketNodePredicate<?, ?>> matchers;
 
     private WkSrlzFilter(Set<WkSrlzFilterQuery> queries) {
         this.queries = Collections.unmodifiableSet(new LinkedHashSet<>(queries));
-        Set<WkSrlzStructDefinitionFrameNode<?,?>> toBeMatched = new LinkedHashSet<>();
+        Set<WkSrlzStructDefinitionFrameNode<?>> toBeMatched = new LinkedHashSet<>();
         Set<WkSrlzPacketNodePredicate<?, ?>> matchersSet = new LinkedHashSet<>();
         for (WkSrlzFilterQuery query : queries) {
             toBeMatched.addAll(query.rule.matchTargets());
@@ -65,14 +65,14 @@ public class WkSrlzFilter
             return new WkSrlzFilterResults(this);
     }
 
-    public boolean hasToBeDeserialized(WkSrlzStructDefinitionFrameNode<?,?> definition) {
+    public boolean hasToBeDeserialized(WkSrlzStructDefinitionFrameNode<?> definition) {
       if (isSearhed(definition)) {
         return true;
       }
       return hasToMatch(definition);
     }
 
-    public boolean isSearhed(WkSrlzStructDefinitionFrameNode<?,?> definition) {
+    public boolean isSearhed(WkSrlzStructDefinitionFrameNode<?> definition) {
       for (WkSrlzFilterQuery query : queries) {
         if (query.searchedField().equals(definition)) {
           return true;
@@ -83,7 +83,7 @@ public class WkSrlzFilter
       return false;
     }
 
-    public final boolean hasToMatch(WkSrlzStructDefinitionFrameNode<?,?> protocolField) {
+    public final boolean hasToMatch(WkSrlzStructDefinitionFrameNode<?> protocolField) {
         return fieldsToBeMatched.contains(protocolField);
     }
 

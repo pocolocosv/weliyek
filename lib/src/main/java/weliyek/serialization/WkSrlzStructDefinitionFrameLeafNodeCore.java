@@ -28,19 +28,19 @@ public abstract class WkSrlzStructDefinitionFrameLeafNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkSrlzStructDefinitionFrameLeafNode<T,XO>,
+                        XD extends WkSrlzStructDefinitionFrameLeafNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameLeafNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameLeafNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSrlzStructDefinitionFrameLeafNode<T,XO>,
+                        D extends WkSrlzStructDefinitionFrameLeafNode<T>,
                         DC extends WkSrlzStructDefinitionFrameLeafNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSrlzStructDefinitionFrameNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkSrlzStructDefinitionFrameLeafNode<T, XO>
+    implements WkSrlzStructDefinitionFrameLeafNode<T>
 {
 
   public static final char LABEL_SEPARATOR = ',';

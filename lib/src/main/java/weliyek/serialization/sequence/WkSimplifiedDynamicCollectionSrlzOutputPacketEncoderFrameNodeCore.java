@@ -45,10 +45,10 @@ public final class WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNode
                         ZT extends Number,
                         ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         VYS extends WkSettingsSrlzPacketOperationData>
     extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<

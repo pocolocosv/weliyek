@@ -37,7 +37,7 @@ public class SimpleStringFromBytesWritingCore<
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
-                        SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>>
+                        SYD extends WkByteArraySrlzStructDefinitionFrameNode>
     extends WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
                         YS,
                         WkSzOutputBytestream,

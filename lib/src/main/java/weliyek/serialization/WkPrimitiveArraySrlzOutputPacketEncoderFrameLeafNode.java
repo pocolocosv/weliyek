@@ -25,7 +25,7 @@ public interface WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkEncodingResultSrlzPacketOperationData,
-                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>>
+                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y>>
     extends WkSrlzOutputPacketEncoderFrameLeafNode<Y, S, Q, R, D>,
             WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<Y, S, Q, R, D>,
             WkPrimitiveArraySrlzPacketOperationFrameLeafNode<

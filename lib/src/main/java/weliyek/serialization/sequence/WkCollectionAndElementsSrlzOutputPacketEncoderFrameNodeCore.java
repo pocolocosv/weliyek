@@ -47,7 +47,7 @@ public abstract class WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCor
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
                         DC extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYBC,

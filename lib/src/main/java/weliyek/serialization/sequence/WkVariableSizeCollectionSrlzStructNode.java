@@ -20,25 +20,23 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSzCountingInputBytestream;
+import weliyek.serialization.WkSzCountingOutputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 
 public final class WkVariableSizeCollectionSrlzStructNode<
                         T extends Collection<ET>,
@@ -46,21 +44,19 @@ public final class WkVariableSizeCollectionSrlzStructNode<
                         YS extends WkSettingsSrlzPacketOperationData,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        ED extends WkSrlzStructDefinitionFrameNode<ET,?>>
+                        ED extends WkSrlzStructDefinitionFrameNode<ET>>
     implements WkCollectionAndElementsSrlzStructDefinitionFrameNode<
                         T,
                         WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>,
                         WkVariableSizeCollectionSrlzOutputNode<T,YS,ET,EYS,EYD,EYO>,
                         ET,
                         ED>,
-               WkVariableSizeSequenceSrlzStructDefinitionFrameNode<
-                        T,
-                        WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>>
+               WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>
 {
 
   public static <T extends Collection<ET>,
@@ -68,12 +64,12 @@ public final class WkVariableSizeCollectionSrlzStructNode<
                  YS extends WkSettingsSrlzPacketOperationData,
                  ET,
                  EXS extends WkSettingsSrlzPacketOperationData,
-                 EXD extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
+                 EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                  EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                  EYS extends WkSettingsSrlzPacketOperationData,
-                 EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                 EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                  EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                 ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>>
+                 ED extends WkSrlzStructDefinitionFrameNode<ET>>
   WkSrlzStruct<
                  T,
                  XS,
@@ -120,12 +116,12 @@ public final class WkVariableSizeCollectionSrlzStructNode<
                  YS extends WkSettingsSrlzPacketOperationData,
                  ET,
                  EXS extends WkSettingsSrlzPacketOperationData,
-                 EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                 EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                  EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                  EYS extends WkSettingsSrlzPacketOperationData,
-                 EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                 EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                  EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                 ED extends WkSrlzStructDefinitionFrameNode<ET,?>>
+                 ED extends WkSrlzStructDefinitionFrameNode<ET>>
   WkSrlzStructDefinitionFrameNodeCore<
                  T,
                  XS,?,?,
@@ -231,14 +227,6 @@ public final class WkVariableSizeCollectionSrlzStructNode<
   @Override
   public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
-  }
-
-  @Override
-  public WkSrlzPacketNodePredicate<?, ?>
-  makeTester(
-    Predicate<? super WkVariableSizeCollectionSrlzInputNode<T,XS,ET,EXS,EXD,EXO>> test,
-    String description) {
-    return this.definitionCore.makeTester(test, description);
   }
 
   @Override

@@ -67,12 +67,12 @@ public class WkSimplifiedCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         ET,EYD,EYO>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        ED extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        ED extends WkSrlzStructDefinitionFrameNode<ET>,
                         D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,YO,ET,ED>>
     extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         T,

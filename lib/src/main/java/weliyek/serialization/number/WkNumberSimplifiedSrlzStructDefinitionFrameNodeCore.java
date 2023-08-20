@@ -52,7 +52,7 @@ public final class WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
                                       WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                       WkEncodingResultSrlzPacketOperationData,
                                       D>,
-                        D extends WkNumberSrlzStructDefinitionFrameLeafNode<T,XO>>
+                        D extends WkNumberSrlzStructDefinitionFrameLeafNode<T>>
     extends WkNumberSrlzStructDefinitionFrameNodeCore<
                         T,
                         WkSettingsSrlzPacketOperationData,

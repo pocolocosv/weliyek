@@ -17,10 +17,8 @@
  */
 package weliyek.serialization;
 
-public interface WkSrlzStructDefinitionFrameLeafNode<
-                        T,
-                        XO extends WkSrlzInputPacketDecoderFrameLeafNode<T,?,?,?,?>>
-    extends WkSrlzDataFrameLeafNode, WkSrlzStructDefinitionFrameNode<T, XO>
+public interface WkSrlzStructDefinitionFrameLeafNode<T>
+    extends WkSrlzDataFrameLeafNode, WkSrlzStructDefinitionFrameNode<T>
 {
 
 }

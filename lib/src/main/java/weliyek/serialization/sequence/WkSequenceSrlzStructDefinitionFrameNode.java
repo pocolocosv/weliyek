@@ -19,11 +19,9 @@ package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
-public interface WkSequenceSrlzStructDefinitionFrameNode<
-                        T,
-                        XO extends WkSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>>
+public interface WkSequenceSrlzStructDefinitionFrameNode<T>
         extends WkSequenceSrlzFrameNode,
-                WkSrlzStructDefinitionFrameNode<T, XO>
+                WkSrlzStructDefinitionFrameNode<T>
 {
 
     /**

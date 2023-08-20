@@ -18,29 +18,25 @@
 package weliyek.util.array;
 
 import java.util.List;
-import java.util.function.Predicate;
 
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSzCountingInputBytestream;
+import weliyek.serialization.WkSzCountingOutputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 import weliyek.serialization.sequence.SequenceSizeParameters;
 import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
 
 public class WkVariableSizeByteArraySrlzStructNode
-    implements WkByteArraySrlzStructDefinitionFrameNode<
-                        WkVariableSizeByteArraySrlzInputNode>,
+    implements WkByteArraySrlzStructDefinitionFrameNode,
                WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<
-                        WkByteArray,
-                        WkVariableSizeByteArraySrlzInputNode>
+                        WkByteArray>
 {
 
   public static WkSrlzStruct<
@@ -133,12 +129,6 @@ public class WkVariableSizeByteArraySrlzStructNode
   @Override
   public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
-  }
-
-  @Override
-  public WkSrlzPacketNodePredicate<?, ?>
-  makeTester(Predicate<? super WkVariableSizeByteArraySrlzInputNode> test, String description) {
-    return this.definitionCore.makeTester(test, description);
   }
 
   @Override

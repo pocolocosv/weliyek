@@ -27,7 +27,7 @@ public interface WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkDecodingResultSrlzPacketOperationData<X>,
-                        D extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<X,?>>
+                        D extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<X>>
     extends WkSequenceSrlzInputPacketDecoderFrameNode<X, S, Q, R, D>,
             WkFixedSizeSequenceSrlzPacketOperationFrameNode<
                         S, Q, R, D,

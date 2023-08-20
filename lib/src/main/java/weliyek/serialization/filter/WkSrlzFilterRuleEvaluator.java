@@ -67,7 +67,7 @@ public class WkSrlzFilterRuleEvaluator
     }
 
     @Override
-    public List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets() {
+    public List<WkSrlzStructDefinitionFrameNode<?>> matchTargets() {
         return rule().matchTargets();
     }
 

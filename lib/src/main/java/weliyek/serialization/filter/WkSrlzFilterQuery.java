@@ -27,11 +27,11 @@ public class WkSrlzFilterQuery
 
     final WkSrlzFilterPredicateRuleBase rule;
 
-    private final WkSrlzStructDefinitionFrameNode<?,?> mySearchTargetField;
+    private final WkSrlzStructDefinitionFrameNode<?> mySearchTargetField;
 
     private final String description;
 
-    WkSrlzFilterQuery(WkSrlzStructDefinitionFrameNode<?,?> searchedField,
+    WkSrlzFilterQuery(WkSrlzStructDefinitionFrameNode<?> searchedField,
                 String desc,
                 WkSrlzFilterPredicateRuleBase rule) {
         this.mySearchTargetField = Objects.requireNonNull(searchedField);
@@ -39,11 +39,11 @@ public class WkSrlzFilterQuery
         this.description = "Query:" + Objects.requireNonNull(desc);
     }
 
-    public WkSrlzStructDefinitionFrameNode<?,?> searchedField() {
+    public WkSrlzStructDefinitionFrameNode<?> searchedField() {
         return this.mySearchTargetField;
     }
 
-    public List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargetFields() {
+    public List<WkSrlzStructDefinitionFrameNode<?>> matchTargetFields() {
         return rule.matchTargets();
     }
 

@@ -39,19 +39,19 @@ public abstract class WkNumberSrlzStructDefinitionFrameNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkNumberSrlzStructDefinitionFrameLeafNode<T,XO>,
+                        XD extends WkNumberSrlzStructDefinitionFrameLeafNode<T>,
                         XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkNumberSrlzStructDefinitionFrameLeafNode<T,?>,
+                        YD extends WkNumberSrlzStructDefinitionFrameLeafNode<T>,
                         YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkNumberSrlzStructDefinitionFrameLeafNode<T,XO>,
+                        D extends WkNumberSrlzStructDefinitionFrameLeafNode<T>,
                         DC extends WkNumberSrlzStructDefinitionFrameNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSrlzStructDefinitionFrameLeafNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkNumberSrlzStructDefinitionFrameLeafNode<T, XO>
+    implements WkNumberSrlzStructDefinitionFrameLeafNode<T>
 {
 
   protected WkNumberSrlzStructDefinitionFrameNodeCore(

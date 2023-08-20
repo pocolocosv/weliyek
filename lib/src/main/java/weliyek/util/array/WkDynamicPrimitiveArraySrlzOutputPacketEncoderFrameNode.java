@@ -33,9 +33,9 @@ public interface WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         D extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZT extends Number,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,?,?,?,ZD>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         VYO extends WkVariableSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<T,?,?,?,VD>,
-                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,?>>
+                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>>
     extends WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         YS, YQ, YR, D,
                         WkSrlzOutputPacketFieldFrameNode<T,D,?>,

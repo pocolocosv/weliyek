@@ -51,6 +51,6 @@ public interface WkSrlzFilterPredicateRule
 
     Set<? extends WkSrlzFilterPredicateRule> subrules();
 
-    List<WkSrlzStructDefinitionFrameNode<?,?>> matchTargets();
+    List<WkSrlzStructDefinitionFrameNode<?>> matchTargets();
 
 }

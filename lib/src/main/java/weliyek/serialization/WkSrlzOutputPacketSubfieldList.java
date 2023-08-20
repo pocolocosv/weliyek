@@ -22,7 +22,7 @@ import java.util.List;
 public class WkSrlzOutputPacketSubfieldList<
                         Y,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<Y,?>,
+                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<Y>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<Y,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
         extends WkSrlzPacketSubfieldList<
                         WkSrlzOutputPacketSubfieldFrameNode<?,?,?>,
@@ -38,7 +38,7 @@ public class WkSrlzOutputPacketSubfieldList<
   @SuppressWarnings("unchecked")
   <SY,
    SYS extends WkSettingsSrlzPacketOperationData,
-   SYD extends WkSrlzStructDefinitionFrameNode<SY,?>,
+   SYD extends WkSrlzStructDefinitionFrameNode<SY>,
    SYO extends WkSrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(
     WkSrlzStructSubcomponentFrameNodeCore<SY,?,?,?,Y,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD> searchedSubcomponent) {

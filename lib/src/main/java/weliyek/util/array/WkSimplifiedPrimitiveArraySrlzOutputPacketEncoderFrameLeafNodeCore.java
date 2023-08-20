@@ -33,7 +33,7 @@ import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>,
+                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y>,
                         YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                                         Y,
                                         YS,

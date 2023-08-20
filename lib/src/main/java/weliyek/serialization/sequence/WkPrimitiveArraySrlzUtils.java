@@ -51,7 +51,7 @@ public class WkPrimitiveArraySrlzUtils
   public static void onVariableSizeDeserilizingInitialization(
     WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
       ?,? extends WkSzVariableLengthOperationSettings,
-      ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?,?>,
+      ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?>,
       ? extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<?,?,?,?,?>> deserializingCore) {
     final int reqLen = deserializingCore.settings().getRequestedLength();
     final int minLen = deserializingCore.definition().minimalSize();
@@ -65,7 +65,7 @@ public class WkPrimitiveArraySrlzUtils
 
   public static void onVariableSizeSerializingInitialization(
     WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<?,?,
-      ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?,?>,
+      ? extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?>,
       ? extends WkVaribleSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<?,?,?,?,?>> serializingCore) {
     int reqLen = serializingCore.serializable().getLength();
     final int minLen = serializingCore.definition().minimalSize();

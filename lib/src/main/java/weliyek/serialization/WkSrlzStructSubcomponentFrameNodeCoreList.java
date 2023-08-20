@@ -25,10 +25,10 @@ import java.util.List;
 public class WkSrlzStructSubcomponentFrameNodeCoreList<
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
     extends AbstractList<WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
 {
@@ -45,7 +45,7 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
 
     @SuppressWarnings("unchecked")
     public
-    <YYD extends WkAggregatorSrlzStructDefinitionFrameNode<YY,?>,
+    <YYD extends WkAggregatorSrlzStructDefinitionFrameNode<YY>,
      YY,
      YYB extends WkSzOutputBytestreamBase<?>,
      YYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
@@ -64,7 +64,7 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
 
     @SuppressWarnings("unchecked")
     public
-    <XXD extends WkAggregatorSrlzStructDefinitionFrameNode<XX,?>,
+    <XXD extends WkAggregatorSrlzStructDefinitionFrameNode<XX>,
      XX,
      XXB extends WkSzInputBytestreamBase<?>,
      XXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>

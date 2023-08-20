@@ -20,28 +20,26 @@ package weliyek.serialization.string;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSzCountingInputBytestream;
+import weliyek.serialization.WkSzCountingOutputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOptionalLengthOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 import weliyek.serialization.string.WkStringFromBytesSrlzStructDefinitionFrameNodeCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkVariableSizeByteArraySrlzStructNode;
+import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 import weliyek.util.array.WkVariableSizeByteArraySrlzInputNode;
 import weliyek.util.array.WkVariableSizeByteArraySrlzOutputNode;
-import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
+import weliyek.util.array.WkVariableSizeByteArraySrlzStructNode;
 
 public class WkStringWithVariableBytesSrlzStructNode
     implements WkStringFromBytesSrlzStructDefinitionFrameNode<
@@ -180,14 +178,6 @@ public class WkStringWithVariableBytesSrlzStructNode
   @Override
   public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
-  }
-
-  @Override
-  public WkSrlzPacketNodePredicate<?, ?>
-  makeTester(
-    Predicate<? super WkStringWithVariableBytesSrlzInputNode> test,
-    String description) {
-    return this.definitionCore.makeTester(test, description);
   }
 
   @Override

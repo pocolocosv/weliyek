@@ -21,7 +21,7 @@ public interface WkSrlzPacketOperationFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData,
-                        D extends WkSrlzStructDefinitionFrameLeafNode<?,?>,
+                        D extends WkSrlzStructDefinitionFrameLeafNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
     extends WkSrlzDataFrameLeafNode,
             WkSrlzPacketOperationFrameNode<S, Q, R, D, K>

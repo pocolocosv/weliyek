@@ -20,7 +20,7 @@ package weliyek.serialization;
 public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         AYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>

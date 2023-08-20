@@ -21,7 +21,7 @@ import weliyek.serialization.filter.WkSrlzPacketFilterableFrameNode;
 
 public interface WkSrlzInputPacketFieldFrameNode<
                         T,
-                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,?,?,?,XD>>
     extends WkSrlzPacketFieldFrameNode<T, XO, XD>,
             WkSrlzPacketFilterableFrameNode,

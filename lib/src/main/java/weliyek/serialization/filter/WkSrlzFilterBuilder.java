@@ -21,7 +21,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 
 public class WkSrlzFilterBuilder
 {

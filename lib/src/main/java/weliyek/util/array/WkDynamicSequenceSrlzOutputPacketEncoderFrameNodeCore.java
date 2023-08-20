@@ -52,10 +52,10 @@ public abstract class WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         ZT extends Number,
                         ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         VYS extends WkSettingsSrlzPacketOperationData,
                         VYO extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,VYS,?,?,VYD>,
-                        VYD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
+                        VYD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYBC,
                                         ZT,?,?,?,ZYS,ZYO,ZYD,

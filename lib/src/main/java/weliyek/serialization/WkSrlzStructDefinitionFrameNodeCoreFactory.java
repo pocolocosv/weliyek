@@ -22,14 +22,14 @@ import java.util.function.Function;
 public interface WkSrlzStructDefinitionFrameNodeCoreFactory<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSrlzStructDefinitionFrameNode<T,?>>
+                        D extends WkSrlzStructDefinitionFrameNode<T>>
     extends Function<WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
                      WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
 {

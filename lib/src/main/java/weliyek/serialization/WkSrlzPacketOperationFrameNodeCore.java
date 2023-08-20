@@ -28,7 +28,7 @@ public abstract class WkSrlzPacketOperationFrameNodeCore<
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,Q>,
                         R extends WkResultSrlzPacketOperationData,
-                        _D extends WkSrlzStructDefinitionFrameNode<?,?>,
+                        _D extends WkSrlzStructDefinitionFrameNode<?>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSrlzPacketOperationFrameNode<S,?,R,_D,?>,
                         OC extends WkSrlzPacketOperationFrameNodeCore<S,Q,QC,R,_D,DC,O,?,AB,K,KC>,

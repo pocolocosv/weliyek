@@ -44,7 +44,7 @@ public abstract class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
-                        SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>,
+                        SYD extends WkByteArraySrlzStructDefinitionFrameNode,
                         DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                                       ?,?,?,?,?,?,?,?,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,

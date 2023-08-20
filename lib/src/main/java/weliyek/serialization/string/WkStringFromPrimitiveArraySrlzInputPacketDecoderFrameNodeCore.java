@@ -45,7 +45,7 @@ public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeC
                         SX extends WkPrimitiveArray<?,?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkPrimitiveArraySrlzInputPacketDecoderFrameNode<SX,SXS,?,?,SXD>,
-                        SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SX, SXO>,
+                        SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SX>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
        extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
        implements WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS, XQ, XR, XD, SX, SXD, SXO>

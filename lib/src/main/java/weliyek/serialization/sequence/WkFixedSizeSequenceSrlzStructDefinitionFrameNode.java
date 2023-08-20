@@ -17,10 +17,8 @@
  */
 package weliyek.serialization.sequence;
 
-public interface WkFixedSizeSequenceSrlzStructDefinitionFrameNode<
-                        T,
-                        XO extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>>
-    extends WkSequenceSrlzStructDefinitionFrameNode<T, XO>,
+public interface WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>
+    extends WkSequenceSrlzStructDefinitionFrameNode<T>,
             WkFixedSizeSequenceSrlzFrameNode
 {
 

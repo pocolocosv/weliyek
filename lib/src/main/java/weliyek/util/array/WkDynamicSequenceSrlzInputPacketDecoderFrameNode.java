@@ -37,9 +37,9 @@ public interface WkDynamicSequenceSrlzInputPacketDecoderFrameNode<
                         D extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZX extends Number,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,?,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX,?>,
+                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
                         VXO extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,VXD>,
-                        VXD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T,VXO>>
+                        VXD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>>
     extends WkDynamicSequenceSrlzPacketOperationFrameNode<
                         XS, XQ, XR, D,
                         WkSrlzInputPacketFieldFrameNode<T,D,?>,

@@ -46,10 +46,10 @@ public final class WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeC
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
     extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<

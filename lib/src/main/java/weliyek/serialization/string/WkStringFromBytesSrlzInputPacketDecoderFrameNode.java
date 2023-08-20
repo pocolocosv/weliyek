@@ -31,7 +31,7 @@ public interface WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<String>,
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,?,? extends SXD>,
-                        SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
+                        SXD extends WkByteArraySrlzStructDefinitionFrameNode,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<?,?,?,SXD>>
     extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS, XQ, XR, XD, WkByteArray, SXD, SXO>,
             WkStringFromBytesSrlzPacketOperationFrameNode<

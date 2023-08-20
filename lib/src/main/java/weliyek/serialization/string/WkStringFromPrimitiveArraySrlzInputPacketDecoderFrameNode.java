@@ -34,7 +34,7 @@ public interface WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         XR extends WkDecodingResultSrlzPacketOperationData<String>,
                         XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,? extends SXD>,
                         SX extends WkPrimitiveArray<?,?>,
-                        SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SX, SXO>,
+                        SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SX>,
                         SXO extends WkPrimitiveArraySrlzInputPacketDecoderFrameNode<SX,?,?,?,SXD>>
         extends WkStringFromPrimitiveArraySrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,

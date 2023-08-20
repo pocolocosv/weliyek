@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
 public abstract class WkSrlzPacketFieldFrameNodeCore<
                         T,
                         S extends WkSettingsSrlzPacketOperationData,
-                        D extends WkSrlzStructDefinitionFrameNode<?,?>, // Not needed directly but
+                        D extends WkSrlzStructDefinitionFrameNode<?>, // Not needed directly but
                         // used nonetheless to simplify the declaration of PacketFieldCore<>
                         // elsewhere where ProtocolField<D> is used.
                         PC extends WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?>,

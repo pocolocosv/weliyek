@@ -45,7 +45,7 @@ public abstract class WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode
                         SY extends WkPrimitiveArray<?,?>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>,
-                        SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SY,?>,
+                        SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SY>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
         extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>
         implements WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<YS, YQ, YR, YD, SY, SYD, SYO>

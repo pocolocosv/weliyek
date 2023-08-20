@@ -28,7 +28,7 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>,
                         XOC extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,
                         AXB extends WkSzInputBytestreamBase<?>,
@@ -53,7 +53,7 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
   @SuppressWarnings("unchecked")
   public <ST,
           SXS extends WkSettingsSrlzPacketOperationData,
-          SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
+          SXD extends WkSrlzStructDefinitionFrameNode<ST>,
           SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>>
   WkSrlzInputPacketSubfieldFrameNodeCore<ST,SXS,SXD,SXO,T,XBC,XD,XO> getSubfieldpacketFor(
     WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,T,?,XD,XO,?,?,?,?,?,?,?,?> protocolSubfieldCore) {

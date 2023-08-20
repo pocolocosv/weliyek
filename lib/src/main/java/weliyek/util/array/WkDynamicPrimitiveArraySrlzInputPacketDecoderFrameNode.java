@@ -33,9 +33,9 @@ public interface WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         XD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZT extends Number,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,?,?,?,ZD>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
+                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         VXO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<T,?,?,?,VD>,
-                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,VXO>>
+                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>>
     extends WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>,

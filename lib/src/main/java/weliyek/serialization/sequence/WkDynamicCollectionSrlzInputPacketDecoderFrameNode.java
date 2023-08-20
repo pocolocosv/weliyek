@@ -39,10 +39,10 @@ public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         XD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,?,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
     extends WkDynamicCollectionSrlzPacketOperationFrameNode<

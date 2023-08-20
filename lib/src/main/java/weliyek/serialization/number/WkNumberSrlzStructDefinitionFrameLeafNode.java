@@ -19,11 +19,9 @@ package weliyek.serialization.number;
 
 import weliyek.serialization.WkSrlzStructDefinitionFrameLeafNode;
 
-public interface WkNumberSrlzStructDefinitionFrameLeafNode<
-                        T extends Number,
-                        XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<T,?,?,?,?>>
+public interface WkNumberSrlzStructDefinitionFrameLeafNode<T extends Number>
         extends WkNumberSrlzFrameLeafNode,
-                WkSrlzStructDefinitionFrameLeafNode<T, XO>
+                WkSrlzStructDefinitionFrameLeafNode<T>
 {
 
 }

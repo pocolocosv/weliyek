@@ -31,7 +31,7 @@ import java.util.function.ToIntFunction;
 public interface WkSrlzStructSubcomponentFrameNode<
                         AXO extends WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>,
                         AYO extends WkSrlzOutputPacketEncoderFrameNode<?,?,?,?,?>,
-                        D extends WkSrlzStructDefinitionFrameNode<?,?>>
+                        D extends WkSrlzStructDefinitionFrameNode<?>>
     extends WkSrlzStructFrameNode,
             WkSrlzCtrlFrameNode
 {

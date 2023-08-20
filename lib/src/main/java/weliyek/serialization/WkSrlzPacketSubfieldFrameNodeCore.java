@@ -22,13 +22,13 @@ import java.util.Optional;
 
 public abstract class WkSrlzPacketSubfieldFrameNodeCore<
                         S extends WkSettingsSrlzPacketOperationData,
-                        TD extends WkSrlzStructDefinitionFrameNode<?,?>,
+                        TD extends WkSrlzStructDefinitionFrameNode<?>,
                         NC extends WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>,
                         KC extends WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,? extends K,?,?>,
                         J extends WkSrlzPacketSubfieldFrameNode<?>,
                         AOC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,AD,?,?,?,?,?,?>,
-                        AD extends WkSrlzStructDefinitionFrameNode<?,?>>
+                        AD extends WkSrlzStructDefinitionFrameNode<?>>
     implements WkSrlzPacketSubfieldFrameNode<K>
 {
 

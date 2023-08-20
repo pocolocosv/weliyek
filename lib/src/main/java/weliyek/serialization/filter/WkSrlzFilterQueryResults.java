@@ -48,7 +48,7 @@ public class WkSrlzFilterQueryResults
     }
 
     public void test(WkSrlzPacketFilterableFrameNode segmentUnderTest) {
-      WkSrlzStructDefinitionFrameNode<?,?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segmentUnderTest);
+      WkSrlzStructDefinitionFrameNode<?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segmentUnderTest);
       final boolean definitionUnderTestIsBeingSearched = query.searchedField().equals(definitionUnderTest);
       final boolean definitionUnderTestIsASubfield = query.searchedField().isASubfield(definitionUnderTest);
       final boolean isNeitherSearchedOrASubfield =    (! definitionUnderTestIsBeingSearched)

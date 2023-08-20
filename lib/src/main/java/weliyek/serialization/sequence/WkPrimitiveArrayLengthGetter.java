@@ -25,7 +25,7 @@ import weliyek.util.array.WkPrimitiveArray;
 public interface WkPrimitiveArrayLengthGetter<
                         Y extends WkPrimitiveArray<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y, ?>>
+                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y>>
 {
 
   int retriveLength(Y wrapper, YS settings, YD definition);

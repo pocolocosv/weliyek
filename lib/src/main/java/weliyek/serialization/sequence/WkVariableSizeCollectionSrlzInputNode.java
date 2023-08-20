@@ -38,7 +38,7 @@ public final class WkVariableSizeCollectionSrlzInputNode<
                         XS extends WkSzVariableLengthOperationSettings,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
     implements WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         T,

@@ -20,10 +20,9 @@ package weliyek.util.array;
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
 
 public interface WkVariableSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<
-                        T extends WkPrimitiveArray<?, ?>,
-                        XO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<T, ?, ?, ?, ?>>
-    extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T, XO>,
-            WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T, XO>,
+                        T extends WkPrimitiveArray<?, ?>>
+    extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>,
+            WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>,
             WkVariableSizePrimitiveArraySrlzFrameLeafNode
 {
 

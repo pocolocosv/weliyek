@@ -44,7 +44,7 @@ public abstract class WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
                         AXB extends WkSzInputBytestreamBase<?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
-                        SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
+                        SXD extends WkByteArraySrlzStructDefinitionFrameNode,
                         DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       ?,?,?,?,?,?,?,?,

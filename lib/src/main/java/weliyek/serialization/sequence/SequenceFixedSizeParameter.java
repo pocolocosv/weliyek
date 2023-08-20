@@ -33,24 +33,24 @@ public class SequenceFixedSizeParameter<T>
   private final WkSrlzStructDefinitionFrameNodeCore<
                         T,?,?,
                         ? extends WkDecodingResultSrlzPacketOperationData<T>,
-                        ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
+                        ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,
                         ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,
                         ?,?,?,?,
-                        ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
+                        ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,
                         ? extends WkFixedSizeSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,?>,?,
-                        ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,?> definitionCore;
+                        ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,?> definitionCore;
 
   public SequenceFixedSizeParameter(
     int sequenceExpectedSize,
     WkSrlzStructDefinitionFrameNodeCore<
       T,?,?,
       ? extends WkDecodingResultSrlzPacketOperationData<T>,
-      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
+      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,
       ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,
       ?,?,?,?,
-      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,
+      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,
       ? extends WkFixedSizeSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,?>,?,
-      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,?> definitionCore) {
+      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,?> definitionCore) {
     if (sequenceExpectedSize < 0) {
       throw new WkSzDefinitionCoreException(definitionCore,
                                             "Fixed sequence size cannot be negative");
@@ -64,7 +64,7 @@ public class SequenceFixedSizeParameter<T>
   void onSequenceSerializerCreation(
     WkSrlzOutputPacketEncoderFrameNodeCore<
       T,?,?,?,?,? extends WkFixedSizeSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,?>,
-      ?,? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,?,?> serializer) {
+      ?,? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,?,?> serializer) {
     int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
     if (sequenceSize != this.sequenceExpectedSize) {
       throw new WkSzOperationException(serializer, "Supplied sequence size differs from expected size");
@@ -76,7 +76,7 @@ public class SequenceFixedSizeParameter<T>
       T,?,?,?,
       ? extends WkDecodingResultSrlzPacketOperationData<T>,
       ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,?,
-      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T,?>,?,?> deserializer) {
+      ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,?,?> deserializer) {
     T sequence = deserializer.result().get().deserialized().get();
     int seqLen = deserializer.definition().extractLengthFromSerializablesSequence(sequence);
     if (seqLen != this.sequenceExpectedSize) {

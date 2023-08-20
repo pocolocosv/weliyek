@@ -33,7 +33,7 @@ public abstract class WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         XR extends WkDecodingResultSrlzPacketOperationData<X>,
                         XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
                         XOC extends WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkNumberSrlzStructDefinitionFrameLeafNode<X,XO>,
+                        XD extends WkNumberSrlzStructDefinitionFrameLeafNode<X>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkNumberSrlzStructDefinitionFrameNodeCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
     extends WkSrlzInputPacketDecoderFrameLeafNodeCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>

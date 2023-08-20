@@ -18,24 +18,20 @@
 package weliyek.serialization.number;
 
 import java.util.List;
-import java.util.function.Predicate;
 
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
+import weliyek.serialization.WkSzCountingInputBytestream;
+import weliyek.serialization.WkSzCountingOutputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public class WkUnsignedBigEndianIntegerSrlzStructNode
-    implements WkNumberSrlzStructDefinitionFrameLeafNode<
-                        Long,
-                        WkUnsignedBigEndianIntegerSrlzInputNode>
+    implements WkNumberSrlzStructDefinitionFrameLeafNode<Long>
 {
 
   public static WkSrlzStruct<
@@ -104,9 +100,4 @@ public class WkUnsignedBigEndianIntegerSrlzStructNode
     return this.definitionCore.subfields();
   }
 
-  @Override
-  public WkSrlzPacketNodePredicate<?, ?>
-  makeTester(Predicate<? super WkUnsignedBigEndianIntegerSrlzInputNode> test, String description) {
-    return this.definitionCore.makeTester(test, description);
-  }
 }

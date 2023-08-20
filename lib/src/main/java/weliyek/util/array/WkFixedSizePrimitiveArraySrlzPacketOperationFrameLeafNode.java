@@ -27,7 +27,7 @@ public interface WkFixedSizePrimitiveArraySrlzPacketOperationFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonSequenceRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData,
-                        D extends WkFixedSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?,?>,
+                        D extends WkFixedSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
     extends WkFixedSizePrimitiveArraySrlzFrameLeafNode,
             WkFixedSizePrimitiveArraySrlzPacketOperationFrameNode<S, Q, R, D, K>,

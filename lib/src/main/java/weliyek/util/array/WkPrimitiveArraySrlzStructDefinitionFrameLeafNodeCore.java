@@ -45,19 +45,19 @@ public abstract class WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,XO>,
+                        XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>,
                         XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,?>,
+                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>,
                         YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,XO>,
+                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>,
                         DC extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSrlzStructDefinitionFrameLeafNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T, XO>
+    implements WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>
 {
 
   private final int serializationStepSize;

@@ -21,7 +21,7 @@ package weliyek.serialization;
 public interface WkSzPacketWriterOperationCoreFactory<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         YAB extends WkSzOutputBytestreamBase<?>>

@@ -71,12 +71,12 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        ED extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        ED extends WkSrlzStructDefinitionFrameNode<ET>,
                         D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,YO,ET,ED>,
                         DC extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
@@ -136,7 +136,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
   private static <T extends Collection<ET>,
                   YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,ET,EYD,?>,
                   ET,
-                  EYD extends WkSrlzStructDefinitionFrameNode<ET,?>>
+                  EYD extends WkSrlzStructDefinitionFrameNode<ET>>
   ET disaggregateCollection(
     WkSrlzOutputPacketFieldFrameNode<ET,EYD,?> serializingField,
     YO collectionWritingOp,

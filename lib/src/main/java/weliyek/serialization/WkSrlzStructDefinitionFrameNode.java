@@ -20,11 +20,7 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.function.Predicate;
 
-import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
-
-public interface WkSrlzStructDefinitionFrameNode<
-                        T,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<T,?,?,?,?>>
+public interface WkSrlzStructDefinitionFrameNode<T>
   extends WkSrlzStructFrameNode,
           WkSrlzDataFrameNode
 {
@@ -33,7 +29,7 @@ public interface WkSrlzStructDefinitionFrameNode<
 
   List<WkSrlzStructSubcomponentFrameNode<?,?,?>> subfields();
 
-  default boolean isASubfield(WkSrlzStructDefinitionFrameNode<?,?> testedDefinition) {
+  default boolean isASubfield(WkSrlzStructDefinitionFrameNode<?> testedDefinition) {
     Predicate<WkSrlzStructSubcomponentFrameNode<?,?,?>> test = new Predicate<WkSrlzStructSubcomponentFrameNode<?,?,?>>() {
       @Override
       public boolean test(WkSrlzStructSubcomponentFrameNode<?, ?, ?> t) {
@@ -68,8 +64,5 @@ public interface WkSrlzStructDefinitionFrameNode<
     }
     return false;
   }
-
-
-  WkSrlzPacketNodePredicate<?,?> makeTester(Predicate<? super XO> test, String description);
 
 }

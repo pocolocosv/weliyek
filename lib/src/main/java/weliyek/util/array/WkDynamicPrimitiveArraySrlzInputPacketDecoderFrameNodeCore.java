@@ -42,12 +42,12 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,
                                         ?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
+                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         VXO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<
                                         T,
                                         WkSzVariableLengthOperationSettings,
                                         ?,?,VXD>,
-                        VXD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,VXO>>
+                        VXD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>>
     extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T,
                         WkSettingsSrlzPacketOperationData,

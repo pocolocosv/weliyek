@@ -33,7 +33,7 @@ public final class WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                                       WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                       WkDecodingResultSrlzPacketOperationData<X>,
                                       XD>,
-                        XD extends WkNumberSrlzStructDefinitionFrameLeafNode<X,XO>>
+                        XD extends WkNumberSrlzStructDefinitionFrameLeafNode<X>>
     extends WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         X,
                         WkSettingsSrlzPacketOperationData,

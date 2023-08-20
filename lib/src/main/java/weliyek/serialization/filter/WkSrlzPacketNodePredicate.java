@@ -25,7 +25,7 @@ import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 
 public abstract class WkSrlzPacketNodePredicate<
-                        D extends WkSrlzStructDefinitionFrameNode<?,?>,
+                        D extends WkSrlzStructDefinitionFrameNode<?>,
                         M extends WkSrlzPacketFilterableFrameNode>
 {
 
@@ -66,7 +66,7 @@ public abstract class WkSrlzPacketNodePredicate<
    */
   public abstract boolean deserializedIsRequired();
 
-  static WkSrlzStructDefinitionFrameNode<?,?>
+  static WkSrlzStructDefinitionFrameNode<?>
   extractProtocolDefinitionFrom(WkSrlzPacketFilterableFrameNode node) {
     if (isAnInputPacketReadingNode(node)) {
       return extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)node);
@@ -84,12 +84,12 @@ public abstract class WkSrlzPacketNodePredicate<
     return node instanceof WkSrlzInputPacketFieldFrameNode;
   }
 
-  protected static WkSrlzStructDefinitionFrameNode<?,?> extractDefinition(
+  protected static WkSrlzStructDefinitionFrameNode<?> extractDefinition(
     WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?> opNode) {
     return opNode.definition();
   }
 
-  protected static WkSrlzStructDefinitionFrameNode<?,?> extractDefinition(
+  protected static WkSrlzStructDefinitionFrameNode<?> extractDefinition(
     WkSrlzInputPacketFieldFrameNode<?,?,?> fieldNode) {
     return fieldNode.structComponent().definition();
   }

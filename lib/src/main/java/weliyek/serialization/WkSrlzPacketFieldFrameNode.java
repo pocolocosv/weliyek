@@ -30,7 +30,7 @@ import java.util.Optional;
 public interface WkSrlzPacketFieldFrameNode<
                         T,
                         O extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>,
-                        D extends WkSrlzStructDefinitionFrameNode<?,?>>
+                        D extends WkSrlzStructDefinitionFrameNode<?>>
     extends WkSrlzPacketFrameNode,
             WkSrlzCtrlFrameNode
 {

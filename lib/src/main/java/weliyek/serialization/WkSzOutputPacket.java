@@ -21,7 +21,7 @@ import java.util.Optional;
 
 public interface WkSzOutputPacket<
                         T,
-                        D extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        D extends WkSrlzStructDefinitionFrameNode<T>,
                         O extends WkSrlzOutputPacketEncoderFrameNode<T,?,?,?,D>>
     extends WkSrlzOutputPacketFieldFrameNode<T, D, O>
 {

@@ -37,7 +37,7 @@ public final class WkFixedSizeCollectionSrlzInputNode<
                         XS extends WkSettingsSrlzPacketOperationData,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
     implements WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         T,

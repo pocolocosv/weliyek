@@ -28,7 +28,7 @@ public interface WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkDecodingResultSrlzPacketOperationData<X>,
-                        D extends WkFixedSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<X,?>>
+                        D extends WkFixedSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<X>>
     extends WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameNode<X, S, Q, R, D>,
             WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X, S, Q, R, D>,
             WkFixedSizePrimitiveArraySrlzPacketOperationFrameLeafNode<

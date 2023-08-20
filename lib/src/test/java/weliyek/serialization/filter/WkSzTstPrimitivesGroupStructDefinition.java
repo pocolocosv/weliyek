@@ -21,17 +21,16 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
@@ -46,17 +45,16 @@ import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.number.WkSignedByteSrlzInputNode;
 import weliyek.serialization.number.WkSignedByteSrlzOutputNode;
 import weliyek.serialization.number.WkSignedByteSrlzStructNode;
-import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzInputNode;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzOutputNode;
-import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
+import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzInputNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzOutputNode;
+import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
 
 public class WkSzTstPrimitivesGroupStructDefinition
         implements WkAggregatorSrlzStructDefinitionFrameNode<
-                        WkSzTstPrimitivesGroup,
-                        WkSzTstPrimitivesGroupPacketReader>
+                        WkSzTstPrimitivesGroup>
 {
 
   final WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
@@ -424,12 +422,6 @@ public class WkSzTstPrimitivesGroupStructDefinition
   @Override
   public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
-  }
-
-  @Override
-  public WkSrlzPacketNodePredicate<?,?>
-  makeTester(Predicate<? super WkSzTstPrimitivesGroupPacketReader> test, String description) {
-    return this.definitionCore.makeTester(test, description);
   }
 
   @Override

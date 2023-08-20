@@ -34,7 +34,7 @@ public interface WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,?,ET,?>,
                         ET,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,?,?,?,EXD>>
         extends WkCollectionAndElementsSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,

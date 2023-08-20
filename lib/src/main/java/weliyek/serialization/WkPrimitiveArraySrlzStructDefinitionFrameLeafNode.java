@@ -21,10 +21,9 @@ import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
 
 public interface WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<
-                        T extends WkPrimitiveArray<?, ?>,
-                        XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<T, ?, ?, ?, ?>>
-    extends WkSrlzStructDefinitionFrameLeafNode<T, XO>,
-            WkPrimitiveArraySrlzStructDefinitionFrameNode<T, XO>,
+                        T extends WkPrimitiveArray<?, ?>>
+    extends WkSrlzStructDefinitionFrameLeafNode<T>,
+            WkPrimitiveArraySrlzStructDefinitionFrameNode<T>,
             WkPrimitiveArraySrlzFrameLeafNode
 {
 

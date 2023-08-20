@@ -67,11 +67,11 @@ public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
-                        SXD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
+                        SXD extends WkByteArraySrlzStructDefinitionFrameNode,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
-                        SYD extends WkByteArraySrlzStructDefinitionFrameNode<?>,
-                        SD extends WkByteArraySrlzStructDefinitionFrameNode<SXO>,
+                        SYD extends WkByteArraySrlzStructDefinitionFrameNode,
+                        SD extends WkByteArraySrlzStructDefinitionFrameNode,
                         D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>,
                         DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
@@ -125,7 +125,7 @@ public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
 
   public abstract static class ByteArrayFromStringDisaggregator<
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<?,?,?,?,SD,?>,
-                        SD extends WkByteArraySrlzStructDefinitionFrameNode<?>>
+                        SD extends WkByteArraySrlzStructDefinitionFrameNode>
       extends PrimitiveArrayDisaggregatorFromString<
                         YO,
                         WkByteArray,

@@ -22,33 +22,33 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
-import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkBasicDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkBasicEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.util.array.WkDynamicSequenceSrlzStructDefinitionFrameNodeCore;
 
 public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<
@@ -72,19 +72,19 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
+                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        ED extends WkSrlzStructDefinitionFrameNode<ET,EXO>,
+                        ED extends WkSrlzStructDefinitionFrameNode<ET>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VYS extends WkSettingsSrlzPacketOperationData,
                         D extends WkDynamicCollectionSrlzStructDefinitionFrameNode<

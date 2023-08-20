@@ -34,8 +34,12 @@ import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
+import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
+import weliyek.serialization.number.WkSignedByteSrlzInputNode;
 import weliyek.serialization.number.WkSignedByteSrlzStructNode;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
@@ -93,13 +97,13 @@ public class WkSrlzFilterBuilderTest
     BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.field().definition();
     INT_FIELD = PRIMITIVEGROUP_FIELD.intSubcomponent.field().definition();
     LONG_FIELD = PRIMITIVEGROUP_FIELD.longSubcomponent.field().definition();
-    PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE = BYTE_FIELD.makeTester(BYTE_IS_EQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_EQUAL_TO_ONE");
-    PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO = BYTE_FIELD.makeTester(BYTE_IS_EQUAL_TO_TWO, "IS_PRIMITIVE_BYTE_EQUAL_TO_TWO");
-    PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE = BYTE_FIELD.makeTester(BYTE_IS_NOTEQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_DIFFERENT_TO_ONE");
+    PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>(BYTE_FIELD, BYTE_IS_EQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_EQUAL_TO_ONE");
+    PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO = new WkSrlzReadingPacketNodePredicate<WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>(BYTE_FIELD, BYTE_IS_EQUAL_TO_TWO, "IS_PRIMITIVE_BYTE_EQUAL_TO_TWO");
+    PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE = new WkSrlzReadingPacketNodePredicate<WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>(BYTE_FIELD, BYTE_IS_NOTEQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_DIFFERENT_TO_ONE");
 
-    PRIMITIVE_HAS_INT_EQUAL_TO_400 = INT_FIELD.makeTester(INT_IS_EQUAL_TO_400, "IS_PRIMITIVE_INT_EQUAL_FROM_400");
+    PRIMITIVE_HAS_INT_EQUAL_TO_400 = new WkSrlzReadingPacketNodePredicate<WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>(INT_FIELD, INT_IS_EQUAL_TO_400, "IS_PRIMITIVE_INT_EQUAL_FROM_400");
 
-    MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE = MULTIPLE_LIST_PACKET.definition().size().field().definition().makeTester(xo -> xo.result().get().deserialized().get().intValue() == 1,"IS_MULTIPLE_LIST_SIZE_EQUAL_TO_ONE");
+    MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode>(MULTIPLE_LIST_PACKET.definition().size().field().definition(), xo -> xo.result().get().deserialized().get().intValue() == 1,"IS_MULTIPLE_LIST_SIZE_EQUAL_TO_ONE");
   }
 
   @Before

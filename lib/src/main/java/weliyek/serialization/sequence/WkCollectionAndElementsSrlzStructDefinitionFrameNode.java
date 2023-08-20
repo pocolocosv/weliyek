@@ -27,9 +27,9 @@ public interface WkCollectionAndElementsSrlzStructDefinitionFrameNode<
                         XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?>,
                         YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?>,
                         ET,
-                        ED extends WkSrlzStructDefinitionFrameNode<ET,?>>
+                        ED extends WkSrlzStructDefinitionFrameNode<ET>>
         extends WkCollectionAndElementsSrlzFrameNode<WkSrlzStructSubcomponentFrameNode<XO, YO, ED>>,
-                WkCollectionSrlzStructDefinitionFrameNode<T, XO>
+                WkCollectionSrlzStructDefinitionFrameNode<T>
 {
 
   @Override

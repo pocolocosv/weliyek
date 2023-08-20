@@ -23,29 +23,25 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Predicate;
-
-import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
-import weliyek.serialization.filter.WkSrlzReadingPacketNodePredicate;
 
 public abstract class WkSrlzStructDefinitionFrameNodeCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
-                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,XR,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,YR,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        D extends WkSrlzStructDefinitionFrameNode<T>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<
                                       T,XS,XQC,XR,XD,XO,AXBC,YS,YQC,YR,YD,YO,AYBC,D,?>>
-    implements WkSrlzStructDefinitionFrameNode<T,XO>
+    implements WkSrlzStructDefinitionFrameNode<T>
 {
 
     public static final char NAME_PREFIX = '<';
@@ -213,12 +209,6 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
 
     protected String txTargetName() {
       return rxTargetName();
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public WkSrlzPacketNodePredicate<?,?> makeTester(Predicate<? super XO> test, String description) {
-    return new WkSrlzReadingPacketNodePredicate<XD,XO>((XD) definitionBody, test, description);
     }
 
     @Override

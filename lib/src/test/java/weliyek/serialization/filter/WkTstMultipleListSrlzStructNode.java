@@ -18,24 +18,23 @@
 package weliyek.serialization.filter;
 
 import java.util.List;
-import java.util.function.Predicate;
 
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzStructDefinitionFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 
 public class WkTstMultipleListSrlzStructNode
     implements WkDynamicCollectionSrlzStructDefinitionFrameNode<
@@ -152,12 +151,6 @@ public class WkTstMultipleListSrlzStructNode
   @Override
   public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
-  }
-
-  @Override
-  public WkSrlzPacketNodePredicate<?,?>
-  makeTester(Predicate<? super WkTstMultipleListSrlzInputNode> test, String description) {
-    return this.definitionCore.makeTester(test, description);
   }
 
   @Override

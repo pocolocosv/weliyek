@@ -28,7 +28,7 @@ public interface WkSequenceSrlzOutputPacketEncoderFrameNode<
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkSequenceSrlzStructDefinitionFrameNode<T,?>>
+                        YD extends WkSequenceSrlzStructDefinitionFrameNode<T>>
         extends WkSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>,
                 WkSequenceSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,

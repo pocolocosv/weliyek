@@ -52,7 +52,7 @@ public class WkSrlzFilterResults
         }
     }
 
-    public boolean fieldMustBeMatched(WkSrlzStructDefinitionFrameNode<?,?> field) {
+    public boolean fieldMustBeMatched(WkSrlzStructDefinitionFrameNode<?> field) {
         for (WkSrlzFilterQueryResults queryResults : resultListsByQuery.values()) {
           if (queryResults.query().matchTargetFields().contains(field)) {
             return true;

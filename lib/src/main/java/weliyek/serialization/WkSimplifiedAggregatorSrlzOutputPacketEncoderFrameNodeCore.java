@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,YS,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

@@ -25,7 +25,7 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 public class WkSrlzInputPacketFieldFrameNodeNonrootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         AXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>

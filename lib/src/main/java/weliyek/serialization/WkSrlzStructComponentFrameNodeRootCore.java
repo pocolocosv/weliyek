@@ -44,14 +44,14 @@ import weliyek.serialization.filter.WkSrlzFilter;
 public final class WkSrlzStructComponentFrameNodeRootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSrlzStructDefinitionFrameNode<T,XO>>
+                        D extends WkSrlzStructDefinitionFrameNode<T>>
     extends WkSrlzStructComponentFrameNodeCore<
                         T, XS, XD, XO, AXBC,
                         YS, YD, YO, AYBC,

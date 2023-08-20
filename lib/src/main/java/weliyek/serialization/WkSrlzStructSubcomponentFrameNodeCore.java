@@ -25,22 +25,22 @@ import java.util.function.ToIntFunction;
 public class WkSrlzStructSubcomponentFrameNodeCore<
                         ST,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXD extends WkSrlzStructDefinitionFrameNode<ST,?>,
+                        SXD extends WkSrlzStructDefinitionFrameNode<ST>,
                         SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
                                         T,?, ? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYD extends WkSrlzStructDefinitionFrameNode<ST,?>,
+                        SYD extends WkSrlzStructDefinitionFrameNode<ST>,
                         SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>,
-                        SD extends WkSrlzStructDefinitionFrameNode<ST,?>,
-                        D extends WkAggregatorSrlzStructDefinitionFrameNode<T,XO>>
+                        SD extends WkSrlzStructDefinitionFrameNode<ST>,
+                        D extends WkAggregatorSrlzStructDefinitionFrameNode<T>>
     implements WkSrlzStructSubcomponentFrameNode<XO, YO, SD>
 {
 

@@ -60,7 +60,7 @@ public class WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkEncodingResultSrlzPacketOperationData,
                                         D>,
-                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T,XO>>
+                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>>
     extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                         T,
                         XS,

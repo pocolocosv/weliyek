@@ -60,23 +60,23 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
                                         WkEncodingResultSrlzPacketOperationData,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         ZT extends Number,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
+                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,?,
                                         ?,ZXD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,?>,
+                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT,ZXO>,
-                        VXD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,VXO>,
+                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        VXD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>,
                         VXO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<
                                         T,WkSzVariableLengthOperationSettings,?,?,VXD>,
-                        VYD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,?>,
+                        VYD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>,
                         VYO extends WkVariableSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<
                                         T,WkSettingsSrlzPacketOperationData,?,?,VYD>,
-                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T,VXO>,
+                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>,
                         D extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,YO,ZD,VD>>
     extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                         T,

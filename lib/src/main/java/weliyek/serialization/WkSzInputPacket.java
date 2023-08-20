@@ -23,7 +23,7 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 
 public interface WkSzInputPacket<
                         X,
-                        XD extends WkSrlzStructDefinitionFrameNode<X,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<X>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<X,?,?,?,XD>>
     extends WkSrlzInputPacketFieldFrameNode<X, XD, XO>
 {

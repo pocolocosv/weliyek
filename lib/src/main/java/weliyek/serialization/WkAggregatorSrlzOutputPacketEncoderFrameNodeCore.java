@@ -28,7 +28,7 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
                         YR extends WkEncodingResultSrlzPacketOperationData,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD>,
                         YOC extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYB,DC>,
                         AYB extends WkSzOutputBytestreamBase<?>,
@@ -76,7 +76,7 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
   @SuppressWarnings("unchecked")
   public <SY,
              SYS extends WkSettingsSrlzPacketOperationData,
-             SYD extends WkSrlzStructDefinitionFrameNode<SY,?>,
+             SYD extends WkSrlzStructDefinitionFrameNode<SY>,
              SYO extends WkSrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,T,YBC,YD,YO> getSubfieldpacketFor(
     WkSrlzStructSubcomponentFrameNodeCore<SY,?,?,?,T,?,?,?,SYS,SYD,SYO,?,YD,YO,?,?>

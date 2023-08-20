@@ -35,7 +35,7 @@ public abstract class WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         YR extends WkEncodingResultSrlzPacketOperationData,
                         YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<Y,YS,YQ,YR,YD>,
                         YOC extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y,?>,
+                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
         extends WkSrlzOutputPacketEncoderFrameLeafNodeCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>

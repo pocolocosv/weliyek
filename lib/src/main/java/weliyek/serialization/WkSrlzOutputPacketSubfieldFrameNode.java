@@ -19,7 +19,7 @@ package weliyek.serialization;
 
 public interface WkSrlzOutputPacketSubfieldFrameNode<
                         T,
-                        YD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,?,?,?,YD>>
     extends WkSrlzPacketSubfieldFrameNode<WkSrlzOutputPacketFieldFrameNode<T, YD, YO>>,
             WkSrlzOutputPacketFrameNode

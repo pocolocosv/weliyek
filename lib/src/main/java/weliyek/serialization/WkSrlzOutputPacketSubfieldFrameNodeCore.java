@@ -22,11 +22,11 @@ import java.util.function.Predicate;
 public class WkSrlzOutputPacketSubfieldFrameNodeCore<
                         ST,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYD extends WkSrlzStructDefinitionFrameNode<ST,?>,
+                        SYD extends WkSrlzStructDefinitionFrameNode<ST>,
                         SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
                         T,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T,?>,
+                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SYS, SYD,

@@ -42,7 +42,7 @@ public final class WkSimplifiedCollectionAndElementsSrlzInputPacketDecoderFrameN
                                         ET,EXD,EXO>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET,?>,
+                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
                         EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>>
     extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNodeCore<
                         T,

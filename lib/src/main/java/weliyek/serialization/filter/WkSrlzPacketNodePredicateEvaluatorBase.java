@@ -44,7 +44,7 @@ public abstract class WkSrlzPacketNodePredicateEvaluatorBase
       if (isPremiseFound()) {
         return;
       }
-      WkSrlzStructDefinitionFrameNode<?,?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segment);
+      WkSrlzStructDefinitionFrameNode<?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segment);
       if (query.rule.matchTargets().contains(definitionUnderTest)) {
         onTest(segment);
       }

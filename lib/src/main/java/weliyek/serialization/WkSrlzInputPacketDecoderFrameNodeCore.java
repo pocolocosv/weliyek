@@ -28,7 +28,7 @@ public abstract class WkSrlzInputPacketDecoderFrameNodeCore<
                         XR extends WkDecodingResultSrlzPacketOperationData<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>,
                         XOC extends WkSrlzInputPacketDecoderFrameNodeCore<T,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkSrlzStructDefinitionFrameNode<T,?>,
+                        XD extends WkSrlzStructDefinitionFrameNode<T>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<
                                       T,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,DC>>

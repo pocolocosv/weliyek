@@ -80,13 +80,8 @@ public abstract class WkSrlzStructDefinitionFrameLeafNodeCore<
   }
 
   @Override
-  protected String rxTargetName() {
-    return super.rxTargetName() + LABEL_SEPARATOR + rxSerializerFactory.name();
-  }
-
-  @Override
-  protected String txTargetName() {
-    return super.txTargetName() + LABEL_SEPARATOR + txSerializerFactory.name();
+  protected String serializableClassName() {
+    return super.serializableClassName() + LABEL_SEPARATOR + rxSerializerFactory.name();
   }
 
   @Override

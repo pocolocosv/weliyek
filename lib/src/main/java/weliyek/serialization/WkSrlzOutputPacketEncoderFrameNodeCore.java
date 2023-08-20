@@ -94,7 +94,7 @@ public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
 
     @Override
     protected String label() {
-      return packetFieldCore().protocolFieldCore().definitionCore().txSimpleLabel();
+      return packetFieldCore().protocolFieldCore().definitionCore().label();
     }
 
 }

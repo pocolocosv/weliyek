@@ -190,25 +190,15 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
     }
 
     public String simpleLabel() {
-      return   rxTargetName()
-             + ","
-             + txTargetName();
+      return   serializableClassName();
     }
 
     public String rxSimpleLabel() {
-      return NAME_PREFIX + "I:" + rxTargetName() + NAME_SUFFIX;
+      return NAME_PREFIX + "I:" + serializableClassName() + NAME_SUFFIX;
     }
 
-    protected String rxTargetName() {
+    protected String serializableClassName() {
       return definition().serializableClass().getSimpleName();
-    }
-
-    public String txSimpleLabel() {
-      return NAME_PREFIX + "O:" + txTargetName() + NAME_SUFFIX;
-    }
-
-    protected String txTargetName() {
-      return rxTargetName();
     }
 
     @Override

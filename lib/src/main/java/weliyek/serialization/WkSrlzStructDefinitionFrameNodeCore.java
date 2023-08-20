@@ -200,7 +200,7 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
     }
 
     protected String rxTargetName() {
-      return definition().rxClass().getSimpleName();
+      return definition().serializableClass().getSimpleName();
     }
 
     public String txSimpleLabel() {
@@ -212,7 +212,7 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
     }
 
     @Override
-    public final Class<T> rxClass() {
+    public final Class<T> serializableClass() {
     return this.serializableClass;
     }
 

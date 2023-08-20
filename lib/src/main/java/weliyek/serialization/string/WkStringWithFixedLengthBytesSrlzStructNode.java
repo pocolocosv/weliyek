@@ -178,7 +178,7 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
   }
 
   @Override
-  public Class<String> rxClass() {
+  public Class<String> serializableClass() {
     return String.class;
   }
 

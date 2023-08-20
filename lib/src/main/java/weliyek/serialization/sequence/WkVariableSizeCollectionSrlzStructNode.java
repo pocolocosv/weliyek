@@ -220,8 +220,8 @@ public final class WkVariableSizeCollectionSrlzStructNode<
   }
 
   @Override
-  public Class<T> rxClass() {
-    return this.definitionCore.rxClass();
+  public Class<T> serializableClass() {
+    return this.definitionCore.serializableClass();
   }
 
   @Override

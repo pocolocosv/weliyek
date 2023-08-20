@@ -91,7 +91,7 @@ public class WkSignedBigEndianShortSrlzStructNode
   }
 
   @Override
-  public Class<Short> rxClass() {
+  public Class<Short> serializableClass() {
     return Short.class;
   }
 

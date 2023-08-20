@@ -430,7 +430,7 @@ public class WkSzTstPrimitivesGroupStructDefinition
   }
 
   @Override
-  public Class<WkSzTstPrimitivesGroup> rxClass() {
+  public Class<WkSzTstPrimitivesGroup> serializableClass() {
     return WkSzTstPrimitivesGroup.class;
   }
 

@@ -144,7 +144,7 @@ public class WkTstMultipleListSrlzStructNode
   }
 
   @Override
-  public Class<WkSzTstMultipleLists> rxClass() {
+  public Class<WkSzTstMultipleLists> serializableClass() {
     return WkSzTstMultipleLists.class;
   }
 

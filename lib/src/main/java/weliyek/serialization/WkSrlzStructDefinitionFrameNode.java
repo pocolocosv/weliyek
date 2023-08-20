@@ -25,7 +25,7 @@ public interface WkSrlzStructDefinitionFrameNode<T>
           WkSrlzDataFrameNode
 {
 
-  Class<T> rxClass();
+  Class<T> serializableClass();
 
   List<WkSrlzStructSubcomponentFrameNode<?,?,?>> subfields();
 

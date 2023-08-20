@@ -90,7 +90,7 @@ public class WkSignedByteSrlzStructNode
   }
 
   @Override
-  public Class<Byte> rxClass() {
+  public Class<Byte> serializableClass() {
     return Byte.class;
   }
 

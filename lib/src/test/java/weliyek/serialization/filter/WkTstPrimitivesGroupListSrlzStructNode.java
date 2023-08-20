@@ -115,8 +115,8 @@ public class WkTstPrimitivesGroupListSrlzStructNode
     }
 
     @Override
-    public Class<WkSzTstPrimitivesGroupList> rxClass() {
-      return this.fieldCore.rxClass();
+    public Class<WkSzTstPrimitivesGroupList> serializableClass() {
+      return this.fieldCore.serializableClass();
     }
 
     @Override

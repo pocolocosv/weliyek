@@ -173,7 +173,7 @@ public class WkDynamicByteArraySrlzStructNode<
   }
 
   @Override
-  public Class<WkByteArray> rxClass() {
+  public Class<WkByteArray> serializableClass() {
     return WkByteArray.class;
   }
 

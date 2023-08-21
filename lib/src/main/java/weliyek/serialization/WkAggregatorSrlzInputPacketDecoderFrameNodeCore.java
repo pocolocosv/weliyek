@@ -27,7 +27,7 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>,
                         XOC extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,

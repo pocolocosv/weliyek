@@ -20,27 +20,27 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 
 public class WkFixedSizeByteArraySrlzInputNode
     implements WkByteArraySrlzInputPacketDecoderFrameNode<
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<WkByteArray>,
+                        WkResultSrlzPacketOperationData<WkByteArray>,
                         WkFixedSizeByteArraySrlzStructNode>,
                WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
                         WkByteArray,
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<WkByteArray>,
+                        WkResultSrlzPacketOperationData<WkByteArray>,
                         WkFixedSizeByteArraySrlzStructNode>
 {
 
@@ -93,7 +93,7 @@ public class WkFixedSizeByteArraySrlzInputNode
   }
 
   @Override
-  public Optional<WkDecodingResultSrlzPacketOperationData<WkByteArray>> result() {
+  public Optional<WkResultSrlzPacketOperationData<WkByteArray>> result() {
     return this.operationCore.result();
   }
 

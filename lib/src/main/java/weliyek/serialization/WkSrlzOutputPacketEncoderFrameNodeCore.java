@@ -25,7 +25,7 @@ public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD>,
                         YOC extends WkSrlzOutputPacketEncoderFrameNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSrlzStructDefinitionFrameNode<T>,
@@ -74,7 +74,7 @@ public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
 
     @Override
     protected YR onCompletion() {
-      return definitionCore().txResultFactory().apply(body());
+      return definitionCore().txResultFactory().apply(body(), this.serializable);
     }
 
     @Override

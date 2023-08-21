@@ -17,16 +17,16 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 
 public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -34,7 +34,7 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                                         T,
                                         WkSettingsSrlzPacketOperationData,
                                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                        WkDecodingResultSrlzPacketOperationData<T>,
+                                        WkResultSrlzPacketOperationData<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,?,? extends ZXD,? extends VXD>,
                         ZT extends Number,
@@ -58,7 +58,7 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkDecodingResultSrlzPacketOperationData<T>,
+                        WkResultSrlzPacketOperationData<T>,
                         XO,
                         WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<T,XO,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD,
@@ -78,7 +78,7 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                         T,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<T>,
+                        WkResultSrlzPacketOperationData<T>,
                         XD, ZT, ZXO, ZXD, VXO, VXD>
 {
 
@@ -100,7 +100,7 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
     return variableSequence().field().get()
                              .firstOperation().get()
                              .result().get()
-                             .deserialized().get();
+                             .serializable().get();
   }
 
   @Override

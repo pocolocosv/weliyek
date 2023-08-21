@@ -27,7 +27,7 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,YS,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                        WkEncodingResultSrlzPacketOperationData,
+                                        WkResultSrlzPacketOperationData<T>,
                                         YD>>
     extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         T,
@@ -39,7 +39,7 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<T>,
                         YD,
                         YO,
                         WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>,

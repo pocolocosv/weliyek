@@ -21,17 +21,17 @@ import java.util.Collection;
 import java.util.List;
 
 import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public abstract class WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<
                         T extends Collection<ET>,
@@ -40,7 +40,7 @@ public abstract class WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCor
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,YO,ET,?>,
                         YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD,ET,EYD,EYO>,
                         YOC extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNodeCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYBC,ET,EYS,EYD,EYO,DC>,

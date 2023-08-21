@@ -171,7 +171,7 @@ public class WkFixedAndVariableSizeCollectionTest
 
     assertTrue(listReading.isCompleted());
 
-    assertEquals(ORIGINAL_LIST, listReading.firstOperation().get().result().get().deserialized().get());
+    assertEquals(ORIGINAL_LIST, listReading.firstOperation().get().result().get().serializable().get());
   }
 
   @Test
@@ -207,7 +207,7 @@ public class WkFixedAndVariableSizeCollectionTest
 
     assertTrue(varListReading.isCompleted());
 
-    assertEquals(ORIGINAL_LIST, varListReading.firstOperation().get().result().get().deserialized().get());
+    assertEquals(ORIGINAL_LIST, varListReading.firstOperation().get().result().get().serializable().get());
   }
 
 }

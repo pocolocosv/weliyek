@@ -28,13 +28,13 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkSrlzStructDefinitionFrameNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,XR,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkSrlzStructDefinitionFrameNode<T>,
                         YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,YR,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
@@ -51,7 +51,7 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
     private final Function<AXBC, XQC> rxRuntimeFactory;
     private final Function<AYBC, YQC> txRuntimeFactory;
     private final BiFunction<XO, T, XR> rxResultFactory;
-    private final Function<YO, YR> txResultFactory;
+    private final BiFunction<YO, T, YR> txResultFactory;
     public final WkSzPacketReaderOperationCoreFactory<
                     T,XS,XD,DC,XO,AXBC> readingOpFactory;
     public final WkSzPacketWriterOperationCoreFactory<
@@ -68,7 +68,7 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
       BiFunction<XO,T,XR> rxResultFactory,
       WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
       Function<AYBC,YQC> txRuntimeFactory,
-      Function<YO,YR> txResultFactory,
+      BiFunction<YO,T,YR> txResultFactory,
       WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
       D definitionBody,
       Class<T> serializableClass) {
@@ -185,7 +185,7 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
       return txRuntimeFactory;
     }
 
-    public Function<YO, YR> txResultFactory() {
+    public BiFunction<YO, T, YR> txResultFactory() {
       return txResultFactory;
     }
 

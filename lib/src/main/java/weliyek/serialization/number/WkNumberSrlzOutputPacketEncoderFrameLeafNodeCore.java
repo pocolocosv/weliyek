@@ -17,20 +17,20 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameLeafNodeCore;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameLeafNodeCore;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public abstract class WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         T extends Number,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,YS,YQ,YR,YD>,
                         YOC extends WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkNumberSrlzStructDefinitionFrameLeafNode<T>,

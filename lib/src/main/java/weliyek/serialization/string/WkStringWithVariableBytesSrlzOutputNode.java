@@ -21,24 +21,24 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOptionalLengthOperationSettings;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSzOptionalLengthOperationSettings;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkVariableSizeByteArraySrlzStructNode;
 import weliyek.util.array.WkVariableSizeByteArraySrlzOutputNode;
+import weliyek.util.array.WkVariableSizeByteArraySrlzStructNode;
 
 public class WkStringWithVariableBytesSrlzOutputNode
     implements WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                         WkSzOptionalLengthOperationSettings,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<String>,
                         WkStringWithVariableBytesSrlzStructNode,
                         WkVariableSizeByteArraySrlzStructNode,
                         WkVariableSizeByteArraySrlzOutputNode>
@@ -103,7 +103,7 @@ public class WkStringWithVariableBytesSrlzOutputNode
   }
 
   @Override
-  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
+  public Optional<WkResultSrlzPacketOperationData<String>> result() {
     return this.operationCore.result();
   }
 

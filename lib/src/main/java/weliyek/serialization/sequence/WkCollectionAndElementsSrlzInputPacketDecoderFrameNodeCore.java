@@ -20,17 +20,17 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkCollectionAndElementsSrlzInputPacketDecoderFrameNodeCore<
                         T extends Collection<ET>,
@@ -39,7 +39,7 @@ public abstract class WkCollectionAndElementsSrlzInputPacketDecoderFrameNodeCore
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,?,ET,?>,
                         XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD,ET,EXD,EXO>,
                         XOC extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNodeCore<

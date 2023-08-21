@@ -23,7 +23,7 @@ public interface WkSrlzOutputPacketEncoderFrameNode<
                         T,
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        R extends WkEncodingResultSrlzPacketOperationData,
+                        R extends WkResultSrlzPacketOperationData<T>,
                         D extends WkSrlzStructDefinitionFrameNode<T>>
         extends WkSrlzPacketOperationFrameNode<
                         S, Q, R, D,

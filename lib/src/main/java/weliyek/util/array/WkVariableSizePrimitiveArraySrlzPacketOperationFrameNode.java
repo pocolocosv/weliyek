@@ -26,7 +26,7 @@ import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzPacketOperationF
 public interface WkVariableSizePrimitiveArraySrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonSequenceRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData,
+                        R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
     extends WkVariableSizePrimitiveArraySrlzFrameNode,

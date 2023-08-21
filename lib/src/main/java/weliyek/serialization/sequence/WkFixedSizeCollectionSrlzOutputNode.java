@@ -21,16 +21,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public final class WkFixedSizeCollectionSrlzOutputNode<
                         T extends Collection<ET>,
@@ -43,7 +43,7 @@ public final class WkFixedSizeCollectionSrlzOutputNode<
                         T,
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<T>,
                         WkFixedSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                         ET,
                         EYD,
@@ -52,7 +52,7 @@ public final class WkFixedSizeCollectionSrlzOutputNode<
                         T,
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<T>,
                         WkFixedSizeCollectionSrlzStructNode<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
 {
 
@@ -109,7 +109,7 @@ public final class WkFixedSizeCollectionSrlzOutputNode<
   }
 
   @Override
-  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
+  public Optional<WkResultSrlzPacketOperationData<T>> result() {
     return this.operationCore.result();
   }
 

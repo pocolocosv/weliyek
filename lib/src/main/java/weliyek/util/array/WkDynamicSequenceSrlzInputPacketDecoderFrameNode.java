@@ -18,22 +18,22 @@
 package weliyek.util.array;
 
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.sequence.WkSequenceSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinitionFrameNode;
 
 public interface WkDynamicSequenceSrlzInputPacketDecoderFrameNode<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         D extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZX extends Number,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,?,?,?,ZXD>,

@@ -19,16 +19,16 @@ package weliyek.serialization.string;
 
 import java.nio.charset.Charset;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
 public abstract class WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
@@ -37,7 +37,7 @@ public abstract class WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<String>,
+                        XR extends WkResultSrlzPacketOperationData<String>,
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<XS,XQ,XR,XD,SXD,SXO>,
                         XOC extends WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,

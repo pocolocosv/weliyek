@@ -26,7 +26,7 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 public interface WkNumberSrlzPacketOperationFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData,
+                        R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkNumberSrlzStructDefinitionFrameLeafNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
         extends WkNumberSrlzFrameLeafNode,

@@ -21,19 +21,19 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkDynamicByteArraySrlzStructNode;
 import weliyek.util.array.WkDynamicByteArraySrlzInputNode;
+import weliyek.util.array.WkDynamicByteArraySrlzStructNode;
 
 public class WkStringWithDynamicBytesSrlzInputNode<
                         ZT extends Number,
@@ -42,7 +42,7 @@ public class WkStringWithDynamicBytesSrlzInputNode<
     implements WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<String>,
+                        WkResultSrlzPacketOperationData<String>,
                         WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>>
@@ -109,7 +109,7 @@ public class WkStringWithDynamicBytesSrlzInputNode<
   }
 
   @Override
-  public Optional<WkDecodingResultSrlzPacketOperationData<String>> result() {
+  public Optional<WkResultSrlzPacketOperationData<String>> result() {
     return this.operationCore.result();
   }
 

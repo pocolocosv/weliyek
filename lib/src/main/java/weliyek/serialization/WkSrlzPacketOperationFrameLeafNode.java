@@ -20,7 +20,7 @@ package weliyek.serialization;
 public interface WkSrlzPacketOperationFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData,
+                        R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkSrlzStructDefinitionFrameLeafNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
     extends WkSrlzDataFrameLeafNode,

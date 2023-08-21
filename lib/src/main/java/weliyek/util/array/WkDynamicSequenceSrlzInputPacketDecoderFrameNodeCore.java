@@ -18,18 +18,18 @@
 package weliyek.util.array;
 
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinitionFrameNode;
 
@@ -40,7 +40,7 @@ public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         XO extends WkDynamicSequenceSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XOC extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,

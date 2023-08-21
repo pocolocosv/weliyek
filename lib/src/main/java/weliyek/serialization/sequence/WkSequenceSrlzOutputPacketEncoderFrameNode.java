@@ -17,17 +17,17 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 
 public interface WkSequenceSrlzOutputPacketEncoderFrameNode<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkSequenceSrlzStructDefinitionFrameNode<T>>
         extends WkSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>,
                 WkSequenceSrlzPacketOperationFrameNode<

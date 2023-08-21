@@ -22,19 +22,19 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
 
 public interface WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                         T extends Collection<ET>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,?,ET,?>,
                         ET,
                         EYD extends WkSrlzStructDefinitionFrameNode<ET>,

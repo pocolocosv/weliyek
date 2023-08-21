@@ -20,29 +20,29 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzInputNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 
 public class WkTstMultipleListSrlzInputNode
         implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         WkSzTstMultipleLists,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<WkSzTstMultipleLists>,
+                        WkResultSrlzPacketOperationData<WkSzTstMultipleLists>,
                         WkTstMultipleListSrlzStructNode,
                         Short,
                         WkSignedBigEndianShortSrlzInputNode,
@@ -112,7 +112,7 @@ public class WkTstMultipleListSrlzInputNode
   }
 
   @Override
-  public Optional<WkDecodingResultSrlzPacketOperationData<WkSzTstMultipleLists>> result() {
+  public Optional<WkResultSrlzPacketOperationData<WkSzTstMultipleLists>> result() {
     return this.operationCore.result();
   }
 

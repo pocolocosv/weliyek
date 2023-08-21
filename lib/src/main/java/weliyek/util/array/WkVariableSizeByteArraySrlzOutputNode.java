@@ -20,27 +20,27 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 
 public class WkVariableSizeByteArraySrlzOutputNode
     implements WkByteArraySrlzOutputPacketEncoderFrameNode<
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<WkByteArray>,
                         WkVariableSizeByteArraySrlzStructNode>,
                WkVaribleSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                         WkByteArray,
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<WkByteArray>,
                         WkVariableSizeByteArraySrlzStructNode>
 {
 
@@ -90,7 +90,7 @@ public class WkVariableSizeByteArraySrlzOutputNode
   }
 
   @Override
-  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
+  public Optional<WkResultSrlzPacketOperationData<WkByteArray>> result() {
     return this.operationCore.result();
   }
 

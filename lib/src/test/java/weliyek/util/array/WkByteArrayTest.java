@@ -120,7 +120,7 @@ public class WkByteArrayTest
       assertTrue(byteArrayReading.isCompleted());
       assertTrue(byteArrayReading.firstOperation().get().result().isPresent());
 
-      assertEquals(outputWrapper, byteArrayReading.firstOperation().get().result().get().deserialized().get());
+      assertEquals(outputWrapper, byteArrayReading.firstOperation().get().result().get().serializable().get());
     }
 
     @Test
@@ -166,7 +166,7 @@ public class WkByteArrayTest
       assertTrue(wrapperReading.isCompleted());
       assertTrue(wrapperReading.firstOperation().get().result().isPresent());
 
-      assertEquals(outputWrapper, wrapperReading.firstOperation().get().result().get().deserialized().get());
+      assertEquals(outputWrapper, wrapperReading.firstOperation().get().result().get().serializable().get());
     }
 
     @Test

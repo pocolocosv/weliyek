@@ -18,17 +18,17 @@
 package weliyek.serialization.string;
 
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.util.array.WkPrimitiveArraySrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkPrimitiveArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
 
 public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
@@ -37,7 +37,7 @@ public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeC
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<String>,
+                        XR extends WkResultSrlzPacketOperationData<String>,
                         XO extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS,XQ,XR,XD,SX,SXD,SXO>,
                         XOC extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SX,SXS,SXO,SXD,DC>,
                         XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
@@ -92,7 +92,7 @@ public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeC
       throw new IllegalArgumentException();
     }
     return primitiveArray().field().get().firstOperation().get()
-                           .result().get().deserialized().get();
+                           .result().get().serializable().get();
   }
 
   @Override

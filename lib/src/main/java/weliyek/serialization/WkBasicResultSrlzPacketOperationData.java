@@ -22,34 +22,34 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class WkBasicDecodingResultSrlzPacketOperationData<X>
-  implements WkDecodingResultSrlzPacketOperationData<X>
+public class WkBasicResultSrlzPacketOperationData<X>
+  implements WkResultSrlzPacketOperationData<X>
 {
 
-    private static final Logger logger = LoggerFactory.getLogger(WkBasicDecodingResultSrlzPacketOperationData.class);
+    private static final Logger logger = LoggerFactory.getLogger(WkBasicResultSrlzPacketOperationData.class);
 
-    private final Optional<X> deserialized;
+    private final Optional<X> serializable;
 
-    public WkBasicDecodingResultSrlzPacketOperationData(
-            WkSrlzInputPacketDecoderFrameNode<X,?,?,?,?> operation,
-            X deserialized) {
-        this.deserialized = Optional.ofNullable(deserialized);
+    public WkBasicResultSrlzPacketOperationData(
+            WkSrlzPacketOperationFrameNode<?,?,?,? extends WkSrlzStructDefinitionFrameNode<X>,?> operation,
+            X serializable) {
+        this.serializable = Optional.ofNullable(serializable);
     }
 
     @Override
-    public Optional<X> deserialized() {
-        return this.deserialized;
+    public Optional<X> serializable() {
+        return this.serializable;
     }
 
     @Override
     public String toString() {
       if (logger.isDebugEnabled()) {
         StringBuilder strB = new StringBuilder(super.toString());
-        if (deserialized().isPresent()) {
-          strB.append("<d{");
-          strB.append(deserialized().get());
-          strB.append("}d>");
+        strB.append("<{");
+        if (serializable().isPresent()) {
+          strB.append(serializable().get());
         }
+        strB.append("}>");
         return strB.toString();
       }
       return super.toString();

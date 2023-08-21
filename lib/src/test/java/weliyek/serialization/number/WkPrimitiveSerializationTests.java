@@ -87,8 +87,8 @@ public class WkPrimitiveSerializationTests {
     assertTrue(signedByteReading.isCompleted());
     //assertTrue(signedByteReading.isRequiredByProtocol());
     assertTrue(signedByteReading.firstOperation().get().result().isPresent());
-    assertTrue(signedByteReading.firstOperation().get().result().get().deserialized().isPresent());
-    assertEquals(b, signedByteReading.firstOperation().get().result().get().deserialized().get());
+    assertTrue(signedByteReading.firstOperation().get().result().get().serializable().isPresent());
+    assertEquals(b, signedByteReading.firstOperation().get().result().get().serializable().get());
     assertReadingValueEqualsTo((byte) -1, (short) -1, -1, -1L, signedByteReading);
   }
 
@@ -134,7 +134,7 @@ public class WkPrimitiveSerializationTests {
     assertTrue(unsignedByteReading.isCompleted());
     //assertTrue(unsignedByteReading.isRequiredByProtocol());
     assertTrue(unsignedByteReading.firstOperation().get().result().isPresent());
-    assertTrue(unsignedByteReading.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(unsignedByteReading.firstOperation().get().result().get().serializable().isPresent());
     assertReadingValueEqualsTo((byte) 0xFF, (short) 0x00FF, 0x00FF, 0x00FFL, unsignedByteReading);
   }
 
@@ -173,9 +173,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(bigEndianSignedShortDeserializing.isCompleted());
     assertTrue(bigEndianSignedShortDeserializing.firstOperation().get().result().isPresent());
-    assertTrue(bigEndianSignedShortDeserializing.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(bigEndianSignedShortDeserializing.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(bigEndianSignedShortDeserializing.firstOperation().get(), completedInputField.get());
-    assertEquals(s, bigEndianSignedShortDeserializing.firstOperation().get().result().get().deserialized().get());
+    assertEquals(s, bigEndianSignedShortDeserializing.firstOperation().get().result().get().serializable().get());
     assertReadingValueEqualsTo((byte) -1, (short) -1, -1, -1L, bigEndianSignedShortDeserializing);
   }
 
@@ -213,9 +213,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(littleEndianSignedShortReading.isCompleted());
     assertTrue(littleEndianSignedShortReading.firstOperation().get().result().isPresent());
-    assertTrue(littleEndianSignedShortReading.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(littleEndianSignedShortReading.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(littleEndianSignedShortReading.firstOperation().get(), completedInputField.get());
-    assertEquals(s, littleEndianSignedShortReading.firstOperation().get().result().get().deserialized().get());
+    assertEquals(s, littleEndianSignedShortReading.firstOperation().get().result().get().serializable().get());
     assertReadingValueEqualsTo((byte) -1, (short) -1, -1, -1L, littleEndianSignedShortReading);
   }
 
@@ -253,9 +253,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(bigEndianUnsignedShortReading.isCompleted());
     assertTrue(bigEndianUnsignedShortReading.firstOperation().get().result().isPresent());
-    assertTrue(bigEndianUnsignedShortReading.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(bigEndianUnsignedShortReading.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(bigEndianUnsignedShortReading.firstOperation().get(), completedInputField.get());
-    assertEquals(s.shortValue(), bigEndianUnsignedShortReading.firstOperation().get().result().get().deserialized().get().shortValue());
+    assertEquals(s.shortValue(), bigEndianUnsignedShortReading.firstOperation().get().result().get().serializable().get().shortValue());
     assertReadingValueEqualsTo((byte) 0xBC, (short) 0xFABC, 0xFABC, 0xFABCL, bigEndianUnsignedShortReading);
   }
 
@@ -294,9 +294,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(littleEndianUnsignedShortReading.isCompleted());
     assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().isPresent());
-    assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(littleEndianUnsignedShortReading.firstOperation().get(), completedInputField.get());
-    assertEquals(0xFFFF & s.intValue(), littleEndianUnsignedShortReading.firstOperation().get().result().get().deserialized().get().intValue());
+    assertEquals(0xFFFF & s.intValue(), littleEndianUnsignedShortReading.firstOperation().get().result().get().serializable().get().intValue());
     assertReadingValueEqualsTo((byte) 0xBC, (short) 0xFABC, 0xFABC, 0xFABCL, littleEndianUnsignedShortReading);
   }
 
@@ -334,9 +334,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(signedBigEndianIntDeserializing.isCompleted());
     assertTrue(signedBigEndianIntDeserializing.firstOperation().get().result().isPresent());
-    assertTrue(signedBigEndianIntDeserializing.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(signedBigEndianIntDeserializing.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(signedBigEndianIntDeserializing.firstOperation().get(), completedInputField.get());
-    assertEquals(i.intValue(), signedBigEndianIntDeserializing.firstOperation().get().result().get().deserialized().get().intValue());
+    assertEquals(i.intValue(), signedBigEndianIntDeserializing.firstOperation().get().result().get().serializable().get().intValue());
     assertReadingValueEqualsTo((byte) -1, (short) -1, -1, -1L, signedBigEndianIntDeserializing);
   }
 
@@ -374,9 +374,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(signedLittleEndianIntDeserializing.isCompleted());
     assertTrue(signedLittleEndianIntDeserializing.firstOperation().get().result().isPresent());
-    assertTrue(signedLittleEndianIntDeserializing.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(signedLittleEndianIntDeserializing.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(signedLittleEndianIntDeserializing.firstOperation().get(), completedInputField.get());
-    assertEquals(i.intValue(), signedLittleEndianIntDeserializing.firstOperation().get().result().get().deserialized().get().intValue());
+    assertEquals(i.intValue(), signedLittleEndianIntDeserializing.firstOperation().get().result().get().serializable().get().intValue());
     assertReadingValueEqualsTo((byte) -1, (short) -1, -1, -1L, signedLittleEndianIntDeserializing);
   }
 
@@ -415,9 +415,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(bigEndianUnsignedIntReading.isCompleted());
     assertTrue(bigEndianUnsignedIntReading.firstOperation().get().result().isPresent());
-    assertTrue(bigEndianUnsignedIntReading.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(bigEndianUnsignedIntReading.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(bigEndianUnsignedIntReading.firstOperation().get(), completedInputField.get());
-    assertEquals(i.intValue(), bigEndianUnsignedIntReading.firstOperation().get().result().get().deserialized().get().intValue());
+    assertEquals(i.intValue(), bigEndianUnsignedIntReading.firstOperation().get().result().get().serializable().get().intValue());
     assertReadingValueEqualsTo(
         (byte) 0xEF,
         (short) 0xCDEF,
@@ -460,9 +460,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(littleEndianUnsignedShortReading.isCompleted());
     assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().isPresent());
-    assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(littleEndianUnsignedShortReading.firstOperation().get(), completedInputField.get());
-    assertEquals(i.intValue(), littleEndianUnsignedShortReading.firstOperation().get().result().get().deserialized().get().intValue());
+    assertEquals(i.intValue(), littleEndianUnsignedShortReading.firstOperation().get().result().get().serializable().get().intValue());
     assertReadingValueEqualsTo(
         (byte) 0xEF,
         (short) 0xCDEF,
@@ -508,9 +508,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(signedBigEndianLongDeserializing.isCompleted());
     assertTrue(signedBigEndianLongDeserializing.firstOperation().get().result().isPresent());
-    assertTrue(signedBigEndianLongDeserializing.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(signedBigEndianLongDeserializing.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(signedBigEndianLongDeserializing.firstOperation().get(), completedInputField.get());
-    assertEquals(l.longValue(), signedBigEndianLongDeserializing.firstOperation().get().result().get().deserialized().get().longValue());
+    assertEquals(l.longValue(), signedBigEndianLongDeserializing.firstOperation().get().result().get().serializable().get().longValue());
     assertReadingValueEqualsTo(
         (byte) 0xEF,
         (short) 0xCDEF,
@@ -556,9 +556,9 @@ public class WkPrimitiveSerializationTests {
     assertTrue(completedInputField.isPresent());
     assertTrue(signedLittleEndianLongDeserializing.isCompleted());
     assertTrue(signedLittleEndianLongDeserializing.firstOperation().get().result().isPresent());
-    assertTrue(signedLittleEndianLongDeserializing.firstOperation().get().result().get().deserialized().isPresent());
+    assertTrue(signedLittleEndianLongDeserializing.firstOperation().get().result().get().serializable().isPresent());
     assertEquals(signedLittleEndianLongDeserializing.firstOperation().get(), completedInputField.get());
-    assertEquals(l.longValue(), signedLittleEndianLongDeserializing.firstOperation().get().result().get().deserialized().get().longValue());
+    assertEquals(l.longValue(), signedLittleEndianLongDeserializing.firstOperation().get().result().get().serializable().get().longValue());
     assertReadingValueEqualsTo(
         (byte) 0xEF,
         (short) 0xCDEF,
@@ -574,7 +574,7 @@ public class WkPrimitiveSerializationTests {
     long expectedLong,
     WkSrlzInputPacketFieldFrameNode<? extends Number,?,?> reading) {
     Number deserializedNumber =
-        reading.firstOperation().get().result().get().deserialized().get();
+        reading.firstOperation().get().result().get().serializable().get();
     byte obtainedByte = deserializedNumber.byteValue();
     assertEquals(expectedByte, obtainedByte);
     short obtainedShort = deserializedNumber.shortValue();

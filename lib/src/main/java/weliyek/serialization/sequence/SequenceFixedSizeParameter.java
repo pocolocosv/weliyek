@@ -19,12 +19,12 @@ package weliyek.serialization.sequence;
 
 import java.util.Objects;
 
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNodeCore;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 
 public class SequenceFixedSizeParameter<T>
 {
@@ -32,7 +32,7 @@ public class SequenceFixedSizeParameter<T>
   private final int sequenceExpectedSize;
   private final WkSrlzStructDefinitionFrameNodeCore<
                         T,?,?,
-                        ? extends WkDecodingResultSrlzPacketOperationData<T>,
+                        ? extends WkResultSrlzPacketOperationData<T>,
                         ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,
                         ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,
                         ?,?,?,?,
@@ -44,7 +44,7 @@ public class SequenceFixedSizeParameter<T>
     int sequenceExpectedSize,
     WkSrlzStructDefinitionFrameNodeCore<
       T,?,?,
-      ? extends WkDecodingResultSrlzPacketOperationData<T>,
+      ? extends WkResultSrlzPacketOperationData<T>,
       ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,
       ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,
       ?,?,?,?,
@@ -74,10 +74,10 @@ public class SequenceFixedSizeParameter<T>
   void onAfterFullCompletionDeserialization(
     WkSrlzInputPacketDecoderFrameNodeCore<
       T,?,?,?,
-      ? extends WkDecodingResultSrlzPacketOperationData<T>,
+      ? extends WkResultSrlzPacketOperationData<T>,
       ? extends WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,?,
       ? extends WkFixedSizeSequenceSrlzStructDefinitionFrameNode<T>,?,?> deserializer) {
-    T sequence = deserializer.result().get().deserialized().get();
+    T sequence = deserializer.result().get().serializable().get();
     int seqLen = deserializer.definition().extractLengthFromSerializablesSequence(sequence);
     if (seqLen != this.sequenceExpectedSize) {
       throw new WkSzOperationException(

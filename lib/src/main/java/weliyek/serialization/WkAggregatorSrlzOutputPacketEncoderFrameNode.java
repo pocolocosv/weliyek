@@ -21,7 +21,7 @@ public interface WkAggregatorSrlzOutputPacketEncoderFrameNode<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>>
         extends WkAggregatorSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,

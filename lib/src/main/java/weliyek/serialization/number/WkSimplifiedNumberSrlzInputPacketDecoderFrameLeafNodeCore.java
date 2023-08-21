@@ -17,13 +17,13 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 
 public final class WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends Number,
@@ -31,7 +31,7 @@ public final class WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                                       X,
                                       WkSettingsSrlzPacketOperationData,
                                       WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                      WkDecodingResultSrlzPacketOperationData<X>,
+                                      WkResultSrlzPacketOperationData<X>,
                                       XD>,
                         XD extends WkNumberSrlzStructDefinitionFrameLeafNode<X>>
     extends WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<
@@ -42,7 +42,7 @@ public final class WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkDecodingResultSrlzPacketOperationData<X>,
+                        WkResultSrlzPacketOperationData<X>,
                         XO,
                         WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<X,XO,XD>,
                         XD,

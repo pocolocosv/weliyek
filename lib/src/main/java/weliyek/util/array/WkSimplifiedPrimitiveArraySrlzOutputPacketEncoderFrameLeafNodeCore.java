@@ -20,15 +20,15 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
+import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 
 public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
@@ -38,7 +38,7 @@ public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                                         Y,
                                         YS,
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                        WkEncodingResultSrlzPacketOperationData,
+                                        WkResultSrlzPacketOperationData<Y>,
                                         D>>
     extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y,
@@ -48,7 +48,7 @@ public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                           WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<Y>,
                         YO,
                         WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>,
                         D,

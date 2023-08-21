@@ -177,7 +177,7 @@ public class WkStringWithDynamicSizeBytesTest
     }
 
     assertEquals(originalStr,
-                 dynstrReading.firstOperation().get().result().get().deserialized().get());
+                 dynstrReading.firstOperation().get().result().get().serializable().get());
   }
 
 }

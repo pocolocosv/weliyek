@@ -17,13 +17,13 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
@@ -32,7 +32,7 @@ public class SimplifiedStringFromBytesReadingCore<
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                                       XS,
                                       WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                      WkDecodingResultSrlzPacketOperationData<String>,
+                                      WkResultSrlzPacketOperationData<String>,
                                       XD,SXD,SXO>,
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
                         SXS extends WkSettingsSrlzPacketOperationData,
@@ -47,7 +47,7 @@ public class SimplifiedStringFromBytesReadingCore<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkDecodingResultSrlzPacketOperationData<String>,
+                        WkResultSrlzPacketOperationData<String>,
                         XO,
                         SimplifiedStringFromBytesReadingCore<XS,XO,XD,SXS,SXO,SXD>,
                         XD,

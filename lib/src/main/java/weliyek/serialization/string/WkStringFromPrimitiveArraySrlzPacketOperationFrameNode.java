@@ -28,7 +28,7 @@ import weliyek.util.array.WkPrimitiveArraySrlzPacketOperationFrameNode;
 public interface WkStringFromPrimitiveArraySrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData,
+                        R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>,
                         SO extends WkPrimitiveArraySrlzPacketOperationFrameNode<?,?,?,?,?>,

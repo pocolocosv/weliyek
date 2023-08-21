@@ -20,29 +20,29 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
+import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzInputNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 
 public class WkTstPrimitivesGroupListSrlzInputNode
     implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         WkSzTstPrimitivesGroupList,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<WkSzTstPrimitivesGroupList>,
+                        WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroupList>,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         Integer,
                         WkSignedLittleEndianIntegerSrlzInputNode,
@@ -111,7 +111,7 @@ public class WkTstPrimitivesGroupListSrlzInputNode
     }
 
     @Override
-    public Optional<WkDecodingResultSrlzPacketOperationData<WkSzTstPrimitivesGroupList>> result() {
+    public Optional<WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroupList>> result() {
       return this.readingCore.result();
     }
 

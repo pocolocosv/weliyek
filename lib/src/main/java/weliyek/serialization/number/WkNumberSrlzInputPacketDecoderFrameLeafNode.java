@@ -17,17 +17,17 @@
  */
 package weliyek.serialization.number;
 
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 
 public interface WkNumberSrlzInputPacketDecoderFrameLeafNode<
                         T extends Number,
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        R extends WkDecodingResultSrlzPacketOperationData<T>,
+                        R extends WkResultSrlzPacketOperationData<T>,
                         D extends WkNumberSrlzStructDefinitionFrameLeafNode<T>>
         extends WkNumberSrlzPacketOperationFrameLeafNode<
                         S, Q, R, D,

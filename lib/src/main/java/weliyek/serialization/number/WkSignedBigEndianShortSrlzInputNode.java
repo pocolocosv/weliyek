@@ -20,21 +20,21 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 
 public final class WkSignedBigEndianShortSrlzInputNode
         implements WkNumberSrlzInputPacketDecoderFrameLeafNode<
                         Short,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<Short>,
+                        WkResultSrlzPacketOperationData<Short>,
                         WkSignedBigEndianShortSrlzStructNode>
 {
 
@@ -71,7 +71,7 @@ public final class WkSignedBigEndianShortSrlzInputNode
     }
 
     @Override
-    public Optional<WkDecodingResultSrlzPacketOperationData<Short>> result() {
+    public Optional<WkResultSrlzPacketOperationData<Short>> result() {
       return this.operationCore.result();
     }
 

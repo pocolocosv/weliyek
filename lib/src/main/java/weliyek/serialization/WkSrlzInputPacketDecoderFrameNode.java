@@ -25,7 +25,7 @@ public interface WkSrlzInputPacketDecoderFrameNode<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkSrlzStructDefinitionFrameNode<T>>
         extends WkSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,

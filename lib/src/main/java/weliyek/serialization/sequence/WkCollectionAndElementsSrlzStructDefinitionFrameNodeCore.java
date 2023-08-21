@@ -24,30 +24,29 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkOperationSettingsFactory;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
+import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 
 public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         T extends Collection<ET>,
@@ -55,7 +54,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,?,ET,?>,
                         XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                                         T,XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,ET,EXD,EXO>,
@@ -64,7 +63,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,YO,ET,?>,
                         YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<
                                         T,YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,ET,EYD,EYO>,
@@ -98,7 +97,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
     BiFunction<XO, T, XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<T, XS, XD, DC, XO, AXB> readingOpFactory,
     Function<AYB, YQC> txRuntimeFactory,
-    Function<YO, YR> txResultFactory,
+    BiFunction<YO, T, YR> txResultFactory,
     WkSzPacketWriterOperationCoreFactory<T, YS, YD, DC, YO, AYB> writingOpFactory,
     String elementsLabel,
     ToIntFunction<? super XO> elementsDeserializingNumOfOps,

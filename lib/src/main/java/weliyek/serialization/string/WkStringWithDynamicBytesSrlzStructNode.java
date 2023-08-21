@@ -200,7 +200,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   String aggragateByteArray(WkStringWithDynamicBytesSrlzInputNode<ZX,ZXD,ZXO> deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
-    WkByteArray wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().deserialized().get();
+    WkByteArray wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().serializable().get();
     wrapper.iterateAsIntsBackwardsWhileTrue(zeroPaddingCounter);
     int zeroPaddingLen = zeroPaddingCounter.count();
     int strBytesLen = wrapper.getLength() - zeroPaddingLen;

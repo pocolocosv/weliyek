@@ -17,8 +17,12 @@
  */
 package weliyek.serialization;
 
-public interface WkResultSrlzPacketOperationData
+import java.util.Optional;
+
+public interface WkResultSrlzPacketOperationData<T>
         extends WkSrlzPacketOperationData
 {
+  
+  Optional<T> serializable();
 
 }

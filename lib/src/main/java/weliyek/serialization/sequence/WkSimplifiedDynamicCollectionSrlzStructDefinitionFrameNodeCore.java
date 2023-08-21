@@ -22,15 +22,13 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
-import weliyek.serialization.WkBasicDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkBasicEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
+import weliyek.serialization.WkBasicResultSrlzPacketOperationData;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkOperationSettingsFactory;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl;
@@ -57,7 +55,7 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
                         XO extends WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                                         T,XS,
                                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                        WkDecodingResultSrlzPacketOperationData<T>,
+                                        WkResultSrlzPacketOperationData<T>,
                                         XD,ZT,ZXO,?,ET,EXS,?,EXO,VXS>,
                         XD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<
                                         T,XO,?,?,?,?,?,?,?,?,?,?,?,?>,
@@ -65,7 +63,7 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
                         YO extends WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                                         T,YS,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                        WkEncodingResultSrlzPacketOperationData,
+                                        WkResultSrlzPacketOperationData<T>,
                                         YD,ZT,ZYO,?,ET,EYS,?,EYO,VYS>,
                         YD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<
                                         T,?,YO,?,?,?,?,?,?,?,?,?,?,?>,
@@ -98,7 +96,7 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkDecodingResultSrlzPacketOperationData<T>,
+                        WkResultSrlzPacketOperationData<T>,
                         XO, XD,
                         WkSzInputBytestreamBase<?>,
                         YS,
@@ -108,7 +106,7 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<T>,
                         YO, YD,
                         WkSzOutputBytestreamBase<?>,
                         ZT, ZXS, ZXO, ZXD, ZYS, ZYO, ZYD, ZD,
@@ -181,10 +179,10 @@ public final class WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCor
                                 pc),
           componentCore,
           WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl::new,
-          WkBasicDecodingResultSrlzPacketOperationData::new,
+          WkBasicResultSrlzPacketOperationData::new,
           deserializerFactory,
           WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl::new,
-          WkBasicEncodingResultSrlzPacketOperationData::empty,
+          WkBasicResultSrlzPacketOperationData::new,
           serializerFactory,
           definitionBody,
           serializableClass);

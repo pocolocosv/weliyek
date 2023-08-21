@@ -26,12 +26,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
@@ -46,11 +45,11 @@ import weliyek.serialization.util.KetzaByteOutputStream;
 public class WkSrlzFilterBuilderTest
 {
 
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().deserialized().get().byteValue() == (byte)1;
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().deserialized().get().byteValue() != (byte)1;
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().deserialized().get().byteValue() == (byte)2;
+  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
+  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().serializable().get().byteValue() != (byte)1;
+  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)2;
 
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().deserialized().get().intValue() == 400;
+  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
 
   private static WkSrlzStruct<
                       WkSzTstMultipleLists,
@@ -103,7 +102,7 @@ public class WkSrlzFilterBuilderTest
 
     PRIMITIVE_HAS_INT_EQUAL_TO_400 = new WkSrlzReadingPacketNodePredicate<WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>(INT_FIELD, INT_IS_EQUAL_TO_400, "IS_PRIMITIVE_INT_EQUAL_FROM_400");
 
-    MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode>(MULTIPLE_LIST_PACKET.definition().size().field().definition(), xo -> xo.result().get().deserialized().get().intValue() == 1,"IS_MULTIPLE_LIST_SIZE_EQUAL_TO_ONE");
+    MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode>(MULTIPLE_LIST_PACKET.definition().size().field().definition(), xo -> xo.result().get().serializable().get().intValue() == 1,"IS_MULTIPLE_LIST_SIZE_EQUAL_TO_ONE");
   }
 
   @Before
@@ -250,8 +249,8 @@ public class WkSrlzFilterBuilderTest
         multiListsDeserializer.processBytestream();
       }
 
-      if (multiListsDeserializer.firstOperation().get().result().get().deserialized().isPresent()) {
-        final WkSzTstMultipleLists readRes = multiListsDeserializer.firstOperation().get().result().get().deserialized().get();
+      if (multiListsDeserializer.firstOperation().get().result().get().serializable().isPresent()) {
+        final WkSzTstMultipleLists readRes = multiListsDeserializer.firstOperation().get().result().get().serializable().get();
 
         assertNotNull(readRes);
         assertEquals(listNone, readRes.get(0));

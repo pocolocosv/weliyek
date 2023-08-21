@@ -27,7 +27,7 @@ public final class WkSrlzInputPacketFieldFrameNodeRootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,? extends WkDecodingResultSrlzPacketOperationData<T>,XD>,
+                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>>
     extends WkSrlzInputPacketFieldFrameNodeCore<
                         T, XS, XD, XO, AXBC,

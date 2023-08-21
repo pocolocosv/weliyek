@@ -25,7 +25,7 @@ public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                                         X,
                                         XS,
                                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                        WkDecodingResultSrlzPacketOperationData<X>,
+                                        WkResultSrlzPacketOperationData<X>,
                                         XD>>
     extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         X,
@@ -37,7 +37,7 @@ public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkDecodingResultSrlzPacketOperationData<X>,
+                        WkResultSrlzPacketOperationData<X>,
                         XD,
                         XO,
                         WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<X,XS,XD,XO>,

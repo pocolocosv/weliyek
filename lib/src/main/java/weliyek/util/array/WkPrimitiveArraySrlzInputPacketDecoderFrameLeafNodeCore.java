@@ -17,22 +17,22 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNodeCore;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSzInputBytestreamBase;
 
 public abstract class WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends WkPrimitiveArray<?,?>,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<X>,
+                        XR extends WkResultSrlzPacketOperationData<X>,
                         XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
                         XOC extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X>,

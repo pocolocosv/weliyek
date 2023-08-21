@@ -20,28 +20,28 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzOutputNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 
 public class WkTstMultipleListSrlzOutputNode
         implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         WkSzTstMultipleLists,
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<WkSzTstMultipleLists>,
                         WkTstMultipleListSrlzStructNode,
                         Short,
                         WkSignedBigEndianShortSrlzOutputNode,
@@ -111,7 +111,7 @@ public class WkTstMultipleListSrlzOutputNode
   }
 
   @Override
-  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
+  public Optional<WkResultSrlzPacketOperationData<WkSzTstMultipleLists>> result() {
     return this.operationCore.result();
   }
 

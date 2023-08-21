@@ -17,13 +17,13 @@
  */
 package weliyek.serialization.number;
 
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends Number,
@@ -31,7 +31,7 @@ public class WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                                         Y,
                                         WkSettingsSrlzPacketOperationData,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                        WkEncodingResultSrlzPacketOperationData,
+                                        WkResultSrlzPacketOperationData<Y>,
                                         YD>,
                         YD extends WkNumberSrlzStructDefinitionFrameLeafNode<Y>>
     extends WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
@@ -42,7 +42,7 @@ public class WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<Y>,
                         YO,
                         WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<Y,YO,YD>,
                         YD,

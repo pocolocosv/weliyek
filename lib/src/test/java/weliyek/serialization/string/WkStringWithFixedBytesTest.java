@@ -114,7 +114,7 @@ public class WkStringWithFixedBytesTest
         assertTrue(stringWithFixedSizeSerializing.isCompleted());
         assertTrue(stringWithFixedSizeSerializing.firstOperation().get().result().isPresent());
 
-        assertEquals(shortStr, stringWithFixedSizeBytesDeserializing.firstOperation().get().result().get().deserialized().get());
+        assertEquals(shortStr, stringWithFixedSizeBytesDeserializing.firstOperation().get().result().get().serializable().get());
     }
 
     @Test
@@ -166,7 +166,7 @@ public class WkStringWithFixedBytesTest
         assertTrue(stringWithFixedSizeSerializing.isCompleted());
         assertTrue(stringWithFixedSizeSerializing.firstOperation().get().result().isPresent());
 
-        assertEquals(expectedStr, stringWithFixedSizeBytesDeserializing.firstOperation().get().result().get().deserialized().get());
+        assertEquals(expectedStr, stringWithFixedSizeBytesDeserializing.firstOperation().get().result().get().serializable().get());
     }
 
 }

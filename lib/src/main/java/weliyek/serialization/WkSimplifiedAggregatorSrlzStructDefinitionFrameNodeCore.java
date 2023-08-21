@@ -29,7 +29,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                                         T,
                                         XS,
                                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                        WkDecodingResultSrlzPacketOperationData<T>,
+                                        WkResultSrlzPacketOperationData<T>,
                                         XD>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
@@ -37,7 +37,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                                         T,
                                         YS,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                        WkEncodingResultSrlzPacketOperationData,
+                                        WkResultSrlzPacketOperationData<T>,
                                         YD>,
                         D extends WkAggregatorSrlzStructDefinitionFrameNode<T>>
     extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
@@ -49,7 +49,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<?>,
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkDecodingResultSrlzPacketOperationData<T>,
+                        WkResultSrlzPacketOperationData<T>,
                         XD, XO,
                         WkSzInputBytestreamBase<?>,
                         YS,
@@ -59,7 +59,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<?>,
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<T>,
                         YD, YO,
                         WkSzOutputBytestreamBase<?>,
                         D,
@@ -82,10 +82,10 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
     super(
           componentCore,
           WkSimplifiedDecodingRuntimeSrlzPacketOperationCtrl::new,
-          WkBasicDecodingResultSrlzPacketOperationData::new,
+          WkBasicResultSrlzPacketOperationData::new,
           deserializerFactory,
           WkSimplifiedEncodingRuntimeSrlzPacketOperationCtrl::new,
-          WkBasicEncodingResultSrlzPacketOperationData::empty,
+          WkBasicResultSrlzPacketOperationData::new,
           serializerFactory,
           body,
           serializableClass);

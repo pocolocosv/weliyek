@@ -30,7 +30,7 @@ import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzPacketOperationF
 public interface WkDynamicSequenceSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData,
+                        R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkDynamicSequenceSrlzStructDefinitionFrameNode<?,?,?,?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>,
                         ZO extends WkNumberSrlzPacketOperationFrameLeafNode<?,?,?,?,?>,

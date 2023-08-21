@@ -20,37 +20,37 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore;
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore;
+import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
-import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianLongSrlzInputNode;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
-import weliyek.serialization.number.WkSignedByteSrlzStructNode;
+import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
 import weliyek.serialization.number.WkSignedByteSrlzInputNode;
-import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
+import weliyek.serialization.number.WkSignedByteSrlzStructNode;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzInputNode;
-import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
+import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzInputNode;
+import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
 
 public class WkSzTstPrimitivesGroupPacketReader
         implements WkAggregatorSrlzInputPacketDecoderFrameNode<
                         WkSzTstPrimitivesGroup,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<WkSzTstPrimitivesGroup>,
+                        WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroup>,
                         WkSzTstPrimitivesGroupStructDefinition>
 {
 
@@ -151,7 +151,7 @@ public class WkSzTstPrimitivesGroupPacketReader
   }
 
   @Override
-  public Optional<WkDecodingResultSrlzPacketOperationData<WkSzTstPrimitivesGroup>> result() {
+  public Optional<WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroup>> result() {
     return this.operationCore.result();
   }
 

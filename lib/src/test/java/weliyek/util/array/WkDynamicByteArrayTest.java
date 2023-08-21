@@ -218,7 +218,7 @@ public class WkDynamicByteArrayTest
                                 .size().field().get()
                                 .firstOperation().get()
                                 .result().get()
-                                .deserialized().get().intValue());
+                                .serializable().get().intValue());
     logger.info(DYNAMIC_BYTE_ARRAY.definition().variableSequence().field().definition() + " reading started");
     while(dynArrayReading.isInProgress()) {
       dynArrayReading.processBytestream();
@@ -231,10 +231,10 @@ public class WkDynamicByteArrayTest
                  dynArrayReading.firstOperation().get()
                                 .variableSequence().field().get()
                                 .firstOperation().get()
-                                .result().get().deserialized().get());
+                                .result().get().serializable().get());
     assertEquals(VALID_ARRAY_WRAPPER,
                  dynArrayReading.firstOperation().get()
-                                .result().get().deserialized().get());
+                                .result().get().serializable().get());
   }
 
 }

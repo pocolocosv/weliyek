@@ -18,20 +18,20 @@
 package weliyek.serialization.string;
 
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.util.array.WkPrimitiveArraySrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkPrimitiveArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
 
 public interface WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<String>,
+                        XR extends WkResultSrlzPacketOperationData<String>,
                         XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,? extends SXD>,
                         SX extends WkPrimitiveArray<?,?>,
                         SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SX>,
@@ -51,7 +51,7 @@ public interface WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<
         && stringReading.primitiveArray().field().get().isCompleted()
         && stringReading.primitiveArray().field().get().firstOperation().isPresent()
         && stringReading.primitiveArray().field().get().firstOperation().get().result().isPresent()
-        && stringReading.primitiveArray().field().get().firstOperation().get().result().get().deserialized().isPresent()) {
+        && stringReading.primitiveArray().field().get().firstOperation().get().result().get().serializable().isPresent()) {
       return true;
     }
     return false;

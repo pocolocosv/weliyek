@@ -42,12 +42,12 @@ public class WkSzTstPrimitivesGroup
 
     WkSzTstPrimitivesGroup(WkSzTstPrimitivesGroupPacketReader deserializer) {
       this(
-          deserializer.byteReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get().byteValue(),
-          deserializer.shortReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get().shortValue(),
-          deserializer.intReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get().intValue(),
-          deserializer.longReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get().longValue(),
-          deserializer.fixedStrReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get(),
-          deserializer.dynStrReadingSubfield.field().get().firstOperation().get().result().get().deserialized().get());
+          deserializer.byteReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().byteValue(),
+          deserializer.shortReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().shortValue(),
+          deserializer.intReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().intValue(),
+          deserializer.longReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().longValue(),
+          deserializer.fixedStrReadingSubfield.field().get().firstOperation().get().result().get().serializable().get(),
+          deserializer.dynStrReadingSubfield.field().get().firstOperation().get().result().get().serializable().get());
     }
 
     WkSzTstPrimitivesGroup(byte b, short s, int i, long l, String fixedLengthStr, String varLengthStr) {

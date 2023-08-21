@@ -17,20 +17,20 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNodeCore;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSzInputBytestreamBase;
 
 public abstract class WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends Number,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<X>,
+                        XR extends WkResultSrlzPacketOperationData<X>,
                         XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
                         XOC extends WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkNumberSrlzStructDefinitionFrameLeafNode<X>,

@@ -20,28 +20,28 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
+import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzOutputNode;
+import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
 
 public class WkTstPrimitivesGroupListSrlzOutputNode
     implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         WkSzTstPrimitivesGroupList,
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroupList>,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         Integer,
                         WkSignedLittleEndianIntegerSrlzOutputNode,
@@ -111,7 +111,7 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
     }
 
     @Override
-    public Optional<WkEncodingResultSrlzPacketOperationData> result() {
+    public Optional<WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroupList>> result() {
       return this.writingCore.result();
     }
 

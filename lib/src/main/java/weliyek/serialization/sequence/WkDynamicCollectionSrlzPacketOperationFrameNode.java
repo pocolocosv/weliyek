@@ -28,7 +28,7 @@ import weliyek.util.array.WkDynamicSequenceSrlzPacketOperationFrameNode;
 public interface WkDynamicCollectionSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData,
+                        R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkDynamicCollectionSrlzStructDefinitionFrameNode<?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>,
                         ZO extends WkNumberSrlzPacketOperationFrameLeafNode<?,?,?,?,?>,

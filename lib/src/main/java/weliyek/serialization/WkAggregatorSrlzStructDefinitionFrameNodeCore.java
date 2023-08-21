@@ -31,7 +31,7 @@ public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
-                        XR extends WkDecodingResultSrlzPacketOperationData<T>,
+                        XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
                                         T,XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD>,
@@ -40,7 +40,7 @@ public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
-                        YR extends WkEncodingResultSrlzPacketOperationData,
+                        YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD>,
@@ -74,7 +74,7 @@ public abstract class WkAggregatorSrlzStructDefinitionFrameNodeCore<
     BiFunction<XO,T,XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
     Function<AYBC,YQC> txRuntimeFactory,
-    Function<YO,YR> txResultFactory,
+    BiFunction<YO,T,YR> txResultFactory,
     WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYBC> writingOpFactory,
     D definitionBody,
     Class<T> serializableClass) {

@@ -17,13 +17,13 @@
  */
 package weliyek.serialization.string;
 
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
@@ -32,7 +32,7 @@ public class SimpleStringFromBytesWritingCore<
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                                       YS,
                                       WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                      WkEncodingResultSrlzPacketOperationData,
+                                      WkResultSrlzPacketOperationData<String>,
                                       YD,SYD,SYO>,
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SYS extends WkSettingsSrlzPacketOperationData,
@@ -47,7 +47,7 @@ public class SimpleStringFromBytesWritingCore<
                           WkSzOutputBytestream,
                           WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<String>,
                         YO,
                         SimpleStringFromBytesWritingCore<YS,YO,YD,SYS,SYO,SYD>,
                         YD,

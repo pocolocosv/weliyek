@@ -20,15 +20,15 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
+import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 
 public class WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends WkPrimitiveArray<?,?>,
@@ -38,7 +38,7 @@ public class WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                                           X,
                                           XS,
                                           WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                          WkDecodingResultSrlzPacketOperationData<X>,
+                                          WkResultSrlzPacketOperationData<X>,
                                           D>>
     extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         X,
@@ -48,7 +48,7 @@ public class WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                           WkSzInputBytestream,
                           WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                           WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkDecodingResultSrlzPacketOperationData<X>,
+                        WkResultSrlzPacketOperationData<X>,
                         XO,
                         WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<X,XS,D,XO>,
                         D,

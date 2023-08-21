@@ -116,7 +116,7 @@ public class WkTstMultipleListSrlzStructNode
                                                   axo.size().field().get()
                                                   .firstOperation().get()
                                                   .result().get()
-                                                  .deserialized().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
+                                                  .serializable().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
                                   WkSettingsSrlzPacketOperationData::none, //collectionAndElementsSerializerSettingsFactory,
                                   "PRIMITIVELIST", //elementFieldLabel,
                                   (pc) -> new WkTstPrimitivesGroupListSrlzStructNode(pc).fieldCore,

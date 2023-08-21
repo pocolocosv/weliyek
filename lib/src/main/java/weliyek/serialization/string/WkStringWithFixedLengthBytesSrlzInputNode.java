@@ -21,23 +21,23 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkDecodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSzInputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkFixedSizeByteArraySrlzStructNode;
 import weliyek.util.array.WkFixedSizeByteArraySrlzInputNode;
+import weliyek.util.array.WkFixedSizeByteArraySrlzStructNode;
 
 public class WkStringWithFixedLengthBytesSrlzInputNode
     implements WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingResultSrlzPacketOperationData<String>,
+                        WkResultSrlzPacketOperationData<String>,
                         WkStringWithFixedLengthBytesSrlzStructNode,
                         WkFixedSizeByteArraySrlzStructNode,
                         WkFixedSizeByteArraySrlzInputNode>
@@ -100,7 +100,7 @@ public class WkStringWithFixedLengthBytesSrlzInputNode
   }
 
   @Override
-  public Optional<WkDecodingResultSrlzPacketOperationData<String>> result() {
+  public Optional<WkResultSrlzPacketOperationData<String>> result() {
     return this.operationCore.result();
   }
 

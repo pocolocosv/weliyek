@@ -24,7 +24,7 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSrlzStructDefinitionFrameNode<T>,
                         XO extends WkSrlzInputPacketDecoderFrameNode<
-                                        T,XS,?,? extends WkDecodingResultSrlzPacketOperationData<T>,XD>,
+                                        T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         AXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
     extends WkSrlzPacketFieldFrameNodeCore<
@@ -61,10 +61,10 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
 
   private static
   <XX,
-   OO extends WkSrlzInputPacketDecoderFrameNode<?,?,?,? extends WkDecodingResultSrlzPacketOperationData<XX>,?>>
+   OO extends WkSrlzInputPacketDecoderFrameNode<?,?,?,? extends WkResultSrlzPacketOperationData<XX>,?>>
   XX getDeserializedFromReadingOp(OO readingOp) {
-    final WkDecodingResultSrlzPacketOperationData<XX> result = readingOp.result().get();
-    return result.deserialized().get();
+    final WkResultSrlzPacketOperationData<XX> result = readingOp.result().get();
+    return result.serializable().get();
   }
 
   protected abstract WkSrlzFilterResults filterResults();

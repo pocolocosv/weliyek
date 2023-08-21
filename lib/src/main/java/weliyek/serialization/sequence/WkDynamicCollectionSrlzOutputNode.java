@@ -21,18 +21,18 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkEncodingResultSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSzOutputBytestream;
+import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
 
 public class WkDynamicCollectionSrlzOutputNode<
                         T extends Collection<ET>,
@@ -51,7 +51,7 @@ public class WkDynamicCollectionSrlzOutputNode<
     implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         T, YS,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingResultSrlzPacketOperationData,
+                        WkResultSrlzPacketOperationData<T>,
                         WkDynamicCollectionSrlzStructNode<
                           T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                         ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>
@@ -62,7 +62,7 @@ public class WkDynamicCollectionSrlzOutputNode<
                         WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                           T, YS,
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                          WkEncodingResultSrlzPacketOperationData,
+                          WkResultSrlzPacketOperationData<T>,
                           WkDynamicCollectionSrlzStructNode<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -79,7 +79,7 @@ public class WkDynamicCollectionSrlzOutputNode<
       ?,?,?> packetfieldCore,
     WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<
       T,?,?,?,YS,
-      WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T,YS,WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,WkEncodingResultSrlzPacketOperationData,
+      WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T,YS,WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,WkResultSrlzPacketOperationData<T>,
         WkDynamicCollectionSrlzStructNode<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
         ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
       WkDynamicCollectionSrlzStructNode<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
@@ -89,7 +89,7 @@ public class WkDynamicCollectionSrlzOutputNode<
                                 WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                                   T, YS,
                                   WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                  WkEncodingResultSrlzPacketOperationData,
+                                  WkResultSrlzPacketOperationData<T>,
                                   WkDynamicCollectionSrlzStructNode<
                                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                   ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -135,7 +135,7 @@ public class WkDynamicCollectionSrlzOutputNode<
   }
 
   @Override
-  public Optional<WkEncodingResultSrlzPacketOperationData> result() {
+  public Optional<WkResultSrlzPacketOperationData<T>> result() {
     return this.operationCore.result();
   }
 

@@ -37,6 +37,15 @@ class WkBitcoinCommandTest
   }
 
   @Test
+  void testUnknownButValidLength() {
+    byte[] bytesarray = new byte[] {'u','n','k','n','o','w','n',0,0,0,0,0};
+    WkBitcoinCommand unknown = WkBitcoinCommand.newCommand(bytesarray);
+    assertNotNull(unknown);
+    unknown.bytes.equalsToArray(bytesarray);
+    assertFalse(WkBitcoinCommand.COMMAND_BY_BYTES.containsKey(unknown.bytes));
+  }
+
+  @Test
   void testVersion() {
     byte[] bytesarray = new byte[] {'v','e','r','s','i','o','n',0,0,0,0,0};
     assertTrue(WkBitcoinCommand.VERSION.bytes.equalsToArray(bytesarray));

@@ -45,7 +45,7 @@ public class WkBitcoinCommand
         if (CANONICAL_LENGTH != wrapper.getLength())
             throw new IllegalArgumentException();
         // Get existing instance if possible.
-        WkBitcoinCommand cmd = CMD_BY_NAME.get(wrapper);
+        WkBitcoinCommand cmd = COMMAND_BY_BYTES.get(wrapper);
         if (null == cmd)
             cmd = new WkBitcoinCommand(wrapper);
         return cmd;
@@ -93,40 +93,40 @@ public class WkBitcoinCommand
      * We use the type {@link WkByteArray} because most of the time it will
      * likely be this type of object that will be used over the byte[]. 
      */
-    private static final Map<WkByteArray, WkBitcoinCommand> CMD_BY_NAME;
+    public static final Map<WkByteArray, WkBitcoinCommand> COMMAND_BY_BYTES;
 
     static {
-        CMD_BY_NAME = new HashMap<>();
-        CMD_BY_NAME.put(VERSION.bytes,     VERSION);
-        CMD_BY_NAME.put(VERACK.bytes,      VERACK);
-        CMD_BY_NAME.put(ADDR.bytes,        ADDR);
-        CMD_BY_NAME.put(INV.bytes,         INV);
-        CMD_BY_NAME.put(GETDATA.bytes,     GETDATA);
-        CMD_BY_NAME.put(NOTFOUND.bytes,    NOTFOUND);
-        CMD_BY_NAME.put(GETBLOCKS.bytes,   GETBLOCKS);
-        CMD_BY_NAME.put(GETHEADERS.bytes,  GETHEADERS);
-        CMD_BY_NAME.put(TX.bytes,          TX);
-        CMD_BY_NAME.put(BLOCK.bytes,       BLOCK);
-        CMD_BY_NAME.put(HEADERS.bytes,     HEADERS);
-        CMD_BY_NAME.put(GETADDR.bytes,     GETADDR);
-        CMD_BY_NAME.put(MEMPOOL.bytes,     MEMPOOL);
-        CMD_BY_NAME.put(CHECKORDER.bytes,  CHECKORDER);
-        CMD_BY_NAME.put(SUBMITORDER.bytes, SUBMITORDER);
-        CMD_BY_NAME.put(REPLY.bytes,       REPLY);
-        CMD_BY_NAME.put(PING.bytes,        PING);
-        CMD_BY_NAME.put(PONG.bytes,        PONG);
-        CMD_BY_NAME.put(REJECT.bytes,      REJECT);
-        CMD_BY_NAME.put(FILTERLOAD.bytes,  FILTERLOAD);
-        CMD_BY_NAME.put(FILTERADD.bytes,   FILTERADD);
-        CMD_BY_NAME.put(FILTERCLEAR.bytes, FILTERCLEAR);
-        CMD_BY_NAME.put(MERKLEBLOCK.bytes, MERKLEBLOCK);
-        CMD_BY_NAME.put(ALERT.bytes,       ALERT);
-        CMD_BY_NAME.put(SENDHEADERS.bytes, SENDHEADERS);
-        CMD_BY_NAME.put(FEEFILTER.bytes,   FEEFILTER);
-        CMD_BY_NAME.put(SENDCMPCT.bytes,   SENDCMPCT);
-        CMD_BY_NAME.put(CMPCTBLOCK.bytes,  CMPCTBLOCK);
-        CMD_BY_NAME.put(GETBLOCKTXN.bytes, GETBLOCKTXN);
-        CMD_BY_NAME.put(BLOCKTXN.bytes,    BLOCKTXN);
+        COMMAND_BY_BYTES = new HashMap<>();
+        COMMAND_BY_BYTES.put(VERSION.bytes,     VERSION);
+        COMMAND_BY_BYTES.put(VERACK.bytes,      VERACK);
+        COMMAND_BY_BYTES.put(ADDR.bytes,        ADDR);
+        COMMAND_BY_BYTES.put(INV.bytes,         INV);
+        COMMAND_BY_BYTES.put(GETDATA.bytes,     GETDATA);
+        COMMAND_BY_BYTES.put(NOTFOUND.bytes,    NOTFOUND);
+        COMMAND_BY_BYTES.put(GETBLOCKS.bytes,   GETBLOCKS);
+        COMMAND_BY_BYTES.put(GETHEADERS.bytes,  GETHEADERS);
+        COMMAND_BY_BYTES.put(TX.bytes,          TX);
+        COMMAND_BY_BYTES.put(BLOCK.bytes,       BLOCK);
+        COMMAND_BY_BYTES.put(HEADERS.bytes,     HEADERS);
+        COMMAND_BY_BYTES.put(GETADDR.bytes,     GETADDR);
+        COMMAND_BY_BYTES.put(MEMPOOL.bytes,     MEMPOOL);
+        COMMAND_BY_BYTES.put(CHECKORDER.bytes,  CHECKORDER);
+        COMMAND_BY_BYTES.put(SUBMITORDER.bytes, SUBMITORDER);
+        COMMAND_BY_BYTES.put(REPLY.bytes,       REPLY);
+        COMMAND_BY_BYTES.put(PING.bytes,        PING);
+        COMMAND_BY_BYTES.put(PONG.bytes,        PONG);
+        COMMAND_BY_BYTES.put(REJECT.bytes,      REJECT);
+        COMMAND_BY_BYTES.put(FILTERLOAD.bytes,  FILTERLOAD);
+        COMMAND_BY_BYTES.put(FILTERADD.bytes,   FILTERADD);
+        COMMAND_BY_BYTES.put(FILTERCLEAR.bytes, FILTERCLEAR);
+        COMMAND_BY_BYTES.put(MERKLEBLOCK.bytes, MERKLEBLOCK);
+        COMMAND_BY_BYTES.put(ALERT.bytes,       ALERT);
+        COMMAND_BY_BYTES.put(SENDHEADERS.bytes, SENDHEADERS);
+        COMMAND_BY_BYTES.put(FEEFILTER.bytes,   FEEFILTER);
+        COMMAND_BY_BYTES.put(SENDCMPCT.bytes,   SENDCMPCT);
+        COMMAND_BY_BYTES.put(CMPCTBLOCK.bytes,  CMPCTBLOCK);
+        COMMAND_BY_BYTES.put(GETBLOCKTXN.bytes, GETBLOCKTXN);
+        COMMAND_BY_BYTES.put(BLOCKTXN.bytes,    BLOCKTXN);
     }
 
     public final WkByteArray bytes;

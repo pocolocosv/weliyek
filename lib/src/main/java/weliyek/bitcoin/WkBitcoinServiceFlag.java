@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * Mirrors ServiceFlags enum type in bitcoin's protocol.h.
  */
-public enum BitcoinServiceFlag
+public enum WkBitcoinServiceFlag
 {
     //NODE_NONE   (0),
     NODE_NETWORK((long)1 << 0),
@@ -91,7 +91,7 @@ public enum BitcoinServiceFlag
     BIT62((long)1 << 62),
     BIT63((long)1 << 63);
 
-    static final Map<Long, BitcoinServiceFlag> FLAG_BY_MASK;
+    static final Map<Long, WkBitcoinServiceFlag> FLAG_BY_MASK;
 
     static {
         FLAG_BY_MASK = new LinkedHashMap<>();
@@ -163,7 +163,7 @@ public enum BitcoinServiceFlag
 
     public final long bitmask;
 
-    private BitcoinServiceFlag(long mask) {
+    private WkBitcoinServiceFlag(long mask) {
         this.bitmask = mask;
     }
 

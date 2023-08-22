@@ -28,43 +28,43 @@ class WkBitcoinNodeServicesTest
     WkBitcoinNodeServices empty = new WkBitcoinNodeServices();
     assertTrue(empty.isEmpty());
 
-    WkBitcoinNodeServices nodeBloom = new WkBitcoinNodeServices(BitcoinServiceFlag.NODE_BLOOM);
+    WkBitcoinNodeServices nodeBloom = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM);
     assertEquals(1, nodeBloom.size());
-    assertTrue(nodeBloom.contains(BitcoinServiceFlag.NODE_BLOOM));
+    assertTrue(nodeBloom.contains(WkBitcoinServiceFlag.NODE_BLOOM));
 
-    WkBitcoinNodeServices twoFlags = new WkBitcoinNodeServices(BitcoinServiceFlag.NODE_BLOOM, BitcoinServiceFlag.NODE_NETWORK);
+    WkBitcoinNodeServices twoFlags = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM, WkBitcoinServiceFlag.NODE_NETWORK);
     assertEquals(2, twoFlags.size());
-    assertTrue(twoFlags.contains(BitcoinServiceFlag.NODE_BLOOM));
-    assertTrue(twoFlags.contains(BitcoinServiceFlag.NODE_NETWORK));
+    assertTrue(twoFlags.contains(WkBitcoinServiceFlag.NODE_BLOOM));
+    assertTrue(twoFlags.contains(WkBitcoinServiceFlag.NODE_NETWORK));
   }
 
   @Test
   void testToLong() {
-    WkBitcoinNodeServices threeFlags = new WkBitcoinNodeServices(BitcoinServiceFlag.NODE_BLOOM, BitcoinServiceFlag.NODE_NETWORK, BitcoinServiceFlag.BIT09);
+    WkBitcoinNodeServices threeFlags = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM, WkBitcoinServiceFlag.NODE_NETWORK, WkBitcoinServiceFlag.BIT09);
     assertEquals(3, threeFlags.size());
     
     assertEquals(
-        BitcoinServiceFlag.NODE_BLOOM.bitmask 
-        | BitcoinServiceFlag.NODE_NETWORK.bitmask 
-        | BitcoinServiceFlag.BIT09.bitmask,
+        WkBitcoinServiceFlag.NODE_BLOOM.bitmask 
+        | WkBitcoinServiceFlag.NODE_NETWORK.bitmask 
+        | WkBitcoinServiceFlag.BIT09.bitmask,
         threeFlags.toLong());
   }
 
   @Test
   void testFromLong() {
     WkBitcoinNodeServices threeFlags = WkBitcoinNodeServices.fromLong(
-        BitcoinServiceFlag.NODE_BLOOM.bitmask 
-        | BitcoinServiceFlag.NODE_NETWORK.bitmask 
-        | BitcoinServiceFlag.BIT09.bitmask);
+        WkBitcoinServiceFlag.NODE_BLOOM.bitmask 
+        | WkBitcoinServiceFlag.NODE_NETWORK.bitmask 
+        | WkBitcoinServiceFlag.BIT09.bitmask);
     assertEquals(3, threeFlags.size());
-    assertTrue(threeFlags.contains(BitcoinServiceFlag.NODE_BLOOM));
-    assertTrue(threeFlags.contains(BitcoinServiceFlag.NODE_NETWORK));
-    assertTrue(threeFlags.contains(BitcoinServiceFlag.BIT09));
+    assertTrue(threeFlags.contains(WkBitcoinServiceFlag.NODE_BLOOM));
+    assertTrue(threeFlags.contains(WkBitcoinServiceFlag.NODE_NETWORK));
+    assertTrue(threeFlags.contains(WkBitcoinServiceFlag.BIT09));
   }
 
   @Test
   void testToString() {
-    WkBitcoinNodeServices twoFlags = new WkBitcoinNodeServices(BitcoinServiceFlag.NODE_BLOOM, BitcoinServiceFlag.NODE_NETWORK, BitcoinServiceFlag.BIT62);
+    WkBitcoinNodeServices twoFlags = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM, WkBitcoinServiceFlag.NODE_NETWORK, WkBitcoinServiceFlag.BIT62);
     assertEquals("NODE_NETWORK|NODE_BLOOM|BIT62", twoFlags.toString());
   }
 

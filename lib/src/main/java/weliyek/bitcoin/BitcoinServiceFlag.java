@@ -32,11 +32,11 @@ public enum BitcoinServiceFlag
     NODE_WITNESS((long)1 << 3),
     NODE_XTHIN  ((long)1 << 4),
     BIT05((long)1 <<  5),
-    BIT06((long)1 <<  6),
+    NODE_COMPACT_FILTERS((long)1 <<  6),
     BIT07((long)1 <<  7),
     BIT08((long)1 <<  8),
     BIT09((long)1 <<  9),
-    BIT10((long)1 << 10),
+    NODE_NETWORK_LIMITED((long)1 << 10),
     BIT11((long)1 << 11),
     BIT12((long)1 << 12),
     BIT13((long)1 << 13),
@@ -101,11 +101,11 @@ public enum BitcoinServiceFlag
         FLAG_BY_MASK.put(NODE_WITNESS.bitmask, NODE_WITNESS);
         FLAG_BY_MASK.put(NODE_XTHIN.bitmask,   NODE_XTHIN);
         FLAG_BY_MASK.put(BIT05.bitmask,   BIT05);
-        FLAG_BY_MASK.put(BIT06.bitmask,   BIT06);
+        FLAG_BY_MASK.put(NODE_COMPACT_FILTERS.bitmask,   NODE_COMPACT_FILTERS);
         FLAG_BY_MASK.put(BIT07.bitmask,   BIT07);
         FLAG_BY_MASK.put(BIT08.bitmask,   BIT08);
         FLAG_BY_MASK.put(BIT09.bitmask,   BIT09);
-        FLAG_BY_MASK.put(BIT10.bitmask,   BIT10);
+        FLAG_BY_MASK.put(NODE_NETWORK_LIMITED.bitmask,   NODE_NETWORK_LIMITED);
         FLAG_BY_MASK.put(BIT11.bitmask,   BIT11);
         FLAG_BY_MASK.put(BIT12.bitmask,   BIT12);
         FLAG_BY_MASK.put(BIT13.bitmask,   BIT13);

@@ -36,22 +36,22 @@ public class BtcProtoFieldService<C extends MessageContext>
                          Long,
                          Number,
                          LittleEndianLongField<C>,
-                         BitcoinNodeServices,
-                         BitcoinNodeServices,
+                         WkBitcoinNodeServices,
+                         WkBitcoinNodeServices,
                          DeserializedBuilder
-                             <BitcoinNodeServices,
-                              ReadData<C, BitcoinNodeServices>,
+                             <WkBitcoinNodeServices,
+                              ReadData<C, WkBitcoinNodeServices>,
                               BtcProtoFieldService<C>>,
-                         WriteData<C, BitcoinNodeServices>,
-                         ReadData<C, BitcoinNodeServices>,
+                         WriteData<C, WkBitcoinNodeServices>,
+                         ReadData<C, WkBitcoinNodeServices>,
                          BtcProtoFieldService<C>>
 {
 
     public BtcProtoFieldService(Collection<Field<C, ?, ?>> requiredFields) {
         super(
                 "SERVICE",
-                BitcoinNodeServices.class,
-                BitcoinNodeServices.class,
+                WkBitcoinNodeServices.class,
+                WkBitcoinNodeServices.class,
                 () -> (f,r) -> f.newServices(r),
                 SimpleSubfield.withStandardFieldData(
                         new LittleEndianLongField<>(Collections.emptyList()),
@@ -64,9 +64,9 @@ public class BtcProtoFieldService<C extends MessageContext>
         return subfield();
     }
 
-    private BitcoinNodeServices newServices(ReadData<C, BitcoinNodeServices> readData) {
+    private WkBitcoinNodeServices newServices(ReadData<C, WkBitcoinNodeServices> readData) {
         Number val = readData.getLatestDeserializedOrThrow(this.subfield());
-        return BitcoinNodeServices.fromLong(val.longValue());
+        return WkBitcoinNodeServices.fromLong(val.longValue());
     }
 
     @Override

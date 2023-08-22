@@ -27,7 +27,7 @@ public interface BitcoinMsgVersionRW
     /**
      * Sets features to be enabled for the connection
      */
-    void setServices(BitcoinNodeServices s);
+    void setServices(WkBitcoinNodeServices s);
 
     /**
      * @return The standard UNIX timestamp in seconds

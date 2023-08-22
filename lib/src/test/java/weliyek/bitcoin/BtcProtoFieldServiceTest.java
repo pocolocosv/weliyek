@@ -40,7 +40,7 @@ import weliyek.amat2.protocol.field.data.ReadData;
 import weliyek.amat2.protocol.field.data.ReadDataBuilder;
 import weliyek.amat2.protocol.field.data.WriteData;
 import weliyek.amat2.protocol.field.data.WriteDataBuilder;
-import weliyek.bitcoin.BitcoinNodeServices;
+import weliyek.bitcoin.WkBitcoinNodeServices;
 import weliyek.bitcoin.BitcoinServiceFlag;
 import weliyek.bitcoin.BtcProtoContext;
 import weliyek.bitcoin.BtcProtoFieldService;
@@ -55,19 +55,19 @@ class BtcProtoFieldServiceTest
 
     private static Protocol<BtcProtoContext,
                             BtcProtoFieldService<BtcProtoContext>,
-                            BitcoinNodeServices,
-                            BitcoinNodeServices,
-                            WriteData<BtcProtoContext, BitcoinNodeServices>,
-                            ReadData<BtcProtoContext, BitcoinNodeServices>,
+                            WkBitcoinNodeServices,
+                            WkBitcoinNodeServices,
+                            WriteData<BtcProtoContext, WkBitcoinNodeServices>,
+                            ReadData<BtcProtoContext, WkBitcoinNodeServices>,
                             WriteDataBuilder
                                 <BtcProtoContext,
-                                 BitcoinNodeServices,
-                                 WriteData<BtcProtoContext, BitcoinNodeServices>,
+                                 WkBitcoinNodeServices,
+                                 WriteData<BtcProtoContext, WkBitcoinNodeServices>,
                                  BtcProtoFieldService<BtcProtoContext>>,
                             ReadDataBuilder
                                 <BtcProtoContext,
-                                 BitcoinNodeServices,
-                                 ReadData<BtcProtoContext, BitcoinNodeServices>,
+                                 WkBitcoinNodeServices,
+                                 ReadData<BtcProtoContext, WkBitcoinNodeServices>,
                                  BtcProtoFieldService<BtcProtoContext>>> PROTOCOL;
 
     final static byte[] BYTES = new byte[] { (byte)0xBF, (byte)0xAA, (byte)0xAA, (byte)0xAA,
@@ -94,12 +94,12 @@ class BtcProtoFieldServiceTest
         ByteArrayInputStream input = new ByteArrayInputStream(BYTES);
         ReadOperationDataStore<BtcProtoContext> allReadInfo1 = PROTOCOL.read(mock(BtcProtoContext.class), input, (a,b) -> {});
         assertNotNull(allReadInfo1);
-        ReadOperationSequence<BtcProtoContext, BitcoinNodeServices> infoList = allReadInfo1.getLastReadSequenceFor(SERVICES_FIELD);
+        ReadOperationSequence<BtcProtoContext, WkBitcoinNodeServices> infoList = allReadInfo1.getLastReadSequenceFor(SERVICES_FIELD);
         assertNotNull(infoList);
-        Optional<ReadData<BtcProtoContext, BitcoinNodeServices>> servicesInfo = infoList.getLatestOpResult();
+        Optional<ReadData<BtcProtoContext, WkBitcoinNodeServices>> servicesInfo = infoList.getLatestOpResult();
         assertTrue(servicesInfo.isPresent());
         assertTrue(servicesInfo.get().deserialized().isPresent());
-        BitcoinNodeServices readServices1 = servicesInfo.get().deserialized().get();
+        WkBitcoinNodeServices readServices1 = servicesInfo.get().deserialized().get();
         assertEquals(BIT_COUNT, readServices1.size());
         assertTrue(readServices1.contains(BitcoinServiceFlag.NODE_NETWORK));
         assertTrue(readServices1.contains(BitcoinServiceFlag.NODE_GETUTXO));
@@ -144,7 +144,7 @@ class BtcProtoFieldServiceTest
 
         logger.info("=== Reading back EnumSet<" + BitcoinServiceFlag.class.getSimpleName() + "> from OutputStream ===");
         ReadOperationDataStore<BtcProtoContext> allReadInfo2 = PROTOCOL.read(mock(BtcProtoContext.class), output.inputStream(), (a,b) -> {});
-        BitcoinNodeServices readServices2 = allReadInfo2.getLatestDeserializedOrThrow(SERVICES_FIELD);
+        WkBitcoinNodeServices readServices2 = allReadInfo2.getLatestDeserializedOrThrow(SERVICES_FIELD);
         assertEquals(readServices1, readServices2);
     }
 

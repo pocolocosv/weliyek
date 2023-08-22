@@ -33,7 +33,7 @@ public class BitcoinMsgVersionSerializer
     {
         final WkBitcoinProtocolVersion ver = WkBitcoinProtocolVersion.readFrom(in, versionKernel.versionValueNamespace);
         versionKernel.setVersion(ver);
-        final BitcoinNodeServices services = BitcoinNodeServices.readFrom(in, versionKernel.servicesNamespace);
+        final WkBitcoinNodeServices services = WkBitcoinNodeServices.readFrom(in, versionKernel.servicesNamespace);
         versionKernel.setServices(services);
         final long timestamp = AmatProtocolUtil.readLittleEndianLong(in, versionKernel.timestampNamespace);
         versionKernel.setTimestamp(timestamp);

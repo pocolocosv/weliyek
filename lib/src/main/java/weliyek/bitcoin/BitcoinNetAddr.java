@@ -40,14 +40,14 @@ public class BitcoinNetAddr
 
     public final Inet6Address address;
 
-    public final BitcoinNodeServices services;
+    public final WkBitcoinNodeServices services;
 
     public final int port;
 
     public final Optional<Long> time;
 
     public BitcoinNetAddr(Inet6Address        addr,
-                          BitcoinNodeServices services,
+                          WkBitcoinNodeServices services,
                           int                 port,
                           Optional<Long>      time)
     {
@@ -101,7 +101,7 @@ public class BitcoinNetAddr
                                           AmatNamespace          portNamespace)
     {
         Optional<Long> time = readTime(version, command, in, timeNamespace);
-        final BitcoinNodeServices srvcs = BitcoinNodeServices.readFrom(in, servicesNamespace);
+        final WkBitcoinNodeServices srvcs = WkBitcoinNodeServices.readFrom(in, servicesNamespace);
         final Inet6Address addr = AmatProtocolUtil.readInet6Address(in, inetAddrNamespace);
         final int prt = AmatProtocolUtil.readBigEndianShort(in, portNamespace);
         return new BitcoinNetAddr(addr, srvcs, prt, time);

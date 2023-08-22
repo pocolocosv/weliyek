@@ -25,7 +25,7 @@ public interface BitcoinMsgVersion extends BitcoinMsgPayload
     /**
      * @return Features to be enabled for the connection
      */
-    BitcoinNodeServices services();
+    WkBitcoinNodeServices services();
 
     /**
      * @return The standard UNIX timestamp in seconds

@@ -34,7 +34,7 @@ public class BitcoinProtocolMessageFieldNodeServicesSerializer
                                 OutputStream out,
                                 SerializableConfig config)
     {
-        BitcoinNodeServices services = servicesField.value();
+        WkBitcoinNodeServices services = servicesField.value();
         services.writeTo(out, servicesField.namespace());
     }
 
@@ -43,7 +43,7 @@ public class BitcoinProtocolMessageFieldNodeServicesSerializer
                                   InputStream in,
                                   SerializableConfig config)
     {
-        BitcoinNodeServices services = BitcoinNodeServices.readFrom(in, servicesField.namespace());
+        WkBitcoinNodeServices services = WkBitcoinNodeServices.readFrom(in, servicesField.namespace());
         servicesField.commissionWithValue(services);
     }
 

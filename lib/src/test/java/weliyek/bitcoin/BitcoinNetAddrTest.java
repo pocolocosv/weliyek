@@ -34,7 +34,7 @@ import weliyek.amat.base.namespace.AmatNamespaceFactoryWithSimpleCache;
 import weliyek.amat.base.protocol.TestAmatName;
 import weliyek.bitcoin.WkBitcoinCommand;
 import weliyek.bitcoin.BitcoinNetAddr;
-import weliyek.bitcoin.BitcoinNodeServices;
+import weliyek.bitcoin.WkBitcoinNodeServices;
 import weliyek.bitcoin.BitcoinProtocolName;
 import weliyek.bitcoin.WkBitcoinProtocolVersion;
 import weliyek.bitcoin.BitcoinServiceFlag;
@@ -74,7 +74,7 @@ public class BitcoinNetAddrTest
                                                          new byte[] {0,0,0,0,0,0,0,0,0,0,(byte)0xFF,(byte)0xFF,10,0,0,1},
                                                          0);
 
-        final BitcoinNodeServices services = new BitcoinNodeServices(BitcoinServiceFlag.NODE_BLOOM, BitcoinServiceFlag.NODE_GETUTXO);
+        final WkBitcoinNodeServices services = new WkBitcoinNodeServices(BitcoinServiceFlag.NODE_BLOOM, BitcoinServiceFlag.NODE_GETUTXO);
         Optional<Long> time = Optional.of(Long.valueOf(0x0000_0000_1234_5678L));
         int port = 0x0000_1234;
         final BitcoinNetAddr netaddr = new BitcoinNetAddr(address, services, port, time);

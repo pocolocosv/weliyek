@@ -43,7 +43,7 @@ public class WkStringWithFixedLengthBytesSrlzOutputNode
                         WkFixedSizeByteArraySrlzOutputNode>
 {
 
-  final SimpleStringFromBytesWritingCore<
+  final WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
                         WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzOutputNode,
                         WkStringWithFixedLengthBytesSrlzStructNode,
@@ -58,12 +58,12 @@ public class WkStringWithFixedLengthBytesSrlzOutputNode
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
       String,?,WkStringWithFixedLengthBytesSrlzStructNode,?,?,?> serializingfieldCore,
-    SimplifiedStringFromBytesCore<
+    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
       ?,?,?,WkSettingsSrlzPacketOperationData,WkStringWithFixedLengthBytesSrlzOutputNode,
       WkStringWithFixedLengthBytesSrlzStructNode,?,?,?,WkSettingsSrlzPacketOperationData,
       WkFixedSizeByteArraySrlzOutputNode,WkFixedSizeByteArraySrlzStructNode,?,
       ? extends WkStringWithFixedLengthBytesSrlzStructNode> definitionCore) {
-    this.operationCore = new SimpleStringFromBytesWritingCore<WkSettingsSrlzPacketOperationData,
+    this.operationCore = new WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<WkSettingsSrlzPacketOperationData,
         WkStringWithFixedLengthBytesSrlzOutputNode,
         WkStringWithFixedLengthBytesSrlzStructNode,
         WkSettingsSrlzPacketOperationData,

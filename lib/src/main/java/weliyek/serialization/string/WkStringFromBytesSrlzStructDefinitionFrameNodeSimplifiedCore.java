@@ -45,7 +45,7 @@ import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
-public class SimplifiedStringFromBytesCore<
+public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                                         XS,
@@ -99,18 +99,18 @@ public class SimplifiedStringFromBytesCore<
                         SYO, SYD,
                         SD,
                         D,
-                        SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>>
+                        WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>>
 {
 
-  protected SimplifiedStringFromBytesCore(
+  protected WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore(
     Charset defaultCharset,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     WkSzPacketReaderOperationCoreFactory<
-      String,XS,XD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
+      String,XS,XD,WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       XO,WkSzInputBytestreamBase<?>>
         readingOpFactory,
     WkSzPacketWriterOperationCoreFactory<
-      String,YS,YD,SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
+      String,YS,YD,WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       YO,WkSzOutputBytestreamBase<?>>
         writingOpFactory,
     String bytesLabel,
@@ -145,7 +145,7 @@ public class SimplifiedStringFromBytesCore<
   }
 
   @Override
-  protected SimplifiedStringFromBytesCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>
+  protected WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>
   getThis() {
     return this;
   }

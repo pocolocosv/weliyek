@@ -135,7 +135,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
                         sizeDefinitionFactory).definitionCore;
   }
 
-  private final SimplifiedStringFromBytesCore<
+  private final WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         WkSettingsSrlzPacketOperationData,
                         WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
                         WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
@@ -164,7 +164,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
     WkSrlzStructDefinitionFrameNodeCoreFactory<
       ZT,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,ZYD,ZYO,
       WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
-    this.definitionCore = new SimplifiedStringFromBytesCore<
+    this.definitionCore = new WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                                   WkSettingsSrlzPacketOperationData,
                                   WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
                                   WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,

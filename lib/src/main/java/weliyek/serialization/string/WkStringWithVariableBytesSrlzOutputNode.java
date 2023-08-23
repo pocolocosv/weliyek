@@ -44,7 +44,7 @@ public class WkStringWithVariableBytesSrlzOutputNode
                         WkVariableSizeByteArraySrlzOutputNode>
 {
 
-  final SimpleStringFromBytesWritingCore<
+  final WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
                         WkSzOptionalLengthOperationSettings,
                         WkStringWithVariableBytesSrlzOutputNode,
                         WkStringWithVariableBytesSrlzStructNode,
@@ -59,12 +59,12 @@ public class WkStringWithVariableBytesSrlzOutputNode
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
       String,?,WkStringWithVariableBytesSrlzStructNode,?,?,?> serializingfieldCore,
-    SimplifiedStringFromBytesCore<
+    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
       ?,?,?,WkSzOptionalLengthOperationSettings,WkStringWithVariableBytesSrlzOutputNode,
       WkStringWithVariableBytesSrlzStructNode,?,?,?,WkSettingsSrlzPacketOperationData,
       WkVariableSizeByteArraySrlzOutputNode,WkVariableSizeByteArraySrlzStructNode,?,
       ? extends WkStringWithVariableBytesSrlzStructNode> definitionCore) {
-    this.operationCore = new SimpleStringFromBytesWritingCore<
+    this.operationCore = new WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
                                 WkSzOptionalLengthOperationSettings,
                                 WkStringWithVariableBytesSrlzOutputNode,
                                 WkStringWithVariableBytesSrlzStructNode,

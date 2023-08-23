@@ -48,7 +48,7 @@ public class WkStringWithDynamicBytesSrlzInputNode<
                         WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>>
 {
 
-  final SimplifiedStringFromBytesReadingCore<
+  final WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
                         WkSettingsSrlzPacketOperationData,
                         WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
                         WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
@@ -63,12 +63,12 @@ public class WkStringWithDynamicBytesSrlzInputNode<
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<String,?,WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?>
       deserializingfieldCore,
-    SimplifiedStringFromBytesCore<
+    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
       WkSettingsSrlzPacketOperationData,WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
       WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?,
       WkSettingsSrlzPacketOperationData,WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
       WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?,?,?> definitionCore) {
-    this.operationCore = new SimplifiedStringFromBytesReadingCore<
+    this.operationCore = new WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
         WkSettingsSrlzPacketOperationData,
         WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
         WkStringWithDynamicBytesSrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,

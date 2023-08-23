@@ -93,7 +93,7 @@ public class WkStringWithVariableBytesSrlzStructNode
     return new WkStringWithVariableBytesSrlzStructNode(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
   }
 
-  private final SimplifiedStringFromBytesCore<
+  private final WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         WkSzVariableLengthOperationSettings,
                         WkStringWithVariableBytesSrlzInputNode,
                         WkStringWithVariableBytesSrlzStructNode,
@@ -115,7 +115,7 @@ public class WkStringWithVariableBytesSrlzStructNode
     int maxSize,
     Charset defaultCharset,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
-    this.definitionCore = new SimplifiedStringFromBytesCore<>(
+    this.definitionCore = new WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<>(
                                     defaultCharset,
                                     componentCore,
                                     (i,xs,axb,xpc,dc) -> new WkStringWithVariableBytesSrlzInputNode(i,xs,axb,xpc,dc).operationCore,

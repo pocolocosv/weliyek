@@ -27,7 +27,7 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
-public class SimplifiedStringFromBytesReadingCore<
+public class WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                                       XS,
@@ -49,18 +49,18 @@ public class SimplifiedStringFromBytesReadingCore<
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
                         WkResultSrlzPacketOperationData<String>,
                         XO,
-                        SimplifiedStringFromBytesReadingCore<XS,XO,XD,SXS,SXO,SXD>,
+                        WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<XS,XO,XD,SXS,SXO,SXD>,
                         XD,
                         WkSzInputBytestreamBase<?>, SXS, SXO, SXD,
-                        SimplifiedStringFromBytesCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?>>
+                        WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?>>
 {
 
-  public SimplifiedStringFromBytesReadingCore(
+  public WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<String,?,XD,?,?,?> packetfieldCore,
-    SimplifiedStringFromBytesCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
+    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
     XO operationBody) {
     super(
         index,
@@ -82,7 +82,7 @@ public class SimplifiedStringFromBytesReadingCore<
   }
 
   @Override
-  protected SimplifiedStringFromBytesReadingCore<XS,XO,XD,SXS,SXO,SXD> getThis() {
+  protected WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<XS,XO,XD,SXS,SXO,SXD> getThis() {
     return this;
   }
 

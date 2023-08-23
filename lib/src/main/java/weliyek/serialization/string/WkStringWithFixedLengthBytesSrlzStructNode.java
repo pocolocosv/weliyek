@@ -94,7 +94,7 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
     return new WkStringWithFixedLengthBytesSrlzStructNode(bytesLabel, expectedSize, defaultCharset, componentCore).definitionCore;
   }
 
-  private final SimplifiedStringFromBytesCore<
+  private final WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         WkSettingsSrlzPacketOperationData,
                         WkStringWithFixedLengthBytesSrlzInputNode,
                         WkStringWithFixedLengthBytesSrlzStructNode,
@@ -116,7 +116,7 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
     Charset defaultCharset,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
 
-    this.definitionCore = new SimplifiedStringFromBytesCore<>(
+    this.definitionCore = new WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<>(
                                   defaultCharset,
                                   componentCore,
                                   (i,xs,axb,xpc,dc) -> new WkStringWithFixedLengthBytesSrlzInputNode(i,xs,axb,xpc,dc).operationCore,

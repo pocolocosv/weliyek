@@ -43,7 +43,7 @@ public class WkStringWithVariableBytesSrlzInputNode
                         WkVariableSizeByteArraySrlzInputNode>
 {
 
-  final SimplifiedStringFromBytesReadingCore<
+  final WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
                         WkSzVariableLengthOperationSettings,
                         WkStringWithVariableBytesSrlzInputNode,
                         WkStringWithVariableBytesSrlzStructNode,
@@ -57,11 +57,11 @@ public class WkStringWithVariableBytesSrlzInputNode
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
       String,?,WkStringWithVariableBytesSrlzStructNode,?,?,?> deserializingfieldCore,
-    SimplifiedStringFromBytesCore<
+    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
       WkSzVariableLengthOperationSettings,WkStringWithVariableBytesSrlzInputNode,
       WkStringWithVariableBytesSrlzStructNode,?,?,?,WkSzVariableLengthOperationSettings,
       WkVariableSizeByteArraySrlzInputNode,WkVariableSizeByteArraySrlzStructNode,?,?,?,?,?> definitionCore) {
-    this.operationCore = new SimplifiedStringFromBytesReadingCore<
+    this.operationCore = new WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
                                 WkSzVariableLengthOperationSettings,
                                 WkStringWithVariableBytesSrlzInputNode,
                                 WkStringWithVariableBytesSrlzStructNode,

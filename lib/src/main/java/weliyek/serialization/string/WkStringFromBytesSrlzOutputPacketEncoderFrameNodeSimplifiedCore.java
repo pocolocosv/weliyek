@@ -27,7 +27,7 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
 
-public class SimpleStringFromBytesWritingCore<
+public class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
                         YS extends WkSettingsSrlzPacketOperationData,
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
                                       YS,
@@ -49,20 +49,20 @@ public class SimpleStringFromBytesWritingCore<
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
                         WkResultSrlzPacketOperationData<String>,
                         YO,
-                        SimpleStringFromBytesWritingCore<YS,YO,YD,SYS,SYO,SYD>,
+                        WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<YS,YO,YD,SYS,SYO,SYD>,
                         YD,
                         WkSzOutputBytestreamBase<?>,
                         SYS, SYO, SYD,
-                        SimplifiedStringFromBytesCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?>>
+                        WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?>>
 {
 
-  public SimpleStringFromBytesWritingCore(
+  public WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore(
     int index,
     String serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<String,?,YD,?,?,?> packetHandlerCore,
-    SimplifiedStringFromBytesCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
+    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
     YO operationBody) {
     super(
         index,
@@ -88,7 +88,7 @@ public class SimpleStringFromBytesWritingCore<
   */
 
   @Override
-  protected SimpleStringFromBytesWritingCore<YS,YO,YD,SYS,SYO,SYD> getThis() {
+  protected WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<YS,YO,YD,SYS,SYO,SYD> getThis() {
     return this;
   }
 

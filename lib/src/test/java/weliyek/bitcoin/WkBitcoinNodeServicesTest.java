@@ -20,8 +20,42 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzStruct;
+import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSzCountingInputBytestream;
+import weliyek.serialization.WkSzCountingOutputBytestream;
+import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSzInputPacket;
+import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSzOutputPacket;
+import weliyek.serialization.number.WkSignedLittleEndianLongSrlzInputNode;
+import weliyek.serialization.number.WkSignedLittleEndianLongSrlzOutputNode;
+import weliyek.serialization.number.WkSignedLittleEndianLongSrlzStructNode;
+import weliyek.serialization.util.KetzaByteOutputStream;
+
 class WkBitcoinNodeServicesTest
 {
+  
+
+  public static WkSrlzStruct<
+                        WkBitcoinNodeServices,
+                        WkSettingsSrlzPacketOperationData,
+                        WkBitcoinNodeServicesSrlzStructNode,
+                        WkBitcoinNodeServicesSrlzInputNode,
+                        WkSzInputBytestreamBase<?>,
+                        WkSettingsSrlzPacketOperationData,
+                        WkBitcoinNodeServicesSrlzStructNode,
+                        WkBitcoinNodeServicesSrlzOutputNode,
+                        WkSzOutputBytestreamBase<?>,
+                        WkBitcoinNodeServicesSrlzStructNode>
+  newStruct(String label) {
+    return new WkSrlzStructComponentFrameNodeRootCore<>(
+                      label,
+                      WkBitcoinNodeServicesSrlzStructNode::newCore,
+                      WkSzCountingInputBytestream::new,
+                      WkSzCountingOutputBytestream::new);
+  }
 
   @Test
   void testCtor() {
@@ -66,6 +100,34 @@ class WkBitcoinNodeServicesTest
   void testToString() {
     WkBitcoinNodeServices twoFlags = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM, WkBitcoinServiceFlag.NODE_NETWORK, WkBitcoinServiceFlag.BIT62);
     assertEquals("NODE_NETWORK|NODE_BLOOM|BIT62", twoFlags.toString());
+  }
+
+  @Test
+  void testSerialization() {
+    WkBitcoinNodeServices services = WkBitcoinNodeServices.fromLong(
+        WkBitcoinServiceFlag.NODE_BLOOM.bitmask 
+        | WkBitcoinServiceFlag.NODE_NETWORK.bitmask 
+        | WkBitcoinServiceFlag.BIT09.bitmask);
+    
+    KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
+    WkSrlzStruct<WkBitcoinNodeServices, WkSettingsSrlzPacketOperationData, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkBitcoinNodeServicesSrlzStructNode> 
+      servicesStruct = newStruct("SERVICES");
+    
+    WkSzOutputPacket<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode> servicesWrite = servicesStruct.newOutputPacket(services, WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer);
+    
+    servicesWrite.processBytestream();
+    
+    assertTrue(servicesWrite.isCompleted());
+    
+    assertEquals(8, outputBuffer.size());
+    
+    WkSzInputPacket<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode> servicesRead = servicesStruct.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer.inputStream());
+    
+    servicesRead.processBytestream();
+    
+    assertTrue(servicesRead.isCompleted());
+    
+    assertEquals(services, servicesRead.firstOperation().get().result().get().serializable().get());
   }
 
 }

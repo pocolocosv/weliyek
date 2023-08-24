@@ -69,6 +69,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
   final Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onInitializing;
   final Function<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>, T> onFullSerializing;
   final Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onSkippedDeserializing;
+  final Consumer<? super WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>> onOutputInitializing;
 
   public WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore(
     WkSzPacketReaderOperationCoreFactory<T, XS, XD, WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T, XS, XD, XO, YS, YD, YO, D>, XO, WkSzInputBytestreamBase<?>> deserializerFactory,
@@ -77,6 +78,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
     Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onInitializing,
     Function<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>, T> onFullDeserializing,
     Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onSkippedDeserializing,
+    Consumer<? super WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>> onOutputInitializing,
     D body,
     Class<T> serializableClass) {
     super(
@@ -92,6 +94,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
     this.onInitializing = Objects.requireNonNull(onInitializing);
     this.onFullSerializing = Objects.requireNonNull(onFullDeserializing);
     this.onSkippedDeserializing = Objects.requireNonNull(onSkippedDeserializing);
+    this.onOutputInitializing = Objects.requireNonNull(onOutputInitializing);
   }
 
   @Override

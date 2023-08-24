@@ -17,9 +17,6 @@
  */
 package weliyek.serialization;
 
-import java.util.Objects;
-import java.util.function.Consumer;
-
 public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -47,8 +44,6 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T,?,?,?,YS,YD,YO,?>>
 {
 
-  private Consumer<? super WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>> onInitializing;
-
   public WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore(
     int index,
     T serializable,
@@ -56,15 +51,13 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> serializingfieldCore,
     WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T,?,?,?,YS,YD,YO,?> definitionCore,
-    YO body,
-    Consumer<? super WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>> onInitializing) {
+    YO body) {
     super(index, serializable, settings, parentBytestream, serializingfieldCore, definitionCore, body);
-    this.onInitializing = Objects.requireNonNull(onInitializing);
   }
 
   @Override
   protected void onAggregatorInitialization() {
-    this.onInitializing.accept(getThis());
+    this.definitionCore().onOutputInitializing.accept(getThis());
   }
 
   @Override

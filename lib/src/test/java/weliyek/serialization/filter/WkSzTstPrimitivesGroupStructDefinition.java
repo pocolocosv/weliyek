@@ -183,8 +183,9 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                       (i,xs,axb,xpc,dc) -> new WkSzTstPrimitivesGroupPacketReader(i,xs,axb,xpc,dc).operationCore,
                                       (i,y,ys,ayb,ypc,dc) -> new WkSzTstPrimitivesGroupPacketWriter(i,y,ys,ayb,ypc,dc).operationCore,
                                       componentCore,
-                                      (oc) -> {},
-                                      (oc) -> new WkSzTstPrimitivesGroup(oc.body()),
+                                      (ic) -> {},
+                                      (ic) -> new WkSzTstPrimitivesGroup(ic.body()),
+                                      (ic) -> {},
                                       (oc) -> {},
                                       this,
                                       WkSzTstPrimitivesGroup.class);

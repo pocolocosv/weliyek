@@ -134,8 +134,7 @@ public class WkSzTstPrimitivesGroupPacketWriter
                                     parentBytestream,
                                     serializingFieldCore,
                                     definitionCore,
-                                    this,
-                                    (oc) -> {});
+                                    this);
     this.byteWritingSubfield = operationCore.getSubfieldpacketFor(definitionCore.definition().byteSubcomponent);
     this.shortWritingSubfield = operationCore.getSubfieldpacketFor(definitionCore.definition().shortSubcomponent);
     this.intWritingSubfield = operationCore.getSubfieldpacketFor(definitionCore.definition().intSubcomponent);

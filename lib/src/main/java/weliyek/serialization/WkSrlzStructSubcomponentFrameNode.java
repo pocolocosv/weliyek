@@ -21,6 +21,9 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
+import weliyek.serialization.tree.WkSerdeTreeNodeCtrl;
+import weliyek.serialization.tree.WkSerdeTreeNodeStruct;
+
 /**
  * Handles a child {@link WkSrlzStructComponentFrameNode} for a given data type {@link WkSrlzStructDefinitionFrameNode}.
  *  
@@ -32,8 +35,8 @@ public interface WkSrlzStructSubcomponentFrameNode<
                         AXO extends WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>,
                         AYO extends WkSrlzOutputPacketEncoderFrameNode<?,?,?,?,?>,
                         D extends WkSrlzStructDefinitionFrameNode<?>>
-    extends WkSrlzStructFrameNode,
-            WkSrlzCtrlFrameNode
+    extends WkSerdeTreeNodeStruct,
+            WkSerdeTreeNodeCtrl
 {
 
   default boolean isRxRequired() { return rxOptionalityTest().isEmpty(); }

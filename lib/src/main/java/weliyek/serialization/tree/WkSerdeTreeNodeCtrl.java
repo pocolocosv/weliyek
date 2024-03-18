@@ -15,14 +15,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization;
+package weliyek.serialization.tree;
 
-public interface WkSrlzOutputPacketFrameNode extends WkSrlzPacketFrameNode
+/**
+ * Weliyek Serde Tree Node that implements control logic to manage other nodes.
+ */
+public interface WkSerdeTreeNodeCtrl extends WkSerdeTreeNode
 {
-
-  @Override
-  default WkSzPacketDirection direction() {
-    return WkSzPacketDirection.WRITE;
-  }
 
 }

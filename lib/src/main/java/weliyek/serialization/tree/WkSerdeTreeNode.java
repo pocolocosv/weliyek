@@ -15,30 +15,35 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization;
+package weliyek.serialization.tree;
+
+import weliyek.serialization.WkSerdeTreeNodeDataInput;
+import weliyek.serialization.WkSerdeTreeNodeDataOutput;
+import weliyek.serialization.WkSrlzFrameNodeType;
 
 /**
- * Weliyek serialization frame node is used to describe the decoding and encoding of a given data
- * type using a tree of objects of this type. A tree of objects is referred as a frame.
- * 
- * There are two different types of trees, i.e. frames, for a given data type. These are:
+ * Weliyek Serialization and Deserialization Data Tree Node which is the most
+ * basic element used to represent and manage data that is to be serialized and
+ * deserialized.
+ *  
+ * There are two different types of trees for a given data type. These are:
  * 
  * <ul>
- *   <li>Structural frame: a tree of objects of type {@link WkSrlzStructFrameNode} that define the
+ *   <li>Structural Node: a tree of objects of type {@link WkSerdeTreeNodeStruct} that define the
  *       the structure of the type to be serialized including the rules and conditions to be 
  *       followed.</li>
- *   <li>Packet frame: a tree of objects of type {@link WkSrlzPacketFrameNode} that perform the
+ *   <li>Packet frame: a tree of objects of type {@link WkSerdeTreeNodeData} that perform the
  *       operations of decoding or encoding of a given data type using the rules defined in
  *       the structural frame tree. A packet frame can be further divided into two other types:</li>
  *   <ul>
- *     <li>Input packet frame: a tree of objects of type {@link WkSrlzInputPacketFrameNode} that
+ *     <li>Input packet frame: a tree of objects of type {@link WkSerdeTreeNodeDataInput} that
  *         decodes a given data type from a byte stream.</li>
- *     <li>Output packet frame: a tree of objects of type {@link WkSrlzOutputPacketFrameNode} that
+ *     <li>Output packet frame: a tree of objects of type {@link WkSerdeTreeNodeDataOutput} that
  *         encode a given data type into a byte stream.</li>
  *   </ul>
  * </ul>
  */
-public interface WkSrlzFrameNode
+public interface WkSerdeTreeNode
 {
 
   WkSrlzFrameNodeType type();

@@ -20,6 +20,8 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.tree.WkSerdeTreeNodeData;
+
 /**
  * An operation is in charge of managing the data and logic needed to serialize
  * a particular type.
@@ -36,8 +38,8 @@ public interface WkSrlzPacketOperationFrameNode<
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkSrlzStructDefinitionFrameNode<?>,
                         K extends WkSrlzPacketFieldFrameNode<?,?,?>>
-        extends WkSrlzPacketFrameNode,
-                WkSrlzDataFrameNode
+        extends WkSerdeTreeNodeData,
+                WkSerdeTreeNodeType
 {
 
   D definition();

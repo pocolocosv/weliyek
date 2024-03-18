@@ -22,7 +22,7 @@ package weliyek.serialization;
  * most of the time is a primitive or a collection of primitives. This is where the rubber meets
  * the road.
  */
-public interface WkSrlzDataFrameLeafNode extends WkSrlzDataFrameNode
+public interface WkSrlzDataFrameLeafNode extends WkSerdeTreeNodeType
 {
 
 }

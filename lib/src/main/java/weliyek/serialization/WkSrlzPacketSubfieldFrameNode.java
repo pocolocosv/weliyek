@@ -19,9 +19,12 @@ package weliyek.serialization;
 
 import java.util.Optional;
 
+import weliyek.serialization.tree.WkSerdeTreeNodeCtrl;
+import weliyek.serialization.tree.WkSerdeTreeNodeData;
+
 public interface WkSrlzPacketSubfieldFrameNode<K extends WkSrlzPacketFieldFrameNode<?,?,?>>
-    extends WkSrlzPacketFrameNode,
-            WkSrlzCtrlFrameNode
+    extends WkSerdeTreeNodeData,
+            WkSerdeTreeNodeCtrl
 {
 
   boolean isAwaitingActivation();

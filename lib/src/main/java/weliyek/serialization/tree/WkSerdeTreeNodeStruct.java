@@ -15,13 +15,15 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization;
+package weliyek.serialization.tree;
+
+import weliyek.serialization.WkSrlzFrameNodeType;
 
 /**
- * Weliyek serialization frame node that contains all rules necessary for the decoding or encoding
- * of a given data type.
+ * Weliyek serialization data tree node that contains all rules necessary for 
+ * the serialization and deserialization of a given data type.
  */
-public interface WkSrlzStructFrameNode extends WkSrlzFrameNode
+public interface WkSerdeTreeNodeStruct extends WkSerdeTreeNode
 {
 
   @Override

@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-public interface WkAggregatorSrlzFrameNode extends WkSrlzDataFrameNode
+public interface WkAggregatorSrlzFrameNode extends WkSerdeTreeNodeType
 {
 
 }

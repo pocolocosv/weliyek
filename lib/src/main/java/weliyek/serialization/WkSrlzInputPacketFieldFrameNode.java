@@ -25,7 +25,7 @@ public interface WkSrlzInputPacketFieldFrameNode<
                         XO extends WkSrlzInputPacketDecoderFrameNode<T,?,?,?,XD>>
     extends WkSrlzPacketFieldFrameNode<T, XO, XD>,
             WkSrlzPacketFilterableFrameNode,
-            WkSrlzInputPacketFrameNode
+            WkSerdeTreeNodeDataInput
 {
 
   /**

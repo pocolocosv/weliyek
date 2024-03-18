@@ -22,7 +22,7 @@ public interface WkSrlzOutputPacketFieldFrameNode<
                         D extends WkSrlzStructDefinitionFrameNode<T>,
                         O extends WkSrlzOutputPacketEncoderFrameNode<T,?,?,?,D>>
     extends WkSrlzPacketFieldFrameNode<T, O, D>,
-            WkSrlzOutputPacketFrameNode
+            WkSerdeTreeNodeDataOutput
 {
 
 }

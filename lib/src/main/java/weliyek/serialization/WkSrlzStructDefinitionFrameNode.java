@@ -20,9 +20,11 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.function.Predicate;
 
+import weliyek.serialization.tree.WkSerdeTreeNodeStruct;
+
 public interface WkSrlzStructDefinitionFrameNode<T>
-  extends WkSrlzStructFrameNode,
-          WkSrlzDataFrameNode
+  extends WkSerdeTreeNodeStruct,
+          WkSerdeTreeNodeType
 {
 
   Class<T> serializableClass();

@@ -31,7 +31,7 @@ public interface WkSrlzInputPacketDecoderFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>>,
                 WkSrlzPacketFilterableFrameNode,
-                WkSrlzInputPacketFrameNode
+                WkSerdeTreeNodeDataInput
 {
 
   @Override

@@ -17,11 +17,14 @@
  */
 package weliyek.serialization;
 
-/**
- * Weliyek serialization frame node that defines or manages the decoding and/or encoding of a 
- * given data type.
- */
-public interface WkSrlzDataFrameNode extends WkSrlzFrameNode
+import weliyek.serialization.tree.WkSerdeTreeNodeData;
+
+public interface WkSerdeTreeNodeDataInput extends WkSerdeTreeNodeData
 {
+
+  @Override
+  default WkSzPacketDirection direction() {
+    return WkSzPacketDirection.READ;
+  }
 
 }

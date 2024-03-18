@@ -20,6 +20,8 @@ package weliyek.serialization;
 import java.util.function.Predicate;
 
 import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
+import weliyek.serialization.tree.WkSerdeTreeNodeCtrl;
+import weliyek.serialization.tree.WkSerdeTreeNodeStruct;
 
 /**
  * The main node that defines the serialization rules for a given data type.
@@ -28,8 +30,8 @@ import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
  */
 public interface WkSrlzStructComponentFrameNode<
                         D extends WkSrlzStructDefinitionFrameNode<?>>
-    extends WkSrlzStructFrameNode,
-            WkSrlzCtrlFrameNode
+    extends WkSerdeTreeNodeStruct,
+            WkSerdeTreeNodeCtrl
 {
 
   String label();

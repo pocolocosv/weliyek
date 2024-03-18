@@ -17,10 +17,14 @@
  */
 package weliyek.serialization;
 
-/**
- * Weliyek serialization frame node used to control all nodes under it.
- */
-public interface WkSrlzCtrlFrameNode extends WkSrlzFrameNode
+import weliyek.serialization.tree.WkSerdeTreeNodeData;
+
+public interface WkSerdeTreeNodeDataOutput extends WkSerdeTreeNodeData
 {
+
+  @Override
+  default WkSzPacketDirection direction() {
+    return WkSzPacketDirection.WRITE;
+  }
 
 }

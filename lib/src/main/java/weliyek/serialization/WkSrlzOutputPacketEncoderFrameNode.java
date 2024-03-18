@@ -28,7 +28,7 @@ public interface WkSrlzOutputPacketEncoderFrameNode<
         extends WkSrlzPacketOperationFrameNode<
                         S, Q, R, D,
                         WkSrlzOutputPacketFieldFrameNode<T,D,?>>,
-                WkSrlzOutputPacketFrameNode
+                WkSerdeTreeNodeDataOutput
 {
 
   T serializable();

@@ -20,6 +20,9 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.tree.WkSerdeTreeNodeCtrl;
+import weliyek.serialization.tree.WkSerdeTreeNodeData;
+
 /**
  * Handles the serialization process of the associated {@link WkSrlzStructComponentFrameNode}.
  * 
@@ -31,8 +34,8 @@ public interface WkSrlzPacketFieldFrameNode<
                         T,
                         O extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>,
                         D extends WkSrlzStructDefinitionFrameNode<?>>
-    extends WkSrlzPacketFrameNode,
-            WkSrlzCtrlFrameNode
+    extends WkSerdeTreeNodeData,
+            WkSerdeTreeNodeCtrl
 {
 
   WkSrlzStructComponentFrameNode<? extends D> structComponent();

@@ -15,14 +15,23 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package weliyek.serialization;
+package weliyek.serialization.tree;
 
-public interface WkSrlzInputPacketFrameNode extends WkSrlzPacketFrameNode
+import weliyek.serialization.WkSrlzFrameNodeType;
+import weliyek.serialization.WkSzPacketDirection;
+
+/**
+ * Weliyek SerDe tree node that serializes and deserializes a given type
+ * following the rules as defined by {@link WkSerdeTreeNodeStruct}.
+ */
+public interface WkSerdeTreeNodeData extends WkSerdeTreeNode
 {
 
+  WkSzPacketDirection direction();
+
   @Override
-  default WkSzPacketDirection direction() {
-    return WkSzPacketDirection.READ;
+  default WkSrlzFrameNodeType type() {
+    return WkSrlzFrameNodeType.PACKET;
   }
 
 }

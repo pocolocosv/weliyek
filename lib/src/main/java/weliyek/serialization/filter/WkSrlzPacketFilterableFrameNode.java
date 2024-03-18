@@ -17,10 +17,10 @@
  */
 package weliyek.serialization.filter;
 
-import weliyek.serialization.WkSrlzPacketFrameNode;
+import weliyek.serialization.tree.WkSerdeTreeNodeData;
 
 public interface WkSrlzPacketFilterableFrameNode
-    extends WkSrlzPacketFrameNode
+    extends WkSerdeTreeNodeData
 {
 
 }

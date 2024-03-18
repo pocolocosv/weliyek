@@ -17,9 +17,9 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSrlzDataFrameNode;
+import weliyek.serialization.WkSerdeTreeNodeType;
 
-public interface WkSequenceSrlzFrameNode extends WkSrlzDataFrameNode
+public interface WkSequenceSrlzFrameNode extends WkSerdeTreeNodeType
 {
 
 }

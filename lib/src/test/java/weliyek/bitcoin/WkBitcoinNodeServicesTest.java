@@ -16,7 +16,8 @@
  */
 package weliyek.bitcoin;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,9 +30,6 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzInputNode;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzOutputNode;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzStructNode;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 class WkBitcoinNodeServicesTest

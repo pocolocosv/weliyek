@@ -62,17 +62,17 @@ public class WkSrlzFilterBuilderTest
                       WkTstMultipleListSrlzOutputNode,
                       WkSzOutputBytestreamBase<?>,
                       WkTstMultipleListSrlzStructNode> MULTIPLE_LIST_PACKET;
-  private static WkTstPrimitivesGroupListSrlzStructNode PRIMITIVELIST_FIELD;
-  private static WkSzTstPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
-  private static WkSignedByteSrlzStructNode BYTE_FIELD;
-  private static WkSignedBigEndianIntegerSrlzStructNode INT_FIELD;
-  private static WkSignedBigEndianLongSrlzStructNode LONG_FIELD;
+  static WkTstPrimitivesGroupListSrlzStructNode PRIMITIVELIST_FIELD;
+  static WkSzTstPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
+  static WkSignedByteSrlzStructNode BYTE_FIELD;
+  static WkSignedBigEndianIntegerSrlzStructNode INT_FIELD;
+  static WkSignedBigEndianLongSrlzStructNode LONG_FIELD;
 
-  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE;
-  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO;
-  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE;
-  private static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_INT_EQUAL_TO_400;
-  private static WkSrlzPacketNodePredicate<?,?> MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE;
+  static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE;
+  static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO;
+  static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE;
+  static WkSrlzPacketNodePredicate<?,?> PRIMITIVE_HAS_INT_EQUAL_TO_400;
+  static WkSrlzPacketNodePredicate<?,?> MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE;
 
   /*
   private static PrimitivesGroupListField GROUPS_INPUT = GROUPS_LIST_INPUT.element();

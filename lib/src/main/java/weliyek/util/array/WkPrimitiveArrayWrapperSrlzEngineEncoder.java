@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.serialization.WkSrlzEngineEncoder;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
@@ -34,7 +34,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
         extends WkSrlzEngineEncoder<
                         Y,
                         QC,
-                        WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>>
+                        WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveArrayWrapperSrlzEngineEncoder.class);
@@ -45,7 +45,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
 
     protected WkPrimitiveArrayWrapperSrlzEngineEncoder(
       QC runtimeControl,
-      WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>  writingOperation,
+      WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>  writingOperation,
       int primitiveByteLength) {
       super(runtimeControl, writingOperation);
       this.primitiveByteLength = primitiveByteLength;

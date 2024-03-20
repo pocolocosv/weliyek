@@ -21,17 +21,17 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.sequence.WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.sequence.WkSerdeDTreeFixedSizeSequenceReader;
 
 public interface WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameNode<
                         X extends WkPrimitiveArray<?,?>,
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<X>,
-                        D extends WkFixedSizePrimitiveArraySrlzStructDefinitionFrameNode<X>>
-  extends WkPrimitiveArraySrlzInputPacketDecoderFrameNode<X, S, Q, R, D>,
-          WkFixedSizeSequenceSrlzInputPacketDecoderFrameNode<X, S, Q, R, D>,
-          WkFixedSizePrimitiveArraySrlzPacketOperationFrameNode<
+                        D extends WkSerdeDTreeFixedSizeGenericPrimitiveArrayDefinition<X>>
+  extends WkSerdeDTreeGenericPrimitiveArrayReader<X, S, Q, R, D>,
+          WkSerdeDTreeFixedSizeSequenceReader<X, S, Q, R, D>,
+          WkSerdeDTreeFixedSizeGenericPrimitiveArrayOperation<
                         S, Q, R, D,
                         WkSrlzInputPacketFieldFrameNode<X,D,?>>
 {

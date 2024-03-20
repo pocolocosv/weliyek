@@ -22,13 +22,13 @@ import java.util.Collection;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 import weliyek.util.array.WkDynamicSequenceSrlzInputPacketDecoderFrameNode;
 
 public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
@@ -39,11 +39,11 @@ public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         XD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,?,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
-                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
     extends WkDynamicCollectionSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,

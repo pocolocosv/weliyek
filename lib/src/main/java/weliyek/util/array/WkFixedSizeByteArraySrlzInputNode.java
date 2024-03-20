@@ -36,7 +36,7 @@ public class WkFixedSizeByteArraySrlzInputNode
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkResultSrlzPacketOperationData<WkByteArray>,
                         WkFixedSizeByteArraySrlzStructNode>,
-               WkFixedSizePrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
+               WkSerdeDTreeFixedSizePrimitiveArrayLeafReader<
                         WkByteArray,
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

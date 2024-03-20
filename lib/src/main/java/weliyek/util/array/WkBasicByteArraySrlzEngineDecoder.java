@@ -20,7 +20,7 @@ package weliyek.util.array;
 import java.io.IOException;
 
 import weliyek.serialization.WkBasicPrimitiveArrayWrapperSrlzEngineDecoder;
-import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafReader;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public final class WkBasicByteArraySrlzEngineDecoder
@@ -34,7 +34,7 @@ public final class WkBasicByteArraySrlzEngineDecoder
 
   private WkBasicByteArraySrlzEngineDecoder(
     WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-    WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<WkByteArray,?,?,?,?> readingOperation) {
+    WkSerdeDTreePrimitiveArrayLeafReader<WkByteArray,?,?,?,?> readingOperation) {
     super(WkByteArray::new, 1, runtimeCtrl, readingOperation);
   }
 

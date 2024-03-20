@@ -17,12 +17,12 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkAggregatorSrlzFrameNode;
-import weliyek.serialization.sequence.WkSequenceSrlzFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregator;
+import weliyek.serialization.sequence.WkSerdeDTreeSequence;
 
 public interface WkDynamicSequenceSrlzFrameNode<Z, V>
-    extends WkAggregatorSrlzFrameNode,
-            WkSequenceSrlzFrameNode
+    extends WkSerdeDTreeAggregator,
+            WkSerdeDTreeSequence
 {
 
   Z size();

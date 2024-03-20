@@ -19,19 +19,19 @@ package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzPacketOperationFrameNode;
-import weliyek.serialization.WkSrlzPacketSubfieldFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDTreeNodeDataOperation;
+import weliyek.serialization.WkSerdeDTreeNodeDataComponentHandler;
 
 public interface WkCollectionAndElementsSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonSequenceRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<?,?,?,?,?>,
-                        K extends WkSrlzPacketFieldFrameNode<?,?,?>,
-                        EO extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>,
-                        EK extends WkSrlzPacketFieldFrameNode<?,EO,?>,
-                        EJ extends WkSrlzPacketSubfieldFrameNode<EK>>
+                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>,
+                        EO extends WkSerdeDTreeNodeDataOperation<?,?,?,?,?>,
+                        EK extends WkSerdeDTreeNodeDataComponent<?,EO,?>,
+                        EJ extends WkSerdeDTreeNodeDataComponentHandler<EK>>
         extends WkCollectionAndElementsSrlzFrameNode<EJ>,
                 WkCollectionSrlzPacketOperationFrameNode<S, Q, R, D, K>
 {

@@ -25,7 +25,7 @@ import java.util.ListIterator;
 import java.util.Optional;
 
 public abstract class WkSrlzPacketSubfieldList<
-                        SJ extends WkSrlzPacketSubfieldFrameNode<?>,
+                        SJ extends WkSerdeDTreeNodeDataComponentHandler<?>,
                         SJC extends WkSrlzPacketSubfieldFrameNodeCore<?,?,?,?,?,? extends SJ,?,?>,
                         O extends WkAggregatorSrlzPacketOperationFrameNode<?,?,?,?,?>>
     extends AbstractList<SJC>
@@ -56,7 +56,7 @@ public abstract class WkSrlzPacketSubfieldList<
         return null != handlerIter;
     }
 
-    public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> processBytestream() {
+    public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> processBytestream() {
         if (isEmpty()) {
           throw new IllegalStateException();  // Must have at least one handler.
         }
@@ -65,7 +65,7 @@ public abstract class WkSrlzPacketSubfieldList<
           handlerIter = packetCoreListContainer.listIterator();
           startNextHandler();
         }
-        Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> completed = currentHandler.processBytestream();
+        Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> completed = currentHandler.processBytestream();
         if (currentHandler.fieldCore().isCompleted()) {
             startNextHandler();
         }

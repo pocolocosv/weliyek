@@ -17,15 +17,15 @@
  */
 package weliyek.serialization;
 
-import weliyek.serialization.filter.WkSrlzPacketFilterableFrameNode;
+import weliyek.serialization.filter.WkSerdeDTreeNodeDataFilterable;
 
 public interface WkSrlzInputPacketFieldFrameNode<
                         T,
-                        XD extends WkSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<T,?,?,?,XD>>
-    extends WkSrlzPacketFieldFrameNode<T, XO, XD>,
-            WkSrlzPacketFilterableFrameNode,
-            WkSerdeTreeNodeDataInput
+                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDTreeNodeDataReader<T,?,?,?,XD>>
+    extends WkSerdeDTreeNodeDataComponent<T, XO, XD>,
+            WkSerdeDTreeNodeDataFilterable,
+            WkSerdeDTreeNodeDataInput
 {
 
   /**

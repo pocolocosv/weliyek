@@ -33,7 +33,7 @@ public abstract class WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         YR extends WkResultSrlzPacketOperationData<T>,
                         YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,YS,YQ,YR,YD>,
                         YOC extends WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends WkNumberSrlzStructDefinitionFrameLeafNode<T>,
+                        YD extends WkSerdeDTreeNumberDefinition<T>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkNumberSrlzStructDefinitionFrameNodeCore<T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
     extends WkSrlzOutputPacketEncoderFrameLeafNodeCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>

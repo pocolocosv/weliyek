@@ -26,10 +26,10 @@ public interface WkByteArraySrlzOutputPacketEncoderFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<WkByteArray>,
-                        D extends WkByteArraySrlzStructDefinitionFrameNode>
-    extends WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<
+                        D extends WkSerdeDTreeByteArrayDefinition>
+    extends WkSerdeDTreeGenericPrimitiveArrayWriter<
                         WkByteArray, S, Q, R, D>,
-            WkByteArraySrlzPacketOperationFrameNode<
+            WkSerdeDTreeByteArrayOperation<
                         S, Q, R, D,
                         WkSrlzOutputPacketFieldFrameNode<WkByteArray,D,?>>
 {

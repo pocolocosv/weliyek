@@ -18,14 +18,14 @@
 package weliyek.serialization.string;
 
 import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayDefinition;
 
 public interface WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<
                         XO extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<?,?,?,?,?,?,?>,
                         YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<?,?,?,?,?,?,?>,
-                        SD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<?>>
-        extends WkStringFromPrimitiveArraySrlzFrameNode<WkSrlzStructSubcomponentFrameNode<XO, YO, SD>>,
+                        SD extends WkSerdeDTreeGenericPrimitiveArrayDefinition<?>>
+        extends WkStringFromPrimitiveArraySrlzFrameNode<WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD>>,
                 WkAggregatorSrlzStructDefinitionFrameNode<String>
 {
 

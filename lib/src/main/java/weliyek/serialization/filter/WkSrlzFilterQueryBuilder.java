@@ -17,13 +17,13 @@
  */
 package weliyek.serialization.filter;
 
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.filter.WkSrlzFilterPredicateRule.ExclusiveOption;
 
 public class WkSrlzFilterQueryBuilder
 {
 
-    private WkSrlzStructDefinitionFrameNode<?> searchedField;
+    private WkSerdeDTreeNodeStructDefinition<?> searchedField;
     private WkSrlzFilterPredicateRuleBase rule;
     private String desc;
 
@@ -37,7 +37,7 @@ public class WkSrlzFilterQueryBuilder
         this.desc = "";
     }
 
-    public WkSrlzFilterQueryBuilder search(WkSrlzStructDefinitionFrameNode<?> searchedField) {
+    public WkSrlzFilterQueryBuilder search(WkSerdeDTreeNodeStructDefinition<?> searchedField) {
         this.searchedField = searchedField;
         return this;
     }

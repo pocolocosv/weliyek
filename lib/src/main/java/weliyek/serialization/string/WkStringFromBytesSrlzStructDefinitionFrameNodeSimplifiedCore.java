@@ -43,7 +43,7 @@ import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
 import weliyek.util.array.WkByteArraySrlzOutputPacketEncoderFrameNode;
-import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
+import weliyek.util.array.WkSerdeDTreeByteArrayDefinition;
 
 public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         XS extends WkSettingsSrlzPacketOperationData,
@@ -66,11 +66,11 @@ public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<SXS,?,?,SXD>,
-                        SXD extends WkByteArraySrlzStructDefinitionFrameNode,
+                        SXD extends WkSerdeDTreeByteArrayDefinition,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkByteArraySrlzOutputPacketEncoderFrameNode<SYS,?,?,SYD>,
-                        SYD extends WkByteArraySrlzStructDefinitionFrameNode,
-                        SD extends WkByteArraySrlzStructDefinitionFrameNode,
+                        SYD extends WkSerdeDTreeByteArrayDefinition,
+                        SD extends WkSerdeDTreeByteArrayDefinition,
                         D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>>
     extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         XS,

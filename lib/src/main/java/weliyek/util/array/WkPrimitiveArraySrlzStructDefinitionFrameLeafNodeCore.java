@@ -22,9 +22,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntBiFunction;
 
-import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafReader;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayDefinition;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
@@ -44,19 +44,19 @@ public abstract class WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>,
-                        XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
+                        XD extends WkSerdeDTreePrimitiveArrayDefinition<T>,
+                        XO extends WkSerdeDTreePrimitiveArrayLeafReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>,
-                        YO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
+                        YD extends WkSerdeDTreePrimitiveArrayDefinition<T>,
+                        YO extends WkSerdeDTreePrimitiveArrayLeafWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>,
+                        D extends WkSerdeDTreePrimitiveArrayDefinition<T>,
                         DC extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSrlzStructDefinitionFrameLeafNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<T>
+    implements WkSerdeDTreePrimitiveArrayDefinition<T>
 {
 
   private final int serializationStepSize;

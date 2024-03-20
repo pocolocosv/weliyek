@@ -27,7 +27,7 @@ import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -421,12 +421,12 @@ public class WkSzTstPrimitivesGroupStructDefinition
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

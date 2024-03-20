@@ -19,12 +19,12 @@ package weliyek.serialization.filter;
 
 import java.util.function.Predicate;
 
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
 
 public class WkSrlzReadingPacketNodePredicate<
-                        D extends WkSrlzStructDefinitionFrameNode<?>,
-                        O extends WkSrlzInputPacketDecoderFrameNode<?,?,?,?,D>>
+                        D extends WkSerdeDTreeNodeStructDefinition<?>,
+                        O extends WkSerdeDTreeNodeDataReader<?,?,?,?,D>>
     extends WkSrlzPacketNodePredicate<D, O>
 {
 
@@ -39,9 +39,9 @@ public class WkSrlzReadingPacketNodePredicate<
   }
 
   @Override
-  public boolean canBeTestedAgainst(WkSrlzPacketFilterableFrameNode node) {
+  public boolean canBeTestedAgainst(WkSerdeDTreeNodeDataFilterable node) {
     if (isAnInputPacketReadingNode(node)) {
-      WkSrlzStructDefinitionFrameNode<?> structDef = extractDefinition((WkSrlzInputPacketDecoderFrameNode<?,?,?,?,?>)node);
+      WkSerdeDTreeNodeStructDefinition<?> structDef = extractDefinition((WkSerdeDTreeNodeDataReader<?,?,?,?,?>)node);
       return targetProtocolField().equals(structDef);
     }
     return false;

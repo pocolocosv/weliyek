@@ -26,7 +26,7 @@ import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -167,13 +167,13 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
 
   @Override
   public
-  WkSrlzStructSubcomponentFrameNode<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkFixedSizeByteArraySrlzStructNode>
+  WkSerdeDTreeNodeStructComponentHandler<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkFixedSizeByteArraySrlzStructNode>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?,?,?>> requiredSubfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -183,13 +183,13 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-  WkSrlzStructSubcomponentFrameNode<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkFixedSizeByteArraySrlzStructNode>
+  WkSerdeDTreeNodeStructComponentHandler<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkFixedSizeByteArraySrlzStructNode>
   bytes() {
     return this.definitionCore.bytes();
   }

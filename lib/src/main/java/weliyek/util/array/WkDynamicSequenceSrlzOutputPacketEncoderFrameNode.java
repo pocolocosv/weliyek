@@ -24,10 +24,10 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
-import weliyek.serialization.sequence.WkSequenceSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.sequence.WkSerdeDTreeSequenceWriter;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinitionFrameNode;
+import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceDefinition;
 
 public interface WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<
                         T,
@@ -37,9 +37,9 @@ public interface WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<
                         D extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZY extends Number,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZY,?,?,?,ZD>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZY>,
+                        ZD extends WkSerdeDTreeNumberDefinition<ZY>,
                         VYO extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,VD>,
-                        VD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>>
+                        VD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>>
     extends WkDynamicSequenceSrlzPacketOperationFrameNode<
                         YS, YQ, YR, D,
                         WkSrlzOutputPacketFieldFrameNode<T,D,?>,
@@ -49,7 +49,7 @@ public interface WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<
                         VYO,
                         WkSrlzOutputPacketFieldFrameNode<T,VD,VYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<T,VD,VYO>>,
-            WkSequenceSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, D>,
+            WkSerdeDTreeSequenceWriter<T, YS, YQ, YR, D>,
             WkAggregatorSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, D>
 {
 

@@ -33,7 +33,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineDecoder<
         extends WkSrlzEngineDecoder<
                         X,
                         QC,
-                        WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>
+                        WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveArrayWrapperSrlzEngineDecoder.class);
@@ -50,7 +50,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineDecoder<
       int elementByteLength,
       int stepSize,
       QC runtimeCtrl,
-      WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?> readingOperation) {
+      WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.sequenceToDeserialized = Objects.requireNonNull(sequenceToDeserialized);
     this.primitiveByteLength = elementByteLength;

@@ -24,11 +24,11 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 
@@ -47,8 +47,8 @@ public abstract class WkCollectionAndElementsSrlzInputPacketDecoderFrameNodeCore
                         AXBC extends WkSzInputBytestreamBase<?>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
-                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
                         DC extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXBC,
                                         ?,?,?,?,?,?,?,?,

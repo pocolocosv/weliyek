@@ -24,16 +24,16 @@ import java.util.Optional;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public class WkDynamicCollectionSrlzInputNode<
                         T extends Collection<ET>,
@@ -41,11 +41,11 @@ public class WkDynamicCollectionSrlzInputNode<
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
-                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
     implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         T, XS,

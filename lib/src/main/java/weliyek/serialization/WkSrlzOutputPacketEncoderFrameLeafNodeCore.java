@@ -27,13 +27,13 @@ public abstract class WkSrlzOutputPacketEncoderFrameLeafNodeCore<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YO extends WkSrlzOutputPacketEncoderFrameLeafNode<T,YS,YQ,YR,YD>,
+                        YO extends WkSerdeDTreeNodeLeafWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSrlzOutputPacketEncoderFrameLeafNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends WkSrlzStructDefinitionFrameLeafNode<T>,
+                        YD extends WkSerdeDTreeNodeLeafDefinition<T>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSrlzStructDefinitionFrameLeafNodeCore<T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
     extends WkSrlzOutputPacketEncoderFrameNodeCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
-    implements WkSrlzOutputPacketEncoderFrameLeafNode<T, YS, YQ, YR, YD>
+    implements WkSerdeDTreeNodeLeafWriter<T, YS, YQ, YR, YD>
 {
 
     protected WkSrlzEngineEncoder<T, ? super YQC, ? super YO> rule;
@@ -57,7 +57,7 @@ public abstract class WkSrlzOutputPacketEncoderFrameLeafNodeCore<
     }
 
     @Override
-    protected final Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> onProcessingBytestream() {
+    protected final Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> onProcessingBytestream() {
         if (this.rule.isDone())
           // Protect against calls after completing.
           return Optional.empty();

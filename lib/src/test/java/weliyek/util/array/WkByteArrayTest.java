@@ -134,10 +134,10 @@ public class WkByteArrayTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSrlzStruct<WkByteArray, WkSzVariableLengthOperationSettings, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzOutputNode, WkSzOutputBytestreamBase<?>, WkVariableSizeByteArraySrlzStructNode>
-        outputProtocol = WkVariableSizeByteArraySrlzStructNode.newStruct("DYNAMIC_BYTEARRAY", 0, 100);
+      WkSrlzStruct<WkByteArray, WkSzVariableLengthOperationSettings, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayReader, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayWriter, WkSzOutputBytestreamBase<?>, WkSerdeDTreeVariableSizeByteArray>
+        outputProtocol = WkSerdeDTreeVariableSizeByteArray.newStruct("DYNAMIC_BYTEARRAY", 0, 100);
 
-      WkSzOutputPacket<WkByteArray, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzOutputNode>
+      WkSzOutputPacket<WkByteArray, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayWriter>
         wrapperWriting = outputProtocol.newOutputPacket(outputWrapper, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
 
       assertFalse(wrapperWriting.isCompleted());
@@ -148,7 +148,7 @@ public class WkByteArrayTest
 
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
-      WkSzInputPacket<WkByteArray, WkVariableSizeByteArraySrlzStructNode, WkVariableSizeByteArraySrlzInputNode>
+      WkSzInputPacket<WkByteArray, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayReader>
         wrapperReading = outputProtocol.newInputPacket(WkSzVariableLengthOperationSettings.withLength(sequenceLenght), outputstream.inputStream());
 
       logger.info(wrapperReading + " input op created");
@@ -173,21 +173,21 @@ public class WkByteArrayTest
     public void test04_VariableSizeByteArray_InvalidLowerBound() {
       assertThrows(
           WkSzDefinitionCoreException.class,
-          () -> WkVariableSizeByteArraySrlzStructNode.newStruct("INVALID", -1, 10));
+          () -> WkSerdeDTreeVariableSizeByteArray.newStruct("INVALID", -1, 10));
     }
 
     @Test
     public void test05_VariableSizeByteArray_InvalidHigherBound() {
       assertThrows(
           WkSzDefinitionCoreException.class,
-          () -> WkVariableSizeByteArraySrlzStructNode.newStruct("INVALID", 1, -1));
+          () -> WkSerdeDTreeVariableSizeByteArray.newStruct("INVALID", 1, -1));
     }
 
     @Test
     public void test06_VariableSizeByteArray_InvalidBounds() {
       assertThrows(
           WkSzDefinitionCoreException.class,
-          () -> WkVariableSizeByteArraySrlzStructNode.newStruct("INVALID", 22, 11));
+          () -> WkSerdeDTreeVariableSizeByteArray.newStruct("INVALID", 22, 11));
     }
 
 

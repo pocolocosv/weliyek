@@ -23,7 +23,7 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -131,14 +131,14 @@ public class WkTstMultipleListSrlzStructNode
   }
 
   @Override
-  public WkSrlzStructSubcomponentFrameNode<WkTstMultipleListSrlzInputNode, WkTstMultipleListSrlzOutputNode, WkSignedBigEndianShortSrlzStructNode>
+  public WkSerdeDTreeNodeStructComponentHandler<WkTstMultipleListSrlzInputNode, WkTstMultipleListSrlzOutputNode, WkSignedBigEndianShortSrlzStructNode>
   size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-  WkSrlzStructSubcomponentFrameNode<WkTstMultipleListSrlzInputNode, WkTstMultipleListSrlzOutputNode, WkVariableSizeCollectionSrlzStructNode<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode>>
+  WkSerdeDTreeNodeStructComponentHandler<WkTstMultipleListSrlzInputNode, WkTstMultipleListSrlzOutputNode, WkVariableSizeCollectionSrlzStructNode<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode>>
   variableSequence() {
     return this.definitionCore.variableSequence();
   }
@@ -149,12 +149,12 @@ public class WkTstMultipleListSrlzStructNode
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

@@ -22,10 +22,10 @@ import java.util.Collection;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 
 public interface WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         T extends Collection<ET>,
@@ -34,8 +34,8 @@ public interface WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,?,?,ET,?>,
                         ET,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
-                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,?,?,?,EXD>>
+                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDTreeNodeDataReader<ET,?,?,?,EXD>>
         extends WkCollectionAndElementsSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>,

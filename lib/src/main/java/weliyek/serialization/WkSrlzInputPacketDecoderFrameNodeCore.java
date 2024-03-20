@@ -26,9 +26,9 @@ public abstract class WkSrlzInputPacketDecoderFrameNodeCore<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>,
+                        XO extends WkSerdeDTreeNodeDataReader<T,XS,XQ,XR,XD>,
                         XOC extends WkSrlzInputPacketDecoderFrameNodeCore<T,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkSrlzStructDefinitionFrameNode<T>,
+                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<
                                       T,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,DC>>
@@ -36,7 +36,7 @@ public abstract class WkSrlzInputPacketDecoderFrameNodeCore<
                         XS, XQ, XQC, XR, XD, DC, XO, XOC, AXB,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>,
                         WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?>>
-        implements WkSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD>
+        implements WkSerdeDTreeNodeDataReader<T, XS, XQ, XR, XD>
 {
 
     private final XQC runtime;
@@ -53,7 +53,7 @@ public abstract class WkSrlzInputPacketDecoderFrameNodeCore<
     }
 
     @Override
-    protected Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> processBytestream() {
+    protected Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> processBytestream() {
       return super.processBytestream();
     }
 

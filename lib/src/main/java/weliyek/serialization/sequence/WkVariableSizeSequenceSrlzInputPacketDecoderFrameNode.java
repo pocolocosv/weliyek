@@ -27,9 +27,9 @@ public interface WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<
                         S extends WkSzVariableLengthOperationSettings,
                         Q extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<X>,
-                        D extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<X>>
-        extends WkSequenceSrlzInputPacketDecoderFrameNode<X, S, Q, R, D>,
-                WkVariableSizeSequenceSrlzPacketOperationFrameNode<
+                        D extends WkSerdeDTreeVariableSizeSequenceDefinition<X>>
+        extends WkSerdeDTreeSequenceReader<X, S, Q, R, D>,
+                WkSerdeDTreeVariableSizeSequenceOperation<
                         S, Q, R, D,
                         WkSrlzInputPacketFieldFrameNode<X,D,?>>
 {

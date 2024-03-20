@@ -22,8 +22,8 @@ import java.util.function.ToIntFunction;
 public class WkSrlzOutputPacketFieldFrameNodeNonrootCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
+                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
                         AY,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         AYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<AY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>

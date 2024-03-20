@@ -30,14 +30,14 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkDynamicByteArraySrlzInputNode;
 import weliyek.util.array.WkDynamicByteArraySrlzStructNode;
 
 public class WkStringWithDynamicBytesSrlzInputNode<
                         ZT extends Number,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>>
     implements WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                         WkSettingsSrlzPacketOperationData,

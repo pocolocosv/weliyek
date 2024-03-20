@@ -20,8 +20,8 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafReader;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayDefinition;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
@@ -33,8 +33,8 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 public class WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends WkPrimitiveArray<?,?>,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        D extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<X>,
-                        XO extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<
+                        D extends WkSerdeDTreePrimitiveArrayDefinition<X>,
+                        XO extends WkSerdeDTreePrimitiveArrayLeafReader<
                                           X,
                                           XS,
                                           WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

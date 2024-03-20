@@ -32,13 +32,13 @@ import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
+import weliyek.serialization.WkSerdeDTreeNodeDataWriter;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -70,12 +70,12 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSrlzStructDefinitionFrameNode<ET>,
-                        EXO extends WkSrlzInputPacketDecoderFrameNode<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
-                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
-                        ED extends WkSrlzStructDefinitionFrameNode<ET>,
+                        EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                        ED extends WkSerdeDTreeNodeStructDefinition<ET>,
                         D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,YO,ET,ED>,
                         DC extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
@@ -135,7 +135,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
   private static <T extends Collection<ET>,
                   YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,ET,EYD,?>,
                   ET,
-                  EYD extends WkSrlzStructDefinitionFrameNode<ET>>
+                  EYD extends WkSerdeDTreeNodeStructDefinition<ET>>
   ET disaggregateCollection(
     WkSrlzOutputPacketFieldFrameNode<ET,EYD,?> serializingField,
     YO collectionWritingOp,
@@ -147,7 +147,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
   }
 
   @Override
-  public WkSrlzStructSubcomponentFrameNode<XO, YO, ED> elements() {
+  public WkSerdeDTreeNodeStructComponentHandler<XO, YO, ED> elements() {
     return this.elementComponent.body();
   }
 

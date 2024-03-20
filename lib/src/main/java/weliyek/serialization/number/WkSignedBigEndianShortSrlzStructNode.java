@@ -24,14 +24,14 @@ import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public class WkSignedBigEndianShortSrlzStructNode
-    implements WkNumberSrlzStructDefinitionFrameLeafNode<Short>
+    implements WkSerdeDTreeNumberDefinition<Short>
 {
 
   public static WkSrlzStruct<
@@ -96,7 +96,7 @@ public class WkSignedBigEndianShortSrlzStructNode
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

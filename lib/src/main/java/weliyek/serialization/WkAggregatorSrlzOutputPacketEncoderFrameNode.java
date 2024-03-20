@@ -26,7 +26,7 @@ public interface WkAggregatorSrlzOutputPacketEncoderFrameNode<
         extends WkAggregatorSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,?>>,
-                WkSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>
+                WkSerdeDTreeNodeDataWriter<T, YS, YQ, YR, YD>
 {
 
 }

@@ -27,14 +27,14 @@ public abstract class WkSrlzInputPacketDecoderFrameLeafNodeCore<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
                         XR extends WkResultSrlzPacketOperationData<X>,
-                        XO extends WkSrlzInputPacketDecoderFrameLeafNode<X,XS,XQ,XR,XD>,
+                        XO extends WkSerdeDTreeNodeLeafReader<X,XS,XQ,XR,XD>,
                         XOC extends WkSrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkSrlzStructDefinitionFrameLeafNode<X>,
+                        XD extends WkSerdeDTreeNodeLeafDefinition<X>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSrlzStructDefinitionFrameLeafNodeCore<
                                       X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends WkSrlzInputPacketDecoderFrameNodeCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
-    implements WkSrlzInputPacketDecoderFrameLeafNode<X, XS, XQ, XR, XD>
+    implements WkSerdeDTreeNodeLeafReader<X, XS, XQ, XR, XD>
 {
 
     protected WkSrlzEngineDecoder<X, ? super XQC, ? super XO> rule;
@@ -60,7 +60,7 @@ public abstract class WkSrlzInputPacketDecoderFrameLeafNodeCore<
     protected abstract void onDeserilizingOperationInitialization();
 
     @Override
-    protected final Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> onProcessingBytestream() {
+    protected final Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> onProcessingBytestream() {
         this.rule.processBytestream();
         if (this.rule.isDone()) {
           this.completeOperation();

@@ -26,36 +26,36 @@ import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public class WkDynamicByteArraySrlzStructNode<
                         ZT extends Number,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>>
-    implements WkByteArraySrlzStructDefinitionFrameNode,
+                        ZD extends WkSerdeDTreeNumberDefinition<ZT>>
+    implements WkSerdeDTreeByteArrayDefinition,
                WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<
                         WkByteArray,
                         WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
                         WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
                         ZD,
-                        WkVariableSizeByteArraySrlzStructNode>
+                        WkSerdeDTreeVariableSizeByteArray>
 {
   public static <ZX extends Number,
-                 ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
-                 ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                 ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>>
+                 ZD extends WkSerdeDTreeNumberDefinition<ZX>>
   WkSrlzStruct<WkByteArray,
                   WkSettingsSrlzPacketOperationData,
                   WkDynamicByteArraySrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
@@ -95,11 +95,11 @@ public class WkDynamicByteArraySrlzStructNode<
   }
 
   public static <ZX extends Number,
-                 ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
-                 ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                 ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>>
+                 ZD extends WkSerdeDTreeNumberDefinition<ZX>>
   WkSrlzStructDefinitionFrameNodeCore<WkByteArray,
                         WkSettingsSrlzPacketOperationData,?,?,
                         WkDynamicByteArraySrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
@@ -131,11 +131,11 @@ public class WkDynamicByteArraySrlzStructNode<
                         WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
                         ZT, ZXD, ZXO, ZYD, ZYO, ZD,
-                        WkVariableSizeByteArraySrlzStructNode,
-                        WkVariableSizeByteArraySrlzInputNode,
-                        WkVariableSizeByteArraySrlzStructNode,
-                        WkVariableSizeByteArraySrlzOutputNode,
-                        WkVariableSizeByteArraySrlzStructNode,
+                        WkSerdeDTreeVariableSizeByteArray,
+                        WkSerdeDTreeVariableSizeByteArrayReader,
+                        WkSerdeDTreeVariableSizeByteArray,
+                        WkSerdeDTreeVariableSizeByteArrayWriter,
+                        WkSerdeDTreeVariableSizeByteArray,
                         WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>> definitionCore;
 
   WkDynamicByteArraySrlzStructNode(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
@@ -154,17 +154,17 @@ public class WkDynamicByteArraySrlzStructNode<
                                 WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                 WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
                                 ZT, ZXD, ZXO, ZYD, ZYO, ZD,
-                                WkVariableSizeByteArraySrlzStructNode,
-                                WkVariableSizeByteArraySrlzInputNode,
-                                WkVariableSizeByteArraySrlzStructNode,
-                                WkVariableSizeByteArraySrlzOutputNode,
-                                WkVariableSizeByteArraySrlzStructNode,
+                                WkSerdeDTreeVariableSizeByteArray,
+                                WkSerdeDTreeVariableSizeByteArrayReader,
+                                WkSerdeDTreeVariableSizeByteArray,
+                                WkSerdeDTreeVariableSizeByteArrayWriter,
+                                WkSerdeDTreeVariableSizeByteArray,
                                 WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>(
                                     sizeLabel,
                                     wrapperSizeGetter,
                                     sizeComponentDefinitionFactory,
                                     arrayLabel,
-                                    (pc) -> WkVariableSizeByteArraySrlzStructNode.newCore(minLength, maxLength, pc),
+                                    (pc) -> WkSerdeDTreeVariableSizeByteArray.newCore(minLength, maxLength, pc),
                                     (i,xs,axb,xkc,dc) -> new WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>(i,xs,axb,xkc,dc).operationCore,
                                     (i,y,ys,ayb,ykc,dc) -> new WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>(i,y,ys,ayb,ykc,dc).operationCore,
                                     componentCore,
@@ -178,26 +178,26 @@ public class WkDynamicByteArraySrlzStructNode<
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-      WkSrlzStructSubcomponentFrameNode<WkDynamicByteArraySrlzInputNode<ZT, ZXO, ZXD>, WkDynamicByteArraySrlzOutputNode<ZT, ZYO, ZYD>, ZD>
+      WkSerdeDTreeNodeStructComponentHandler<WkDynamicByteArraySrlzInputNode<ZT, ZXO, ZXD>, WkDynamicByteArraySrlzOutputNode<ZT, ZYO, ZYD>, ZD>
       size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-      WkSrlzStructSubcomponentFrameNode<WkDynamicByteArraySrlzInputNode<ZT, ZXO, ZXD>, WkDynamicByteArraySrlzOutputNode<ZT, ZYO, ZYD>, WkVariableSizeByteArraySrlzStructNode>
+      WkSerdeDTreeNodeStructComponentHandler<WkDynamicByteArraySrlzInputNode<ZT, ZXO, ZXD>, WkDynamicByteArraySrlzOutputNode<ZT, ZYO, ZYD>, WkSerdeDTreeVariableSizeByteArray>
       variableSequence() {
     return this.definitionCore.variableSequence();
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

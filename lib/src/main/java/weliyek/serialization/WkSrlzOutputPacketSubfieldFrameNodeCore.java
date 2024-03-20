@@ -22,8 +22,8 @@ import java.util.function.Predicate;
 public class WkSrlzOutputPacketSubfieldFrameNodeCore<
                         ST,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYD extends WkSrlzStructDefinitionFrameNode<ST>,
-                        SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
+                        SYD extends WkSerdeDTreeNodeStructDefinition<ST>,
+                        SYO extends WkSerdeDTreeNodeDataWriter<ST,SYS,?,?,SYD>,
                         T,
                         YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
@@ -87,7 +87,7 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected WkSrlzStructComponentFrameNode<? extends SYD> protocolField() {
+  protected WkSerdeDTreeNodeStructComponent<? extends SYD> protocolField() {
     return protocolFieldCore().asProtocolField();
   }
 

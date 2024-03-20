@@ -26,8 +26,8 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 public final class WkSrlzInputPacketFieldFrameNodeRootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
+                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>>
     extends WkSrlzInputPacketFieldFrameNodeCore<
                         T, XS, XD, XO, AXBC,
@@ -53,7 +53,7 @@ public final class WkSrlzInputPacketFieldFrameNodeRootCore<
   }
 
   private final ReadingPacketParameters<XS,AXBC> parameters;
-  private Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousOpResult = Optional.empty();
+  private Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
 
   public WkSrlzInputPacketFieldFrameNodeRootCore(
     WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> protocolHandler,
@@ -68,7 +68,7 @@ public void processBytestream() {
   }
 
   @Override
-public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousProcessingSteapResult() {
+public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult() {
     return this.previousOpResult;
   }
 

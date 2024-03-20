@@ -20,7 +20,7 @@ package weliyek.util.array;
 import java.util.function.BiFunction;
 
 import weliyek.serialization.WkSrlzEngineDecoder;
-import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafReader;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSzBasicPrimitiveArrayWrapperReadEngineFactory<
@@ -28,18 +28,18 @@ public class WkSzBasicPrimitiveArrayWrapperReadEngineFactory<
     extends WkSzPrimitiveArrayWrapperReadEngineFactory<
                         X,
                         WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>
+                        WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>>
 {
 
   public WkSzBasicPrimitiveArrayWrapperReadEngineFactory(
       String label,
       BiFunction<
         WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-        WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>,
+        WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>,
         WkSrlzEngineDecoder<
           X,
           ? super WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-          ? super WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>> engineSupplier) {
+          ? super WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

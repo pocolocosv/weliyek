@@ -17,7 +17,7 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -28,10 +28,10 @@ public interface WkFixedSizePrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<Y>,
-                        D extends WkFixedSizePrimitiveArraySrlzStructDefinitionFrameLeafNode<Y>>
+                        D extends WkSerdeDTreeFixedSizePrimitiveArrayDefinition<Y>>
     extends WkFixedSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<Y, S, Q, R, D>,
-            WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<Y, S, Q, R, D>,
-            WkFixedSizePrimitiveArraySrlzPacketOperationFrameLeafNode<
+            WkSerdeDTreePrimitiveArrayLeafWriter<Y, S, Q, R, D>,
+            WkSerdeDTreeFixedSizePrimitiveArrayOperation<
                         S, Q, R, D,
                         WkSrlzOutputPacketFieldFrameNode<Y,D,?>>
 {

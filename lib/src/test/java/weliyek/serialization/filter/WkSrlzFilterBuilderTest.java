@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
@@ -45,11 +45,11 @@ import weliyek.serialization.util.KetzaByteOutputStream;
 public class WkSrlzFilterBuilderTest
 {
 
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().serializable().get().byteValue() != (byte)1;
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)2;
+  private static Predicate<WkSerdeDTreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
+  private static Predicate<WkSerdeDTreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().serializable().get().byteValue() != (byte)1;
+  private static Predicate<WkSerdeDTreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)2;
 
-  private static Predicate<WkSrlzInputPacketDecoderFrameNode<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
+  private static Predicate<WkSerdeDTreeNodeDataReader<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
 
   private static WkSrlzStruct<
                       WkSzTstMultipleLists,

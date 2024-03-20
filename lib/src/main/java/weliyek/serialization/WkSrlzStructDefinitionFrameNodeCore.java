@@ -29,19 +29,19 @@ public abstract class WkSrlzStructDefinitionFrameNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XD extends WkSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<T,XS,?,XR,XD>,
+                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,XR,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YD extends WkSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,YR,YD>,
+                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,YR,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSrlzStructDefinitionFrameNode<T>,
+                        D extends WkSerdeDTreeNodeStructDefinition<T>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<
                                       T,XS,XQC,XR,XD,XO,AXBC,YS,YQC,YR,YD,YO,AYBC,D,?>>
-    implements WkSrlzStructDefinitionFrameNode<T>
+    implements WkSerdeDTreeNodeStructDefinition<T>
 {
 
     public static final char NAME_PREFIX = '<';

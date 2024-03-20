@@ -22,7 +22,7 @@ public interface WkSettingsSrlzPacketOperationData extends WkSrlzPacketOperation
 
   final WkSettingsSrlzPacketOperationData EMPTY = new WkSettingsSrlzPacketOperationData(){};
 
-  public static <AO extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>>
+  public static <AO extends WkSerdeDTreeNodeDataOperation<?,?,?,?,?>>
   WkSettingsSrlzPacketOperationData none(int index, AO parentOperation) {
     return EMPTY;
   }

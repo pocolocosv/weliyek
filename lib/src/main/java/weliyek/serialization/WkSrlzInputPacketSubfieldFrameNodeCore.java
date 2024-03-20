@@ -23,8 +23,8 @@ import java.util.function.Predicate;
 public class WkSrlzInputPacketSubfieldFrameNodeCore<
                         ST,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXD extends WkSrlzStructDefinitionFrameNode<ST>,
-                        SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
+                        SXD extends WkSerdeDTreeNodeStructDefinition<ST>,
+                        SXO extends WkSerdeDTreeNodeDataReader<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
@@ -50,7 +50,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   protected void onInitialization() {
     final WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,?,?,XD,XO,?,?,?> parentOpCore = parentOperationCore();
     WkAggregatorSrlzStructDefinitionFrameNode<?> parentDef = parentOpCore.definition();
-    List<WkSrlzStructSubcomponentFrameNode<?,?,?>> requiredSubfields = parentDef.requiredSubfields();
+    List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> requiredSubfields = parentDef.requiredSubfields();
     if(-1 != requiredSubfields.indexOf(subcomponentHandlerCore().body())) {
       this.isRequiredByProto = true;
     } else {
@@ -101,7 +101,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected final WkSrlzStructComponentFrameNode<? extends SXD> protocolField() {
+  protected final WkSerdeDTreeNodeStructComponent<? extends SXD> protocolField() {
     return protocolFieldCore().asProtocolField();
   }
 

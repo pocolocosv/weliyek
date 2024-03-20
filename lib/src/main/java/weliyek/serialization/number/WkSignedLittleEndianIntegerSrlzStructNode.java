@@ -24,7 +24,7 @@ import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -32,7 +32,7 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.sequence.WkSignedLittleEndianIntegerSrlzEngineEncoder;
 
 public class WkSignedLittleEndianIntegerSrlzStructNode
-    implements WkNumberSrlzStructDefinitionFrameLeafNode<Integer>
+    implements WkSerdeDTreeNumberDefinition<Integer>
 {
 
   public static WkSrlzStruct<
@@ -97,7 +97,7 @@ public class WkSignedLittleEndianIntegerSrlzStructNode
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

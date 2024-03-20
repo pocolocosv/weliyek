@@ -31,7 +31,7 @@ public class WkBasicResultSrlzPacketOperationData<X>
     private final Optional<X> serializable;
 
     public WkBasicResultSrlzPacketOperationData(
-            WkSrlzPacketOperationFrameNode<?,?,?,? extends WkSrlzStructDefinitionFrameNode<X>,?> operation,
+            WkSerdeDTreeNodeDataOperation<?,?,?,? extends WkSerdeDTreeNodeStructDefinition<X>,?> operation,
             X serializable) {
         this.serializable = Optional.ofNullable(serializable);
     }

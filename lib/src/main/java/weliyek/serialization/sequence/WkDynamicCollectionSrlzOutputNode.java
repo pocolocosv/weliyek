@@ -24,15 +24,15 @@ import java.util.Optional;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataWriter;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public class WkDynamicCollectionSrlzOutputNode<
                         T extends Collection<ET>,
@@ -42,11 +42,11 @@ public class WkDynamicCollectionSrlzOutputNode<
                         ZT extends Number,
                         ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSrlzStructDefinitionFrameNode<ET>,
-                        EYO extends WkSrlzOutputPacketEncoderFrameNode<ET,EYS,?,?,EYD>,
+                        EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
                         VYS extends WkSettingsSrlzPacketOperationData>
     implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
                         T, YS,

@@ -19,15 +19,15 @@ package weliyek.serialization.string;
 
 import java.nio.charset.Charset;
 
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.util.array.WkSerdeDTreeByteArrayDefinition;
 
 public interface WkStringFromBytesSrlzStructDefinitionFrameNode<
                         XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<?,?,?,?,?,?>,
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<?,?,?,?,?,?>,
-                        SD extends WkByteArraySrlzStructDefinitionFrameNode>
+                        SD extends WkSerdeDTreeByteArrayDefinition>
     extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO, YO, SD>,
-            WkSzStringFromBytesSrlzFrameNode<WkSrlzStructSubcomponentFrameNode<XO, YO, SD>>
+            WkSzStringFromBytesSrlzFrameNode<WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD>>
 {
 
   @Override

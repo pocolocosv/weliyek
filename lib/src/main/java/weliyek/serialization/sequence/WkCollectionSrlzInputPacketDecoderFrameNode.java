@@ -35,7 +35,7 @@ public interface WkCollectionSrlzInputPacketDecoderFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>>,
             WkAggregatorSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD>,
-            WkSequenceSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD>
+            WkSerdeDTreeSequenceReader<T, XS, XQ, XR, XD>
 {
 
 }

@@ -17,11 +17,11 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkAggregatorSrlzFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregator;
 
 public interface WkCollectionSrlzFrameNode
-    extends WkAggregatorSrlzFrameNode,
-            WkSequenceSrlzFrameNode
+    extends WkSerdeDTreeAggregator,
+            WkSerdeDTreeSequence
 {
 
 }

@@ -21,12 +21,12 @@ import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkPrimitiveArraySrlzInputPacketDecoderFrameNode;
-import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
+import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayReader;
+import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayDefinition;
 
 public interface WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         XS extends WkSettingsSrlzPacketOperationData,
@@ -34,15 +34,15 @@ public interface WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         XR extends WkResultSrlzPacketOperationData<String>,
                         XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,? extends SXD>,
                         SX extends WkPrimitiveArray<?,?>,
-                        SXD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SX>,
-                        SXO extends WkPrimitiveArraySrlzInputPacketDecoderFrameNode<SX,?,?,?,SXD>>
+                        SXD extends WkSerdeDTreeGenericPrimitiveArrayDefinition<SX>,
+                        SXO extends WkSerdeDTreeGenericPrimitiveArrayReader<SX,?,?,?,SXD>>
         extends WkStringFromPrimitiveArraySrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<String,XD,?>,
                         SXO,
                         WkSrlzInputPacketFieldFrameNode<SX,SXD,SXO>,
                         WkSrlzInputPacketSubfieldFrameNode<SX,SXD,SXO>>,
-                WkSrlzInputPacketDecoderFrameNode<String,XS,XQ,XR,XD>,
+                WkSerdeDTreeNodeDataReader<String,XS,XQ,XR,XD>,
                 WkAggregatorSrlzInputPacketDecoderFrameNode<String, XS, XQ, XR, XD>
 {
 

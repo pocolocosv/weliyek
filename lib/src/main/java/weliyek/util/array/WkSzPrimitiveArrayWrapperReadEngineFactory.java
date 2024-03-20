@@ -21,13 +21,13 @@ import java.util.function.BiFunction;
 
 import weliyek.serialization.WkSzReadEngineFactory;
 import weliyek.serialization.WkSrlzEngineDecoder;
-import weliyek.serialization.WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafReader;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSzPrimitiveArrayWrapperReadEngineFactory<
                         X extends WkPrimitiveArray<?,?>,
                         QC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        O extends WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?>>
+                        O extends WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>>
   extends WkSzReadEngineFactory<X, QC, O>
 {
 

@@ -21,17 +21,17 @@ import weliyek.serialization.WkAggregatorSrlzPacketOperationFrameNode;
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeDataComponent;
 
 public interface WkCollectionSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkCollectionSrlzStructDefinitionFrameNode<?>,
-                        K extends WkSrlzPacketFieldFrameNode<?,?,?>>
+                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>>
     extends WkCollectionSrlzFrameNode,
             WkAggregatorSrlzPacketOperationFrameNode<S, Q, R, D, K>,
-            WkSequenceSrlzPacketOperationFrameNode<S, Q, R, D, K>
+            WkSerdeDTreeSequenceOperation<S, Q, R, D, K>
 {
 
 }

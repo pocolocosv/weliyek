@@ -23,8 +23,8 @@ import java.util.Optional;
 public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
+                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>>
     extends WkSrlzOutputPacketFieldFrameNodeCore<
                         T, YS, YD, YO, AYBC,
@@ -51,7 +51,7 @@ public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
   }
 
   private final WkSrlzOutputPacketFieldFrameNodeRootCore.WritingParameters<T,YS,AYBC> parameters;
-  private Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousOpResult = Optional.empty();
+  private Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
 
   public WkSrlzOutputPacketFieldFrameNodeRootCore(
     WkSrlzStructComponentFrameNodeCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD> protocolFieldCore,
@@ -66,7 +66,7 @@ public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
   }
 
   @Override
-public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousProcessingSteapResult() {
+public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult() {
     return this.previousOpResult;
   }
 
@@ -106,7 +106,7 @@ public Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> previousProcessingSte
     return null;
   }
 
-  public WkSrlzOutputPacketEncoderFrameNode<?, ?, ?, ?, ?> parentOperation() {
+  public WkSerdeDTreeNodeDataWriter<?, ?, ?, ?, ?> parentOperation() {
     return null;
   }
 

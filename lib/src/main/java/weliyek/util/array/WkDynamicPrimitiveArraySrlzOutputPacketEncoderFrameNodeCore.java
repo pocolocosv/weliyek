@@ -25,7 +25,7 @@ import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public class WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -41,12 +41,12 @@ public class WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,
                                         ?,?,ZYD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
                         VYO extends WkVariableSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<
                                         T,
                                         WkSettingsSrlzPacketOperationData,
                                         ?,?,VYD>,
-                        VYD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>>
+                        VYD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>>
     extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         T,
                         WkSettingsSrlzPacketOperationData,

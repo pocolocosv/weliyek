@@ -31,7 +31,7 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -43,10 +43,10 @@ import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinitionFrameNode;
+import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceDefinition;
 
 public abstract class WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                         T,
@@ -75,18 +75,18 @@ public abstract class WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                         ZX extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,ZXS,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
                         ZYS extends WkSettingsSrlzPacketOperationData,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,ZYS,?,?,ZYD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                        ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
+                        ZD extends WkSerdeDTreeNumberDefinition<ZX>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VXO extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<T,VXS,?,?,VXD>,
-                        VXD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>,
+                        VXD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
                         VYS extends WkSettingsSrlzPacketOperationData,
                         VYO extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,VYS,?,?,VYD>,
-                        VYD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>,
-                        VD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>,
+                        VYD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
+                        VD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
                         D extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,XO,YO,ZD,VD>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                                       T,XS,XB,XBC,XQC,XR,XO,XD,AXBC,
@@ -160,12 +160,12 @@ public abstract class WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
   }
 
   @Override
-  public WkSrlzStructSubcomponentFrameNode<XO, YO, ZD> size() {
+  public WkSerdeDTreeNodeStructComponentHandler<XO, YO, ZD> size() {
     return this.sizeComponent.body();
   }
 
   @Override
-  public WkSrlzStructSubcomponentFrameNode<XO, YO, VD> variableSequence() {
+  public WkSerdeDTreeNodeStructComponentHandler<XO, YO, VD> variableSequence() {
     return this.varseqComponent.body();
   }
 

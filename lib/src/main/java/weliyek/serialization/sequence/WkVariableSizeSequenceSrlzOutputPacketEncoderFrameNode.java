@@ -27,11 +27,11 @@ public interface WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<Y>,
-                        D extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<Y>>
-        extends WkVariableSizeSequenceSrlzPacketOperationFrameNode<
+                        D extends WkSerdeDTreeVariableSizeSequenceDefinition<Y>>
+        extends WkSerdeDTreeVariableSizeSequenceOperation<
                         S, Q, R, D,
                         WkSrlzOutputPacketFieldFrameNode<Y,D,?>>,
-                WkSequenceSrlzOutputPacketEncoderFrameNode<Y, S, Q, R, D>
+                WkSerdeDTreeSequenceWriter<Y, S, Q, R, D>
 {
 
 }

@@ -29,16 +29,16 @@ import org.slf4j.LoggerFactory;
 public abstract class WkSrlzPacketFieldFrameNodeCore<
                         T,
                         S extends WkSettingsSrlzPacketOperationData,
-                        D extends WkSrlzStructDefinitionFrameNode<?>, // Not needed directly but
+                        D extends WkSerdeDTreeNodeStructDefinition<?>, // Not needed directly but
                         // used nonetheless to simplify the declaration of PacketFieldCore<>
                         // elsewhere where ProtocolField<D> is used.
                         PC extends WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?>,
-                        O extends WkSrlzPacketOperationFrameNode<S,?,?,? super D,? super K>,
+                        O extends WkSerdeDTreeNodeDataOperation<S,?,?,? super D,? super K>,
                         OC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,O,?,?,?,?>,
-                        K extends WkSrlzPacketFieldFrameNode<T,O,?>,
+                        K extends WkSerdeDTreeNodeDataComponent<T,O,?>,
                         AB extends WkSzBytestreamBase<?,?>,
                         AOC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?>>
-    implements WkSrlzPacketFieldFrameNode<T,O,D>
+    implements WkSerdeDTreeNodeDataComponent<T,O,D>
 {
 
     @SuppressWarnings("unused")
@@ -115,12 +115,12 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
       this.singleOperation = Optional.empty();
     }
 
-    protected Optional<WkSrlzPacketOperationFrameNode<?, ?, ?, ?, ?>> processSingleStepBytestream() {
+    protected Optional<WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>> processSingleStepBytestream() {
       throwIfUnitialized();
       if (isCompleted()) {
         return Optional.empty();
       }
-      Optional<WkSrlzPacketOperationFrameNode<?, ?, ?, ?, ?>> opCompleted = this.operationListManager.processingBytestream();
+      Optional<WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>> opCompleted = this.operationListManager.processingBytestream();
       if (isCompleted()) {
         assertNumberOfOperations();
         onDoneProcessing();

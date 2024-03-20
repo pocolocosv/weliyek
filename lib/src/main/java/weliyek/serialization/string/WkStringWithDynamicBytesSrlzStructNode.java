@@ -28,7 +28,7 @@ import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestream;
@@ -37,7 +37,7 @@ import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 import weliyek.serialization.string.WkStringFromBytesSrlzStructDefinitionFrameNodeCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkDynamicByteArraySrlzInputNode;
@@ -47,11 +47,11 @@ import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 
 public class WkStringWithDynamicBytesSrlzStructNode<
                         ZT extends Number,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>>
+                        ZD extends WkSerdeDTreeNumberDefinition<ZT>>
     implements WkStringFromBytesSrlzStructDefinitionFrameNode<
                         WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
                         WkStringWithDynamicBytesSrlzOutputNode<ZT,ZYD,ZYO>,
@@ -59,11 +59,11 @@ public class WkStringWithDynamicBytesSrlzStructNode<
 {
 
   public static <ZX extends Number,
-                 ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
-                 ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                 ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>>
+                 ZD extends WkSerdeDTreeNumberDefinition<ZX>>
   WkSrlzStruct<String,
                   WkSettingsSrlzPacketOperationData,
                   WkStringWithDynamicBytesSrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
@@ -95,11 +95,11 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   }
 
   public static <ZX extends Number,
-                 ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
-                 ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                 ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
                  ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                 ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>>
+                 ZD extends WkSerdeDTreeNumberDefinition<ZX>>
   WkSrlzStructDefinitionFrameNodeCore<
                         String,
                         WkSettingsSrlzPacketOperationData,?,?,
@@ -195,7 +195,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   }
 
   private static <ZX extends Number,
-                  ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZX>,
+                  ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
                   ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>>
   String aggragateByteArray(WkStringWithDynamicBytesSrlzInputNode<ZX,ZXD,ZXO> deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
@@ -210,7 +210,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   public static
   class BytesFromDynamicStringDisaggregator<
                         ZY extends Number,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZY>,
+                        ZYD extends WkSerdeDTreeNumberDefinition<ZY>,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZY,WkSettingsSrlzPacketOperationData,?,?,ZYD>>
       extends ByteArrayFromStringDisaggregator<
                         WkStringWithDynamicBytesSrlzOutputNode<ZY,ZYD,ZYO>,
@@ -232,7 +232,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
 
   @Override
   public
-  WkSrlzStructSubcomponentFrameNode<
+  WkSerdeDTreeNodeStructComponentHandler<
               WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
               WkStringWithDynamicBytesSrlzOutputNode<ZT,ZYD,ZYO>,
               WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
@@ -241,7 +241,7 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -251,13 +251,13 @@ public class WkStringWithDynamicBytesSrlzStructNode<
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-  WkSrlzStructSubcomponentFrameNode<
+  WkSerdeDTreeNodeStructComponentHandler<
             WkStringWithDynamicBytesSrlzInputNode<ZT,ZXD,ZXO>,
             WkStringWithDynamicBytesSrlzOutputNode<ZT,ZYD,ZYO>,
             WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>

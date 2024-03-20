@@ -20,10 +20,10 @@ package weliyek.serialization;
 import java.util.List;
 
 public interface WkAggregatorSrlzStructDefinitionFrameNode<T>
-        extends WkAggregatorSrlzFrameNode,
-                WkSrlzStructDefinitionFrameNode<T>
+        extends WkSerdeDTreeAggregator,
+                WkSerdeDTreeNodeStructDefinition<T>
 {
 
-  List<WkSrlzStructSubcomponentFrameNode<?,?,?>> requiredSubfields();
+  List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> requiredSubfields();
 
 }

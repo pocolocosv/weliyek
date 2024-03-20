@@ -28,14 +28,14 @@ public abstract class WkSrlzPacketOperationFrameNodeCore<
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,Q>,
                         R extends WkResultSrlzPacketOperationData<?>,
-                        _D extends WkSrlzStructDefinitionFrameNode<?>,
+                        _D extends WkSerdeDTreeNodeStructDefinition<?>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        O extends WkSrlzPacketOperationFrameNode<S,?,R,_D,?>,
+                        O extends WkSerdeDTreeNodeDataOperation<S,?,R,_D,?>,
                         OC extends WkSrlzPacketOperationFrameNodeCore<S,Q,QC,R,_D,DC,O,?,AB,K,KC>,
                         AB extends WkSzBytestreamBase<?,?>,
-                        K extends WkSrlzPacketFieldFrameNode<?,?,?>,
+                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>,
                         KC extends WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,? extends K,?,?>>
-        implements WkSrlzPacketOperationFrameNode<S,Q,R,_D,K>
+        implements WkSerdeDTreeNodeDataOperation<S,Q,R,_D,K>
 {
 
     private static final Logger logger = LoggerFactory.getLogger(WkSrlzPacketOperationFrameNodeCore.class);
@@ -80,7 +80,7 @@ public abstract class WkSrlzPacketOperationFrameNodeCore<
 
     protected abstract void onStart();
 
-    protected Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> processBytestream() {
+    protected Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> processBytestream() {
       if (isCompleted()) {
         // TODO Warn or raise an exception?
         return Optional.empty();
@@ -95,7 +95,7 @@ public abstract class WkSrlzPacketOperationFrameNodeCore<
       return onProcessingBytestream();
     }
 
-    protected abstract Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> onProcessingBytestream();
+    protected abstract Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> onProcessingBytestream();
 
     public abstract long expectedBytes();
 

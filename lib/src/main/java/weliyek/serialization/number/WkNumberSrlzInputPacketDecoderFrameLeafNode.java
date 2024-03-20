@@ -20,7 +20,7 @@ package weliyek.serialization.number;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreeNodeLeafReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 
 public interface WkNumberSrlzInputPacketDecoderFrameLeafNode<
@@ -28,11 +28,11 @@ public interface WkNumberSrlzInputPacketDecoderFrameLeafNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<T>,
-                        D extends WkNumberSrlzStructDefinitionFrameLeafNode<T>>
-        extends WkNumberSrlzPacketOperationFrameLeafNode<
+                        D extends WkSerdeDTreeNumberDefinition<T>>
+        extends WkSerdeDTreeNumberOperation<
                         S, Q, R, D,
                         WkSrlzInputPacketFieldFrameNode<T,D,?>>,
-                WkSrlzInputPacketDecoderFrameLeafNode<T, S, Q, R, D>
+                WkSerdeDTreeNodeLeafReader<T, S, Q, R, D>
 {
 
 }

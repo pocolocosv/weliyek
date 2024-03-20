@@ -28,19 +28,19 @@ public abstract class WkSrlzStructDefinitionFrameLeafNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XD extends WkSrlzStructDefinitionFrameLeafNode<T>,
-                        XO extends WkSrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
+                        XD extends WkSerdeDTreeNodeLeafDefinition<T>,
+                        XO extends WkSerdeDTreeNodeLeafReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YD extends WkSrlzStructDefinitionFrameLeafNode<T>,
-                        YO extends WkSrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
+                        YD extends WkSerdeDTreeNodeLeafDefinition<T>,
+                        YO extends WkSerdeDTreeNodeLeafWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSrlzStructDefinitionFrameLeafNode<T>,
+                        D extends WkSerdeDTreeNodeLeafDefinition<T>,
                         DC extends WkSrlzStructDefinitionFrameLeafNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSrlzStructDefinitionFrameNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkSrlzStructDefinitionFrameLeafNode<T>
+    implements WkSerdeDTreeNodeLeafDefinition<T>
 {
 
   public static final char LABEL_SEPARATOR = ',';
@@ -85,7 +85,7 @@ public abstract class WkSrlzStructDefinitionFrameLeafNodeCore<
   }
 
   @Override
-  public List<WkSrlzStructSubcomponentFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> subfields() {
     return Collections.emptyList();
   }
 

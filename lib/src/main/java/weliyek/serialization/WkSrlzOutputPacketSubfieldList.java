@@ -38,8 +38,8 @@ public class WkSrlzOutputPacketSubfieldList<
   @SuppressWarnings("unchecked")
   <SY,
    SYS extends WkSettingsSrlzPacketOperationData,
-   SYD extends WkSrlzStructDefinitionFrameNode<SY>,
-   SYO extends WkSrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>>
+   SYD extends WkSerdeDTreeNodeStructDefinition<SY>,
+   SYO extends WkSerdeDTreeNodeDataWriter<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(
     WkSrlzStructSubcomponentFrameNodeCore<SY,?,?,?,Y,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD> searchedSubcomponent) {
     for (WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YD,YO> serializingSubfieldHandler : this) {

@@ -35,7 +35,7 @@ public abstract class WkBasicPrimitiveArrayWrapperSrlzEngineDecoder<
       Function<V, X> newWrapperFactory,
       int elementByteLength,
       WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-      WkPrimitiveArraySrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?> readingOperation) {
+      WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?> readingOperation) {
     super(newWrapperFactory, elementByteLength, STEP_SIZE, runtimeCtrl, readingOperation);
   }
 

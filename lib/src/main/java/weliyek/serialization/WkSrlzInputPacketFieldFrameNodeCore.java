@@ -22,8 +22,8 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 public abstract class WkSrlzInputPacketFieldFrameNodeCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkSrlzInputPacketDecoderFrameNode<
+                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDTreeNodeDataReader<
                                         T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         AXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
@@ -61,7 +61,7 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
 
   private static
   <XX,
-   OO extends WkSrlzInputPacketDecoderFrameNode<?,?,?,? extends WkResultSrlzPacketOperationData<XX>,?>>
+   OO extends WkSerdeDTreeNodeDataReader<?,?,?,? extends WkResultSrlzPacketOperationData<XX>,?>>
   XX getDeserializedFromReadingOp(OO readingOp) {
     final WkResultSrlzPacketOperationData<XX> result = readingOp.result().get();
     return result.serializable().get();
@@ -106,7 +106,7 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
   }
 
   @Override
-  public WkSrlzStructComponentFrameNode<? extends XD> structComponent() {
+  public WkSerdeDTreeNodeStructComponent<? extends XD> structComponent() {
     return protocolFieldCore().asProtocolField();
   }
 

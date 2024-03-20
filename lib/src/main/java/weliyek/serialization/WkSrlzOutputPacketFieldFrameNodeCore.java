@@ -20,8 +20,8 @@ package weliyek.serialization;
 public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,?,?,YD>,
+                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         AYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
     extends WkSrlzPacketFieldFrameNodeCore<
@@ -41,7 +41,7 @@ public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
     super(
         initialOperationListCapacity,
         protocolFieldCore,
-        WkSrlzOutputPacketEncoderFrameNode::serializable);
+        WkSerdeDTreeNodeDataWriter::serializable);
   }
 
   @Override
@@ -67,7 +67,7 @@ public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
   }
 
   @Override
-  public WkSrlzStructComponentFrameNode<? extends YD> structComponent() {
+  public WkSerdeDTreeNodeStructComponent<? extends YD> structComponent() {
     return protocolFieldCore().asProtocolField();
   }
 

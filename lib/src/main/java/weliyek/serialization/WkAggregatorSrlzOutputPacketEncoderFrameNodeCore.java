@@ -65,8 +65,8 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
   protected abstract void onAggregatorInitialization();
 
   @Override
-  protected Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> onProcessingBytestream() {
-    Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> latestSubfield = this.writingSubfields.processBytestream();
+  protected Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> onProcessingBytestream() {
+    Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> latestSubfield = this.writingSubfields.processBytestream();
     if (this.writingSubfields.isCompleted()) {
       this.completeOperation();
     }
@@ -76,8 +76,8 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
   @SuppressWarnings("unchecked")
   public <SY,
              SYS extends WkSettingsSrlzPacketOperationData,
-             SYD extends WkSrlzStructDefinitionFrameNode<SY>,
-             SYO extends WkSrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>>
+             SYD extends WkSerdeDTreeNodeStructDefinition<SY>,
+             SYO extends WkSerdeDTreeNodeDataWriter<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,T,YBC,YD,YO> getSubfieldpacketFor(
     WkSrlzStructSubcomponentFrameNodeCore<SY,?,?,?,T,?,?,?,SYS,SYD,SYO,?,YD,YO,?,?>
     protocolSubfieldCore) {

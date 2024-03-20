@@ -25,23 +25,23 @@ import java.util.function.ToIntFunction;
 public class WkSrlzStructSubcomponentFrameNodeCore<
                         ST,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXD extends WkSrlzStructDefinitionFrameNode<ST>,
-                        SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>,
+                        SXD extends WkSerdeDTreeNodeStructDefinition<ST>,
+                        SXO extends WkSerdeDTreeNodeDataReader<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
                         XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
                                         T,?, ? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYD extends WkSrlzStructDefinitionFrameNode<ST>,
-                        SYO extends WkSrlzOutputPacketEncoderFrameNode<ST,SYS,?,?,SYD>,
+                        SYD extends WkSerdeDTreeNodeStructDefinition<ST>,
+                        SYO extends WkSerdeDTreeNodeDataWriter<ST,SYS,?,?,SYD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
                         YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
                         YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
                                         T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>,
-                        SD extends WkSrlzStructDefinitionFrameNode<ST>,
+                        SD extends WkSerdeDTreeNodeStructDefinition<ST>,
                         D extends WkAggregatorSrlzStructDefinitionFrameNode<T>>
-    implements WkSrlzStructSubcomponentFrameNode<XO, YO, SD>
+    implements WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD>
 {
 
   private final Optional<Predicate<? super XO>> rxEnablingTest;
@@ -51,7 +51,7 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
   private final ToIntFunction<? super YO> numberOfTxOperationsEvaluator;
   private final WkOperationSettingsFactory<YO, SYS> txSettingsFactory;
   private final WkSrlzStructComponentFrameNodeCore<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> protocolfieldCore;
-  private final WkSrlzStructSubcomponentFrameNode<XO, YO, SD> body;
+  private final WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD> body;
   private final WkSzPacketWriteDisaggregator<ST, SYD, T, YO> disaggregator;
   private boolean deserializedRequiredByAggregator;
   private int order;
@@ -77,7 +77,7 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
     this.protocolfieldCore = new WkSrlzStructComponentFrameNodeNonrootCore<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD>(label, definitionFactory, parentDefinitionCore);
     this.disaggregator = Objects.requireNonNull(disaggregator);
     setFlagDeserializedAsRequiredByAggregator(deserializedRequiredByAggregator);
-    this.body = new WkSrlzStructSubcomponentFrameNode<XO, YO, SD>() {
+    this.body = new WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD>() {
 
       @Override
       public Optional<Predicate<? super XO>> rxOptionalityTest() {
@@ -100,7 +100,7 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
       }
 
       @Override
-      public WkSrlzStructComponentFrameNode<SD> field() {
+      public WkSerdeDTreeNodeStructComponent<SD> field() {
         return WkSrlzStructSubcomponentFrameNodeCore.this.field();
       }
 
@@ -187,11 +187,11 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
   }
 
   @Override
-  public WkSrlzStructComponentFrameNode<SD> field() {
+  public WkSerdeDTreeNodeStructComponent<SD> field() {
     return this.protocolfieldCore.asProtocolField();
   }
 
-  public WkSrlzStructSubcomponentFrameNode<XO, YO, SD> body() {
+  public WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD> body() {
     return this.body;
   }
 

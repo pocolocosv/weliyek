@@ -35,9 +35,9 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
 
     private final List<WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
                       handlerContainer = new ArrayList<>();
-    private final List<WkSrlzStructSubcomponentFrameNode<XO,YO,?>>
+    private final List<WkSerdeDTreeNodeStructComponentHandler<XO,YO,?>>
                       subfieldList = new ArrayList<>();
-    private final List<WkSrlzStructSubcomponentFrameNode<?,?,?>>
+    private final List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>>
                       roSubfieldList = Collections.unmodifiableList(subfieldList);
 
     public WkSrlzStructSubcomponentFrameNodeCoreList() {
@@ -82,7 +82,7 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
       return new WkSrlzInputPacketSubfieldList<XX,XXB,XXD,XXO>(deserializingHandlerList);
     }
 
-    public List<WkSrlzStructSubcomponentFrameNode<?,?,?>> asSubfieldList() {
+    public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> asSubfieldList() {
       return this.roSubfieldList;
     }
 
@@ -142,8 +142,8 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
       }
     }
 
-    public List<WkSrlzStructSubcomponentFrameNode<?,?,?>> collectRequiredSubfields() {
-      List<WkSrlzStructSubcomponentFrameNode<?,?,?>> requiredSubfields =new ArrayList<>();
+    public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> collectRequiredSubfields() {
+      List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> requiredSubfields =new ArrayList<>();
       for (WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> subcompHandler : handlerContainer) {
         if (subcompHandler.isDeserializedRequiredByAggregator()) {
           requiredSubfields.add(subcompHandler.body());

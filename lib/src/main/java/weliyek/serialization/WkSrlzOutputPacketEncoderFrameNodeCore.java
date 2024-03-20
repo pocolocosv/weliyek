@@ -26,9 +26,9 @@ public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YO extends WkSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD>,
+                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSrlzOutputPacketEncoderFrameNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends WkSrlzStructDefinitionFrameNode<T>,
+                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSrlzStructDefinitionFrameNodeCore<
                                       T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,?,DC>>
@@ -36,7 +36,7 @@ public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
                         YS, YQ, YQC, YR, YD, DC, YO, YOC, AYB,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,?>,
                         WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?>>
-        implements WkSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>
+        implements WkSerdeDTreeNodeDataWriter<T, YS, YQ, YR, YD>
 {
 
     private final T serializable;
@@ -83,7 +83,7 @@ public abstract class WkSrlzOutputPacketEncoderFrameNodeCore<
     }
 
     @Override
-    protected final Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> processBytestream() {
+    protected final Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> processBytestream() {
       return super.processBytestream();
     }
 

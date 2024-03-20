@@ -24,15 +24,15 @@ public class WkSzPacketFieldException extends WkSzSegmentException
 
     private static final long serialVersionUID = 2020_05_01_000L;
 
-    private final WkSrlzPacketFieldFrameNode<?,?,?> packetField;
+    private final WkSerdeDTreeNodeDataComponent<?,?,?> packetField;
 
-    public WkSzPacketFieldException(WkSrlzPacketFieldFrameNode<?,?,?> packetField) {
+    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packetField) {
         super(packetField);
         this.packetField = Objects.requireNonNull(packetField);
     }
 
     public WkSzPacketFieldException(
-        WkSrlzPacketFieldFrameNode<?,?,?> packet,
+        WkSerdeDTreeNodeDataComponent<?,?,?> packet,
         String message,
         Throwable cause,
         boolean enableSuppression,
@@ -41,22 +41,22 @@ public class WkSzPacketFieldException extends WkSzSegmentException
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public WkSzPacketFieldException(WkSrlzPacketFieldFrameNode<?,?,?> packet, String message, Throwable cause) {
+    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packet, String message, Throwable cause) {
         super(packet, message, cause);
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public WkSzPacketFieldException(WkSrlzPacketFieldFrameNode<?,?,?> packet, String message) {
+    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packet, String message) {
         super(packet, message);
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public WkSzPacketFieldException(WkSrlzPacketFieldFrameNode<?,?,?> packet, Throwable cause) {
+    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packet, Throwable cause) {
         super(packet, cause);
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public final WkSrlzPacketFieldFrameNode<?,?,?> packetField() {
+    public final WkSerdeDTreeNodeDataComponent<?,?,?> packetField() {
         return this.packetField;
     }
 

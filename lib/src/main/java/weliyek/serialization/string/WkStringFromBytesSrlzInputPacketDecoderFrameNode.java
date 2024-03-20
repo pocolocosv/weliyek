@@ -24,14 +24,14 @@ import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkByteArraySrlzInputPacketDecoderFrameNode;
-import weliyek.util.array.WkByteArraySrlzStructDefinitionFrameNode;
+import weliyek.util.array.WkSerdeDTreeByteArrayDefinition;
 
 public interface WkStringFromBytesSrlzInputPacketDecoderFrameNode<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XR extends WkResultSrlzPacketOperationData<String>,
                         XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,?,? extends SXD>,
-                        SXD extends WkByteArraySrlzStructDefinitionFrameNode,
+                        SXD extends WkSerdeDTreeByteArrayDefinition,
                         SXO extends WkByteArraySrlzInputPacketDecoderFrameNode<?,?,?,SXD>>
     extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS, XQ, XR, XD, WkByteArray, SXD, SXO>,
             WkStringFromBytesSrlzPacketOperationFrameNode<

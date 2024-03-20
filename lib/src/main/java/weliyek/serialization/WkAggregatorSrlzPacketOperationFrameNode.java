@@ -22,9 +22,9 @@ public interface WkAggregatorSrlzPacketOperationFrameNode<
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkAggregatorSrlzStructDefinitionFrameNode<?>,
-                        K extends WkSrlzPacketFieldFrameNode<?,?,?>>
-        extends WkAggregatorSrlzFrameNode,
-                WkSrlzPacketOperationFrameNode<S, Q, R, D, K>
+                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>>
+        extends WkSerdeDTreeAggregator,
+                WkSerdeDTreeNodeDataOperation<S, Q, R, D, K>
 {
 
 }

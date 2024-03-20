@@ -17,18 +17,18 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public interface WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<
                         T extends WkPrimitiveArray<?,?>,
                         XO extends WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
                         YO extends WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<?>,
-                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>>
+                        ZD extends WkSerdeDTreeNumberDefinition<?>,
+                        VD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>>
     extends WkDynamicPrimitiveArraySrlzFrameNode<
-                        WkSrlzStructSubcomponentFrameNode<XO, YO, ZD>,
-                        WkSrlzStructSubcomponentFrameNode<XO, YO, VD>>,
+                        WkSerdeDTreeNodeStructComponentHandler<XO, YO, ZD>,
+                        WkSerdeDTreeNodeStructComponentHandler<XO, YO, VD>>,
             WkDynamicSequenceSrlzStructDefinitionFrameNode<T, XO, YO, ZD, VD>
 {
 

@@ -39,7 +39,7 @@ import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
 import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -58,23 +58,23 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
                                         WkResultSrlzPacketOperationData<T>,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         ZT extends Number,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,?,
                                         ?,ZXD>,
-                        ZYD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                        ZD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
-                        VXD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>,
+                        ZD extends WkSerdeDTreeNumberDefinition<ZT>,
+                        VXD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>,
                         VXO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<
                                         T,WkSzVariableLengthOperationSettings,?,?,VXD>,
-                        VYD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>,
+                        VYD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>,
                         VYO extends WkVariableSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<
                                         T,WkSettingsSrlzPacketOperationData,?,?,VYD>,
-                        VD extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<T>,
+                        VD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>,
                         D extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,YO,ZD,VD>>
     extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                         T,

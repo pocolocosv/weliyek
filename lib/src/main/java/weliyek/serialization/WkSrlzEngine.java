@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public abstract class WkSrlzEngine<
                         QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        O extends WkSrlzPacketOperationFrameNode<?,?,?,?,?>>
+                        O extends WkSerdeDTreeNodeDataOperation<?,?,?,?,?>>
 {
 
   private final QC runtimeControl;

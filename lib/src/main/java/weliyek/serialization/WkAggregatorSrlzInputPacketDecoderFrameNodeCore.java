@@ -53,8 +53,8 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
   @SuppressWarnings("unchecked")
   public <ST,
           SXS extends WkSettingsSrlzPacketOperationData,
-          SXD extends WkSrlzStructDefinitionFrameNode<ST>,
-          SXO extends WkSrlzInputPacketDecoderFrameNode<ST,SXS,?,?,SXD>>
+          SXD extends WkSerdeDTreeNodeStructDefinition<ST>,
+          SXO extends WkSerdeDTreeNodeDataReader<ST,SXS,?,?,SXD>>
   WkSrlzInputPacketSubfieldFrameNodeCore<ST,SXS,SXD,SXO,T,XBC,XD,XO> getSubfieldpacketFor(
     WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,T,?,XD,XO,?,?,?,?,?,?,?,?> protocolSubfieldCore) {
     return this.readinHandlerList.findSubfieldpacket(
@@ -74,8 +74,8 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
   protected abstract void onAggregatorReadingInitialization();
 
   @Override
-  protected Optional<WkSrlzPacketOperationFrameNode<?, ?, ?, ?, ?>> onProcessingBytestream() {
-    Optional<WkSrlzPacketOperationFrameNode<?,?,?,?,?>> completedSubfield = this.readinHandlerList.processBytestream();
+  protected Optional<WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>> onProcessingBytestream() {
+    Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> completedSubfield = this.readinHandlerList.processBytestream();
     if (this.readinHandlerList.isCompleted()) {
         completeOperation();
     }

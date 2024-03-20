@@ -26,7 +26,7 @@ public interface WkAggregatorSrlzInputPacketDecoderFrameNode<
         extends WkAggregatorSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>>,
-                WkSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>
+                WkSerdeDTreeNodeDataReader<T,XS,XQ,XR,XD>
 {
 
 }

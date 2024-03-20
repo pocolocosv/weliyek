@@ -29,9 +29,9 @@ import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzStructDefinitionFrameNode;
+import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceDefinition;
 
 public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T,
@@ -52,10 +52,10 @@ public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
                         ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkNumberSrlzStructDefinitionFrameLeafNode<ZT>,
+                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VXO extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<T,VXS,?,?,VXD>,
-                        VXD extends WkVariableSizeSequenceSrlzStructDefinitionFrameNode<T>,
+                        VXD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                         ?,?,?,?,?,?,?,?,

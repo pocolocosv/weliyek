@@ -28,10 +28,10 @@ public interface WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<
                         S extends WkSzVariableLengthOperationSettings,
                         Q extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<X>,
-                        D extends WkVariableSizePrimitiveArraySrlzStructDefinitionFrameNode<X>>
+                        D extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<X>>
     extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<X, S, Q, R, D>,
-            WkPrimitiveArraySrlzInputPacketDecoderFrameNode<X, S, Q, R, D>,
-            WkVariableSizePrimitiveArraySrlzPacketOperationFrameNode<
+            WkSerdeDTreeGenericPrimitiveArrayReader<X, S, Q, R, D>,
+            WkSerdeDTreeVariableSizePrimitiveArrayOperation<
                         S, Q, R, D,
                         WkSrlzInputPacketFieldFrameNode<X,D,?>>
 {

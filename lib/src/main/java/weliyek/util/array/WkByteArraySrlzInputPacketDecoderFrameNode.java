@@ -26,9 +26,9 @@ public interface WkByteArraySrlzInputPacketDecoderFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<WkByteArray>,
-                        D extends WkByteArraySrlzStructDefinitionFrameNode>
-    extends WkPrimitiveArraySrlzInputPacketDecoderFrameNode<WkByteArray, S, Q, R, D>,
-            WkByteArraySrlzPacketOperationFrameNode<
+                        D extends WkSerdeDTreeByteArrayDefinition>
+    extends WkSerdeDTreeGenericPrimitiveArrayReader<WkByteArray, S, Q, R, D>,
+            WkSerdeDTreeByteArrayOperation<
                         S, Q, R, D,
                         WkSrlzInputPacketFieldFrameNode<WkByteArray,D,?>>
 {

@@ -20,25 +20,25 @@ package weliyek.util.array;
 import java.util.function.BiFunction;
 
 import weliyek.serialization.WkSrlzEngineEncoder;
-import weliyek.serialization.WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<Y extends WkPrimitiveArrayBase<?, ?>>
     extends WkSzPrimitiveArrayWrapperWriteEngineFactory<
                         Y,
                         WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>>
+                        WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>>
 {
 
   public WkSzBasicPrimitiveArrayWrapperWriteEngineFactory(
       String label,
       BiFunction<
         WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-        WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>,
+        WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>,
         WkSrlzEngineEncoder<
           Y,
           WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-          WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNode<? extends Y,?,?,?,?>>> engineSupplier) {
+          WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

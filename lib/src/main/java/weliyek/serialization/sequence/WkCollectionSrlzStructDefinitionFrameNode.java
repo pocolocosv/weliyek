@@ -24,7 +24,7 @@ import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNode;
 public interface WkCollectionSrlzStructDefinitionFrameNode<T extends Collection<?>>
   extends WkCollectionSrlzFrameNode,
           WkAggregatorSrlzStructDefinitionFrameNode<T>,
-          WkSequenceSrlzStructDefinitionFrameNode<T>
+          WkSerdeDTreeSequenceDefinition<T>
 {
 
 }

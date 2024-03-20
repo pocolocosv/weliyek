@@ -21,7 +21,7 @@ import java.util.List;
 
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructSubcomponentFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
 import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
@@ -102,14 +102,14 @@ public class WkTstPrimitivesGroupListSrlzStructNode
     }
 
     @Override
-    public WkSrlzStructSubcomponentFrameNode<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode>
+    public WkSerdeDTreeNodeStructComponentHandler<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode>
     size() {
       return this.fieldCore.size();
     }
 
     @Override
     public
-    WkSrlzStructSubcomponentFrameNode<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
+    WkSerdeDTreeNodeStructComponentHandler<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
     variableSequence() {
       return this.fieldCore.variableSequence();
     }
@@ -120,12 +120,12 @@ public class WkTstPrimitivesGroupListSrlzStructNode
     }
 
     @Override
-    public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> subfields() {
+    public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
       return this.fieldCore.subfields();
     }
 
     @Override
-    public List<WkSrlzStructSubcomponentFrameNode<?, ?, ?>> requiredSubfields() {
+    public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
       return this.fieldCore.requiredSubfields();
     }
 

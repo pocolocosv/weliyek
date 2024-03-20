@@ -22,14 +22,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import weliyek.serialization.WkSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 
 public class WkSrlzFilterRule
         extends WkSrlzFilterPredicateRuleBase
 {
 
     private final WkSrlzPacketNodePredicate<?,?> nodePredicate;
-    private final List<WkSrlzStructDefinitionFrameNode<?>> structDefinitionTargetList;
+    private final List<WkSerdeDTreeNodeStructDefinition<?>> structDefinitionTargetList;
     private final List<WkSrlzPacketNodePredicate<?,?>> nodePredicateList;
     final ExclusiveOption option;
 
@@ -45,7 +45,7 @@ public class WkSrlzFilterRule
     }
 
     @Override
-    public List<WkSrlzStructDefinitionFrameNode<?>> matchTargets() {
+    public List<WkSerdeDTreeNodeStructDefinition<?>> matchTargets() {
         return this.structDefinitionTargetList;
     }
 

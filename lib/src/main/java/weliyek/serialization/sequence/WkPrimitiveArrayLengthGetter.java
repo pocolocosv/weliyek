@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkPrimitiveArraySrlzStructDefinitionFrameLeafNode;
+import weliyek.serialization.WkSerdeDTreePrimitiveArrayDefinition;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.util.array.WkPrimitiveArray;
 
@@ -25,7 +25,7 @@ import weliyek.util.array.WkPrimitiveArray;
 public interface WkPrimitiveArrayLengthGetter<
                         Y extends WkPrimitiveArray<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkPrimitiveArraySrlzStructDefinitionFrameLeafNode<Y>>
+                        YD extends WkSerdeDTreePrimitiveArrayDefinition<Y>>
 {
 
   int retriveLength(Y wrapper, YS settings, YD definition);

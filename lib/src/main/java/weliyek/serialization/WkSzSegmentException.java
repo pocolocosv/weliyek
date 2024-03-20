@@ -1,35 +1,35 @@
 package weliyek.serialization;
 
-import weliyek.serialization.tree.WkSerdeTreeNode;
+import weliyek.serialization.tree.WkSerdeDTreeNode;
 
 public class WkSzSegmentException extends WkSzException
 {
 
   private static final long serialVersionUID = 2018_03_05_000L;
 
-  private final WkSerdeTreeNode segment;
+  private final WkSerdeDTreeNode segment;
 
-  public WkSzSegmentException(WkSerdeTreeNode segment) {
+  public WkSzSegmentException(WkSerdeDTreeNode segment) {
     this.segment = segment;
   }
 
-  public WkSzSegmentException(WkSerdeTreeNode segment, String message) {
+  public WkSzSegmentException(WkSerdeDTreeNode segment, String message) {
     super(message);
     this.segment = segment;
   }
 
-  public WkSzSegmentException(WkSerdeTreeNode segment, Throwable cause) {
+  public WkSzSegmentException(WkSerdeDTreeNode segment, Throwable cause) {
     super(cause);
     this.segment = segment;
   }
 
-  public WkSzSegmentException(WkSerdeTreeNode segment, String message, Throwable cause) {
+  public WkSzSegmentException(WkSerdeDTreeNode segment, String message, Throwable cause) {
     super(message, cause);
     this.segment = segment;
   }
 
   public WkSzSegmentException(
-    WkSerdeTreeNode segment,
+    WkSerdeDTreeNode segment,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -38,7 +38,7 @@ public class WkSzSegmentException extends WkSzException
     this.segment = segment;
   }
 
-  public WkSerdeTreeNode getSegment() {
+  public WkSerdeDTreeNode getSegment() {
     return this.segment;
   }
 

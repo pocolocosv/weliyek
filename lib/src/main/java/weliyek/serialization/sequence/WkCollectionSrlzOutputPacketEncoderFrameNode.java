@@ -35,7 +35,7 @@ public interface WkCollectionSrlzOutputPacketEncoderFrameNode<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,?>>,
             WkAggregatorSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>,
-            WkSequenceSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>
+            WkSerdeDTreeSequenceWriter<T, YS, YQ, YR, YD>
 {
 
 }

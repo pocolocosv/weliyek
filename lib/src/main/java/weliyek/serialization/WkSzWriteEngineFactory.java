@@ -22,7 +22,7 @@ import java.util.function.BiFunction;
 public class WkSzWriteEngineFactory<
                         T,
                         QC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        O extends WkSrlzOutputPacketEncoderFrameNode<? extends T,?,?,?,?>>
+                        O extends WkSerdeDTreeNodeDataWriter<? extends T,?,?,?,?>>
     extends WkSzEngineFactoryBase<QC, O, WkSrlzEngineEncoder<T,QC,O>>
 {
 

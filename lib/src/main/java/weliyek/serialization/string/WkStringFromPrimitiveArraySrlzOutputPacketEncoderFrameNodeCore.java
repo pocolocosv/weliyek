@@ -28,8 +28,8 @@ import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkPrimitiveArraySrlzOutputPacketEncoderFrameNode;
-import weliyek.util.array.WkPrimitiveArraySrlzStructDefinitionFrameNode;
+import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayDefinition;
 
 public abstract class WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -44,8 +44,8 @@ public abstract class WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SY extends WkPrimitiveArray<?,?>,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYO extends WkPrimitiveArraySrlzOutputPacketEncoderFrameNode<SY,SYS,?,?,SYD>,
-                        SYD extends WkPrimitiveArraySrlzStructDefinitionFrameNode<SY>,
+                        SYO extends WkSerdeDTreeGenericPrimitiveArrayWriter<SY,SYS,?,?,SYD>,
+                        SYD extends WkSerdeDTreeGenericPrimitiveArrayDefinition<SY>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
         extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>
         implements WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<YS, YQ, YR, YD, SY, SYD, SYO>

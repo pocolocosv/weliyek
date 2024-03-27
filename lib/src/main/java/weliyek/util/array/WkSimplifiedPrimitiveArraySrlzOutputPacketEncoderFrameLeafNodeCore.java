@@ -31,14 +31,14 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        D extends WkSerdeDTreeGenericPrimitiveArrayDefinition<Y>,
-                        YO extends WkSerdeDTreeGenericPrimitiveArrayWriter<
+                        D extends WkSerdeDtreeGenericPrimitiveArrayDefinition<Y>,
+                        YO extends WkSerdeDtreeGenericPrimitiveArrayWriter<
                                         Y,
                                         YS,
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkResultSrlzPacketOperationData<Y>,
                                         D>>
-    extends WkSerdeDTreeGenericPrimitiveArrayWriterCore<
+    extends WkSerdeDtreeGenericPrimitiveArrayWriterCore<
                         Y,
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -51,7 +51,7 @@ public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>,
                         D,
                         WkSzOutputBytestreamBase<?>,
-                        WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D>>
+                        WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D>>
 {
 
   private final Consumer<? super WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>>
@@ -63,7 +63,7 @@ public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<Y,?,D,?,?,?> serializingfieldCore,
-    WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D> definitionCore,
+    WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,
     Consumer<? super WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>> onInitializing) {
     super(index, serializable, settings, parentBytestream, serializingfieldCore, definitionCore, operationBody);

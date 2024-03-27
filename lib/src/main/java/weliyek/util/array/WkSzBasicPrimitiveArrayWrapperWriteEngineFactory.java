@@ -26,18 +26,18 @@ public class WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<Y extends WkPrimit
     extends WkSzPrimitiveArrayWrapperWriteEngineFactory<
                         Y,
                         WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>
+                        WkSerdeDtreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>
 {
 
   public WkSzBasicPrimitiveArrayWrapperWriteEngineFactory(
       String label,
       BiFunction<
         WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-        WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>,
+        WkSerdeDtreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>,
         WkSrlzEngineEncoder<
           Y,
           WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-          WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>> engineSupplier) {
+          WkSerdeDtreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

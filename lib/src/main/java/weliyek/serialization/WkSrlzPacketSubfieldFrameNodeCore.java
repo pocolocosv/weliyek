@@ -22,14 +22,14 @@ import java.util.Optional;
 
 public abstract class WkSrlzPacketSubfieldFrameNodeCore<
                         S extends WkSettingsSrlzPacketOperationData,
-                        TD extends WkSerdeDTreeNodeStructDefinition<?>,
+                        TD extends WkSerdeDtreeNodeStructDefinition<?>,
                         NC extends WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>,
+                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
                         KC extends WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,? extends K,?,?>,
-                        J extends WkSerdeDTreeNodeDataComponentHandler<?>,
-                        AOC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,AD,?,?,?,?,?,?>,
-                        AD extends WkSerdeDTreeNodeStructDefinition<?>>
-    implements WkSerdeDTreeNodeDataComponentHandler<K>
+                        J extends WkSerdeDtreeNodeDataComponentHandler<?>,
+                        AOC extends WkSerdeDtreeNodeDataOperationCore<?,?,?,?,AD,?,?,?,?,?,?>,
+                        AD extends WkSerdeDtreeNodeStructDefinition<?>>
+    implements WkSerdeDtreeNodeDataComponentHandler<K>
 {
 
   private NC protocolSubfieldCore = null;
@@ -111,13 +111,13 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
 
   protected abstract void onReset();
 
-  public final Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> processBytestream() {
+  public final Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> processBytestream() {
     return this.packetFieldCore.processSingleStepBytestream();
   }
 
   protected abstract TD definition();
 
-  protected abstract WkSerdeDTreeNodeStructComponent<? extends TD> protocolField();
+  protected abstract WkSerdeDtreeNodeStructComponent<? extends TD> protocolField();
 
   public abstract WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> protocolFieldCore();
 

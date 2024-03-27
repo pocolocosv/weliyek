@@ -30,8 +30,8 @@ import org.slf4j.LoggerFactory;
 
 public class WkSzPacketOperationCoreList<
                         T,
-                        O extends WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>,
-                        OC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,O,?,?,?,?>>
+                        O extends WkSerdeDtreeNodeDataOperation<?, ?, ?, ?, ?>,
+                        OC extends WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,O,?,?,?,?>>
         extends AbstractList<OC>
 {
 
@@ -125,7 +125,7 @@ public class WkSzPacketOperationCoreList<
       this.operationList.add(this.currentOpCore.body());
     }
 
-    public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> processingBytestream() {
+    public Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> processingBytestream() {
         if ( ! isInitialized()) {
           throw new IllegalStateException();
         }
@@ -135,7 +135,7 @@ public class WkSzPacketOperationCoreList<
           // core is available.
           return Optional.empty();
         }
-        Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> lastOp = this.currentOpCore.processBytestream();
+        Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> lastOp = this.currentOpCore.processBytestream();
         if (this.currentOpCore.isCompleted()) {
           if (this.coreContainer.size() < this.expectedSize) {
             // Still operation left to perform.

@@ -26,12 +26,12 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 public final class WkSrlzInputPacketFieldFrameNodeRootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>>
     extends WkSrlzInputPacketFieldFrameNodeCore<
                         T, XS, XD, XO, AXBC,
-                        WkSerdeDTreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        WkSerdeDtreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
     implements WkSzInputPacket<T, XD, XO>
 {
 
@@ -53,7 +53,7 @@ public final class WkSrlzInputPacketFieldFrameNodeRootCore<
   }
 
   private final ReadingPacketParameters<XS,AXBC> parameters;
-  private Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
+  private Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
 
   public WkSrlzInputPacketFieldFrameNodeRootCore(
     WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> protocolHandler,
@@ -68,7 +68,7 @@ public void processBytestream() {
   }
 
   @Override
-public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult() {
+public Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult() {
     return this.previousOpResult;
   }
 
@@ -120,7 +120,7 @@ public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingStea
   }
 
   @Override
-  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,WkSerdeDTreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
+  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,WkSerdeDtreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

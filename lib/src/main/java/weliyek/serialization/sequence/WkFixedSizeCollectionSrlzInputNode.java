@@ -24,11 +24,11 @@ import java.util.Optional;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 
@@ -37,8 +37,8 @@ public final class WkFixedSizeCollectionSrlzInputNode<
                         XS extends WkSettingsSrlzPacketOperationData,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>>
+                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>>
     implements WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<
                         T,
                         XS,
@@ -46,7 +46,7 @@ public final class WkFixedSizeCollectionSrlzInputNode<
                         WkResultSrlzPacketOperationData<T>,
                         WkFixedSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                         ET, EXD, EXO>,
-                WkSerdeDTreeFixedSizeSequenceReader<
+                WkSerdeDtreeFixedSizeSequenceReader<
                         T,
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

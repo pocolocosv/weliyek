@@ -25,10 +25,10 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 public class WkSrlzInputPacketFieldFrameNodeNonrootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,?,XD>,
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        AXO extends WkSerdeDTreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        AXO extends WkSerdeDtreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
         extends WkSrlzInputPacketFieldFrameNodeCore<T, XS, XD, XO, AXBC, AXO>
 {
 

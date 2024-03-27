@@ -22,30 +22,30 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
 
   private static final long serialVersionUID = 2022_05_26_0000L;
   
-  private final WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
+  private final WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore;
 
   public WkSzDefinitionCoreException(
-    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
+    WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore) {
     super(definitionCore.componentCore());
     this.definitionCore = definitionCore;
   }
 
   public WkSzDefinitionCoreException(
-    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message) {
     super(definitionCore.componentCore(), message);
     this.definitionCore = definitionCore;
   }
 
   public WkSzDefinitionCoreException(
-    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     Throwable cause) {
     super(definitionCore.componentCore(), cause);
     this.definitionCore = definitionCore;
   }
 
   public WkSzDefinitionCoreException(
-    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause) {
     super(definitionCore.componentCore(), message, cause);
@@ -53,7 +53,7 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
   }
 
   public WkSzDefinitionCoreException(
-    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
+    WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> definitionCore,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -62,7 +62,7 @@ public class WkSzDefinitionCoreException extends WkSzStructComponentException
     this.definitionCore = definitionCore;
   }
   
-  public WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> getDefinitionCore() {
+  public WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> getDefinitionCore() {
     return this.definitionCore;
   }
 

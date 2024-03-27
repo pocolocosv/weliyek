@@ -23,15 +23,15 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public class WkSignedBigEndianIntegerSrlzStructNode
-    implements WkSerdeDTreeNumberDefinition<Integer>
+    implements WkSerdeDtreeNumberDefinition<Integer>
 {
 
   public static WkSrlzStruct<
@@ -53,7 +53,7 @@ public class WkSignedBigEndianIntegerSrlzStructNode
                       WkSzCountingOutputBytestream::new);
   }
 
-  public static WkSerdeDTreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeNodeStructDefinitionCore<
                         Integer,
                         WkSettingsSrlzPacketOperationData,?,?,
                         WkSignedBigEndianIntegerSrlzStructNode,
@@ -96,7 +96,7 @@ public class WkSignedBigEndianIntegerSrlzStructNode
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

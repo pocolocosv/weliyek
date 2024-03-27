@@ -37,9 +37,9 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSerdeDTreeNumberReader;
-import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -58,23 +58,23 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
                                         WkResultSrlzPacketOperationData<T>,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         ZT extends Number,
-                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        ZXO extends WkSerdeDTreeNumberReader<
+                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZXO extends WkSerdeDtreeNumberReader<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,?,
                                         ?,ZXD>,
-                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        ZYO extends WkSerdeDTreeNumberWriter<
+                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZYO extends WkSerdeDtreeNumberWriter<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                        ZD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        VXD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>,
-                        VXO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayReader<
+                        ZD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        VXD extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<T>,
+                        VXO extends WkSerdeDtreeGenericVariableSizePrimitiveArrayReader<
                                         T,WkSzVariableLengthOperationSettings,?,?,VXD>,
-                        VYD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>,
-                        VYO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayWriter<
+                        VYD extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<T>,
+                        VYO extends WkSerdeDtreeGenericVariableSizePrimitiveArrayWriter<
                                         T,WkSettingsSrlzPacketOperationData,?,?,VYD>,
-                        VD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>,
+                        VD extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<T>,
                         D extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,YO,ZD,VD>>
     extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                         T,

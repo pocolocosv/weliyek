@@ -24,7 +24,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorDefinitionCore;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
@@ -32,13 +32,13 @@ import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataReader;
-import weliyek.serialization.WkSerdeDTreeNodeDataWriter;
+import weliyek.serialization.WkSerdeDtreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -70,18 +70,18 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                        ED extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                        ED extends WkSerdeDtreeNodeStructDefinition<ET>,
                         D extends WkCollectionAndElementsSrlzStructDefinitionFrameNode<T,XO,YO,ET,ED>,
                         DC extends WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
                                         YS,YB,YBC,YQC,YR,YD,YO,AYB,
                                         ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D,?>>
-    extends WkSerdeDTreeAggregatorDefinitionCore<
+    extends WkSerdeDtreeAggregatorDefinitionCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXB,
                         YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
     implements WkCollectionAndElementsSrlzStructDefinitionFrameNode<T, XO, YO, ET, ED>
@@ -135,7 +135,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
   private static <T extends Collection<ET>,
                   YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,ET,EYD,?>,
                   ET,
-                  EYD extends WkSerdeDTreeNodeStructDefinition<ET>>
+                  EYD extends WkSerdeDtreeNodeStructDefinition<ET>>
   ET disaggregateCollection(
     WkSrlzOutputPacketFieldFrameNode<ET,EYD,?> serializingField,
     YO collectionWritingOp,
@@ -147,7 +147,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
   }
 
   @Override
-  public WkSerdeDTreeNodeStructComponentHandler<XO, YO, ED> elements() {
+  public WkSerdeDtreeNodeStructComponentHandler<XO, YO, ED> elements() {
     return this.elementComponent.body();
   }
 

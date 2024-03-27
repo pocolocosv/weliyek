@@ -20,24 +20,24 @@ package weliyek.util.array;
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDTreeNodeDataComponentHandler;
-import weliyek.serialization.number.WkSerdeDTreeNumberOperation;
+import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
+import weliyek.serialization.number.WkSerdeDtreeNumberOperation;
 
 public interface WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<?,?,?,?,?>,
-                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>,
-                        ZO extends WkSerdeDTreeNumberOperation<?,?,?,?,?>,
-                        ZK extends WkSerdeDTreeNodeDataComponent<?,ZO,?>,
-                        ZJ extends WkSerdeDTreeNodeDataComponentHandler<ZK>,
-                        VO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayOperation<?,?,?,?,?>,
-                        VK extends WkSerdeDTreeNodeDataComponent<?,VO,?>,
-                        VJ extends WkSerdeDTreeNodeDataComponentHandler<VK>>
-    extends WkSerdeDTreeDynamicPrimitiveArray<ZJ, VJ>,
-            WkSerdeDTreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
+                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
+                        ZO extends WkSerdeDtreeNumberOperation<?,?,?,?,?>,
+                        ZK extends WkSerdeDtreeNodeDataComponent<?,ZO,?>,
+                        ZJ extends WkSerdeDtreeNodeDataComponentHandler<ZK>,
+                        VO extends WkSerdeDtreeGenericVariableSizePrimitiveArrayOperation<?,?,?,?,?>,
+                        VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>,
+                        VJ extends WkSerdeDtreeNodeDataComponentHandler<VK>>
+    extends WkSerdeDtreeDynamicPrimitiveArray<ZJ, VJ>,
+            WkSerdeDtreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
 {
 
 }

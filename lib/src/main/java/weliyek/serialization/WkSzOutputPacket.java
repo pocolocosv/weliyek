@@ -21,13 +21,13 @@ import java.util.Optional;
 
 public interface WkSzOutputPacket<
                         T,
-                        D extends WkSerdeDTreeNodeStructDefinition<T>,
-                        O extends WkSerdeDTreeNodeDataWriter<T,?,?,?,D>>
+                        D extends WkSerdeDtreeNodeStructDefinition<T>,
+                        O extends WkSerdeDtreeNodeDataWriter<T,?,?,?,D>>
     extends WkSrlzOutputPacketFieldFrameNode<T, D, O>
 {
 
   void processBytestream();
 
-  Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult();
+  Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult();
 
 }

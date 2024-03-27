@@ -30,14 +30,14 @@ public abstract class WkPrimitiveSrlzEngineEncoder<T extends Number>
     extends WkSrlzEngineEncoder<
                         T,
                         WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkSerdeDTreeNumberWriter<T,?,?,?,?>>
+                        WkSerdeDtreeNumberWriter<T,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveSrlzEngineEncoder.class);
 
   protected WkPrimitiveSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDTreeNumberWriter<T,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberWriter<T,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

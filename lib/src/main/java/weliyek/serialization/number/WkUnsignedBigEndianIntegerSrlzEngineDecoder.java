@@ -33,7 +33,7 @@ public final class WkUnsignedBigEndianIntegerSrlzEngineDecoder
 
   private WkUnsignedBigEndianIntegerSrlzEngineDecoder(
     WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-    WkSerdeDTreeNumberReader<Long,?,?,?,?> readingOperation) {
+    WkSerdeDtreeNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

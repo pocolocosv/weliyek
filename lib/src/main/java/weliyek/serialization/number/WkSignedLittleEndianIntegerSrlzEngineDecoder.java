@@ -33,7 +33,7 @@ public final class WkSignedLittleEndianIntegerSrlzEngineDecoder
 
   private WkSignedLittleEndianIntegerSrlzEngineDecoder(
     WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-    WkSerdeDTreeNumberReader<Integer,?,?,?,?> readingOperation) {
+    WkSerdeDtreeNumberReader<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }
 

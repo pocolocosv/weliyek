@@ -17,29 +17,29 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSerdeDTreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDTreeNodeDataComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.number.WkSerdeDTreeNumberOperation;
-import weliyek.util.array.WkSerdeDTreeDynamicSequenceOperation;
+import weliyek.serialization.number.WkSerdeDtreeNumberOperation;
+import weliyek.util.array.WkSerdeDtreeDynamicSequenceOperation;
 
 public interface WkDynamicCollectionSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkDynamicCollectionSrlzStructDefinitionFrameNode<?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>,
-                        ZO extends WkSerdeDTreeNumberOperation<?,?,?,?,?>,
-                        ZK extends WkSerdeDTreeNodeDataComponent<?,ZO,?>,
-                        ZJ extends WkSerdeDTreeNodeDataComponentHandler<ZK>,
-                        VO extends WkSerdeDTreeVariableSizeSequenceOperation<?,?,?,?,?>,
-                        VK extends WkSerdeDTreeNodeDataComponent<?,VO,?>,
-                        VJ extends WkSerdeDTreeNodeDataComponentHandler<VK>>
-    extends WkSerdeDTreeDynamicCollection<ZJ, VJ>,
+                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
+                        ZO extends WkSerdeDtreeNumberOperation<?,?,?,?,?>,
+                        ZK extends WkSerdeDtreeNodeDataComponent<?,ZO,?>,
+                        ZJ extends WkSerdeDtreeNodeDataComponentHandler<ZK>,
+                        VO extends WkSerdeDtreeVariableSizeSequenceOperation<?,?,?,?,?>,
+                        VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>,
+                        VJ extends WkSerdeDtreeNodeDataComponentHandler<VK>>
+    extends WkSerdeDtreeDynamicCollection<ZJ, VJ>,
             WkCollectionSrlzPacketOperationFrameNode<S, Q, R, D, K>,
-            WkSerdeDTreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
+            WkSerdeDtreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
 {
 
 }

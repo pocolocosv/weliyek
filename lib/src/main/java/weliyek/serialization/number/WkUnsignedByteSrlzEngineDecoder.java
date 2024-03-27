@@ -31,7 +31,7 @@ public final class WkUnsignedByteSrlzEngineDecoder
 
   private WkUnsignedByteSrlzEngineDecoder(
     WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-    WkSerdeDTreeNumberReader<Integer,?,?,?,?> readingOperation) {
+    WkSerdeDtreeNumberReader<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }
 

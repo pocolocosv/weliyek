@@ -24,8 +24,8 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.util.array.WkSerdeDTreeByteArrayWriter;
-import weliyek.util.array.WkSerdeDTreeByteArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
+import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
 public class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -36,8 +36,8 @@ public class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
                                       YD,SYD,SYO>,
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYO extends WkSerdeDTreeByteArrayWriter<SYS,?,?,SYD>,
-                        SYD extends WkSerdeDTreeByteArrayDefinition>
+                        SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
+                        SYD extends WkSerdeDtreeByteArrayDefinition>
     extends WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
                         YS,
                         WkSzOutputBytestream,

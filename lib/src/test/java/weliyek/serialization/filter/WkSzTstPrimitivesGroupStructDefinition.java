@@ -22,12 +22,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorDefinition;
-import weliyek.serialization.WkSerdeDTreeAggregatorDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorDefinition;
+import weliyek.serialization.WkSerdeDtreeAggregatorDefinitionCore;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -42,8 +42,8 @@ import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
-import weliyek.serialization.number.WkSerdeDTreeSignedByteReader;
-import weliyek.serialization.number.WkSerdeDTreeSignedByteWriter;
+import weliyek.serialization.number.WkSerdeDtreeSignedByteReader;
+import weliyek.serialization.number.WkSerdeDtreeSignedByteWriter;
 import weliyek.serialization.number.WkSerdeDtreeSignedByte;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzInputNode;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzOutputNode;
@@ -53,7 +53,7 @@ import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzOutputNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
 
 public class WkSzTstPrimitivesGroupStructDefinition
-        implements WkSerdeDTreeAggregatorDefinition<
+        implements WkSerdeDtreeAggregatorDefinition<
                         WkSzTstPrimitivesGroup>
 {
 
@@ -70,14 +70,14 @@ public class WkSzTstPrimitivesGroupStructDefinition
   final WkSrlzStructSubcomponentFrameNodeCore<Byte,
                                 WkSettingsSrlzPacketOperationData,
                                 WkSerdeDtreeSignedByte,
-                                WkSerdeDTreeSignedByteReader,
+                                WkSerdeDtreeSignedByteReader,
                                 WkSzTstPrimitivesGroup,
                                 WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketReader,
                                 WkSettingsSrlzPacketOperationData,
                                 WkSerdeDtreeSignedByte,
-                                WkSerdeDTreeSignedByteWriter,
+                                WkSerdeDtreeSignedByteWriter,
                                 WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketWriter,
@@ -201,28 +201,28 @@ public class WkSzTstPrimitivesGroupStructDefinition
               Byte,
               WkSettingsSrlzPacketOperationData,
               WkSerdeDtreeSignedByte,
-              WkSerdeDTreeSignedByteReader,
+              WkSerdeDtreeSignedByteReader,
               WkSzTstPrimitivesGroup,
               WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketReader,
               WkSettingsSrlzPacketOperationData,
               WkSerdeDtreeSignedByte,
-              WkSerdeDTreeSignedByteWriter,
+              WkSerdeDtreeSignedByteWriter,
               WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
               WkSzTstPrimitivesGroupStructDefinition,
               WkSzTstPrimitivesGroupPacketWriter,
               WkSerdeDtreeSignedByte,
               WkSzTstPrimitivesGroupStructDefinition>
   addByteSubcomponent() {
-    return this.definitionCore.<Byte, WkSettingsSrlzPacketOperationData, WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader, WkSettingsSrlzPacketOperationData, WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteWriter, WkSerdeDtreeSignedByte>
+    return this.definitionCore.<Byte, WkSettingsSrlzPacketOperationData, WkSerdeDtreeSignedByte, WkSerdeDtreeSignedByteReader, WkSettingsSrlzPacketOperationData, WkSerdeDtreeSignedByte, WkSerdeDtreeSignedByteWriter, WkSerdeDtreeSignedByte>
                                addSubcomponent(
                                     "BYTE",
                                     Optional.empty(),
-                                    WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                                    WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                                     WkSettingsSrlzPacketOperationData::none,
                                     Optional.empty(),
-                                    WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                                    WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                                     WkSettingsSrlzPacketOperationData::none,
                                     (k,ao,i) -> ao.serializable().b,
                                     false,
@@ -251,10 +251,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                     addSubcomponent(
                           "SHORT",
                           Optional.empty(),
-                          WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                          WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                           WkSettingsSrlzPacketOperationData::none,
                           Optional.empty(),
-                          WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                          WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                           WkSettingsSrlzPacketOperationData::none,
                           (k,ao,i) -> ao.serializable().s,
                           false,
@@ -283,10 +283,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                     addSubcomponent(
                             "INT",
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().i,
                             false,
@@ -315,10 +315,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                       addSubcomponent(
                             "LONG",
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().l,
                             false,
@@ -356,10 +356,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkStringWithFixedLengthBytesSrlzStructNode>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,
@@ -400,10 +400,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             Optional.empty(),
-                            WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
                             WkSettingsSrlzPacketOperationData::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,
@@ -421,12 +421,12 @@ public class WkSzTstPrimitivesGroupStructDefinition
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

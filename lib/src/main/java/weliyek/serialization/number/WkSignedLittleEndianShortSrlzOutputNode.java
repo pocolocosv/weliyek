@@ -30,7 +30,7 @@ import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public final class WkSignedLittleEndianShortSrlzOutputNode
-        implements WkSerdeDTreeNumberWriter<
+        implements WkSerdeDtreeNumberWriter<
                         Short,
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

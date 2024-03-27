@@ -22,16 +22,16 @@ import java.util.function.Function;
 public interface WkSrlzStructDefinitionFrameNodeCoreFactory<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,?,XD>,
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSerdeDTreeNodeStructDefinition<T>>
+                        D extends WkSerdeDtreeNodeStructDefinition<T>>
     extends Function<WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
-                     WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
+                     WkSerdeDtreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
 {
 
 }

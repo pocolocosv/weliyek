@@ -17,19 +17,19 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public interface WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<
                         T extends WkPrimitiveArray<?,?>,
                         XO extends WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
                         YO extends WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkSerdeDTreeNumberDefinition<?>,
-                        VD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>>
-    extends WkSerdeDTreeDynamicPrimitiveArray<
-                        WkSerdeDTreeNodeStructComponentHandler<XO, YO, ZD>,
-                        WkSerdeDTreeNodeStructComponentHandler<XO, YO, VD>>,
-            WkSerdeDTreeDynamicSequenceDefinition<T, XO, YO, ZD, VD>
+                        ZD extends WkSerdeDtreeNumberDefinition<?>,
+                        VD extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<T>>
+    extends WkSerdeDtreeDynamicPrimitiveArray<
+                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, ZD>,
+                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, VD>>,
+            WkSerdeDtreeDynamicSequenceDefinition<T, XO, YO, ZD, VD>
 {
 
 }

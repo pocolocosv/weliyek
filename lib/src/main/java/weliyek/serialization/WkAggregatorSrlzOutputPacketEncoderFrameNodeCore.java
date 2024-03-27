@@ -28,14 +28,14 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        YO extends WkSerdeDTreeAggregatorWriter<T,YS,YQ,YR,YD>,
+                        YD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDtreeAggregatorWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYB,DC>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        DC extends WkSerdeDTreeAggregatorDefinitionCore<
+                        DC extends WkSerdeDtreeAggregatorDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYB,?,DC>>
-        extends WkSerdeDTreeNodeDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
-        implements WkSerdeDTreeAggregatorWriter<T, YS, YQ, YR, YD>
+        extends WkSerdeDtreeNodeDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
+        implements WkSerdeDtreeAggregatorWriter<T, YS, YQ, YR, YD>
 {
 
   private WkSrlzOutputPacketSubfieldList<T,YBC,YD,YO> writingSubfields;
@@ -65,8 +65,8 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
   protected abstract void onAggregatorInitialization();
 
   @Override
-  protected Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> onProcessingBytestream() {
-    Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> latestSubfield = this.writingSubfields.processBytestream();
+  protected Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> onProcessingBytestream() {
+    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> latestSubfield = this.writingSubfields.processBytestream();
     if (this.writingSubfields.isCompleted()) {
       this.completeOperation();
     }
@@ -76,8 +76,8 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
   @SuppressWarnings("unchecked")
   public <SY,
              SYS extends WkSettingsSrlzPacketOperationData,
-             SYD extends WkSerdeDTreeNodeStructDefinition<SY>,
-             SYO extends WkSerdeDTreeNodeDataWriter<SY,SYS,?,?,SYD>>
+             SYD extends WkSerdeDtreeNodeStructDefinition<SY>,
+             SYO extends WkSerdeDtreeNodeDataWriter<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,T,YBC,YD,YO> getSubfieldpacketFor(
     WkSrlzStructSubcomponentFrameNodeCore<SY,?,?,?,T,?,?,?,SYS,SYD,SYO,?,YD,YO,?,?>
     protocolSubfieldCore) {

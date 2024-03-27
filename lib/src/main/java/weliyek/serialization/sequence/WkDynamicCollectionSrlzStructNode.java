@@ -27,15 +27,15 @@ import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataReader;
-import weliyek.serialization.WkSerdeDTreeNodeDataWriter;
+import weliyek.serialization.WkSerdeDtreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestream;
@@ -43,9 +43,9 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSerdeDTreeNumberReader;
-import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public class WkDynamicCollectionSrlzStructNode<
                         T extends Collection<ET>,
@@ -53,20 +53,20 @@ public class WkDynamicCollectionSrlzStructNode<
                         YS extends WkSettingsSrlzPacketOperationData,
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
-                        ZXO extends WkSerdeDTreeNumberReader<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
+                        ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                         ZYS extends WkSettingsSrlzPacketOperationData,
-                        ZYO extends WkSerdeDTreeNumberWriter<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        ZD extends WkSerdeDTreeNumberDefinition<ZT>,
+                        ZYO extends WkSerdeDtreeNumberWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZD extends WkSerdeDtreeNumberDefinition<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                        ED extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                        ED extends WkSerdeDtreeNodeStructDefinition<ET>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VYS extends WkSettingsSrlzPacketOperationData>
     implements WkDynamicCollectionSrlzStructDefinitionFrameNode<
@@ -93,20 +93,20 @@ public class WkDynamicCollectionSrlzStructNode<
                  YS extends WkSettingsSrlzPacketOperationData,
                  ZT extends Number,
                  ZXS extends WkSettingsSrlzPacketOperationData,
-                 ZXO extends WkSerdeDTreeNumberReader<ZT,ZXS,?,?,ZXD>,
-                 ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
+                 ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
+                 ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                  ZYS extends WkSettingsSrlzPacketOperationData,
-                 ZYO extends WkSerdeDTreeNumberWriter<ZT,ZYS,?,?,ZYD>,
-                 ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
-                 ZD extends WkSerdeDTreeNumberDefinition<ZT>,
+                 ZYO extends WkSerdeDtreeNumberWriter<ZT,ZYS,?,?,ZYD>,
+                 ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
+                 ZD extends WkSerdeDtreeNumberDefinition<ZT>,
                  ET,
                  EXS extends WkSettingsSrlzPacketOperationData,
-                 EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                 EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
+                 EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                 EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
                  EYS extends WkSettingsSrlzPacketOperationData,
-                 EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                 EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                 ED extends WkSerdeDTreeNodeStructDefinition<ET>,
+                 EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                 EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                 ED extends WkSerdeDtreeNodeStructDefinition<ET>,
                  VXS extends WkSzVariableLengthOperationSettings,
                  VYS extends WkSettingsSrlzPacketOperationData>
   WkSrlzStruct<
@@ -190,23 +190,23 @@ public class WkDynamicCollectionSrlzStructNode<
                  YS extends WkSettingsSrlzPacketOperationData,
                  ZT extends Number,
                  ZXS extends WkSettingsSrlzPacketOperationData,
-                 ZXO extends WkSerdeDTreeNumberReader<ZT,ZXS,?,?,ZXD>,
-                 ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
+                 ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
+                 ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                  ZYS extends WkSettingsSrlzPacketOperationData,
-                 ZYO extends WkSerdeDTreeNumberWriter<ZT,ZYS,?,?,ZYD>,
-                 ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
-                 ZD extends WkSerdeDTreeNumberDefinition<ZT>,
+                 ZYO extends WkSerdeDtreeNumberWriter<ZT,ZYS,?,?,ZYD>,
+                 ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
+                 ZD extends WkSerdeDtreeNumberDefinition<ZT>,
                  ET,
                  EXS extends WkSettingsSrlzPacketOperationData,
-                 EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                 EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
+                 EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                 EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
                  EYS extends WkSettingsSrlzPacketOperationData,
-                 EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                 EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                 ED extends WkSerdeDTreeNodeStructDefinition<ET>,
+                 EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                 EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                 ED extends WkSerdeDtreeNodeStructDefinition<ET>,
                  VXS extends WkSzVariableLengthOperationSettings,
                  VYS extends WkSettingsSrlzPacketOperationData>
-  WkSerdeDTreeNodeStructDefinitionCore<
+  WkSerdeDtreeNodeStructDefinitionCore<
                  T, XS,?,?,
                  WkDynamicCollectionSrlzStructNode<
                    T,XS,?,ZT,ZXS,ZXO,ZXD,?,?, ?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
@@ -388,14 +388,14 @@ public class WkDynamicCollectionSrlzStructNode<
 
   @Override
   public
-  WkSerdeDTreeNodeStructComponentHandler<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
+  WkSerdeDtreeNodeStructComponentHandler<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, ZD>
   size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-  WkSerdeDTreeNodeStructComponentHandler<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, WkVariableSizeCollectionSrlzStructNode<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
+  WkSerdeDtreeNodeStructComponentHandler<WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T, XS, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T, YS, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<T>, WkDynamicCollectionSrlzStructNode<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>, WkVariableSizeCollectionSrlzStructNode<T, VXS, VYS, ET, EXS, EXD, EXO, EYS, EYD, EYO, ED>>
   variableSequence() {
     return this.definitionCore.variableSequence();
   }
@@ -406,12 +406,12 @@ public class WkDynamicCollectionSrlzStructNode<
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

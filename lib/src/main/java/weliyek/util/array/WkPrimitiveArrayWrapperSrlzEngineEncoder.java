@@ -33,7 +33,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
         extends WkSrlzEngineEncoder<
                         Y,
                         QC,
-                        WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>
+                        WkSerdeDtreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveArrayWrapperSrlzEngineEncoder.class);
@@ -44,7 +44,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
 
     protected WkPrimitiveArrayWrapperSrlzEngineEncoder(
       QC runtimeControl,
-      WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>  writingOperation,
+      WkSerdeDtreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>  writingOperation,
       int primitiveByteLength) {
       super(runtimeControl, writingOperation);
       this.primitiveByteLength = primitiveByteLength;

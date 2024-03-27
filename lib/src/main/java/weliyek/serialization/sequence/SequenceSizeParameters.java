@@ -19,11 +19,11 @@ package weliyek.serialization.sequence;
 
 import java.util.Objects;
 
-import weliyek.serialization.WkSerdeDTreeNodeDataReaderCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataReaderCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSerdeDTreeNodeDataWriterCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataWriterCore;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 
 public class SequenceSizeParameters<T>
@@ -31,24 +31,24 @@ public class SequenceSizeParameters<T>
 
     private final int minSize;
     private final int maxSize;
-    private final WkSerdeDTreeNodeStructDefinitionCore<
+    private final WkSerdeDtreeNodeStructDefinitionCore<
                       T,? extends WkSzVariableLengthOperationSettings,?,?,
-                      ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-                      ? extends WkSerdeDTreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
-                      ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-                      ? extends WkSerdeDTreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
-                      ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,?> definitionCore;
+                      ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
+                      ? extends WkSerdeDtreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
+                      ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
+                      ? extends WkSerdeDtreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
+                      ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,?> definitionCore;
 
     public SequenceSizeParameters(
       int minSize,
       int maxSize,
-      WkSerdeDTreeNodeStructDefinitionCore<
+      WkSerdeDtreeNodeStructDefinitionCore<
         T,? extends WkSzVariableLengthOperationSettings,?,?,
-        ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-        ? extends WkSerdeDTreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
-        ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-        ? extends WkSerdeDTreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
-        ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,?> definitionCore) {
+        ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
+        ? extends WkSerdeDtreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
+        ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
+        ? extends WkSerdeDtreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
+        ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,?> definitionCore) {
       if (minSize < 0) {
         throw new WkSzDefinitionCoreException(
                         definitionCore,
@@ -72,9 +72,9 @@ public class SequenceSizeParameters<T>
     }
 
     void onSequenceSerializerCreation(
-      WkSerdeDTreeNodeDataWriterCore<
-        T,?,?,?,?,? extends WkSerdeDTreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
-        ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,?,?> serializer) {
+      WkSerdeDtreeNodeDataWriterCore<
+        T,?,?,?,?,? extends WkSerdeDtreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
+        ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,?,?> serializer) {
       int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
       if (sequenceSize < minSize) {
         throw new WkSzOperationException(
@@ -89,10 +89,10 @@ public class SequenceSizeParameters<T>
     }
 
     void onBeforeFullCompletionDeserialization(
-      WkSerdeDTreeNodeDataReaderCore<
+      WkSerdeDtreeNodeDataReaderCore<
         ?,? extends WkSzVariableLengthOperationSettings,?,?,?,
-        ? extends WkSerdeDTreeVariableSizeSequenceReader<?,?,?,?,?>,?,
-        ? extends WkSerdeDTreeVariableSizeSequenceDefinition<?>,?,?> deserializer) {
+        ? extends WkSerdeDtreeVariableSizeSequenceReader<?,?,?,?,?>,?,
+        ? extends WkSerdeDtreeVariableSizeSequenceDefinition<?>,?,?> deserializer) {
       WkSzVariableLengthOperationSettings settings = deserializer.settings();
       if (settings.getRequestedLength() < minSize) {
         throw new WkSzOperationException(

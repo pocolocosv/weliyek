@@ -19,7 +19,7 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -34,8 +34,8 @@ public interface WkCollectionSrlzOutputPacketEncoderFrameNode<
     extends WkCollectionSrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,?>>,
-            WkSerdeDTreeAggregatorWriter<T, YS, YQ, YR, YD>,
-            WkSerdeDTreeSequenceWriter<T, YS, YQ, YR, YD>
+            WkSerdeDtreeAggregatorWriter<T, YS, YQ, YR, YD>,
+            WkSerdeDtreeSequenceWriter<T, YS, YQ, YR, YD>
 {
 
 }

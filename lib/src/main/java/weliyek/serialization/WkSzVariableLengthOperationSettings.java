@@ -20,7 +20,7 @@ package weliyek.serialization;
 public interface WkSzVariableLengthOperationSettings extends WkSettingsSrlzPacketOperationData
 {
 
-  static <AO extends WkSerdeDTreeNodeDataOperation<WkSzVariableLengthOperationSettings,?,?,?,?>>
+  static <AO extends WkSerdeDtreeNodeDataOperation<WkSzVariableLengthOperationSettings,?,?,?,?>>
   WkOperationSettingsFactory<AO, WkSzVariableLengthOperationSettings>
   builderWithLength(int length) {
     return new WkOperationSettingsFactory<AO, WkSzVariableLengthOperationSettings>() {

@@ -20,15 +20,15 @@ package weliyek.serialization;
 public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        AYO extends WkSerdeDTreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        AYO extends WkSerdeDtreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
     extends WkSrlzPacketFieldFrameNodeCore<
                         T, YS, YD,
                         WkSrlzStructComponentFrameNodeCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>,
                         YO,
-                        WkSerdeDTreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?>,
+                        WkSerdeDtreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?>,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,YO>,
                         AYBC,
                         WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,AYO,?,?,?>>
@@ -41,11 +41,11 @@ public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
     super(
         initialOperationListCapacity,
         protocolFieldCore,
-        WkSerdeDTreeNodeDataWriter::serializable);
+        WkSerdeDtreeNodeDataWriter::serializable);
   }
 
   @Override
-  protected WkSerdeDTreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?>
+  protected WkSerdeDtreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?>
   newOperation(int index) {
     YS settings = newSettings(index);
     T serializable = serializable(index);
@@ -67,7 +67,7 @@ public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
   }
 
   @Override
-  public WkSerdeDTreeNodeStructComponent<? extends YD> structComponent() {
+  public WkSerdeDtreeNodeStructComponent<? extends YD> structComponent() {
     return protocolFieldCore().asProtocolField();
   }
 

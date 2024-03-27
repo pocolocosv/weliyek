@@ -19,10 +19,10 @@ package weliyek.serialization;
 
 public interface WkSrlzOutputPacketSubfieldFrameNode<
                         T,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,?,?,?,YD>>
-    extends WkSerdeDTreeNodeDataComponentHandler<WkSrlzOutputPacketFieldFrameNode<T, YD, YO>>,
-            WkSerdeDTreeNodeDataOutput
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,?,?,?,YD>>
+    extends WkSerdeDtreeNodeDataComponentHandler<WkSrlzOutputPacketFieldFrameNode<T, YD, YO>>,
+            WkSerdeDtreeNodeDataOutput
 {
 
 }

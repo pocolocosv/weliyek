@@ -18,16 +18,16 @@ package weliyek.util.array;
 
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 
 public interface WkSerdeDtreePrimitiveArrayOperationIO<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
-                        D extends WkSerdeDTreeGenericPrimitiveArrayDefinition<?>,
-                        K extends WkSerdeDTreeNodeDataComponent<?,?,?>>
-    extends WkSerdeDTreeGenericPrimitiveArrayOperation<S, Q, R, D, K>
+                        D extends WkSerdeDtreeGenericPrimitiveArrayDefinition<?>,
+                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
+    extends WkSerdeDtreeGenericPrimitiveArrayOperation<S, Q, R, D, K>
 {
 
   int getRequestedLength();

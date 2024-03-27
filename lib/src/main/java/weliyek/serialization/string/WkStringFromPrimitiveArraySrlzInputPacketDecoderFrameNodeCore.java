@@ -28,8 +28,8 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayReader;
-import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReader;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
 
 public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
@@ -44,8 +44,8 @@ public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeC
                         AXB extends WkSzInputBytestreamBase<?>,
                         SX extends WkPrimitiveArray<?,?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXO extends WkSerdeDTreeGenericPrimitiveArrayReader<SX,SXS,?,?,SXD>,
-                        SXD extends WkSerdeDTreeGenericPrimitiveArrayDefinition<SX>,
+                        SXO extends WkSerdeDtreeGenericPrimitiveArrayReader<SX,SXS,?,?,SXD>,
+                        SXD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SX>,
                         DC extends WkSzStringFromPrimitiveDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
        extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
        implements WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS, XQ, XR, XD, SX, SXD, SXO>

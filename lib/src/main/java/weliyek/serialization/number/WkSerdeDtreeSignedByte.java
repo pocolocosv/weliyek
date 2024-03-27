@@ -23,26 +23,26 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public class WkSerdeDtreeSignedByte
-    implements WkSerdeDTreeNumberDefinition<Byte>
+    implements WkSerdeDtreeNumberDefinition<Byte>
 {
 
   public static WkSrlzStruct<
                       Byte,
                       WkSettingsSrlzPacketOperationData,
                       WkSerdeDtreeSignedByte,
-                      WkSerdeDTreeSignedByteReader,
+                      WkSerdeDtreeSignedByteReader,
                       WkSzInputBytestreamBase<?>,
                       WkSettingsSrlzPacketOperationData,
                       WkSerdeDtreeSignedByte,
-                      WkSerdeDTreeSignedByteWriter,
+                      WkSerdeDtreeSignedByteWriter,
                       WkSzOutputBytestreamBase<?>,
                       WkSerdeDtreeSignedByte>
   newStruct(String label) {
@@ -53,15 +53,15 @@ public class WkSerdeDtreeSignedByte
                       WkSzCountingOutputBytestream::new);
   }
 
-  public static WkSerdeDTreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeNodeStructDefinitionCore<
                       Byte,
                       WkSettingsSrlzPacketOperationData,?,?,
                       WkSerdeDtreeSignedByte,
-                      WkSerdeDTreeSignedByteReader,
+                      WkSerdeDtreeSignedByteReader,
                       WkSzInputBytestreamBase<?>,
                       WkSettingsSrlzPacketOperationData,?,?,
                       WkSerdeDtreeSignedByte,
-                      WkSerdeDTreeSignedByteWriter,
+                      WkSerdeDtreeSignedByteWriter,
                       WkSzOutputBytestreamBase<?>,
                       WkSerdeDtreeSignedByte,?>
   newCore(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
@@ -70,20 +70,20 @@ public class WkSerdeDtreeSignedByte
 
   private WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
                         Byte,
-                        WkSerdeDTreeSignedByteReader,
-                        WkSerdeDTreeSignedByteWriter,
+                        WkSerdeDtreeSignedByteReader,
+                        WkSerdeDtreeSignedByteWriter,
                         WkSerdeDtreeSignedByte> definitionCore;
 
   private WkSerdeDtreeSignedByte(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
                                 Byte,
-                                WkSerdeDTreeSignedByteReader,
-                                WkSerdeDTreeSignedByteWriter,
+                                WkSerdeDtreeSignedByteReader,
+                                WkSerdeDtreeSignedByteWriter,
                                 WkSerdeDtreeSignedByte>(
                                     componentCore,
-                                    (i,xs,xab,xkc,xdc) -> new WkSerdeDTreeSignedByteReader(i,xs,xab,xkc,xdc).operationCore,
+                                    (i,xs,xab,xkc,xdc) -> new WkSerdeDtreeSignedByteReader(i,xs,xab,xkc,xdc).operationCore,
                                     WkSignedByteSrlzEngineDecoder.FACTORY,
-                                    (i,y,ys,yab,ykc,ydc) -> new WkSerdeDTreeSignedByteWriter(i,y,ys,yab,ykc,ydc).writingCore,
+                                    (i,y,ys,yab,ykc,ydc) -> new WkSerdeDtreeSignedByteWriter(i,y,ys,yab,ykc,ydc).writingCore,
                                     WkSignedByteSrlzEngineEncoder.FACTORY,
                                     this,
                                     Byte.class);
@@ -95,7 +95,7 @@ public class WkSerdeDtreeSignedByte
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 

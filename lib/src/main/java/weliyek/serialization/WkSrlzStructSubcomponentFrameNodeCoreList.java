@@ -25,19 +25,19 @@ import java.util.List;
 public class WkSrlzStructSubcomponentFrameNodeCoreList<
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        XO extends WkSerdeDTreeAggregatorReader<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
+                        XD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        XO extends WkSerdeDtreeAggregatorReader<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        YO extends WkSerdeDTreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDtreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
     extends AbstractList<WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
 {
 
     private final List<WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
                       handlerContainer = new ArrayList<>();
-    private final List<WkSerdeDTreeNodeStructComponentHandler<XO,YO,?>>
+    private final List<WkSerdeDtreeNodeStructComponentHandler<XO,YO,?>>
                       subfieldList = new ArrayList<>();
-    private final List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>>
+    private final List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>>
                       roSubfieldList = Collections.unmodifiableList(subfieldList);
 
     public WkSrlzStructSubcomponentFrameNodeCoreList() {
@@ -45,10 +45,10 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
 
     @SuppressWarnings("unchecked")
     public
-    <YYD extends WkSerdeDTreeAggregatorDefinition<YY>,
+    <YYD extends WkSerdeDtreeAggregatorDefinition<YY>,
      YY,
      YYB extends WkSzOutputBytestreamBase<?>,
-     YYO extends WkSerdeDTreeAggregatorWriter<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
+     YYO extends WkSerdeDtreeAggregatorWriter<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
     WkSrlzOutputPacketSubfieldList<YY,YYB,YYD,YYO> newSerializingHandlers(
       WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
       List<WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
@@ -64,10 +64,10 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
 
     @SuppressWarnings("unchecked")
     public
-    <XXD extends WkSerdeDTreeAggregatorDefinition<XX>,
+    <XXD extends WkSerdeDtreeAggregatorDefinition<XX>,
      XX,
      XXB extends WkSzInputBytestreamBase<?>,
-     XXO extends WkSerdeDTreeAggregatorReader<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>
+     XXO extends WkSerdeDtreeAggregatorReader<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>
     WkSrlzInputPacketSubfieldList<XX,XXB,XXD,XXO> newDeserializingHandlers(
       WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
       List<WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();
@@ -82,7 +82,7 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
       return new WkSrlzInputPacketSubfieldList<XX,XXB,XXD,XXO>(deserializingHandlerList);
     }
 
-    public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> asSubfieldList() {
+    public List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> asSubfieldList() {
       return this.roSubfieldList;
     }
 
@@ -142,8 +142,8 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
       }
     }
 
-    public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> collectRequiredSubfields() {
-      List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> requiredSubfields =new ArrayList<>();
+    public List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> collectRequiredSubfields() {
+      List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> requiredSubfields =new ArrayList<>();
       for (WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,XD,XO,?,?,?,?,YD,YO,?,?> subcompHandler : handlerContainer) {
         if (subcompHandler.isDeserializedRequiredByAggregator()) {
           requiredSubfields.add(subcompHandler.body());

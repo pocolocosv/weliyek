@@ -27,7 +27,7 @@ public abstract class WkIntPrimiviteSrlzEngineEncoder
 
   protected WkIntPrimiviteSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDTreeNumberWriter<Integer,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberWriter<Integer,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

@@ -30,8 +30,8 @@ import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDTreeVariableSizeByteArrayReader;
-import weliyek.util.array.WkSerdeDTreeVariableSizeByteArray;
+import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayReader;
+import weliyek.util.array.WkSerdeDtreeVariableSizeByteArray;
 
 public class WkStringWithVariableBytesSrlzInputNode
     implements WkStringFromBytesSrlzInputPacketDecoderFrameNode<
@@ -39,8 +39,8 @@ public class WkStringWithVariableBytesSrlzInputNode
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkResultSrlzPacketOperationData<String>,
                         WkStringWithVariableBytesSrlzStructNode,
-                        WkSerdeDTreeVariableSizeByteArray,
-                        WkSerdeDTreeVariableSizeByteArrayReader>
+                        WkSerdeDtreeVariableSizeByteArray,
+                        WkSerdeDtreeVariableSizeByteArrayReader>
 {
 
   final WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
@@ -48,8 +48,8 @@ public class WkStringWithVariableBytesSrlzInputNode
                         WkStringWithVariableBytesSrlzInputNode,
                         WkStringWithVariableBytesSrlzStructNode,
                         WkSzVariableLengthOperationSettings,
-                        WkSerdeDTreeVariableSizeByteArrayReader,
-                        WkSerdeDTreeVariableSizeByteArray> operationCore;
+                        WkSerdeDtreeVariableSizeByteArrayReader,
+                        WkSerdeDtreeVariableSizeByteArray> operationCore;
 
   WkStringWithVariableBytesSrlzInputNode(
     int index,
@@ -60,14 +60,14 @@ public class WkStringWithVariableBytesSrlzInputNode
     WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
       WkSzVariableLengthOperationSettings,WkStringWithVariableBytesSrlzInputNode,
       WkStringWithVariableBytesSrlzStructNode,?,?,?,WkSzVariableLengthOperationSettings,
-      WkSerdeDTreeVariableSizeByteArrayReader,WkSerdeDTreeVariableSizeByteArray,?,?,?,?,?> definitionCore) {
+      WkSerdeDtreeVariableSizeByteArrayReader,WkSerdeDtreeVariableSizeByteArray,?,?,?,?,?> definitionCore) {
     this.operationCore = new WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
                                 WkSzVariableLengthOperationSettings,
                                 WkStringWithVariableBytesSrlzInputNode,
                                 WkStringWithVariableBytesSrlzStructNode,
                                 WkSzVariableLengthOperationSettings,
-                                WkSerdeDTreeVariableSizeByteArrayReader,
-                                WkSerdeDTreeVariableSizeByteArray>(
+                                WkSerdeDtreeVariableSizeByteArrayReader,
+                                WkSerdeDtreeVariableSizeByteArray>(
                                     index,
                                     settings,
                                     parentBytestream,
@@ -78,7 +78,7 @@ public class WkStringWithVariableBytesSrlzInputNode
 
   @Override
   public
-  WkSrlzInputPacketSubfieldFrameNode<WkByteArray, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayReader>
+  WkSrlzInputPacketSubfieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayReader>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -125,7 +125,7 @@ public class WkStringWithVariableBytesSrlzInputNode
 
   @Override
   public
-  WkSrlzInputPacketSubfieldFrameNode<WkByteArray, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayReader>
+  WkSrlzInputPacketSubfieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayReader>
   bytes() {
     return this.operationCore.bytes();
   }

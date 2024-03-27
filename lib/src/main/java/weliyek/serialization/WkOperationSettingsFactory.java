@@ -19,11 +19,11 @@ package weliyek.serialization;
 
 @FunctionalInterface
 public interface WkOperationSettingsFactory<
-                        AO extends WkSerdeDTreeNodeDataOperation<?,?,?,?,?>,
+                        AO extends WkSerdeDtreeNodeDataOperation<?,?,?,?,?>,
                         S extends WkSettingsSrlzPacketOperationData>
 {
 
-  static <AO extends WkSerdeDTreeNodeDataOperation<S,?,?,?,?>,
+  static <AO extends WkSerdeDtreeNodeDataOperation<S,?,?,?,?>,
           S extends WkSettingsSrlzPacketOperationData>
   WkOperationSettingsFactory<AO, S> parentSettingsReuser() {
     return new WkOperationSettingsFactory<AO, S>() {

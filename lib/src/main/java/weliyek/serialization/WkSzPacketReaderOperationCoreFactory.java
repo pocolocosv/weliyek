@@ -21,14 +21,14 @@ package weliyek.serialization;
 public interface WkSzPacketReaderOperationCoreFactory<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        DC extends WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
-                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,?,XD>,
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        DC extends WkSerdeDtreeNodeStructDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
+                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
                         AXB extends WkSzInputBytestreamBase<?>>
     extends WkSzOperationFactory
 {
 
-  WkSerdeDTreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
+  WkSerdeDtreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
     int index,
     XS settings,
     AXB parentBytestream,

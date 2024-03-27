@@ -44,14 +44,14 @@ import weliyek.serialization.filter.WkSrlzFilter;
 public final class WkSrlzStructComponentFrameNodeRootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,?,XD>,
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSerdeDTreeNodeStructDefinition<T>>
+                        D extends WkSerdeDtreeNodeStructDefinition<T>>
     extends WkSrlzStructComponentFrameNodeCore<
                         T, XS, XD, XO, AXBC,
                         YS, YD, YO, AYBC,
@@ -133,7 +133,7 @@ public final class WkSrlzStructComponentFrameNodeRootCore<
   }
 
   @Override
-  protected WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
+  protected WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
     return null;
   }
 

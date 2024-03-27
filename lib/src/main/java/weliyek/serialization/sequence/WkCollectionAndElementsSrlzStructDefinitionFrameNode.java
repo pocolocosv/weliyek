@@ -19,16 +19,16 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 
 public interface WkCollectionAndElementsSrlzStructDefinitionFrameNode<
                         T extends Collection<ET>,
                         XO extends WkCollectionAndElementsSrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?>,
                         YO extends WkCollectionAndElementsSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?>,
                         ET,
-                        ED extends WkSerdeDTreeNodeStructDefinition<ET>>
-        extends WkCollectionAndElementsSrlzFrameNode<WkSerdeDTreeNodeStructComponentHandler<XO, YO, ED>>,
+                        ED extends WkSerdeDtreeNodeStructDefinition<ET>>
+        extends WkCollectionAndElementsSrlzFrameNode<WkSerdeDtreeNodeStructComponentHandler<XO, YO, ED>>,
                 WkCollectionSrlzStructDefinitionFrameNode<T>
 {
 

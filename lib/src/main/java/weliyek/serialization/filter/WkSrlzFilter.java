@@ -22,7 +22,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 
 public class WkSrlzFilter
 {
@@ -42,13 +42,13 @@ public class WkSrlzFilter
 
     private final Set<WkSrlzFilterQuery> queries;
 
-    private final Set<WkSerdeDTreeNodeStructDefinition<?>> fieldsToBeMatched;
+    private final Set<WkSerdeDtreeNodeStructDefinition<?>> fieldsToBeMatched;
 
     private final Set<WkSrlzPacketNodePredicate<?, ?>> matchers;
 
     private WkSrlzFilter(Set<WkSrlzFilterQuery> queries) {
         this.queries = Collections.unmodifiableSet(new LinkedHashSet<>(queries));
-        Set<WkSerdeDTreeNodeStructDefinition<?>> toBeMatched = new LinkedHashSet<>();
+        Set<WkSerdeDtreeNodeStructDefinition<?>> toBeMatched = new LinkedHashSet<>();
         Set<WkSrlzPacketNodePredicate<?, ?>> matchersSet = new LinkedHashSet<>();
         for (WkSrlzFilterQuery query : queries) {
             toBeMatched.addAll(query.rule.matchTargets());
@@ -65,14 +65,14 @@ public class WkSrlzFilter
             return new WkSrlzFilterResults(this);
     }
 
-    public boolean hasToBeDeserialized(WkSerdeDTreeNodeStructDefinition<?> definition) {
+    public boolean hasToBeDeserialized(WkSerdeDtreeNodeStructDefinition<?> definition) {
       if (isSearhed(definition)) {
         return true;
       }
       return hasToMatch(definition);
     }
 
-    public boolean isSearhed(WkSerdeDTreeNodeStructDefinition<?> definition) {
+    public boolean isSearhed(WkSerdeDtreeNodeStructDefinition<?> definition) {
       for (WkSrlzFilterQuery query : queries) {
         if (query.searchedField().equals(definition)) {
           return true;
@@ -83,7 +83,7 @@ public class WkSrlzFilter
       return false;
     }
 
-    public final boolean hasToMatch(WkSerdeDTreeNodeStructDefinition<?> protocolField) {
+    public final boolean hasToMatch(WkSerdeDtreeNodeStructDefinition<?> protocolField) {
         return fieldsToBeMatched.contains(protocolField);
     }
 

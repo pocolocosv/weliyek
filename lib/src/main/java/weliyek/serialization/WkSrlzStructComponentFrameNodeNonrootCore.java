@@ -37,29 +37,29 @@ import java.util.Objects;
 public class WkSrlzStructComponentFrameNodeNonrootCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,?,XD>,
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSerdeDTreeNodeStructDefinition<T>>
+                        D extends WkSerdeDtreeNodeStructDefinition<T>>
     extends WkSrlzStructComponentFrameNodeCore<T, XS, XD, XO, AXBC, YS, YD, YO, AYBC, D>
 {
 
-  private final WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore;
+  private final WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore;
 
   WkSrlzStructComponentFrameNodeNonrootCore(
     String label,
     WkSrlzStructDefinitionFrameNodeCoreFactory<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D> definitionFactory,
-    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
+    WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
     super(label, definitionFactory);
     this.parentDefinitionCore = Objects.requireNonNull(parentDefinitionCore);
   }
 
   @Override
-  protected WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
+  protected WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
     return this.parentDefinitionCore;
   }
 

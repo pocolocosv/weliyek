@@ -22,13 +22,13 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.number.WkSerdeDTreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 
 public abstract class WkPrimitiveSrlzEngineDecoder<X extends Number>
     extends WkSrlzEngineDecoder<
                         X,
                         WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkSerdeDTreeNumberReader<X,?,?,?,?>>
+                        WkSerdeDtreeNumberReader<X,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveSrlzEngineDecoder.class);
@@ -37,7 +37,7 @@ public abstract class WkPrimitiveSrlzEngineDecoder<X extends Number>
 
   protected WkPrimitiveSrlzEngineDecoder(
       WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-      WkSerdeDTreeNumberReader<X,?,?,?,?> readingOperation) {
+      WkSerdeDtreeNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

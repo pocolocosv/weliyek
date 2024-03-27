@@ -18,7 +18,7 @@
 package weliyek.serialization.sequence;
 
 public interface WkCollectionAndElementsSrlzFrameNode<S>
-    extends WkSerdeDTreeCollection
+    extends WkSerdeDtreeCollection
 {
 
   S elements();

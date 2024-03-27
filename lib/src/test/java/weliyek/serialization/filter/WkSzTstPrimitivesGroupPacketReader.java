@@ -20,7 +20,7 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorReader;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -38,7 +38,7 @@ import weliyek.serialization.number.WkSignedBigEndianLongSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
-import weliyek.serialization.number.WkSerdeDTreeSignedByteReader;
+import weliyek.serialization.number.WkSerdeDtreeSignedByteReader;
 import weliyek.serialization.number.WkSerdeDtreeSignedByte;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzInputNode;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
@@ -46,7 +46,7 @@ import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzInputNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
 
 public class WkSzTstPrimitivesGroupPacketReader
-        implements WkSerdeDTreeAggregatorReader<
+        implements WkSerdeDtreeAggregatorReader<
                         WkSzTstPrimitivesGroup,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
@@ -62,7 +62,7 @@ public class WkSzTstPrimitivesGroupPacketReader
   final WkSrlzInputPacketSubfieldFrameNodeCore<Byte,
                                          WkSettingsSrlzPacketOperationData,
                                          WkSerdeDtreeSignedByte,
-                                         WkSerdeDTreeSignedByteReader,
+                                         WkSerdeDtreeSignedByteReader,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,

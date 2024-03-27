@@ -20,7 +20,7 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -38,7 +38,7 @@ import weliyek.serialization.number.WkSignedBigEndianLongSrlzOutputNode;
 import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
-import weliyek.serialization.number.WkSerdeDTreeSignedByteWriter;
+import weliyek.serialization.number.WkSerdeDtreeSignedByteWriter;
 import weliyek.serialization.number.WkSerdeDtreeSignedByte;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzOutputNode;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
@@ -46,7 +46,7 @@ import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzOutputNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
 
 public class WkSzTstPrimitivesGroupPacketWriter
-        implements WkSerdeDTreeAggregatorWriter<
+        implements WkSerdeDtreeAggregatorWriter<
                         WkSzTstPrimitivesGroup,
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -63,7 +63,7 @@ public class WkSzTstPrimitivesGroupPacketWriter
                         Byte,
                         WkSettingsSrlzPacketOperationData,
                         WkSerdeDtreeSignedByte,
-                        WkSerdeDTreeSignedByteWriter,
+                        WkSerdeDtreeSignedByteWriter,
                         WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WkSzTstPrimitivesGroupStructDefinition,

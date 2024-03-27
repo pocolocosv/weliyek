@@ -23,12 +23,12 @@ import java.util.function.Predicate;
 public class WkSrlzInputPacketSubfieldFrameNodeCore<
                         ST,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXD extends WkSerdeDTreeNodeStructDefinition<ST>,
-                        SXO extends WkSerdeDTreeNodeDataReader<ST,SXS,?,?,SXD>,
+                        SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
+                        SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        XO extends WkSerdeDTreeAggregatorReader<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>>
+                        XD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        XO extends WkSerdeDtreeAggregatorReader<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SXS, SXD,
                         WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,?,XBC,XD,XO,?,?,?,?,?,?,? extends SXD,? extends XD>,
@@ -49,8 +49,8 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   @Override
   protected void onInitialization() {
     final WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,?,?,XD,XO,?,?,?> parentOpCore = parentOperationCore();
-    WkSerdeDTreeAggregatorDefinition<?> parentDef = parentOpCore.definition();
-    List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> requiredSubfields = parentDef.requiredSubfields();
+    WkSerdeDtreeAggregatorDefinition<?> parentDef = parentOpCore.definition();
+    List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> requiredSubfields = parentDef.requiredSubfields();
     if(-1 != requiredSubfields.indexOf(subcomponentHandlerCore().body())) {
       this.isRequiredByProto = true;
     } else {
@@ -101,7 +101,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected final WkSerdeDTreeNodeStructComponent<? extends SXD> protocolField() {
+  protected final WkSerdeDtreeNodeStructComponent<? extends SXD> protocolField() {
     return protocolFieldCore().asProtocolField();
   }
 

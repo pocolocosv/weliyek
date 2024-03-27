@@ -21,14 +21,14 @@ package weliyek.serialization;
 public interface WkSzPacketWriterOperationCoreFactory<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        DC extends WkSerdeDTreeNodeStructDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        DC extends WkSerdeDtreeNodeStructDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         YAB extends WkSzOutputBytestreamBase<?>>
     extends WkSzOperationFactory
 {
 
-  WkSerdeDTreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
+  WkSerdeDtreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
     int index,
     T serializable,
     YS settings,

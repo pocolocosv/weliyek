@@ -20,13 +20,13 @@ package weliyek.serialization.filter;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSerdeDTreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 
 public abstract class WkSrlzPacketNodePredicate<
-                        D extends WkSerdeDTreeNodeStructDefinition<?>,
-                        M extends WkSerdeDTreeNodeDataFilterable>
+                        D extends WkSerdeDtreeNodeStructDefinition<?>,
+                        M extends WkSerdeDtreeNodeDataFilterable>
 {
 
   private final D definition;
@@ -42,10 +42,10 @@ public abstract class WkSrlzPacketNodePredicate<
     this.description = null == description ? "" : description;
   }
 
-  public abstract boolean canBeTestedAgainst(WkSerdeDTreeNodeDataFilterable node);
+  public abstract boolean canBeTestedAgainst(WkSerdeDtreeNodeDataFilterable node);
 
   @SuppressWarnings("unchecked")
-  boolean testIfProperSegmentOrFalseOtherwise(WkSerdeDTreeNodeDataFilterable node) {
+  boolean testIfProperSegmentOrFalseOtherwise(WkSerdeDtreeNodeDataFilterable node) {
     if (canBeTestedAgainst(node)) {
       return test((M)node);
     }
@@ -66,30 +66,30 @@ public abstract class WkSrlzPacketNodePredicate<
    */
   public abstract boolean deserializedIsRequired();
 
-  static WkSerdeDTreeNodeStructDefinition<?>
-  extractProtocolDefinitionFrom(WkSerdeDTreeNodeDataFilterable node) {
+  static WkSerdeDtreeNodeStructDefinition<?>
+  extractProtocolDefinitionFrom(WkSerdeDtreeNodeDataFilterable node) {
     if (isAnInputPacketReadingNode(node)) {
-      return extractDefinition((WkSerdeDTreeNodeDataReader<?,?,?,?,?>)node);
+      return extractDefinition((WkSerdeDtreeNodeDataReader<?,?,?,?,?>)node);
     } else if (isAnInputPacketFieldNode(node)) {
       return extractDefinition((WkSrlzInputPacketFieldFrameNode<?,?,?>)node);
     }
     throw new IllegalArgumentException();
   }
 
-  protected static boolean isAnInputPacketReadingNode(WkSerdeDTreeNodeDataFilterable node) {
-    return node instanceof WkSerdeDTreeNodeDataReader;
+  protected static boolean isAnInputPacketReadingNode(WkSerdeDtreeNodeDataFilterable node) {
+    return node instanceof WkSerdeDtreeNodeDataReader;
   }
 
-  protected static boolean isAnInputPacketFieldNode(WkSerdeDTreeNodeDataFilterable node) {
+  protected static boolean isAnInputPacketFieldNode(WkSerdeDtreeNodeDataFilterable node) {
     return node instanceof WkSrlzInputPacketFieldFrameNode;
   }
 
-  protected static WkSerdeDTreeNodeStructDefinition<?> extractDefinition(
-    WkSerdeDTreeNodeDataReader<?,?,?,?,?> opNode) {
+  protected static WkSerdeDtreeNodeStructDefinition<?> extractDefinition(
+    WkSerdeDtreeNodeDataReader<?,?,?,?,?> opNode) {
     return opNode.definition();
   }
 
-  protected static WkSerdeDTreeNodeStructDefinition<?> extractDefinition(
+  protected static WkSerdeDtreeNodeStructDefinition<?> extractDefinition(
     WkSrlzInputPacketFieldFrameNode<?,?,?> fieldNode) {
     return fieldNode.structComponent().definition();
   }

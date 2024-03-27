@@ -23,8 +23,8 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 
 public interface WkSzInputPacket<
                         X,
-                        XD extends WkSerdeDTreeNodeStructDefinition<X>,
-                        XO extends WkSerdeDTreeNodeDataReader<X,?,?,?,XD>>
+                        XD extends WkSerdeDtreeNodeStructDefinition<X>,
+                        XO extends WkSerdeDtreeNodeDataReader<X,?,?,?,XD>>
     extends WkSrlzInputPacketFieldFrameNode<X, XD, XO>
 {
 
@@ -32,6 +32,6 @@ public interface WkSzInputPacket<
 
   void processBytestream();
 
-  Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult();
+  Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult();
 
 }

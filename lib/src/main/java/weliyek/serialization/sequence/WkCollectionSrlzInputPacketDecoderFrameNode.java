@@ -19,7 +19,7 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorReader;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -34,8 +34,8 @@ public interface WkCollectionSrlzInputPacketDecoderFrameNode<
     extends WkCollectionSrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>>,
-            WkSerdeDTreeAggregatorReader<T, XS, XQ, XR, XD>,
-            WkSerdeDTreeSequenceReader<T, XS, XQ, XR, XD>
+            WkSerdeDtreeAggregatorReader<T, XS, XQ, XR, XD>,
+            WkSerdeDtreeSequenceReader<T, XS, XQ, XR, XD>
 {
 
 }

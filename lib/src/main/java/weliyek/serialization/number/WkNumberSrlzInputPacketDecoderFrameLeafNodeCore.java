@@ -21,7 +21,7 @@ import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeLeafDataReaderCore;
+import weliyek.serialization.WkSerdeDtreeNodeLeafDataReaderCore;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 
@@ -31,13 +31,13 @@ public abstract class WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
                         XR extends WkResultSrlzPacketOperationData<X>,
-                        XO extends WkSerdeDTreeNumberReader<X,XS,XQ,XR,XD>,
+                        XO extends WkSerdeDtreeNumberReader<X,XS,XQ,XR,XD>,
                         XOC extends WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkSerdeDTreeNumberDefinition<X>,
+                        XD extends WkSerdeDtreeNumberDefinition<X>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkNumberSrlzStructDefinitionFrameNodeCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
-    extends WkSerdeDTreeNodeLeafDataReaderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
-    implements WkSerdeDTreeNumberReader<X, XS, XQ, XR, XD>
+    extends WkSerdeDtreeNodeLeafDataReaderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
+    implements WkSerdeDtreeNumberReader<X, XS, XQ, XR, XD>
 {
 
   protected WkNumberSrlzInputPacketDecoderFrameLeafNodeCore(

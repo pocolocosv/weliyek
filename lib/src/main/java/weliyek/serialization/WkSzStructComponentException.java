@@ -24,25 +24,25 @@ public class WkSzStructComponentException extends WkSzSegmentException
 
   private static final long serialVersionUID = 2018_03_05_000L;
 
-  private final WkSerdeDTreeNodeStructComponent<?> structComponent;
+  private final WkSerdeDtreeNodeStructComponent<?> structComponent;
 
-  public WkSzStructComponentException(WkSerdeDTreeNodeStructComponent<?> structComponent) {
+  public WkSzStructComponentException(WkSerdeDtreeNodeStructComponent<?> structComponent) {
     super(structComponent);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
-  public WkSzStructComponentException(WkSerdeDTreeNodeStructComponent<?> structComponent, String message) {
+  public WkSzStructComponentException(WkSerdeDtreeNodeStructComponent<?> structComponent, String message) {
     super(structComponent, message);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
-  public WkSzStructComponentException(WkSerdeDTreeNodeStructComponent<?> structComponent, Throwable cause) {
+  public WkSzStructComponentException(WkSerdeDtreeNodeStructComponent<?> structComponent, Throwable cause) {
     super(structComponent, cause);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
   public WkSzStructComponentException(
-    WkSerdeDTreeNodeStructComponent<?> structComponent,
+    WkSerdeDtreeNodeStructComponent<?> structComponent,
     String message,
     Throwable cause) {
     super(structComponent, message, cause);
@@ -50,7 +50,7 @@ public class WkSzStructComponentException extends WkSzSegmentException
   }
 
   public WkSzStructComponentException(
-    WkSerdeDTreeNodeStructComponent<?> structComponent,
+    WkSerdeDtreeNodeStructComponent<?> structComponent,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -59,7 +59,7 @@ public class WkSzStructComponentException extends WkSzSegmentException
     this.structComponent = Objects.requireNonNull(structComponent);
   }
   
-  public WkSerdeDTreeNodeStructComponent<?> getStructComponent() {
+  public WkSerdeDtreeNodeStructComponent<?> getStructComponent() {
     return this.structComponent;
   }
 

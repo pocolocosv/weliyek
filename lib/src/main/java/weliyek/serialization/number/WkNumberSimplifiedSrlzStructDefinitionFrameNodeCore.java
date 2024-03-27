@@ -38,19 +38,19 @@ import weliyek.serialization.WkSzWriteEngineFactory;
 
 public final class WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
                         T extends Number,
-                        XO extends WkSerdeDTreeNumberReader<
+                        XO extends WkSerdeDtreeNumberReader<
                                       T,
                                       WkSettingsSrlzPacketOperationData,
                                       WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                       WkResultSrlzPacketOperationData<T>,
                                       D>,
-                        YO extends WkSerdeDTreeNumberWriter<
+                        YO extends WkSerdeDtreeNumberWriter<
                                       T,
                                       WkSettingsSrlzPacketOperationData,
                                       WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                       WkResultSrlzPacketOperationData<T>,
                                       D>,
-                        D extends WkSerdeDTreeNumberDefinition<T>>
+                        D extends WkSerdeDtreeNumberDefinition<T>>
     extends WkNumberSrlzStructDefinitionFrameNodeCore<
                         T,
                         WkSettingsSrlzPacketOperationData,

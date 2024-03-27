@@ -17,15 +17,15 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayWriter;
-import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
 
 public interface WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -33,15 +33,15 @@ public interface WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         YR extends WkResultSrlzPacketOperationData<String>,
                         YD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,?>,
                         SY extends WkPrimitiveArray<?, ?>,
-                        SYD extends WkSerdeDTreeGenericPrimitiveArrayDefinition<SY>,
-                        SYO extends WkSerdeDTreeGenericPrimitiveArrayWriter<SY,?,?,?,SYD>>
+                        SYD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SY>,
+                        SYO extends WkSerdeDtreeGenericPrimitiveArrayWriter<SY,?,?,?,SYD>>
         extends WkStringFromPrimitiveArraySrlzPacketOperationFrameNode<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<String,YD,?>,
                         SYO,
                         WkSrlzOutputPacketFieldFrameNode<SY,SYD,SYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<SY,SYD,SYO>>,
-                WkSerdeDTreeAggregatorWriter<String, YS, YQ, YR, YD>
+                WkSerdeDtreeAggregatorWriter<String, YS, YQ, YR, YD>
 {
 
 }

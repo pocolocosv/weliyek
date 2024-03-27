@@ -28,14 +28,14 @@ import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public class WkDynamicByteArraySrlzOutputNode<
                         ZT extends Number,
-                        ZYO extends WkSerdeDTreeNumberWriter<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
-                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>>
-    implements WkSerdeDTreeByteArrayWriter<
+                        ZYO extends WkSerdeDtreeNumberWriter<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
+                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>>
+    implements WkSerdeDtreeByteArrayWriter<
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                         WkResultSrlzPacketOperationData<WkByteArray>,
@@ -47,8 +47,8 @@ public class WkDynamicByteArraySrlzOutputNode<
                         WkResultSrlzPacketOperationData<WkByteArray>,
                         WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         ZT, ZYO, ZYD,
-                        WkSerdeDTreeVariableSizeByteArrayWriter,
-                        WkSerdeDTreeVariableSizeByteArray>
+                        WkSerdeDtreeVariableSizeByteArrayWriter,
+                        WkSerdeDtreeVariableSizeByteArray>
 {
 
   final WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
@@ -56,8 +56,8 @@ public class WkDynamicByteArraySrlzOutputNode<
                         WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
                         WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         ZT, ZYO, ZYD,
-                        WkSerdeDTreeVariableSizeByteArrayWriter,
-                        WkSerdeDTreeVariableSizeByteArray> operationCore;
+                        WkSerdeDtreeVariableSizeByteArrayWriter,
+                        WkSerdeDtreeVariableSizeByteArray> operationCore;
 
   WkDynamicByteArraySrlzOutputNode(
     int index,
@@ -69,15 +69,15 @@ public class WkDynamicByteArraySrlzOutputNode<
     WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
       WkByteArray,?,?,WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
       WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,ZT,?,?,ZYD,ZYO,?,?,?,
-      WkSerdeDTreeVariableSizeByteArray,WkSerdeDTreeVariableSizeByteArrayWriter,?,
+      WkSerdeDtreeVariableSizeByteArray,WkSerdeDtreeVariableSizeByteArrayWriter,?,
       ?> definitionCore) {
     this.operationCore = new WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
                                 WkByteArray,
                                 WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
                                 WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                 ZT, ZYO, ZYD,
-                                WkSerdeDTreeVariableSizeByteArrayWriter,
-                                WkSerdeDTreeVariableSizeByteArray>(
+                                WkSerdeDtreeVariableSizeByteArrayWriter,
+                                WkSerdeDtreeVariableSizeByteArray>(
                                     index,
                                     serializable,
                                     settings,
@@ -140,7 +140,7 @@ public class WkDynamicByteArraySrlzOutputNode<
 
   @Override
   public
-  WkSrlzOutputPacketSubfieldFrameNode<WkByteArray, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayWriter>
+  WkSrlzOutputPacketSubfieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

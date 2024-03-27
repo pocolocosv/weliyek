@@ -25,7 +25,7 @@ import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSerdeDTreeNodeLeafStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeLeafStructDefinitionCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
@@ -38,19 +38,19 @@ public abstract class WkNumberSrlzStructDefinitionFrameNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XD extends WkSerdeDTreeNumberDefinition<T>,
-                        XO extends WkSerdeDTreeNumberReader<T,XS,?,XR,XD>,
+                        XD extends WkSerdeDtreeNumberDefinition<T>,
+                        XO extends WkSerdeDtreeNumberReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YD extends WkSerdeDTreeNumberDefinition<T>,
-                        YO extends WkSerdeDTreeNumberWriter<T,YS,?,YR,YD>,
+                        YD extends WkSerdeDtreeNumberDefinition<T>,
+                        YO extends WkSerdeDtreeNumberWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSerdeDTreeNumberDefinition<T>,
+                        D extends WkSerdeDtreeNumberDefinition<T>,
                         DC extends WkNumberSrlzStructDefinitionFrameNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
-    extends WkSerdeDTreeNodeLeafStructDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkSerdeDTreeNumberDefinition<T>
+    extends WkSerdeDtreeNodeLeafStructDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
+    implements WkSerdeDtreeNumberDefinition<T>
 {
 
   protected WkNumberSrlzStructDefinitionFrameNodeCore(

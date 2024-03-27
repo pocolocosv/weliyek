@@ -19,7 +19,7 @@ package weliyek.serialization.filter;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 
 public abstract class WkSrlzPacketNodePredicateEvaluatorBase
         implements WkSrlzPacketNodePredicateResult,
@@ -34,23 +34,23 @@ public abstract class WkSrlzPacketNodePredicateEvaluatorBase
         this.desc = "RESULT:" + rule.name();
     }
 
-    final boolean test(WkSerdeDTreeNodeDataFilterable info) {
+    final boolean test(WkSerdeDtreeNodeDataFilterable info) {
         //if (this.isEvaluationCompleted())
         //    return result();
         return onTest(info);
     }
 
-    void process(WkSerdeDTreeNodeDataFilterable segment, WkSrlzFilterQuery query) {
+    void process(WkSerdeDtreeNodeDataFilterable segment, WkSrlzFilterQuery query) {
       if (isPremiseFound()) {
         return;
       }
-      WkSerdeDTreeNodeStructDefinition<?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segment);
+      WkSerdeDtreeNodeStructDefinition<?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segment);
       if (query.rule.matchTargets().contains(definitionUnderTest)) {
         onTest(segment);
       }
     }
 
-    abstract boolean onTest(WkSerdeDTreeNodeDataFilterable segment);
+    abstract boolean onTest(WkSerdeDtreeNodeDataFilterable segment);
 
     @Override
     public final String name() {

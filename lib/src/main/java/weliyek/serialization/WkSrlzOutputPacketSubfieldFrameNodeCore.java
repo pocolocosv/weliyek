@@ -22,12 +22,12 @@ import java.util.function.Predicate;
 public class WkSrlzOutputPacketSubfieldFrameNodeCore<
                         ST,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYD extends WkSerdeDTreeNodeStructDefinition<ST>,
-                        SYO extends WkSerdeDTreeNodeDataWriter<ST,SYS,?,?,SYD>,
+                        SYD extends WkSerdeDtreeNodeStructDefinition<ST>,
+                        SYO extends WkSerdeDtreeNodeDataWriter<ST,SYS,?,?,SYD>,
                         T,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        YO extends WkSerdeDTreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDtreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SYS, SYD,
                         WkSrlzStructSubcomponentFrameNodeCore<ST,?,?,?,T,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD>,
@@ -87,7 +87,7 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected WkSerdeDTreeNodeStructComponent<? extends SYD> protocolField() {
+  protected WkSerdeDtreeNodeStructComponent<? extends SYD> protocolField() {
     return protocolFieldCore().asProtocolField();
   }
 

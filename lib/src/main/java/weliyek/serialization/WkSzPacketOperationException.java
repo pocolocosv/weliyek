@@ -22,30 +22,30 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
 
   private static final long serialVersionUID = 2022_07_04_0000L;
   
-  private final WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
+  private final WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
 
   public WkSzPacketOperationException(
-    WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore) {
+    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore) {
     super(operationCore.definitionCore());
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     Throwable cause) {
     super(operationCore.definitionCore(), cause);
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message) {
     super(operationCore.definitionCore(), message);
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause) {
     super(operationCore.definitionCore(), message, cause);
@@ -53,7 +53,7 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -62,7 +62,7 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
     this.operationCore = operationCore;
   }
   
-  public WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> getOperationCore() {
+  public WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> getOperationCore() {
     return this.operationCore;
   }
 

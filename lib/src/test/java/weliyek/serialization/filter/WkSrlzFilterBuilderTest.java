@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
@@ -38,18 +38,18 @@ import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
-import weliyek.serialization.number.WkSerdeDTreeSignedByteReader;
+import weliyek.serialization.number.WkSerdeDtreeSignedByteReader;
 import weliyek.serialization.number.WkSerdeDtreeSignedByte;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkSrlzFilterBuilderTest
 {
 
-  private static Predicate<WkSerdeDTreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
-  private static Predicate<WkSerdeDTreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().serializable().get().byteValue() != (byte)1;
-  private static Predicate<WkSerdeDTreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)2;
+  private static Predicate<WkSerdeDtreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
+  private static Predicate<WkSerdeDtreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().serializable().get().byteValue() != (byte)1;
+  private static Predicate<WkSerdeDtreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)2;
 
-  private static Predicate<WkSerdeDTreeNodeDataReader<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
+  private static Predicate<WkSerdeDtreeNodeDataReader<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
 
   private static WkSrlzStruct<
                       WkSzTstMultipleLists,
@@ -96,9 +96,9 @@ public class WkSrlzFilterBuilderTest
     BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.field().definition();
     INT_FIELD = PRIMITIVEGROUP_FIELD.intSubcomponent.field().definition();
     LONG_FIELD = PRIMITIVEGROUP_FIELD.longSubcomponent.field().definition();
-    PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_EQUAL_TO_ONE");
-    PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_TWO, "IS_PRIMITIVE_BYTE_EQUAL_TO_TWO");
-    PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader>(BYTE_FIELD, BYTE_IS_NOTEQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_DIFFERENT_TO_ONE");
+    PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDtreeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_EQUAL_TO_ONE");
+    PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDtreeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_TWO, "IS_PRIMITIVE_BYTE_EQUAL_TO_TWO");
+    PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDtreeSignedByteReader>(BYTE_FIELD, BYTE_IS_NOTEQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_DIFFERENT_TO_ONE");
 
     PRIMITIVE_HAS_INT_EQUAL_TO_400 = new WkSrlzReadingPacketNodePredicate<WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>(INT_FIELD, INT_IS_EQUAL_TO_400, "IS_PRIMITIVE_INT_EQUAL_FROM_400");
 

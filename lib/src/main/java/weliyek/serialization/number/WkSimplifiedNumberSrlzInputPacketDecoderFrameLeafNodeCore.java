@@ -27,13 +27,13 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 
 public final class WkSimplifiedNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         X extends Number,
-                        XO extends WkSerdeDTreeNumberReader<
+                        XO extends WkSerdeDtreeNumberReader<
                                       X,
                                       WkSettingsSrlzPacketOperationData,
                                       WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                       WkResultSrlzPacketOperationData<X>,
                                       XD>,
-                        XD extends WkSerdeDTreeNumberDefinition<X>>
+                        XD extends WkSerdeDtreeNumberDefinition<X>>
     extends WkNumberSrlzInputPacketDecoderFrameLeafNodeCore<
                         X,
                         WkSettingsSrlzPacketOperationData,

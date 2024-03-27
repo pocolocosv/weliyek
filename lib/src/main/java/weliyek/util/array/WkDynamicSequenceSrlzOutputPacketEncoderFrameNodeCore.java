@@ -27,10 +27,10 @@ import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
-import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceWriter;
-import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 
 public abstract class WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         T,
@@ -40,29 +40,29 @@ public abstract class WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YO extends WkSerdeDTreeDynamicSequenceWriter<
+                        YO extends WkSerdeDtreeDynamicSequenceWriter<
                                         T,YS,YQ,YR,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YOC extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                                         T,YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYBC,
                                         ZT,ZYS,ZYO,ZYD,
                                         VYS,VYO,VYD,
                                         DC>,
-                        YD extends WkSerdeDTreeDynamicSequenceDefinition<T,?,YO,?,?>,
+                        YD extends WkSerdeDtreeDynamicSequenceDefinition<T,?,YO,?,?>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ZT extends Number,
                         ZYS extends WkSettingsSrlzPacketOperationData,
-                        ZYO extends WkSerdeDTreeNumberWriter<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
+                        ZYO extends WkSerdeDtreeNumberWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
                         VYS extends WkSettingsSrlzPacketOperationData,
-                        VYO extends WkSerdeDTreeVariableSizeSequenceWriter<T,VYS,?,?,VYD>,
-                        VYD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
+                        VYO extends WkSerdeDtreeVariableSizeSequenceWriter<T,VYS,?,?,VYD>,
+                        VYD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYBC,
                                         ZT,?,?,?,ZYS,ZYO,ZYD,
                                         ?,?,?,?,VYS,VYO,VYD,
                                         ?,?,DC>>
     extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
-    implements WkSerdeDTreeDynamicSequenceWriter<T, YS, YQ, YR, YD, ZT, ZYO, ZYD, VYO, VYD>
+    implements WkSerdeDtreeDynamicSequenceWriter<T, YS, YQ, YR, YD, ZT, ZYO, ZYD, VYO, VYD>
 {
 
   private WkSrlzOutputPacketSubfieldFrameNodeCore<ZT,ZYS,ZYD,ZYO,T,?,YD,YO> sizeWriteField;

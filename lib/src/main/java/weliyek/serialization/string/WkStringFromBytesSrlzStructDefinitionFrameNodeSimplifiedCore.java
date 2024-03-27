@@ -41,9 +41,9 @@ import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDTreeByteArrayReader;
-import weliyek.util.array.WkSerdeDTreeByteArrayWriter;
-import weliyek.util.array.WkSerdeDTreeByteArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeByteArrayReader;
+import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
+import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
 public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         XS extends WkSettingsSrlzPacketOperationData,
@@ -65,12 +65,12 @@ public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                                         SYO>,
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXO extends WkSerdeDTreeByteArrayReader<SXS,?,?,SXD>,
-                        SXD extends WkSerdeDTreeByteArrayDefinition,
+                        SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
+                        SXD extends WkSerdeDtreeByteArrayDefinition,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYO extends WkSerdeDTreeByteArrayWriter<SYS,?,?,SYD>,
-                        SYD extends WkSerdeDTreeByteArrayDefinition,
-                        SD extends WkSerdeDTreeByteArrayDefinition,
+                        SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
+                        SYD extends WkSerdeDtreeByteArrayDefinition,
+                        SD extends WkSerdeDtreeByteArrayDefinition,
                         D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>>
     extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         XS,

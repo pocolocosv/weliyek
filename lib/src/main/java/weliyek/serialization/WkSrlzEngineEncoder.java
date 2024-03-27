@@ -22,7 +22,7 @@ import java.io.IOException;
 public abstract class WkSrlzEngineEncoder<
                         T,
                         QC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        O extends WkSerdeDTreeNodeDataWriter<? extends T,?,?,?,?>>
+                        O extends WkSerdeDtreeNodeDataWriter<? extends T,?,?,?,?>>
     extends WkSrlzEngine<QC, O>
 {
 

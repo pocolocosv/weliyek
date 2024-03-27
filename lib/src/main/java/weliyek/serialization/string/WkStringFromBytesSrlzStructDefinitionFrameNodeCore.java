@@ -34,7 +34,7 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestream;
@@ -43,9 +43,9 @@ import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDTreeByteArrayReader;
-import weliyek.util.array.WkSerdeDTreeByteArrayWriter;
-import weliyek.util.array.WkSerdeDTreeByteArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeByteArrayReader;
+import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
+import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
 public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         XS extends WkSettingsSrlzPacketOperationData,
@@ -65,12 +65,12 @@ public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXO extends WkSerdeDTreeByteArrayReader<SXS,?,?,SXD>,
-                        SXD extends WkSerdeDTreeByteArrayDefinition,
+                        SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
+                        SXD extends WkSerdeDtreeByteArrayDefinition,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYO extends WkSerdeDTreeByteArrayWriter<SYS,?,?,SYD>,
-                        SYD extends WkSerdeDTreeByteArrayDefinition,
-                        SD extends WkSerdeDTreeByteArrayDefinition,
+                        SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
+                        SYD extends WkSerdeDtreeByteArrayDefinition,
+                        SD extends WkSerdeDtreeByteArrayDefinition,
                         D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>,
                         DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
@@ -124,7 +124,7 @@ public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
 
   public abstract static class ByteArrayFromStringDisaggregator<
                         YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<?,?,?,?,SD,?>,
-                        SD extends WkSerdeDTreeByteArrayDefinition>
+                        SD extends WkSerdeDtreeByteArrayDefinition>
       extends PrimitiveArrayDisaggregatorFromString<
                         YO,
                         WkByteArray,
@@ -162,7 +162,7 @@ public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
   }
 
   @Override
-  public final WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD> bytes() {
+  public final WkSerdeDtreeNodeStructComponentHandler<XO, YO, SD> bytes() {
     return primitiveArray();
   }
 

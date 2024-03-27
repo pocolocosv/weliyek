@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 public abstract class WkSrlzEngineDecoder<
                         X,
                         QC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        O extends WkSerdeDTreeNodeDataReader<X,?,?,?,?>>
+                        O extends WkSerdeDtreeNodeDataReader<X,?,?,?,?>>
     extends WkSrlzEngine<QC,O>
 {
 

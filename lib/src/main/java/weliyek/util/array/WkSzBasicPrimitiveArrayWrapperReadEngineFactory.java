@@ -27,18 +27,18 @@ public class WkSzBasicPrimitiveArrayWrapperReadEngineFactory<
     extends WkSzPrimitiveArrayWrapperReadEngineFactory<
                         X,
                         WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?>>
+                        WkSerdeDtreeGenericPrimitiveArrayReader<X,?,?,?,?>>
 {
 
   public WkSzBasicPrimitiveArrayWrapperReadEngineFactory(
       String label,
       BiFunction<
         WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-        WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?>,
+        WkSerdeDtreeGenericPrimitiveArrayReader<X,?,?,?,?>,
         WkSrlzEngineDecoder<
           X,
           ? super WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-          ? super WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?>>> engineSupplier) {
+          ? super WkSerdeDtreeGenericPrimitiveArrayReader<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

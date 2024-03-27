@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkBasicPrimitiveArrayWrapperSrlzEngineEncoder;
-import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
 import weliyek.util.array.WkShortArray;
 
 public abstract class WkBasicShortArraySrlzEngineEncoder
@@ -30,7 +30,7 @@ public abstract class WkBasicShortArraySrlzEngineEncoder
 
   protected WkBasicShortArraySrlzEngineEncoder(
     WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDTreeGenericPrimitiveArrayWriter<? extends WkShortArray,?,?,?,?> writingOperation) {
+    WkSerdeDtreeGenericPrimitiveArrayWriter<? extends WkShortArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, Short.BYTES);
   }
 

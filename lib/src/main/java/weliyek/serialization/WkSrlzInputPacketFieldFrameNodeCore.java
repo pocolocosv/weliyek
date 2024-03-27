@@ -22,16 +22,16 @@ import weliyek.serialization.filter.WkSrlzFilterResults;
 public abstract class WkSrlzInputPacketFieldFrameNodeCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDTreeNodeDataReader<
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDtreeNodeDataReader<
                                         T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        AXO extends WkSerdeDTreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        AXO extends WkSerdeDtreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
     extends WkSrlzPacketFieldFrameNodeCore<
                         T, XS, XD,
                         WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>,
                         XO,
-                        WkSerdeDTreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?>,
+                        WkSerdeDtreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?>,
                         WkSrlzInputPacketFieldFrameNode<T,XD,XO>,
                         AXBC,
                         WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,AXO,?,?,?>>
@@ -50,18 +50,18 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
   }
 
   @Override
-  protected WkSerdeDTreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?>
+  protected WkSerdeDtreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?>
   newOperation(int index) {
     final XS settings = newSettings(index);
     final AXBC parentBytestream = parentBytestream();
     final WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> componentCore = protocolFieldCore();
-    WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,?,?,?,?,?,?,? extends XD,?> definitionCore = componentCore.definitionCore();
+    WkSerdeDtreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,?,?,?,?,?,?,? extends XD,?> definitionCore = componentCore.definitionCore();
     return definitionCore.newReadingOperationCore(index, settings, parentBytestream, this);
   }
 
   private static
   <XX,
-   OO extends WkSerdeDTreeNodeDataReader<?,?,?,? extends WkResultSrlzPacketOperationData<XX>,?>>
+   OO extends WkSerdeDtreeNodeDataReader<?,?,?,? extends WkResultSrlzPacketOperationData<XX>,?>>
   XX getDeserializedFromReadingOp(OO readingOp) {
     final WkResultSrlzPacketOperationData<XX> result = readingOp.result().get();
     return result.serializable().get();
@@ -106,7 +106,7 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
   }
 
   @Override
-  public WkSerdeDTreeNodeStructComponent<? extends XD> structComponent() {
+  public WkSerdeDtreeNodeStructComponent<? extends XD> structComponent() {
     return protocolFieldCore().asProtocolField();
   }
 

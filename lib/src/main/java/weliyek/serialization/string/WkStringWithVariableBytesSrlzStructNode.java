@@ -26,8 +26,8 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -37,15 +37,15 @@ import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.string.WkStringFromBytesSrlzStructDefinitionFrameNodeCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
-import weliyek.util.array.WkSerdeDTreeVariableSizeByteArrayReader;
-import weliyek.util.array.WkSerdeDTreeVariableSizeByteArrayWriter;
-import weliyek.util.array.WkSerdeDTreeVariableSizeByteArray;
+import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayReader;
+import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayWriter;
+import weliyek.util.array.WkSerdeDtreeVariableSizeByteArray;
 
 public class WkStringWithVariableBytesSrlzStructNode
     implements WkStringFromBytesSrlzStructDefinitionFrameNode<
                         WkStringWithVariableBytesSrlzInputNode,
                         WkStringWithVariableBytesSrlzOutputNode,
-                        WkSerdeDTreeVariableSizeByteArray>
+                        WkSerdeDtreeVariableSizeByteArray>
 {
 
   public static WkSrlzStruct<
@@ -73,7 +73,7 @@ public class WkStringWithVariableBytesSrlzStructNode
                       WkSzCountingOutputBytestream::new);
   }
 
-  public static WkSerdeDTreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeNodeStructDefinitionCore<
                       String,
                       WkSzVariableLengthOperationSettings,?,?,
                       WkStringWithVariableBytesSrlzStructNode,
@@ -101,12 +101,12 @@ public class WkStringWithVariableBytesSrlzStructNode
                         WkStringWithVariableBytesSrlzOutputNode,
                         WkStringWithVariableBytesSrlzStructNode,
                         WkSzVariableLengthOperationSettings,
-                        WkSerdeDTreeVariableSizeByteArrayReader,
-                        WkSerdeDTreeVariableSizeByteArray,
+                        WkSerdeDtreeVariableSizeByteArrayReader,
+                        WkSerdeDtreeVariableSizeByteArray,
                         WkSettingsSrlzPacketOperationData,
-                        WkSerdeDTreeVariableSizeByteArrayWriter,
-                        WkSerdeDTreeVariableSizeByteArray,
-                        WkSerdeDTreeVariableSizeByteArray,
+                        WkSerdeDtreeVariableSizeByteArrayWriter,
+                        WkSerdeDtreeVariableSizeByteArray,
+                        WkSerdeDtreeVariableSizeByteArray,
                         WkStringWithVariableBytesSrlzStructNode> definitionCore;
 
   WkStringWithVariableBytesSrlzStructNode(
@@ -125,7 +125,7 @@ public class WkStringWithVariableBytesSrlzStructNode
                                     WkStringWithVariableBytesSrlzStructNode::aggragateByteArray,
                                     WkSettingsSrlzPacketOperationData::none,
                                     new VariableLengthBytesDissagregatorFromString(),
-                                    (pc) -> WkSerdeDTreeVariableSizeByteArray.newCore(minSize, maxSize, pc),
+                                    (pc) -> WkSerdeDtreeVariableSizeByteArray.newCore(minSize, maxSize, pc),
                                     this);
   }
 
@@ -142,7 +142,7 @@ public class WkStringWithVariableBytesSrlzStructNode
   public static class VariableLengthBytesDissagregatorFromString
       extends ByteArrayFromStringDisaggregator<
                         WkStringWithVariableBytesSrlzOutputNode,
-                        WkSerdeDTreeVariableSizeByteArray>
+                        WkSerdeDtreeVariableSizeByteArray>
   {
 
     @Override
@@ -160,13 +160,13 @@ public class WkStringWithVariableBytesSrlzStructNode
 
   @Override
   public
-  WkSerdeDTreeNodeStructComponentHandler<WkStringWithVariableBytesSrlzInputNode, WkStringWithVariableBytesSrlzOutputNode, WkSerdeDTreeVariableSizeByteArray>
+  WkSerdeDtreeNodeStructComponentHandler<WkStringWithVariableBytesSrlzInputNode, WkStringWithVariableBytesSrlzOutputNode, WkSerdeDtreeVariableSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -176,13 +176,13 @@ public class WkStringWithVariableBytesSrlzStructNode
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-  WkSerdeDTreeNodeStructComponentHandler<WkStringWithVariableBytesSrlzInputNode, WkStringWithVariableBytesSrlzOutputNode, WkSerdeDTreeVariableSizeByteArray>
+  WkSerdeDtreeNodeStructComponentHandler<WkStringWithVariableBytesSrlzInputNode, WkStringWithVariableBytesSrlzOutputNode, WkSerdeDtreeVariableSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

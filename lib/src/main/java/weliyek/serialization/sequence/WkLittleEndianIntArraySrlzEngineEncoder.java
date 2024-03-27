@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkIntArray;
-import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
 import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
 
 public final class WkLittleEndianIntArraySrlzEngineEncoder
@@ -35,7 +35,7 @@ public final class WkLittleEndianIntArraySrlzEngineEncoder
 
   private WkLittleEndianIntArraySrlzEngineEncoder(
     WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDTreeGenericPrimitiveArrayWriter<? extends WkIntArray,?,?,?,?> writingOperation) {
+    WkSerdeDtreeGenericPrimitiveArrayWriter<? extends WkIntArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

@@ -22,7 +22,7 @@ import java.io.IOException;
 import weliyek.serialization.WkSzPrimitiveWriteEngineFactory;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.number.WkIntPrimiviteSrlzEngineEncoder;
-import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 
 public final class WkSignedLittleEndianIntegerSrlzEngineEncoder
         extends WkIntPrimiviteSrlzEngineEncoder
@@ -33,7 +33,7 @@ public final class WkSignedLittleEndianIntegerSrlzEngineEncoder
 
   private WkSignedLittleEndianIntegerSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDTreeNumberWriter<Integer,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberWriter<Integer,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

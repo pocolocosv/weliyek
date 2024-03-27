@@ -29,16 +29,16 @@ import org.slf4j.LoggerFactory;
 public abstract class WkSrlzPacketFieldFrameNodeCore<
                         T,
                         S extends WkSettingsSrlzPacketOperationData,
-                        D extends WkSerdeDTreeNodeStructDefinition<?>, // Not needed directly but
+                        D extends WkSerdeDtreeNodeStructDefinition<?>, // Not needed directly but
                         // used nonetheless to simplify the declaration of PacketFieldCore<>
                         // elsewhere where ProtocolField<D> is used.
                         PC extends WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?>,
-                        O extends WkSerdeDTreeNodeDataOperation<S,?,?,? super D,? super K>,
-                        OC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,O,?,?,?,?>,
-                        K extends WkSerdeDTreeNodeDataComponent<T,O,?>,
+                        O extends WkSerdeDtreeNodeDataOperation<S,?,?,? super D,? super K>,
+                        OC extends WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,O,?,?,?,?>,
+                        K extends WkSerdeDtreeNodeDataComponent<T,O,?>,
                         AB extends WkSzBytestreamBase<?,?>,
-                        AOC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?>>
-    implements WkSerdeDTreeNodeDataComponent<T,O,D>
+                        AOC extends WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?>>
+    implements WkSerdeDtreeNodeDataComponent<T,O,D>
 {
 
     @SuppressWarnings("unused")
@@ -115,12 +115,12 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
       this.singleOperation = Optional.empty();
     }
 
-    protected Optional<WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>> processSingleStepBytestream() {
+    protected Optional<WkSerdeDtreeNodeDataOperation<?, ?, ?, ?, ?>> processSingleStepBytestream() {
       throwIfUnitialized();
       if (isCompleted()) {
         return Optional.empty();
       }
-      Optional<WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>> opCompleted = this.operationListManager.processingBytestream();
+      Optional<WkSerdeDtreeNodeDataOperation<?, ?, ?, ?, ?>> opCompleted = this.operationListManager.processingBytestream();
       if (isCompleted()) {
         assertNumberOfOperations();
         onDoneProcessing();

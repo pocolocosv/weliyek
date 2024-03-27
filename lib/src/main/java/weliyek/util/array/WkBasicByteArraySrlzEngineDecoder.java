@@ -33,7 +33,7 @@ public final class WkBasicByteArraySrlzEngineDecoder
 
   private WkBasicByteArraySrlzEngineDecoder(
     WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-    WkSerdeDTreeGenericPrimitiveArrayReader<WkByteArray,?,?,?,?> readingOperation) {
+    WkSerdeDtreeGenericPrimitiveArrayReader<WkByteArray,?,?,?,?> readingOperation) {
     super(WkByteArray::new, 1, runtimeCtrl, readingOperation);
   }
 

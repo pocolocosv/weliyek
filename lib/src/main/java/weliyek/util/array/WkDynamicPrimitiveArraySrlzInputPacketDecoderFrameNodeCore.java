@@ -25,8 +25,8 @@ import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSerdeDTreeNumberReader;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -38,16 +38,16 @@ public class WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,XO,?,? extends ZXD,? extends VXD>,
                         ZT extends Number,
-                        ZXO extends WkSerdeDTreeNumberReader<
+                        ZXO extends WkSerdeDtreeNumberReader<
                                         ZT,
                                         WkSettingsSrlzPacketOperationData,
                                         ?,?,ZXD>,
-                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        VXO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayReader<
+                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        VXO extends WkSerdeDtreeGenericVariableSizePrimitiveArrayReader<
                                         T,
                                         WkSzVariableLengthOperationSettings,
                                         ?,?,VXD>,
-                        VXD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>>
+                        VXD extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<T>>
     extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T,
                         WkSettingsSrlzPacketOperationData,

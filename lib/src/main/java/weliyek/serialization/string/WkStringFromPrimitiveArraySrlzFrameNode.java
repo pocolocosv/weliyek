@@ -17,10 +17,10 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSerdeDTreeAggregator;
+import weliyek.serialization.WkSerdeDtreeAggregator;
 
 public interface WkStringFromPrimitiveArraySrlzFrameNode<S>
-    extends WkSerdeDTreeAggregator
+    extends WkSerdeDtreeAggregator
 {
 
   S primitiveArray();

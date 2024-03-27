@@ -24,23 +24,23 @@ import java.util.function.Function;
 public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        XO extends WkSerdeDTreeAggregatorReader<
+                        XD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        XO extends WkSerdeDtreeAggregatorReader<
                                         T,
                                         XS,
                                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                         WkResultSrlzPacketOperationData<T>,
                                         XD>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        YO extends WkSerdeDTreeAggregatorWriter<
+                        YD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDtreeAggregatorWriter<
                                         T,
                                         YS,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkResultSrlzPacketOperationData<T>,
                                         YD>,
-                        D extends WkSerdeDTreeAggregatorDefinition<T>>
-    extends WkSerdeDTreeAggregatorDefinitionCore<
+                        D extends WkSerdeDtreeAggregatorDefinition<T>>
+    extends WkSerdeDtreeAggregatorDefinitionCore<
                         T,
                         XS,
                         WkSzInputBytestream,

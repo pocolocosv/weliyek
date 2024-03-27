@@ -23,12 +23,12 @@ import java.util.Optional;
 public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>>
     extends WkSrlzOutputPacketFieldFrameNodeCore<
                         T, YS, YD, YO, AYBC,
-                        WkSerdeDTreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        WkSerdeDtreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
     implements WkSzOutputPacket<T, YD, YO>
 {
 
@@ -51,7 +51,7 @@ public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
   }
 
   private final WkSrlzOutputPacketFieldFrameNodeRootCore.WritingParameters<T,YS,AYBC> parameters;
-  private Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
+  private Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> previousOpResult = Optional.empty();
 
   public WkSrlzOutputPacketFieldFrameNodeRootCore(
     WkSrlzStructComponentFrameNodeCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD> protocolFieldCore,
@@ -66,7 +66,7 @@ public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
   }
 
   @Override
-public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult() {
+public Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> previousProcessingSteapResult() {
     return this.previousOpResult;
   }
 
@@ -101,12 +101,12 @@ public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingStea
   }
 
   @Override
-  protected WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,WkSerdeDTreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
+  protected WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,WkSerdeDtreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }
 
-  public WkSerdeDTreeNodeDataWriter<?, ?, ?, ?, ?> parentOperation() {
+  public WkSerdeDtreeNodeDataWriter<?, ?, ?, ?, ?> parentOperation() {
     return null;
   }
 

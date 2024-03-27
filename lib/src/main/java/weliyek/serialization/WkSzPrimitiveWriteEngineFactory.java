@@ -19,24 +19,24 @@ package weliyek.serialization;
 
 import java.util.function.BiFunction;
 
-import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 
 public class WkSzPrimitiveWriteEngineFactory<T extends Number>
     extends WkSzWriteEngineFactory<
                         T,
                         WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkSerdeDTreeNumberWriter<T,?,?,?,?>>
+                        WkSerdeDtreeNumberWriter<T,?,?,?,?>>
 {
 
   public WkSzPrimitiveWriteEngineFactory(
     String label,
     BiFunction<
       WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-      WkSerdeDTreeNumberWriter<T,?,?,?,?>,
+      WkSerdeDtreeNumberWriter<T,?,?,?,?>,
       WkSrlzEngineEncoder<
         T,
         WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-        WkSerdeDTreeNumberWriter<T,?,?,?,?>>> engineSupplier) {
+        WkSerdeDtreeNumberWriter<T,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

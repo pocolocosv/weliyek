@@ -22,7 +22,7 @@ import java.util.function.BiFunction;
 
 public abstract class WkSzEngineFactoryBase<
                         QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        O extends WkSerdeDTreeNodeDataOperation<?,?,?,?,?>,
+                        O extends WkSerdeDtreeNodeDataOperation<?,?,?,?,?>,
                         T extends WkSrlzEngine<? super QC, ? super O>>
 {
 

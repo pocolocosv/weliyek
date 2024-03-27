@@ -22,8 +22,8 @@ import java.util.List;
 public class WkSrlzOutputPacketSubfieldList<
                         Y,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkSerdeDTreeAggregatorDefinition<Y>,
-                        YO extends WkSerdeDTreeAggregatorWriter<Y,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YD extends WkSerdeDtreeAggregatorDefinition<Y>,
+                        YO extends WkSerdeDtreeAggregatorWriter<Y,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
         extends WkSrlzPacketSubfieldList<
                         WkSrlzOutputPacketSubfieldFrameNode<?,?,?>,
                         WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YD,YO>,
@@ -38,8 +38,8 @@ public class WkSrlzOutputPacketSubfieldList<
   @SuppressWarnings("unchecked")
   <SY,
    SYS extends WkSettingsSrlzPacketOperationData,
-   SYD extends WkSerdeDTreeNodeStructDefinition<SY>,
-   SYO extends WkSerdeDTreeNodeDataWriter<SY,SYS,?,?,SYD>>
+   SYD extends WkSerdeDtreeNodeStructDefinition<SY>,
+   SYO extends WkSerdeDtreeNodeDataWriter<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(
     WkSrlzStructSubcomponentFrameNodeCore<SY,?,?,?,Y,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD> searchedSubcomponent) {
     for (WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YD,YO> serializingSubfieldHandler : this) {

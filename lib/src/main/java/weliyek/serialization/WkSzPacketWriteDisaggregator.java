@@ -20,9 +20,9 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSzPacketWriteDisaggregator<
                         T,
-                        D extends WkSerdeDTreeNodeStructDefinition<T>,
+                        D extends WkSerdeDtreeNodeStructDefinition<T>,
                         AT,
-                        AO extends WkSerdeDTreeNodeDataWriter<? extends AT,?,?,?,?>>
+                        AO extends WkSerdeDtreeNodeDataWriter<? extends AT,?,?,?,?>>
 {
 
   /**

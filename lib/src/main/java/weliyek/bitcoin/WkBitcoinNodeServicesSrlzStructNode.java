@@ -19,13 +19,13 @@ package weliyek.bitcoin;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDTreeAggregatorDefinition;
-import weliyek.serialization.WkSerdeDTreeAggregatorDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorDefinition;
+import weliyek.serialization.WkSerdeDtreeAggregatorDefinitionCore;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -36,10 +36,10 @@ import weliyek.serialization.number.WkSignedLittleEndianLongSrlzOutputNode;
 import weliyek.serialization.number.WkSignedLittleEndianLongSrlzStructNode;
 
 public class WkBitcoinNodeServicesSrlzStructNode 
-    implements WkSerdeDTreeAggregatorDefinition<WkBitcoinNodeServices>
+    implements WkSerdeDtreeAggregatorDefinition<WkBitcoinNodeServices>
 {
 
-  public static WkSerdeDTreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeNodeStructDefinitionCore<
                         WkBitcoinNodeServices,
                         WkSettingsSrlzPacketOperationData,?,?,
                         WkBitcoinNodeServicesSrlzStructNode,
@@ -106,10 +106,10 @@ public class WkBitcoinNodeServicesSrlzStructNode
     addSubcomponent(
         "LONG", 
         Optional.empty(), // rxEnablingTest 
-        WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+        WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
         WkSettingsSrlzPacketOperationData::none,
         Optional.empty(), // txEnablingTest 
-        WkSerdeDTreeAggregatorDefinitionCore.singleOperation(),
+        WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
         WkSettingsSrlzPacketOperationData::none,
         (k,ao,i) -> Long.valueOf(ao.serializable().toLong()), //disaggregator, 
         false, 
@@ -122,12 +122,12 @@ public class WkBitcoinNodeServicesSrlzStructNode
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

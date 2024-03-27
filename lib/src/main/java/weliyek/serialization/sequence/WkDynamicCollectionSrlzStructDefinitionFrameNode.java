@@ -19,36 +19,36 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataReader;
-import weliyek.serialization.WkSerdeDTreeNodeDataWriter;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
-import weliyek.util.array.WkSerdeDTreeDynamicSequenceDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.util.array.WkSerdeDtreeDynamicSequenceDefinition;
 
 public interface WkDynamicCollectionSrlzStructDefinitionFrameNode<
                         T extends Collection<ET>,
                         XO extends WkDynamicCollectionSrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?>,
                         YO extends WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkSerdeDTreeNumberDefinition<?>,
+                        ZD extends WkSerdeDtreeNumberDefinition<?>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
                         EYS extends WkSettingsSrlzPacketOperationData,
-                        EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                        ED extends WkSerdeDTreeNodeStructDefinition<ET>,
+                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                        ED extends WkSerdeDtreeNodeStructDefinition<ET>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VYS extends WkSettingsSrlzPacketOperationData>
-    extends WkSerdeDTreeDynamicCollection<
-                        WkSerdeDTreeNodeStructComponentHandler<XO, YO, ZD>,
-                        WkSerdeDTreeNodeStructComponentHandler<
+    extends WkSerdeDtreeDynamicCollection<
+                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, ZD>,
+                        WkSerdeDtreeNodeStructComponentHandler<
                           XO, YO, WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>>,
             WkCollectionSrlzStructDefinitionFrameNode<T>,
-            WkSerdeDTreeDynamicSequenceDefinition<
+            WkSerdeDtreeDynamicSequenceDefinition<
                         T, XO, YO, ZD,
                         WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
 {

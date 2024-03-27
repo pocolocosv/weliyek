@@ -23,14 +23,14 @@ import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDTreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSerdeDTreeNumberReader;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.util.array.WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore;
 
 public final class WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore<
@@ -45,12 +45,12 @@ public final class WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeC
                                         T,XO,?,?,ET,EXS,?,EXO,?,?,?,?,VXS,?>,
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
-                        ZXO extends WkSerdeDTreeNumberReader<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
+                        ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
-                        EXD extends WkSerdeDTreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDTreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
                         VXS extends WkSzVariableLengthOperationSettings>
     extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T, XS,

@@ -25,31 +25,31 @@ import weliyek.serialization.filter.WkSrlzPacketNodePredicate;
 public abstract class WkSrlzStructComponentFrameNodeCore<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDTreeNodeDataReader<T,XS,?,?,XD>,
+                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSerdeDTreeNodeStructDefinition<T>>
-    implements WkSerdeDTreeNodeStructComponent<D>
+                        D extends WkSerdeDtreeNodeStructDefinition<T>>
+    implements WkSerdeDtreeNodeStructComponent<D>
 {
 
   public static final char FIELD_NAME_SEPARATOR = '.';
 
   private final String label;
-  private final WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore;
+  private final WkSerdeDtreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore;
 
   private String name;
 
-  private final WkSerdeDTreeNodeStructComponent<D> body;
+  private final WkSerdeDtreeNodeStructComponent<D> body;
 
   protected WkSrlzStructComponentFrameNodeCore(
     String label,
     WkSrlzStructDefinitionFrameNodeCoreFactory<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D> definitionFactory) {
     this.label = Objects.requireNonNull(label);
-    this.body = new WkSerdeDTreeNodeStructComponent<D>() {
+    this.body = new WkSerdeDtreeNodeStructComponent<D>() {
 
       @Override
       public String label() {
@@ -68,7 +68,7 @@ public abstract class WkSrlzStructComponentFrameNodeCore<
 
       @Override
       public WkSrlzPacketNodePredicate<?, ?>
-          makeTester(Predicate<WkSerdeDTreeNodeDataComponent<?, ?, ?>> test, String description) {
+          makeTester(Predicate<WkSerdeDtreeNodeDataComponent<?, ?, ?>> test, String description) {
         return WkSrlzStructComponentFrameNodeCore.this.makeTester(test, description);
       }
     };
@@ -81,18 +81,18 @@ public abstract class WkSrlzStructComponentFrameNodeCore<
     return this.label;
   }
 
-  public WkSerdeDTreeNodeStructComponent<D> asProtocolField() {
+  public WkSerdeDtreeNodeStructComponent<D> asProtocolField() {
     return this.body;
   }
 
-  protected abstract WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore();
+  protected abstract WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore();
 
   @Override
   public D definition() {
     return definitionCore().definition();
   }
 
-  public WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore() {
+  public WkSerdeDtreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore() {
     return this.definitionCore;
   }
 
@@ -128,7 +128,7 @@ public abstract class WkSrlzStructComponentFrameNodeCore<
   }
 
   @Override
-  public WkSrlzPacketNodePredicate<?, ?> makeTester(Predicate<WkSerdeDTreeNodeDataComponent<?, ?, ?>> test, String description) {
+  public WkSrlzPacketNodePredicate<?, ?> makeTester(Predicate<WkSerdeDtreeNodeDataComponent<?, ?, ?>> test, String description) {
     // TODO Auto-generated method stub
     return null;
   }

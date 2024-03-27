@@ -22,11 +22,11 @@ import java.util.function.ToIntFunction;
 public class WkSrlzOutputPacketFieldFrameNodeNonrootCore<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
+                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
                         AY,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        AYO extends WkSerdeDTreeAggregatorWriter<AY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        AYO extends WkSerdeDtreeAggregatorWriter<AY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
         extends WkSrlzOutputPacketFieldFrameNodeCore<T, YS, YD, YO, AYBC, AYO>
 {
 

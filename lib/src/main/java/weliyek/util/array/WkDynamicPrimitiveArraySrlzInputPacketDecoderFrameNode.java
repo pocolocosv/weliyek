@@ -22,8 +22,8 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.number.WkSerdeDTreeNumberReader;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public interface WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         T extends WkPrimitiveArray<?,?>,
@@ -32,10 +32,10 @@ public interface WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZT extends Number,
-                        ZXO extends WkSerdeDTreeNumberReader<ZT,?,?,?,ZD>,
-                        ZD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        VXO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayReader<T,?,?,?,VD>,
-                        VD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>>
+                        ZXO extends WkSerdeDtreeNumberReader<ZT,?,?,?,ZD>,
+                        ZD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        VXO extends WkSerdeDtreeGenericVariableSizePrimitiveArrayReader<T,?,?,?,VD>,
+                        VD extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<T>>
     extends WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>,
@@ -45,7 +45,7 @@ public interface WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         VXO,
                         WkSrlzInputPacketFieldFrameNode<T,VD,VXO>,
                         WkSrlzInputPacketSubfieldFrameNode<T,VD,VXO>>,
-            WkSerdeDTreeDynamicSequenceReader<T, XS, XQ, XR, XD, ZT, ZXO, ZD, VXO, VD>
+            WkSerdeDtreeDynamicSequenceReader<T, XS, XQ, XR, XD, ZT, ZXO, ZD, VXO, VD>
 {
 
 }

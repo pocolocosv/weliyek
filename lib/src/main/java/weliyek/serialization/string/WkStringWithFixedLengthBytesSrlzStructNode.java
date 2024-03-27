@@ -25,17 +25,17 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.string.WkStringFromBytesSrlzStructDefinitionFrameNodeCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDTreeFixedSizeByteArrayReader;
-import weliyek.util.array.WkSerdeDTreeFixedSizeByteArrayWriter;
-import weliyek.util.array.WkSerdeDTreeFixedSizeByteArray;
+import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
+import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayWriter;
+import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
 import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 
 /**
@@ -48,7 +48,7 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
     implements WkStringFromBytesSrlzStructDefinitionFrameNode<
                         WkStringWithFixedLengthBytesSrlzInputNode,
                         WkStringWithFixedLengthBytesSrlzOutputNode,
-                        WkSerdeDTreeFixedSizeByteArray>
+                        WkSerdeDtreeFixedSizeByteArray>
 {
 
   public static WkSrlzStruct<
@@ -75,7 +75,7 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
                       WkSzCountingOutputBytestream::new);
   }
 
-  public static WkSerdeDTreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeNodeStructDefinitionCore<
                       String,
                       WkSettingsSrlzPacketOperationData,?,?,
                       WkStringWithFixedLengthBytesSrlzStructNode,
@@ -102,12 +102,12 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
                         WkStringWithFixedLengthBytesSrlzOutputNode,
                         WkStringWithFixedLengthBytesSrlzStructNode,
                         WkSettingsSrlzPacketOperationData,
-                        WkSerdeDTreeFixedSizeByteArrayReader,
-                        WkSerdeDTreeFixedSizeByteArray,
+                        WkSerdeDtreeFixedSizeByteArrayReader,
+                        WkSerdeDtreeFixedSizeByteArray,
                         WkSettingsSrlzPacketOperationData,
-                        WkSerdeDTreeFixedSizeByteArrayWriter,
-                        WkSerdeDTreeFixedSizeByteArray,
-                        WkSerdeDTreeFixedSizeByteArray,
+                        WkSerdeDtreeFixedSizeByteArrayWriter,
+                        WkSerdeDtreeFixedSizeByteArray,
+                        WkSerdeDtreeFixedSizeByteArray,
                         WkStringWithFixedLengthBytesSrlzStructNode> definitionCore;
 
   private WkStringWithFixedLengthBytesSrlzStructNode(
@@ -126,7 +126,7 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
                                   WkStringWithFixedLengthBytesSrlzStructNode::aggragateByteArray,
                                   WkSettingsSrlzPacketOperationData::none,
                                   new FixedLengthBytesDisaggregatorFromString(expectedSize),
-                                  (pc) -> WkSerdeDTreeFixedSizeByteArray.newCore(expectedSize, pc),
+                                  (pc) -> WkSerdeDtreeFixedSizeByteArray.newCore(expectedSize, pc),
                                   this);
   }
 
@@ -143,7 +143,7 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
   public static class FixedLengthBytesDisaggregatorFromString
       extends ByteArrayFromStringDisaggregator<
                         WkStringWithFixedLengthBytesSrlzOutputNode,
-                        WkSerdeDTreeFixedSizeByteArray>
+                        WkSerdeDtreeFixedSizeByteArray>
   {
 
     private final Optional<Integer> fixedLength;
@@ -167,13 +167,13 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
 
   @Override
   public
-  WkSerdeDTreeNodeStructComponentHandler<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkSerdeDTreeFixedSizeByteArray>
+  WkSerdeDtreeNodeStructComponentHandler<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkSerdeDtreeFixedSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> requiredSubfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -183,13 +183,13 @@ public class WkStringWithFixedLengthBytesSrlzStructNode
   }
 
   @Override
-  public List<WkSerdeDTreeNodeStructComponentHandler<?,?,?>> subfields() {
+  public List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-  WkSerdeDTreeNodeStructComponentHandler<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkSerdeDTreeFixedSizeByteArray>
+  WkSerdeDtreeNodeStructComponentHandler<WkStringWithFixedLengthBytesSrlzInputNode, WkStringWithFixedLengthBytesSrlzOutputNode, WkSerdeDtreeFixedSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

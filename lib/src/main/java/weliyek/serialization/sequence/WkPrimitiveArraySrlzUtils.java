@@ -19,26 +19,26 @@ package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkSzOperationException;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.util.array.WkSerdeDTreeGenericFixedSizePrimitiveArrayReader;
-import weliyek.util.array.WkSerdeDTreeGenericFixedSizePrimitiveArrayWriter;
-import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayReaderCoreSimplified;
-import weliyek.util.array.WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition;
-import weliyek.util.array.WkSerdeDTreeGenericVariableSizePrimitiveArrayReader;
-import weliyek.util.array.WkSerdeDTreeGenericVariableSizePrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreeGenericFixedSizePrimitiveArrayReader;
+import weliyek.util.array.WkSerdeDtreeGenericFixedSizePrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified;
+import weliyek.util.array.WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeGenericVariableSizePrimitiveArrayReader;
+import weliyek.util.array.WkSerdeDtreeGenericVariableSizePrimitiveArrayWriter;
 import weliyek.util.array.WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore;
 
 public class WkPrimitiveArraySrlzUtils
 {
 
   public static void onFixedSizeDeserilizingInitialization(
-    WkSerdeDTreeGenericPrimitiveArrayReaderCoreSimplified<
-      ?,?,?,? extends WkSerdeDTreeGenericFixedSizePrimitiveArrayReader<?,?,?,?,?>> deserializing) {
+    WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
+      ?,?,?,? extends WkSerdeDtreeGenericFixedSizePrimitiveArrayReader<?,?,?,?,?>> deserializing) {
     // Nothing to do.
   }
 
   public static void onFixedSizeSerilizingInitialization(
     WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
-      ?,?,?,? extends WkSerdeDTreeGenericFixedSizePrimitiveArrayWriter<?,?,?,?,?>> serializingCore) {
+      ?,?,?,? extends WkSerdeDtreeGenericFixedSizePrimitiveArrayWriter<?,?,?,?,?>> serializingCore) {
     final int reqLen = serializingCore.serializable().getLength();
     final int expectedLen = serializingCore.getRequestedLength();
     if (reqLen != expectedLen) {
@@ -49,10 +49,10 @@ public class WkPrimitiveArraySrlzUtils
   }
 
   public static void onVariableSizeDeserilizingInitialization(
-    WkSerdeDTreeGenericPrimitiveArrayReaderCoreSimplified<
+    WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
       ?,? extends WkSzVariableLengthOperationSettings,
-      ? extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<?>,
-      ? extends WkSerdeDTreeGenericVariableSizePrimitiveArrayReader<?,?,?,?,?>> deserializingCore) {
+      ? extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<?>,
+      ? extends WkSerdeDtreeGenericVariableSizePrimitiveArrayReader<?,?,?,?,?>> deserializingCore) {
     final int reqLen = deserializingCore.settings().getRequestedLength();
     final int minLen = deserializingCore.definition().minimalSize();
     final int maxLen = deserializingCore.definition().maximalSize();
@@ -65,8 +65,8 @@ public class WkPrimitiveArraySrlzUtils
 
   public static void onVariableSizeSerializingInitialization(
     WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<?,?,
-      ? extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<?>,
-      ? extends WkSerdeDTreeGenericVariableSizePrimitiveArrayWriter<?,?,?,?,?>> serializingCore) {
+      ? extends WkSerdeDtreeGenericVariableSizePrimitiveArrayDefinition<?>,
+      ? extends WkSerdeDtreeGenericVariableSizePrimitiveArrayWriter<?,?,?,?,?>> serializingCore) {
     int reqLen = serializingCore.serializable().getLength();
     final int minLen = serializingCore.definition().minimalSize();
     final int maxLen = serializingCore.definition().maximalSize();

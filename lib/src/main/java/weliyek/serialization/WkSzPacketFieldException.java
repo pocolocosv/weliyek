@@ -24,15 +24,15 @@ public class WkSzPacketFieldException extends WkSzSegmentException
 
     private static final long serialVersionUID = 2020_05_01_000L;
 
-    private final WkSerdeDTreeNodeDataComponent<?,?,?> packetField;
+    private final WkSerdeDtreeNodeDataComponent<?,?,?> packetField;
 
-    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packetField) {
+    public WkSzPacketFieldException(WkSerdeDtreeNodeDataComponent<?,?,?> packetField) {
         super(packetField);
         this.packetField = Objects.requireNonNull(packetField);
     }
 
     public WkSzPacketFieldException(
-        WkSerdeDTreeNodeDataComponent<?,?,?> packet,
+        WkSerdeDtreeNodeDataComponent<?,?,?> packet,
         String message,
         Throwable cause,
         boolean enableSuppression,
@@ -41,22 +41,22 @@ public class WkSzPacketFieldException extends WkSzSegmentException
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packet, String message, Throwable cause) {
+    public WkSzPacketFieldException(WkSerdeDtreeNodeDataComponent<?,?,?> packet, String message, Throwable cause) {
         super(packet, message, cause);
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packet, String message) {
+    public WkSzPacketFieldException(WkSerdeDtreeNodeDataComponent<?,?,?> packet, String message) {
         super(packet, message);
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public WkSzPacketFieldException(WkSerdeDTreeNodeDataComponent<?,?,?> packet, Throwable cause) {
+    public WkSzPacketFieldException(WkSerdeDtreeNodeDataComponent<?,?,?> packet, Throwable cause) {
         super(packet, cause);
         this.packetField = Objects.requireNonNull(packet);
     }
 
-    public final WkSerdeDTreeNodeDataComponent<?,?,?> packetField() {
+    public final WkSerdeDtreeNodeDataComponent<?,?,?> packetField() {
         return this.packetField;
     }
 

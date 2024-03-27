@@ -28,10 +28,10 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSerdeDTreeNumberReader;
-import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
-import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceReader;
-import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 
 public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T,
@@ -41,21 +41,21 @@ public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XO extends WkSerdeDTreeDynamicSequenceReader<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
+                        XO extends WkSerdeDtreeDynamicSequenceReader<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XOC extends WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,
                                         ZT,ZXS,ZXO,ZXD,
                                         VXS,VXO,VXD,
                                         DC>,
-                        XD extends WkSerdeDTreeDynamicSequenceDefinition<T,XO,?,?,?>,
+                        XD extends WkSerdeDtreeDynamicSequenceDefinition<T,XO,?,?,?>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
-                        ZXO extends WkSerdeDTreeNumberReader<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
+                        ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                         VXS extends WkSzVariableLengthOperationSettings,
-                        VXO extends WkSerdeDTreeVariableSizeSequenceReader<T,VXS,?,?,VXD>,
-                        VXD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
+                        VXO extends WkSerdeDtreeVariableSizeSequenceReader<T,VXS,?,?,VXD>,
+                        VXD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                         ?,?,?,?,?,?,?,?,
@@ -63,7 +63,7 @@ public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                                         VXS,VXO,VXD,?,?,?,?,
                                         ?,DC>>
     extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
-    implements WkSerdeDTreeDynamicSequenceReader<T, XS, XQ, XR, XD, ZT, ZXO, ZXD, VXO, VXD>
+    implements WkSerdeDtreeDynamicSequenceReader<T, XS, XQ, XR, XD, ZT, ZXO, ZXD, VXO, VXD>
 {
 
   private WkSrlzInputPacketSubfieldFrameNodeCore<ZT,ZXS,ZXD,ZXO,T,XBC,XD,XO>

@@ -28,13 +28,13 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XD extends WkSerdeDTreeAggregatorDefinition<T>,
-                        XO extends WkSerdeDTreeAggregatorReader<T,XS,XQ,XR,XD>,
+                        XD extends WkSerdeDtreeAggregatorDefinition<T>,
+                        XO extends WkSerdeDtreeAggregatorReader<T,XS,XQ,XR,XD>,
                         XOC extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        DC extends WkSerdeDTreeAggregatorDefinitionCore<T,XS,XB,XBC,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,?,?,DC>>
-    extends WkSerdeDTreeNodeDataReaderCore<T, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
-    implements WkSerdeDTreeAggregatorReader<T, XS, XQ, XR, XD>
+                        DC extends WkSerdeDtreeAggregatorDefinitionCore<T,XS,XB,XBC,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,?,?,DC>>
+    extends WkSerdeDtreeNodeDataReaderCore<T, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
+    implements WkSerdeDtreeAggregatorReader<T, XS, XQ, XR, XD>
 {
 
   protected WkSrlzInputPacketSubfieldList<T,XBC,XD,XO> readinHandlerList;
@@ -53,8 +53,8 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
   @SuppressWarnings("unchecked")
   public <ST,
           SXS extends WkSettingsSrlzPacketOperationData,
-          SXD extends WkSerdeDTreeNodeStructDefinition<ST>,
-          SXO extends WkSerdeDTreeNodeDataReader<ST,SXS,?,?,SXD>>
+          SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
+          SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>>
   WkSrlzInputPacketSubfieldFrameNodeCore<ST,SXS,SXD,SXO,T,XBC,XD,XO> getSubfieldpacketFor(
     WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,T,?,XD,XO,?,?,?,?,?,?,?,?> protocolSubfieldCore) {
     return this.readinHandlerList.findSubfieldpacket(
@@ -74,8 +74,8 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
   protected abstract void onAggregatorReadingInitialization();
 
   @Override
-  protected Optional<WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>> onProcessingBytestream() {
-    Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> completedSubfield = this.readinHandlerList.processBytestream();
+  protected Optional<WkSerdeDtreeNodeDataOperation<?, ?, ?, ?, ?>> onProcessingBytestream() {
+    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedSubfield = this.readinHandlerList.processBytestream();
     if (this.readinHandlerList.isCompleted()) {
         completeOperation();
     }

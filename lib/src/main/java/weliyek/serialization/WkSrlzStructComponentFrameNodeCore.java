@@ -39,7 +39,7 @@ public abstract class WkSrlzStructComponentFrameNodeCore<
   public static final char FIELD_NAME_SEPARATOR = '.';
 
   private final String label;
-  private final WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore;
+  private final WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore;
 
   private String name;
 
@@ -85,14 +85,14 @@ public abstract class WkSrlzStructComponentFrameNodeCore<
     return this.body;
   }
 
-  protected abstract WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore();
+  protected abstract WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore();
 
   @Override
   public D definition() {
     return definitionCore().definition();
   }
 
-  public WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore() {
+  public WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?> definitionCore() {
     return this.definitionCore;
   }
 

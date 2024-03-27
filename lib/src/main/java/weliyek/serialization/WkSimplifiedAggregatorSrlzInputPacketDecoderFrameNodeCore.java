@@ -20,8 +20,8 @@ package weliyek.serialization;
 public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         X,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<X>,
-                        XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
+                        XD extends WkSerdeDTreeAggregatorDefinition<X>,
+                        XO extends WkSerdeDTreeAggregatorReader<
                                         X,
                                         XS,
                                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

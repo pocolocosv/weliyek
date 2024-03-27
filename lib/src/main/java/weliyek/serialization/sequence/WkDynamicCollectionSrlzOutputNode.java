@@ -31,7 +31,7 @@ import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public class WkDynamicCollectionSrlzOutputNode<
@@ -41,7 +41,7 @@ public class WkDynamicCollectionSrlzOutputNode<
                                       T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZYS extends WkSettingsSrlzPacketOperationData,
-                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,ZYS,?,?,ZYD>,
+                        ZYO extends WkSerdeDTreeNumberWriter<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ET,
                         EYS extends WkSettingsSrlzPacketOperationData,

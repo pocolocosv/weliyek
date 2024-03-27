@@ -22,8 +22,8 @@ import java.util.List;
 public class WkSrlzInputPacketSubfieldList<
                         X,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<X>,
-                        XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<X,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>>
+                        XD extends WkSerdeDTreeAggregatorDefinition<X>,
+                        XO extends WkSerdeDTreeAggregatorReader<X,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>>
         extends WkSrlzPacketSubfieldList<
                         WkSrlzInputPacketSubfieldFrameNode<?,?,?>,
                         WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XD,XO>,

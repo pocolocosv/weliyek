@@ -30,7 +30,7 @@ import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public final class WkUnsignedByteSrlzOutputNode
-    implements WkNumberSrlzOutputPacketEncoderFrameLeafNode<
+    implements WkSerdeDTreeNumberWriter<
                         Integer,
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

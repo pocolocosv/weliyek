@@ -22,7 +22,7 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberReader;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public interface WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
@@ -32,10 +32,10 @@ public interface WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZT extends Number,
-                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,?,?,?,ZD>,
+                        ZXO extends WkSerdeDTreeNumberReader<ZT,?,?,?,ZD>,
                         ZD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        VXO extends WkVariableSizePrimitiveArraySrlzInputPacketDecoderFrameNode<T,?,?,?,VD>,
-                        VD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>>
+                        VXO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayReader<T,?,?,?,VD>,
+                        VD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>>
     extends WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<T,XD,?>,
@@ -45,7 +45,7 @@ public interface WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         VXO,
                         WkSrlzInputPacketFieldFrameNode<T,VD,VXO>,
                         WkSrlzInputPacketSubfieldFrameNode<T,VD,VXO>>,
-            WkDynamicSequenceSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD, ZT, ZXO, ZD, VXO, VD>
+            WkSerdeDTreeDynamicSequenceReader<T, XS, XQ, XR, XD, ZT, ZXO, ZD, VXO, VD>
 {
 
 }

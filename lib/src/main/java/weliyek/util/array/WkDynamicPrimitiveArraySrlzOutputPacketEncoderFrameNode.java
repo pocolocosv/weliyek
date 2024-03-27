@@ -22,7 +22,7 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public interface WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
@@ -32,10 +32,10 @@ public interface WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         YR extends WkResultSrlzPacketOperationData<T>,
                         D extends WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<T,?,?,?,?>,
                         ZT extends Number,
-                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,?,?,?,ZD>,
+                        ZYO extends WkSerdeDTreeNumberWriter<ZT,?,?,?,ZD>,
                         ZD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        VYO extends WkVariableSizePrimitiveArraySrlzOutputPacketEncoderFrameNode<T,?,?,?,VD>,
-                        VD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>>
+                        VYO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayWriter<T,?,?,?,VD>,
+                        VD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>>
     extends WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         YS, YQ, YR, D,
                         WkSrlzOutputPacketFieldFrameNode<T,D,?>,
@@ -45,7 +45,7 @@ public interface WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         VYO,
                         WkSrlzOutputPacketFieldFrameNode<T,VD,VYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<T,VD,VYO>>,
-            WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, D, ZT, ZYO, ZD, VYO, VD>
+            WkSerdeDTreeDynamicSequenceWriter<T, YS, YQ, YR, D, ZT, ZYO, ZD, VYO, VD>
 {
 
 }

@@ -26,7 +26,7 @@ public class WkSrlzOutputPacketFieldFrameNodeNonrootCore<
                         YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
                         AY,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        AYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<AY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        AYO extends WkSerdeDTreeAggregatorWriter<AY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
         extends WkSrlzOutputPacketFieldFrameNodeCore<T, YS, YD, YO, AYBC, AYO>
 {
 

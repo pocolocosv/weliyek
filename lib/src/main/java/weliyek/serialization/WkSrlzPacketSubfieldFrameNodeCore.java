@@ -27,7 +27,7 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
                         K extends WkSerdeDTreeNodeDataComponent<?,?,?>,
                         KC extends WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,? extends K,?,?>,
                         J extends WkSerdeDTreeNodeDataComponentHandler<?>,
-                        AOC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,AD,?,?,?,?,?,?>,
+                        AOC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,AD,?,?,?,?,?,?>,
                         AD extends WkSerdeDTreeNodeStructDefinition<?>>
     implements WkSerdeDTreeNodeDataComponentHandler<K>
 {

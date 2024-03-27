@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayReader;
 
 public abstract class WkPrimitiveArrayWrapperSrlzEngineDecoder<
                         X extends WkPrimitiveArray<V, ?>,
@@ -33,7 +34,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineDecoder<
         extends WkSrlzEngineDecoder<
                         X,
                         QC,
-                        WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>>
+                        WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveArrayWrapperSrlzEngineDecoder.class);
@@ -50,7 +51,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineDecoder<
       int elementByteLength,
       int stepSize,
       QC runtimeCtrl,
-      WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?> readingOperation) {
+      WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.sequenceToDeserialized = Objects.requireNonNull(sequenceToDeserialized);
     this.primitiveByteLength = elementByteLength;
@@ -124,7 +125,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineDecoder<
   }
 
   private final int getSerializationStepSize() {
-    return operation().packetField().structComponent().definition().getSerializationStepSize();
+    return 5*1024;
   }
 
 }

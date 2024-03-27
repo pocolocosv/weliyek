@@ -17,7 +17,6 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkBasicPrimitiveArrayWrapperSrlzEngineEncoder<
@@ -30,7 +29,7 @@ public abstract class WkBasicPrimitiveArrayWrapperSrlzEngineEncoder<
 
   protected WkBasicPrimitiveArrayWrapperSrlzEngineEncoder(
     WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?> writingOperation,
+    WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?> writingOperation,
     int primitiveByteLength) {
     super(runtimeControl, writingOperation, primitiveByteLength);
   }

@@ -26,8 +26,8 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
                         SYO extends WkSerdeDTreeNodeDataWriter<ST,SYS,?,?,SYD>,
                         T,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDTreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SYS, SYD,
                         WkSrlzStructSubcomponentFrameNodeCore<ST,?,?,?,T,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD>,

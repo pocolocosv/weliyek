@@ -31,7 +31,7 @@ public final class WkSignedByteSrlzEngineEncoder
 
   private WkSignedByteSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkNumberSrlzOutputPacketEncoderFrameLeafNode<Byte,?,?,?,?> writingOperation) {
+    WkSerdeDTreeNumberWriter<Byte,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

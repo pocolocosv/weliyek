@@ -19,11 +19,11 @@ package weliyek.serialization.sequence;
 
 import java.util.Objects;
 
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeDataReaderCore;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeDataWriterCore;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 
 public class SequenceSizeParameters<T>
@@ -31,23 +31,23 @@ public class SequenceSizeParameters<T>
 
     private final int minSize;
     private final int maxSize;
-    private final WkSrlzStructDefinitionFrameNodeCore<
+    private final WkSerdeDTreeNodeStructDefinitionCore<
                       T,? extends WkSzVariableLengthOperationSettings,?,?,
                       ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-                      ? extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,?,?,?,?,
+                      ? extends WkSerdeDTreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
                       ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-                      ? extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,?>,?,
+                      ? extends WkSerdeDTreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
                       ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,?> definitionCore;
 
     public SequenceSizeParameters(
       int minSize,
       int maxSize,
-      WkSrlzStructDefinitionFrameNodeCore<
+      WkSerdeDTreeNodeStructDefinitionCore<
         T,? extends WkSzVariableLengthOperationSettings,?,?,
         ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-        ? extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<T,?,?,?,?>,?,?,?,?,
+        ? extends WkSerdeDTreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
         ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-        ? extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,?>,?,
+        ? extends WkSerdeDTreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
         ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,?> definitionCore) {
       if (minSize < 0) {
         throw new WkSzDefinitionCoreException(
@@ -72,8 +72,8 @@ public class SequenceSizeParameters<T>
     }
 
     void onSequenceSerializerCreation(
-      WkSrlzOutputPacketEncoderFrameNodeCore<
-        T,?,?,?,?,? extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,?,?,?,?>,?,
+      WkSerdeDTreeNodeDataWriterCore<
+        T,?,?,?,?,? extends WkSerdeDTreeVariableSizeSequenceWriter<T,?,?,?,?>,?,
         ? extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,?,?> serializer) {
       int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
       if (sequenceSize < minSize) {
@@ -89,9 +89,9 @@ public class SequenceSizeParameters<T>
     }
 
     void onBeforeFullCompletionDeserialization(
-      WkSrlzInputPacketDecoderFrameNodeCore<
+      WkSerdeDTreeNodeDataReaderCore<
         ?,? extends WkSzVariableLengthOperationSettings,?,?,?,
-        ? extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<?,?,?,?,?>,?,
+        ? extends WkSerdeDTreeVariableSizeSequenceReader<?,?,?,?,?>,?,
         ? extends WkSerdeDTreeVariableSizeSequenceDefinition<?>,?,?> deserializer) {
       WkSzVariableLengthOperationSettings settings = deserializer.settings();
       if (settings.getRequestedLength() < minSize) {

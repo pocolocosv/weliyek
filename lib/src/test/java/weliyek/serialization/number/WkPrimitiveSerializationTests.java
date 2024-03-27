@@ -49,12 +49,12 @@ public class WkPrimitiveSerializationTests {
     Byte b = Byte.valueOf((byte) 0xFF);
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSrlzStruct<Byte, WkSettingsSrlzPacketOperationData, WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSignedByteSrlzStructNode, WkSignedByteSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkSignedByteSrlzStructNode>
-      signedBytePacketStructure = WkSignedByteSrlzStructNode.newStruct("SINGLE_SINT8");
+    WkSrlzStruct<Byte, WkSettingsSrlzPacketOperationData, WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteWriter, WkSzOutputBytestreamBase<?>, WkSerdeDtreeSignedByte>
+      signedBytePacketStructure = WkSerdeDtreeSignedByte.newStruct("SINGLE_SINT8");
 
     logger.info(signedBytePacketStructure.name() + " created");
 
-    WkSzOutputPacket<Byte, WkSignedByteSrlzStructNode, WkSignedByteSrlzOutputNode>
+    WkSzOutputPacket<Byte, WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteWriter>
       byteOutput = signedBytePacketStructure.newOutputPacket(b, WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer);
 
     logger.info(byteOutput.name() + " created");
@@ -74,7 +74,7 @@ public class WkPrimitiveSerializationTests {
 
     assertEquals(1, outputBuffer.size());
 
-    WkSzInputPacket<Byte, WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>
+    WkSzInputPacket<Byte, WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader>
       signedByteReading = signedBytePacketStructure.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer.inputStream());
 
     logger.info(signedByteReading.name() + " created");

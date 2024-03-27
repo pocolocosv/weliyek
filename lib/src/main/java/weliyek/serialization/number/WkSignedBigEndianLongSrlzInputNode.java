@@ -30,7 +30,7 @@ import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 
 public final class WkSignedBigEndianLongSrlzInputNode
-        implements WkNumberSrlzInputPacketDecoderFrameLeafNode<
+        implements WkSerdeDTreeNumberReader<
                         Long,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

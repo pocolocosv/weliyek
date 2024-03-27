@@ -26,7 +26,7 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
@@ -73,7 +73,7 @@ public class WkStringWithVariableBytesSrlzStructNode
                       WkSzCountingOutputBytestream::new);
   }
 
-  public static WkSrlzStructDefinitionFrameNodeCore<
+  public static WkSerdeDTreeNodeStructDefinitionCore<
                       String,
                       WkSzVariableLengthOperationSettings,?,?,
                       WkStringWithVariableBytesSrlzStructNode,

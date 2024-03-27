@@ -25,11 +25,11 @@ import java.util.List;
 public class WkSrlzStructSubcomponentFrameNodeCoreList<
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
+                        XD extends WkSerdeDTreeAggregatorDefinition<T>,
+                        XO extends WkSerdeDTreeAggregatorReader<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDTreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
     extends AbstractList<WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
 {
 
@@ -45,10 +45,10 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
 
     @SuppressWarnings("unchecked")
     public
-    <YYD extends WkAggregatorSrlzStructDefinitionFrameNode<YY>,
+    <YYD extends WkSerdeDTreeAggregatorDefinition<YY>,
      YY,
      YYB extends WkSzOutputBytestreamBase<?>,
-     YYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
+     YYO extends WkSerdeDTreeAggregatorWriter<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
     WkSrlzOutputPacketSubfieldList<YY,YYB,YYD,YYO> newSerializingHandlers(
       WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
       List<WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
@@ -64,10 +64,10 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
 
     @SuppressWarnings("unchecked")
     public
-    <XXD extends WkAggregatorSrlzStructDefinitionFrameNode<XX>,
+    <XXD extends WkSerdeDTreeAggregatorDefinition<XX>,
      XX,
      XXB extends WkSzInputBytestreamBase<?>,
-     XXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>
+     XXO extends WkSerdeDTreeAggregatorReader<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>
     WkSrlzInputPacketSubfieldList<XX,XXB,XXD,XXO> newDeserializingHandlers(
       WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
       List<WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();

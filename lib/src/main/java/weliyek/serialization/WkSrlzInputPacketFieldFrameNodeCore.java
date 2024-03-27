@@ -26,12 +26,12 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
                         XO extends WkSerdeDTreeNodeDataReader<
                                         T,XS,?,? extends WkResultSrlzPacketOperationData<T>,XD>,
                         AXBC extends WkSzInputBytestreamBase<?>,
-                        AXO extends WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        AXO extends WkSerdeDTreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
     extends WkSrlzPacketFieldFrameNodeCore<
                         T, XS, XD,
                         WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD>,
                         XO,
-                        WkSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,XO,?,XD,?,?>,
+                        WkSerdeDTreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?>,
                         WkSrlzInputPacketFieldFrameNode<T,XD,XO>,
                         AXBC,
                         WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,AXO,?,?,?>>
@@ -50,12 +50,12 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
   }
 
   @Override
-  protected WkSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,XO,?,XD,?,?>
+  protected WkSerdeDTreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?>
   newOperation(int index) {
     final XS settings = newSettings(index);
     final AXBC parentBytestream = parentBytestream();
     final WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,?,?,?,?,? extends XD> componentCore = protocolFieldCore();
-    WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,XO,AXBC,?,?,?,?,?,?,? extends XD,?> definitionCore = componentCore.definitionCore();
+    WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,?,?,?,?,?,?,? extends XD,?> definitionCore = componentCore.definitionCore();
     return definitionCore.newReadingOperationCore(index, settings, parentBytestream, this);
   }
 

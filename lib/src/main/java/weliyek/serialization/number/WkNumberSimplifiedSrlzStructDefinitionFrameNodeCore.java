@@ -38,13 +38,13 @@ import weliyek.serialization.WkSzWriteEngineFactory;
 
 public final class WkNumberSimplifiedSrlzStructDefinitionFrameNodeCore<
                         T extends Number,
-                        XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<
+                        XO extends WkSerdeDTreeNumberReader<
                                       T,
                                       WkSettingsSrlzPacketOperationData,
                                       WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                       WkResultSrlzPacketOperationData<T>,
                                       D>,
-                        YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
+                        YO extends WkSerdeDTreeNumberWriter<
                                       T,
                                       WkSettingsSrlzPacketOperationData,
                                       WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

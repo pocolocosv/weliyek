@@ -38,8 +38,8 @@ import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
-import weliyek.serialization.number.WkSignedByteSrlzInputNode;
-import weliyek.serialization.number.WkSignedByteSrlzStructNode;
+import weliyek.serialization.number.WkSerdeDTreeSignedByteReader;
+import weliyek.serialization.number.WkSerdeDtreeSignedByte;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkSrlzFilterBuilderTest
@@ -64,7 +64,7 @@ public class WkSrlzFilterBuilderTest
                       WkTstMultipleListSrlzStructNode> MULTIPLE_LIST_PACKET;
   static WkTstPrimitivesGroupListSrlzStructNode PRIMITIVELIST_FIELD;
   static WkSzTstPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
-  static WkSignedByteSrlzStructNode BYTE_FIELD;
+  static WkSerdeDtreeSignedByte BYTE_FIELD;
   static WkSignedBigEndianIntegerSrlzStructNode INT_FIELD;
   static WkSignedBigEndianLongSrlzStructNode LONG_FIELD;
 
@@ -96,9 +96,9 @@ public class WkSrlzFilterBuilderTest
     BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.field().definition();
     INT_FIELD = PRIMITIVEGROUP_FIELD.intSubcomponent.field().definition();
     LONG_FIELD = PRIMITIVEGROUP_FIELD.longSubcomponent.field().definition();
-    PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>(BYTE_FIELD, BYTE_IS_EQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_EQUAL_TO_ONE");
-    PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO = new WkSrlzReadingPacketNodePredicate<WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>(BYTE_FIELD, BYTE_IS_EQUAL_TO_TWO, "IS_PRIMITIVE_BYTE_EQUAL_TO_TWO");
-    PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE = new WkSrlzReadingPacketNodePredicate<WkSignedByteSrlzStructNode, WkSignedByteSrlzInputNode>(BYTE_FIELD, BYTE_IS_NOTEQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_DIFFERENT_TO_ONE");
+    PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_EQUAL_TO_ONE");
+    PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_TWO, "IS_PRIMITIVE_BYTE_EQUAL_TO_TWO");
+    PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeDtreeSignedByte, WkSerdeDTreeSignedByteReader>(BYTE_FIELD, BYTE_IS_NOTEQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_DIFFERENT_TO_ONE");
 
     PRIMITIVE_HAS_INT_EQUAL_TO_400 = new WkSrlzReadingPacketNodePredicate<WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>(INT_FIELD, INT_IS_EQUAL_TO_400, "IS_PRIMITIVE_INT_EQUAL_FROM_400");
 

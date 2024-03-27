@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 public class WkSzPacketOperationCoreList<
                         T,
                         O extends WkSerdeDTreeNodeDataOperation<?, ?, ?, ?, ?>,
-                        OC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,O,?,?,?,?>>
+                        OC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,O,?,?,?,?>>
         extends AbstractList<OC>
 {
 

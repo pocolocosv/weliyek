@@ -27,9 +27,9 @@ import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberReader;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
-import weliyek.util.array.WkDynamicSequenceSrlzInputPacketDecoderFrameNode;
+import weliyek.util.array.WkSerdeDTreeDynamicSequenceReader;
 
 public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         T extends Collection<ET>,
@@ -38,7 +38,7 @@ public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                         XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkDynamicCollectionSrlzStructDefinitionFrameNode<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
-                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,?,?,?,ZXD>,
+                        ZXO extends WkSerdeDTreeNumberReader<ZT,?,?,?,ZXD>,
                         ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,
@@ -60,7 +60,7 @@ public interface WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
                           WkVariableSizeCollectionSrlzStructNode<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                           WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>>>,
             WkCollectionSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD>,
-            WkDynamicSequenceSrlzInputPacketDecoderFrameNode<
+            WkSerdeDTreeDynamicSequenceReader<
                         T, XS, XQ, XR, XD, ZT, ZXO, ZXD,
                         WkVariableSizeCollectionSrlzInputNode<T,VXS,ET,EXS,EXD,EXO>,
                         WkVariableSizeCollectionSrlzStructNode<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>>

@@ -31,7 +31,7 @@ public class WkUnsignedByteSrlzEngineEncoder
 
   protected WkUnsignedByteSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkNumberSrlzOutputPacketEncoderFrameLeafNode<Integer, ?, ?, ?, ?> writingOperation) {
+    WkSerdeDTreeNumberWriter<Integer, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

@@ -20,8 +20,6 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
-import weliyek.serialization.WkSerdeDTreePrimitiveArrayDefinition;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
@@ -33,14 +31,14 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        D extends WkSerdeDTreePrimitiveArrayDefinition<Y>,
-                        YO extends WkSerdeDTreePrimitiveArrayLeafWriter<
+                        D extends WkSerdeDTreeGenericPrimitiveArrayDefinition<Y>,
+                        YO extends WkSerdeDTreeGenericPrimitiveArrayWriter<
                                         Y,
                                         YS,
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkResultSrlzPacketOperationData<Y>,
                                         D>>
-    extends WkPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
+    extends WkSerdeDTreeGenericPrimitiveArrayWriterCore<
                         Y,
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -53,7 +51,7 @@ public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>,
                         D,
                         WkSzOutputBytestreamBase<?>,
-                        WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<Y,?,?,YS,YO,D>>
+                        WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D>>
 {
 
   private final Consumer<? super WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>>
@@ -65,7 +63,7 @@ public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<Y,?,D,?,?,?> serializingfieldCore,
-    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<Y,?,?,YS,YO,D> definitionCore,
+    WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,
     Consumer<? super WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<Y,YS,D,YO>> onInitializing) {
     super(index, serializable, settings, parentBytestream, serializingfieldCore, definitionCore, operationBody);

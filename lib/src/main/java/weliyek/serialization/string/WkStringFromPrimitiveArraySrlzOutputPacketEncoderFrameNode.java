@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregatorWriter;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -41,7 +41,7 @@ public interface WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         SYO,
                         WkSrlzOutputPacketFieldFrameNode<SY,SYD,SYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<SY,SYD,SYO>>,
-                WkAggregatorSrlzOutputPacketEncoderFrameNode<String, YS, YQ, YR, YD>
+                WkSerdeDTreeAggregatorWriter<String, YS, YQ, YR, YD>
 {
 
 }

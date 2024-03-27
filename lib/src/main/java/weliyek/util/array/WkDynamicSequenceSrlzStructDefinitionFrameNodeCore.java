@@ -21,7 +21,7 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeAggregatorDefinitionCore;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
@@ -41,11 +41,11 @@ import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberReader;
+import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
-import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.sequence.WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceReader;
+import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceWriter;
 import weliyek.serialization.sequence.WkSerdeDTreeVariableSizeSequenceDefinition;
 
 public abstract class WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
@@ -55,49 +55,49 @@ public abstract class WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XO extends WkDynamicSequenceSrlzInputPacketDecoderFrameNode<
+                        XO extends WkSerdeDTreeDynamicSequenceReader<
                                         T, XS,
                                         ? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                                         XR, XD, ?, ?, ?, ?, ?>,
-                        XD extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,XO,?,?,?>,
+                        XD extends WkSerdeDTreeDynamicSequenceDefinition<T,XO,?,?,?>,
                         AXBC extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YO extends WkDynamicSequenceSrlzOutputPacketEncoderFrameNode<
+                        YO extends WkSerdeDTreeDynamicSequenceWriter<
                                         T, YS,
                                         ? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
                                         YR, YD, ?, ?, ?, ?, ?>,
-                        YD extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,?,YO,?,?>,
+                        YD extends WkSerdeDTreeDynamicSequenceDefinition<T,?,YO,?,?>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         ZX extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
-                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,ZXS,?,?,ZXD>,
+                        ZXO extends WkSerdeDTreeNumberReader<ZX,ZXS,?,?,ZXD>,
                         ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
                         ZYS extends WkSettingsSrlzPacketOperationData,
-                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,ZYS,?,?,ZYD>,
+                        ZYO extends WkSerdeDTreeNumberWriter<ZX,ZYS,?,?,ZYD>,
                         ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
                         ZD extends WkSerdeDTreeNumberDefinition<ZX>,
                         VXS extends WkSzVariableLengthOperationSettings,
-                        VXO extends WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<T,VXS,?,?,VXD>,
+                        VXO extends WkSerdeDTreeVariableSizeSequenceReader<T,VXS,?,?,VXD>,
                         VXD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
                         VYS extends WkSettingsSrlzPacketOperationData,
-                        VYO extends WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<T,VYS,?,?,VYD>,
+                        VYO extends WkSerdeDTreeVariableSizeSequenceWriter<T,VYS,?,?,VYD>,
                         VYD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
                         VD extends WkSerdeDTreeVariableSizeSequenceDefinition<T>,
-                        D extends WkDynamicSequenceSrlzStructDefinitionFrameNode<T,XO,YO,ZD,VD>,
+                        D extends WkSerdeDTreeDynamicSequenceDefinition<T,XO,YO,ZD,VD>,
                         DC extends WkDynamicSequenceSrlzStructDefinitionFrameNodeCore<
                                       T,XS,XB,XBC,XQC,XR,XO,XD,AXBC,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYBC,
                                       ZX,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                                       VXS,VXO,VXD,VYS,VYO,VYD,VD,
                                       D,?>>
-    extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
+    extends WkSerdeDTreeAggregatorDefinitionCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXBC,
                         YS, YB, YBC, YQC, YR, YD, YO, AYBC, D, DC>
-    implements WkDynamicSequenceSrlzStructDefinitionFrameNode<T, XO, YO, ZD, VD>
+    implements WkSerdeDTreeDynamicSequenceDefinition<T, XO, YO, ZD, VD>
 {
 
   final WkSrlzStructSubcomponentFrameNodeCore<ZX,ZXS,ZXD,ZXO,T,XBC,XD,XO,ZYS,ZYD,ZYO,YBC,YD,YO,ZD,D>

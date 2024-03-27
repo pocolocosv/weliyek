@@ -27,7 +27,7 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 
 public class WkSimplifiedNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends Number,
-                        YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<
+                        YO extends WkSerdeDTreeNumberWriter<
                                         Y,
                                         WkSettingsSrlzPacketOperationData,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

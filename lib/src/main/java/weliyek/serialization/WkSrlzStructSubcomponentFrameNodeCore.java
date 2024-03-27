@@ -29,18 +29,18 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
                         SXO extends WkSerdeDTreeNodeDataReader<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSzInputBytestreamBase<?>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<
+                        XD extends WkSerdeDTreeAggregatorDefinition<T>,
+                        XO extends WkSerdeDTreeAggregatorReader<
                                         T,?, ? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYD extends WkSerdeDTreeNodeStructDefinition<ST>,
                         SYO extends WkSerdeDTreeNodeDataWriter<ST,SYS,?,?,SYD>,
                         YBC extends WkSzOutputBytestreamBase<?>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<
+                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDTreeAggregatorWriter<
                                         T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>,
                         SD extends WkSerdeDTreeNodeStructDefinition<ST>,
-                        D extends WkAggregatorSrlzStructDefinitionFrameNode<T>>
+                        D extends WkSerdeDTreeAggregatorDefinition<T>>
     implements WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD>
 {
 
@@ -67,7 +67,7 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
     WkSzPacketWriteDisaggregator<ST, SYD, T, YO> disaggregator,
     boolean deserializedRequiredByAggregator,
     WkSrlzStructDefinitionFrameNodeCoreFactory<ST,SXS,SXD,SXO,XBC,SYS,SYD,SYO,YBC,SD> definitionFactory,
-    WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
+    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
     this.rxEnablingTest = Objects.requireNonNull(rxEnablingTest);
     this.numberOfRxOperationsEvaluator = Objects.requireNonNull(numberOfRxOperationsEvaluator);
     this.rxSettingsFactory = Objects.requireNonNull(rxSettingsFactory);

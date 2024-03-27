@@ -24,23 +24,23 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
-import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberReader;
+import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public class WkDynamicByteArraySrlzStructNode<
                         ZT extends Number,
                         ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                        ZXO extends WkSerdeDTreeNumberReader<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
                         ZYD extends WkSerdeDTreeNumberDefinition<ZT>,
-                        ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
+                        ZYO extends WkSerdeDTreeNumberWriter<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                         ZD extends WkSerdeDTreeNumberDefinition<ZT>>
     implements WkSerdeDTreeByteArrayDefinition,
                WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<
@@ -52,9 +52,9 @@ public class WkDynamicByteArraySrlzStructNode<
 {
   public static <ZX extends Number,
                  ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
-                 ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                 ZXO extends WkSerdeDTreeNumberReader<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
                  ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
-                 ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
+                 ZYO extends WkSerdeDTreeNumberWriter<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                  ZD extends WkSerdeDTreeNumberDefinition<ZX>>
   WkSrlzStruct<WkByteArray,
                   WkSettingsSrlzPacketOperationData,
@@ -96,11 +96,11 @@ public class WkDynamicByteArraySrlzStructNode<
 
   public static <ZX extends Number,
                  ZXD extends WkSerdeDTreeNumberDefinition<ZX>,
-                 ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                 ZXO extends WkSerdeDTreeNumberReader<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
                  ZYD extends WkSerdeDTreeNumberDefinition<ZX>,
-                 ZYO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
+                 ZYO extends WkSerdeDTreeNumberWriter<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
                  ZD extends WkSerdeDTreeNumberDefinition<ZX>>
-  WkSrlzStructDefinitionFrameNodeCore<WkByteArray,
+  WkSerdeDTreeNodeStructDefinitionCore<WkByteArray,
                         WkSettingsSrlzPacketOperationData,?,?,
                         WkDynamicByteArraySrlzStructNode<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         WkDynamicByteArraySrlzInputNode<ZX,ZXO,ZXD>,

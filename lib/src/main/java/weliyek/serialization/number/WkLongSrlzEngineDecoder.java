@@ -28,7 +28,7 @@ public abstract class WkLongSrlzEngineDecoder
 
   protected WkLongSrlzEngineDecoder(
     WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-    WkNumberSrlzInputPacketDecoderFrameLeafNode<Long,?,?,?,?> readingOperation) {
+    WkSerdeDTreeNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

@@ -34,10 +34,10 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
                         // elsewhere where ProtocolField<D> is used.
                         PC extends WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSerdeDTreeNodeDataOperation<S,?,?,? super D,? super K>,
-                        OC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,O,?,?,?,?>,
+                        OC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,O,?,?,?,?>,
                         K extends WkSerdeDTreeNodeDataComponent<T,O,?>,
                         AB extends WkSzBytestreamBase<?,?>,
-                        AOC extends WkSrlzPacketOperationFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?>>
+                        AOC extends WkSerdeDTreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?>>
     implements WkSerdeDTreeNodeDataComponent<T,O,D>
 {
 

@@ -33,11 +33,11 @@ public interface WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         ZO extends WkSerdeDTreeNumberOperation<?,?,?,?,?>,
                         ZK extends WkSerdeDTreeNodeDataComponent<?,ZO,?>,
                         ZJ extends WkSerdeDTreeNodeDataComponentHandler<ZK>,
-                        VO extends WkSerdeDTreeVariableSizePrimitiveArrayOperation<?,?,?,?,?>,
+                        VO extends WkSerdeDTreeGenericVariableSizePrimitiveArrayOperation<?,?,?,?,?>,
                         VK extends WkSerdeDTreeNodeDataComponent<?,VO,?>,
                         VJ extends WkSerdeDTreeNodeDataComponentHandler<VK>>
-    extends WkDynamicPrimitiveArraySrlzFrameNode<ZJ, VJ>,
-            WkDynamicSequenceSrlzPacketOperationFrameNode<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
+    extends WkSerdeDTreeDynamicPrimitiveArray<ZJ, VJ>,
+            WkSerdeDTreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
 {
 
 }

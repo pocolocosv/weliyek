@@ -17,11 +17,11 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkSerdeDTreeNodeLeafDefinition;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 
 public interface WkSerdeDTreeNumberDefinition<T extends Number>
         extends WkSerdeDTreeNumber,
-                WkSerdeDTreeNodeLeafDefinition<T>
+                WkSerdeDTreeNodeStructDefinition<T>
 {
 
 }

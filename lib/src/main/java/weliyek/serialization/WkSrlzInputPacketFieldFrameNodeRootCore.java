@@ -31,7 +31,7 @@ public final class WkSrlzInputPacketFieldFrameNodeRootCore<
                         AXBC extends WkSzInputBytestreamBase<?>>
     extends WkSrlzInputPacketFieldFrameNodeCore<
                         T, XS, XD, XO, AXBC,
-                        WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        WkSerdeDTreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>>
     implements WkSzInputPacket<T, XD, XO>
 {
 
@@ -120,7 +120,7 @@ public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingStea
   }
 
   @Override
-  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,WkAggregatorSrlzInputPacketDecoderFrameNode<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
+  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,WkSerdeDTreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

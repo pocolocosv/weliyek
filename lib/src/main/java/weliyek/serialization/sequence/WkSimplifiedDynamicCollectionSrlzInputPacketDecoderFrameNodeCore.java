@@ -29,7 +29,7 @@ import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberReader;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 import weliyek.util.array.WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore;
 
@@ -45,7 +45,7 @@ public final class WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeC
                                         T,XO,?,?,ET,EXS,?,EXO,?,?,?,?,VXS,?>,
                         ZT extends Number,
                         ZXS extends WkSettingsSrlzPacketOperationData,
-                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,ZXS,?,?,ZXD>,
+                        ZXO extends WkSerdeDTreeNumberReader<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkSerdeDTreeNumberDefinition<ZT>,
                         ET,
                         EXS extends WkSettingsSrlzPacketOperationData,

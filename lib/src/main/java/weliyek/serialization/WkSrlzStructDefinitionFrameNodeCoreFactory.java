@@ -31,7 +31,7 @@ public interface WkSrlzStructDefinitionFrameNodeCoreFactory<
                         AYBC extends WkSzOutputBytestreamBase<?>,
                         D extends WkSerdeDTreeNodeStructDefinition<T>>
     extends Function<WkSrlzStructComponentFrameNodeCore<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
-                     WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
+                     WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
 {
 
 }

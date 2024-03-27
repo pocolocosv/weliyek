@@ -48,18 +48,18 @@ public class WkSrlzStructComponentFrameNodeNonrootCore<
     extends WkSrlzStructComponentFrameNodeCore<T, XS, XD, XO, AXBC, YS, YD, YO, AYBC, D>
 {
 
-  private final WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore;
+  private final WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore;
 
   WkSrlzStructComponentFrameNodeNonrootCore(
     String label,
     WkSrlzStructDefinitionFrameNodeCoreFactory<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D> definitionFactory,
-    WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
+    WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
     super(label, definitionFactory);
     this.parentDefinitionCore = Objects.requireNonNull(parentDefinitionCore);
   }
 
   @Override
-  protected WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
+  protected WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
     return this.parentDefinitionCore;
   }
 

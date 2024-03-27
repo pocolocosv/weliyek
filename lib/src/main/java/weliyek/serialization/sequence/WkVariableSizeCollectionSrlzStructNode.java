@@ -29,7 +29,7 @@ import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
 import weliyek.serialization.WkSerdeDTreeNodeStructDefinition;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
@@ -122,7 +122,7 @@ public final class WkVariableSizeCollectionSrlzStructNode<
                  EYD extends WkSerdeDTreeNodeStructDefinition<ET>,
                  EYO extends WkSerdeDTreeNodeDataWriter<ET,EYS,?,?,EYD>,
                  ED extends WkSerdeDTreeNodeStructDefinition<ET>>
-  WkSrlzStructDefinitionFrameNodeCore<
+  WkSerdeDTreeNodeStructDefinitionCore<
                  T,
                  XS,?,?,
                  WkVariableSizeCollectionSrlzStructNode<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,

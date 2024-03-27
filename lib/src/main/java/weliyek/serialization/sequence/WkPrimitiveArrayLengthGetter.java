@@ -17,15 +17,15 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSerdeDTreePrimitiveArrayDefinition;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayDefinition;
 
 @FunctionalInterface
 public interface WkPrimitiveArrayLengthGetter<
                         Y extends WkPrimitiveArray<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YD extends WkSerdeDTreePrimitiveArrayDefinition<Y>>
+                        YD extends WkSerdeDTreeGenericPrimitiveArrayDefinition<Y>>
 {
 
   int retriveLength(Y wrapper, YS settings, YD definition);

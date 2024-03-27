@@ -48,7 +48,7 @@ public final class WkVariableSizeCollectionSrlzOutputNode<
                         ET,
                         EYD,
                         EYO>,
-               WkVariableSizeSequenceSrlzOutputPacketEncoderFrameNode<
+               WkSerdeDTreeVariableSizeSequenceWriter<
                         T,
                         YS,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

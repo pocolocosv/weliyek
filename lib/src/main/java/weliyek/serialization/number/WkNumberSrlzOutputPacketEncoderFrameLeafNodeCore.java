@@ -21,7 +21,7 @@ import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameLeafNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeLeafDataWriterCore;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 
@@ -31,13 +31,13 @@ public abstract class WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,YS,YQ,YR,YD>,
+                        YO extends WkSerdeDTreeNumberWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSerdeDTreeNumberDefinition<T>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkNumberSrlzStructDefinitionFrameNodeCore<T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
-    extends WkSrlzOutputPacketEncoderFrameLeafNodeCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
-    implements WkNumberSrlzOutputPacketEncoderFrameLeafNode<T, YS, YQ, YR, YD>
+    extends WkSerdeDTreeNodeLeafDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
+    implements WkSerdeDTreeNumberWriter<T, YS, YQ, YR, YD>
 {
 
   protected WkNumberSrlzOutputPacketEncoderFrameLeafNodeCore(

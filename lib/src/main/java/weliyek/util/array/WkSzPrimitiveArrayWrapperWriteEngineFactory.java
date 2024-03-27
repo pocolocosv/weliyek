@@ -19,15 +19,14 @@ package weliyek.util.array;
 
 import java.util.function.BiFunction;
 
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzEngineEncoder;
 import weliyek.serialization.WkSzWriteEngineFactory;
-import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
 public class WkSzPrimitiveArrayWrapperWriteEngineFactory<
                         Y extends WkPrimitiveArrayBase<?,?>,
                         QC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        O extends WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>>
+                        O extends WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>
     extends WkSzWriteEngineFactory<Y, QC, O>
 {
 

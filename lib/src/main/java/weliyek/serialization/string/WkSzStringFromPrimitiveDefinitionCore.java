@@ -23,7 +23,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeAggregatorDefinitionCore;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
@@ -78,7 +78,7 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       ST,SXS,SXO,SXD,SYS,SYO,SYD,SD,D,?>>
-    extends WkAggregatorSrlzStructDefinitionFrameNodeCore<String, XS, XB, XBC, XQC, XR, XD, XO, AXB, YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
+    extends WkSerdeDTreeAggregatorDefinitionCore<String, XS, XB, XBC, XQC, XR, XD, XO, AXB, YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
     implements WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO, YO, SD>
 {
 

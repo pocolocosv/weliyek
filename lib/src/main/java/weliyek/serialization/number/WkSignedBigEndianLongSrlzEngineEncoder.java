@@ -32,7 +32,7 @@ public final class WkSignedBigEndianLongSrlzEngineEncoder
 
   private WkSignedBigEndianLongSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkNumberSrlzOutputPacketEncoderFrameLeafNode<Long,?,?,?,?> writingOperation) {
+    WkSerdeDTreeNumberWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

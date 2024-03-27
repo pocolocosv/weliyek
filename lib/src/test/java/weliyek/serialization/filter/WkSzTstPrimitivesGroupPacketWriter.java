@@ -20,7 +20,7 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregatorWriter;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -38,15 +38,15 @@ import weliyek.serialization.number.WkSignedBigEndianLongSrlzOutputNode;
 import weliyek.serialization.number.WkSignedBigEndianLongSrlzStructNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
 import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
-import weliyek.serialization.number.WkSignedByteSrlzOutputNode;
-import weliyek.serialization.number.WkSignedByteSrlzStructNode;
+import weliyek.serialization.number.WkSerdeDTreeSignedByteWriter;
+import weliyek.serialization.number.WkSerdeDtreeSignedByte;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzOutputNode;
 import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzOutputNode;
 import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
 
 public class WkSzTstPrimitivesGroupPacketWriter
-        implements WkAggregatorSrlzOutputPacketEncoderFrameNode<
+        implements WkSerdeDTreeAggregatorWriter<
                         WkSzTstPrimitivesGroup,
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -62,8 +62,8 @@ public class WkSzTstPrimitivesGroupPacketWriter
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         Byte,
                         WkSettingsSrlzPacketOperationData,
-                        WkSignedByteSrlzStructNode,
-                        WkSignedByteSrlzOutputNode,
+                        WkSerdeDtreeSignedByte,
+                        WkSerdeDTreeSignedByteWriter,
                         WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WkSzTstPrimitivesGroupStructDefinition,

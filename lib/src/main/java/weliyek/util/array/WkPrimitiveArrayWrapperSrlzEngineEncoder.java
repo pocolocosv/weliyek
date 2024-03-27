@@ -22,10 +22,9 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSrlzEngineEncoder;
 import weliyek.serialization.WkSzOperationException;
-import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafWriter;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 
 public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
                         Y extends WkPrimitiveArrayBase<V, ?>,
@@ -34,7 +33,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
         extends WkSrlzEngineEncoder<
                         Y,
                         QC,
-                        WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>>
+                        WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkPrimitiveArrayWrapperSrlzEngineEncoder.class);
@@ -45,7 +44,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
 
     protected WkPrimitiveArrayWrapperSrlzEngineEncoder(
       QC runtimeControl,
-      WkSerdeDTreePrimitiveArrayLeafWriter<? extends Y,?,?,?,?>  writingOperation,
+      WkSerdeDTreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?>  writingOperation,
       int primitiveByteLength) {
       super(runtimeControl, writingOperation);
       this.primitiveByteLength = primitiveByteLength;
@@ -99,7 +98,7 @@ public abstract class WkPrimitiveArrayWrapperSrlzEngineEncoder<
     }
 
     private final int getSerializationStepSize() {
-      return operation().packetField().structComponent().definition().getSerializationStepSize();
+      return 5*1024;
     }
 
     protected final int getArrayLength() {

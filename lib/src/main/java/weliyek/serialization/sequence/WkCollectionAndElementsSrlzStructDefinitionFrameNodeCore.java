@@ -24,7 +24,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeAggregatorDefinitionCore;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
@@ -81,7 +81,7 @@ public abstract class WkCollectionAndElementsSrlzStructDefinitionFrameNodeCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
                                         YS,YB,YBC,YQC,YR,YD,YO,AYB,
                                         ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D,?>>
-    extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
+    extends WkSerdeDTreeAggregatorDefinitionCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXB,
                         YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
     implements WkCollectionAndElementsSrlzStructDefinitionFrameNode<T, XO, YO, ET, ED>

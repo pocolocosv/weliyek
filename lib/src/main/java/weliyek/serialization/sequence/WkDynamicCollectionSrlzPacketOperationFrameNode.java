@@ -23,7 +23,7 @@ import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.number.WkSerdeDTreeNumberOperation;
-import weliyek.util.array.WkDynamicSequenceSrlzPacketOperationFrameNode;
+import weliyek.util.array.WkSerdeDTreeDynamicSequenceOperation;
 
 public interface WkDynamicCollectionSrlzPacketOperationFrameNode<
                         S extends WkSettingsSrlzPacketOperationData,
@@ -37,9 +37,9 @@ public interface WkDynamicCollectionSrlzPacketOperationFrameNode<
                         VO extends WkSerdeDTreeVariableSizeSequenceOperation<?,?,?,?,?>,
                         VK extends WkSerdeDTreeNodeDataComponent<?,VO,?>,
                         VJ extends WkSerdeDTreeNodeDataComponentHandler<VK>>
-    extends WkDynamicCollectionSrlzFrameNode<ZJ, VJ>,
+    extends WkSerdeDTreeDynamicCollection<ZJ, VJ>,
             WkCollectionSrlzPacketOperationFrameNode<S, Q, R, D, K>,
-            WkDynamicSequenceSrlzPacketOperationFrameNode<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
+            WkSerdeDTreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
 {
 
 }

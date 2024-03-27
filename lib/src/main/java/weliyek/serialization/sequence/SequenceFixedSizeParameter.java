@@ -20,9 +20,9 @@ package weliyek.serialization.sequence;
 import java.util.Objects;
 
 import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeDataReaderCore;
+import weliyek.serialization.WkSerdeDTreeNodeDataWriterCore;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
 import weliyek.serialization.WkSzOperationException;
 
@@ -30,7 +30,7 @@ public class SequenceFixedSizeParameter<T>
 {
 
   private final int sequenceExpectedSize;
-  private final WkSrlzStructDefinitionFrameNodeCore<
+  private final WkSerdeDTreeNodeStructDefinitionCore<
                         T,?,?,
                         ? extends WkResultSrlzPacketOperationData<T>,
                         ? extends WkSerdeDTreeFixedSizeSequenceDefinition<T>,
@@ -42,7 +42,7 @@ public class SequenceFixedSizeParameter<T>
 
   public SequenceFixedSizeParameter(
     int sequenceExpectedSize,
-    WkSrlzStructDefinitionFrameNodeCore<
+    WkSerdeDTreeNodeStructDefinitionCore<
       T,?,?,
       ? extends WkResultSrlzPacketOperationData<T>,
       ? extends WkSerdeDTreeFixedSizeSequenceDefinition<T>,
@@ -62,7 +62,7 @@ public class SequenceFixedSizeParameter<T>
   }
 
   void onSequenceSerializerCreation(
-    WkSrlzOutputPacketEncoderFrameNodeCore<
+    WkSerdeDTreeNodeDataWriterCore<
       T,?,?,?,?,? extends WkSerdeDTreeFixedSizeSequenceWriter<T,?,?,?,?>,
       ?,? extends WkSerdeDTreeFixedSizeSequenceDefinition<T>,?,?> serializer) {
     int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
@@ -72,7 +72,7 @@ public class SequenceFixedSizeParameter<T>
   }
 
   void onAfterFullCompletionDeserialization(
-    WkSrlzInputPacketDecoderFrameNodeCore<
+    WkSerdeDTreeNodeDataReaderCore<
       T,?,?,?,
       ? extends WkResultSrlzPacketOperationData<T>,
       ? extends WkSerdeDTreeFixedSizeSequenceReader<T,?,?,?,?>,?,

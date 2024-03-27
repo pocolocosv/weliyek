@@ -28,14 +28,14 @@ import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.number.WkNumberSrlzInputPacketDecoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberReader;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
 
 public class WkDynamicByteArraySrlzInputNode<
                         ZT extends Number,
-                        ZXO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                        ZXO extends WkSerdeDTreeNumberReader<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
                         ZXD extends WkSerdeDTreeNumberDefinition<ZT>>
-    implements WkByteArraySrlzInputPacketDecoderFrameNode<
+    implements WkSerdeDTreeByteArrayReader<
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkResultSrlzPacketOperationData<WkByteArray>,
@@ -149,6 +149,11 @@ public class WkDynamicByteArraySrlzInputNode<
   WkSrlzInputPacketSubfieldFrameNode<WkByteArray, WkSerdeDTreeVariableSizeByteArray, WkSerdeDTreeVariableSizeByteArrayReader>
   variableSequence() {
     return this.operationCore.variableSequence();
+  }
+
+  @Override
+  public int getRequestedLength() {
+    return size().field().get().firstOperation().get().result().get().serializable().get().intValue();
   }
 
 }

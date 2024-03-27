@@ -31,12 +31,12 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 
 public class WkSerdeDTreeVariableSizeByteArrayWriter
-    implements WkByteArraySrlzOutputPacketEncoderFrameNode<
+    implements WkSerdeDTreeByteArrayWriter<
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                         WkResultSrlzPacketOperationData<WkByteArray>,
                         WkSerdeDTreeVariableSizeByteArray>,
-               WkSerdeDTreeVariableSizePrimitiveArrayLeafWriter<
+               WkSerdeDTreeGenericVariableSizePrimitiveArrayWriter<
                         WkByteArray,
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -57,7 +57,7 @@ public class WkSerdeDTreeVariableSizeByteArrayWriter
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
       WkByteArray,?,WkSerdeDTreeVariableSizeByteArray,?,?,?> serializingfieldCore,
-    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
+    WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,?,?,WkSettingsSrlzPacketOperationData,WkSerdeDTreeVariableSizeByteArrayWriter,WkSerdeDTreeVariableSizeByteArray> definitionCore) {
     this.operationCore = new WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                                 WkByteArray,

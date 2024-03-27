@@ -25,7 +25,7 @@ import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameLeafNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeLeafStructDefinitionCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
@@ -39,17 +39,17 @@ public abstract class WkNumberSrlzStructDefinitionFrameNodeCore<
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkResultSrlzPacketOperationData<T>,
                         XD extends WkSerdeDTreeNumberDefinition<T>,
-                        XO extends WkNumberSrlzInputPacketDecoderFrameLeafNode<T,XS,?,XR,XD>,
+                        XO extends WkSerdeDTreeNumberReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkResultSrlzPacketOperationData<T>,
                         YD extends WkSerdeDTreeNumberDefinition<T>,
-                        YO extends WkNumberSrlzOutputPacketEncoderFrameLeafNode<T,YS,?,YR,YD>,
+                        YO extends WkSerdeDTreeNumberWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         D extends WkSerdeDTreeNumberDefinition<T>,
                         DC extends WkNumberSrlzStructDefinitionFrameNodeCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
-    extends WkSrlzStructDefinitionFrameLeafNodeCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
+    extends WkSerdeDTreeNodeLeafStructDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
     implements WkSerdeDTreeNumberDefinition<T>
 {
 

@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.number.WkPrimitiveSrlzEngineEncoder;
-import weliyek.serialization.number.WkNumberSrlzOutputPacketEncoderFrameLeafNode;
+import weliyek.serialization.number.WkSerdeDTreeNumberWriter;
 
 public abstract class WkLongPrimitiveSrlzEngineEncoder
     extends WkPrimitiveSrlzEngineEncoder<Long>
@@ -29,7 +29,7 @@ public abstract class WkLongPrimitiveSrlzEngineEncoder
 
   protected WkLongPrimitiveSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkNumberSrlzOutputPacketEncoderFrameLeafNode<Long,?,?,?,?> writingOperation) {
+    WkSerdeDTreeNumberWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

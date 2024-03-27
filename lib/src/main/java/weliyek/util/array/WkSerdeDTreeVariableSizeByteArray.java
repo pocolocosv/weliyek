@@ -23,7 +23,7 @@ import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzStruct;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
 import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDTreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzCountingInputBytestream;
 import weliyek.serialization.WkSzCountingOutputBytestream;
@@ -35,7 +35,7 @@ import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
 
 public class WkSerdeDTreeVariableSizeByteArray
     implements WkSerdeDTreeByteArrayDefinition,
-               WkSerdeDTreeVariableSizePrimitiveArrayLeafDefinition<
+               WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<
                         WkByteArray>
 {
 
@@ -59,7 +59,7 @@ public class WkSerdeDTreeVariableSizeByteArray
   }
 
   public static
-  WkSrlzStructDefinitionFrameNodeCore<
+  WkSerdeDTreeNodeStructDefinitionCore<
                       WkByteArray,
                       WkSzVariableLengthOperationSettings,?,?,
                       WkSerdeDTreeVariableSizeByteArray,
@@ -77,7 +77,7 @@ public class WkSerdeDTreeVariableSizeByteArray
     return new WkSerdeDTreeVariableSizeByteArray(minSize, maxSize, componentCore).definitionCore;
   }
 
-  private final WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
+  private final WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<
                         WkByteArray,
                         WkSzVariableLengthOperationSettings,
                         WkSerdeDTreeVariableSizeByteArrayReader,
@@ -90,7 +90,7 @@ public class WkSerdeDTreeVariableSizeByteArray
     int minSize,
     int maxSize,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
-    this.definitionCore = new WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
+    this.definitionCore = new WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<
         WkByteArray,
         WkSzVariableLengthOperationSettings,
         WkSerdeDTreeVariableSizeByteArrayReader,
@@ -139,11 +139,6 @@ public class WkSerdeDTreeVariableSizeByteArray
   @Override
   public int maximalSize() {
     return this.sizeLimits.maximalSize();
-  }
-
-  @Override
-  public int getSerializationStepSize() {
-    return this.definitionCore.getSerializationStepSize();
   }
 
   @Override

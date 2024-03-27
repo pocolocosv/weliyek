@@ -22,13 +22,13 @@ public interface WkSzPacketReaderOperationCoreFactory<
                         T,
                         XS extends WkSettingsSrlzPacketOperationData,
                         XD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        DC extends WkSrlzStructDefinitionFrameNodeCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
+                        DC extends WkSerdeDTreeNodeStructDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
                         XO extends WkSerdeDTreeNodeDataReader<T,XS,?,?,XD>,
                         AXB extends WkSzInputBytestreamBase<?>>
     extends WkSzOperationFactory
 {
 
-  WkSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
+  WkSerdeDTreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?> newReadingCore(
     int index,
     XS settings,
     AXB parentBytestream,

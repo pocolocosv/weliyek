@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregatorReader;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -43,7 +43,7 @@ public interface WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<
                         WkSrlzInputPacketFieldFrameNode<SX,SXD,SXO>,
                         WkSrlzInputPacketSubfieldFrameNode<SX,SXD,SXO>>,
                 WkSerdeDTreeNodeDataReader<String,XS,XQ,XR,XD>,
-                WkAggregatorSrlzInputPacketDecoderFrameNode<String, XS, XQ, XR, XD>
+                WkSerdeDTreeAggregatorReader<String, XS, XQ, XR, XD>
 {
 
   static boolean isPrimitiveArrayReady(WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<?,?,?,?,?,?,?> stringReading) {

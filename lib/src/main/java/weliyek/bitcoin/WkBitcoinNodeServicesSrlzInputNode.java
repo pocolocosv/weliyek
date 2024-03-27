@@ -19,7 +19,7 @@ package weliyek.bitcoin;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregatorReader;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -35,7 +35,7 @@ import weliyek.serialization.number.WkSignedLittleEndianLongSrlzInputNode;
 import weliyek.serialization.number.WkSignedLittleEndianLongSrlzStructNode;
 
 public class WkBitcoinNodeServicesSrlzInputNode 
-    implements WkAggregatorSrlzInputPacketDecoderFrameNode<
+    implements WkSerdeDTreeAggregatorReader<
                         WkBitcoinNodeServices, 
                         WkSettingsSrlzPacketOperationData, 
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, 

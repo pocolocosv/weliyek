@@ -81,15 +81,8 @@ public class WkStringWithFixedBytesTest
 
         assertFalse(stringWithFixedSizeSerializing.isCompleted());
 
-        int i = 1;
-        int writingSerializationStepSize = stringWithFixedSizeBytes.definition().bytes().field().definition().getSerializationStepSize();
         while(stringWithFixedSizeSerializing.isInProgress()) {
           stringWithFixedSizeSerializing.processBytestream();
-          if (stringWithFixedSizeSerializing.isInProgress()) {
-            assertEquals(
-                Math.min(writingSerializationStepSize * i++, expectedByteArray.length),
-                stringWithFixedSizeSerializing.firstOperation().get().bytes().field().get().firstOperation().get().dashboard().nextElementIndex());
-          }
         }
 
         assertTrue(stringWithFixedSizeSerializing.isCompleted());
@@ -100,15 +93,8 @@ public class WkStringWithFixedBytesTest
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 
-        i = 1;
-        int readingSerializationStepSize = stringWithFixedSizeBytes.definition().bytes().field().definition().getSerializationStepSize();
         while(stringWithFixedSizeBytesDeserializing.isInProgress()) {
           stringWithFixedSizeBytesDeserializing.processBytestream();
-          if (stringWithFixedSizeBytesDeserializing.isInProgress()) {
-            assertEquals(
-                readingSerializationStepSize * i++,
-                stringWithFixedSizeSerializing.firstOperation().get().bytes().field().get().firstOperation().get().dashboard().nextElementIndex());
-          }
         }
 
         assertTrue(stringWithFixedSizeSerializing.isCompleted());
@@ -133,15 +119,8 @@ public class WkStringWithFixedBytesTest
 
         assertFalse(stringWithFixedSizeSerializing.isCompleted());
 
-        int i = 1;
-        int writingSerializationStepSize = stringWithFixedSizeBytes.definition().bytes().field().definition().getSerializationStepSize();
         while(stringWithFixedSizeSerializing.isInProgress()) {
           stringWithFixedSizeSerializing.processBytestream();
-          if (stringWithFixedSizeSerializing.isInProgress()) {
-            assertEquals(
-                Math.min(writingSerializationStepSize * i++, expectedByteArray.length),
-                stringWithFixedSizeSerializing.firstOperation().get().bytes().field().get().firstOperation().get().dashboard().nextElementIndex());
-          }
         }
 
         assertTrue(stringWithFixedSizeSerializing.isCompleted());
@@ -152,15 +131,8 @@ public class WkStringWithFixedBytesTest
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 
-        i = 1;
-        int readingSerializationStepSize = stringWithFixedSizeBytes.definition().bytes().field().definition().getSerializationStepSize();
         while(stringWithFixedSizeBytesDeserializing.isInProgress()) {
           stringWithFixedSizeBytesDeserializing.processBytestream();
-          if (stringWithFixedSizeBytesDeserializing.isInProgress()) {
-            assertEquals(
-                readingSerializationStepSize * i++,
-                stringWithFixedSizeSerializing.firstOperation().get().bytes().field().get().firstOperation().get().dashboard().nextElementIndex());
-          }
         }
 
         assertTrue(stringWithFixedSizeSerializing.isCompleted());

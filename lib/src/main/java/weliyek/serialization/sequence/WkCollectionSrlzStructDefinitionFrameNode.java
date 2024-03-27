@@ -19,11 +19,11 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregatorDefinition;
 
 public interface WkCollectionSrlzStructDefinitionFrameNode<T extends Collection<?>>
-  extends WkCollectionSrlzFrameNode,
-          WkAggregatorSrlzStructDefinitionFrameNode<T>,
+  extends WkSerdeDTreeCollection,
+          WkSerdeDTreeAggregatorDefinition<T>,
           WkSerdeDTreeSequenceDefinition<T>
 {
 

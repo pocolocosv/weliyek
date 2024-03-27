@@ -133,7 +133,7 @@ public final class WkSrlzStructComponentFrameNodeRootCore<
   }
 
   @Override
-  protected WkSrlzStructDefinitionFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
+  protected WkSerdeDTreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore() {
     return null;
   }
 

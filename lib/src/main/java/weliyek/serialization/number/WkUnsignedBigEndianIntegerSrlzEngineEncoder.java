@@ -31,7 +31,7 @@ public class WkUnsignedBigEndianIntegerSrlzEngineEncoder
 
   private WkUnsignedBigEndianIntegerSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkNumberSrlzOutputPacketEncoderFrameLeafNode<Long, ?, ?, ?, ?> writingOperation) {
+    WkSerdeDTreeNumberWriter<Long, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

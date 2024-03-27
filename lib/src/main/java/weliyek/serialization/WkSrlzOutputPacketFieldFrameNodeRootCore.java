@@ -28,7 +28,7 @@ public final class WkSrlzOutputPacketFieldFrameNodeRootCore<
                         AYBC extends WkSzOutputBytestreamBase<?>>
     extends WkSrlzOutputPacketFieldFrameNodeCore<
                         T, YS, YD, YO, AYBC,
-                        WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        WkSerdeDTreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
     implements WkSzOutputPacket<T, YD, YO>
 {
 
@@ -101,7 +101,7 @@ public Optional<WkSerdeDTreeNodeDataOperation<?,?,?,?,?>> previousProcessingStea
   }
 
   @Override
-  protected WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
+  protected WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,WkSerdeDTreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

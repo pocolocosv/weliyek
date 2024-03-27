@@ -22,13 +22,13 @@ public interface WkSzPacketWriterOperationCoreFactory<
                         T,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YD extends WkSerdeDTreeNodeStructDefinition<T>,
-                        DC extends WkSrlzStructDefinitionFrameNodeCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
+                        DC extends WkSerdeDTreeNodeStructDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
                         YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
                         YAB extends WkSzOutputBytestreamBase<?>>
     extends WkSzOperationFactory
 {
 
-  WkSrlzOutputPacketEncoderFrameNodeCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
+  WkSerdeDTreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?> newWritingCore(
     int index,
     T serializable,
     YS settings,

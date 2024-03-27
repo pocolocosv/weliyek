@@ -28,13 +28,13 @@ public abstract class WkAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
-                        XO extends WkAggregatorSrlzInputPacketDecoderFrameNode<T,XS,XQ,XR,XD>,
+                        XD extends WkSerdeDTreeAggregatorDefinition<T>,
+                        XO extends WkSerdeDTreeAggregatorReader<T,XS,XQ,XR,XD>,
                         XOC extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,
                         AXB extends WkSzInputBytestreamBase<?>,
-                        DC extends WkAggregatorSrlzStructDefinitionFrameNodeCore<T,XS,XB,XBC,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,?,?,DC>>
-    extends WkSrlzInputPacketDecoderFrameNodeCore<T, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
-    implements WkAggregatorSrlzInputPacketDecoderFrameNode<T, XS, XQ, XR, XD>
+                        DC extends WkSerdeDTreeAggregatorDefinitionCore<T,XS,XB,XBC,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,?,?,DC>>
+    extends WkSerdeDTreeNodeDataReaderCore<T, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
+    implements WkSerdeDTreeAggregatorReader<T, XS, XQ, XR, XD>
 {
 
   protected WkSrlzInputPacketSubfieldList<T,XBC,XD,XO> readinHandlerList;

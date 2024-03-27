@@ -33,7 +33,7 @@ public abstract class WkIntSrlzEngineDecoder<X extends Number>
   protected WkIntSrlzEngineDecoder(
       IntFunction<X> converter,
       WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-      WkNumberSrlzInputPacketDecoderFrameLeafNode<X,?,?,?,?> readingOperation) {
+      WkSerdeDTreeNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.converter = Objects.requireNonNull(converter);
   }

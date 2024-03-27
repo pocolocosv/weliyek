@@ -26,7 +26,7 @@ import weliyek.serialization.WkSerdeDTreeNodeDataWriter;
 import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSerdeDTreeNumberDefinition;
-import weliyek.util.array.WkDynamicSequenceSrlzStructDefinitionFrameNode;
+import weliyek.util.array.WkSerdeDTreeDynamicSequenceDefinition;
 
 public interface WkDynamicCollectionSrlzStructDefinitionFrameNode<
                         T extends Collection<ET>,
@@ -43,12 +43,12 @@ public interface WkDynamicCollectionSrlzStructDefinitionFrameNode<
                         ED extends WkSerdeDTreeNodeStructDefinition<ET>,
                         VXS extends WkSzVariableLengthOperationSettings,
                         VYS extends WkSettingsSrlzPacketOperationData>
-    extends WkDynamicCollectionSrlzFrameNode<
+    extends WkSerdeDTreeDynamicCollection<
                         WkSerdeDTreeNodeStructComponentHandler<XO, YO, ZD>,
                         WkSerdeDTreeNodeStructComponentHandler<
                           XO, YO, WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>>,
             WkCollectionSrlzStructDefinitionFrameNode<T>,
-            WkDynamicSequenceSrlzStructDefinitionFrameNode<
+            WkSerdeDTreeDynamicSequenceDefinition<
                         T, XO, YO, ZD,
                         WkVariableSizeCollectionSrlzStructNode<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
 {

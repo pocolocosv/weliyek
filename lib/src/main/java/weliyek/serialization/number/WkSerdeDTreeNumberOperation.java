@@ -17,10 +17,10 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkSerdeDTreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDTreeNodeLeafOperation;
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDTreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDTreeNodeDataOperation;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 
 public interface WkSerdeDTreeNumberOperation<
@@ -30,7 +30,7 @@ public interface WkSerdeDTreeNumberOperation<
                         D extends WkSerdeDTreeNumberDefinition<?>,
                         K extends WkSerdeDTreeNodeDataComponent<?,?,?>>
         extends WkSerdeDTreeNumber,
-                WkSerdeDTreeNodeLeafOperation<S, Q, R, D, K>
+                WkSerdeDTreeNodeDataOperation<S, Q, R, D, K>
 {
 
 }

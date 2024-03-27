@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkAggregatorSrlzPacketOperationFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregatorOperation;
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
@@ -35,7 +35,7 @@ public interface WkStringFromPrimitiveArraySrlzPacketOperationFrameNode<
                         SK extends WkSerdeDTreeNodeDataComponent<?,SO,?>,
                         SJ extends WkSerdeDTreeNodeDataComponentHandler<SK>>
         extends WkStringFromPrimitiveArraySrlzFrameNode<SJ>,
-                WkAggregatorSrlzPacketOperationFrameNode<S, Q, R, D, K>
+                WkSerdeDTreeAggregatorOperation<S, Q, R, D, K>
 {
 
 }

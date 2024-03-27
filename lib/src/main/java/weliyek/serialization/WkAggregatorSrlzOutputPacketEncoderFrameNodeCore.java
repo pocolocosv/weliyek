@@ -28,14 +28,14 @@ public abstract class WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YD extends WkAggregatorSrlzStructDefinitionFrameNode<T>,
-                        YO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<T,YS,YQ,YR,YD>,
+                        YD extends WkSerdeDTreeAggregatorDefinition<T>,
+                        YO extends WkSerdeDTreeAggregatorWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYB,DC>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        DC extends WkAggregatorSrlzStructDefinitionFrameNodeCore<
+                        DC extends WkSerdeDTreeAggregatorDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYB,?,DC>>
-        extends WkSrlzOutputPacketEncoderFrameNodeCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
-        implements WkAggregatorSrlzOutputPacketEncoderFrameNode<T, YS, YQ, YR, YD>
+        extends WkSerdeDTreeNodeDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
+        implements WkSerdeDTreeAggregatorWriter<T, YS, YQ, YR, YD>
 {
 
   private WkSrlzOutputPacketSubfieldList<T,YBC,YD,YO> writingSubfields;

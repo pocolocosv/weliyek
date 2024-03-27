@@ -49,7 +49,7 @@ public final class WkVariableSizeCollectionSrlzInputNode<
                         ET,
                         EXD,
                         EXO>,
-               WkVariableSizeSequenceSrlzInputPacketDecoderFrameNode<
+               WkSerdeDTreeVariableSizeSequenceReader<
                         T,
                         XS,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

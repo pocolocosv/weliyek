@@ -31,7 +31,7 @@ public class WkUnsignedLittleEndianShortSrlzEngineEncoder
 
   private WkUnsignedLittleEndianShortSrlzEngineEncoder(
     WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkNumberSrlzOutputPacketEncoderFrameLeafNode<Integer, ?, ?, ?, ?> writingOperation) {
+    WkSerdeDTreeNumberWriter<Integer, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

@@ -19,27 +19,26 @@ package weliyek.util.array;
 
 import java.util.function.BiFunction;
 
-import weliyek.serialization.WkSrlzEngineDecoder;
-import weliyek.serialization.WkSerdeDTreePrimitiveArrayLeafReader;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSrlzEngineDecoder;
 
 public class WkSzBasicPrimitiveArrayWrapperReadEngineFactory<
                         X extends WkPrimitiveArray<?,?>>
     extends WkSzPrimitiveArrayWrapperReadEngineFactory<
                         X,
                         WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>>
+                        WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?>>
 {
 
   public WkSzBasicPrimitiveArrayWrapperReadEngineFactory(
       String label,
       BiFunction<
         WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-        WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>,
+        WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?>,
         WkSrlzEngineDecoder<
           X,
           ? super WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-          ? super WkSerdeDTreePrimitiveArrayLeafReader<X,?,?,?,?>>> engineSupplier) {
+          ? super WkSerdeDTreeGenericPrimitiveArrayReader<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

@@ -31,12 +31,12 @@ import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
 
 public final class WkSerdeDTreeVariableSizeByteArrayReader
-    implements WkByteArraySrlzInputPacketDecoderFrameNode<
+    implements WkSerdeDTreeByteArrayReader<
                         WkSzVariableLengthOperationSettings,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkResultSrlzPacketOperationData<WkByteArray>,
                         WkSerdeDTreeVariableSizeByteArray>,
-               WkSerdeDTreeVariableSizePrimitiveArrayLeafReader<
+               WkSerdeDTreeGenericVariableSizePrimitiveArrayReader<
                         WkByteArray,
                         WkSzVariableLengthOperationSettings,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
@@ -44,7 +44,7 @@ public final class WkSerdeDTreeVariableSizeByteArrayReader
                         WkSerdeDTreeVariableSizeByteArray>
 {
 
-  final WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
+  final WkSerdeDTreeGenericPrimitiveArrayReaderCoreSimplified<
                     WkByteArray,
                     WkSzVariableLengthOperationSettings,
                     WkSerdeDTreeVariableSizeByteArray,
@@ -56,9 +56,9 @@ public final class WkSerdeDTreeVariableSizeByteArrayReader
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<
       WkByteArray,?,WkSerdeDTreeVariableSizeByteArray,?,?,?> deserializingfieldCore,
-    WkSimplifiedPrimitiveArraySrlzStructDefinitionFrameLeafNodeCore<
+    WkSerdeDTreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,WkSzVariableLengthOperationSettings,WkSerdeDTreeVariableSizeByteArrayReader,?,?,WkSerdeDTreeVariableSizeByteArray> definitionCore) {
-    this.operationCore = new WkSimplifiedPrimitiveArraySrlzInputPacketDecoderFrameLeafNodeCore<
+    this.operationCore = new WkSerdeDTreeGenericPrimitiveArrayReaderCoreSimplified<
         WkByteArray,
         WkSzVariableLengthOperationSettings,
         WkSerdeDTreeVariableSizeByteArray,

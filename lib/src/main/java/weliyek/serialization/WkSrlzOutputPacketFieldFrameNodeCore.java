@@ -23,12 +23,12 @@ public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
                         YD extends WkSerdeDTreeNodeStructDefinition<T>,
                         YO extends WkSerdeDTreeNodeDataWriter<T,YS,?,?,YD>,
                         AYBC extends WkSzOutputBytestreamBase<?>,
-                        AYO extends WkAggregatorSrlzOutputPacketEncoderFrameNode<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
+                        AYO extends WkSerdeDTreeAggregatorWriter<?,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,?>>
     extends WkSrlzPacketFieldFrameNodeCore<
                         T, YS, YD,
                         WkSrlzStructComponentFrameNodeCore<T,?,?,?,?,YS,YD,YO,AYBC,? extends YD>,
                         YO,
-                        WkSrlzOutputPacketEncoderFrameNodeCore<?,?,?,?,?,YO,?,YD,?,?>,
+                        WkSerdeDTreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?>,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,YO>,
                         AYBC,
                         WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,AYO,?,?,?>>
@@ -45,7 +45,7 @@ public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
   }
 
   @Override
-  protected WkSrlzOutputPacketEncoderFrameNodeCore<?,?,?,?,?,YO,?,YD,?,?>
+  protected WkSerdeDTreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?>
   newOperation(int index) {
     YS settings = newSettings(index);
     T serializable = serializable(index);

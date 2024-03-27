@@ -25,11 +25,11 @@ public interface WkDynamicPrimitiveArraySrlzStructDefinitionFrameNode<
                         XO extends WkDynamicPrimitiveArraySrlzInputPacketDecoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
                         YO extends WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<T,?,?,?,?,?,?,?,?,?>,
                         ZD extends WkSerdeDTreeNumberDefinition<?>,
-                        VD extends WkSerdeDTreeVariableSizePrimitiveArrayDefinition<T>>
-    extends WkDynamicPrimitiveArraySrlzFrameNode<
+                        VD extends WkSerdeDTreeGenericVariableSizePrimitiveArrayDefinition<T>>
+    extends WkSerdeDTreeDynamicPrimitiveArray<
                         WkSerdeDTreeNodeStructComponentHandler<XO, YO, ZD>,
                         WkSerdeDTreeNodeStructComponentHandler<XO, YO, VD>>,
-            WkDynamicSequenceSrlzStructDefinitionFrameNode<T, XO, YO, ZD, VD>
+            WkSerdeDTreeDynamicSequenceDefinition<T, XO, YO, ZD, VD>
 {
 
 }

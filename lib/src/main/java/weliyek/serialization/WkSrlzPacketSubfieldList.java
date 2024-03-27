@@ -27,7 +27,7 @@ import java.util.Optional;
 public abstract class WkSrlzPacketSubfieldList<
                         SJ extends WkSerdeDTreeNodeDataComponentHandler<?>,
                         SJC extends WkSrlzPacketSubfieldFrameNodeCore<?,?,?,?,?,? extends SJ,?,?>,
-                        O extends WkAggregatorSrlzPacketOperationFrameNode<?,?,?,?,?>>
+                        O extends WkSerdeDTreeAggregatorOperation<?,?,?,?,?>>
     extends AbstractList<SJC>
 {
 

@@ -75,11 +75,11 @@ public class WkByteArrayTest
       assertTrue(outputWrapper.equalsToArray(originalArray, 1));
       KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-      WkSrlzStruct<WkByteArray, WkSettingsSrlzPacketOperationData, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzOutputNode, WkSzOutputBytestreamBase<?>, WkFixedSizeByteArraySrlzStructNode>
-        fixeSizeByteArray = WkFixedSizeByteArraySrlzStructNode.newStruct("FIXED_BYTEARRAY", sequenceLenght);
+      WkSrlzStruct<WkByteArray, WkSettingsSrlzPacketOperationData, WkSerdeDTreeFixedSizeByteArray, WkSerdeDTreeFixedSizeByteArrayReader, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkSerdeDTreeFixedSizeByteArray, WkSerdeDTreeFixedSizeByteArrayWriter, WkSzOutputBytestreamBase<?>, WkSerdeDTreeFixedSizeByteArray>
+        fixeSizeByteArray = WkSerdeDTreeFixedSizeByteArray.newStruct("FIXED_BYTEARRAY", sequenceLenght);
       logger.info(fixeSizeByteArray + " output protocol created");
 
-      WkSzOutputPacket<WkByteArray, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzOutputNode>
+      WkSzOutputPacket<WkByteArray, WkSerdeDTreeFixedSizeByteArray, WkSerdeDTreeFixedSizeByteArrayWriter>
         byteArrayWriting = fixeSizeByteArray.newOutputPacket(outputWrapper, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
 
       logger.info(byteArrayWriting.toString());
@@ -102,7 +102,7 @@ public class WkByteArrayTest
 
       assertTrue(outputstream.equals(originalArray, sequenceStartIndex, sequenceEndIndex));
 
-      WkSzInputPacket<WkByteArray, WkFixedSizeByteArraySrlzStructNode, WkFixedSizeByteArraySrlzInputNode>
+      WkSzInputPacket<WkByteArray, WkSerdeDTreeFixedSizeByteArray, WkSerdeDTreeFixedSizeByteArrayReader>
         byteArrayReading = fixeSizeByteArray.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
       logger.info(byteArrayReading + " input op created");

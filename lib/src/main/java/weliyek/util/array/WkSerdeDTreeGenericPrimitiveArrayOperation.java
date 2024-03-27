@@ -33,4 +33,6 @@ public interface WkSerdeDTreeGenericPrimitiveArrayOperation<
                 WkSerdeDTreeSequenceOperation<S, Q, R, D, K>
 {
 
+  int getRequestedLength();
+
 }

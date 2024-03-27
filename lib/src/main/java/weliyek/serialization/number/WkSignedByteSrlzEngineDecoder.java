@@ -31,7 +31,7 @@ public final class WkSignedByteSrlzEngineDecoder
 
   public WkSignedByteSrlzEngineDecoder(
       WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
-      WkNumberSrlzInputPacketDecoderFrameLeafNode<Byte,?,?,?,?> readingOperation) {
+      WkSerdeDTreeNumberReader<Byte,?,?,?,?> readingOperation) {
     super((i) -> Byte.valueOf((byte) i), runtimeCtrl, readingOperation);
   }
 

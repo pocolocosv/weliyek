@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkAggregatorSrlzStructDefinitionFrameNode;
+import weliyek.serialization.WkSerdeDTreeAggregatorDefinition;
 import weliyek.serialization.WkSerdeDTreeNodeStructComponentHandler;
 import weliyek.util.array.WkSerdeDTreeGenericPrimitiveArrayDefinition;
 
@@ -26,7 +26,7 @@ public interface WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<
                         YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<?,?,?,?,?,?,?>,
                         SD extends WkSerdeDTreeGenericPrimitiveArrayDefinition<?>>
         extends WkStringFromPrimitiveArraySrlzFrameNode<WkSerdeDTreeNodeStructComponentHandler<XO, YO, SD>>,
-                WkAggregatorSrlzStructDefinitionFrameNode<String>
+                WkSerdeDTreeAggregatorDefinition<String>
 {
 
 }

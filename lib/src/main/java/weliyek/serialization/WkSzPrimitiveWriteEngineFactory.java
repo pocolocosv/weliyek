@@ -33,7 +33,7 @@ public class WkSzPrimitiveWriteEngineFactory<T extends Number>
     BiFunction<
       WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
       WkSerdeDtreeNumberWriter<T,?,?,?,?>,
-      WkSrlzEngineEncoder<
+      WkSerdeDtreeNodeDataWriterEncoderEngine<
         T,
         WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
         WkSerdeDtreeNumberWriter<T,?,?,?,?>>> engineSupplier) {

@@ -40,12 +40,12 @@ import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzInputNode;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
-import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzInputNode;
-import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzOutputNode;
-import weliyek.serialization.number.WkSignedLittleEndianIntegerSrlzStructNode;
+import weliyek.serialization.number.WkSerdeSignedBigEndianShortReader;
+import weliyek.serialization.number.WkSerdeSignedBigEndianShortWriter;
+import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerReader;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerWriter;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianInteger;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkDynamicCollectionTest
@@ -58,14 +58,14 @@ public class WkDynamicCollectionTest
   private static WkSrlzStruct<
                           List<Short>,
                           WkSettingsSrlzPacketOperationData,
-                          WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>,
-                          WkDynamicCollectionSrlzInputPacketDecoderFrameNode<List<Short>, WkSettingsSrlzPacketOperationData, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, Integer, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, WkSzVariableLengthOperationSettings>,
+                          WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>,
+                          WkDynamicCollectionSrlzInputPacketDecoderFrameNode<List<Short>, WkSettingsSrlzPacketOperationData, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, Integer, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSzVariableLengthOperationSettings>,
                           WkSzInputBytestreamBase<?>,
                           WkSettingsSrlzPacketOperationData,
-                          WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, ?, ?, WkSettingsSrlzPacketOperationData>,
-                          WkDynamicCollectionSrlzOutputPacketEncoderFrameNode< List<Short>, WkSettingsSrlzPacketOperationData, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, ?, ?, WkSettingsSrlzPacketOperationData>, Integer, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, WkSettingsSrlzPacketOperationData>,
+                          WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSettingsSrlzPacketOperationData>,
+                          WkDynamicCollectionSrlzOutputPacketEncoderFrameNode< List<Short>, WkSettingsSrlzPacketOperationData, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSettingsSrlzPacketOperationData>, Integer, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSettingsSrlzPacketOperationData>,
                           WkSzOutputBytestreamBase<?>,
-                          WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, WkSignedLittleEndianIntegerSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, WkSignedBigEndianShortSrlzStructNode, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData>>
+                          WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianInteger, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData>>
                               DYN_LIST_PACKET;
 
   @SuppressWarnings("unchecked")
@@ -77,20 +77,20 @@ public class WkDynamicCollectionTest
                           WkSettingsSrlzPacketOperationData,
                           Integer,
                           WkSettingsSrlzPacketOperationData,
-                          WkSignedLittleEndianIntegerSrlzInputNode,
-                          WkSignedLittleEndianIntegerSrlzStructNode,
+                          WkSerdeSignedLittleEndianIntegerReader,
+                          WkSerdeSignedLittleEndianInteger,
                           WkSettingsSrlzPacketOperationData,
-                          WkSignedLittleEndianIntegerSrlzOutputNode,
-                          WkSignedLittleEndianIntegerSrlzStructNode,
-                          WkSignedLittleEndianIntegerSrlzStructNode,
+                          WkSerdeSignedLittleEndianIntegerWriter,
+                          WkSerdeSignedLittleEndianInteger,
+                          WkSerdeSignedLittleEndianInteger,
                           Short,
                           WkSettingsSrlzPacketOperationData,
-                          WkSignedBigEndianShortSrlzStructNode,
-                          WkSignedBigEndianShortSrlzInputNode,
+                          WkSerdeSignedBigEndianShort,
+                          WkSerdeSignedBigEndianShortReader,
                           WkSettingsSrlzPacketOperationData,
-                          WkSignedBigEndianShortSrlzStructNode,
-                          WkSignedBigEndianShortSrlzOutputNode,
-                          WkSignedBigEndianShortSrlzStructNode,
+                          WkSerdeSignedBigEndianShort,
+                          WkSerdeSignedBigEndianShortWriter,
+                          WkSerdeSignedBigEndianShort,
                           WkSzVariableLengthOperationSettings,
                           WkSettingsSrlzPacketOperationData>newStruct(
                               "DYN_SHORT_LIST",
@@ -100,12 +100,12 @@ public class WkDynamicCollectionTest
                               WkSettingsSrlzPacketOperationData::none,
                               WkSettingsSrlzPacketOperationData::none,
                               Integer::valueOf,
-                              WkSignedLittleEndianIntegerSrlzStructNode::newCore,
+                              WkSerdeSignedLittleEndianInteger::newCore,
                               "SHORT_LIST",
                               (i,yo) -> WkSzVariableLengthOperationSettings.withLength(yo.size().field().get().firstOperation().get().result().get().serializable().get().intValue()),
                               WkSettingsSrlzPacketOperationData::none,
                               "SHORT",
-                              WkSignedBigEndianShortSrlzStructNode::newCore,
+                              WkSerdeSignedBigEndianShort::newCore,
                               WkSettingsSrlzPacketOperationData::none,
                               WkSettingsSrlzPacketOperationData::none,
                               (l) -> l,
@@ -128,14 +128,14 @@ public class WkDynamicCollectionTest
   @Test
   public void test() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
-    WkSzOutputPacket<List<Short>, WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, ?, ?, WkSettingsSrlzPacketOperationData>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<List<Short>, WkSettingsSrlzPacketOperationData, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, ?, ?, WkSettingsSrlzPacketOperationData>, Integer, WkSignedLittleEndianIntegerSrlzOutputNode, WkSignedLittleEndianIntegerSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode, WkSettingsSrlzPacketOperationData>>
+    WkSzOutputPacket<List<Short>, WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSettingsSrlzPacketOperationData>, WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<List<Short>, WkSettingsSrlzPacketOperationData, WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSettingsSrlzPacketOperationData>, Integer, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSettingsSrlzPacketOperationData>>
       dynlistSerializer = DYN_LIST_PACKET.newOutputPacket(ORIGINAL_LIST, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
 
     while(dynlistSerializer.isInProgress()) {
       dynlistSerializer.processBytestream();
     }
 
-    WkSzInputPacket<List<Short>, WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, WkDynamicCollectionSrlzInputPacketDecoderFrameNode<List<Short>, WkSettingsSrlzPacketOperationData, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, Integer, WkSignedLittleEndianIntegerSrlzInputNode, WkSignedLittleEndianIntegerSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzInputNode, WkSzVariableLengthOperationSettings>>
+    WkSzInputPacket<List<Short>, WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, WkDynamicCollectionSrlzInputPacketDecoderFrameNode<List<Short>, WkSettingsSrlzPacketOperationData, WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>, WkResultSrlzPacketOperationData<List<Short>>, WkDynamicCollectionSrlzStructNode<List<Short>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?>, Integer, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSzVariableLengthOperationSettings>>
       dynlistDeserializer = DYN_LIST_PACKET.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
     while(dynlistDeserializer.isInProgress()) {

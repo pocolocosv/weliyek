@@ -23,12 +23,12 @@ public class WkSzWriteEngineFactory<
                         T,
                         QC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         O extends WkSerdeDtreeNodeDataWriter<? extends T,?,?,?,?>>
-    extends WkSzEngineFactoryBase<QC, O, WkSrlzEngineEncoder<T,QC,O>>
+    extends WkSzEngineFactoryBase<QC, O, WkSerdeDtreeNodeDataWriterEncoderEngine<T,QC,O>>
 {
 
   public WkSzWriteEngineFactory(
       String label,
-      BiFunction<QC, O, WkSrlzEngineEncoder<T, QC, O>> engineSupplier) {
+      BiFunction<QC, O, WkSerdeDtreeNodeDataWriterEncoderEngine<T, QC, O>> engineSupplier) {
     super(label, engineSupplier);
   }
 

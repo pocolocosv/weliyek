@@ -20,7 +20,7 @@ package weliyek.util.array;
 import java.util.function.BiFunction;
 
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSrlzEngineEncoder;
+import weliyek.serialization.WkSerdeDtreeNodeDataWriterEncoderEngine;
 import weliyek.serialization.WkSzWriteEngineFactory;
 
 public class WkSzPrimitiveArrayWrapperWriteEngineFactory<
@@ -34,7 +34,7 @@ public class WkSzPrimitiveArrayWrapperWriteEngineFactory<
     String label,
     BiFunction<
       QC, O,
-      WkSrlzEngineEncoder<Y,QC,O>> engineSupplier) {
+      WkSerdeDtreeNodeDataWriterEncoderEngine<Y,QC,O>> engineSupplier) {
     super(label, engineSupplier);
   }
 

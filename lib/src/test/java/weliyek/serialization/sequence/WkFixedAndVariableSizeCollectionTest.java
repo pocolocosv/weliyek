@@ -40,9 +40,9 @@ import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzOutputNode;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
+import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
+import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
+import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkFixedAndVariableSizeCollectionTest
@@ -56,27 +56,27 @@ public class WkFixedAndVariableSizeCollectionTest
   private static WkSrlzStruct<
                         List<Integer>,
                         WkSettingsSrlzPacketOperationData,
-                        WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ?, ?>,
-                        WkFixedSizeCollectionSrlzInputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
+                        WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ?, ?>,
+                        WkFixedSizeCollectionSrlzInputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
                         WkSzInputBytestreamBase<?>,
                         WkSettingsSrlzPacketOperationData,
-                        WkFixedSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ?>,
-                        WkFixedSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>,
+                        WkFixedSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ?>,
+                        WkFixedSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
                         WkSzOutputBytestreamBase<?>,
-                        WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
+                        WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>>
                           FIXED_SIZE_INT_LIST;
 
   private static WkSrlzStruct<
                         List<Integer>,
                         WkSzVariableLengthOperationSettings,
-                        WkVariableSizeCollectionSrlzStructNode<List<Integer>, WkSzVariableLengthOperationSettings, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ?, ?>,
-                        WkVariableSizeCollectionSrlzInputNode<List<Integer>, WkSzVariableLengthOperationSettings, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
+                        WkVariableSizeCollectionSrlzStructNode<List<Integer>, WkSzVariableLengthOperationSettings, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ?, ?>,
+                        WkVariableSizeCollectionSrlzInputNode<List<Integer>, WkSzVariableLengthOperationSettings, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
                         WkSzInputBytestreamBase<?>,
                         WkSettingsSrlzPacketOperationData,
-                        WkVariableSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ?>,
-                        WkVariableSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>,
+                        WkVariableSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ?>,
+                        WkVariableSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
                         WkSzOutputBytestreamBase<?>,
-                        WkVariableSizeCollectionSrlzStructNode<List<Integer>, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, WkSignedBigEndianIntegerSrlzStructNode>>
+                        WkVariableSizeCollectionSrlzStructNode<List<Integer>, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>>
                           VAR_SIZE_INT_LIST;
 
 
@@ -89,12 +89,12 @@ public class WkFixedAndVariableSizeCollectionTest
                               WkSettingsSrlzPacketOperationData,
                               Integer,
                               WkSettingsSrlzPacketOperationData,
-                              WkSignedBigEndianIntegerSrlzStructNode,
-                              WkSignedBigEndianIntegerSrlzInputNode,
+                              WkSerdeSignedBigEndianInteger,
+                              WkSerdeSignedBigEndianIntegerReader,
                               WkSettingsSrlzPacketOperationData,
-                              WkSignedBigEndianIntegerSrlzStructNode,
-                              WkSignedBigEndianIntegerSrlzOutputNode,
-                              WkSignedBigEndianIntegerSrlzStructNode>newStruct(
+                              WkSerdeSignedBigEndianInteger,
+                              WkSerdeSignedBigEndianIntegerWriter,
+                              WkSerdeSignedBigEndianInteger>newStruct(
                                   "FIXEDINTLIST",
                                   "INT",
                                   ORIGINAL_LIST.size(),
@@ -102,7 +102,7 @@ public class WkFixedAndVariableSizeCollectionTest
                                   (l) -> l,
                                   WkSettingsSrlzPacketOperationData::none,
                                   WkSettingsSrlzPacketOperationData::none,
-                                  WkSignedBigEndianIntegerSrlzStructNode::newCore);
+                                  WkSerdeSignedBigEndianInteger::newCore);
 
     VAR_SIZE_INT_LIST = WkVariableSizeCollectionSrlzStructNode.<
                               List<Integer>,
@@ -110,18 +110,18 @@ public class WkFixedAndVariableSizeCollectionTest
                               WkSettingsSrlzPacketOperationData,
                               Integer,
                               WkSettingsSrlzPacketOperationData,
-                              WkSignedBigEndianIntegerSrlzStructNode,
-                              WkSignedBigEndianIntegerSrlzInputNode,
+                              WkSerdeSignedBigEndianInteger,
+                              WkSerdeSignedBigEndianIntegerReader,
                               WkSettingsSrlzPacketOperationData,
-                              WkSignedBigEndianIntegerSrlzStructNode,
-                              WkSignedBigEndianIntegerSrlzOutputNode,
-                              WkSignedBigEndianIntegerSrlzStructNode>newStruct(
+                              WkSerdeSignedBigEndianInteger,
+                              WkSerdeSignedBigEndianIntegerWriter,
+                              WkSerdeSignedBigEndianInteger>newStruct(
                                 "FIXEDINTLIST",
                                 "INT",
                                 0,
                                 ORIGINAL_LIST.size() + 10,
                                 (Class<List<Integer>>)(Class<?>)List.class,
-                                WkSignedBigEndianIntegerSrlzStructNode::newCore,
+                                WkSerdeSignedBigEndianInteger::newCore,
                                 (i,ao) -> WkSzVariableLengthOperationSettings.withLength(ORIGINAL_LIST.size()),
                                 WkSettingsSrlzPacketOperationData::none,
                                 (l) -> l);
@@ -143,7 +143,7 @@ public class WkFixedAndVariableSizeCollectionTest
   public void testFixedSizeCollectionField() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzOutputPacket<List<Integer>, WkFixedSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ?>, WkFixedSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>>
+    WkSzOutputPacket<List<Integer>, WkFixedSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ?>, WkFixedSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>>
       listWriting = FIXED_SIZE_INT_LIST.newOutputPacket(ORIGINAL_LIST,
                                                         WkSettingsSrlzPacketOperationData.EMPTY,
                                                         outputstream);
@@ -160,7 +160,7 @@ public class WkFixedAndVariableSizeCollectionTest
 
     assertEquals(ORIGINAL_LIST, listWriting.firstOperation().get().serializable());
 
-    WkSzInputPacket<List<Integer>, WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ?, ?>, WkFixedSizeCollectionSrlzInputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>>
+    WkSzInputPacket<List<Integer>, WkFixedSizeCollectionSrlzStructNode<List<Integer>, WkSettingsSrlzPacketOperationData, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ?, ?>, WkFixedSizeCollectionSrlzInputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>>
       listReading = FIXED_SIZE_INT_LIST.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
     logger.info(listReading + " created");
@@ -178,7 +178,7 @@ public class WkFixedAndVariableSizeCollectionTest
   public void testVariableSizeCollectionField() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-    WkSzOutputPacket<List<Integer>, WkVariableSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ?>, WkVariableSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>>
+    WkSzOutputPacket<List<Integer>, WkVariableSizeCollectionSrlzStructNode<List<Integer>, ?, WkSettingsSrlzPacketOperationData, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ?>, WkVariableSizeCollectionSrlzOutputNode<List<Integer>, WkSettingsSrlzPacketOperationData, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>>
       varlistWriting = VAR_SIZE_INT_LIST.newOutputPacket(ORIGINAL_LIST, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
 
     logger.info(varlistWriting.toString() + " created");
@@ -196,7 +196,7 @@ public class WkFixedAndVariableSizeCollectionTest
 
     WkSzCountingInputBytestream inputbytestream = new WkSzCountingInputBytestream(outputstream.inputStream());
 
-    WkSzInputPacket<List<Integer>, WkVariableSizeCollectionSrlzStructNode<List<Integer>, WkSzVariableLengthOperationSettings, ?, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<List<Integer>, WkSzVariableLengthOperationSettings, Integer, WkSettingsSrlzPacketOperationData, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>>
+    WkSzInputPacket<List<Integer>, WkVariableSizeCollectionSrlzStructNode<List<Integer>, WkSzVariableLengthOperationSettings, ?, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<List<Integer>, WkSzVariableLengthOperationSettings, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>>
       varListReading = VAR_SIZE_INT_LIST.newInputPacket(WkSzVariableLengthOperationSettings.withLength(ORIGINAL_LIST.size()), inputbytestream);
 
     logger.info(varListReading + " created");

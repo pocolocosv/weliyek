@@ -28,8 +28,8 @@ import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzOutputNode;
-import weliyek.serialization.number.WkSignedBigEndianShortSrlzStructNode;
+import weliyek.serialization.number.WkSerdeSignedBigEndianShortWriter;
+import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
 import weliyek.serialization.sequence.WkDynamicCollectionSrlzOutputPacketEncoderFrameNode;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore;
 import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
@@ -44,8 +44,8 @@ public class WkTstMultipleListSrlzOutputNode
                         WkResultSrlzPacketOperationData<WkSzTstMultipleLists>,
                         WkTstMultipleListSrlzStructNode,
                         Short,
-                        WkSignedBigEndianShortSrlzOutputNode,
-                        WkSignedBigEndianShortSrlzStructNode,
+                        WkSerdeSignedBigEndianShortWriter,
+                        WkSerdeSignedBigEndianShort,
                         WkSzTstPrimitivesGroupList,
                         WkSettingsSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzStructNode,
@@ -60,8 +60,8 @@ public class WkTstMultipleListSrlzOutputNode
                         WkTstMultipleListSrlzStructNode,
                         Short,
                         WkSettingsSrlzPacketOperationData,
-                        WkSignedBigEndianShortSrlzOutputNode,
-                        WkSignedBigEndianShortSrlzStructNode,
+                        WkSerdeSignedBigEndianShortWriter,
+                        WkSerdeSignedBigEndianShort,
                         WkSzTstPrimitivesGroupList,
                         WkSettingsSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzStructNode,
@@ -75,15 +75,15 @@ public class WkTstMultipleListSrlzOutputNode
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<WkSzTstMultipleLists, ?, WkTstMultipleListSrlzStructNode, ?, ?, ?>
       serializerpacketCore,
-    WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<WkSzTstMultipleLists, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzOutputNode, WkSignedBigEndianShortSrlzStructNode, ?, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?, ?, WkSettingsSrlzPacketOperationData, ?>
+    WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<WkSzTstMultipleLists, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, ?, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?, ?, WkSettingsSrlzPacketOperationData, ?>
       definitionCore) {
     operationCore = new WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<
-                            WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSignedBigEndianShortSrlzOutputNode, WkSignedBigEndianShortSrlzStructNode, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSettingsSrlzPacketOperationData>(
+                            WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSettingsSrlzPacketOperationData>(
                                 index, serializable, settings, parentBytestream, serializerpacketCore, definitionCore, this);
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<Short, WkSignedBigEndianShortSrlzStructNode, WkSignedBigEndianShortSrlzOutputNode>
+  public WkSrlzOutputPacketSubfieldFrameNode<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>
   size() {
     return this.operationCore.size();
   }

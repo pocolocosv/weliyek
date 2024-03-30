@@ -101,10 +101,10 @@ public class WkSerdeDtreeVariableSizeByteArray
                                   componentCore,
                                   WkSerdeDtreeVariableSizeByteArray::getRxRequestedLength,
                                   (i,xs,axb,xkc,dc) -> new WkSerdeDtreeVariableSizeByteArrayReader(i,xs,axb,xkc,dc).operationCore,
-                                  WkBasicByteArraySrlzEngineDecoder.FACTORY,
+                                  WkSerdeDtreeByteArrayReaderDecoderEngine.FACTORY,
                                   (WkPrimitiveArrayLengthGetter<WkByteArray,WkSettingsSrlzPacketOperationData,WkSerdeDtreeVariableSizeByteArray>)WkSerdeDtreeVariableSizeByteArray::getTxRequestedLength,
                                   (i,y,ys,ayb,ykc,dc) -> new WkSerdeDtreeVariableSizeByteArrayWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                  WkByteArraySrlzEngineEncoder.FACTORY,
+                                  WkSerdeDtreeByteArrayWriterEncoderEngine.FACTORY,
                                   this,
                                   WkByteArray.class);
     this.sizeLimits = new SequenceSizeParameters<>(minSize, maxSize, definitionCore);

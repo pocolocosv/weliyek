@@ -19,7 +19,7 @@ package weliyek.serialization;
 
 import java.util.Objects;
 
-public class WkSzStructComponentException extends WkSzSegmentException
+public class WkSzStructComponentException extends WkSerdeDtreeNodeException
 {
 
   private static final long serialVersionUID = 2018_03_05_000L;

@@ -99,10 +99,10 @@ public class WkSerdeDtreeFixedSizeByteArray
                                     componentCore,
                                     WkSerdeDtreeFixedSizeByteArray::getRxRequestedLengthFromDefinition,
                                     (i,xs,axb,xkc,dc) -> new WkSerdeDtreeFixedSizeByteArrayReader(i,xs,axb,xkc,dc).operationCore,
-                                    WkBasicByteArraySrlzEngineDecoder.FACTORY,
+                                    WkSerdeDtreeByteArrayReaderDecoderEngine.FACTORY,
                                     (WkPrimitiveArrayLengthGetter<WkByteArray,WkSettingsSrlzPacketOperationData,WkSerdeDtreeFixedSizeByteArray>)WkSerdeDtreeFixedSizeByteArray::getTxRequestedLengthFromDefinition,
                                     (i,y,ys,ayb,ykc,dc) -> new WkSerdeDtreeFixedSizeByteArrayWriter(i,y,ys,ayb,ykc,dc).operationCore,
-                                    WkByteArraySrlzEngineEncoder.FACTORY,
+                                    WkSerdeDtreeByteArrayWriterEncoderEngine.FACTORY,
                                     this,
                                     WkByteArray.class);
     this.fixedSizeParameter = new SequenceFixedSizeParameter<WkByteArray>(expectedLength, this.definitionCore);

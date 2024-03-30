@@ -24,7 +24,7 @@ import weliyek.serialization.WkSerdeDtreeNodeDataReaderCore;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriterCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
-import weliyek.serialization.WkSzOperationException;
+import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
 
 public class SequenceFixedSizeParameter<T>
 {
@@ -67,7 +67,7 @@ public class SequenceFixedSizeParameter<T>
       ?,? extends WkSerdeDtreeFixedSizeSequenceDefinition<T>,?,?> serializer) {
     int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
     if (sequenceSize != this.sequenceExpectedSize) {
-      throw new WkSzOperationException(serializer, "Supplied sequence size differs from expected size");
+      throw new WkSerdeDtreeNodeDataOperationException(serializer, "Supplied sequence size differs from expected size");
     }
   }
 
@@ -80,7 +80,7 @@ public class SequenceFixedSizeParameter<T>
     T sequence = deserializer.result().get().serializable().get();
     int seqLen = deserializer.definition().extractLengthFromSerializablesSequence(sequence);
     if (seqLen != this.sequenceExpectedSize) {
-      throw new WkSzOperationException(
+      throw new WkSerdeDtreeNodeDataOperationException(
                       deserializer,
                       "Sequence resulting from deserialization does not comform to expected size");
     }

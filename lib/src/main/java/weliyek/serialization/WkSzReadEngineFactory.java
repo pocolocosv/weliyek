@@ -26,7 +26,7 @@ public class WkSzReadEngineFactory<
     extends WkSzEngineFactoryBase<
                         QC,
                         O,
-                        WkSrlzEngineDecoder<T, ? super QC, ? super O>>
+                        WkSerdeDtreeNodeDataReaderDecoderEngine<T, ? super QC, ? super O>>
 {
 
   public WkSzReadEngineFactory(
@@ -34,7 +34,7 @@ public class WkSzReadEngineFactory<
       BiFunction<
         QC,
         O,
-        WkSrlzEngineDecoder<T,? super QC,? super O>> engineSupplier) {
+        WkSerdeDtreeNodeDataReaderDecoderEngine<T,? super QC,? super O>> engineSupplier) {
     super(label, engineSupplier);
   }
 

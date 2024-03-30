@@ -20,7 +20,7 @@ package weliyek.util.array;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSerdeDtreeNodeLeafDataReaderCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataReaderDecoderCore;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestreamBase;
@@ -37,7 +37,7 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayReaderCore<
                         XD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<X>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
-        extends WkSerdeDtreeNodeLeafDataReaderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
+        extends WkSerdeDtreeNodeDataReaderDecoderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
         implements WkSerdeDtreeGenericPrimitiveArrayReader<X, XS, XQ, XR, XD>,
         WkSerdeDtreeSequenceReader<X, XS, XQ, XR, XD>
 {

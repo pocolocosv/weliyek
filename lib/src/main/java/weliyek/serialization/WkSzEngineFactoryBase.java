@@ -23,7 +23,7 @@ import java.util.function.BiFunction;
 public abstract class WkSzEngineFactoryBase<
                         QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         O extends WkSerdeDtreeNodeDataOperation<?,?,?,?,?>,
-                        T extends WkSrlzEngine<? super QC, ? super O>>
+                        T extends WkSerdeDtreeNodeDataEncoderDecoderEngine<? super QC, ? super O>>
 {
 
   private final String label;

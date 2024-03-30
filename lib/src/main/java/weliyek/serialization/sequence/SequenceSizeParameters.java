@@ -22,7 +22,7 @@ import java.util.Objects;
 import weliyek.serialization.WkSerdeDtreeNodeDataReaderCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
-import weliyek.serialization.WkSzOperationException;
+import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriterCore;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 
@@ -77,12 +77,12 @@ public class SequenceSizeParameters<T>
         ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,?,?> serializer) {
       int sequenceSize = serializer.definition().extractLengthFromSerializablesSequence(serializer.serializable());
       if (sequenceSize < minSize) {
-        throw new WkSzOperationException(
+        throw new WkSerdeDtreeNodeDataOperationException(
                         serializer,
                         "Serializable sequence is too small for this field");
       }
       if (sequenceSize > maxSize) {
-        throw new WkSzOperationException(
+        throw new WkSerdeDtreeNodeDataOperationException(
                         serializer,
                         "Serializable sequence is too large for this field");
       }
@@ -95,12 +95,12 @@ public class SequenceSizeParameters<T>
         ? extends WkSerdeDtreeVariableSizeSequenceDefinition<?>,?,?> deserializer) {
       WkSzVariableLengthOperationSettings settings = deserializer.settings();
       if (settings.getRequestedLength() < minSize) {
-        throw new WkSzOperationException(
+        throw new WkSerdeDtreeNodeDataOperationException(
                         deserializer,
                         "Requested deserializable sequence size is shorter than permited by this field");
       }
       if (settings.getRequestedLength() > maxSize) {
-        throw new WkSzOperationException(
+        throw new WkSerdeDtreeNodeDataOperationException(
                         deserializer,
                         "Requested deserializable sequence size is longer than permited by this field");
       }

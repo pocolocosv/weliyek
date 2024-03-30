@@ -130,7 +130,7 @@ public abstract class WkSrlzPacketFieldFrameNodeCore<
 
     private void assertNumberOfOperations() {
       if (operationList().size() != expectedNumberOfOperations()) {
-        throw new WkSzPacketFieldException(this, "Packet field did not process expected number of operations");
+        throw new WkSerdeDtreeNodeDataComponentException(this, "Packet field did not process expected number of operations");
       }
     }
 

@@ -33,7 +33,7 @@ public class WkSzPrimitiveReadEngineFactory<X extends Number>
       BiFunction<
         WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
         WkSerdeDtreeNumberReader<X,?,?,?,?>,
-        WkSrlzEngineDecoder<
+        WkSerdeDtreeNodeDataReaderDecoderEngine<
           X,
           ? super WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
           ? super WkSerdeDtreeNumberReader<X,?,?,?,?>>> engineSupplier) {

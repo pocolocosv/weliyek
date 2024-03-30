@@ -31,8 +31,8 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzInputNode;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzStructNode;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianLongReader;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 
 public class WkBitcoinNodeServicesSrlzInputNode 
     implements WkSerdeDtreeAggregatorReader<
@@ -51,8 +51,8 @@ public class WkBitcoinNodeServicesSrlzInputNode
   final WkSrlzInputPacketSubfieldFrameNodeCore<
                         Long, 
                         WkSettingsSrlzPacketOperationData, 
-                        WkSignedLittleEndianLongSrlzStructNode, 
-                        WkSignedLittleEndianLongSrlzInputNode, 
+                        WkSerdeSignedLittleEndianLong, 
+                        WkSerdeSignedLittleEndianLongReader, 
                         WkBitcoinNodeServices, 
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>, 
                         WkBitcoinNodeServicesSrlzStructNode, 
@@ -76,8 +76,8 @@ public class WkBitcoinNodeServicesSrlzInputNode
   public WkSrlzInputPacketSubfieldFrameNodeCore<
             Long, 
             WkSettingsSrlzPacketOperationData, 
-            WkSignedLittleEndianLongSrlzStructNode, 
-            WkSignedLittleEndianLongSrlzInputNode, 
+            WkSerdeSignedLittleEndianLong, 
+            WkSerdeSignedLittleEndianLongReader, 
             WkBitcoinNodeServices, 
             WkSzInputBytestreamBase<? extends WkSzInputBytestream>, 
             WkBitcoinNodeServicesSrlzStructNode, 

@@ -31,9 +31,9 @@ import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzInputNode;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzOutputNode;
-import weliyek.serialization.number.WkSignedLittleEndianLongSrlzStructNode;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianLongReader;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianLongWriter;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 
 public class WkBitcoinNodeServicesSrlzStructNode 
     implements WkSerdeDtreeAggregatorDefinition<WkBitcoinNodeServices>
@@ -67,19 +67,19 @@ public class WkBitcoinNodeServicesSrlzStructNode
   final WkSrlzStructSubcomponentFrameNodeCore<
                     Long, 
                     WkSettingsSrlzPacketOperationData, 
-                    WkSignedLittleEndianLongSrlzStructNode, 
-                    WkSignedLittleEndianLongSrlzInputNode, 
+                    WkSerdeSignedLittleEndianLong, 
+                    WkSerdeSignedLittleEndianLongReader, 
                     WkBitcoinNodeServices, 
                     WkSzInputBytestreamBase<? extends WkSzInputBytestream>, 
                     WkBitcoinNodeServicesSrlzStructNode, 
                     WkBitcoinNodeServicesSrlzInputNode, 
                     WkSettingsSrlzPacketOperationData, 
-                    WkSignedLittleEndianLongSrlzStructNode, 
-                    WkSignedLittleEndianLongSrlzOutputNode, 
+                    WkSerdeSignedLittleEndianLong, 
+                    WkSerdeSignedLittleEndianLongWriter, 
                     WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, 
                     WkBitcoinNodeServicesSrlzStructNode, 
                     WkBitcoinNodeServicesSrlzOutputNode, 
-                    WkSignedLittleEndianLongSrlzStructNode, 
+                    WkSerdeSignedLittleEndianLong, 
                     WkBitcoinNodeServicesSrlzStructNode> int64;
 
   public WkBitcoinNodeServicesSrlzStructNode(
@@ -102,7 +102,7 @@ public class WkBitcoinNodeServicesSrlzStructNode
             (oc) -> {},
             this,
             WkBitcoinNodeServices.class);
-    this.int64 = this.definitionCore.<Long, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzInputNode, WkSettingsSrlzPacketOperationData, WkSignedLittleEndianLongSrlzStructNode, WkSignedLittleEndianLongSrlzOutputNode, WkSignedLittleEndianLongSrlzStructNode>
+    this.int64 = this.definitionCore.<Long, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongReader, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongWriter, WkSerdeSignedLittleEndianLong>
     addSubcomponent(
         "LONG", 
         Optional.empty(), // rxEnablingTest 
@@ -113,7 +113,7 @@ public class WkBitcoinNodeServicesSrlzStructNode
         WkSettingsSrlzPacketOperationData::none,
         (k,ao,i) -> Long.valueOf(ao.serializable().toLong()), //disaggregator, 
         false, 
-        WkSignedLittleEndianLongSrlzStructNode::newCore);
+        WkSerdeSignedLittleEndianLong::newCore);
   }
 
   @Override

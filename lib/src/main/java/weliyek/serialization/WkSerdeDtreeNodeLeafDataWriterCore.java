@@ -35,7 +35,7 @@ public abstract class WkSerdeDtreeNodeLeafDataWriterCore<
     extends WkSerdeDtreeNodeDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
 {
 
-    protected WkSrlzEngineEncoder<T, ? super YQC, ? super YO> rule;
+    protected WkSerdeDtreeNodeDataWriterEncoderEngine<T, ? super YQC, ? super YO> rule;
 
     protected WkSerdeDtreeNodeLeafDataWriterCore(
             int index,

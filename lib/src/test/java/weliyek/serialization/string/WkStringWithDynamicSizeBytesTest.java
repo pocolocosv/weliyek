@@ -37,9 +37,9 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzInputNode;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzOutputNode;
-import weliyek.serialization.number.WkSignedBigEndianIntegerSrlzStructNode;
+import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
+import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
+import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkStringWithDynamicSizeBytesTest
@@ -53,30 +53,30 @@ public class WkStringWithDynamicSizeBytesTest
                           String,
                           WkSettingsSrlzPacketOperationData,
                           WkStringWithDynamicBytesSrlzStructNode<Integer,
-                                    WkSignedBigEndianIntegerSrlzStructNode,
-                                    WkSignedBigEndianIntegerSrlzInputNode,
+                                    WkSerdeSignedBigEndianInteger,
+                                    WkSerdeSignedBigEndianIntegerReader,
                                     ?, ?,
-                                    ? extends WkSignedBigEndianIntegerSrlzStructNode>,
-                          WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>,
+                                    ? extends WkSerdeSignedBigEndianInteger>,
+                          WkStringWithDynamicBytesSrlzInputNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
                           WkSzInputBytestreamBase<?>,
                           WkSettingsSrlzPacketOperationData,
                           WkStringWithDynamicBytesSrlzStructNode<
                                     Integer, ?, ?,
-                                    WkSignedBigEndianIntegerSrlzStructNode,
-                                    WkSignedBigEndianIntegerSrlzOutputNode,
-                                    ? extends WkSignedBigEndianIntegerSrlzStructNode>,
+                                    WkSerdeSignedBigEndianInteger,
+                                    WkSerdeSignedBigEndianIntegerWriter,
+                                    ? extends WkSerdeSignedBigEndianInteger>,
                           WkStringWithDynamicBytesSrlzOutputNode<
                                     Integer,
-                                    WkSignedBigEndianIntegerSrlzStructNode,
-                                    WkSignedBigEndianIntegerSrlzOutputNode>,
+                                    WkSerdeSignedBigEndianInteger,
+                                    WkSerdeSignedBigEndianIntegerWriter>,
                           WkSzOutputBytestreamBase<?>,
                           WkStringWithDynamicBytesSrlzStructNode<
                                     Integer,
-                                    WkSignedBigEndianIntegerSrlzStructNode,
-                                    WkSignedBigEndianIntegerSrlzInputNode,
-                                    WkSignedBigEndianIntegerSrlzStructNode,
-                                    WkSignedBigEndianIntegerSrlzOutputNode,
-                                    WkSignedBigEndianIntegerSrlzStructNode>>
+                                    WkSerdeSignedBigEndianInteger,
+                                    WkSerdeSignedBigEndianIntegerReader,
+                                    WkSerdeSignedBigEndianInteger,
+                                    WkSerdeSignedBigEndianIntegerWriter,
+                                    WkSerdeSignedBigEndianInteger>>
                               DYNAMIC_STR_STRUCT;
 
   static final String originalStr = "Test string";
@@ -86,11 +86,11 @@ public class WkStringWithDynamicSizeBytesTest
   public static void setUpBeforeClass() throws Exception {
     DYNAMIC_STR_STRUCT = WkStringWithDynamicBytesSrlzStructNode.<
                             Integer,
-                            WkSignedBigEndianIntegerSrlzStructNode,
-                            WkSignedBigEndianIntegerSrlzInputNode,
-                            WkSignedBigEndianIntegerSrlzStructNode,
-                            WkSignedBigEndianIntegerSrlzOutputNode,
-                            WkSignedBigEndianIntegerSrlzStructNode>newStruct(
+                            WkSerdeSignedBigEndianInteger,
+                            WkSerdeSignedBigEndianIntegerReader,
+                            WkSerdeSignedBigEndianInteger,
+                            WkSerdeSignedBigEndianIntegerWriter,
+                            WkSerdeSignedBigEndianInteger>newStruct(
                                 "DYNAMICSTR",
                                 "BYTES",
                                 "ARRAYSIZE",
@@ -99,7 +99,7 @@ public class WkStringWithDynamicSizeBytesTest
                                 1024,
                                 defaultCharset,
                                 Integer::valueOf,
-                                WkSignedBigEndianIntegerSrlzStructNode::newCore);
+                                WkSerdeSignedBigEndianInteger::newCore);
   }
 
   @AfterClass
@@ -119,8 +119,8 @@ public class WkStringWithDynamicSizeBytesTest
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
     WkSzOutputPacket<
                 String,
-                WkStringWithDynamicBytesSrlzStructNode<Integer, ?, ?, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode, ? extends WkSignedBigEndianIntegerSrlzStructNode>,
-                WkStringWithDynamicBytesSrlzOutputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzOutputNode>>
+                WkStringWithDynamicBytesSrlzStructNode<Integer, ?, ?, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ? extends WkSerdeSignedBigEndianInteger>,
+                WkStringWithDynamicBytesSrlzOutputNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>>
       dynstrWriting = DYNAMIC_STR_STRUCT.newOutputPacket(
                                               originalStr,
                                               WkSettingsSrlzPacketOperationData.EMPTY,
@@ -158,8 +158,8 @@ public class WkStringWithDynamicSizeBytesTest
 
     WkSzInputPacket<
           String,
-          WkStringWithDynamicBytesSrlzStructNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode,?,?,? extends WkSignedBigEndianIntegerSrlzStructNode>,
-          WkStringWithDynamicBytesSrlzInputNode<Integer, WkSignedBigEndianIntegerSrlzStructNode, WkSignedBigEndianIntegerSrlzInputNode>>
+          WkStringWithDynamicBytesSrlzStructNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader,?,?,? extends WkSerdeSignedBigEndianInteger>,
+          WkStringWithDynamicBytesSrlzInputNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>>
       dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
 
     while(dynstrReading.isInProgress()) {

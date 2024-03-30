@@ -17,7 +17,7 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSzOperationException;
+import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.util.array.WkSerdeDtreeGenericFixedSizePrimitiveArrayReader;
 import weliyek.util.array.WkSerdeDtreeGenericFixedSizePrimitiveArrayWriter;
@@ -42,7 +42,7 @@ public class WkPrimitiveArraySrlzUtils
     final int reqLen = serializingCore.serializable().getLength();
     final int expectedLen = serializingCore.getRequestedLength();
     if (reqLen != expectedLen) {
-      throw new WkSzOperationException(
+      throw new WkSerdeDtreeNodeDataOperationException(
                     serializingCore,
                     "Serializable array does NOT have required length");
     }
@@ -57,7 +57,7 @@ public class WkPrimitiveArraySrlzUtils
     final int minLen = deserializingCore.definition().minimalSize();
     final int maxLen = deserializingCore.definition().maximalSize();
     if ((reqLen < minLen) || (reqLen > maxLen)) {
-      throw new WkSzOperationException(
+      throw new WkSerdeDtreeNodeDataOperationException(
                     deserializingCore,
                     "Requested deserializing length is not in bounds");
     }
@@ -71,7 +71,7 @@ public class WkPrimitiveArraySrlzUtils
     final int minLen = serializingCore.definition().minimalSize();
     final int maxLen = serializingCore.definition().maximalSize();
     if ((reqLen < minLen) || (reqLen > maxLen)) {
-      throw new WkSzOperationException(
+      throw new WkSerdeDtreeNodeDataOperationException(
                     serializingCore,
                     "Requested serializing length is not in bounds");
     }

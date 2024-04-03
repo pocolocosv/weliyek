@@ -83,14 +83,14 @@ public class WkTstMultipleListSrlzOutputNode
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>
+  public Optional<WkSrlzOutputPacketFieldFrameNode<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>>
   size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  WkSrlzOutputPacketSubfieldFrameNode<WkSzTstMultipleLists, WkVariableSizeCollectionSrlzStructNode<WkSzTstMultipleLists, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, WkVariableSizeCollectionSrlzOutputNode<WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>
+  Optional<WkSrlzOutputPacketFieldFrameNode<WkSzTstMultipleLists, WkVariableSizeCollectionSrlzStructNode<WkSzTstMultipleLists, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, WkVariableSizeCollectionSrlzOutputNode<WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

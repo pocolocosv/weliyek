@@ -17,10 +17,12 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
+import java.util.Optional;
+
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.number.WkSerdeDtreeNumberOperation;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceOperation;
@@ -37,9 +39,9 @@ public interface WkDynamicCollectionSrlzPacketOperationFrameNode<
                         VO extends WkSerdeDtreeVariableSizeSequenceOperation<?,?,?,?,?>,
                         VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>,
                         VJ extends WkSerdeDtreeNodeDataComponentHandler<VK>>
-    extends WkSerdeDtreeDynamicCollection<ZJ, VJ>,
+    extends WkSerdeDtreeDynamicCollection<Optional<ZK>, Optional<VK>>,
             WkCollectionSrlzPacketOperationFrameNode<S, Q, R, D, K>,
-            WkSerdeDtreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
+            WkSerdeDtreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, VO, VK>
 {
 
 }

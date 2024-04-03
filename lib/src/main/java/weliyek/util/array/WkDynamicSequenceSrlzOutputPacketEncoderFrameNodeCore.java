@@ -17,20 +17,22 @@
  */
 package weliyek.util.array;
 
+import java.util.Optional;
+
 import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNodeCore;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
-import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
 
 public abstract class WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
                         T,
@@ -86,13 +88,13 @@ public abstract class WkDynamicSequenceSrlzOutputPacketEncoderFrameNodeCore<
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<ZT, ZYD, ZYO> size() {
-    return this.sizeWriteField.asSubfield();
+  public Optional<WkSrlzOutputPacketFieldFrameNode<ZT, ZYD, ZYO>> size() {
+    return this.sizeWriteField.field();
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<T, VYD, VYO> variableSequence() {
-    return this.varseqWriteField.asSubfield();
+  public Optional<WkSrlzOutputPacketFieldFrameNode<T, VYD, VYO>> variableSequence() {
+    return this.varseqWriteField.field();
   }
 
 }

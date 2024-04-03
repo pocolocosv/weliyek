@@ -105,13 +105,13 @@ public class WkDynamicCollectionSrlzInputNode<
   }
 
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<ZT, ZXD, ZXO> size() {
+  public Optional<WkSrlzInputPacketFieldFrameNode<ZT, ZXD, ZXO>> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  WkSrlzInputPacketSubfieldFrameNode<T, WkVariableSizeCollectionSrlzStructNode<T, VXS, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<T, VXS, ET, EXS, EXD, EXO>>
+  Optional<WkSrlzInputPacketFieldFrameNode<T, WkVariableSizeCollectionSrlzStructNode<T, VXS, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<T, VXS, ET, EXS, EXD, EXO>>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

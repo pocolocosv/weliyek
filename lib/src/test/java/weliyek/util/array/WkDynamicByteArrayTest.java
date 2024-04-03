@@ -194,7 +194,7 @@ public class WkDynamicByteArrayTest
     logger.info(DYNAMIC_BYTE_ARRAY.definition().size().field().definition() + " writing completed");
     assertEquals(DYNAMIC_BYTE_ARRAY.definition().size().field().definition(),
                  dynArrayWriting.previousProcessingSteapResult().get().definition());
-    assertEquals(VALID_ARRAY_WRAPPER.getLength(), dynArrayWriting.firstOperation().get().size().field().get().firstOperation().get().serializable().intValue());
+    assertEquals(VALID_ARRAY_WRAPPER.getLength(), dynArrayWriting.firstOperation().get().size().get().firstOperation().get().serializable().intValue());
     while(dynArrayWriting.isInProgress()) {
       dynArrayWriting.processBytestream();
       if (dynArrayWriting.previousProcessingSteapResult().isPresent()) break;
@@ -202,7 +202,7 @@ public class WkDynamicByteArrayTest
     logger.info(DYNAMIC_BYTE_ARRAY.definition().variableSequence().field().definition() + " writing completed");
     assertEquals(DYNAMIC_BYTE_ARRAY.definition().variableSequence().field().definition(),
                  dynArrayWriting.previousProcessingSteapResult().get().definition());
-    assertEquals(VALID_ARRAY_WRAPPER, dynArrayWriting.firstOperation().get().variableSequence().field().get().firstOperation().get().serializable());
+    assertEquals(VALID_ARRAY_WRAPPER, dynArrayWriting.firstOperation().get().variableSequence().get().firstOperation().get().serializable());
     WkSzInputPacket<WkByteArray, WkDynamicByteArraySrlzStructNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ? extends WkSerdeSignedBigEndianInteger>, WkDynamicByteArraySrlzInputNode<Integer, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger>>
       dynArrayReading = DYNAMIC_BYTE_ARRAY.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
     logger.info(DYNAMIC_BYTE_ARRAY.definition().size().field().definition() + " reading started");
@@ -215,7 +215,7 @@ public class WkDynamicByteArrayTest
                  dynArrayReading.previousProcessingSteapResult().get().definition());
     assertEquals(VALID_ARRAY_WRAPPER.getLength(),
                  dynArrayReading.firstOperation().get()
-                                .size().field().get()
+                                .size().get()
                                 .firstOperation().get()
                                 .result().get()
                                 .serializable().get().intValue());
@@ -229,7 +229,7 @@ public class WkDynamicByteArrayTest
                  dynArrayReading.previousProcessingSteapResult().get().definition());
     assertEquals(VALID_ARRAY_WRAPPER,
                  dynArrayReading.firstOperation().get()
-                                .variableSequence().field().get()
+                                .variableSequence().get()
                                 .firstOperation().get()
                                 .result().get().serializable().get());
     assertEquals(VALID_ARRAY_WRAPPER,

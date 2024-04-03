@@ -144,7 +144,7 @@ public final class WkDynamicPrimitiveArraySrlzStructDefinitionFrameNodeCore<
           sizeComponentDefinitionFactory,
           varseqComponentLabel,
           (i,xo) -> {
-            ZT sizeNumber = xo.size().field().get()
+            ZT sizeNumber = xo.size().get()
                                      .firstOperation().get()
                                      .result().get()
                                      .serializable().get();

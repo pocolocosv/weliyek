@@ -83,14 +83,14 @@ public class WkTstPrimitivesGroupListSrlzInputNode
 
     @Override
     public
-    WkSrlzInputPacketSubfieldFrameNode<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerReader>
+    Optional<WkSrlzInputPacketFieldFrameNode<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerReader>>
     size() {
       return this.readingCore.size();
     }
 
     @Override
     public
-    WkSrlzInputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader>>
+    Optional<WkSrlzInputPacketFieldFrameNode<WkSzTstPrimitivesGroupList, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader>>>
     variableSequence() {
       return this.readingCore.variableSequence();
     }

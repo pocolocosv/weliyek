@@ -134,13 +134,13 @@ public class WkDynamicByteArraySrlzOutputNode<
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<ZT, ZYD, ZYO> size() {
+  public Optional<WkSrlzOutputPacketFieldFrameNode<ZT, ZYD, ZYO>> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  WkSrlzOutputPacketSubfieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>
+  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

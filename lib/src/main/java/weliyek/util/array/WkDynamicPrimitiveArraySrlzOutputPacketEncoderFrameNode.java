@@ -21,9 +21,8 @@ import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 
 public interface WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         T extends WkPrimitiveArray<?,?>,
@@ -41,10 +40,8 @@ public interface WkDynamicPrimitiveArraySrlzOutputPacketEncoderFrameNode<
                         WkSrlzOutputPacketFieldFrameNode<T,D,?>,
                         ZYO,
                         WkSrlzOutputPacketFieldFrameNode<ZT,ZD,ZYO>,
-                        WkSrlzOutputPacketSubfieldFrameNode<ZT,ZD,ZYO>,
                         VYO,
-                        WkSrlzOutputPacketFieldFrameNode<T,VD,VYO>,
-                        WkSrlzOutputPacketSubfieldFrameNode<T,VD,VYO>>,
+                        WkSrlzOutputPacketFieldFrameNode<T,VD,VYO>>,
             WkSerdeDtreeDynamicSequenceWriter<T, YS, YQ, YR, D, ZT, ZYO, ZD, VYO, VD>
 {
 

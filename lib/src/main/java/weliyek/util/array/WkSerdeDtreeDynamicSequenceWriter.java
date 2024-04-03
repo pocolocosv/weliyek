@@ -17,17 +17,16 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceWriter;
-import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
 
 public interface WkSerdeDtreeDynamicSequenceWriter<
                         T,
@@ -45,10 +44,8 @@ public interface WkSerdeDtreeDynamicSequenceWriter<
                         WkSrlzOutputPacketFieldFrameNode<T,D,?>,
                         ZYO,
                         WkSrlzOutputPacketFieldFrameNode<ZY,ZD,ZYO>,
-                        WkSrlzOutputPacketSubfieldFrameNode<ZY,ZD,ZYO>,
                         VYO,
-                        WkSrlzOutputPacketFieldFrameNode<T,VD,VYO>,
-                        WkSrlzOutputPacketSubfieldFrameNode<T,VD,VYO>>,
+                        WkSrlzOutputPacketFieldFrameNode<T,VD,VYO>>,
             WkSerdeDtreeSequenceWriter<T, YS, YQ, YR, D>,
             WkSerdeDtreeAggregatorWriter<T, YS, YQ, YR, D>
 {

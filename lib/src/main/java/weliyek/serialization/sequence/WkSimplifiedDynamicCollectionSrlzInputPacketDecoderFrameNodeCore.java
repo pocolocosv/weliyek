@@ -92,7 +92,7 @@ public final class WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeC
 
   @Override
   protected T onFullReadingCompletion() {
-    return variableSequence().field().get()
+    return variableSequence().get()
                              .firstOperation().get()
                              .result().get()
                              .serializable().get();

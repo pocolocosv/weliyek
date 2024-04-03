@@ -113,7 +113,7 @@ public class WkTstMultipleListSrlzStructNode
                                   WkSerdeSignedBigEndianShort::newCore,
                                   "VARLIST", //collectionAndElementsFieldLabel,
                                   (i,axo) -> WkSzVariableLengthOperationSettings.withLength(
-                                                  axo.size().field().get()
+                                                  axo.size().get()
                                                   .firstOperation().get()
                                                   .result().get()
                                                   .serializable().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,

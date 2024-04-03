@@ -83,14 +83,14 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
 
     @Override
     public
-    WkSrlzOutputPacketSubfieldFrameNode<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerWriter>
+    Optional<WkSrlzOutputPacketFieldFrameNode<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerWriter>>
     size() {
       return this.writingCore.size();
     }
 
     @Override
     public
-    WkSrlzOutputPacketSubfieldFrameNode<WkSzTstPrimitivesGroupList, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, WkVariableSizeCollectionSrlzOutputNode<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>
+    Optional<WkSrlzOutputPacketFieldFrameNode<WkSzTstPrimitivesGroupList, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, WkVariableSizeCollectionSrlzOutputNode<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>>
     variableSequence() {
       return this.writingCore.variableSequence();
     }

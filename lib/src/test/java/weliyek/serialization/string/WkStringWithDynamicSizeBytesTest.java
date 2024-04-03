@@ -138,7 +138,7 @@ public class WkStringWithDynamicSizeBytesTest
                  dynstrWriting.firstOperation().get()
                               .bytes().field().get()
                               .firstOperation().get()
-                              .size().field().get()
+                              .size().get()
                               .firstOperation().get()
                               .serializable().intValue());
     while(dynstrWriting.isInProgress()) {
@@ -152,7 +152,7 @@ public class WkStringWithDynamicSizeBytesTest
     assertTrue(dynstrWriting.firstOperation().get()
                      .bytes().field().get()
                      .firstOperation().get()
-                     .variableSequence().field().get()
+                     .variableSequence().get()
                      .firstOperation().get()
                      .serializable().equalsToArray(expectedBytes));
 

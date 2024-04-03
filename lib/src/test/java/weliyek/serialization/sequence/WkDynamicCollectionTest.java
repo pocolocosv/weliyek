@@ -102,7 +102,7 @@ public class WkDynamicCollectionTest
                               Integer::valueOf,
                               WkSerdeSignedLittleEndianInteger::newCore,
                               "SHORT_LIST",
-                              (i,yo) -> WkSzVariableLengthOperationSettings.withLength(yo.size().field().get().firstOperation().get().result().get().serializable().get().intValue()),
+                              (i,yo) -> WkSzVariableLengthOperationSettings.withLength(yo.size().get().firstOperation().get().result().get().serializable().get().intValue()),
                               WkSettingsSrlzPacketOperationData::none,
                               "SHORT",
                               WkSerdeSignedBigEndianShort::newCore,

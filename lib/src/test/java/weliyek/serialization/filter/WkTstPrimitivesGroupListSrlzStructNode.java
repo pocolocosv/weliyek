@@ -87,7 +87,7 @@ public class WkTstPrimitivesGroupListSrlzStructNode
                                 Integer::valueOf, //sizeValueFactory,
                                 WkSerdeSignedLittleEndianInteger::newCore, //sizeDefinitionFactory,
                                 "VARLIST", //collectionAndElementsFieldLabel,
-                                (i,axo) -> WkSzVariableLengthOperationSettings.withLength(axo.size().field().get().firstOperation().get().result().get().serializable().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
+                                (i,axo) -> WkSzVariableLengthOperationSettings.withLength(axo.size().get().firstOperation().get().result().get().serializable().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
                                 WkSettingsSrlzPacketOperationData::none, //collectionAndElementsSerializerSettingsFactory,
                                 "PRIMIVITESGROUP", //elementFieldLabel,
                                 (pc) -> new WkSzTstPrimitivesGroupStructDefinition(pc).definitionCore,

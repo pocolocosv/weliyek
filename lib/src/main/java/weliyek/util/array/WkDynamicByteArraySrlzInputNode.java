@@ -140,20 +140,20 @@ public class WkDynamicByteArraySrlzInputNode<
   }
 
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<ZT, ZXD, ZXO> size() {
+  public Optional<WkSrlzInputPacketFieldFrameNode<ZT, ZXD, ZXO>> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  WkSrlzInputPacketSubfieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayReader>
+  Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayReader>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }
 
   @Override
   public int getRequestedLength() {
-    return size().field().get().firstOperation().get().result().get().serializable().get().intValue();
+    return size().get().firstOperation().get().result().get().serializable().get().intValue();
   }
 
 }

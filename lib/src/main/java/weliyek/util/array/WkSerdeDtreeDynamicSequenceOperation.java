@@ -17,12 +17,13 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorOperation;
+import java.util.Optional;
+
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeAggregatorOperation;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.number.WkSerdeDtreeNumberOperation;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceOperation;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceOperation;
@@ -35,11 +36,9 @@ public interface WkSerdeDtreeDynamicSequenceOperation<
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
                         ZO extends WkSerdeDtreeNumberOperation<?,?,?,?,?>,
                         ZK extends WkSerdeDtreeNodeDataComponent<?,ZO,?>,
-                        ZJ extends WkSerdeDtreeNodeDataComponentHandler<ZK>,
                         VO extends WkSerdeDtreeVariableSizeSequenceOperation<?,?,?,?,?>,
-                        VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>,
-                        VJ extends WkSerdeDtreeNodeDataComponentHandler<VK>>
-    extends WkSerdeDtreeDynamicSequence<ZJ, VJ>,
+                        VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>>
+    extends WkSerdeDtreeDynamicSequence<Optional<ZK>, Optional<VK>>,
             WkSerdeDtreeSequenceOperation<S, Q, R, D, K>,
             WkSerdeDtreeAggregatorOperation<S, Q, R, D, K>
 {

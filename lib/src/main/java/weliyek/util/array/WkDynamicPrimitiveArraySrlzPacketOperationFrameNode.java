@@ -17,11 +17,12 @@
  */
 package weliyek.util.array;
 
+import java.util.Optional;
+
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.number.WkSerdeDtreeNumberOperation;
 
 public interface WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
@@ -32,12 +33,10 @@ public interface WkDynamicPrimitiveArraySrlzPacketOperationFrameNode<
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
                         ZO extends WkSerdeDtreeNumberOperation<?,?,?,?,?>,
                         ZK extends WkSerdeDtreeNodeDataComponent<?,ZO,?>,
-                        ZJ extends WkSerdeDtreeNodeDataComponentHandler<ZK>,
                         VO extends WkSerdeDtreeGenericVariableSizePrimitiveArrayOperation<?,?,?,?,?>,
-                        VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>,
-                        VJ extends WkSerdeDtreeNodeDataComponentHandler<VK>>
-    extends WkSerdeDtreeDynamicPrimitiveArray<ZJ, VJ>,
-            WkSerdeDtreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, ZJ, VO, VK, VJ>
+                        VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>>
+    extends WkSerdeDtreeDynamicPrimitiveArray<Optional<ZK>, Optional<VK>>,
+            WkSerdeDtreeDynamicSequenceOperation<S, Q, R, D, K, ZO, ZK, VO, VK>
 {
 
 }

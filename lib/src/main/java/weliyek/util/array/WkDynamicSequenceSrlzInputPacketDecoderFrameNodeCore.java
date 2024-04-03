@@ -17,21 +17,23 @@
  */
 package weliyek.util.array;
 
+import java.util.Optional;
+
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
-import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
 
 public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
                         T,
@@ -86,15 +88,15 @@ public abstract class WkDynamicSequenceSrlzInputPacketDecoderFrameNodeCore<
   @Override
   protected void onAggregatorReadingInitialization() {
   }
-
+  
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<ZT, ZXD, ZXO> size() {
-    return this.sizeReadFieldHandler.asSubfield();
+  public Optional<WkSrlzInputPacketFieldFrameNode<ZT, ZXD, ZXO>> size() {
+    return this.sizeReadFieldHandler.field();
   }
-
+  
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<T, VXD, VXO> variableSequence() {
-    return this.varseqReadFieldHandler.asSubfield();
+  public Optional<WkSrlzInputPacketFieldFrameNode<T, VXD, VXO>> variableSequence() {
+    return this.varseqReadFieldHandler.field();
   }
 
 }

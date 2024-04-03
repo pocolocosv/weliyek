@@ -17,17 +17,16 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorReader;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeAggregatorReader;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceReader;
-import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
+import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
 
 public interface WkSerdeDtreeDynamicSequenceReader<
                         T,
@@ -45,10 +44,8 @@ public interface WkSerdeDtreeDynamicSequenceReader<
                         WkSrlzInputPacketFieldFrameNode<T,D,?>,
                         ZXO,
                         WkSrlzInputPacketFieldFrameNode<ZX,ZXD,ZXO>,
-                        WkSrlzInputPacketSubfieldFrameNode<ZX,ZXD,ZXO>,
                         VXO,
-                        WkSrlzInputPacketFieldFrameNode<T,VXD,VXO>,
-                        WkSrlzInputPacketSubfieldFrameNode<T,VXD,VXO>>,
+                        WkSrlzInputPacketFieldFrameNode<T,VXD,VXO>>,
             WkSerdeDtreeSequenceReader<T, XS, XQ, XR, D>,
             WkSerdeDtreeAggregatorReader<T, XS, XQ, XR, D>
 {

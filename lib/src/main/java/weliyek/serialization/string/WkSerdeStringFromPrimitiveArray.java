@@ -17,16 +17,12 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorDefinition;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
+import weliyek.serialization.WkSerdeDtreeAggregator;
 
-public interface WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<
-                        XO extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<?,?,?,?,?,?,?>,
-                        YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<?,?,?,?,?,?,?>,
-                        SD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<?>>
-        extends WkStringFromPrimitiveArraySrlzFrameNode<WkSerdeDtreeNodeStructComponentHandler<XO, YO, SD>>,
-                WkSerdeDtreeAggregatorDefinition<String>
+public interface WkSerdeStringFromPrimitiveArray<S>
+    extends WkSerdeDtreeAggregator
 {
+
+  S primitiveArray();
 
 }

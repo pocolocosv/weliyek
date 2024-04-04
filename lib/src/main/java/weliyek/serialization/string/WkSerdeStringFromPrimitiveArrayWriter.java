@@ -19,29 +19,27 @@ package weliyek.serialization.string;
 
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
-import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
+import weliyek.util.array.WkPrimitiveArray;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
 
-public interface WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
+public interface WkSerdeStringFromPrimitiveArrayWriter<
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         YR extends WkResultSrlzPacketOperationData<String>,
-                        YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,?,? extends SD>,
-                        SD extends WkSerdeDtreeByteArrayDefinition,
-                        SYO extends WkSerdeDtreeByteArrayWriter<?,?,?,SD>>
-    extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<
-                        YS, YQ, YR, YD,
-                        WkByteArray, SD, SYO>,
-            WkStringFromBytesSrlzPacketOperationFrameNode<
+                        YD extends WkSerdeStringFromPrimitiveArrayDefinition<?,?,?>,
+                        SY extends WkPrimitiveArray<?, ?>,
+                        SYD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SY>,
+                        SYO extends WkSerdeDtreeGenericPrimitiveArrayWriter<SY,?,?,?,SYD>>
+        extends WkSerdeStringFromPrimitiveArrayOperation<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<String,YD,?>,
                         SYO,
-                        WkSrlzOutputPacketFieldFrameNode<WkByteArray,SD,SYO>,
-                        WkSrlzOutputPacketSubfieldFrameNode<WkByteArray,SD,SYO>>
+                        WkSrlzOutputPacketFieldFrameNode<SY,SYD,SYO>>,
+                WkSerdeDtreeAggregatorWriter<String, YS, YQ, YR, YD>
 {
 
 }

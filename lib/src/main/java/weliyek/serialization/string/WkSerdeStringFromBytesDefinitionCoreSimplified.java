@@ -45,25 +45,25 @@ import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
-public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
+public class WkSerdeStringFromBytesDefinitionCoreSimplified<
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
+                        XO extends WkSerdeStringFromBytesReader<
                                         XS,
                                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                         WkResultSrlzPacketOperationData<String>,
                                         XD,
                                         SXD,
                                         SXO>,
-                        XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
+                        XD extends WkSerdeStringFromBytesDefinition<XO,?,? extends SXD>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
+                        YO extends WkSerdeStringFromBytesWriter<
                                         YS,
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkResultSrlzPacketOperationData<String>,
                                         YD,
                                         SYD,
                                         SYO>,
-                        YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
+                        YD extends WkSerdeStringFromBytesDefinition<?,YO,? extends SYD>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSerdeDtreeByteArrayDefinition,
@@ -71,8 +71,8 @@ public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreeByteArrayDefinition,
                         SD extends WkSerdeDtreeByteArrayDefinition,
-                        D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>>
-    extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
+                        D extends WkSerdeStringFromBytesDefinition<XO,YO,SD>>
+    extends WkSerdeStringFromBytesDefinitionCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
@@ -99,18 +99,18 @@ public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
                         SYO, SYD,
                         SD,
                         D,
-                        WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>>
+                        WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>>
 {
 
-  protected WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore(
+  protected WkSerdeStringFromBytesDefinitionCoreSimplified(
     Charset defaultCharset,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     WkSzPacketReaderOperationCoreFactory<
-      String,XS,XD,WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
+      String,XS,XD,WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       XO,WkSzInputBytestreamBase<?>>
         readingOpFactory,
     WkSzPacketWriterOperationCoreFactory<
-      String,YS,YD,WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
+      String,YS,YD,WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       YO,WkSzOutputBytestreamBase<?>>
         writingOpFactory,
     String bytesLabel,
@@ -145,7 +145,7 @@ public class WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
   }
 
   @Override
-  protected WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>
+  protected WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>
   getThis() {
     return this;
   }

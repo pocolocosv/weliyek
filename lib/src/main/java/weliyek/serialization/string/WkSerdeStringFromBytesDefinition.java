@@ -17,12 +17,20 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSerdeDtreeAggregator;
+import java.nio.charset.Charset;
 
-public interface WkStringFromPrimitiveArraySrlzFrameNode<S>
-    extends WkSerdeDtreeAggregator
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
+import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
+
+public interface WkSerdeStringFromBytesDefinition<
+                        XO extends WkSerdeStringFromBytesReader<?,?,?,?,?,?>,
+                        YO extends WkSerdeStringFromBytesWriter<?,?,?,?,?,?>,
+                        SD extends WkSerdeDtreeByteArrayDefinition>
+    extends WkSerdeStringFromPrimitiveArrayDefinition<XO, YO, SD>,
+            WkSerdeStringFromBytes<WkSerdeDtreeNodeStructComponentHandler<XO, YO, SD>>
 {
 
-  S primitiveArray();
+  @Override
+  Charset charset();
 
 }

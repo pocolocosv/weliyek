@@ -27,18 +27,18 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
-public class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
+public class WkSerdeStringFromBytesWriterCoreSimplified<
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
+                        YO extends WkSerdeStringFromBytesWriter<
                                       YS,
                                       WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                       WkResultSrlzPacketOperationData<String>,
                                       YD,SYD,SYO>,
-                        YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
+                        YD extends WkSerdeStringFromBytesDefinition<?,YO,? extends SYD>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreeByteArrayDefinition>
-    extends WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
+    extends WkSerdeStringFromBytesWriterCore<
                         YS,
                         WkSzOutputBytestream,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
@@ -49,20 +49,20 @@ public class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
                           WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
                         WkResultSrlzPacketOperationData<String>,
                         YO,
-                        WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<YS,YO,YD,SYS,SYO,SYD>,
+                        WkSerdeStringFromBytesWriterCoreSimplified<YS,YO,YD,SYS,SYO,SYD>,
                         YD,
                         WkSzOutputBytestreamBase<?>,
                         SYS, SYO, SYD,
-                        WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?>>
+                        WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?>>
 {
 
-  public WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore(
+  public WkSerdeStringFromBytesWriterCoreSimplified(
     int index,
     String serializable,
     YS settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<String,?,YD,?,?,?> packetHandlerCore,
-    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
+    WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
     YO operationBody) {
     super(
         index,
@@ -88,7 +88,7 @@ public class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
   */
 
   @Override
-  protected WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<YS,YO,YD,SYS,SYO,SYD> getThis() {
+  protected WkSerdeStringFromBytesWriterCoreSimplified<YS,YO,YD,SYS,SYO,SYD> getThis() {
     return this;
   }
 

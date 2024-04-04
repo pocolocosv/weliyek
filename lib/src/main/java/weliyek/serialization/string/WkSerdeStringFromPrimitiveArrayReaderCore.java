@@ -17,44 +17,46 @@
  */
 package weliyek.serialization.string;
 
+import java.util.Optional;
+
 import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReader;
 import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReader;
 
-public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
+public abstract class WkSerdeStringFromPrimitiveArrayReaderCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
                         XR extends WkResultSrlzPacketOperationData<String>,
-                        XO extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS,XQ,XR,XD,SX,SXD,SXO>,
-                        XOC extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SX,SXS,SXO,SXD,DC>,
-                        XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
+                        XO extends WkSerdeStringFromPrimitiveArrayReader<XS,XQ,XR,XD,SX,SXD,SXO>,
+                        XOC extends WkSerdeStringFromPrimitiveArrayReaderCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SX,SXS,SXO,SXD,DC>,
+                        XD extends WkSerdeStringFromPrimitiveArrayDefinition<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         SX extends WkPrimitiveArray<?,?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkSerdeDtreeGenericPrimitiveArrayReader<SX,SXS,?,?,SXD>,
                         SXD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SX>,
-                        DC extends WkSzStringFromPrimitiveDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
+                        DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
        extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
-       implements WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS, XQ, XR, XD, SX, SXD, SXO>
+       implements WkSerdeStringFromPrimitiveArrayReader<XS, XQ, XR, XD, SX, SXD, SXO>
 {
 
   private WkSrlzInputPacketSubfieldFrameNodeCore<SX,SXS,SXD,SXO,String,XBC,XD,XO>
                     primitiveArraySubfieldpacket;
 
-  protected WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeCore(
+  protected WkSerdeStringFromPrimitiveArrayReaderCore(
     int index,
     XS settings,
     AXB parentBytestream,
@@ -88,10 +90,10 @@ public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeC
   */
 
   protected SX getPrimitiveArray() {
-    if ( ! WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode.isPrimitiveArrayReady(body())) {
+    if ( ! WkSerdeStringFromPrimitiveArrayReader.isPrimitiveArrayReady(body())) {
       throw new IllegalArgumentException();
     }
-    return primitiveArray().field().get().firstOperation().get()
+    return primitiveArray().get().firstOperation().get()
                            .result().get().serializable().get();
   }
 
@@ -104,8 +106,8 @@ public abstract class WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeC
   protected abstract void onStringFromPrimitiveReadingInitialization();
 
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<SX, SXD, SXO> primitiveArray() {
-    return this.primitiveArraySubfieldpacket;
+  public Optional<WkSrlzInputPacketFieldFrameNode<SX, SXD, SXO>> primitiveArray() {
+    return this.primitiveArraySubfieldpacket.field();
   }
 
 }

@@ -40,10 +40,10 @@ import weliyek.serialization.number.WkSerdeSignedBigEndianShortReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
 import weliyek.serialization.number.WkSerdeSignedByteReader;
 import weliyek.serialization.number.WkSerdeSignedByte;
-import weliyek.serialization.string.WkStringWithDynamicBytesSrlzInputNode;
-import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
-import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzInputNode;
-import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
+import weliyek.serialization.string.WkSerdeStringDynamicBytesReader;
+import weliyek.serialization.string.WkSerdeStringDynamicBytes;
+import weliyek.serialization.string.WkSerdeStringFixedLengthBytesReader;
+import weliyek.serialization.string.WkSerdeStringFixedLengthBytes;
 
 public class WkSzTstPrimitivesGroupPacketReader
         implements WkSerdeDtreeAggregatorReader<
@@ -93,16 +93,16 @@ public class WkSzTstPrimitivesGroupPacketReader
                                          WkSzTstPrimitivesGroupPacketReader> longReadingSubfield;
   final WkSrlzInputPacketSubfieldFrameNodeCore<String,
                                          WkSettingsSrlzPacketOperationData,
-                                         WkStringWithFixedLengthBytesSrlzStructNode,
-                                         WkStringWithFixedLengthBytesSrlzInputNode,
+                                         WkSerdeStringFixedLengthBytes,
+                                         WkSerdeStringFixedLengthBytesReader,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,
                                          WkSzTstPrimitivesGroupPacketReader> fixedStrReadingSubfield;
   final WkSrlzInputPacketSubfieldFrameNodeCore<String,
                                          WkSettingsSrlzPacketOperationData,
-                                         WkStringWithDynamicBytesSrlzStructNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ? extends WkSerdeSignedBigEndianInteger>,
-                                         WkStringWithDynamicBytesSrlzInputNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
+                                         WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ? extends WkSerdeSignedBigEndianInteger>,
+                                         WkSerdeStringDynamicBytesReader<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
                                          WkSzTstPrimitivesGroup,
                                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
                                          WkSzTstPrimitivesGroupStructDefinition,

@@ -40,10 +40,10 @@ import weliyek.serialization.number.WkSerdeSignedBigEndianShortWriter;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
 import weliyek.serialization.number.WkSerdeSignedByteWriter;
 import weliyek.serialization.number.WkSerdeSignedByte;
-import weliyek.serialization.string.WkStringWithDynamicBytesSrlzOutputNode;
-import weliyek.serialization.string.WkStringWithDynamicBytesSrlzStructNode;
-import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzOutputNode;
-import weliyek.serialization.string.WkStringWithFixedLengthBytesSrlzStructNode;
+import weliyek.serialization.string.WkSerdeStringDynamicBytesWriter;
+import weliyek.serialization.string.WkSerdeStringDynamicBytes;
+import weliyek.serialization.string.WkSerdeStringFixedLengthBytesWriter;
+import weliyek.serialization.string.WkSerdeStringFixedLengthBytes;
 
 public class WkSzTstPrimitivesGroupPacketWriter
         implements WkSerdeDtreeAggregatorWriter<
@@ -98,8 +98,8 @@ public class WkSzTstPrimitivesGroupPacketWriter
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         String,
                         WkSettingsSrlzPacketOperationData,
-                        WkStringWithFixedLengthBytesSrlzStructNode,
-                        WkStringWithFixedLengthBytesSrlzOutputNode,
+                        WkSerdeStringFixedLengthBytes,
+                        WkSerdeStringFixedLengthBytesWriter,
                         WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WkSzTstPrimitivesGroupStructDefinition,
@@ -107,8 +107,8 @@ public class WkSzTstPrimitivesGroupPacketWriter
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         String,
                         WkSettingsSrlzPacketOperationData,
-                        WkStringWithDynamicBytesSrlzStructNode<Integer, ?, ?, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ? extends WkSerdeSignedBigEndianInteger>,
-                        WkStringWithDynamicBytesSrlzOutputNode<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
+                        WkSerdeStringDynamicBytes<Integer, ?, ?, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ? extends WkSerdeSignedBigEndianInteger>,
+                        WkSerdeStringDynamicBytesWriter<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
                         WkSzTstPrimitivesGroup,
                         WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
                         WkSzTstPrimitivesGroupStructDefinition,

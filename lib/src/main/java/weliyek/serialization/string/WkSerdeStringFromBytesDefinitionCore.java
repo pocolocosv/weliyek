@@ -47,22 +47,22 @@ import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
-public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
+public abstract class WkSerdeStringFromBytesDefinitionCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
                         XR extends WkResultSrlzPacketOperationData<String>,
-                        XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,SXD,SXO>,
-                        XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
+                        XO extends WkSerdeStringFromBytesReader<XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,SXD,SXO>,
+                        XD extends WkSerdeStringFromBytesDefinition<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
                         YR extends WkResultSrlzPacketOperationData<String>,
-                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,SYD,SYO>,
-                        YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
+                        YO extends WkSerdeStringFromBytesWriter<YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,SYD,SYO>,
+                        YD extends WkSerdeStringFromBytesDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
@@ -71,18 +71,18 @@ public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
                         SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreeByteArrayDefinition,
                         SD extends WkSerdeDtreeByteArrayDefinition,
-                        D extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,YO,SD>,
-                        DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
+                        D extends WkSerdeStringFromBytesDefinition<XO,YO,SD>,
+                        DC extends WkSerdeStringFromBytesDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       SXS,SXO,SXD,SYS,SYO,SYD,SD,D,?>>
-    extends WkSzStringFromPrimitiveDefinitionCore<XS, XB, XBC, XQC, XR, XO, XD, AXB, YS, YB, YBC, YQC, YR, YO, YD, AYB, WkByteArray, SXS, SXO, SXD, SYS, SYO, SYD, SD, D, DC>
-    implements WkStringFromBytesSrlzStructDefinitionFrameNode<XO, YO, SD>
+    extends WkSerdeStringFromPrimitiveArrayDefinitionCore<XS, XB, XBC, XQC, XR, XO, XD, AXB, YS, YB, YBC, YQC, YR, YO, YD, AYB, WkByteArray, SXS, SXO, SXD, SYS, SYO, SYD, SD, D, DC>
+    implements WkSerdeStringFromBytesDefinition<XO, YO, SD>
 {
 
   private final Charset defaultCharset;
 
-  protected WkStringFromBytesSrlzStructDefinitionFrameNodeCore(
+  protected WkSerdeStringFromBytesDefinitionCore(
     Charset defaultCharset,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
@@ -123,7 +123,7 @@ public abstract class WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
   }
 
   public abstract static class ByteArrayFromStringDisaggregator<
-                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<?,?,?,?,SD,?>,
+                        YO extends WkSerdeStringFromBytesWriter<?,?,?,?,SD,?>,
                         SD extends WkSerdeDtreeByteArrayDefinition>
       extends PrimitiveArrayDisaggregatorFromString<
                         YO,

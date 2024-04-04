@@ -27,18 +27,18 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
-public class WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
+public class WkSerdeStringFromBytesReaderCoreSimplified<
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<
+                        XO extends WkSerdeStringFromBytesReader<
                                       XS,
                                       WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                       WkResultSrlzPacketOperationData<String>,
                                       XD,SXD,SXO>,
-                        XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
+                        XD extends WkSerdeStringFromBytesDefinition<XO,?,? extends SXD>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSerdeDtreeByteArrayDefinition>
-    extends WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
+    extends WkSerdeStringFromBytesReaderCore<
                         XS,
                         WkSzInputBytestream,
                         WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
@@ -49,18 +49,18 @@ public class WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
                           WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
                         WkResultSrlzPacketOperationData<String>,
                         XO,
-                        WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<XS,XO,XD,SXS,SXO,SXD>,
+                        WkSerdeStringFromBytesReaderCoreSimplified<XS,XO,XD,SXS,SXO,SXD>,
                         XD,
                         WkSzInputBytestreamBase<?>, SXS, SXO, SXD,
-                        WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?>>
+                        WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?>>
 {
 
-  public WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore(
+  public WkSerdeStringFromBytesReaderCoreSimplified(
     int index,
     XS settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<String,?,XD,?,?,?> packetfieldCore,
-    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
+    WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
     XO operationBody) {
     super(
         index,
@@ -82,7 +82,7 @@ public class WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<
   }
 
   @Override
-  protected WkStringFromBytesSrlzInputPacketDecoderFrameNodeSimplifiedCore<XS,XO,XD,SXS,SXO,SXD> getThis() {
+  protected WkSerdeStringFromBytesReaderCoreSimplified<XS,XO,XD,SXS,SXO,SXD> getThis() {
     return this;
   }
 

@@ -17,43 +17,45 @@
  */
 package weliyek.serialization.string;
 
+import java.util.Optional;
+
 import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNodeCore;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
 import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
 
-public abstract class WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
+public abstract class WkSerdeStringFromPrimitiveArrayWriterCore<
                         YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
                         YR extends WkResultSrlzPacketOperationData<String>,
-                        YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<YS,YQ,YR,YD,SY,SYD,SYO>,
-                        YOC extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SY,SYS,SYO,SYD,DC>,
-                        YD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
+                        YO extends WkSerdeStringFromPrimitiveArrayWriter<YS,YQ,YR,YD,SY,SYD,SYO>,
+                        YOC extends WkSerdeStringFromPrimitiveArrayWriterCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SY,SYS,SYO,SYD,DC>,
+                        YD extends WkSerdeStringFromPrimitiveArrayDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SY extends WkPrimitiveArray<?,?>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkSerdeDtreeGenericPrimitiveArrayWriter<SY,SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SY>,
-                        DC extends WkSzStringFromPrimitiveDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
+                        DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
         extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>
-        implements WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<YS, YQ, YR, YD, SY, SYD, SYO>
+        implements WkSerdeStringFromPrimitiveArrayWriter<YS, YQ, YR, YD, SY, SYD, SYO>
 {
 
   protected WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,String,YBC,YD,YO> primitiveArraySubfieldpacket;
 
-  protected WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore(
+  protected WkSerdeStringFromPrimitiveArrayWriterCore(
     int index,
     String serializable,
     YS settings,
@@ -73,8 +75,8 @@ public abstract class WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode
   protected abstract void onStringFromPrimitiveWritingInitialization();
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<SY,SYD,SYO> primitiveArray() {
-    return primitiveArraySubfieldpacket.asSubfield();
+  public Optional<WkSrlzOutputPacketFieldFrameNode<SY, SYD, SYO>> primitiveArray() {
+    return primitiveArraySubfieldpacket.field();
   }
 
 }

@@ -21,25 +21,23 @@ import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 
-public interface WkStringFromBytesSrlzInputPacketDecoderFrameNode<
+public interface WkSerdeStringFromBytesReader<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
                         XR extends WkResultSrlzPacketOperationData<String>,
-                        XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,?,? extends SXD>,
+                        XD extends WkSerdeStringFromBytesDefinition<?,?,? extends SXD>,
                         SXD extends WkSerdeDtreeByteArrayDefinition,
                         SXO extends WkSerdeDtreeByteArrayReader<?,?,?,SXD>>
-    extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS, XQ, XR, XD, WkByteArray, SXD, SXO>,
-            WkStringFromBytesSrlzPacketOperationFrameNode<
+    extends WkSerdeStringFromPrimitiveArrayReader<XS, XQ, XR, XD, WkByteArray, SXD, SXO>,
+            WkSerdeStringFromBytesOperation<
                         XS, XQ, XR, XD,
                         WkSrlzInputPacketFieldFrameNode<String,XD,?>,
                         SXO,
-                        WkSrlzInputPacketFieldFrameNode<WkByteArray,SXD,SXO>,
-                        WkSrlzInputPacketSubfieldFrameNode<WkByteArray,SXD,SXO>>
+                        WkSrlzInputPacketFieldFrameNode<WkByteArray,SXD,SXO>>
 {
 
 }

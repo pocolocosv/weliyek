@@ -48,22 +48,22 @@ import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReader;
 import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
 import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
 
-public abstract class WkSzStringFromPrimitiveDefinitionCore<
+public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
                         XR extends WkResultSrlzPacketOperationData<String>,
-                        XO extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNode<XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,ST,SXD,SXO>,
-                        XD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
+                        XO extends WkSerdeStringFromPrimitiveArrayReader<XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,ST,SXD,SXO>,
+                        XD extends WkSerdeStringFromPrimitiveArrayDefinition<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
                         YR extends WkResultSrlzPacketOperationData<String>,
-                        YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,ST,SYD,SYO>,
-                        YD extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
+                        YO extends WkSerdeStringFromPrimitiveArrayWriter<YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,ST,SYD,SYO>,
+                        YD extends WkSerdeStringFromPrimitiveArrayDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ST extends WkPrimitiveArray<?,?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
@@ -73,13 +73,13 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
                         SYO extends WkSerdeDtreeGenericPrimitiveArrayWriter<ST,SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<ST>,
                         SD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<ST>,
-                        D extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO,YO,SD>,
-                        DC extends WkSzStringFromPrimitiveDefinitionCore<
+                        D extends WkSerdeStringFromPrimitiveArrayDefinition<XO,YO,SD>,
+                        DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       ST,SXS,SXO,SXD,SYS,SYO,SYD,SD,D,?>>
     extends WkSerdeDtreeAggregatorDefinitionCore<String, XS, XB, XBC, XQC, XR, XD, XO, AXB, YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO, YO, SD>
+    implements WkSerdeStringFromPrimitiveArrayDefinition<XO, YO, SD>
 {
 
   final WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,String,XBC,XD,XO,SYS,SYD,SYO,YBC,YD,YO,SD,D>
@@ -87,7 +87,7 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
 
   final Function<XO, String> primitiveArrayDeserializingStringAggregator;
 
-  protected WkSzStringFromPrimitiveDefinitionCore(
+  protected WkSerdeStringFromPrimitiveArrayDefinitionCore(
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,String,XR> rxResultFactory,
@@ -130,7 +130,7 @@ public abstract class WkSzStringFromPrimitiveDefinitionCore<
   }
 
   public abstract static class PrimitiveArrayDisaggregatorFromString<
-                          YO extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNode<?,?,?,?,ST,SD,?>,
+                          YO extends WkSerdeStringFromPrimitiveArrayWriter<?,?,?,?,ST,SD,?>,
                           ST extends WkPrimitiveArray<?,?>,
                           SD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<ST>,
                           WA>

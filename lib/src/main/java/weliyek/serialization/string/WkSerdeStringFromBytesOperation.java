@@ -17,25 +17,25 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorOperation;
+import java.util.Optional;
+
 import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayOperation;
+import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.util.array.WkSerdeDtreeByteArrayOperation;
 
-public interface WkStringFromPrimitiveArraySrlzPacketOperationFrameNode<
+public interface WkSerdeStringFromBytesOperation<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
-                        D extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<?,?,?>,
+                        D extends WkSerdeStringFromBytesDefinition<?,?,?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
-                        SO extends WkSerdeDtreeGenericPrimitiveArrayOperation<?,?,?,?,?>,
-                        SK extends WkSerdeDtreeNodeDataComponent<?,SO,?>,
-                        SJ extends WkSerdeDtreeNodeDataComponentHandler<SK>>
-        extends WkStringFromPrimitiveArraySrlzFrameNode<SJ>,
-                WkSerdeDtreeAggregatorOperation<S, Q, R, D, K>
+                        SO extends WkSerdeDtreeByteArrayOperation<?, ?, ?, ?, ?>,
+                        SK extends WkSerdeDtreeNodeDataComponent<?,SO,?>>
+    extends WkSerdeStringFromPrimitiveArrayOperation<
+                        S, Q, R, D, K, SO, SK>,
+            WkSerdeStringFromBytes<Optional<SK>>
 {
 
 }

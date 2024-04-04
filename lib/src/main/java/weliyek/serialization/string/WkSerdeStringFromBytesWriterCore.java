@@ -18,43 +18,44 @@
 package weliyek.serialization.string;
 
 import java.nio.charset.Charset;
+import java.util.Optional;
 
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 
-public abstract class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
+public abstract class WkSerdeStringFromBytesWriterCore<
                         YS extends WkSettingsSrlzPacketOperationData,
                         YB extends WkSzOutputBytestream,
                         YBC extends WkSzOutputBytestreamBase<? extends YB>,
                         YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
                         YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
                         YR extends WkResultSrlzPacketOperationData<String>,
-                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<YS,YQ,YR,YD,SYD,SYO>,
-                        YOC extends WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SYS,SYO,SYD,DC>,
-                        YD extends WkStringFromBytesSrlzStructDefinitionFrameNode<?,YO,? extends SYD>,
+                        YO extends WkSerdeStringFromBytesWriter<YS,YQ,YR,YD,SYD,SYO>,
+                        YOC extends WkSerdeStringFromBytesWriterCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SYS,SYO,SYD,DC>,
+                        YD extends WkSerdeStringFromBytesDefinition<?,YO,? extends SYD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SYS extends WkSettingsSrlzPacketOperationData,
                         SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreeByteArrayDefinition,
-                        DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
+                        DC extends WkSerdeStringFromBytesDefinitionCore<
                                       ?,?,?,?,?,?,?,?,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       ?,?,?,SYS,SYO,SYD,?,?,DC>>
-    extends WkStringFromPrimitiveArraySrlzOutputPacketEncoderFrameNodeCore<
+    extends WkSerdeStringFromPrimitiveArrayWriterCore<
                         YS,YB,YBC,YQ,YQC,YR,YO,YOC,YD,AYB,WkByteArray,SYS,SYO,SYD,DC>
-    implements WkStringFromBytesSrlzOutputPacketEncoderFrameNode<YS, YQ, YR, YD, SYD, SYO>
+    implements WkSerdeStringFromBytesWriter<YS, YQ, YR, YD, SYD, SYO>
 {
 
-  protected WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore(
+  protected WkSerdeStringFromBytesWriterCore(
     int index,
     String serializable,
     YS settings,
@@ -73,7 +74,7 @@ public abstract class WkStringFromBytesSrlzOutputPacketEncoderFrameNodeCore<
   }
 
   @Override
-  public final WkSrlzOutputPacketSubfieldFrameNode<WkByteArray, SYD, SYO> bytes() {
+  public final Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, SYD, SYO>> bytes() {
     return primitiveArray();
   }
 

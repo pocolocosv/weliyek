@@ -37,29 +37,29 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-public class WkStringWithFixedBytesTest
+public class WkSerdeStringFixedLengthBytesTest
 {
 
-    private static final Logger logger = LoggerFactory.getLogger(WkStringWithFixedBytesTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(WkSerdeStringFixedLengthBytesTest.class);
 
     private int numBytesToReadWrite;
 
     private WkSrlzStruct<
                         String,
                         WkSettingsSrlzPacketOperationData,
-                        WkStringWithFixedLengthBytesSrlzStructNode,
-                        WkStringWithFixedLengthBytesSrlzInputNode,
+                        WkSerdeStringFixedLengthBytes,
+                        WkSerdeStringFixedLengthBytesReader,
                         WkSzInputBytestreamBase<?>,
                         WkSettingsSrlzPacketOperationData,
-                        WkStringWithFixedLengthBytesSrlzStructNode,
-                        WkStringWithFixedLengthBytesSrlzOutputNode,
+                        WkSerdeStringFixedLengthBytes,
+                        WkSerdeStringFixedLengthBytesWriter,
                         WkSzOutputBytestreamBase<?>,
-                        WkStringWithFixedLengthBytesSrlzStructNode> stringWithFixedSizeBytes;
+                        WkSerdeStringFixedLengthBytes> stringWithFixedSizeBytes;
 
     @Before
     public void setUp() throws Exception {
         numBytesToReadWrite = 10;
-        stringWithFixedSizeBytes = WkStringWithFixedLengthBytesSrlzStructNode
+        stringWithFixedSizeBytes = WkSerdeStringFixedLengthBytes
                                 .newStruct(
                                     "FIXED_LEN_STRING_" + numBytesToReadWrite,
                                     "BYTES",
@@ -75,7 +75,7 @@ public class WkStringWithFixedBytesTest
 
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-        WkSzOutputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzOutputNode>
+        WkSzOutputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesWriter>
           stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(shortStr, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
         logger.info(stringWithFixedSizeSerializing.name() + " created");
 
@@ -89,7 +89,7 @@ public class WkStringWithFixedBytesTest
 
         assertTrue(outputstream.equals(expectedByteArray));
 
-        WkSzInputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzInputNode>
+        WkSzInputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesReader>
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 
@@ -112,7 +112,7 @@ public class WkStringWithFixedBytesTest
 
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-        WkSzOutputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzOutputNode>
+        WkSzOutputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesWriter>
         stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(longStr, WkSettingsSrlzPacketOperationData.EMPTY, outputstream);
 
         logger.info(stringWithFixedSizeSerializing.name() + " created");
@@ -127,7 +127,7 @@ public class WkStringWithFixedBytesTest
 
         assertTrue(outputstream.equals(expectedByteArray));
 
-        WkSzInputPacket<String, WkStringWithFixedLengthBytesSrlzStructNode, WkStringWithFixedLengthBytesSrlzInputNode>
+        WkSzInputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesReader>
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 

@@ -19,18 +19,12 @@ package weliyek.serialization.string;
 
 import java.nio.charset.Charset;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
-
-public interface WkStringFromBytesSrlzStructDefinitionFrameNode<
-                        XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<?,?,?,?,?,?>,
-                        YO extends WkStringFromBytesSrlzOutputPacketEncoderFrameNode<?,?,?,?,?,?>,
-                        SD extends WkSerdeDtreeByteArrayDefinition>
-    extends WkStringFromPrimitiveArraySrlzStructDefinitionFrameNode<XO, YO, SD>,
-            WkSzStringFromBytesSrlzFrameNode<WkSerdeDtreeNodeStructComponentHandler<XO, YO, SD>>
+public interface WkSerdeStringFromBytes<S>
+    extends WkSerdeStringFromPrimitiveArray<S>
 {
 
-  @Override
+  S bytes();
+
   Charset charset();
 
 }

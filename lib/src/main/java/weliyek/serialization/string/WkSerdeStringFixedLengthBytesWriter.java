@@ -33,39 +33,39 @@ import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
 
-public class WkStringWithFixedLengthBytesSrlzOutputNode
-    implements WkStringFromBytesSrlzOutputPacketEncoderFrameNode<
+public class WkSerdeStringFixedLengthBytesWriter
+    implements WkSerdeStringFromBytesWriter<
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                         WkResultSrlzPacketOperationData<String>,
-                        WkStringWithFixedLengthBytesSrlzStructNode,
+                        WkSerdeStringFixedLengthBytes,
                         WkSerdeDtreeFixedSizeByteArray,
                         WkSerdeDtreeFixedSizeByteArrayWriter>
 {
 
-  final WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<
+  final WkSerdeStringFromBytesWriterCoreSimplified<
                         WkSettingsSrlzPacketOperationData,
-                        WkStringWithFixedLengthBytesSrlzOutputNode,
-                        WkStringWithFixedLengthBytesSrlzStructNode,
+                        WkSerdeStringFixedLengthBytesWriter,
+                        WkSerdeStringFixedLengthBytes,
                         WkSettingsSrlzPacketOperationData,
                         WkSerdeDtreeFixedSizeByteArrayWriter,
                         WkSerdeDtreeFixedSizeByteArray> operationCore;
 
-  WkStringWithFixedLengthBytesSrlzOutputNode(
+  WkSerdeStringFixedLengthBytesWriter(
     int index,
     String serializable,
     WkSettingsSrlzPacketOperationData settings,
     WkSzOutputBytestreamBase<?> parentBytestream,
     WkSrlzOutputPacketFieldFrameNodeCore<
-      String,?,WkStringWithFixedLengthBytesSrlzStructNode,?,?,?> serializingfieldCore,
-    WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
-      ?,?,?,WkSettingsSrlzPacketOperationData,WkStringWithFixedLengthBytesSrlzOutputNode,
-      WkStringWithFixedLengthBytesSrlzStructNode,?,?,?,WkSettingsSrlzPacketOperationData,
+      String,?,WkSerdeStringFixedLengthBytes,?,?,?> serializingfieldCore,
+    WkSerdeStringFromBytesDefinitionCoreSimplified<
+      ?,?,?,WkSettingsSrlzPacketOperationData,WkSerdeStringFixedLengthBytesWriter,
+      WkSerdeStringFixedLengthBytes,?,?,?,WkSettingsSrlzPacketOperationData,
       WkSerdeDtreeFixedSizeByteArrayWriter,WkSerdeDtreeFixedSizeByteArray,?,
-      ? extends WkStringWithFixedLengthBytesSrlzStructNode> definitionCore) {
-    this.operationCore = new WkStringFromBytesSrlzOutputPacketEncoderFrameNodeSimplifiedCore<WkSettingsSrlzPacketOperationData,
-        WkStringWithFixedLengthBytesSrlzOutputNode,
-        WkStringWithFixedLengthBytesSrlzStructNode,
+      ? extends WkSerdeStringFixedLengthBytes> definitionCore) {
+    this.operationCore = new WkSerdeStringFromBytesWriterCoreSimplified<WkSettingsSrlzPacketOperationData,
+        WkSerdeStringFixedLengthBytesWriter,
+        WkSerdeStringFixedLengthBytes,
         WkSettingsSrlzPacketOperationData,
         WkSerdeDtreeFixedSizeByteArrayWriter,
         WkSerdeDtreeFixedSizeByteArray>(
@@ -80,13 +80,13 @@ public class WkStringWithFixedLengthBytesSrlzOutputNode
 
   @Override
   public
-  WkSrlzOutputPacketSubfieldFrameNode<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>
+  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
 
   @Override
-  public WkStringWithFixedLengthBytesSrlzStructNode definition() {
+  public WkSerdeStringFixedLengthBytes definition() {
     return this.operationCore.definition();
   }
 
@@ -111,7 +111,7 @@ public class WkStringWithFixedLengthBytesSrlzOutputNode
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<String, WkStringWithFixedLengthBytesSrlzStructNode, ?> packetField() {
+  public WkSrlzOutputPacketFieldFrameNode<String, WkSerdeStringFixedLengthBytes, ?> packetField() {
     return this.operationCore.packetField();
   }
 
@@ -132,7 +132,7 @@ public class WkStringWithFixedLengthBytesSrlzOutputNode
 
   @Override
   public
-  WkSrlzOutputPacketSubfieldFrameNode<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>
+  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>
   bytes() {
     return this.operationCore.bytes();
   }

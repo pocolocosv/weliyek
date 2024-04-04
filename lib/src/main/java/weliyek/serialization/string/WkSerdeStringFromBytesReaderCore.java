@@ -18,44 +18,45 @@
 package weliyek.serialization.string;
 
 import java.nio.charset.Charset;
+import java.util.Optional;
 
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 
-public abstract class WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
+public abstract class WkSerdeStringFromBytesReaderCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XB extends WkSzInputBytestream,
                         XBC extends WkSzInputBytestreamBase<? extends XB>,
                         XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
                         XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
                         XR extends WkResultSrlzPacketOperationData<String>,
-                        XO extends WkStringFromBytesSrlzInputPacketDecoderFrameNode<XS,XQ,XR,XD,SXD,SXO>,
-                        XOC extends WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
-                        XD extends WkStringFromBytesSrlzStructDefinitionFrameNode<XO,?,? extends SXD>,
+                        XO extends WkSerdeStringFromBytesReader<XS,XQ,XR,XD,SXD,SXO>,
+                        XOC extends WkSerdeStringFromBytesReaderCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
+                        XD extends WkSerdeStringFromBytesDefinition<XO,?,? extends SXD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
                         SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSerdeDtreeByteArrayDefinition,
-                        DC extends WkStringFromBytesSrlzStructDefinitionFrameNodeCore<
+                        DC extends WkSerdeStringFromBytesDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       ?,?,?,?,?,?,?,?,
                                       SXS,SXO,SXD,?,?,?,?,?,DC>>
-    extends WkStringFromPrimitiveArraySrlzInputPacketDecoderFrameNodeCore<
+    extends WkSerdeStringFromPrimitiveArrayReaderCore<
                         XS, XB, XBC, XQ, XQC, XR, XO, XOC, XD, AXB,
                         WkByteArray, SXS, SXO, SXD, DC>
-    implements WkStringFromBytesSrlzInputPacketDecoderFrameNode<XS, XQ, XR, XD, SXD, SXO>
+    implements WkSerdeStringFromBytesReader<XS, XQ, XR, XD, SXD, SXO>
 {
 
-  protected WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore(
+  protected WkSerdeStringFromBytesReaderCore(
     int index,
     XS settings,
     AXB parentBytestream,
@@ -72,7 +73,7 @@ public abstract class WkStringFromBytesSrlzInputPacketDecoderFrameNodeCore<
   }
 
   @Override
-  public final WkSrlzInputPacketSubfieldFrameNode<WkByteArray, SXD, SXO> bytes() {
+  public final Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, SXD, SXO>> bytes() {
     return this.primitiveArray();
   }
 

@@ -34,31 +34,31 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzOptionalLengthOperationSettings;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
-import weliyek.serialization.string.WkStringFromBytesSrlzStructDefinitionFrameNodeCore.ByteArrayFromStringDisaggregator;
+import weliyek.serialization.string.WkSerdeStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArray;
 
-public class WkStringWithVariableBytesSrlzStructNode
-    implements WkStringFromBytesSrlzStructDefinitionFrameNode<
-                        WkStringWithVariableBytesSrlzInputNode,
-                        WkStringWithVariableBytesSrlzOutputNode,
+public class WkSerdeStringVariableBytes
+    implements WkSerdeStringFromBytesDefinition<
+                        WkSerdeStringVariableBytesReader,
+                        WkSerdeStringVariableBytesWriter,
                         WkSerdeDtreeVariableSizeByteArray>
 {
 
   public static WkSrlzStruct<
                       String,
                       WkSzVariableLengthOperationSettings,
-                      WkStringWithVariableBytesSrlzStructNode,
-                      WkStringWithVariableBytesSrlzInputNode,
+                      WkSerdeStringVariableBytes,
+                      WkSerdeStringVariableBytesReader,
                       WkSzInputBytestreamBase<?>,
                       WkSzOptionalLengthOperationSettings,
-                      WkStringWithVariableBytesSrlzStructNode,
-                      WkStringWithVariableBytesSrlzOutputNode,
+                      WkSerdeStringVariableBytes,
+                      WkSerdeStringVariableBytesWriter,
                       WkSzOutputBytestreamBase<?>,
-                      WkStringWithVariableBytesSrlzStructNode>
+                      WkSerdeStringVariableBytes>
   newStruct(
     String label,
     String bytesLabel,
@@ -67,7 +67,7 @@ public class WkStringWithVariableBytesSrlzStructNode
     Charset defaultCharset) {
     return new WkSrlzStructComponentFrameNodeRootCore<>(
                       label,
-                      (pc) -> WkStringWithVariableBytesSrlzStructNode.newCore(
+                      (pc) -> WkSerdeStringVariableBytes.newCore(
                                     bytesLabel, minimalLength, maximalLength, defaultCharset, pc),
                       WkSzCountingInputBytestream::new,
                       WkSzCountingOutputBytestream::new);
@@ -76,30 +76,30 @@ public class WkStringWithVariableBytesSrlzStructNode
   public static WkSerdeDtreeNodeStructDefinitionCore<
                       String,
                       WkSzVariableLengthOperationSettings,?,?,
-                      WkStringWithVariableBytesSrlzStructNode,
-                      WkStringWithVariableBytesSrlzInputNode,
+                      WkSerdeStringVariableBytes,
+                      WkSerdeStringVariableBytesReader,
                       WkSzInputBytestreamBase<?>,
                       WkSzOptionalLengthOperationSettings,?,?,
-                      WkStringWithVariableBytesSrlzStructNode,
-                      WkStringWithVariableBytesSrlzOutputNode,
+                      WkSerdeStringVariableBytes,
+                      WkSerdeStringVariableBytesWriter,
                       WkSzOutputBytestreamBase<?>,
-                      WkStringWithVariableBytesSrlzStructNode,?>
+                      WkSerdeStringVariableBytes,?>
   newCore(
     String bytesLabel,
     int minSize,
     int maxSize,
     Charset defaultCharset,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
-    return new WkStringWithVariableBytesSrlzStructNode(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
+    return new WkSerdeStringVariableBytes(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
   }
 
-  private final WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<
+  private final WkSerdeStringFromBytesDefinitionCoreSimplified<
                         WkSzVariableLengthOperationSettings,
-                        WkStringWithVariableBytesSrlzInputNode,
-                        WkStringWithVariableBytesSrlzStructNode,
+                        WkSerdeStringVariableBytesReader,
+                        WkSerdeStringVariableBytes,
                         WkSzOptionalLengthOperationSettings,
-                        WkStringWithVariableBytesSrlzOutputNode,
-                        WkStringWithVariableBytesSrlzStructNode,
+                        WkSerdeStringVariableBytesWriter,
+                        WkSerdeStringVariableBytes,
                         WkSzVariableLengthOperationSettings,
                         WkSerdeDtreeVariableSizeByteArrayReader,
                         WkSerdeDtreeVariableSizeByteArray,
@@ -107,32 +107,32 @@ public class WkStringWithVariableBytesSrlzStructNode
                         WkSerdeDtreeVariableSizeByteArrayWriter,
                         WkSerdeDtreeVariableSizeByteArray,
                         WkSerdeDtreeVariableSizeByteArray,
-                        WkStringWithVariableBytesSrlzStructNode> definitionCore;
+                        WkSerdeStringVariableBytes> definitionCore;
 
-  WkStringWithVariableBytesSrlzStructNode(
+  WkSerdeStringVariableBytes(
     String bytesLabel,
     int minSize,
     int maxSize,
     Charset defaultCharset,
     WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
-    this.definitionCore = new WkStringFromBytesSrlzStructDefinitionFrameNodeSimplifiedCore<>(
+    this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                     defaultCharset,
                                     componentCore,
-                                    (i,xs,axb,xpc,dc) -> new WkStringWithVariableBytesSrlzInputNode(i,xs,axb,xpc,dc).operationCore,
-                                    (i,y,ys,ayb,ypc,dc) -> new WkStringWithVariableBytesSrlzOutputNode(i,y,ys,ayb,ypc,dc).operationCore,
+                                    (i,xs,axb,xpc,dc) -> new WkSerdeStringVariableBytesReader(i,xs,axb,xpc,dc).operationCore,
+                                    (i,y,ys,ayb,ypc,dc) -> new WkSerdeStringVariableBytesWriter(i,y,ys,ayb,ypc,dc).operationCore,
                                     bytesLabel,
                                     WkOperationSettingsFactory.parentSettingsReuser(), // reusing deserializing settings
-                                    WkStringWithVariableBytesSrlzStructNode::aggragateByteArray,
+                                    WkSerdeStringVariableBytes::aggragateByteArray,
                                     WkSettingsSrlzPacketOperationData::none,
                                     new VariableLengthBytesDissagregatorFromString(),
                                     (pc) -> WkSerdeDtreeVariableSizeByteArray.newCore(minSize, maxSize, pc),
                                     this);
   }
 
-  private static String aggragateByteArray(WkStringWithVariableBytesSrlzInputNode deserializingStringOp) {
+  private static String aggragateByteArray(WkSerdeStringVariableBytesReader deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
-    WkByteArray wrapper = deserializingStringOp.bytes().field().get().firstOperation().get().result().get().serializable().get();
+    WkByteArray wrapper = deserializingStringOp.bytes().get().firstOperation().get().result().get().serializable().get();
     wrapper.iterateAsIntsBackwardsWhileTrue(zeroPaddingCounter);
     int zeroPaddingLen = zeroPaddingCounter.count();
     int strBytesLen = wrapper.getLength() - zeroPaddingLen;
@@ -141,13 +141,13 @@ public class WkStringWithVariableBytesSrlzStructNode
 
   public static class VariableLengthBytesDissagregatorFromString
       extends ByteArrayFromStringDisaggregator<
-                        WkStringWithVariableBytesSrlzOutputNode,
+                        WkSerdeStringVariableBytesWriter,
                         WkSerdeDtreeVariableSizeByteArray>
   {
 
     @Override
     protected Optional<Integer> requestedPrimitiveArrayLength(
-      WkStringWithVariableBytesSrlzOutputNode stringSerializingOperation) {
+      WkSerdeStringVariableBytesWriter stringSerializingOperation) {
       return stringSerializingOperation.settings().getOptionalLength();
     }
 
@@ -160,7 +160,7 @@ public class WkStringWithVariableBytesSrlzStructNode
 
   @Override
   public
-  WkSerdeDtreeNodeStructComponentHandler<WkStringWithVariableBytesSrlzInputNode, WkStringWithVariableBytesSrlzOutputNode, WkSerdeDtreeVariableSizeByteArray>
+  WkSerdeDtreeNodeStructComponentHandler<WkSerdeStringVariableBytesReader, WkSerdeStringVariableBytesWriter, WkSerdeDtreeVariableSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
@@ -182,7 +182,7 @@ public class WkStringWithVariableBytesSrlzStructNode
 
   @Override
   public
-  WkSerdeDtreeNodeStructComponentHandler<WkStringWithVariableBytesSrlzInputNode, WkStringWithVariableBytesSrlzOutputNode, WkSerdeDtreeVariableSizeByteArray>
+  WkSerdeDtreeNodeStructComponentHandler<WkSerdeStringVariableBytesReader, WkSerdeStringVariableBytesWriter, WkSerdeDtreeVariableSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

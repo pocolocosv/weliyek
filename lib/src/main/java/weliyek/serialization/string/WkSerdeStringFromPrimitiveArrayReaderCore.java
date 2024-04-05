@@ -19,7 +19,7 @@ package weliyek.serialization.string;
 
 import java.util.Optional;
 
-import weliyek.serialization.WkAggregatorSrlzInputPacketDecoderFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorReaderCore;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
@@ -30,8 +30,8 @@ import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzInputBytestream;
 import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReader;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
 
 public abstract class WkSerdeStringFromPrimitiveArrayReaderCore<
                         XS extends WkSettingsSrlzPacketOperationData,
@@ -46,10 +46,10 @@ public abstract class WkSerdeStringFromPrimitiveArrayReaderCore<
                         AXB extends WkSzInputBytestreamBase<?>,
                         SX extends WkPrimitiveArray<?,?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXO extends WkSerdeDtreeGenericPrimitiveArrayReader<SX,SXS,?,?,SXD>,
-                        SXD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SX>,
+                        SXO extends WkSerdeDtreePrimitiveArrayReader<SX,SXS,?,?,SXD>,
+                        SXD extends WkSerdeDtreePrimitiveArrayDefinition<SX>,
                         DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
-       extends WkAggregatorSrlzInputPacketDecoderFrameNodeCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
+       extends WkSerdeDtreeAggregatorReaderCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
        implements WkSerdeStringFromPrimitiveArrayReader<XS, XQ, XR, XD, SX, SXD, SXO>
 {
 

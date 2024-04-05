@@ -29,7 +29,7 @@ public abstract class WkSerdeDtreePrimitiveArrayWriterEncoderEngineBasic<
 
   protected WkSerdeDtreePrimitiveArrayWriterEncoderEngineBasic(
     WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeGenericPrimitiveArrayWriter<? extends Y,?,?,?,?> writingOperation,
+    WkSerdeDtreePrimitiveArrayWriter<? extends Y,?,?,?,?> writingOperation,
     int primitiveByteLength) {
     super(runtimeControl, writingOperation, primitiveByteLength);
   }

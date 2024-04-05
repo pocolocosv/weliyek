@@ -32,8 +32,8 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkDynamicByteArraySrlzInputNode;
-import weliyek.util.array.WkDynamicByteArraySrlzStructNode;
+import weliyek.util.array.WkSerdeDynamicByteArrayReader;
+import weliyek.util.array.WkSerdeDynamicByteArray;
 
 public class WkSerdeStringDynamicBytesReader<
                         ZT extends Number,
@@ -44,8 +44,8 @@ public class WkSerdeStringDynamicBytesReader<
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkResultSrlzPacketOperationData<String>,
                         WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>>
+                        WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
+                        WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>>
 {
 
   final WkSerdeStringFromBytesReaderCoreSimplified<
@@ -53,8 +53,8 @@ public class WkSerdeStringDynamicBytesReader<
                         WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
                         WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         WkSettingsSrlzPacketOperationData,
-                        WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
-                        WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>>
+                        WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
+                        WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>
                             operationCore;
 
   WkSerdeStringDynamicBytesReader(
@@ -66,15 +66,15 @@ public class WkSerdeStringDynamicBytesReader<
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       WkSettingsSrlzPacketOperationData,WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
       WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?,
-      WkSettingsSrlzPacketOperationData,WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
-      WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?,?,?> definitionCore) {
+      WkSettingsSrlzPacketOperationData,WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
+      WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?,?,?> definitionCore) {
     this.operationCore = new WkSerdeStringFromBytesReaderCoreSimplified<
         WkSettingsSrlzPacketOperationData,
         WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
         WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
         WkSettingsSrlzPacketOperationData,
-        WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
-        WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>>(
+        WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
+        WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>(
                                       index,
                                       settings,
                                       parentBytestream,
@@ -85,7 +85,7 @@ public class WkSerdeStringDynamicBytesReader<
 
   @Override
   public
-  Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, WkDynamicByteArraySrlzStructNode<ZT, ZXD, ZXO, ?, ?, ? extends ZXD>, WkDynamicByteArraySrlzInputNode<ZT, ZXO, ZXD>>>
+  Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, WkSerdeDynamicByteArray<ZT, ZXD, ZXO, ?, ?, ? extends ZXD>, WkSerdeDynamicByteArrayReader<ZT, ZXO, ZXD>>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -134,7 +134,7 @@ public class WkSerdeStringDynamicBytesReader<
 
   @Override
   public
-  Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, WkDynamicByteArraySrlzStructNode<ZT, ZXD, ZXO, ?, ?, ? extends ZXD>, WkDynamicByteArraySrlzInputNode<ZT, ZXO, ZXD>>>
+  Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, WkSerdeDynamicByteArray<ZT, ZXD, ZXO, ?, ?, ? extends ZXD>, WkSerdeDynamicByteArrayReader<ZT, ZXO, ZXD>>>
   bytes() {
     return this.operationCore.bytes();
   }

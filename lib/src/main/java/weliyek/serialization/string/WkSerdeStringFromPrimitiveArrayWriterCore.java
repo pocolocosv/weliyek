@@ -19,7 +19,7 @@ package weliyek.serialization.string;
 
 import java.util.Optional;
 
-import weliyek.serialization.WkAggregatorSrlzOutputPacketEncoderFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorWriterCore;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
 import weliyek.serialization.WkResultSrlzPacketOperationData;
@@ -30,8 +30,8 @@ import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
 
 public abstract class WkSerdeStringFromPrimitiveArrayWriterCore<
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -46,10 +46,10 @@ public abstract class WkSerdeStringFromPrimitiveArrayWriterCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         SY extends WkPrimitiveArray<?,?>,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYO extends WkSerdeDtreeGenericPrimitiveArrayWriter<SY,SYS,?,?,SYD>,
-                        SYD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SY>,
+                        SYO extends WkSerdeDtreePrimitiveArrayWriter<SY,SYS,?,?,SYD>,
+                        SYD extends WkSerdeDtreePrimitiveArrayDefinition<SY>,
                         DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
-        extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>
+        extends WkSerdeDtreeAggregatorWriterCore<String, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYB, DC>
         implements WkSerdeStringFromPrimitiveArrayWriter<YS, YQ, YR, YD, SY, SYD, SYO>
 {
 

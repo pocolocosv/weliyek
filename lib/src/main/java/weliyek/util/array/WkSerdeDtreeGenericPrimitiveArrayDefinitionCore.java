@@ -41,19 +41,19 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<
                         XS extends WkSettingsSrlzPacketOperationData,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         XR extends WkResultSrlzPacketOperationData<T>,
-                        XD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<T>,
-                        XO extends WkSerdeDtreeGenericPrimitiveArrayReader<T,XS,?,XR,XD>,
+                        XD extends WkSerdeDtreePrimitiveArrayDefinition<T>,
+                        XO extends WkSerdeDtreePrimitiveArrayReader<T,XS,?,XR,XD>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         YS extends WkSettingsSrlzPacketOperationData,
                         YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
                         YR extends WkResultSrlzPacketOperationData<T>,
-                        YD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<T>,
-                        YO extends WkSerdeDtreeGenericPrimitiveArrayWriter<T,YS,?,YR,YD>,
+                        YD extends WkSerdeDtreePrimitiveArrayDefinition<T>,
+                        YO extends WkSerdeDtreePrimitiveArrayWriter<T,YS,?,YR,YD>,
                         AYB extends WkSzOutputBytestreamBase<?>,
-                        D extends WkSerdeDtreeGenericPrimitiveArrayDefinition<T>,
+                        D extends WkSerdeDtreePrimitiveArrayDefinition<T>,
                         DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSerdeDtreeNodeLeafStructDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkSerdeDtreeGenericPrimitiveArrayDefinition<T>
+    implements WkSerdeDtreePrimitiveArrayDefinition<T>
 {
 
   final ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator;

@@ -34,7 +34,7 @@ import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
 
 public class WkSerdeDtreeFixedSizeByteArray
     implements WkSerdeDtreeByteArrayDefinition,
-               WkSerdeDtreeGenericFixedSizePrimitiveArrayDefinition<
+               WkSerdeDtreeFixedSizePrimitiveArrayDefinition<
                         WkByteArray>
 {
 

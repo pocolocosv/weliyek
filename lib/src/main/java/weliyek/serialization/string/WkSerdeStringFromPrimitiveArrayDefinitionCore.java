@@ -44,9 +44,9 @@ import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReader;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 
 public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
                         XS extends WkSettingsSrlzPacketOperationData,
@@ -67,12 +67,12 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
                         AYB extends WkSzOutputBytestreamBase<?>,
                         ST extends WkPrimitiveArray<?,?>,
                         SXS extends WkSettingsSrlzPacketOperationData,
-                        SXO extends WkSerdeDtreeGenericPrimitiveArrayReader<ST,SXS,?,?,SXD>,
-                        SXD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<ST>,
+                        SXO extends WkSerdeDtreePrimitiveArrayReader<ST,SXS,?,?,SXD>,
+                        SXD extends WkSerdeDtreePrimitiveArrayDefinition<ST>,
                         SYS extends WkSettingsSrlzPacketOperationData,
-                        SYO extends WkSerdeDtreeGenericPrimitiveArrayWriter<ST,SYS,?,?,SYD>,
-                        SYD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<ST>,
-                        SD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<ST>,
+                        SYO extends WkSerdeDtreePrimitiveArrayWriter<ST,SYS,?,?,SYD>,
+                        SYD extends WkSerdeDtreePrimitiveArrayDefinition<ST>,
+                        SD extends WkSerdeDtreePrimitiveArrayDefinition<ST>,
                         D extends WkSerdeStringFromPrimitiveArrayDefinition<XO,YO,SD>,
                         DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
@@ -132,7 +132,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
   public abstract static class PrimitiveArrayDisaggregatorFromString<
                           YO extends WkSerdeStringFromPrimitiveArrayWriter<?,?,?,?,ST,SD,?>,
                           ST extends WkPrimitiveArray<?,?>,
-                          SD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<ST>,
+                          SD extends WkSerdeDtreePrimitiveArrayDefinition<ST>,
                           WA>
       implements WkSzPacketWriteDisaggregator<ST, SD, String, YO>
   {

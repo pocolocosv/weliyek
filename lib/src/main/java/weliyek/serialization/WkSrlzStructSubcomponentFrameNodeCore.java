@@ -114,7 +114,7 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
   @SuppressWarnings("unchecked")
   public WkSrlzOutputPacketSubfieldFrameNodeCore<ST,SYS,SYD,SYO,T,YBC,YD,YO>
   newWritingSubfieldHandlerCore(
-    WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?> writingParentOp) {
+    WkSerdeDtreeAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?> writingParentOp) {
     WkSrlzOutputPacketSubfieldFrameNodeCore<ST,SYS,SYD,SYO,T,YBC,YD,YO>
       writingSubfieldHandler = new WkSrlzOutputPacketSubfieldFrameNodeCore<ST,SYS,SYD,SYO,T,YBC,YD,YO>();
     writingSubfieldHandler.initiliaze(
@@ -126,7 +126,7 @@ public class WkSrlzStructSubcomponentFrameNodeCore<
   @SuppressWarnings("unchecked")
   public WkSrlzInputPacketSubfieldFrameNodeCore<ST,SXS,SXD,SXO,T,XBC,XD,XO>
   newReadingSubfieldHandlerCore(
-    WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?> readingParentOp) {
+    WkSerdeDtreeAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?> readingParentOp) {
     WkSrlzInputPacketSubfieldFrameNodeCore<ST,SXS,SXD,SXO,T,XBC,XD,XO> readingSubfieldHandler = new WkSrlzInputPacketSubfieldFrameNodeCore<>();
     readingSubfieldHandler.initiliaze(
         (WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,?,XBC,XD,XO,?,?,?,?,?,?,? extends SXD, ? extends XD>) this, readingParentOp);

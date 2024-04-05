@@ -25,9 +25,9 @@ public interface WkSerdeDtreePrimitiveArrayOperationIO<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<?>,
-                        D extends WkSerdeDtreeGenericPrimitiveArrayDefinition<?>,
+                        D extends WkSerdeDtreePrimitiveArrayDefinition<?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
-    extends WkSerdeDtreeGenericPrimitiveArrayOperation<S, Q, R, D, K>
+    extends WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D, K>
 {
 
   int getRequestedLength();

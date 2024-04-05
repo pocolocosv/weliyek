@@ -22,7 +22,7 @@ import java.io.IOException;
 import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriterEncoderEngineBasic;
 import weliyek.util.array.WkLongArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
 
 public abstract class WkSerdeDtreeLongArrayWriterEncoderEngine
     extends WkSerdeDtreePrimitiveArrayWriterEncoderEngineBasic<WkLongArray, long[]>
@@ -30,7 +30,7 @@ public abstract class WkSerdeDtreeLongArrayWriterEncoderEngine
 
   protected WkSerdeDtreeLongArrayWriterEncoderEngine(
     WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeGenericPrimitiveArrayWriter<? extends WkLongArray,?,?,?,?> writingOperation) {
+    WkSerdeDtreePrimitiveArrayWriter<? extends WkLongArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, Long.BYTES);
   }
 

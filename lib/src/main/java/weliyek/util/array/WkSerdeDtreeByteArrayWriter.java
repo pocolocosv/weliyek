@@ -27,7 +27,7 @@ public interface WkSerdeDtreeByteArrayWriter<
                         Q extends WkEncodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<WkByteArray>,
                         D extends WkSerdeDtreeByteArrayDefinition>
-    extends WkSerdeDtreeGenericPrimitiveArrayWriter<
+    extends WkSerdeDtreePrimitiveArrayWriter<
                         WkByteArray, S, Q, R, D>,
             WkSerdeDtreeByteArrayOperation<
                         S, Q, R, D,

@@ -120,7 +120,7 @@ public Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> previousProcessingStea
   }
 
   @Override
-  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,WkSerdeDtreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
+  protected WkSerdeDtreeAggregatorReaderCore<?,?,?,AXBC,?,?,?,?,WkSerdeDtreeAggregatorReader<?,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,?>,?,?,?>
   parentOperationCore() {
     return null;
   }

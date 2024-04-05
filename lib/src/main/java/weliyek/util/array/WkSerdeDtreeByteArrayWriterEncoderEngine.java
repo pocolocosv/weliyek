@@ -32,7 +32,7 @@ public final class WkSerdeDtreeByteArrayWriterEncoderEngine
 
   private WkSerdeDtreeByteArrayWriterEncoderEngine(
     WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeGenericPrimitiveArrayWriter<? extends WkByteArray,?,?,?,?> writingOperation) {
+    WkSerdeDtreePrimitiveArrayWriter<? extends WkByteArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, 1);
   }
 

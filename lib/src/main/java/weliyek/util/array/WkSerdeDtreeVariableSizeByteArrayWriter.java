@@ -36,7 +36,7 @@ public class WkSerdeDtreeVariableSizeByteArrayWriter
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                         WkResultSrlzPacketOperationData<WkByteArray>,
                         WkSerdeDtreeVariableSizeByteArray>,
-               WkSerdeDtreeGenericVariableSizePrimitiveArrayWriter<
+               WkSerdeDtreeVariableSizePrimitiveArrayWriter<
                         WkByteArray,
                         WkSettingsSrlzPacketOperationData,
                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

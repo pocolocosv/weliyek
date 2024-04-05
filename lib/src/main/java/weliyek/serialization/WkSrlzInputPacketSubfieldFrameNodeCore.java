@@ -35,7 +35,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
                         WkSrlzInputPacketFieldFrameNode<ST,SXD,SXO>,
                         WkSrlzInputPacketFieldFrameNodeCore<ST,SXS,SXD,SXO,XBC,XO>,
                         WkSrlzInputPacketSubfieldFrameNode<ST,SXD,SXO>,
-                        WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>,
+                        WkSerdeDtreeAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>,
                         XD>
     implements WkSrlzInputPacketSubfieldFrameNode<ST,SXD,SXO>
 {
@@ -48,7 +48,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
 
   @Override
   protected void onInitialization() {
-    final WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,?,?,XD,XO,?,?,?> parentOpCore = parentOperationCore();
+    final WkSerdeDtreeAggregatorReaderCore<?,?,?,?,?,?,?,XD,XO,?,?,?> parentOpCore = parentOperationCore();
     WkSerdeDtreeAggregatorDefinition<?> parentDef = parentOpCore.definition();
     List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> requiredSubfields = parentDef.requiredSubfields();
     if(-1 != requiredSubfields.indexOf(subcomponentHandlerCore().body())) {

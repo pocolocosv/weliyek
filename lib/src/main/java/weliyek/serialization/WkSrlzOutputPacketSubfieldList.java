@@ -27,7 +27,7 @@ public class WkSrlzOutputPacketSubfieldList<
         extends WkSrlzPacketSubfieldList<
                         WkSrlzOutputPacketSubfieldFrameNode<?,?,?>,
                         WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YD,YO>,
-                        WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,?,?,?,?,YD,YO,?,?,?>>
+                        WkSerdeDtreeAggregatorWriterCore<?,?,?,?,?,?,?,YD,YO,?,?,?>>
 {
 
   WkSrlzOutputPacketSubfieldList(

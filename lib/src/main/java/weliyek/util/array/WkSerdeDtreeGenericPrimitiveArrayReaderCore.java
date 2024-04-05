@@ -32,13 +32,13 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayReaderCore<
                         XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
                         XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
                         XR extends WkResultSrlzPacketOperationData<X>,
-                        XO extends WkSerdeDtreeGenericPrimitiveArrayReader<X,XS,XQ,XR,XD>,
+                        XO extends WkSerdeDtreePrimitiveArrayReader<X,XS,XQ,XR,XD>,
                         XOC extends WkSerdeDtreeGenericPrimitiveArrayReaderCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
-                        XD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<X>,
+                        XD extends WkSerdeDtreePrimitiveArrayDefinition<X>,
                         AXB extends WkSzInputBytestreamBase<?>,
                         DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends WkSerdeDtreeNodeDataReaderDecoderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
-        implements WkSerdeDtreeGenericPrimitiveArrayReader<X, XS, XQ, XR, XD>,
+        implements WkSerdeDtreePrimitiveArrayReader<X, XS, XQ, XR, XD>,
         WkSerdeDtreeSequenceReader<X, XS, XQ, XR, XD>
 {
 

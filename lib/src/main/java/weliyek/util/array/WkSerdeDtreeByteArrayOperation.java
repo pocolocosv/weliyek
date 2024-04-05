@@ -28,7 +28,7 @@ public interface WkSerdeDtreeByteArrayOperation<
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkSerdeDtreeByteArrayDefinition,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
-    extends WkSerdeDtreeGenericPrimitiveArrayOperation<S, Q, R, D, K>,
+    extends WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D, K>,
             WkSerdeDtreeByteArray
 {
 

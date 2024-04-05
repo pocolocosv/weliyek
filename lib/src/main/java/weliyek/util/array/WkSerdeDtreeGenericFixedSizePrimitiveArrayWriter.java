@@ -28,10 +28,10 @@ public interface WkSerdeDtreeGenericFixedSizePrimitiveArrayWriter<
                         S extends WkSettingsSrlzPacketOperationData,
                         Q extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
                         R extends WkResultSrlzPacketOperationData<Y>,
-                        D extends WkSerdeDtreeGenericFixedSizePrimitiveArrayDefinition<Y>>
-    extends WkSerdeDtreeGenericPrimitiveArrayWriter<Y, S, Q, R, D>,
+                        D extends WkSerdeDtreeFixedSizePrimitiveArrayDefinition<Y>>
+    extends WkSerdeDtreePrimitiveArrayWriter<Y, S, Q, R, D>,
             WkSerdeDtreeFixedSizeSequenceWriter<Y, S, Q, R, D>,
-            WkSerdeDtreeGenericFixedSizePrimitiveArrayOperation<
+            WkSerdeDtreeFixedSizePrimitiveArrayOperation<
                         S, Q, R, D,
                         WkSrlzOutputPacketFieldFrameNode<Y,D,?>>
 {

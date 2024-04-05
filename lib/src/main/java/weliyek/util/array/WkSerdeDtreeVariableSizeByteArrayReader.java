@@ -36,7 +36,7 @@ public final class WkSerdeDtreeVariableSizeByteArrayReader
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                         WkResultSrlzPacketOperationData<WkByteArray>,
                         WkSerdeDtreeVariableSizeByteArray>,
-               WkSerdeDtreeGenericVariableSizePrimitiveArrayReader<
+               WkSerdeDtreeVariableSizePrimitiveArrayReader<
                         WkByteArray,
                         WkSzVariableLengthOperationSettings,
                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

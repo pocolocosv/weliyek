@@ -25,7 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayReader;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
 
 public abstract class WkSerdeDtreePrimitiveArrayReaderDecoderEngine<
                         X extends WkPrimitiveArray<V, ?>,
@@ -34,7 +34,7 @@ public abstract class WkSerdeDtreePrimitiveArrayReaderDecoderEngine<
         extends WkSerdeDtreeNodeDataReaderDecoderEngine<
                         X,
                         QC,
-                        WkSerdeDtreeGenericPrimitiveArrayReader<X,?,?,?,?>>
+                        WkSerdeDtreePrimitiveArrayReader<X,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkSerdeDtreePrimitiveArrayReaderDecoderEngine.class);
@@ -51,7 +51,7 @@ public abstract class WkSerdeDtreePrimitiveArrayReaderDecoderEngine<
       int elementByteLength,
       int stepSize,
       QC runtimeCtrl,
-      WkSerdeDtreeGenericPrimitiveArrayReader<X,?,?,?,?> readingOperation) {
+      WkSerdeDtreePrimitiveArrayReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.sequenceToDeserialized = Objects.requireNonNull(sequenceToDeserialized);
     this.primitiveByteLength = elementByteLength;

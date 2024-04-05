@@ -32,8 +32,8 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkDynamicByteArraySrlzOutputNode;
-import weliyek.util.array.WkDynamicByteArraySrlzStructNode;
+import weliyek.util.array.WkSerdeDynamicByteArrayWriter;
+import weliyek.util.array.WkSerdeDynamicByteArray;
 
 public class WkSerdeStringDynamicBytesWriter<
                         ZT extends Number,
@@ -44,8 +44,8 @@ public class WkSerdeStringDynamicBytesWriter<
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                         WkResultSrlzPacketOperationData<String>,
                         WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                        WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                        WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>>
+                        WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
+                        WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>>
 {
 
   final WkSerdeStringFromBytesWriterCoreSimplified<
@@ -53,8 +53,8 @@ public class WkSerdeStringDynamicBytesWriter<
               WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
               WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
               WkSettingsSrlzPacketOperationData,
-              WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
-              WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>> operationCore;
+              WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
+              WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>> operationCore;
 
   WkSerdeStringDynamicBytesWriter(
     int index,
@@ -66,15 +66,15 @@ public class WkSerdeStringDynamicBytesWriter<
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       ?,?,?,WkSettingsSrlzPacketOperationData,WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
       WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?,?,
-      WkSettingsSrlzPacketOperationData,WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
-      WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?> definitionCore) {
+      WkSettingsSrlzPacketOperationData,WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
+      WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,?,?> definitionCore) {
     this.operationCore = new WkSerdeStringFromBytesWriterCoreSimplified<
                                   WkSettingsSrlzPacketOperationData,
                                   WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
                                   WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                   WkSettingsSrlzPacketOperationData,
-                                  WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
-                                  WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>>(
+                                  WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
+                                  WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>>(
                                       index,
                                       serializable,
                                       settings,
@@ -86,7 +86,7 @@ public class WkSerdeStringDynamicBytesWriter<
 
   @Override
   public
-  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkDynamicByteArraySrlzStructNode<ZT, ?, ?, ZYD, ZYO, ? extends ZYD>, WkDynamicByteArraySrlzOutputNode<ZT, ZYO, ZYD>>>
+  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDynamicByteArray<ZT, ?, ?, ZYD, ZYO, ? extends ZYD>, WkSerdeDynamicByteArrayWriter<ZT, ZYO, ZYD>>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -140,7 +140,7 @@ public class WkSerdeStringDynamicBytesWriter<
 
   @Override
   public
-  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkDynamicByteArraySrlzStructNode<ZT, ?, ?, ZYD, ZYO, ? extends ZYD>, WkDynamicByteArraySrlzOutputNode<ZT, ZYO, ZYD>>>
+  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDynamicByteArray<ZT, ?, ?, ZYD, ZYO, ? extends ZYD>, WkSerdeDynamicByteArrayWriter<ZT, ZYO, ZYD>>>
   bytes() {
     return this.operationCore.bytes();
   }

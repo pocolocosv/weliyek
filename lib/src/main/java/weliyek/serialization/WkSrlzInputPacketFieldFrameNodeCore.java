@@ -34,7 +34,7 @@ public abstract class WkSrlzInputPacketFieldFrameNodeCore<
                         WkSerdeDtreeNodeDataReaderCore<?,?,?,?,?,XO,?,XD,?,?>,
                         WkSrlzInputPacketFieldFrameNode<T,XD,XO>,
                         AXBC,
-                        WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,AXBC,?,?,?,?,AXO,?,?,?>>
+                        WkSerdeDtreeAggregatorReaderCore<?,?,?,AXBC,?,?,?,?,AXO,?,?,?>>
     implements WkSrlzInputPacketFieldFrameNode<T,XD,XO>
 {
 

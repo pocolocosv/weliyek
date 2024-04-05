@@ -31,13 +31,13 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayWriterCore<
                         YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
                         YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
                         YR extends WkResultSrlzPacketOperationData<Y>,
-                        YO extends WkSerdeDtreeGenericPrimitiveArrayWriter<Y,YS,YQ,YR,YD>,
+                        YO extends WkSerdeDtreePrimitiveArrayWriter<Y,YS,YQ,YR,YD>,
                         YOC extends WkSerdeDtreeGenericPrimitiveArrayWriterCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
-                        YD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<Y>,
+                        YD extends WkSerdeDtreePrimitiveArrayDefinition<Y>,
                         AYB extends WkSzOutputBytestreamBase<?>,
                         DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
         extends WkSerdeDtreeNodeLeafDataWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
-        implements WkSerdeDtreeGenericPrimitiveArrayWriter<Y, YS, YQ, YR, YD>
+        implements WkSerdeDtreePrimitiveArrayWriter<Y, YS, YQ, YR, YD>
 {
 
   private final int requestedLength;

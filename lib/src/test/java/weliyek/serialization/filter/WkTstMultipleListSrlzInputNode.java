@@ -31,14 +31,14 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 import weliyek.serialization.WkSzVariableLengthOperationSettings;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShortReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
-import weliyek.serialization.sequence.WkDynamicCollectionSrlzInputPacketDecoderFrameNode;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzInputNode;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkSerdeDtreeDynamicCollectionReader;
+import weliyek.serialization.sequence.WkSerdeDtreeDynamicCollectionReaderCore;
+import weliyek.serialization.sequence.WkSerdeDtreeDynamicCollectionDefinitionCore;
+import weliyek.serialization.sequence.WkSerdeVariableSizeElementCollectionReader;
+import weliyek.serialization.sequence.WkSerdeVariableSizeElementCollection;
 
 public class WkTstMultipleListSrlzInputNode
-        implements WkDynamicCollectionSrlzInputPacketDecoderFrameNode<
+        implements WkSerdeDtreeDynamicCollectionReader<
                         WkSzTstMultipleLists,
                         WkSettingsSrlzPacketOperationData,
                         WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
@@ -54,7 +54,7 @@ public class WkTstMultipleListSrlzInputNode
                         WkSzVariableLengthOperationSettings>
 {
 
-    final WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore<
+    final WkSerdeDtreeDynamicCollectionReaderCore<
                         WkSzTstMultipleLists,
                         WkSettingsSrlzPacketOperationData,
                         WkTstMultipleListSrlzInputNode,
@@ -75,9 +75,9 @@ public class WkTstMultipleListSrlzInputNode
     WkSettingsSrlzPacketOperationData settings,
     WkSzInputBytestreamBase<?> parentBytestream,
     WkSrlzInputPacketFieldFrameNodeCore<WkSzTstMultipleLists, ?, WkTstMultipleListSrlzStructNode, ?, ?, ?> packetfieldCore,
-    WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzInputNode, WkTstMultipleListSrlzStructNode, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShortReader, WkSerdeSignedBigEndianShort, ?, ?, ?, ?, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?, ?>
+    WkSerdeDtreeDynamicCollectionDefinitionCore<WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzInputNode, WkTstMultipleListSrlzStructNode, ?, ?, ?, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShortReader, WkSerdeSignedBigEndianShort, ?, ?, ?, ?, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, ?, ?, ?, ?, WkSzVariableLengthOperationSettings, ?, ?>
       definitionCore) {
-    this.operationCore = new WkSimplifiedDynamicCollectionSrlzInputPacketDecoderFrameNodeCore<
+    this.operationCore = new WkSerdeDtreeDynamicCollectionReaderCore<
                                 WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzInputNode, WkTstMultipleListSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShortReader, WkSerdeSignedBigEndianShort, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, WkSzVariableLengthOperationSettings>(
                                     index, settings, parentBytestream, packetfieldCore, definitionCore, this);
   }
@@ -91,7 +91,7 @@ public class WkTstMultipleListSrlzInputNode
 
   @Override
   public
-  Optional<WkSrlzInputPacketFieldFrameNode<WkSzTstMultipleLists, WkVariableSizeCollectionSrlzStructNode<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, ?, ?, ?, ?>, WkVariableSizeCollectionSrlzInputNode<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode>>>
+  Optional<WkSrlzInputPacketFieldFrameNode<WkSzTstMultipleLists, WkSerdeVariableSizeElementCollection<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, ?, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode, ?, ?, ?, ?>, WkSerdeVariableSizeElementCollectionReader<WkSzTstMultipleLists, WkSzVariableLengthOperationSettings, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzInputNode>>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

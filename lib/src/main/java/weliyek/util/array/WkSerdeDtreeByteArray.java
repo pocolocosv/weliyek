@@ -17,7 +17,7 @@
  */
 package weliyek.util.array;
 
-public interface WkSerdeDtreeByteArray extends WkSerdeDtreeGenericPrimitiveArray
+public interface WkSerdeDtreeByteArray extends WkSerdeDtreePrimitiveArray
 {
 
 }

@@ -31,7 +31,7 @@ public abstract class WkSrlzOutputPacketFieldFrameNodeCore<
                         WkSerdeDtreeNodeDataWriterCore<?,?,?,?,?,YO,?,YD,?,?>,
                         WkSrlzOutputPacketFieldFrameNode<T,YD,YO>,
                         AYBC,
-                        WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,AYBC,?,?,?,?,AYO,?,?,?>>
+                        WkSerdeDtreeAggregatorWriterCore<?,?,?,AYBC,?,?,?,?,AYO,?,?,?>>
     implements WkSrlzOutputPacketFieldFrameNode<T,YD,YO>
 {
 

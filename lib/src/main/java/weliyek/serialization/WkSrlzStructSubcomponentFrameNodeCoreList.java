@@ -50,10 +50,10 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
      YYB extends WkSzOutputBytestreamBase<?>,
      YYO extends WkSerdeDtreeAggregatorWriter<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
     WkSrlzOutputPacketSubfieldList<YY,YYB,YYD,YYO> newSerializingHandlers(
-      WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
+      WkSerdeDtreeAggregatorWriterCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
       List<WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
-      WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>
-        parentOpCore = (WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>) parentSerializingOpCore;
+      WkSerdeDtreeAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>
+        parentOpCore = (WkSerdeDtreeAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>) parentSerializingOpCore;
       for (WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,YBC,YD,YO,?,?> subcomponentHandler : this) {
         WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,YBC,YD,YO>
           serializingHandler = subcomponentHandler.newWritingSubfieldHandlerCore(parentOpCore);
@@ -69,10 +69,10 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
      XXB extends WkSzInputBytestreamBase<?>,
      XXO extends WkSerdeDtreeAggregatorReader<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>
     WkSrlzInputPacketSubfieldList<XX,XXB,XXD,XXO> newDeserializingHandlers(
-      WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
+      WkSerdeDtreeAggregatorReaderCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
       List<WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();
-      WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>
-        parentOpCore = (WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>)parentDeserializingOpCore;
+      WkSerdeDtreeAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>
+        parentOpCore = (WkSerdeDtreeAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>)parentDeserializingOpCore;
       for (WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,?,?,?,?,?> subcomponentHandler : this) {
         WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XD,XO>
           deserializingHandler = subcomponentHandler

@@ -34,7 +34,7 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
                         WkSrlzOutputPacketFieldFrameNode<ST,SYD,SYO>,
                         WkSrlzOutputPacketFieldFrameNodeCore<ST,SYS,SYD,SYO,YBC,YO>,
                         WkSrlzOutputPacketSubfieldFrameNode<ST,SYD,SYO>,
-                        WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>,
+                        WkSerdeDtreeAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>,
                         YD>
     implements WkSrlzOutputPacketSubfieldFrameNode<ST,SYD,SYO>
 {

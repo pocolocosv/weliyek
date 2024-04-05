@@ -23,8 +23,8 @@ import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
 import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
 import weliyek.util.array.WkPrimitiveArray;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayWriter;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
 
 public interface WkSerdeStringFromPrimitiveArrayWriter<
                         YS extends WkSettingsSrlzPacketOperationData,
@@ -32,8 +32,8 @@ public interface WkSerdeStringFromPrimitiveArrayWriter<
                         YR extends WkResultSrlzPacketOperationData<String>,
                         YD extends WkSerdeStringFromPrimitiveArrayDefinition<?,?,?>,
                         SY extends WkPrimitiveArray<?, ?>,
-                        SYD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<SY>,
-                        SYO extends WkSerdeDtreeGenericPrimitiveArrayWriter<SY,?,?,?,SYD>>
+                        SYD extends WkSerdeDtreePrimitiveArrayDefinition<SY>,
+                        SYO extends WkSerdeDtreePrimitiveArrayWriter<SY,?,?,?,SYD>>
         extends WkSerdeStringFromPrimitiveArrayOperation<
                         YS, YQ, YR, YD,
                         WkSrlzOutputPacketFieldFrameNode<String,YD,?>,

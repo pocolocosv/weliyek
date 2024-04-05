@@ -82,7 +82,7 @@ public class WkSrlzOutputPacketFieldFrameNodeNonrootCore<
   }
 
   @Override
-  protected WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<?, ?, ?, AYBC, ?, ?, ?, ?, AYO, ?, ?, ?> parentOperationCore() {
+  protected WkSerdeDtreeAggregatorWriterCore<?, ?, ?, AYBC, ?, ?, ?, ?, AYO, ?, ?, ?> parentOperationCore() {
     return this.myHandler.parentOperationCore();
   }
 

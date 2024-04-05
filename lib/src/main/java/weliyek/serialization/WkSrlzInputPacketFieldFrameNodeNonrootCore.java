@@ -89,7 +89,7 @@ public class WkSrlzInputPacketFieldFrameNodeNonrootCore<
   }
 
   @Override
-  protected WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?, ?, ?, AXBC, ?, ?, ?, ?, AXO, ?, ?, ?> parentOperationCore() {
+  protected WkSerdeDtreeAggregatorReaderCore<?, ?, ?, AXBC, ?, ?, ?, ?, AXO, ?, ?, ?> parentOperationCore() {
     return this.myHandler.parentOperationCore();
   }
 

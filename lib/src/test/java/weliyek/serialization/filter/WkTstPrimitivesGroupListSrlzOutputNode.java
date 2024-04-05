@@ -30,14 +30,14 @@ import weliyek.serialization.WkSzOutputBytestream;
 import weliyek.serialization.WkSzOutputBytestreamBase;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerWriter;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianInteger;
-import weliyek.serialization.sequence.WkDynamicCollectionSrlzOutputPacketEncoderFrameNode;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.sequence.WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzOutputNode;
-import weliyek.serialization.sequence.WkVariableSizeCollectionSrlzStructNode;
+import weliyek.serialization.sequence.WkSerdeDtreeDynamicCollectionWriter;
+import weliyek.serialization.sequence.WkSerdeDtreeDynamicCollectionWriterCore;
+import weliyek.serialization.sequence.WkSerdeDtreeDynamicCollectionDefinitionCore;
+import weliyek.serialization.sequence.WkSerdeVariableSizeElementCollectionWriter;
+import weliyek.serialization.sequence.WkSerdeVariableSizeElementCollection;
 
 public class WkTstPrimitivesGroupListSrlzOutputNode
-    implements WkDynamicCollectionSrlzOutputPacketEncoderFrameNode<
+    implements WkSerdeDtreeDynamicCollectionWriter<
                         WkSzTstPrimitivesGroupList,
                         WkSettingsSrlzPacketOperationData,
                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
@@ -53,7 +53,7 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
                         WkSettingsSrlzPacketOperationData>
 {
 
-    final WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<
+    final WkSerdeDtreeDynamicCollectionWriterCore<
                         WkSzTstPrimitivesGroupList,
                         WkSettingsSrlzPacketOperationData,
                         WkTstPrimitivesGroupListSrlzOutputNode,
@@ -75,9 +75,9 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
       WkSzOutputBytestreamBase<?> parentBytestream,
       WkSrlzOutputPacketFieldFrameNodeCore<WkSzTstPrimitivesGroupList, ?, WkTstPrimitivesGroupListSrlzStructNode, ?, ?, ?>
         serializerpacketCore,
-      WkSimplifiedDynamicCollectionSrlzStructDefinitionFrameNodeCore<WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?, ?, WkSettingsSrlzPacketOperationData, ?>
+      WkSerdeDtreeDynamicCollectionDefinitionCore<WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?, ?, WkSettingsSrlzPacketOperationData, ?>
         definitionCore) {
-      writingCore = new WkSimplifiedDynamicCollectionSrlzOutputPacketEncoderFrameNodeCore<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSettingsSrlzPacketOperationData>(
+      writingCore = new WkSerdeDtreeDynamicCollectionWriterCore<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSettingsSrlzPacketOperationData>(
             index, serializable, settings, parentBytestream, serializerpacketCore, definitionCore, this);
     }
 
@@ -90,7 +90,7 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
 
     @Override
     public
-    Optional<WkSrlzOutputPacketFieldFrameNode<WkSzTstPrimitivesGroupList, WkVariableSizeCollectionSrlzStructNode<WkSzTstPrimitivesGroupList, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, WkVariableSizeCollectionSrlzOutputNode<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>>
+    Optional<WkSrlzOutputPacketFieldFrameNode<WkSzTstPrimitivesGroupList, WkSerdeVariableSizeElementCollection<WkSzTstPrimitivesGroupList, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, WkSerdeVariableSizeElementCollectionWriter<WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>>
     variableSequence() {
       return this.writingCore.variableSequence();
     }

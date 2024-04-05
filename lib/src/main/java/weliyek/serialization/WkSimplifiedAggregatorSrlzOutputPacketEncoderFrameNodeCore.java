@@ -26,7 +26,7 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                                         WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkResultSrlzPacketOperationData<T>,
                                         YD>>
-    extends WkAggregatorSrlzOutputPacketEncoderFrameNodeCore<
+    extends WkSerdeDtreeAggregatorWriterCore<
                         T,
                         YS,
                         WkSzOutputBytestream,

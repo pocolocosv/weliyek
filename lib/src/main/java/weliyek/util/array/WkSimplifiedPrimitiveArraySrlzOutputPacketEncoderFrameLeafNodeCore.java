@@ -31,8 +31,8 @@ import weliyek.serialization.WkSzOutputBytestreamBase;
 public class WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        D extends WkSerdeDtreeGenericPrimitiveArrayDefinition<Y>,
-                        YO extends WkSerdeDtreeGenericPrimitiveArrayWriter<
+                        D extends WkSerdeDtreePrimitiveArrayDefinition<Y>,
+                        YO extends WkSerdeDtreePrimitiveArrayWriter<
                                         Y,
                                         YS,
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,

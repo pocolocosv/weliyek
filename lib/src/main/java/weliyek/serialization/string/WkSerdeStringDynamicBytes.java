@@ -40,9 +40,9 @@ import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.serialization.string.WkSerdeStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkDynamicByteArraySrlzInputNode;
-import weliyek.util.array.WkDynamicByteArraySrlzOutputNode;
-import weliyek.util.array.WkDynamicByteArraySrlzStructNode;
+import weliyek.util.array.WkSerdeDynamicByteArrayReader;
+import weliyek.util.array.WkSerdeDynamicByteArrayWriter;
+import weliyek.util.array.WkSerdeDynamicByteArray;
 import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 
 public class WkSerdeStringDynamicBytes<
@@ -55,7 +55,7 @@ public class WkSerdeStringDynamicBytes<
     implements WkSerdeStringFromBytesDefinition<
                         WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
                         WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
-                        WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
+                        WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
 {
 
   public static <ZX extends Number,
@@ -143,12 +143,12 @@ public class WkSerdeStringDynamicBytes<
                         WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
                         WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         WkSettingsSrlzPacketOperationData,
-                        WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
-                        WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
+                        WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
+                        WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         WkSettingsSrlzPacketOperationData,
-                        WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
-                        WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                        WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
+                        WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
+                        WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
+                        WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
                         WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
                             definitionCore;
 
@@ -172,12 +172,12 @@ public class WkSerdeStringDynamicBytes<
                                   WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
                                   WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                   WkSettingsSrlzPacketOperationData,
-                                  WkDynamicByteArraySrlzInputNode<ZT,ZXO,ZXD>,
-                                  WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,?,?,? extends ZXD>,
+                                  WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
+                                  WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                                   WkSettingsSrlzPacketOperationData,
-                                  WkDynamicByteArraySrlzOutputNode<ZT,ZYO,ZYD>,
-                                  WkDynamicByteArraySrlzStructNode<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                                  WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
+                                  WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
+                                  WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
+                                  WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
                                   WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>(
                                       defaultCharset,
                                       componentCore,
@@ -188,7 +188,7 @@ public class WkSerdeStringDynamicBytes<
                                       WkSerdeStringDynamicBytes::aggragateByteArray,
                                       WkSettingsSrlzPacketOperationData::none,
                                       new BytesFromDynamicStringDisaggregator<ZT,ZYD,ZYO>(),
-                                      (pc) -> WkDynamicByteArraySrlzStructNode.<ZT,ZXD,ZXO,ZYD,ZYO,ZD>newCore(
+                                      (pc) -> WkSerdeDynamicByteArray.<ZT,ZXD,ZXO,ZYD,ZYO,ZD>newCore(
                                           pc, szieLabel, wrapperSizeGetter, arrayLabel,
                                           minLength, maxLength, sizeDefinitionFactory),
                                       this);
@@ -214,7 +214,7 @@ public class WkSerdeStringDynamicBytes<
                         ZYO extends WkSerdeDtreeNumberWriter<ZY,WkSettingsSrlzPacketOperationData,?,?,ZYD>>
       extends ByteArrayFromStringDisaggregator<
                         WkSerdeStringDynamicBytesWriter<ZY,ZYD,ZYO>,
-                        WkDynamicByteArraySrlzStructNode<ZY,?,?,ZYD,ZYO,? extends ZYD>>
+                        WkSerdeDynamicByteArray<ZY,?,?,ZYD,ZYO,? extends ZYD>>
   {
 
     @Override
@@ -235,7 +235,7 @@ public class WkSerdeStringDynamicBytes<
   WkSerdeDtreeNodeStructComponentHandler<
               WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
               WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
-              WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
+              WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
@@ -260,7 +260,7 @@ public class WkSerdeStringDynamicBytes<
   WkSerdeDtreeNodeStructComponentHandler<
             WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
             WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
-            WkDynamicByteArraySrlzStructNode<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
+            WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
   bytes() {
     return this.definitionCore.bytes();
   }

@@ -27,7 +27,7 @@ public class WkSrlzInputPacketSubfieldList<
         extends WkSrlzPacketSubfieldList<
                         WkSrlzInputPacketSubfieldFrameNode<?,?,?>,
                         WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XD,XO>,
-                        WkAggregatorSrlzInputPacketDecoderFrameNodeCore<?,?,?,?,?,?,?,XD,XO,?,?,?>>
+                        WkSerdeDtreeAggregatorReaderCore<?,?,?,?,?,?,?,XD,XO,?,?,?>>
 {
 
     WkSrlzInputPacketSubfieldList(

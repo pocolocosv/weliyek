@@ -42,20 +42,20 @@ import weliyek.serialization.sequence.WkSimplifiedSequenceEncodingRuntimeSrlzPac
 public class WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
                         T extends WkPrimitiveArray<?, ?>,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        XO extends WkSerdeDtreeGenericPrimitiveArrayReader<
+                        XO extends WkSerdeDtreePrimitiveArrayReader<
                                         T,
                                         XS,
                                         WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
                                         WkResultSrlzPacketOperationData<T>,
                                         D>,
                         YS extends WkSettingsSrlzPacketOperationData,
-                        YO extends WkSerdeDtreeGenericPrimitiveArrayWriter<
+                        YO extends WkSerdeDtreePrimitiveArrayWriter<
                                         T,
                                         YS,
                                         WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
                                         WkResultSrlzPacketOperationData<T>,
                                         D>,
-                        D extends WkSerdeDtreeGenericPrimitiveArrayDefinition<T>>
+                        D extends WkSerdeDtreePrimitiveArrayDefinition<T>>
     extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<
                         T,
                         XS,

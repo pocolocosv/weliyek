@@ -19,12 +19,12 @@ package weliyek.serialization.string;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorDefinition;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayDefinition;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 
 public interface WkSerdeStringFromPrimitiveArrayDefinition<
                         XO extends WkSerdeStringFromPrimitiveArrayReader<?,?,?,?,?,?,?>,
                         YO extends WkSerdeStringFromPrimitiveArrayWriter<?,?,?,?,?,?,?>,
-                        SD extends WkSerdeDtreeGenericPrimitiveArrayDefinition<?>>
+                        SD extends WkSerdeDtreePrimitiveArrayDefinition<?>>
         extends WkSerdeStringFromPrimitiveArray<WkSerdeDtreeNodeStructComponentHandler<XO, YO, SD>>,
                 WkSerdeDtreeAggregatorDefinition<String>
 {

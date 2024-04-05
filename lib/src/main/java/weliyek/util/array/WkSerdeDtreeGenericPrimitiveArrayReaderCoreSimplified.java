@@ -31,8 +31,8 @@ import weliyek.serialization.WkSzInputBytestreamBase;
 public class WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
                         X extends WkPrimitiveArray<?,?>,
                         XS extends WkSettingsSrlzPacketOperationData,
-                        D extends WkSerdeDtreeGenericPrimitiveArrayDefinition<X>,
-                        XO extends WkSerdeDtreeGenericPrimitiveArrayReader<
+                        D extends WkSerdeDtreePrimitiveArrayDefinition<X>,
+                        XO extends WkSerdeDtreePrimitiveArrayReader<
                                           X,
                                           XS,
                                           WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,

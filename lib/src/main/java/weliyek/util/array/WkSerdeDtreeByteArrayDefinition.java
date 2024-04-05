@@ -18,7 +18,7 @@
 package weliyek.util.array;
 
 public interface WkSerdeDtreeByteArrayDefinition
-    extends WkSerdeDtreeGenericPrimitiveArrayDefinition<WkByteArray>,
+    extends WkSerdeDtreePrimitiveArrayDefinition<WkByteArray>,
             WkSerdeDtreeByteArray
 {
 

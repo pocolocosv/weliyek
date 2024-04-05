@@ -24,7 +24,7 @@ import weliyek.serialization.WkResultSrlzPacketOperationData;
 import weliyek.serialization.WkSerdeDtreeAggregatorOperation;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
 import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.util.array.WkSerdeDtreeGenericPrimitiveArrayOperation;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayOperation;
 
 public interface WkSerdeStringFromPrimitiveArrayOperation<
                         S extends WkSettingsSrlzPacketOperationData,
@@ -32,7 +32,7 @@ public interface WkSerdeStringFromPrimitiveArrayOperation<
                         R extends WkResultSrlzPacketOperationData<?>,
                         D extends WkSerdeStringFromPrimitiveArrayDefinition<?,?,?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
-                        SO extends WkSerdeDtreeGenericPrimitiveArrayOperation<?,?,?,?,?>,
+                        SO extends WkSerdeDtreePrimitiveArrayOperation<?,?,?,?,?>,
                         SK extends WkSerdeDtreeNodeDataComponent<?,SO,?>>
         extends WkSerdeStringFromPrimitiveArray<Optional<SK>>,
                 WkSerdeDtreeAggregatorOperation<S, Q, R, D, K>

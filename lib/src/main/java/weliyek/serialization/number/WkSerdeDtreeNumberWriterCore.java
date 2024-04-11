@@ -17,24 +17,24 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeLeafDataWriterCore;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public abstract class WkSerdeDtreeNumberWriterCore<
                         T extends Number,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,YQ>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YO extends WkSerdeDtreeNumberWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSerdeDtreeNumberWriterCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSerdeDtreeNumberDefinition<T>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         DC extends WkSerdeDtreeNumberDefinitionCore<T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
     extends WkSerdeDtreeNodeLeafDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
     implements WkSerdeDtreeNumberWriter<T, YS, YQ, YR, YD>
@@ -45,7 +45,7 @@ public abstract class WkSerdeDtreeNumberWriterCore<
     T serializable,
     YS settings,
     AYB parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(

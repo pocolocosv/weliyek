@@ -19,20 +19,20 @@ package weliyek.serialization.number;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkSzPrimitiveReadEngineFactory;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreePrimitiveDecoderEngineFactory;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 
 public final class WkSerdeDtreeShortUnsignedLittleEndianReaderDecoderEngine
     extends WkSerdeDtreeIntPrimitiveReaderDecoderEngine<Integer>
 {
 
-  public static WkSzPrimitiveReadEngineFactory<Integer> FACTORY =
-      new WkSzPrimitiveReadEngineFactory<>(
+  public static WkSerdeDtreePrimitiveDecoderEngineFactory<Integer> FACTORY =
+      new WkSerdeDtreePrimitiveDecoderEngineFactory<>(
               "UINT16LE",
               WkSerdeDtreeShortUnsignedLittleEndianReaderDecoderEngine::new);
 
   private WkSerdeDtreeShortUnsignedLittleEndianReaderDecoderEngine(
-    WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
+    WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
     WkSerdeDtreeNumberReader<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }

@@ -19,18 +19,18 @@ package weliyek.util.array;
 
 import java.util.List;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.sequence.SequenceFixedSizeParameter;
-import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
+import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArrayLengthGetter;
 
 public class WkSerdeDtreeFixedSizeByteArray
     implements WkSerdeDtreeByteArrayDefinition,
@@ -38,61 +38,61 @@ public class WkSerdeDtreeFixedSizeByteArray
                         WkByteArray>
 {
 
-  public static WkSrlzStruct<
+  public static WkSerdeDtreeStruct<
                       WkByteArray,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeDtreeFixedSizeByteArray,
                       WkSerdeDtreeFixedSizeByteArrayReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeDtreeFixedSizeByteArray,
                       WkSerdeDtreeFixedSizeByteArrayWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeDtreeFixedSizeByteArray>
   newStruct(
     String label,
     int expectedLength) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                       label,
                       (pc) -> WkSerdeDtreeFixedSizeByteArray.newCore(expectedLength, pc),
-                      WkSzCountingInputBytestream::new,
-                      WkSzCountingOutputBytestream::new);
+                      WkSerdeDtreeBytestreamCountingInputStream::new,
+                      WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   public static WkSerdeDtreeNodeStructDefinitionCore<
                       WkByteArray,
-                      WkSettingsSrlzPacketOperationData,?,?,
+                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeDtreeFixedSizeByteArray,
                       WkSerdeDtreeFixedSizeByteArrayReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,?,?,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeDtreeFixedSizeByteArray,
                       WkSerdeDtreeFixedSizeByteArrayWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeDtreeFixedSizeByteArray,?>
   newCore(
     int expectedLength,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeDtreeFixedSizeByteArray(expectedLength, componentCore).definitionCore;
   }
 
   private final WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
                         WkByteArray,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArrayReader,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArrayWriter,
                         WkSerdeDtreeFixedSizeByteArray> definitionCore;
   private final SequenceFixedSizeParameter<WkByteArray> fixedSizeParameter;
 
   private WkSerdeDtreeFixedSizeByteArray(
     int expectedLength,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
         WkByteArray,
-        WkSettingsSrlzPacketOperationData,
+        WkSerdeDtreeOperationSettings,
         WkSerdeDtreeFixedSizeByteArrayReader,
-        WkSettingsSrlzPacketOperationData,
+        WkSerdeDtreeOperationSettings,
         WkSerdeDtreeFixedSizeByteArrayWriter,
         WkSerdeDtreeFixedSizeByteArray>(
                                     1024, // de/serialization step size
@@ -100,7 +100,7 @@ public class WkSerdeDtreeFixedSizeByteArray
                                     WkSerdeDtreeFixedSizeByteArray::getRxRequestedLengthFromDefinition,
                                     (i,xs,axb,xkc,dc) -> new WkSerdeDtreeFixedSizeByteArrayReader(i,xs,axb,xkc,dc).operationCore,
                                     WkSerdeDtreeByteArrayReaderDecoderEngine.FACTORY,
-                                    (WkPrimitiveArrayLengthGetter<WkByteArray,WkSettingsSrlzPacketOperationData,WkSerdeDtreeFixedSizeByteArray>)WkSerdeDtreeFixedSizeByteArray::getTxRequestedLengthFromDefinition,
+                                    (WkSerdeUtilsPrimitiveArrayLengthGetter<WkByteArray,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArray>)WkSerdeDtreeFixedSizeByteArray::getTxRequestedLengthFromDefinition,
                                     (i,y,ys,ayb,ykc,dc) -> new WkSerdeDtreeFixedSizeByteArrayWriter(i,y,ys,ayb,ykc,dc).operationCore,
                                     WkSerdeDtreeByteArrayWriterEncoderEngine.FACTORY,
                                     this,
@@ -108,11 +108,11 @@ public class WkSerdeDtreeFixedSizeByteArray
     this.fixedSizeParameter = new SequenceFixedSizeParameter<WkByteArray>(expectedLength, this.definitionCore);
   }
 
-  private static int getRxRequestedLengthFromDefinition(WkSettingsSrlzPacketOperationData none, WkSerdeDtreeFixedSizeByteArray definition) {
+  private static int getRxRequestedLengthFromDefinition(WkSerdeDtreeOperationSettings none, WkSerdeDtreeFixedSizeByteArray definition) {
     return definition.getExpectedLength();
   }
 
-  private static int getTxRequestedLengthFromDefinition(WkByteArray wrapper, WkSettingsSrlzPacketOperationData none, WkSerdeDtreeFixedSizeByteArray definition) {
+  private static int getTxRequestedLengthFromDefinition(WkByteArray wrapper, WkSerdeDtreeOperationSettings none, WkSerdeDtreeFixedSizeByteArray definition) {
     return definition.getExpectedLength();
   }
 

@@ -22,19 +22,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.IntFunction;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
@@ -48,9 +48,9 @@ import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 public class WkSerdeStringDynamicBytes<
                         ZT extends Number,
                         ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
-                        ZXO extends WkSerdeDtreeNumberReader<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                        ZXO extends WkSerdeDtreeNumberReader<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD>,
                         ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
-                        ZYO extends WkSerdeDtreeNumberWriter<ZT,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
+                        ZYO extends WkSerdeDtreeNumberWriter<ZT,WkSerdeDtreeOperationSettings,?,?,ZYD>,
                         ZD extends WkSerdeDtreeNumberDefinition<ZT>>
     implements WkSerdeStringFromBytesDefinition<
                         WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
@@ -60,19 +60,19 @@ public class WkSerdeStringDynamicBytes<
 
   public static <ZX extends Number,
                  ZXD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZXO extends WkSerdeDtreeNumberReader<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                 ZXO extends WkSerdeDtreeNumberReader<ZX,WkSerdeDtreeOperationSettings,?,?,ZXD>,
                  ZYD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZYO extends WkSerdeDtreeNumberWriter<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
+                 ZYO extends WkSerdeDtreeNumberWriter<ZX,WkSerdeDtreeOperationSettings,?,?,ZYD>,
                  ZD extends WkSerdeDtreeNumberDefinition<ZX>>
-  WkSrlzStruct<String,
-                  WkSettingsSrlzPacketOperationData,
+  WkSerdeDtreeStruct<String,
+                  WkSerdeDtreeOperationSettings,
                   WkSerdeStringDynamicBytes<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                   WkSerdeStringDynamicBytesReader<ZX,ZXD,ZXO>,
-                  WkSzInputBytestreamBase<?>,
-                  WkSettingsSrlzPacketOperationData,
+                  WkSerdeDtreeBytestreamInputBase<?>,
+                  WkSerdeDtreeOperationSettings,
                   WkSerdeStringDynamicBytes<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                   WkSerdeStringDynamicBytesWriter<ZX,ZYD,ZYO>,
-                  WkSzOutputBytestreamBase<?>,
+                  WkSerdeDtreeBytestreamOutputBase<?>,
                   WkSerdeStringDynamicBytes<ZX,ZXD,ZXO,ZYD,ZYO,ZD>>
   newStruct(
     String label,
@@ -84,35 +84,35 @@ public class WkSerdeStringDynamicBytes<
     Charset defaultCharset,
     IntFunction<ZX> wrapperSizeGetter,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZX,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,
-      ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+      ZX,WkSerdeDtreeOperationSettings,ZXD,ZXO,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,WkSerdeDtreeOperationSettings,
+      ZYD,ZYO,WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,ZD> sizeDefinitionFactory) {
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                   label,
                   (pc) -> WkSerdeStringDynamicBytes.newCore(
                                 pc, bytesLabel, sizeLabel, arrayLabel, minLength, maxLength, defaultCharset, wrapperSizeGetter, sizeDefinitionFactory),
-                  WkSzCountingInputBytestream::new,
-                  WkSzCountingOutputBytestream::new);
+                  WkSerdeDtreeBytestreamCountingInputStream::new,
+                  WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   public static <ZX extends Number,
                  ZXD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZXO extends WkSerdeDtreeNumberReader<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                 ZXO extends WkSerdeDtreeNumberReader<ZX,WkSerdeDtreeOperationSettings,?,?,ZXD>,
                  ZYD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZYO extends WkSerdeDtreeNumberWriter<ZX,WkSettingsSrlzPacketOperationData,?,?,ZYD>,
+                 ZYO extends WkSerdeDtreeNumberWriter<ZX,WkSerdeDtreeOperationSettings,?,?,ZYD>,
                  ZD extends WkSerdeDtreeNumberDefinition<ZX>>
   WkSerdeDtreeNodeStructDefinitionCore<
                         String,
-                        WkSettingsSrlzPacketOperationData,?,?,
+                        WkSerdeDtreeOperationSettings,?,?,
                         WkSerdeStringDynamicBytes<ZX,ZXD,ZXO,?,?,? extends ZXD>,
                         WkSerdeStringDynamicBytesReader<ZX,ZXD,ZXO>,
-                        WkSzInputBytestreamBase<?>,
-                        WkSettingsSrlzPacketOperationData,?,?,
+                        WkSerdeDtreeBytestreamInputBase<?>,
+                        WkSerdeDtreeOperationSettings,?,?,
                         WkSerdeStringDynamicBytes<ZX,?,?,ZYD,ZYO,? extends ZYD>,
                         WkSerdeStringDynamicBytesWriter<ZX,ZYD,ZYO>,
-                        WkSzOutputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamOutputBase<?>,
                         WkSerdeStringDynamicBytes<ZX,ZXD,ZXO,ZYD,ZYO,ZD>,?>
   newCore(
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String bytesLabel,
     String sizeLabel,
     String arrayLabel,
@@ -121,8 +121,8 @@ public class WkSerdeStringDynamicBytes<
     Charset defaultCharset,
     IntFunction<ZX> wrapperSizeGetter,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZX,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,
-      ZYD,ZYO,WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
+      ZX,WkSerdeDtreeOperationSettings,ZXD,ZXO,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,WkSerdeDtreeOperationSettings,
+      ZYD,ZYO,WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,ZD> sizeDefinitionFactory) {
     return new WkSerdeStringDynamicBytes<ZX,ZXD,ZXO,ZYD,ZYO,ZD>(
                         defaultCharset,
                         componentCore,
@@ -136,16 +136,16 @@ public class WkSerdeStringDynamicBytes<
   }
 
   private final WkSerdeStringFromBytesDefinitionCoreSimplified<
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
                         WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
                         WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
                         WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
                         WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                         WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
@@ -154,7 +154,7 @@ public class WkSerdeStringDynamicBytes<
 
   private WkSerdeStringDynamicBytes(
     Charset defaultCharset,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String bytesLabel,
     String szieLabel,
     IntFunction<ZT> wrapperSizeGetter,
@@ -162,19 +162,19 @@ public class WkSerdeStringDynamicBytes<
     int minLength,
     int maxLength,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZT,WkSettingsSrlzPacketOperationData,ZXD,ZXO,WkSzInputBytestreamBase<? extends WkSzInputBytestream>,WkSettingsSrlzPacketOperationData,ZYD,ZYO,
-      WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,ZD> sizeDefinitionFactory) {
+      ZT,WkSerdeDtreeOperationSettings,ZXD,ZXO,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,WkSerdeDtreeOperationSettings,ZYD,ZYO,
+      WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,ZD> sizeDefinitionFactory) {
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<
-                                  WkSettingsSrlzPacketOperationData,
+                                  WkSerdeDtreeOperationSettings,
                                   WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,
                                   WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                                  WkSettingsSrlzPacketOperationData,
+                                  WkSerdeDtreeOperationSettings,
                                   WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>,
                                   WkSerdeStringDynamicBytes<ZT,?,?,ZYD,ZYO,? extends ZYD>,
-                                  WkSettingsSrlzPacketOperationData,
+                                  WkSerdeDtreeOperationSettings,
                                   WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
                                   WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
-                                  WkSettingsSrlzPacketOperationData,
+                                  WkSerdeDtreeOperationSettings,
                                   WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
                                   WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
                                   WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
@@ -184,9 +184,9 @@ public class WkSerdeStringDynamicBytes<
                                       (i,xs,axb,xpc,dc) -> new WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>(i,xs,axb,xpc,dc).operationCore,
                                       (i,y,ys,ayb,ypc,dc) -> new WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>(i,y,ys,ayb,ypc,dc).operationCore,
                                       bytesLabel,
-                                      WkSettingsSrlzPacketOperationData::none,
+                                      WkSerdeDtreeOperationSettings::none,
                                       WkSerdeStringDynamicBytes::aggragateByteArray,
-                                      WkSettingsSrlzPacketOperationData::none,
+                                      WkSerdeDtreeOperationSettings::none,
                                       new BytesFromDynamicStringDisaggregator<ZT,ZYD,ZYO>(),
                                       (pc) -> WkSerdeDynamicByteArray.<ZT,ZXD,ZXO,ZYD,ZYO,ZD>newCore(
                                           pc, szieLabel, wrapperSizeGetter, arrayLabel,
@@ -196,7 +196,7 @@ public class WkSerdeStringDynamicBytes<
 
   private static <ZX extends Number,
                   ZXD extends WkSerdeDtreeNumberDefinition<ZX>,
-                  ZXO extends WkSerdeDtreeNumberReader<ZX,WkSettingsSrlzPacketOperationData,?,?,ZXD>>
+                  ZXO extends WkSerdeDtreeNumberReader<ZX,WkSerdeDtreeOperationSettings,?,?,ZXD>>
   String aggragateByteArray(WkSerdeStringDynamicBytesReader<ZX,ZXD,ZXO> deserializingStringOp) {
     Charset charset = deserializingStringOp.charset();
     ContigousIntsCounter zeroPaddingCounter = new ContigousIntsCounter(0);
@@ -211,7 +211,7 @@ public class WkSerdeStringDynamicBytes<
   class BytesFromDynamicStringDisaggregator<
                         ZY extends Number,
                         ZYD extends WkSerdeDtreeNumberDefinition<ZY>,
-                        ZYO extends WkSerdeDtreeNumberWriter<ZY,WkSettingsSrlzPacketOperationData,?,?,ZYD>>
+                        ZYO extends WkSerdeDtreeNumberWriter<ZY,WkSerdeDtreeOperationSettings,?,?,ZYD>>
       extends ByteArrayFromStringDisaggregator<
                         WkSerdeStringDynamicBytesWriter<ZY,ZYD,ZYO>,
                         WkSerdeDynamicByteArray<ZY,?,?,ZYD,ZYO,? extends ZYD>>

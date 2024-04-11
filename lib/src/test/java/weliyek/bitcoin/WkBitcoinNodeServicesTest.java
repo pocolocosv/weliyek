@@ -21,14 +21,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
@@ -36,23 +36,23 @@ class WkBitcoinNodeServicesTest
 {
   
 
-  public static WkSrlzStruct<
+  public static WkSerdeDtreeStruct<
                         WkBitcoinNodeServices,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkBitcoinNodeServicesSrlzStructNode,
                         WkBitcoinNodeServicesSrlzInputNode,
-                        WkSzInputBytestreamBase<?>,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeBytestreamInputBase<?>,
+                        WkSerdeDtreeOperationSettings,
                         WkBitcoinNodeServicesSrlzStructNode,
                         WkBitcoinNodeServicesSrlzOutputNode,
-                        WkSzOutputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamOutputBase<?>,
                         WkBitcoinNodeServicesSrlzStructNode>
   newStruct(String label) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                       label,
                       WkBitcoinNodeServicesSrlzStructNode::newCore,
-                      WkSzCountingInputBytestream::new,
-                      WkSzCountingOutputBytestream::new);
+                      WkSerdeDtreeBytestreamCountingInputStream::new,
+                      WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   @Test
@@ -108,10 +108,10 @@ class WkBitcoinNodeServicesTest
         | WkBitcoinServiceFlag.BIT09.bitmask);
     
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
-    WkSrlzStruct<WkBitcoinNodeServices, WkSettingsSrlzPacketOperationData, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode, WkSzInputBytestreamBase<?>, WkSettingsSrlzPacketOperationData, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, WkSzOutputBytestreamBase<?>, WkBitcoinNodeServicesSrlzStructNode> 
+    WkSerdeDtreeStruct<WkBitcoinNodeServices, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, WkSerdeDtreeBytestreamOutputBase<?>, WkBitcoinNodeServicesSrlzStructNode> 
       servicesStruct = newStruct("SERVICES");
     
-    WkSzOutputPacket<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode> servicesWrite = servicesStruct.newOutputPacket(services, WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer);
+    WkSzOutputPacket<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode> servicesWrite = servicesStruct.newOutputPacket(services, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
     
     servicesWrite.processBytestream();
     
@@ -119,7 +119,7 @@ class WkBitcoinNodeServicesTest
     
     assertEquals(8, outputBuffer.size());
     
-    WkSzInputPacket<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode> servicesRead = servicesStruct.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputBuffer.inputStream());
+    WkSzInputPacket<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode> servicesRead = servicesStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
     
     servicesRead.processBytestream();
     

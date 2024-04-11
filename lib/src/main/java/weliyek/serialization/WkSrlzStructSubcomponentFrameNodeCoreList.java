@@ -24,12 +24,12 @@ import java.util.List;
 
 public class WkSrlzStructSubcomponentFrameNodeCoreList<
                         T,
-                        XBC extends WkSzInputBytestreamBase<?>,
+                        XBC extends WkSerdeDtreeBytestreamInputBase<?>,
                         XD extends WkSerdeDtreeAggregatorDefinition<T>,
-                        XO extends WkSerdeDtreeAggregatorReader<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>,
-                        YBC extends WkSzOutputBytestreamBase<?>,
+                        XO extends WkSerdeDtreeAggregatorReader<T,?,? extends WkSerdeDtreeOperationInputRuntime<?>,?,XD>,
+                        YBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         YD extends WkSerdeDtreeAggregatorDefinition<T>,
-                        YO extends WkSerdeDtreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YO extends WkSerdeDtreeAggregatorWriter<T,?,? extends WkSerdeDtreeOperationOutputRuntime<?>,?,YD>>
     extends AbstractList<WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,XBC,XD,XO,?,?,?,YBC,YD,YO,?,?>>
 {
 
@@ -47,8 +47,8 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
     public
     <YYD extends WkSerdeDtreeAggregatorDefinition<YY>,
      YY,
-     YYB extends WkSzOutputBytestreamBase<?>,
-     YYO extends WkSerdeDtreeAggregatorWriter<YY,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YYD>>
+     YYB extends WkSerdeDtreeBytestreamOutputBase<?>,
+     YYO extends WkSerdeDtreeAggregatorWriter<YY,?,? extends WkSerdeDtreeOperationOutputRuntime<?>,?,YYD>>
     WkSrlzOutputPacketSubfieldList<YY,YYB,YYD,YYO> newSerializingHandlers(
       WkSerdeDtreeAggregatorWriterCore<?,?,?,YYB,?,?,?,YYD,YYO,?,?,?> parentSerializingOpCore) {
       List<WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YYD,YYO>> serializingHandlerList = new ArrayList<>();
@@ -66,8 +66,8 @@ public class WkSrlzStructSubcomponentFrameNodeCoreList<
     public
     <XXD extends WkSerdeDtreeAggregatorDefinition<XX>,
      XX,
-     XXB extends WkSzInputBytestreamBase<?>,
-     XXO extends WkSerdeDtreeAggregatorReader<XX,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XXD>>
+     XXB extends WkSerdeDtreeBytestreamInputBase<?>,
+     XXO extends WkSerdeDtreeAggregatorReader<XX,?,? extends WkSerdeDtreeOperationInputRuntime<?>,?,XXD>>
     WkSrlzInputPacketSubfieldList<XX,XXB,XXD,XXO> newDeserializingHandlers(
       WkSerdeDtreeAggregatorReaderCore<?,?,?,XXB,?,?,?,XXD,XXO,?,?,?> parentDeserializingOpCore) {
       List<WkSrlzInputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,XXD,XXO>> deserializingHandlerList = new ArrayList<>();

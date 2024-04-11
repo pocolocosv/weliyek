@@ -17,27 +17,27 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 
 public interface WkSerdeStringFromBytesReader<
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkResultSrlzPacketOperationData<String>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XR extends WkSerdeDtreeOperationResult<String>,
                         XD extends WkSerdeStringFromBytesDefinition<?,?,? extends SXD>,
                         SXD extends WkSerdeDtreeByteArrayDefinition,
                         SXO extends WkSerdeDtreeByteArrayReader<?,?,?,SXD>>
     extends WkSerdeStringFromPrimitiveArrayReader<XS, XQ, XR, XD, WkByteArray, SXD, SXO>,
             WkSerdeStringFromBytesOperation<
                         XS, XQ, XR, XD,
-                        WkSrlzInputPacketFieldFrameNode<String,XD,?>,
+                        WkSerdeDtreeNodeDataInputComponent<String,XD,?>,
                         SXO,
-                        WkSrlzInputPacketFieldFrameNode<WkByteArray,SXD,SXO>>
+                        WkSerdeDtreeNodeDataInputComponent<WkByteArray,SXD,SXO>>
 {
 
 }

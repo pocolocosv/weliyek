@@ -34,7 +34,7 @@ public interface WkSzPacketWriteDisaggregator<
    * @return The disaggregated value that will be used by the writing operation.
    */
   T disaggregate(
-    WkSrlzOutputPacketFieldFrameNode<T,D,?> packetField,
+    WkSerdeDtreeNodeDataOutputComponent<T,D,?> packetField,
     AO parentOperation,
     int i);
 

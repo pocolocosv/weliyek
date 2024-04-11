@@ -22,14 +22,14 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
 import weliyek.serialization.WkSerdeDtreeNodeDataReaderDecoderEngine;
 
 public abstract class WkSerdeDtreePrimitiveReaderDecoderEngine<X extends Number>
     extends WkSerdeDtreeNodeDataReaderDecoderEngine<
                         X,
-                        WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
+                        WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
                         WkSerdeDtreeNumberReader<X,?,?,?,?>>
 {
 
@@ -38,7 +38,7 @@ public abstract class WkSerdeDtreePrimitiveReaderDecoderEngine<X extends Number>
   private X deserializedNumber;
 
   protected WkSerdeDtreePrimitiveReaderDecoderEngine(
-      WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
+      WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
       WkSerdeDtreeNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }

@@ -21,18 +21,18 @@ import java.util.function.Predicate;
 
 public class WkSrlzOutputPacketSubfieldFrameNodeCore<
                         ST,
-                        SYS extends WkSettingsSrlzPacketOperationData,
+                        SYS extends WkSerdeDtreeOperationSettings,
                         SYD extends WkSerdeDtreeNodeStructDefinition<ST>,
                         SYO extends WkSerdeDtreeNodeDataWriter<ST,SYS,?,?,SYD>,
                         T,
-                        YBC extends WkSzOutputBytestreamBase<?>,
+                        YBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         YD extends WkSerdeDtreeAggregatorDefinition<T>,
-                        YO extends WkSerdeDtreeAggregatorWriter<T,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YO extends WkSerdeDtreeAggregatorWriter<T,?,? extends WkSerdeDtreeOperationOutputRuntime<?>,?,YD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SYS, SYD,
                         WkSrlzStructSubcomponentFrameNodeCore<ST,?,?,?,T,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD>,
-                        WkSrlzOutputPacketFieldFrameNode<ST,SYD,SYO>,
-                        WkSrlzOutputPacketFieldFrameNodeCore<ST,SYS,SYD,SYO,YBC,YO>,
+                        WkSerdeDtreeNodeDataOutputComponent<ST,SYD,SYO>,
+                        WkSerdeDtreeNodeDataOutputComponentCore<ST,SYS,SYD,SYO,YBC,YO>,
                         WkSrlzOutputPacketSubfieldFrameNode<ST,SYD,SYO>,
                         WkSerdeDtreeAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>,
                         YD>
@@ -45,8 +45,8 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
 
 
   @Override
-  protected WkSrlzOutputPacketFieldFrameNodeNonrootCore<ST,SYS,SYD,SYO,T,YBC,YO> newPacket() {
-    return new WkSrlzOutputPacketFieldFrameNodeNonrootCore<>(1, this);
+  protected WkSerdeDtreeNodeDataOutputComponentCoreNonroot<ST,SYS,SYD,SYO,T,YBC,YO> newPacket() {
+    return new WkSerdeDtreeNodeDataOutputComponentCoreNonroot<>(1, this);
   }
 
   @Override
@@ -77,7 +77,7 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  public WkSrlzStructComponentFrameNodeCore<ST,?,?,?,?,SYS,SYD,SYO,YBC,? extends SYD> protocolFieldCore() {
+  public WkSerdeDtreeNodeStructComponentCore<ST,?,?,?,?,SYS,SYD,SYO,YBC,? extends SYD> protocolFieldCore() {
     return subcomponentHandlerCore().protocolFieldCore();
   }
 

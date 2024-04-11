@@ -19,22 +19,22 @@ package weliyek.serialization.sequence;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 import weliyek.util.array.WkLongArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
-import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified;
 
 public final class WkSerdeDtreeLongBigEndianArrayWriterEncoderEngine
     extends WkSerdeDtreeLongArrayWriterEncoderEngine
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkLongArray> FACTORY =
-      new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<>(
+  public static final WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified<WkLongArray> FACTORY =
+      new WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified<>(
             "B_INT64[]",
             WkSerdeDtreeLongBigEndianArrayWriterEncoderEngine::new);
 
   private WkSerdeDtreeLongBigEndianArrayWriterEncoderEngine(
-    WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,?> runtimeControl,
     WkSerdeDtreePrimitiveArrayWriter<? extends WkLongArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

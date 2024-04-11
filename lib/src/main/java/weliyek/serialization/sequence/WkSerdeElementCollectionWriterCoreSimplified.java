@@ -19,46 +19,46 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public final class WkSerdeElementCollectionWriterCoreSimplified<
                         T extends Collection<ET>,
-                        YS extends WkSettingsSrlzPacketOperationData,
+                        YS extends WkSerdeDtreeOperationSettings,
                         YD extends WkSerdeElementCollectionDefinition<T,?,YO,ET,?>,
                         YO extends WkSerdeElementCollectionWriter<
                                         T,
                                         YS,
-                                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                        WkResultSrlzPacketOperationData<T>,
+                                        WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
+                                        WkSerdeDtreeOperationResult<T>,
                                         YD,
                                         ET,EYD,EYO>,
                         ET,
-                        EYS extends WkSettingsSrlzPacketOperationData,
+                        EYS extends WkSerdeDtreeOperationSettings,
                         EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>>
     extends WkSerdeElementCollectionWriterCore<
                         T,
                         YS,
-                        WkSzOutputBytestream,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzOutputBytestream,
-                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeBytestreamOutput,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<
+                          WkSerdeDtreeBytestreamOutput,
+                          WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+                          WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>>,
+                        WkSerdeDtreeOperationResult<T>,
                         YD,
                         YO,
                         WkSerdeElementCollectionWriterCoreSimplified<T,YS,YD,YO,ET,EYS,EYD,EYO>,
-                        WkSzOutputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamOutputBase<?>,
                         ET,
                         EYS,
                         EYD,
@@ -72,8 +72,8 @@ public final class WkSerdeElementCollectionWriterCoreSimplified<
     int index,
     T serializable,
     YS settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,?,?,?,YS,YD,YO,ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore,
     YO operationBody) {

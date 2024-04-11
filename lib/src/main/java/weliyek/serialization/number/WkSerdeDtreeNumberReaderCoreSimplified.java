@@ -17,44 +17,44 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
 public final class WkSerdeDtreeNumberReaderCoreSimplified<
                         X extends Number,
                         XO extends WkSerdeDtreeNumberReader<
                                       X,
-                                      WkSettingsSrlzPacketOperationData,
-                                      WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                      WkResultSrlzPacketOperationData<X>,
+                                      WkSerdeDtreeOperationSettings,
+                                      WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                      WkSerdeDtreeOperationResult<X>,
                                       XD>,
                         XD extends WkSerdeDtreeNumberDefinition<X>>
     extends WkSerdeDtreeNumberReaderCore<
                         X,
-                        WkSettingsSrlzPacketOperationData,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzInputBytestream,
-                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkResultSrlzPacketOperationData<X>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntimeCtrl<
+                          WkSerdeDtreeBytestreamInput,
+                          WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                          WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>>,
+                        WkSerdeDtreeOperationResult<X>,
                         XO,
                         WkSerdeDtreeNumberReaderCoreSimplified<X,XO,XD>,
                         XD,
-                        WkSzInputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamInputBase<?>,
                         WkSerdeDtreeNumberDefinitionCoreSimplified<X,XO,?,XD>>
 {
 
   public WkSerdeDtreeNumberReaderCoreSimplified(
     int index,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<X,?,XD,?,?,?> readingfieldCore,
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<X,?,XD,?,?,?> readingfieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<X,XO,?,XD> definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, readingfieldCore, definitionCore, operationBody);

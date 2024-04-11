@@ -17,49 +17,49 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
 public class WkSerdeStringFromBytesReaderCoreSimplified<
-                        XS extends WkSettingsSrlzPacketOperationData,
+                        XS extends WkSerdeDtreeOperationSettings,
                         XO extends WkSerdeStringFromBytesReader<
                                       XS,
-                                      WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                      WkResultSrlzPacketOperationData<String>,
+                                      WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                      WkSerdeDtreeOperationResult<String>,
                                       XD,SXD,SXO>,
                         XD extends WkSerdeStringFromBytesDefinition<XO,?,? extends SXD>,
-                        SXS extends WkSettingsSrlzPacketOperationData,
+                        SXS extends WkSerdeDtreeOperationSettings,
                         SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSerdeDtreeByteArrayDefinition>
     extends WkSerdeStringFromBytesReaderCore<
                         XS,
-                        WkSzInputBytestream,
-                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzInputBytestream,
-                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkResultSrlzPacketOperationData<String>,
+                        WkSerdeDtreeBytestreamInput,
+                        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntimeCtrl<
+                          WkSerdeDtreeBytestreamInput,
+                          WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                          WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>>,
+                        WkSerdeDtreeOperationResult<String>,
                         XO,
                         WkSerdeStringFromBytesReaderCoreSimplified<XS,XO,XD,SXS,SXO,SXD>,
                         XD,
-                        WkSzInputBytestreamBase<?>, SXS, SXO, SXD,
+                        WkSerdeDtreeBytestreamInputBase<?>, SXS, SXO, SXD,
                         WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?>>
 {
 
   public WkSerdeStringFromBytesReaderCoreSimplified(
     int index,
     XS settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<String,?,XD,?,?,?> packetfieldCore,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<String,?,XD,?,?,?> packetfieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,?,?> definitionCore,
     XO operationBody) {
     super(

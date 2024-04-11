@@ -24,17 +24,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public abstract class WkSerdeDtreeNodeDataOperationCore<
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,Q>,
-                        R extends WkResultSrlzPacketOperationData<?>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
+                        QC extends WkSerdeDtreeOperationRuntimeCommonCtrl<?,?,Q>,
+                        R extends WkSerdeDtreeOperationResult<?>,
                         _D extends WkSerdeDtreeNodeStructDefinition<?>,
                         DC extends WkSerdeDtreeNodeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         O extends WkSerdeDtreeNodeDataOperation<S,?,R,_D,?>,
                         OC extends WkSerdeDtreeNodeDataOperationCore<S,Q,QC,R,_D,DC,O,?,AB,K,KC>,
-                        AB extends WkSzBytestreamBase<?,?>,
+                        AB extends WkSerdeDtreeBytestreamBase<?,?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
-                        KC extends WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,? extends K,?,?>>
+                        KC extends WkSerdeDtreeNodeDataComponentCore<?,?,?,?,?,?,? extends K,?,?>>
         implements WkSerdeDtreeNodeDataOperation<S,Q,R,_D,K>
 {
 

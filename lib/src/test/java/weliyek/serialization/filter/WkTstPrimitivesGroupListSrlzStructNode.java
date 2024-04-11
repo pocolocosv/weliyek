@@ -19,10 +19,10 @@ package weliyek.serialization.filter;
 
 import java.util.List;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerWriter;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianInteger;
@@ -37,62 +37,62 @@ public class WkTstPrimitivesGroupListSrlzStructNode
                         WkTstPrimitivesGroupListSrlzOutputNode,
                         WkSerdeSignedLittleEndianInteger,
                         WkSzTstPrimitivesGroup,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketReader,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter,
                         WkSzTstPrimitivesGroupStructDefinition,
-                        WkSzVariableLengthOperationSettings,
-                        WkSettingsSrlzPacketOperationData>
+                        WkSerdeDtreeOperationSettingsVariableLength,
+                        WkSerdeDtreeOperationSettings>
 {
 
     final WkSerdeDtreeDynamicCollectionDefinitionCore<
                         WkSzTstPrimitivesGroupList,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkTstPrimitivesGroupListSrlzInputNode,
                         WkTstPrimitivesGroupListSrlzStructNode,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkTstPrimitivesGroupListSrlzOutputNode,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         Integer,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeSignedLittleEndianIntegerReader,
                         WkSerdeSignedLittleEndianInteger,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeSignedLittleEndianIntegerWriter,
                         WkSerdeSignedLittleEndianInteger,
                         WkSerdeSignedLittleEndianInteger,
                         WkSzTstPrimitivesGroup,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketReader,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter,
                         WkSzTstPrimitivesGroupStructDefinition,
-                        WkSzVariableLengthOperationSettings,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettingsVariableLength,
+                        WkSerdeDtreeOperationSettings,
                         WkTstPrimitivesGroupListSrlzStructNode> fieldCore;
 
-    WkTstPrimitivesGroupListSrlzStructNode(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkTstPrimitivesGroupListSrlzStructNode(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
         fieldCore = new WkSerdeDtreeDynamicCollectionDefinitionCore<
-                            WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzStructNode, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, WkSettingsSrlzPacketOperationData, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianInteger, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode>(
+                            WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzStructNode, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianInteger, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition, WkSerdeDtreeOperationSettingsVariableLength, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode>(
                                 0, //minSize,
                                 1024, //maxSize,
                                 "SIZE", //sizeFieldLabel,
-                                WkSettingsSrlzPacketOperationData::none, //sizeDeserializerSettingsFactory,
-                                WkSettingsSrlzPacketOperationData::none, //sizeSerializerSettingsFactory,
+                                WkSerdeDtreeOperationSettings::none, //sizeDeserializerSettingsFactory,
+                                WkSerdeDtreeOperationSettings::none, //sizeSerializerSettingsFactory,
                                 Integer::valueOf, //sizeValueFactory,
                                 WkSerdeSignedLittleEndianInteger::newCore, //sizeDefinitionFactory,
                                 "VARLIST", //collectionAndElementsFieldLabel,
-                                (i,axo) -> WkSzVariableLengthOperationSettings.withLength(axo.size().get().firstOperation().get().result().get().serializable().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
-                                WkSettingsSrlzPacketOperationData::none, //collectionAndElementsSerializerSettingsFactory,
+                                (i,axo) -> WkSerdeDtreeOperationSettingsVariableLength.withLength(axo.size().get().firstOperation().get().result().get().serializable().get().intValue()), //collectionAndElementsDeserializerSettingsFactory,
+                                WkSerdeDtreeOperationSettings::none, //collectionAndElementsSerializerSettingsFactory,
                                 "PRIMIVITESGROUP", //elementFieldLabel,
                                 (pc) -> new WkSzTstPrimitivesGroupStructDefinition(pc).definitionCore,
-                                WkSettingsSrlzPacketOperationData::none, //elementDeserializerSettingsFactory,
-                                WkSettingsSrlzPacketOperationData::none, //elementSerializerSettingsFactory,
+                                WkSerdeDtreeOperationSettings::none, //elementDeserializerSettingsFactory,
+                                WkSerdeDtreeOperationSettings::none, //elementSerializerSettingsFactory,
                                 (i,xs,axb,xkc,xdc) -> new WkTstPrimitivesGroupListSrlzInputNode(i,xs,axb,xkc,xdc).readingCore, //deserializerFactory,
                                 (i,y,ys,ayb,ykc,ydc) -> new WkTstPrimitivesGroupListSrlzOutputNode(i,y,ys,ayb,ykc,ydc).writingCore, //serializerFactory,
                                 (l) -> new WkSzTstPrimitivesGroupList(l),
@@ -109,7 +109,7 @@ public class WkTstPrimitivesGroupListSrlzStructNode
 
     @Override
     public
-    WkSerdeDtreeNodeStructComponentHandler<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSerdeVariableSizeElementCollection<WkSzTstPrimitivesGroupList, WkSzVariableLengthOperationSettings, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroup, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
+    WkSerdeDtreeNodeStructComponentHandler<WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSerdeVariableSizeElementCollection<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettingsVariableLength, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, WkSzTstPrimitivesGroupStructDefinition>>
     variableSequence() {
       return this.fieldCore.variableSequence();
     }

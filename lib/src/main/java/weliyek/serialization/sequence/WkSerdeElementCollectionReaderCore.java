@@ -20,33 +20,33 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorReaderCore;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
 public abstract class WkSerdeElementCollectionReaderCore<
                         T extends Collection<ET>,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XB extends WkSzInputBytestream,
-                        XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<XB>,
-                        XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XB extends WkSerdeDtreeBytestreamInput,
+                        XBC extends WkSerdeDtreeBytestreamInputBase<? extends XB>,
+                        XQ extends WkSerdeDtreeOperationInputRuntimeSequenceCommon<XB>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<XB,XBC,XQ>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeElementCollectionDefinition<T,XO,?,ET,?>,
                         XO extends WkSerdeElementCollectionReader<T,XS,XQ,XR,XD,ET,EXD,EXO>,
                         XOC extends WkSerdeElementCollectionReaderCore<
                                         T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXBC,ET,EXS,EXD,EXO,DC>,
-                        AXBC extends WkSzInputBytestreamBase<?>,
+                        AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
                         ET,
-                        EXS extends WkSettingsSrlzPacketOperationData,
+                        EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
                         DC extends WkSerdeElementCollectionDefinitionCore<
@@ -64,7 +64,7 @@ public abstract class WkSerdeElementCollectionReaderCore<
     int index,
     XS settings,
     AXBC parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> packetfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);

@@ -19,22 +19,22 @@ package weliyek.serialization.sequence;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 import weliyek.util.array.WkIntArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
-import weliyek.util.array.WkSzBasicPrimitiveArrayWrapperWriteEngineFactory;
+import weliyek.util.array.WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified;
 
 public final class WkSerdeDtreeIntLittleEndianArrayWriterEncoderEngine
         extends WkSerdeDtreeIntArrayWriterEncoderEngine
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkIntArray> FACTORY =
-      new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<>(
+  public static final WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified<WkIntArray> FACTORY =
+      new WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified<>(
             "L_INT32[]",
             WkSerdeDtreeIntLittleEndianArrayWriterEncoderEngine::new);
 
   private WkSerdeDtreeIntLittleEndianArrayWriterEncoderEngine(
-    WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,?> runtimeControl,
     WkSerdeDtreePrimitiveArrayWriter<? extends WkIntArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

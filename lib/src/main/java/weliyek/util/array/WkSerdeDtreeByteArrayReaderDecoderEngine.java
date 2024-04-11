@@ -20,7 +20,7 @@ package weliyek.util.array;
 import java.io.IOException;
 
 import weliyek.serialization.WkSerdeDtreePrimitiveArrayReaderDecoderEngineBasic;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
 
 public final class WkSerdeDtreeByteArrayReaderDecoderEngine
   extends WkSerdeDtreePrimitiveArrayReaderDecoderEngineBasic<
@@ -28,11 +28,11 @@ public final class WkSerdeDtreeByteArrayReaderDecoderEngine
                         byte[]>
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperReadEngineFactory<WkByteArray> FACTORY =
-      new WkSzBasicPrimitiveArrayWrapperReadEngineFactory<>("INT8[]", WkSerdeDtreeByteArrayReaderDecoderEngine::new);
+  public static final WkSerdeDtreePrimitiveArrayDecoderEngineFactorySimplified<WkByteArray> FACTORY =
+      new WkSerdeDtreePrimitiveArrayDecoderEngineFactorySimplified<>("INT8[]", WkSerdeDtreeByteArrayReaderDecoderEngine::new);
 
   private WkSerdeDtreeByteArrayReaderDecoderEngine(
-    WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
+    WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?> runtimeCtrl,
     WkSerdeDtreePrimitiveArrayReader<WkByteArray,?,?,?,?> readingOperation) {
     super(WkByteArray::new, 1, runtimeCtrl, readingOperation);
   }

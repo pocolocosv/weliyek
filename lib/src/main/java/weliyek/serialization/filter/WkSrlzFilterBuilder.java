@@ -20,7 +20,7 @@ package weliyek.serialization.filter;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import weliyek.serialization.WkSrlzStruct;
+import weliyek.serialization.WkSerdeDtreeStruct;
 
 public class WkSrlzFilterBuilder
 {
@@ -30,7 +30,7 @@ public class WkSrlzFilterBuilder
     public WkSrlzFilterBuilder() {
     }
 
-    WkSrlzFilterBuilder setProtocol(WkSrlzStruct<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> packetStructure) {
+    WkSrlzFilterBuilder setProtocol(WkSerdeDtreeStruct<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> packetStructure) {
       // TODO: Set structure to be used to verify that all added queries do apply for
       // said structure.
         return this;

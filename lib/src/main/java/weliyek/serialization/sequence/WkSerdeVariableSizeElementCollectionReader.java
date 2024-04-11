@@ -21,30 +21,30 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 
 public final class WkSerdeVariableSizeElementCollectionReader<
                         T extends Collection<ET>,
-                        XS extends WkSzVariableLengthOperationSettings,
+                        XS extends WkSerdeDtreeOperationSettingsVariableLength,
                         ET,
-                        EXS extends WkSettingsSrlzPacketOperationData,
+                        EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>>
     implements WkSerdeElementCollectionReader<
                         T,
                         XS,
-                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<T>,
                         WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                         ET,
                         EXD,
@@ -52,8 +52,8 @@ public final class WkSerdeVariableSizeElementCollectionReader<
                WkSerdeDtreeVariableSizeSequenceReader<
                         T,
                         XS,
-                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<T>,
                         WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
 {
 
@@ -70,8 +70,8 @@ public final class WkSerdeVariableSizeElementCollectionReader<
   WkSerdeVariableSizeElementCollectionReader(
     int index,
     XS settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<
       T,?,WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?,?,?> deserializingfieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,XS,WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -107,12 +107,12 @@ public final class WkSerdeVariableSizeElementCollectionReader<
   }
 
   @Override
-  public WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
+  public WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<T>> result() {
+  public Optional<WkSerdeDtreeOperationResult<T>> result() {
     return this.operationCore.result();
   }
 
@@ -123,7 +123,7 @@ public final class WkSerdeVariableSizeElementCollectionReader<
 
   @Override
   public
-  WkSrlzInputPacketFieldFrameNode<T,WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
+  WkSerdeDtreeNodeDataInputComponent<T,WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
   packetField() {
     return this.operationCore.packetField();
   }

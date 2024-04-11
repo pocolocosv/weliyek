@@ -19,52 +19,52 @@ package weliyek.serialization.number;
 
 import java.util.List;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public class WkSerdeUnsignedByte
     implements WkSerdeDtreeNumberDefinition<Integer>
 {
 
-  public static WkSrlzStruct<
+  public static WkSerdeDtreeStruct<
                       Integer,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeUnsignedByte,
                       WkSerdeUnsignedByteReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeUnsignedByte,
                       WkSerdeUnsignedByteWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeUnsignedByte>
   newStruct(String label) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                       label,
                       WkSerdeUnsignedByte::newCore,
-                      WkSzCountingInputBytestream::new,
-                      WkSzCountingOutputBytestream::new);
+                      WkSerdeDtreeBytestreamCountingInputStream::new,
+                      WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   public static WkSerdeDtreeNodeStructDefinitionCore<
                       Integer,
-                      WkSettingsSrlzPacketOperationData,?,?,
+                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeUnsignedByte,
                       WkSerdeUnsignedByteReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData, ?, ?,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings, ?, ?,
                       WkSerdeUnsignedByte,
                       WkSerdeUnsignedByteWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeUnsignedByte, ?>
-  newCore(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  newCore(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeUnsignedByte(componentCore).definitionCore;
   }
 
@@ -74,7 +74,7 @@ public class WkSerdeUnsignedByte
                         WkSerdeUnsignedByteWriter,
                         WkSerdeUnsignedByte> definitionCore;
 
-  private WkSerdeUnsignedByte(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  private WkSerdeUnsignedByte(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<>(
                                   componentCore,
                                   (i,xs,axb,xkc,dc) -> new WkSerdeUnsignedByteReader(i,xs,axb,xkc,dc).operationCore,

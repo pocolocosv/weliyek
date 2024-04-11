@@ -26,12 +26,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
@@ -51,16 +51,16 @@ public class WkSrlzFilterBuilderTest
 
   private static Predicate<WkSerdeDtreeNodeDataReader<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
 
-  private static WkSrlzStruct<
+  private static WkSerdeDtreeStruct<
                       WkSzTstMultipleLists,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeOperationSettings,
                       WkTstMultipleListSrlzStructNode,
                       WkTstMultipleListSrlzInputNode,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,
                       WkTstMultipleListSrlzStructNode,
                       WkTstMultipleListSrlzOutputNode,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkTstMultipleListSrlzStructNode> MULTIPLE_LIST_PACKET;
   static WkTstPrimitivesGroupListSrlzStructNode PRIMITIVELIST_FIELD;
   static WkSzTstPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
@@ -236,14 +236,14 @@ public class WkSrlzFilterBuilderTest
       KetzaByteOutputStream out = new KetzaByteOutputStream();
 
       WkSzOutputPacket<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzOutputNode>
-        multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSettingsSrlzPacketOperationData.EMPTY, out);
+        multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSerdeDtreeOperationSettings.EMPTY, out);
 
       while(multiListsSerializer.isInProgress()) {
         multiListsSerializer.processBytestream();
       }
 
       WkSzInputPacket<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzInputNode>
-        multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, out.inputStream(), filter);
+        multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, out.inputStream(), filter);
 
       while(multiListsDeserializer.isInProgress()) {
         multiListsDeserializer.processBytestream();

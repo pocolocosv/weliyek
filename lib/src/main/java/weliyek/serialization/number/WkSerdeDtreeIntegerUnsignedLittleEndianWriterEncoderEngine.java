@@ -19,18 +19,18 @@ package weliyek.serialization.number;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkSzPrimitiveWriteEngineFactory;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreePrimitiveEncoderEngineFactory;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 
 public class WkSerdeDtreeIntegerUnsignedLittleEndianWriterEncoderEngine
     extends WkSerdeDtreePrimitiveWriterEncoderEngine<Long>
 {
 
-  public static final WkSzPrimitiveWriteEngineFactory<Long> FACTORY =
-      new WkSzPrimitiveWriteEngineFactory<>("UINT32LE", WkSerdeDtreeIntegerUnsignedLittleEndianWriterEncoderEngine::new);
+  public static final WkSerdeDtreePrimitiveEncoderEngineFactory<Long> FACTORY =
+      new WkSerdeDtreePrimitiveEncoderEngineFactory<>("UINT32LE", WkSerdeDtreeIntegerUnsignedLittleEndianWriterEncoderEngine::new);
 
   private WkSerdeDtreeIntegerUnsignedLittleEndianWriterEncoderEngine(
-    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
     WkSerdeDtreeNumberWriter<Long, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

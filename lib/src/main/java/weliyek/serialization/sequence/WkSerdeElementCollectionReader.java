@@ -19,28 +19,28 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 
 public interface WkSerdeElementCollectionReader<
                         T extends Collection<ET>,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntimeSequenceCommon<?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeElementCollectionDefinition<T,?,?,ET,?>,
                         ET,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,?,?,?,EXD>>
         extends WkSerdeElementCollectionOperation<
                         XS, XQ, XR, XD,
-                        WkSrlzInputPacketFieldFrameNode<T,XD,?>,
+                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>,
                         EXO,
-                        WkSrlzInputPacketFieldFrameNode<ET,EXD,EXO>,
+                        WkSerdeDtreeNodeDataInputComponent<ET,EXD,EXO>,
                         WkSrlzInputPacketSubfieldFrameNode<ET,EXD,EXO>>,
                 WkSerdeDtreeCollectionReader<T, XS, XQ, XR, XD>
 {

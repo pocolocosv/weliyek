@@ -19,16 +19,16 @@ package weliyek.serialization.string;
 
 import java.util.Optional;
 
-import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.util.array.WkSerdeDtreeByteArrayOperation;
 
 public interface WkSerdeStringFromBytesOperation<
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData<?>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
+                        R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeStringFromBytesDefinition<?,?,?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
                         SO extends WkSerdeDtreeByteArrayOperation<?, ?, ?, ?, ?>,

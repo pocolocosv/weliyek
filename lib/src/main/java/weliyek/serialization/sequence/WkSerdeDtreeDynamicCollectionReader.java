@@ -19,40 +19,40 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceReader;
 
 public interface WkSerdeDtreeDynamicCollectionReader<
                         T extends Collection<ET>,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeDynamicCollectionDefinition<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
                         ZXO extends WkSerdeDtreeNumberReader<ZT,?,?,?,ZXD>,
                         ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                         ET,
-                        EXS extends WkSettingsSrlzPacketOperationData,
+                        EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                        VXS extends WkSzVariableLengthOperationSettings>
+                        VXS extends WkSerdeDtreeOperationSettingsVariableLength>
     extends WkSerdeDtreeDynamicCollectionOperation<
                         XS, XQ, XR, XD,
-                        WkSrlzInputPacketFieldFrameNode<T,XD,?>,
+                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>,
                         ZXO,
-                        WkSrlzInputPacketFieldFrameNode<ZT,ZXD,ZXO>,
+                        WkSerdeDtreeNodeDataInputComponent<ZT,ZXD,ZXO>,
                         WkSrlzInputPacketSubfieldFrameNode<ZT,ZXD,ZXO>,
                         WkSerdeVariableSizeElementCollectionReader<T,VXS,ET,EXS,EXD,EXO>,
-                        WkSrlzInputPacketFieldFrameNode<T,
+                        WkSerdeDtreeNodeDataInputComponent<T,
                           WkSerdeVariableSizeElementCollection<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                           WkSerdeVariableSizeElementCollectionReader<T,VXS,ET,EXS,EXD,EXO>>,
                           WkSrlzInputPacketSubfieldFrameNode<

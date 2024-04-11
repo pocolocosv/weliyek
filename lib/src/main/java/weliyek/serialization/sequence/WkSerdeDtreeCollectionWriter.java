@@ -20,20 +20,20 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
 
 public interface WkSerdeDtreeCollectionWriter<
                         T extends Collection<?>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeCollectionDefinition<T>>
     extends WkSerdeDtreeCollectionOperation<
                         YS, YQ, YR, YD,
-                        WkSrlzOutputPacketFieldFrameNode<T,YD,?>>,
+                        WkSerdeDtreeNodeDataOutputComponent<T,YD,?>>,
             WkSerdeDtreeAggregatorWriter<T, YS, YQ, YR, YD>,
             WkSerdeDtreeSequenceWriter<T, YS, YQ, YR, YD>
 {

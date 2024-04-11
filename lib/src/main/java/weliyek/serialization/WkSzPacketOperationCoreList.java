@@ -39,7 +39,7 @@ public class WkSzPacketOperationCoreList<
 
     private static final int UNINITIALIZED_LIST = -1;
 
-    private final WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,?,?,?> ownerField;
+    private final WkSerdeDtreeNodeDataComponentCore<?,?,?,?,?,?,?,?,?> ownerField;
     private final IntFunction<OC> operationFactory;
     private final Function<? super O, T> valueExtractor;
 
@@ -49,7 +49,7 @@ public class WkSzPacketOperationCoreList<
     private OC currentOpCore;
 
     public WkSzPacketOperationCoreList(
-      WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,?,?,?> ownerField,
+      WkSerdeDtreeNodeDataComponentCore<?,?,?,?,?,?,?,?,?> ownerField,
       IntFunction<OC> operationFactory,
       int initialCapacity,
       Function<? super O, T> valueExtractor) {

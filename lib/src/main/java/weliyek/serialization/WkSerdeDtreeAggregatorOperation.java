@@ -18,9 +18,9 @@
 package weliyek.serialization;
 
 public interface WkSerdeDtreeAggregatorOperation<
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData<?>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
+                        R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeDtreeAggregatorDefinition<?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
         extends WkSerdeDtreeAggregator,

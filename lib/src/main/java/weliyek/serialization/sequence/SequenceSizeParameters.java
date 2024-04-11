@@ -24,7 +24,7 @@ import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSzDefinitionCoreException;
 import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriterCore;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 
 public class SequenceSizeParameters<T>
 {
@@ -32,7 +32,7 @@ public class SequenceSizeParameters<T>
     private final int minSize;
     private final int maxSize;
     private final WkSerdeDtreeNodeStructDefinitionCore<
-                      T,? extends WkSzVariableLengthOperationSettings,?,?,
+                      T,? extends WkSerdeDtreeOperationSettingsVariableLength,?,?,
                       ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
                       ? extends WkSerdeDtreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
                       ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
@@ -43,7 +43,7 @@ public class SequenceSizeParameters<T>
       int minSize,
       int maxSize,
       WkSerdeDtreeNodeStructDefinitionCore<
-        T,? extends WkSzVariableLengthOperationSettings,?,?,
+        T,? extends WkSerdeDtreeOperationSettingsVariableLength,?,?,
         ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
         ? extends WkSerdeDtreeVariableSizeSequenceReader<T,?,?,?,?>,?,?,?,?,
         ? extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
@@ -90,10 +90,10 @@ public class SequenceSizeParameters<T>
 
     void onBeforeFullCompletionDeserialization(
       WkSerdeDtreeNodeDataReaderCore<
-        ?,? extends WkSzVariableLengthOperationSettings,?,?,?,
+        ?,? extends WkSerdeDtreeOperationSettingsVariableLength,?,?,?,
         ? extends WkSerdeDtreeVariableSizeSequenceReader<?,?,?,?,?>,?,
         ? extends WkSerdeDtreeVariableSizeSequenceDefinition<?>,?,?> deserializer) {
-      WkSzVariableLengthOperationSettings settings = deserializer.settings();
+      WkSerdeDtreeOperationSettingsVariableLength settings = deserializer.settings();
       if (settings.getRequestedLength() < minSize) {
         throw new WkSerdeDtreeNodeDataOperationException(
                         deserializer,

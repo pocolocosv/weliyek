@@ -20,31 +20,31 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public class WkSerdeDynamicByteArrayReader<
                         ZT extends Number,
-                        ZXO extends WkSerdeDtreeNumberReader<ZT,WkSettingsSrlzPacketOperationData,?,?,ZXD>,
+                        ZXO extends WkSerdeDtreeNumberReader<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD>,
                         ZXD extends WkSerdeDtreeNumberDefinition<ZT>>
     implements WkSerdeDtreeByteArrayReader<
-                        WkSettingsSrlzPacketOperationData,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkResultSrlzPacketOperationData<WkByteArray>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<WkByteArray>,
                         WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>,
                WkSerdeDtreeDynamicPrimitiveArrayReader<
                         WkByteArray,
-                        WkSettingsSrlzPacketOperationData,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkResultSrlzPacketOperationData<WkByteArray>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<WkByteArray>,
                         WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
                         ZT,
                         ZXO,
@@ -63,9 +63,9 @@ public class WkSerdeDynamicByteArrayReader<
 
   WkSerdeDynamicByteArrayReader(
     int index,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<
       WkByteArray,?,WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?,?,?> deserializingfieldCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       WkByteArray,WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
@@ -109,17 +109,17 @@ public class WkSerdeDynamicByteArrayReader<
   }
 
   @Override
-  public WkSettingsSrlzPacketOperationData settings() {
+  public WkSerdeDtreeOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
+  public WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<WkByteArray>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkByteArray>> result() {
     return this.operationCore.result();
   }
 
@@ -129,7 +129,7 @@ public class WkSerdeDynamicByteArrayReader<
   }
 
   @Override
-  public WkSrlzInputPacketFieldFrameNode<WkByteArray,WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
+  public WkSerdeDtreeNodeDataInputComponent<WkByteArray,WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,?>
   packetField() {
     return this.operationCore.packetField();
   }
@@ -140,13 +140,13 @@ public class WkSerdeDynamicByteArrayReader<
   }
 
   @Override
-  public Optional<WkSrlzInputPacketFieldFrameNode<ZT, ZXD, ZXO>> size() {
+  public Optional<WkSerdeDtreeNodeDataInputComponent<ZT, ZXD, ZXO>> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayReader>>
+  Optional<WkSerdeDtreeNodeDataInputComponent<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayReader>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }

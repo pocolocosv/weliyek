@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.function.IntFunction;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 
 public abstract class WkSerdeDtreeIntPrimitiveReaderDecoderEngine<X extends Number>
     extends WkSerdeDtreePrimitiveReaderDecoderEngine<X>
@@ -31,7 +31,7 @@ public abstract class WkSerdeDtreeIntPrimitiveReaderDecoderEngine<X extends Numb
 
   protected WkSerdeDtreeIntPrimitiveReaderDecoderEngine(
       IntFunction<X> converter,
-      WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
+      WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
       WkSerdeDtreeNumberReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.converter = Objects.requireNonNull(converter);

@@ -19,62 +19,62 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceReaderCore;
 
 public final class WkSerdeDtreeDynamicCollectionReaderCore<
                         T extends Collection<ET>,
-                        XS extends WkSettingsSrlzPacketOperationData,
+                        XS extends WkSerdeDtreeOperationSettings,
                         XO extends WkSerdeDtreeDynamicCollectionReader<
                                         T,XS,
-                                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                        WkResultSrlzPacketOperationData<T>,
+                                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                        WkSerdeDtreeOperationResult<T>,
                                         XD,ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
                         XD extends WkSerdeDtreeDynamicCollectionDefinition<
                                         T,XO,?,?,ET,EXS,?,EXO,?,?,?,?,VXS,?>,
                         ZT extends Number,
-                        ZXS extends WkSettingsSrlzPacketOperationData,
+                        ZXS extends WkSerdeDtreeOperationSettings,
                         ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
                         ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                         ET,
-                        EXS extends WkSettingsSrlzPacketOperationData,
+                        EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                        VXS extends WkSzVariableLengthOperationSettings>
+                        VXS extends WkSerdeDtreeOperationSettingsVariableLength>
     extends WkSerdeDtreeDynamicSequenceReaderCore<
                         T, XS,
-                        WkSzInputBytestream,
-                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzInputBytestream,
-                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeBytestreamInput,
+                        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntimeCtrl<
+                          WkSerdeDtreeBytestreamInput,
+                          WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                          WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>>,
+                        WkSerdeDtreeOperationResult<T>,
                         XO,
                         WkSerdeDtreeDynamicCollectionReaderCore<
                           T,XS,XO,XD,ZT,ZXS,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
                         XD,
-                        WkSzInputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamInputBase<?>,
                         ZT, ZXS, ZXO, ZXD, VXS,
                         WkSerdeVariableSizeElementCollectionReader<T,VXS,ET,EXS,EXD,EXO>, // VXO
                         WkSerdeVariableSizeElementCollection<T,VXS,?,ET,EXS,EXD,EXO,?,?,?,?>, // VXD
                         WkSerdeDtreeDynamicCollectionDefinitionCore<T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?>>
     implements WkSerdeDtreeDynamicCollectionReader<
                         T, XS,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<T>,
                         XD, ZT, ZXO, ZXD, ET, EXS, EXD, EXO,
                         VXS>
 {
@@ -82,8 +82,8 @@ public final class WkSerdeDtreeDynamicCollectionReaderCore<
   public WkSerdeDtreeDynamicCollectionReaderCore(
     int index,
     XS settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> packetfieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
       T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?> definitionCore,
     XO operationBody) {

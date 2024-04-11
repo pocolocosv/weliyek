@@ -20,11 +20,11 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSzPacketReaderOperationCoreFactory<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
+                        XS extends WkSerdeDtreeOperationSettings,
                         XD extends WkSerdeDtreeNodeStructDefinition<T>,
                         DC extends WkSerdeDtreeNodeStructDefinitionCore<T,XS,?,?,XD,?,AXB,?,?,?,?,?,?,?,?>,
                         XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
-                        AXB extends WkSzInputBytestreamBase<?>>
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>>
     extends WkSzOperationFactory
 {
 
@@ -32,7 +32,7 @@ public interface WkSzPacketReaderOperationCoreFactory<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> ownerPacket,
+    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> ownerPacket,
     DC definitionCore);
 
 }

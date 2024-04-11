@@ -17,23 +17,23 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
 
 public interface WkSerdeDtreeVariableSizePrimitiveArrayWriter<
                         Y extends WkPrimitiveArray<?,?>,
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData<Y>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationOutputRuntimeSequenceCommon<?>,
+                        R extends WkSerdeDtreeOperationResult<Y>,
                         D extends WkSerdeDtreeVariableSizePrimitiveArrayDefinition<Y>>
     extends WkSerdeDtreeVariableSizeSequenceWriter<Y, S, Q, R, D>,
             WkSerdeDtreePrimitiveArrayWriter<Y, S, Q, R, D>,
             WkSerdeDtreeVariableSizePrimitiveArrayOperation<
                         S, Q, R, D,
-                        WkSrlzOutputPacketFieldFrameNode<Y,D,?>>
+                        WkSerdeDtreeNodeDataOutputComponent<Y,D,?>>
 {
 
 }

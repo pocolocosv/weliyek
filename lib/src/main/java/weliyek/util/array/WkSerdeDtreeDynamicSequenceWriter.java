@@ -17,11 +17,11 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceWriter;
@@ -30,9 +30,9 @@ import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
 
 public interface WkSerdeDtreeDynamicSequenceWriter<
                         T,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         D extends WkSerdeDtreeDynamicSequenceDefinition<T,?,?,?,?>,
                         ZY extends Number,
                         ZYO extends WkSerdeDtreeNumberWriter<ZY,?,?,?,ZD>,
@@ -41,11 +41,11 @@ public interface WkSerdeDtreeDynamicSequenceWriter<
                         VD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>>
     extends WkSerdeDtreeDynamicSequenceOperation<
                         YS, YQ, YR, D,
-                        WkSrlzOutputPacketFieldFrameNode<T,D,?>,
+                        WkSerdeDtreeNodeDataOutputComponent<T,D,?>,
                         ZYO,
-                        WkSrlzOutputPacketFieldFrameNode<ZY,ZD,ZYO>,
+                        WkSerdeDtreeNodeDataOutputComponent<ZY,ZD,ZYO>,
                         VYO,
-                        WkSrlzOutputPacketFieldFrameNode<T,VD,VYO>>,
+                        WkSerdeDtreeNodeDataOutputComponent<T,VD,VYO>>,
             WkSerdeDtreeSequenceWriter<T, YS, YQ, YR, D>,
             WkSerdeDtreeAggregatorWriter<T, YS, YQ, YR, D>
 {

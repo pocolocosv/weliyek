@@ -25,18 +25,18 @@ import java.util.function.Function;
 
 public abstract class WkSerdeDtreeNodeLeafStructDefinitionCore<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeNodeStructDefinition<T>,
                         XO extends WkSerdeDtreeNodeDataReader<T,XS,?,XR,XD>,
-                        AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeNodeStructDefinition<T>,
                         YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,YR,YD>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         D extends WkSerdeDtreeNodeStructDefinition<T>,
                         DC extends WkSerdeDtreeNodeLeafStructDefinitionCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSerdeDtreeNodeStructDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
@@ -44,19 +44,19 @@ public abstract class WkSerdeDtreeNodeLeafStructDefinitionCore<
 
   public static final char LABEL_SEPARATOR = ',';
 
-  final WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory;
-  final WkSzWriteEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory;
+  final WkSerdeDtreeNodeDataDecoderEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory;
+  final WkSerdeDtreeNodeDataEncoderEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory;
 
   protected WkSerdeDtreeNodeLeafStructDefinitionCore(
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
-    WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
+    WkSerdeDtreeNodeDataDecoderEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
     Function<AYB, YQC> txRuntimeFactory,
     BiFunction<YO, T, YR> txResultFactory,
     WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
-    WkSzWriteEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
+    WkSerdeDtreeNodeDataEncoderEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

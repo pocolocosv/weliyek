@@ -20,21 +20,21 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
 public final class WkSerdeSignedByteReader
         implements WkSerdeDtreeNumberReader<
                         Byte,
-                        WkSettingsSrlzPacketOperationData,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkResultSrlzPacketOperationData<Byte>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<Byte>,
                         WkSerdeSignedByte>
 {
 
@@ -45,9 +45,9 @@ public final class WkSerdeSignedByteReader
 
     WkSerdeSignedByteReader(
       int index,
-      WkSettingsSrlzPacketOperationData settings,
-      WkSzInputBytestreamBase<?> parentBytestream,
-      WkSrlzInputPacketFieldFrameNodeCore<Byte,?,WkSerdeSignedByte,?,?,?> readingfieldCore,
+      WkSerdeDtreeOperationSettings settings,
+      WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+      WkSerdeDtreeNodeDataInputComponentCore<Byte,?,WkSerdeSignedByte,?,?,?> readingfieldCore,
       WkSerdeDtreeNumberDefinitionCoreSimplified<
         Byte,WkSerdeSignedByteReader,?,WkSerdeSignedByte> definitionCore) {
       operationCore = new WkSerdeDtreeNumberReaderCoreSimplified<
@@ -61,17 +61,17 @@ public final class WkSerdeSignedByteReader
     }
 
     @Override
-    public WkSettingsSrlzPacketOperationData settings() {
+    public WkSerdeDtreeOperationSettings settings() {
       return this.operationCore.settings();
     }
 
     @Override
-    public WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream> dashboard() {
+    public WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput> dashboard() {
       return this.operationCore.getRuntimeControl().asRuntime();
     }
 
     @Override
-    public Optional<WkResultSrlzPacketOperationData<Byte>> result() {
+    public Optional<WkSerdeDtreeOperationResult<Byte>> result() {
       return this.operationCore.result();
     }
 
@@ -81,7 +81,7 @@ public final class WkSerdeSignedByteReader
     }
 
     @Override
-    public WkSrlzInputPacketFieldFrameNode<Byte, WkSerdeSignedByte, ?> packetField() {
+    public WkSerdeDtreeNodeDataInputComponent<Byte, WkSerdeSignedByte, ?> packetField() {
       return this.operationCore.packetField();
     }
 

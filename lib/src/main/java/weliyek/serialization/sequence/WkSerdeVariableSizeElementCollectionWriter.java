@@ -21,29 +21,29 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public final class WkSerdeVariableSizeElementCollectionWriter<
                         T extends Collection<ET>,
-                        YS extends WkSettingsSrlzPacketOperationData,
+                        YS extends WkSerdeDtreeOperationSettings,
                         ET,
-                        EYS extends WkSettingsSrlzPacketOperationData,
+                        EYS extends WkSerdeDtreeOperationSettings,
                         EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>>
     implements WkSerdeElementCollectionWriter<
                         T,
                         YS,
-                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<T>,
                         WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                         ET,
                         EYD,
@@ -51,8 +51,8 @@ public final class WkSerdeVariableSizeElementCollectionWriter<
                WkSerdeDtreeVariableSizeSequenceWriter<
                         T,
                         YS,
-                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<T>,
                         WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
 {
 
@@ -66,8 +66,8 @@ public final class WkSerdeVariableSizeElementCollectionWriter<
     int index,
     T serializable,
     YS settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<
       T,?,WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,?,?,?> serializingfieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,?,?,?,YS,WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
@@ -104,12 +104,12 @@ public final class WkSerdeVariableSizeElementCollectionWriter<
   }
 
   @Override
-  public WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<T>> result() {
+  public Optional<WkSerdeDtreeOperationResult<T>> result() {
     return this.operationCore.result();
   }
 
@@ -119,7 +119,7 @@ public final class WkSerdeVariableSizeElementCollectionWriter<
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<T, WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>, ?>
+  public WkSerdeDtreeNodeDataOutputComponent<T, WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>, ?>
   packetField() {
     return this.operationCore.packetField();
   }

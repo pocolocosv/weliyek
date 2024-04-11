@@ -20,21 +20,21 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public final class WkSerdeSignedLittleEndianShortWriter
         implements WkSerdeDtreeNumberWriter<
                         Short,
-                        WkSettingsSrlzPacketOperationData,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<Short>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<Short>,
                         WkSerdeSignedLittleEndianShort>
 {
 
@@ -46,9 +46,9 @@ public final class WkSerdeSignedLittleEndianShortWriter
   WkSerdeSignedLittleEndianShortWriter(
     int index,
     Short serializable,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<
       Short,?,WkSerdeSignedLittleEndianShort,?,?,?> serializingfieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Short,?,WkSerdeSignedLittleEndianShortWriter,WkSerdeSignedLittleEndianShort> definitionCore) {
@@ -63,17 +63,17 @@ public final class WkSerdeSignedLittleEndianShortWriter
   }
 
   @Override
-  public WkSettingsSrlzPacketOperationData settings() {
+  public WkSerdeDtreeOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<Short>> result() {
+  public Optional<WkSerdeDtreeOperationResult<Short>> result() {
     return this.operationCore.result();
   }
 
@@ -93,7 +93,7 @@ public final class WkSerdeSignedLittleEndianShortWriter
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<Short, WkSerdeSignedLittleEndianShort, ?> packetField() {
+  public WkSerdeDtreeNodeDataOutputComponent<Short, WkSerdeSignedLittleEndianShort, ?> packetField() {
     return this.operationCore.packetFieldCore().asPacket();
   }
 

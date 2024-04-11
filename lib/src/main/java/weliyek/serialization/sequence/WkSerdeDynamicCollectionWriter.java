@@ -21,37 +21,37 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
 public class WkSerdeDynamicCollectionWriter<
                         T extends Collection<ET>,
-                        YS extends WkSettingsSrlzPacketOperationData,
+                        YS extends WkSerdeDtreeOperationSettings,
                         YD extends WkSerdeDtreeDynamicCollectionDefinition<
                                       T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
-                        ZYS extends WkSettingsSrlzPacketOperationData,
+                        ZYS extends WkSerdeDtreeOperationSettings,
                         ZYO extends WkSerdeDtreeNumberWriter<ZT,ZYS,?,?,ZYD>,
                         ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
                         ET,
-                        EYS extends WkSettingsSrlzPacketOperationData,
+                        EYS extends WkSerdeDtreeOperationSettings,
                         EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                        VYS extends WkSettingsSrlzPacketOperationData>
+                        VYS extends WkSerdeDtreeOperationSettings>
     implements WkSerdeDtreeDynamicCollectionWriter<
                         T, YS,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<T>,
                         WkSerdeDynamicCollection<
                           T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                         ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>
@@ -61,8 +61,8 @@ public class WkSerdeDynamicCollectionWriter<
                         T, YS,
                         WkSerdeDtreeDynamicCollectionWriter<
                           T, YS,
-                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                          WkResultSrlzPacketOperationData<T>,
+                          WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                          WkSerdeDtreeOperationResult<T>,
                           WkSerdeDynamicCollection<
                             T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                           ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -73,13 +73,13 @@ public class WkSerdeDynamicCollectionWriter<
   WkSerdeDynamicCollectionWriter(
     int index,
     T serializable, YS settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<
       T,?,WkSerdeDynamicCollection<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
       ?,?,?> packetfieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
       T,?,?,?,YS,
-      WkSerdeDtreeDynamicCollectionWriter<T,YS,WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,WkResultSrlzPacketOperationData<T>,
+      WkSerdeDtreeDynamicCollectionWriter<T,YS,WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,WkSerdeDtreeOperationResult<T>,
         WkSerdeDynamicCollection<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
         ZT,ZYO,ZYD,ET,EYS,EYD,EYO,VYS>,
       WkSerdeDynamicCollection<T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
@@ -88,8 +88,8 @@ public class WkSerdeDynamicCollectionWriter<
                                 T, YS,
                                 WkSerdeDtreeDynamicCollectionWriter<
                                   T, YS,
-                                  WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                  WkResultSrlzPacketOperationData<T>,
+                                  WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                                  WkSerdeDtreeOperationResult<T>,
                                   WkSerdeDynamicCollection<
                                     T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,?,ET,?,?,?,EYS,EYD,EYO,?,?,VYS>,
                                   ZT, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>,
@@ -106,13 +106,13 @@ public class WkSerdeDynamicCollectionWriter<
   }
 
   @Override
-  public Optional<WkSrlzOutputPacketFieldFrameNode<ZT, ZYD, ZYO>> size() {
+  public Optional<WkSerdeDtreeNodeDataOutputComponent<ZT, ZYD, ZYO>> size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  Optional<WkSrlzOutputPacketFieldFrameNode<T, WkSerdeVariableSizeElementCollection<T, ?, VYS, ET, ?, ?, ?, EYS, EYD, EYO, ?>, WkSerdeVariableSizeElementCollectionWriter<T, VYS, ET, EYS, EYD, EYO>>>
+  Optional<WkSerdeDtreeNodeDataOutputComponent<T, WkSerdeVariableSizeElementCollection<T, ?, VYS, ET, ?, ?, ?, EYS, EYD, EYO, ?>, WkSerdeVariableSizeElementCollectionWriter<T, VYS, ET, EYS, EYD, EYO>>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }
@@ -130,12 +130,12 @@ public class WkSerdeDynamicCollectionWriter<
   }
 
   @Override
-  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<T>> result() {
+  public Optional<WkSerdeDtreeOperationResult<T>> result() {
     return this.operationCore.result();
   }
 
@@ -146,7 +146,7 @@ public class WkSerdeDynamicCollectionWriter<
 
   @Override
   public
-  WkSrlzOutputPacketFieldFrameNode<T, WkSerdeDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ?>
+  WkSerdeDtreeNodeDataOutputComponent<T, WkSerdeDynamicCollection<T, ?, YS, ZT, ?, ?, ?, ZYS, ZYO, ZYD, ?, ET, ?, ?, ?, EYS, EYD, EYO, ?, ?, VYS>, ?>
   packetField() {
     return this.operationCore.packetField();
   }

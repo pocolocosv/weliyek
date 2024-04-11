@@ -22,34 +22,34 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntBiFunction;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeNodeLeafStructDefinitionCore;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.WkSzReadEngineFactory;
-import weliyek.serialization.WkSzWriteEngineFactory;
-import weliyek.serialization.sequence.WkPrimitiveArrayLengthGetter;
+import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
+import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
+import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArrayLengthGetter;
 
 public abstract class WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<
                         T extends WkPrimitiveArray<?, ?>,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreePrimitiveArrayDefinition<T>,
                         XO extends WkSerdeDtreePrimitiveArrayReader<T,XS,?,XR,XD>,
-                        AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,?>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreePrimitiveArrayDefinition<T>,
                         YO extends WkSerdeDtreePrimitiveArrayWriter<T,YS,?,YR,YD>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         D extends WkSerdeDtreePrimitiveArrayDefinition<T>,
                         DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
     extends WkSerdeDtreeNodeLeafStructDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
@@ -57,21 +57,21 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<
 {
 
   final ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator;
-  final WkPrimitiveArrayLengthGetter<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator;
+  final WkSerdeUtilsPrimitiveArrayLengthGetter<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator;
 
   protected WkSerdeDtreeGenericPrimitiveArrayDefinitionCore(
     int stepSize,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
-    WkSzReadEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
-    WkPrimitiveArrayLengthGetter<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator,
+    WkSerdeDtreeNodeDataDecoderEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
+    WkSerdeUtilsPrimitiveArrayLengthGetter<? super T, ? super YS, ? super YD> txRequestedLengthEvaluator,
     Function<AYB,YQC> txRuntimeFactory,
     BiFunction<YO,T,YR> txResultFactory,
     WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
-    WkSzWriteEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
+    WkSerdeDtreeNodeDataEncoderEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {
     super(

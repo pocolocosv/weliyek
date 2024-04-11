@@ -19,37 +19,37 @@ package weliyek.serialization;
 
 public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         X,
-                        XS extends WkSettingsSrlzPacketOperationData,
+                        XS extends WkSerdeDtreeOperationSettings,
                         XD extends WkSerdeDtreeAggregatorDefinition<X>,
                         XO extends WkSerdeDtreeAggregatorReader<
                                         X,
                                         XS,
-                                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                        WkResultSrlzPacketOperationData<X>,
+                                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                        WkSerdeDtreeOperationResult<X>,
                                         XD>>
     extends WkSerdeDtreeAggregatorReaderCore<
                         X,
                         XS,
-                        WkSzInputBytestream,
-                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzInputBytestream,
-                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkResultSrlzPacketOperationData<X>,
+                        WkSerdeDtreeBytestreamInput,
+                        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntimeCtrl<
+                          WkSerdeDtreeBytestreamInput,
+                          WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                          WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>>,
+                        WkSerdeDtreeOperationResult<X>,
                         XD,
                         XO,
                         WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<X,XS,XD,XO>,
-                        WkSzInputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamInputBase<?>,
                         WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<X,XS,XD,XO,?,?,?,? extends XD>>
 {
 
   public WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore(
     int index,
     XS settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<X,?,XD,?,?,?> deserializingFieldCore,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<X,?,XD,?,?,?> deserializingFieldCore,
     WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<X,XS,XD,XO,?,?,?,? extends XD> definitionCore,
     XO body) {
     super(index, settings, parentBytestream, deserializingFieldCore, definitionCore, body);

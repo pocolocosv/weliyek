@@ -27,7 +27,7 @@ public abstract class WkSerdeDtreePrimitiveArrayReaderDecoderEngineBasic<
                         V>
   extends WkSerdeDtreePrimitiveArrayReaderDecoderEngine<
                         X, V,
-                        WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>>
+                        WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?>>
 {
 
   public static final int STEP_SIZE = 1024;
@@ -35,7 +35,7 @@ public abstract class WkSerdeDtreePrimitiveArrayReaderDecoderEngineBasic<
   protected WkSerdeDtreePrimitiveArrayReaderDecoderEngineBasic(
       Function<V, X> newWrapperFactory,
       int elementByteLength,
-      WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
+      WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?> runtimeCtrl,
       WkSerdeDtreePrimitiveArrayReader<X,?,?,?,?> readingOperation) {
     super(newWrapperFactory, elementByteLength, STEP_SIZE, runtimeCtrl, readingOperation);
   }

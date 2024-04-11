@@ -20,20 +20,20 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorReader;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
 
 public interface WkSerdeDtreeCollectionReader<
                         T extends Collection<?>,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeCollectionDefinition<T>>
     extends WkSerdeDtreeCollectionOperation<
                         XS, XQ, XR, XD,
-                        WkSrlzInputPacketFieldFrameNode<T,XD,?>>,
+                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>>,
             WkSerdeDtreeAggregatorReader<T, XS, XQ, XR, XD>,
             WkSerdeDtreeSequenceReader<T, XS, XQ, XR, XD>
 {

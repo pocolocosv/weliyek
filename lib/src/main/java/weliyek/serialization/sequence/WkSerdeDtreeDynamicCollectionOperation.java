@@ -19,18 +19,18 @@ package weliyek.serialization.sequence;
 
 import java.util.Optional;
 
-import weliyek.serialization.WkCommonRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.number.WkSerdeDtreeNumberOperation;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceOperation;
 
 public interface WkSerdeDtreeDynamicCollectionOperation<
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData<?>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
+                        R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeDtreeDynamicCollectionDefinition<?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
                         ZO extends WkSerdeDtreeNumberOperation<?,?,?,?,?>,

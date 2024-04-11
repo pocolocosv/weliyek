@@ -19,13 +19,13 @@ package weliyek.serialization;
 
 public interface WkSerdeDtreeAggregatorReader<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeAggregatorDefinition<T>>
         extends WkSerdeDtreeAggregatorOperation<
                         XS, XQ, XR, XD,
-                        WkSrlzInputPacketFieldFrameNode<T,XD,?>>,
+                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>>,
                 WkSerdeDtreeNodeDataReader<T,XS,XQ,XR,XD>
 {
 

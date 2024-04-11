@@ -20,37 +20,37 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
 public class WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
                         X extends WkPrimitiveArray<?,?>,
-                        XS extends WkSettingsSrlzPacketOperationData,
+                        XS extends WkSerdeDtreeOperationSettings,
                         D extends WkSerdeDtreePrimitiveArrayDefinition<X>,
                         XO extends WkSerdeDtreePrimitiveArrayReader<
                                           X,
                                           XS,
-                                          WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                          WkResultSrlzPacketOperationData<X>,
+                                          WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>,
+                                          WkSerdeDtreeOperationResult<X>,
                                           D>>
     extends WkSerdeDtreeGenericPrimitiveArrayReaderCore<
                         X,
                         XS,
-                        WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzInputBytestream,
-                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkSequenceDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkResultSrlzPacketOperationData<X>,
+                        WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<
+                          WkSerdeDtreeBytestreamInput,
+                          WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                          WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>>,
+                        WkSerdeDtreeOperationResult<X>,
                         XO,
                         WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<X,XS,D,XO>,
                         D,
-                        WkSzInputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamInputBase<?>,
                         WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<X,XS,XO,?,?,D>>
 {
 
@@ -60,8 +60,8 @@ public class WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
   public WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified(
     int index,
     XS settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<X,?,D,?,?,?> deserializingfieldCore,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<X,?,D,?,?,?> deserializingfieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<X,XS,XO,?,?,D> definitionCore,
     XO operationBody,
     Consumer<? super WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<X,XS,D,XO>> onInitializing) {

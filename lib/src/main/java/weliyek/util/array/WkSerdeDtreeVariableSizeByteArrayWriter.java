@@ -20,48 +20,48 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.sequence.WkPrimitiveArraySrlzUtils;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArray;
 
 public class WkSerdeDtreeVariableSizeByteArrayWriter
     implements WkSerdeDtreeByteArrayWriter<
-                        WkSettingsSrlzPacketOperationData,
-                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<WkByteArray>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<WkByteArray>,
                         WkSerdeDtreeVariableSizeByteArray>,
                WkSerdeDtreeVariableSizePrimitiveArrayWriter<
                         WkByteArray,
-                        WkSettingsSrlzPacketOperationData,
-                        WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<WkByteArray>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<WkByteArray>,
                         WkSerdeDtreeVariableSizeByteArray>
 {
 
-  final WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
+  final WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
                     WkByteArray,
-                    WkSettingsSrlzPacketOperationData,
+                    WkSerdeDtreeOperationSettings,
                     WkSerdeDtreeVariableSizeByteArray,
                     WkSerdeDtreeVariableSizeByteArrayWriter> operationCore;
 
   WkSerdeDtreeVariableSizeByteArrayWriter(
     int index,
     WkByteArray serializable,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<
       WkByteArray,?,WkSerdeDtreeVariableSizeByteArray,?,?,?> serializingfieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
-      WkByteArray,?,?,WkSettingsSrlzPacketOperationData,WkSerdeDtreeVariableSizeByteArrayWriter,WkSerdeDtreeVariableSizeByteArray> definitionCore) {
-    this.operationCore = new WkSimplifiedPrimitiveArraySrlzOutputPacketEncoderFrameLeafNodeCore<
+      WkByteArray,?,?,WkSerdeDtreeOperationSettings,WkSerdeDtreeVariableSizeByteArrayWriter,WkSerdeDtreeVariableSizeByteArray> definitionCore) {
+    this.operationCore = new WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
                                 WkByteArray,
-                                WkSettingsSrlzPacketOperationData,
+                                WkSerdeDtreeOperationSettings,
                                 WkSerdeDtreeVariableSizeByteArray,
                                 WkSerdeDtreeVariableSizeByteArrayWriter>(
                                     index,
@@ -71,7 +71,7 @@ public class WkSerdeDtreeVariableSizeByteArrayWriter
                                     serializingfieldCore,
                                     definitionCore,
                                     this,
-                                    WkPrimitiveArraySrlzUtils::onVariableSizeSerializingInitialization);
+                                    WkSerdeUtilsPrimitiveArray::onVariableSizeSerializingInitialization);
   }
 
   @Override
@@ -80,17 +80,17 @@ public class WkSerdeDtreeVariableSizeByteArrayWriter
   }
 
   @Override
-  public WkSettingsSrlzPacketOperationData settings() {
+  public WkSerdeDtreeOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkSequenceEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<WkByteArray>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkByteArray>> result() {
     return this.operationCore.result();
   }
 
@@ -100,7 +100,7 @@ public class WkSerdeDtreeVariableSizeByteArrayWriter
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, ?>
+  public WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeVariableSizeByteArray, ?>
   packetField() {
     return this.operationCore.packetField();
   }

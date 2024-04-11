@@ -17,25 +17,25 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeNodeDataReaderDecoderCore;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceReader;
 
 public abstract class WkSerdeDtreeGenericPrimitiveArrayReaderCore<
                         X extends WkPrimitiveArray<?,?>,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
-                        XQC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
-                        XR extends WkResultSrlzPacketOperationData<X>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntimeSequenceCommon<?>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,XQ>,
+                        XR extends WkSerdeDtreeOperationResult<X>,
                         XO extends WkSerdeDtreePrimitiveArrayReader<X,XS,XQ,XR,XD>,
                         XOC extends WkSerdeDtreeGenericPrimitiveArrayReaderCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSerdeDtreePrimitiveArrayDefinition<X>,
-                        AXB extends WkSzInputBytestreamBase<?>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends WkSerdeDtreeNodeDataReaderDecoderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
         implements WkSerdeDtreePrimitiveArrayReader<X, XS, XQ, XR, XD>,
@@ -48,7 +48,7 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayReaderCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<X,?,XD,?,?,?> deserializingfieldCore,
+    WkSerdeDtreeNodeDataInputComponentCore<X,?,XD,?,?,?> deserializingfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, deserializingfieldCore, definitionCore, operationBody);

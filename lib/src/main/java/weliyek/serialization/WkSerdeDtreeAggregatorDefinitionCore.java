@@ -27,24 +27,24 @@ import java.util.function.ToIntFunction;
 
 public abstract class WkSerdeDtreeAggregatorDefinitionCore<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XB extends WkSzInputBytestream,
-                        XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XB extends WkSerdeDtreeBytestreamInput,
+                        XBC extends WkSerdeDtreeBytestreamInputBase<? extends XB>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<XB,XBC,?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeAggregatorDefinition<T>,
                         XO extends WkSerdeDtreeAggregatorReader<
-                                        T,XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD>,
-                        AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YB extends WkSzOutputBytestream,
-                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                                        T,XS,? extends WkSerdeDtreeOperationInputRuntime<XB>,XR,XD>,
+                        AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YB extends WkSerdeDtreeBytestreamOutput,
+                        YBC extends WkSerdeDtreeBytestreamOutputBase<? extends YB>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<YB,YBC,?>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeAggregatorDefinition<T>,
                         YO extends WkSerdeDtreeAggregatorWriter<
-                                        T,YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD>,
-                        AYBC extends WkSzOutputBytestreamBase<?>,
+                                        T,YS,? extends WkSerdeDtreeOperationOutputRuntime<YB>,YR,YD>,
+                        AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         D extends WkSerdeDtreeAggregatorDefinition<T>,
                         DC extends WkSerdeDtreeAggregatorDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXBC,YS,YB,YBC,YQC,YR,YD,YO,AYBC,D,?>>
@@ -69,7 +69,7 @@ public abstract class WkSerdeDtreeAggregatorDefinitionCore<
   private List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> roRequiredSubfields;
 
   protected WkSerdeDtreeAggregatorDefinitionCore(
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
@@ -106,10 +106,10 @@ public abstract class WkSerdeDtreeAggregatorDefinitionCore<
   }
 
   public <ST,
-          SXS extends WkSettingsSrlzPacketOperationData,
+          SXS extends WkSerdeDtreeOperationSettings,
           SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
           SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>,
-          SYS extends WkSettingsSrlzPacketOperationData,
+          SYS extends WkSerdeDtreeOperationSettings,
           SYD extends WkSerdeDtreeNodeStructDefinition<ST>,
           SYO extends WkSerdeDtreeNodeDataWriter<ST,SYS,?,?,SYD>,
           SD extends WkSerdeDtreeNodeStructDefinition<ST>>
@@ -136,10 +136,10 @@ public abstract class WkSerdeDtreeAggregatorDefinitionCore<
   }
 
   public <ST,
-          SXS extends WkSettingsSrlzPacketOperationData,
+          SXS extends WkSerdeDtreeOperationSettings,
           SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
           SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>,
-          SYS extends WkSettingsSrlzPacketOperationData,
+          SYS extends WkSerdeDtreeOperationSettings,
           SYD extends WkSerdeDtreeNodeStructDefinition<ST>,
           SYO extends WkSerdeDtreeNodeDataWriter<ST,SYS,?,?,SYD>,
           SD extends WkSerdeDtreeNodeStructDefinition<ST>>
@@ -167,10 +167,10 @@ public abstract class WkSerdeDtreeAggregatorDefinitionCore<
   }
 
   public <ST,
-          SXS extends WkSettingsSrlzPacketOperationData,
+          SXS extends WkSerdeDtreeOperationSettings,
           SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
           SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>,
-          SYS extends WkSettingsSrlzPacketOperationData,
+          SYS extends WkSerdeDtreeOperationSettings,
           SYD extends WkSerdeDtreeNodeStructDefinition<ST>,
           SYO extends WkSerdeDtreeNodeDataWriter<ST,SYS,?,?,SYD>,
           SD extends WkSerdeDtreeNodeStructDefinition<ST>>
@@ -198,10 +198,10 @@ public abstract class WkSerdeDtreeAggregatorDefinitionCore<
   }
 
   private <ST,
-           SXS extends WkSettingsSrlzPacketOperationData,
+           SXS extends WkSerdeDtreeOperationSettings,
            SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
            SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>,
-           SYS extends WkSettingsSrlzPacketOperationData,
+           SYS extends WkSerdeDtreeOperationSettings,
            SYD extends WkSerdeDtreeNodeStructDefinition<ST>,
            SYO extends WkSerdeDtreeNodeDataWriter<ST,SYS,?,?,SYD>,
            SD extends WkSerdeDtreeNodeStructDefinition<ST>>

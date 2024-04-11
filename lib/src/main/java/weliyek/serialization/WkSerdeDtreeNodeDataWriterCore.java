@@ -22,20 +22,20 @@ import java.util.Optional;
 
 public abstract class WkSerdeDtreeNodeDataWriterCore<
                         T,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,YQ>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YO extends WkSerdeDtreeNodeDataWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSerdeDtreeNodeDataWriterCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         DC extends WkSerdeDtreeNodeStructDefinitionCore<
                                       T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,?,DC>>
         extends WkSerdeDtreeNodeDataOperationCore<
                         YS, YQ, YQC, YR, YD, DC, YO, YOC, AYB,
-                        WkSrlzOutputPacketFieldFrameNode<T,YD,?>,
-                        WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?>>
+                        WkSerdeDtreeNodeDataOutputComponent<T,YD,?>,
+                        WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?>>
         implements WkSerdeDtreeNodeDataWriter<T, YS, YQ, YR, YD>
 {
 
@@ -47,7 +47,7 @@ public abstract class WkSerdeDtreeNodeDataWriterCore<
       T serializable,
       YS settings,
       AYB parentBytestream,
-      WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
+      WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
       DC definitionCore,
       YO operationBody) {
       super(

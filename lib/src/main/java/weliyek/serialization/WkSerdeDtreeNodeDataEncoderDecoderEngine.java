@@ -20,7 +20,7 @@ package weliyek.serialization;
 import java.util.Objects;
 
 public abstract class WkSerdeDtreeNodeDataEncoderDecoderEngine<
-                        QC extends WkRuntimeSrlzPacketOperationCtrl<?,?,?>,
+                        QC extends WkSerdeDtreeOperationRuntimeCommonCtrl<?,?,?>,
                         O extends WkSerdeDtreeNodeDataOperation<?,?,?,?,?>>
 {
 

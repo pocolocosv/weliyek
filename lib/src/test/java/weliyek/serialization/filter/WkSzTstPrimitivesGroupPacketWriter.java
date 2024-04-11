@@ -21,17 +21,17 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
 import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedBigEndianLongWriter;
@@ -48,84 +48,84 @@ import weliyek.serialization.string.WkSerdeStringFixedLengthBytes;
 public class WkSzTstPrimitivesGroupPacketWriter
         implements WkSerdeDtreeAggregatorWriter<
                         WkSzTstPrimitivesGroup,
-                        WkSettingsSrlzPacketOperationData,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroup>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<WkSzTstPrimitivesGroup>,
                         WkSzTstPrimitivesGroupStructDefinition>
 {
 
   final WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         WkSzTstPrimitivesGroup,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter> operationCore;
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         Byte,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeSignedByte,
                         WkSerdeSignedByteWriter,
                         WkSzTstPrimitivesGroup,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter> byteWritingSubfield;
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         Short,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeSignedBigEndianShort,
                         WkSerdeSignedBigEndianShortWriter,
                         WkSzTstPrimitivesGroup,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter> shortWritingSubfield;
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         Integer,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeSignedBigEndianInteger,
                         WkSerdeSignedBigEndianIntegerWriter,
                         WkSzTstPrimitivesGroup,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter> intWritingSubfield;
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         Long,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeSignedBigEndianLong,
                         WkSerdeSignedBigEndianLongWriter,
                         WkSzTstPrimitivesGroup,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter> longWritingSubfield;
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         String,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeStringFixedLengthBytes,
                         WkSerdeStringFixedLengthBytesWriter,
                         WkSzTstPrimitivesGroup,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter> fixedStrWritingSubfield;
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         String,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeStringDynamicBytes<Integer, ?, ?, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ? extends WkSerdeSignedBigEndianInteger>,
                         WkSerdeStringDynamicBytesWriter<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
                         WkSzTstPrimitivesGroup,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
                         WkSzTstPrimitivesGroupStructDefinition,
                         WkSzTstPrimitivesGroupPacketWriter> dynStrWritingSubfield;
 
   WkSzTstPrimitivesGroupPacketWriter(
     int index,
     WkSzTstPrimitivesGroup serializable,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<
       WkSzTstPrimitivesGroup,?,WkSzTstPrimitivesGroupStructDefinition,?,?,?> serializingFieldCore,
-    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkSzTstPrimitivesGroup, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ? extends WkSzTstPrimitivesGroupStructDefinition>
+    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkSzTstPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ? extends WkSzTstPrimitivesGroupStructDefinition>
       definitionCore) {
     this.operationCore = new WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                                 WkSzTstPrimitivesGroup,
-                                WkSettingsSrlzPacketOperationData,
+                                WkSerdeDtreeOperationSettings,
                                 WkSzTstPrimitivesGroupStructDefinition,
                                 WkSzTstPrimitivesGroupPacketWriter>(
                                     index,
@@ -149,17 +149,17 @@ public class WkSzTstPrimitivesGroupPacketWriter
   }
 
   @Override
-  public WkSettingsSrlzPacketOperationData settings() {
+  public WkSerdeDtreeOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<WkSzTstPrimitivesGroup>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkSzTstPrimitivesGroup>> result() {
     return this.operationCore.result();
   }
 
@@ -169,7 +169,7 @@ public class WkSzTstPrimitivesGroupPacketWriter
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<WkSzTstPrimitivesGroup, WkSzTstPrimitivesGroupStructDefinition, ?> packetField() {
+  public WkSerdeDtreeNodeDataOutputComponent<WkSzTstPrimitivesGroup, WkSzTstPrimitivesGroupStructDefinition, ?> packetField() {
     return this.operationCore.packetField();
   }
 

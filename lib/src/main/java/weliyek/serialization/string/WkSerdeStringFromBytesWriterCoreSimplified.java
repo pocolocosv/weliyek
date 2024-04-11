@@ -17,41 +17,41 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
 public class WkSerdeStringFromBytesWriterCoreSimplified<
-                        YS extends WkSettingsSrlzPacketOperationData,
+                        YS extends WkSerdeDtreeOperationSettings,
                         YO extends WkSerdeStringFromBytesWriter<
                                       YS,
-                                      WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                      WkResultSrlzPacketOperationData<String>,
+                                      WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                                      WkSerdeDtreeOperationResult<String>,
                                       YD,SYD,SYO>,
                         YD extends WkSerdeStringFromBytesDefinition<?,YO,? extends SYD>,
-                        SYS extends WkSettingsSrlzPacketOperationData,
+                        SYS extends WkSerdeDtreeOperationSettings,
                         SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreeByteArrayDefinition>
     extends WkSerdeStringFromBytesWriterCore<
                         YS,
-                        WkSzOutputBytestream,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzOutputBytestream,
-                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkResultSrlzPacketOperationData<String>,
+                        WkSerdeDtreeBytestreamOutput,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationOutputRuntimeCtrl<
+                          WkSerdeDtreeBytestreamOutput,
+                          WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+                          WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>>,
+                        WkSerdeDtreeOperationResult<String>,
                         YO,
                         WkSerdeStringFromBytesWriterCoreSimplified<YS,YO,YD,SYS,SYO,SYD>,
                         YD,
-                        WkSzOutputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamOutputBase<?>,
                         SYS, SYO, SYD,
                         WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?>>
 {
@@ -60,8 +60,8 @@ public class WkSerdeStringFromBytesWriterCoreSimplified<
     int index,
     String serializable,
     YS settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<String,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<String,?,YD,?,?,?> packetHandlerCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
     YO operationBody) {
     super(

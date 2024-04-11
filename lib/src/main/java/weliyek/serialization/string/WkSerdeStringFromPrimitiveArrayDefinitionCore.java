@@ -24,22 +24,22 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorDefinitionCore;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
 import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
@@ -49,27 +49,27 @@ import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 
 public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XB extends WkSzInputBytestream,
-                        XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,?>,
-                        XR extends WkResultSrlzPacketOperationData<String>,
-                        XO extends WkSerdeStringFromPrimitiveArrayReader<XS,? extends WkDecodingRuntimeSrlzPacketOperationData<XB>,XR,XD,ST,SXD,SXO>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XB extends WkSerdeDtreeBytestreamInput,
+                        XBC extends WkSerdeDtreeBytestreamInputBase<? extends XB>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<XB,XBC,?>,
+                        XR extends WkSerdeDtreeOperationResult<String>,
+                        XO extends WkSerdeStringFromPrimitiveArrayReader<XS,? extends WkSerdeDtreeOperationInputRuntime<XB>,XR,XD,ST,SXD,SXO>,
                         XD extends WkSerdeStringFromPrimitiveArrayDefinition<XO,?,? extends SXD>,
-                        AXB extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YB extends WkSzOutputBytestream,
-                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,?>,
-                        YR extends WkResultSrlzPacketOperationData<String>,
-                        YO extends WkSerdeStringFromPrimitiveArrayWriter<YS,? extends WkEncodingRuntimeSrlzPacketOperationData<YB>,YR,YD,ST,SYD,SYO>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YB extends WkSerdeDtreeBytestreamOutput,
+                        YBC extends WkSerdeDtreeBytestreamOutputBase<? extends YB>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<YB,YBC,?>,
+                        YR extends WkSerdeDtreeOperationResult<String>,
+                        YO extends WkSerdeStringFromPrimitiveArrayWriter<YS,? extends WkSerdeDtreeOperationOutputRuntime<YB>,YR,YD,ST,SYD,SYO>,
                         YD extends WkSerdeStringFromPrimitiveArrayDefinition<?,YO,? extends SYD>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         ST extends WkPrimitiveArray<?,?>,
-                        SXS extends WkSettingsSrlzPacketOperationData,
+                        SXS extends WkSerdeDtreeOperationSettings,
                         SXO extends WkSerdeDtreePrimitiveArrayReader<ST,SXS,?,?,SXD>,
                         SXD extends WkSerdeDtreePrimitiveArrayDefinition<ST>,
-                        SYS extends WkSettingsSrlzPacketOperationData,
+                        SYS extends WkSerdeDtreeOperationSettings,
                         SYO extends WkSerdeDtreePrimitiveArrayWriter<ST,SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreePrimitiveArrayDefinition<ST>,
                         SD extends WkSerdeDtreePrimitiveArrayDefinition<ST>,
@@ -88,7 +88,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
   final Function<XO, String> primitiveArrayDeserializingStringAggregator;
 
   protected WkSerdeStringFromPrimitiveArrayDefinitionCore(
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,String,XR> rxResultFactory,
     WkSzPacketReaderOperationCoreFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
@@ -139,7 +139,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
 
     @Override
     public ST disaggregate(
-      WkSrlzOutputPacketFieldFrameNode<ST,SD,?> primitiveArraySerializingField,
+      WkSerdeDtreeNodeDataOutputComponent<ST,SD,?> primitiveArraySerializingField,
       YO stringSerializingOperation,
       int primitiveArraySerializingOperationIndex) {
       WA array = getPrimitiveArrayFromString(stringSerializingOperation);

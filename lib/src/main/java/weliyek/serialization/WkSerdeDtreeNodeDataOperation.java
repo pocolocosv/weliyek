@@ -33,9 +33,9 @@ import weliyek.serialization.tree.WkSerdeDtreeNodeData;
  * @param <K> Packet handler objects of this operation.
  */
 public interface WkSerdeDtreeNodeDataOperation<
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkCommonRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData<?>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
+                        R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeDtreeNodeStructDefinition<?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
         extends WkSerdeDtreeNodeData,

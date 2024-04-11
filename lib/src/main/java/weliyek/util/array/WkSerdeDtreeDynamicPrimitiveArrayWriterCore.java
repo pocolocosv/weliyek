@@ -17,13 +17,13 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
@@ -31,42 +31,42 @@ public class WkSerdeDtreeDynamicPrimitiveArrayWriterCore<
                         T extends WkPrimitiveArray<?,?>,
                         YO extends WkSerdeDtreeDynamicPrimitiveArrayWriter<
                                         T,
-                                        WkSettingsSrlzPacketOperationData,
-                                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                                        WkResultSrlzPacketOperationData<T>,
+                                        WkSerdeDtreeOperationSettings,
+                                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                                        WkSerdeDtreeOperationResult<T>,
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD extends WkSerdeDtreeDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
                         ZT extends Number,
                         ZYO extends WkSerdeDtreeNumberWriter<
                                         ZT,
-                                        WkSettingsSrlzPacketOperationData,
+                                        WkSerdeDtreeOperationSettings,
                                         ?,?,ZYD>,
                         ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
                         VYO extends WkSerdeDtreeVariableSizePrimitiveArrayWriter<
                                         T,
-                                        WkSettingsSrlzPacketOperationData,
+                                        WkSerdeDtreeOperationSettings,
                                         ?,?,VYD>,
                         VYD extends WkSerdeDtreeVariableSizePrimitiveArrayDefinition<T>>
     extends WkSerdeDtreeDynamicSequenceWriterCore<
                         T,
-                        WkSettingsSrlzPacketOperationData,
-                        WkSzOutputBytestream,
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkEncodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzOutputBytestream,
-                          WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>,
-                          WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeBytestreamOutput,
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationOutputRuntimeCtrl<
+                          WkSerdeDtreeBytestreamOutput,
+                          WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+                          WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>>,
+                        WkSerdeDtreeOperationResult<T>,
                         YO,
                         WkSerdeDtreeDynamicPrimitiveArrayWriterCore<T,YO,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD,
-                        WkSzOutputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamOutputBase<?>,
                         ZT,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         ZYO,
                         ZYD,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         VYO,
                         VYD,
                         WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
@@ -75,18 +75,18 @@ public class WkSerdeDtreeDynamicPrimitiveArrayWriterCore<
                           ?,?,VYD,VYO,?,?>>
     implements WkSerdeDtreeDynamicPrimitiveArrayWriter<
                         T,
-                        WkSettingsSrlzPacketOperationData,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<T>,
                         YD, ZT, ZYO, ZYD, VYO, VYD>
 {
 
   public WkSerdeDtreeDynamicPrimitiveArrayWriterCore(
     int index,
     T serializable,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       T,?,?,YD,YO,
       ZT,?,?,ZYD,ZYO,?,

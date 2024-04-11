@@ -24,19 +24,19 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.serialization.WkSerdeDtreeNodeDataWriterEncoderEngine;
 import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 
 public abstract class WkSerdeDtreePrimitiveWriterEncoderEngine<T extends Number>
     extends WkSerdeDtreeNodeDataWriterEncoderEngine<
                         T,
-                        WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
+                        WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?>,
                         WkSerdeDtreeNumberWriter<T,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkSerdeDtreePrimitiveWriterEncoderEngine.class);
 
   protected WkSerdeDtreePrimitiveWriterEncoderEngine(
-    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
     WkSerdeDtreeNumberWriter<T,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

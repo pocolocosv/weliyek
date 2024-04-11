@@ -20,11 +20,11 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSzPacketWriterOperationCoreFactory<
                         T,
-                        YS extends WkSettingsSrlzPacketOperationData,
+                        YS extends WkSerdeDtreeOperationSettings,
                         YD extends WkSerdeDtreeNodeStructDefinition<T>,
                         DC extends WkSerdeDtreeNodeStructDefinitionCore<T,?,?,?,?,?,?,YS,?,?,YD,?,YAB,?,?>,
                         YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
-                        YAB extends WkSzOutputBytestreamBase<?>>
+                        YAB extends WkSerdeDtreeBytestreamOutputBase<?>>
     extends WkSzOperationFactory
 {
 
@@ -33,7 +33,7 @@ public interface WkSzPacketWriterOperationCoreFactory<
     T serializable,
     YS settings,
     YAB parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packet,
+    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packet,
     DC definitionCore);
 
 }

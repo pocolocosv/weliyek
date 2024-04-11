@@ -22,20 +22,20 @@ import java.util.function.BiFunction;
 
 public abstract class WkSerdeDtreeNodeDataReaderCore<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<?,?,XQ>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XO extends WkSerdeDtreeNodeDataReader<T,XS,XQ,XR,XD>,
                         XOC extends WkSerdeDtreeNodeDataReaderCore<T,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        AXB extends WkSzInputBytestreamBase<?>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         DC extends WkSerdeDtreeNodeStructDefinitionCore<
                                       T,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,DC>>
         extends WkSerdeDtreeNodeDataOperationCore<
                         XS, XQ, XQC, XR, XD, DC, XO, XOC, AXB,
-                        WkSrlzInputPacketFieldFrameNode<T,XD,?>,
-                        WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?>>
+                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>,
+                        WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?>>
         implements WkSerdeDtreeNodeDataReader<T, XS, XQ, XR, XD>
 {
 
@@ -45,7 +45,7 @@ public abstract class WkSerdeDtreeNodeDataReaderCore<
       int index,
       XS settings,
       AXB parentBytestream,
-      WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> packetField,
+      WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> packetField,
       DC definitionCore,
       XO operationBody) {
       super(index, settings, parentBytestream, packetField, definitionCore, operationBody);

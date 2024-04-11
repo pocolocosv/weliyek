@@ -21,54 +21,54 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzOptionalLengthOperationSettings;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsOptionalLength;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArray;
 
 public class WkSerdeStringVariableBytesWriter
     implements WkSerdeStringFromBytesWriter<
-                        WkSzOptionalLengthOperationSettings,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<String>,
+                        WkSerdeDtreeOperationSettingsOptionalLength,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<String>,
                         WkSerdeStringVariableBytes,
                         WkSerdeDtreeVariableSizeByteArray,
                         WkSerdeDtreeVariableSizeByteArrayWriter>
 {
 
   final WkSerdeStringFromBytesWriterCoreSimplified<
-                        WkSzOptionalLengthOperationSettings,
+                        WkSerdeDtreeOperationSettingsOptionalLength,
                         WkSerdeStringVariableBytesWriter,
                         WkSerdeStringVariableBytes,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeVariableSizeByteArrayWriter,
                         WkSerdeDtreeVariableSizeByteArray> operationCore;
 
   WkSerdeStringVariableBytesWriter(
     int index,
     String serializable,
-    WkSzOptionalLengthOperationSettings settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<
+    WkSerdeDtreeOperationSettingsOptionalLength settings,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<
       String,?,WkSerdeStringVariableBytes,?,?,?> serializingfieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
-      ?,?,?,WkSzOptionalLengthOperationSettings,WkSerdeStringVariableBytesWriter,
-      WkSerdeStringVariableBytes,?,?,?,WkSettingsSrlzPacketOperationData,
+      ?,?,?,WkSerdeDtreeOperationSettingsOptionalLength,WkSerdeStringVariableBytesWriter,
+      WkSerdeStringVariableBytes,?,?,?,WkSerdeDtreeOperationSettings,
       WkSerdeDtreeVariableSizeByteArrayWriter,WkSerdeDtreeVariableSizeByteArray,?,
       ? extends WkSerdeStringVariableBytes> definitionCore) {
     this.operationCore = new WkSerdeStringFromBytesWriterCoreSimplified<
-                                WkSzOptionalLengthOperationSettings,
+                                WkSerdeDtreeOperationSettingsOptionalLength,
                                 WkSerdeStringVariableBytesWriter,
                                 WkSerdeStringVariableBytes,
-                                WkSettingsSrlzPacketOperationData,
+                                WkSerdeDtreeOperationSettings,
                                 WkSerdeDtreeVariableSizeByteArrayWriter,
                                 WkSerdeDtreeVariableSizeByteArray>(
                                     index,
@@ -82,7 +82,7 @@ public class WkSerdeStringVariableBytesWriter
 
   @Override
   public
-  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
+  Optional<WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -93,17 +93,17 @@ public class WkSerdeStringVariableBytesWriter
   }
 
   @Override
-  public WkSzOptionalLengthOperationSettings settings() {
+  public WkSerdeDtreeOperationSettingsOptionalLength settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<String>> result() {
+  public Optional<WkSerdeDtreeOperationResult<String>> result() {
     return this.operationCore.result();
   }
 
@@ -113,7 +113,7 @@ public class WkSerdeStringVariableBytesWriter
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<String, WkSerdeStringVariableBytes, ?> packetField() {
+  public WkSerdeDtreeNodeDataOutputComponent<String, WkSerdeStringVariableBytes, ?> packetField() {
     return this.operationCore.packetField();
   }
 
@@ -134,7 +134,7 @@ public class WkSerdeStringVariableBytesWriter
 
   @Override
   public
-  Optional<WkSrlzOutputPacketFieldFrameNode<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
+  Optional<WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
   bytes() {
     return this.operationCore.bytes();
   }

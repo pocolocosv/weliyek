@@ -22,16 +22,16 @@ import java.util.Optional;
 
 public abstract class WkSerdeDtreeAggregatorReaderCore<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XB extends WkSzInputBytestream,
-                        XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XB extends WkSerdeDtreeBytestreamInput,
+                        XBC extends WkSerdeDtreeBytestreamInputBase<? extends XB>,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<XB>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<XB,XBC,XQ>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeAggregatorDefinition<T>,
                         XO extends WkSerdeDtreeAggregatorReader<T,XS,XQ,XR,XD>,
                         XOC extends WkSerdeDtreeAggregatorReaderCore<T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXB,DC>,
-                        AXB extends WkSzInputBytestreamBase<?>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         DC extends WkSerdeDtreeAggregatorDefinitionCore<T,XS,XB,XBC,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,?,?,?,DC>>
     extends WkSerdeDtreeNodeDataReaderCore<T, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
     implements WkSerdeDtreeAggregatorReader<T, XS, XQ, XR, XD>
@@ -43,7 +43,7 @@ public abstract class WkSerdeDtreeAggregatorReaderCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> packetfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);
@@ -52,7 +52,7 @@ public abstract class WkSerdeDtreeAggregatorReaderCore<
 
   @SuppressWarnings("unchecked")
   public <ST,
-          SXS extends WkSettingsSrlzPacketOperationData,
+          SXS extends WkSerdeDtreeOperationSettings,
           SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
           SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>>
   WkSrlzInputPacketSubfieldFrameNodeCore<ST,SXS,SXD,SXO,T,XBC,XD,XO> getSubfieldpacketFor(

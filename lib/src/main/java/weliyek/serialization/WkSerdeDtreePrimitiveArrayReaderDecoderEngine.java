@@ -30,7 +30,7 @@ import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
 public abstract class WkSerdeDtreePrimitiveArrayReaderDecoderEngine<
                         X extends WkPrimitiveArray<V, ?>,
                         V,
-                        QC extends WkSequenceDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>>
+                        QC extends WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?>>
         extends WkSerdeDtreeNodeDataReaderDecoderEngine<
                         X,
                         QC,

@@ -20,54 +20,54 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLongWriter;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 
 public class WkBitcoinNodeServicesSrlzOutputNode 
     implements WkSerdeDtreeAggregatorWriter<
                         WkBitcoinNodeServices, 
-                        WkSettingsSrlzPacketOperationData, 
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<WkBitcoinNodeServices>, 
+                        WkSerdeDtreeOperationSettings, 
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<WkBitcoinNodeServices>, 
                         WkBitcoinNodeServicesSrlzStructNode>
 {
 
   final WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                         WkBitcoinNodeServices, 
-                        WkSettingsSrlzPacketOperationData, 
+                        WkSerdeDtreeOperationSettings, 
                         WkBitcoinNodeServicesSrlzStructNode, 
                         WkBitcoinNodeServicesSrlzOutputNode> outputCore;
   final WkSrlzOutputPacketSubfieldFrameNodeCore<
                         Long, 
-                        WkSettingsSrlzPacketOperationData, 
+                        WkSerdeDtreeOperationSettings, 
                         WkSerdeSignedLittleEndianLong, 
                         WkSerdeSignedLittleEndianLongWriter, 
                         WkBitcoinNodeServices, 
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, 
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>, 
                         WkBitcoinNodeServicesSrlzStructNode, 
                         WkBitcoinNodeServicesSrlzOutputNode> int64;
 
   WkBitcoinNodeServicesSrlzOutputNode(
     int index, 
     WkBitcoinNodeServices serializable, 
-    WkSettingsSrlzPacketOperationData settings, 
-    WkSzOutputBytestreamBase<?> parentBytestream, 
-    WkSrlzOutputPacketFieldFrameNodeCore<WkBitcoinNodeServices, ?, WkBitcoinNodeServicesSrlzStructNode, ?, ?, ?> packetFieldCore, 
-    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkBitcoinNodeServices, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, ?> structCore) {
+    WkSerdeDtreeOperationSettings settings, 
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream, 
+    WkSerdeDtreeNodeDataOutputComponentCore<WkBitcoinNodeServices, ?, WkBitcoinNodeServicesSrlzStructNode, ?, ?, ?> packetFieldCore, 
+    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkBitcoinNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, ?> structCore) {
     this.outputCore = new WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                             WkBitcoinNodeServices, 
-                            WkSettingsSrlzPacketOperationData, 
+                            WkSerdeDtreeOperationSettings, 
                             WkBitcoinNodeServicesSrlzStructNode, 
                             WkBitcoinNodeServicesSrlzOutputNode>(
                                 index, serializable, settings, parentBytestream, packetFieldCore, structCore, this);
@@ -76,11 +76,11 @@ public class WkBitcoinNodeServicesSrlzOutputNode
   
   public WkSrlzOutputPacketSubfieldFrameNodeCore<
                         Long, 
-                        WkSettingsSrlzPacketOperationData, 
+                        WkSerdeDtreeOperationSettings, 
                         WkSerdeSignedLittleEndianLong, 
                         WkSerdeSignedLittleEndianLongWriter, 
                         WkBitcoinNodeServices, 
-                        WkSzOutputBytestreamBase<? extends WkSzOutputBytestream>, 
+                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>, 
                         WkBitcoinNodeServicesSrlzStructNode, 
                         WkBitcoinNodeServicesSrlzOutputNode> 
   int64() {
@@ -93,17 +93,17 @@ public class WkBitcoinNodeServicesSrlzOutputNode
   }
 
   @Override
-  public WkSettingsSrlzPacketOperationData settings() {
+  public WkSerdeDtreeOperationSettings settings() {
     return this.outputCore.settings();
   }
 
   @Override
-  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.outputCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<WkBitcoinNodeServices>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkBitcoinNodeServices>> result() {
     return this.outputCore.result();
   }
 
@@ -114,7 +114,7 @@ public class WkBitcoinNodeServicesSrlzOutputNode
 
   @Override
   public
-      WkSrlzOutputPacketFieldFrameNode<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, ?>
+      WkSerdeDtreeNodeDataOutputComponent<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, ?>
       packetField() {
     return this.outputCore.packetField();
   }

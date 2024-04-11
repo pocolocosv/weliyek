@@ -21,7 +21,7 @@ public interface WkSrlzOutputPacketSubfieldFrameNode<
                         T,
                         YD extends WkSerdeDtreeNodeStructDefinition<T>,
                         YO extends WkSerdeDtreeNodeDataWriter<T,?,?,?,YD>>
-    extends WkSerdeDtreeNodeDataComponentHandler<WkSrlzOutputPacketFieldFrameNode<T, YD, YO>>,
+    extends WkSerdeDtreeNodeDataComponentHandler<WkSerdeDtreeNodeDataOutputComponent<T, YD, YO>>,
             WkSerdeDtreeNodeDataOutput
 {
 

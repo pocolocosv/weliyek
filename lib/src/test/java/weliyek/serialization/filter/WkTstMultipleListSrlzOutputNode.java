@@ -20,14 +20,14 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShortWriter;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
 import weliyek.serialization.sequence.WkSerdeDtreeDynamicCollectionWriter;
@@ -39,58 +39,58 @@ import weliyek.serialization.sequence.WkSerdeVariableSizeElementCollection;
 public class WkTstMultipleListSrlzOutputNode
         implements WkSerdeDtreeDynamicCollectionWriter<
                         WkSzTstMultipleLists,
-                        WkSettingsSrlzPacketOperationData,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<WkSzTstMultipleLists>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<WkSzTstMultipleLists>,
                         WkTstMultipleListSrlzStructNode,
                         Short,
                         WkSerdeSignedBigEndianShortWriter,
                         WkSerdeSignedBigEndianShort,
                         WkSzTstPrimitivesGroupList,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         WkTstPrimitivesGroupListSrlzOutputNode,
-                        WkSettingsSrlzPacketOperationData>
+                        WkSerdeDtreeOperationSettings>
 {
 
     final WkSerdeDtreeDynamicCollectionWriterCore<
                         WkSzTstMultipleLists,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkTstMultipleListSrlzOutputNode,
                         WkTstMultipleListSrlzStructNode,
                         Short,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeSignedBigEndianShortWriter,
                         WkSerdeSignedBigEndianShort,
                         WkSzTstPrimitivesGroupList,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkTstPrimitivesGroupListSrlzStructNode,
                         WkTstPrimitivesGroupListSrlzOutputNode,
-                        WkSettingsSrlzPacketOperationData> operationCore;
+                        WkSerdeDtreeOperationSettings> operationCore;
 
   WkTstMultipleListSrlzOutputNode(
     int index,
     WkSzTstMultipleLists serializable,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<WkSzTstMultipleLists, ?, WkTstMultipleListSrlzStructNode, ?, ?, ?>
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<WkSzTstMultipleLists, ?, WkTstMultipleListSrlzStructNode, ?, ?, ?>
       serializerpacketCore,
-    WkSerdeDtreeDynamicCollectionDefinitionCore<WkSzTstMultipleLists, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, ?, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?, ?, WkSettingsSrlzPacketOperationData, ?>
+    WkSerdeDtreeDynamicCollectionDefinitionCore<WkSzTstMultipleLists, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, ?, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?, ?, WkSerdeDtreeOperationSettings, ?>
       definitionCore) {
     operationCore = new WkSerdeDtreeDynamicCollectionWriterCore<
-                            WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, WkSettingsSrlzPacketOperationData, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSettingsSrlzPacketOperationData>(
+                            WkSzTstMultipleLists, WkSerdeDtreeOperationSettings, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, WkSerdeDtreeOperationSettings>(
                                 index, serializable, settings, parentBytestream, serializerpacketCore, definitionCore, this);
   }
 
   @Override
-  public Optional<WkSrlzOutputPacketFieldFrameNode<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>>
+  public Optional<WkSerdeDtreeNodeDataOutputComponent<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>>
   size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  Optional<WkSrlzOutputPacketFieldFrameNode<WkSzTstMultipleLists, WkSerdeVariableSizeElementCollection<WkSzTstMultipleLists, ?, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, WkSerdeVariableSizeElementCollectionWriter<WkSzTstMultipleLists, WkSettingsSrlzPacketOperationData, WkSzTstPrimitivesGroupList, WkSettingsSrlzPacketOperationData, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>>
+  Optional<WkSerdeDtreeNodeDataOutputComponent<WkSzTstMultipleLists, WkSerdeVariableSizeElementCollection<WkSzTstMultipleLists, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, WkSerdeVariableSizeElementCollectionWriter<WkSzTstMultipleLists, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }
@@ -101,17 +101,17 @@ public class WkTstMultipleListSrlzOutputNode
   }
 
   @Override
-  public WkSettingsSrlzPacketOperationData settings() {
+  public WkSerdeDtreeOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<WkSzTstMultipleLists>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkSzTstMultipleLists>> result() {
     return this.operationCore.result();
   }
 
@@ -121,7 +121,7 @@ public class WkTstMultipleListSrlzOutputNode
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, ?> packetField() {
+  public WkSerdeDtreeNodeDataOutputComponent<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, ?> packetField() {
     return this.operationCore.packetField();
   }
 

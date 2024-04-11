@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public abstract class WkSerdeDtreeNodeDataWriterEncoderEngine<
                         T,
-                        QC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
+                        QC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?>,
                         O extends WkSerdeDtreeNodeDataWriter<? extends T,?,?,?,?>>
     extends WkSerdeDtreeNodeDataEncoderDecoderEngine<QC, O>
 {

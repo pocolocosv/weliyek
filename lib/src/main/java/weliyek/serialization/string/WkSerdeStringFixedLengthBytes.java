@@ -21,16 +21,16 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.string.WkSerdeStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
@@ -51,60 +51,60 @@ public class WkSerdeStringFixedLengthBytes
                         WkSerdeDtreeFixedSizeByteArray>
 {
 
-  public static WkSrlzStruct<
+  public static WkSerdeDtreeStruct<
                       String,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeStringFixedLengthBytes,
                       WkSerdeStringFixedLengthBytesReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeStringFixedLengthBytes,
                       WkSerdeStringFixedLengthBytesWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeStringFixedLengthBytes>
   newStruct(
     String label,
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                       label,
                       (pc) -> WkSerdeStringFixedLengthBytes.newCore(
                                     bytesLabel, expectedSize, defaultCharset, pc),
-                      WkSzCountingInputBytestream::new,
-                      WkSzCountingOutputBytestream::new);
+                      WkSerdeDtreeBytestreamCountingInputStream::new,
+                      WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   public static WkSerdeDtreeNodeStructDefinitionCore<
                       String,
-                      WkSettingsSrlzPacketOperationData,?,?,
+                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeStringFixedLengthBytes,
                       WkSerdeStringFixedLengthBytesReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,?,?,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeStringFixedLengthBytes,
                       WkSerdeStringFixedLengthBytesWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeStringFixedLengthBytes,?>
   newCore(
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeStringFixedLengthBytes(bytesLabel, expectedSize, defaultCharset, componentCore).definitionCore;
   }
 
   private final WkSerdeStringFromBytesDefinitionCoreSimplified<
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeStringFixedLengthBytesReader,
                         WkSerdeStringFixedLengthBytes,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeStringFixedLengthBytesWriter,
                         WkSerdeStringFixedLengthBytes,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArrayReader,
                         WkSerdeDtreeFixedSizeByteArray,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArrayWriter,
                         WkSerdeDtreeFixedSizeByteArray,
                         WkSerdeDtreeFixedSizeByteArray,
@@ -114,7 +114,7 @@ public class WkSerdeStringFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
 
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                   defaultCharset,
@@ -122,9 +122,9 @@ public class WkSerdeStringFixedLengthBytes
                                   (i,xs,axb,xpc,dc) -> new WkSerdeStringFixedLengthBytesReader(i,xs,axb,xpc,dc).operationCore,
                                   (i,y,ys,ayb,ypc,dc) -> new WkSerdeStringFixedLengthBytesWriter(i,y,ys,ayb,ypc,dc).operationCore,
                                   bytesLabel,
-                                  WkSettingsSrlzPacketOperationData::none,
+                                  WkSerdeDtreeOperationSettings::none,
                                   WkSerdeStringFixedLengthBytes::aggragateByteArray,
-                                  WkSettingsSrlzPacketOperationData::none,
+                                  WkSerdeDtreeOperationSettings::none,
                                   new FixedLengthBytesDisaggregatorFromString(expectedSize),
                                   (pc) -> WkSerdeDtreeFixedSizeByteArray.newCore(expectedSize, pc),
                                   this);

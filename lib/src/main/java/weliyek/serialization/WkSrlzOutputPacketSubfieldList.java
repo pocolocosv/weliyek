@@ -21,9 +21,9 @@ import java.util.List;
 
 public class WkSrlzOutputPacketSubfieldList<
                         Y,
-                        YBC extends WkSzOutputBytestreamBase<?>,
+                        YBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         YD extends WkSerdeDtreeAggregatorDefinition<Y>,
-                        YO extends WkSerdeDtreeAggregatorWriter<Y,?,? extends WkEncodingRuntimeSrlzPacketOperationData<?>,?,YD>>
+                        YO extends WkSerdeDtreeAggregatorWriter<Y,?,? extends WkSerdeDtreeOperationOutputRuntime<?>,?,YD>>
         extends WkSrlzPacketSubfieldList<
                         WkSrlzOutputPacketSubfieldFrameNode<?,?,?>,
                         WkSrlzOutputPacketSubfieldFrameNodeCore<?,?,?,?,?,?,YD,YO>,
@@ -37,7 +37,7 @@ public class WkSrlzOutputPacketSubfieldList<
 
   @SuppressWarnings("unchecked")
   <SY,
-   SYS extends WkSettingsSrlzPacketOperationData,
+   SYS extends WkSerdeDtreeOperationSettings,
    SYD extends WkSerdeDtreeNodeStructDefinition<SY>,
    SYO extends WkSerdeDtreeNodeDataWriter<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,Y,YBC,YD,YO> findSubfieldpacket(

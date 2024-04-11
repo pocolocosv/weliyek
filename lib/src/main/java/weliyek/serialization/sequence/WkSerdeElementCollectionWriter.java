@@ -22,28 +22,28 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 
 public interface WkSerdeElementCollectionWriter<
                         T extends Collection<ET>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntimeSequenceCommon<?>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeElementCollectionDefinition<T,?,?,ET,?>,
                         ET,
                         EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EYO extends WkSerdeDtreeNodeDataWriter<ET,?,?,?,EYD>>
         extends WkSerdeElementCollectionOperation<
                         YS, YQ, YR, YD,
-                        WkSrlzOutputPacketFieldFrameNode<T,YD,?>,
+                        WkSerdeDtreeNodeDataOutputComponent<T,YD,?>,
                         EYO,
-                        WkSrlzOutputPacketFieldFrameNode<ET,EYD,EYO>,
+                        WkSerdeDtreeNodeDataOutputComponent<ET,EYD,EYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<ET,EYD,EYO>>,
                 WkSerdeDtreeCollectionWriter<T, YS, YQ, YR, YD>
 {

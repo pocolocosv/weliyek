@@ -17,18 +17,18 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 
 public abstract class WkSerdeDtreePrimitiveArrayWriterEncoderEngineBasic<
                         Y extends WkPrimitiveArrayBase<V, ?>,
                         V>
     extends WkSerdeDtreePrimitiveArrayWriterEncoderEngine<
                         Y, V,
-                        WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>>
+                        WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,?>>
 {
 
   protected WkSerdeDtreePrimitiveArrayWriterEncoderEngineBasic(
-    WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,?> runtimeControl,
     WkSerdeDtreePrimitiveArrayWriter<? extends Y,?,?,?,?> writingOperation,
     int primitiveByteLength) {
     super(runtimeControl, writingOperation, primitiveByteLength);

@@ -20,32 +20,32 @@ package weliyek.serialization.string;
 import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorWriterCore;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
 
 public abstract class WkSerdeStringFromPrimitiveArrayWriterCore<
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YB extends WkSzOutputBytestream,
-                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
-                        YR extends WkResultSrlzPacketOperationData<String>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YB extends WkSerdeDtreeBytestreamOutput,
+                        YBC extends WkSerdeDtreeBytestreamOutputBase<? extends YB>,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<YB>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<YB,YBC,YQ>,
+                        YR extends WkSerdeDtreeOperationResult<String>,
                         YO extends WkSerdeStringFromPrimitiveArrayWriter<YS,YQ,YR,YD,SY,SYD,SYO>,
                         YOC extends WkSerdeStringFromPrimitiveArrayWriterCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SY,SYS,SYO,SYD,DC>,
                         YD extends WkSerdeStringFromPrimitiveArrayDefinition<?,YO,? extends SYD>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         SY extends WkPrimitiveArray<?,?>,
-                        SYS extends WkSettingsSrlzPacketOperationData,
+                        SYS extends WkSerdeDtreeOperationSettings,
                         SYO extends WkSerdeDtreePrimitiveArrayWriter<SY,SYS,?,?,SYD>,
                         SYD extends WkSerdeDtreePrimitiveArrayDefinition<SY>,
                         DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYB,SY,?,?,?,SYS,SYO,SYD,?,?,DC>>
@@ -60,7 +60,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayWriterCore<
     String serializable,
     YS settings,
     AYB parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<String,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeNodeDataOutputComponentCore<String,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
@@ -75,7 +75,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayWriterCore<
   protected abstract void onStringFromPrimitiveWritingInitialization();
 
   @Override
-  public Optional<WkSrlzOutputPacketFieldFrameNode<SY, SYD, SYO>> primitiveArray() {
+  public Optional<WkSerdeDtreeNodeDataOutputComponent<SY, SYD, SYO>> primitiveArray() {
     return primitiveArraySubfieldpacket.field();
   }
 

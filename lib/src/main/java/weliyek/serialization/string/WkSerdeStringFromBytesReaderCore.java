@@ -20,30 +20,30 @@ package weliyek.serialization.string;
 import java.nio.charset.Charset;
 import java.util.Optional;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 
 public abstract class WkSerdeStringFromBytesReaderCore<
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XB extends WkSzInputBytestream,
-                        XBC extends WkSzInputBytestreamBase<? extends XB>,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<XB>,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<XB,XBC,XQ>,
-                        XR extends WkResultSrlzPacketOperationData<String>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XB extends WkSerdeDtreeBytestreamInput,
+                        XBC extends WkSerdeDtreeBytestreamInputBase<? extends XB>,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<XB>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<XB,XBC,XQ>,
+                        XR extends WkSerdeDtreeOperationResult<String>,
                         XO extends WkSerdeStringFromBytesReader<XS,XQ,XR,XD,SXD,SXO>,
                         XOC extends WkSerdeStringFromBytesReaderCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
                         XD extends WkSerdeStringFromBytesDefinition<XO,?,? extends SXD>,
-                        AXB extends WkSzInputBytestreamBase<?>,
-                        SXS extends WkSettingsSrlzPacketOperationData,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
+                        SXS extends WkSerdeDtreeOperationSettings,
                         SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
                         SXD extends WkSerdeDtreeByteArrayDefinition,
                         DC extends WkSerdeStringFromBytesDefinitionCore<
@@ -60,7 +60,7 @@ public abstract class WkSerdeStringFromBytesReaderCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<String,?,XD,?,?,?> packetField,
+    WkSerdeDtreeNodeDataInputComponentCore<String,?,XD,?,?,?> packetField,
     DC definitionCore,
     XO operationBody) {
     super(
@@ -73,7 +73,7 @@ public abstract class WkSerdeStringFromBytesReaderCore<
   }
 
   @Override
-  public final Optional<WkSrlzInputPacketFieldFrameNode<WkByteArray, SXD, SXO>> bytes() {
+  public final Optional<WkSerdeDtreeNodeDataInputComponent<WkByteArray, SXD, SXO>> bytes() {
     return this.primitiveArray();
   }
 

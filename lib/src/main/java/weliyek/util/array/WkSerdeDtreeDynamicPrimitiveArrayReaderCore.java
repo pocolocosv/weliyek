@@ -17,14 +17,14 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.number.WkSerdeDtreeNumberReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 
@@ -32,42 +32,42 @@ public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
                         T extends WkPrimitiveArray<?,?>,
                         XO extends WkSerdeDtreeDynamicPrimitiveArrayReader<
                                         T,
-                                        WkSettingsSrlzPacketOperationData,
-                                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                                        WkResultSrlzPacketOperationData<T>,
+                                        WkSerdeDtreeOperationSettings,
+                                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                        WkSerdeDtreeOperationResult<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD extends WkSerdeDtreeDynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
                         ZT extends Number,
                         ZXO extends WkSerdeDtreeNumberReader<
                                         ZT,
-                                        WkSettingsSrlzPacketOperationData,
+                                        WkSerdeDtreeOperationSettings,
                                         ?,?,ZXD>,
                         ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
                         VXO extends WkSerdeDtreeVariableSizePrimitiveArrayReader<
                                         T,
-                                        WkSzVariableLengthOperationSettings,
+                                        WkSerdeDtreeOperationSettingsVariableLength,
                                         ?,?,VXD>,
                         VXD extends WkSerdeDtreeVariableSizePrimitiveArrayDefinition<T>>
     extends WkSerdeDtreeDynamicSequenceReaderCore<
                         T,
-                        WkSettingsSrlzPacketOperationData,
-                        WkSzInputBytestream,
-                        WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkDecodingRuntimeSrlzPacketOperationCtrl<
-                          WkSzInputBytestream,
-                          WkSzInputBytestreamBase<? extends WkSzInputBytestream>,
-                          WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeBytestreamInput,
+                        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationInputRuntimeCtrl<
+                          WkSerdeDtreeBytestreamInput,
+                          WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                          WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>>,
+                        WkSerdeDtreeOperationResult<T>,
                         XO,
                         WkSerdeDtreeDynamicPrimitiveArrayReaderCore<T,XO,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD,
-                        WkSzInputBytestreamBase<?>,
+                        WkSerdeDtreeBytestreamInputBase<?>,
                         ZT,
-                        WkSettingsSrlzPacketOperationData,
+                        WkSerdeDtreeOperationSettings,
                         ZXO,
                         ZXD,
-                        WkSzVariableLengthOperationSettings,
+                        WkSerdeDtreeOperationSettingsVariableLength,
                         VXO,
                         VXD,
                         WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
@@ -76,17 +76,17 @@ public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
                           VXD,VXO,?,?,?,?>>
     implements WkSerdeDtreeDynamicPrimitiveArrayReader<
                         T,
-                        WkSettingsSrlzPacketOperationData,
-                        WkDecodingRuntimeSrlzPacketOperationData<WkSzInputBytestream>,
-                        WkResultSrlzPacketOperationData<T>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<T>,
                         XD, ZT, ZXO, ZXD, VXO, VXD>
 {
 
   public WkSerdeDtreeDynamicPrimitiveArrayReaderCore(
     int index,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzInputBytestreamBase<?> parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> deserializingfieldCore,
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> deserializingfieldCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       T,XD,XO,?,?,
       ZT,ZXD,ZXO,?,?,?,

@@ -25,7 +25,7 @@ public interface WkSzInputPacket<
                         X,
                         XD extends WkSerdeDtreeNodeStructDefinition<X>,
                         XO extends WkSerdeDtreeNodeDataReader<X,?,?,?,XD>>
-    extends WkSrlzInputPacketFieldFrameNode<X, XD, XO>
+    extends WkSerdeDtreeNodeDataInputComponent<X, XD, XO>
 {
 
   WkSrlzFilterResults filterResults();

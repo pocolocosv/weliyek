@@ -19,14 +19,14 @@ package weliyek.serialization.number;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 
 public abstract class WkSerdeDtreeLongPrimitiveReaderDecoderEngine
     extends WkSerdeDtreePrimitiveReaderDecoderEngine<Long>
 {
 
   protected WkSerdeDtreeLongPrimitiveReaderDecoderEngine(
-    WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeCtrl,
+    WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
     WkSerdeDtreeNumberReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }

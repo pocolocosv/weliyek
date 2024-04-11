@@ -19,53 +19,53 @@ package weliyek.serialization.number;
 
 import java.util.List;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.sequence.WkSerdeDtreeShortSignedLittleEndianWriterEncoderEngine;
 
 public class WkSerdeSignedLittleEndianShort
     implements WkSerdeDtreeNumberDefinition<Short>
 {
 
-  public static WkSrlzStruct<
+  public static WkSerdeDtreeStruct<
                       Short,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeSignedLittleEndianShort,
                       WkSerdeSignedLittleEndianShortReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeSignedLittleEndianShort,
                       WkSerdeSignedLittleEndianShortWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeSignedLittleEndianShort>
   newStruct(String label) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                       label,
                       WkSerdeSignedLittleEndianShort::newCore,
-                      WkSzCountingInputBytestream::new,
-                      WkSzCountingOutputBytestream::new);
+                      WkSerdeDtreeBytestreamCountingInputStream::new,
+                      WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   public static WkSerdeDtreeNodeStructDefinitionCore<
                       Short,
-                      WkSettingsSrlzPacketOperationData,?,?,
+                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeSignedLittleEndianShort,
                       WkSerdeSignedLittleEndianShortReader,
-                      WkSzInputBytestreamBase<?>,
-                      WkSettingsSrlzPacketOperationData,?,?,
+                      WkSerdeDtreeBytestreamInputBase<?>,
+                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeSignedLittleEndianShort,
                       WkSerdeSignedLittleEndianShortWriter,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeSignedLittleEndianShort,?>
-  newCore(WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  newCore(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeSignedLittleEndianShort(componentCore).definitionCore;
   }
 
@@ -76,7 +76,7 @@ public class WkSerdeSignedLittleEndianShort
                         WkSerdeSignedLittleEndianShort> definitionCore;
 
   public WkSerdeSignedLittleEndianShort(
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<
                                   Short,
                                   WkSerdeSignedLittleEndianShortReader,

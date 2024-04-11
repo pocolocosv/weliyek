@@ -23,7 +23,7 @@ public interface WkSzOutputPacket<
                         T,
                         D extends WkSerdeDtreeNodeStructDefinition<T>,
                         O extends WkSerdeDtreeNodeDataWriter<T,?,?,?,D>>
-    extends WkSrlzOutputPacketFieldFrameNode<T, D, O>
+    extends WkSerdeDtreeNodeDataOutputComponent<T, D, O>
 {
 
   void processBytestream();

@@ -21,11 +21,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 public abstract class WkSrlzPacketSubfieldFrameNodeCore<
-                        S extends WkSettingsSrlzPacketOperationData,
+                        S extends WkSerdeDtreeOperationSettings,
                         TD extends WkSerdeDtreeNodeStructDefinition<?>,
                         NC extends WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
-                        KC extends WkSrlzPacketFieldFrameNodeCore<?,?,?,?,?,?,? extends K,?,?>,
+                        KC extends WkSerdeDtreeNodeDataComponentCore<?,?,?,?,?,?,? extends K,?,?>,
                         J extends WkSerdeDtreeNodeDataComponentHandler<?>,
                         AOC extends WkSerdeDtreeNodeDataOperationCore<?,?,?,?,AD,?,?,?,?,?,?>,
                         AD extends WkSerdeDtreeNodeStructDefinition<?>>
@@ -119,7 +119,7 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
 
   protected abstract WkSerdeDtreeNodeStructComponent<? extends TD> protocolField();
 
-  public abstract WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> protocolFieldCore();
+  public abstract WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> protocolFieldCore();
 
   public AOC parentOperationCore() {
     return this.parentOperationCore;

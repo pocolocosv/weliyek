@@ -21,7 +21,7 @@ public interface WkSrlzInputPacketSubfieldFrameNode<
                         T,
                         XD extends WkSerdeDtreeNodeStructDefinition<T>,
                         XO extends WkSerdeDtreeNodeDataReader<T,?,?,?,XD>>
-    extends WkSerdeDtreeNodeDataComponentHandler<WkSrlzInputPacketFieldFrameNode<T, XD, XO>>,
+    extends WkSerdeDtreeNodeDataComponentHandler<WkSerdeDtreeNodeDataInputComponent<T, XD, XO>>,
             WkSerdeDtreeNodeDataInput
 {
 

@@ -23,14 +23,14 @@ import java.util.Optional;
 
 public abstract class WkSerdeDtreeNodeLeafDataWriterCore<
                         T,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,YQ>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YO extends WkSerdeDtreeNodeDataWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSerdeDtreeNodeLeafDataWriterCore<T,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         DC extends WkSerdeDtreeNodeLeafStructDefinitionCore<T,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
     extends WkSerdeDtreeNodeDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
 {
@@ -42,7 +42,7 @@ public abstract class WkSerdeDtreeNodeLeafDataWriterCore<
             T serializable,
             YS settings,
             AYB parentBytestream,
-            WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
+            WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
             DC definitionCore,
             YO operationBody) {
         super(

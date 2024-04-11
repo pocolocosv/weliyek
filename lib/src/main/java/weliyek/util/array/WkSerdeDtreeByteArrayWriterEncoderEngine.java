@@ -19,19 +19,19 @@ package weliyek.util.array;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 
 public final class WkSerdeDtreeByteArrayWriterEncoderEngine
     extends WkSerdeDtreePrimitiveArrayWriterEncoderEngineBasic<WkByteArray, byte[]>
 {
 
-  public static final WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkByteArray> FACTORY =
-      new WkSzBasicPrimitiveArrayWrapperWriteEngineFactory<WkByteArray>(
+  public static final WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified<WkByteArray> FACTORY =
+      new WkSerdeDtreePrimitiveArrayEncoderEngineFactorySimplified<WkByteArray>(
             "INT8[]",
             WkSerdeDtreeByteArrayWriterEncoderEngine::new);
 
   private WkSerdeDtreeByteArrayWriterEncoderEngine(
-    WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,?> runtimeControl,
     WkSerdeDtreePrimitiveArrayWriter<? extends WkByteArray,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation, 1);
   }

@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 
 public abstract class WkSrlzPacketNodePredicate<
@@ -71,7 +71,7 @@ public abstract class WkSrlzPacketNodePredicate<
     if (isAnInputPacketReadingNode(node)) {
       return extractDefinition((WkSerdeDtreeNodeDataReader<?,?,?,?,?>)node);
     } else if (isAnInputPacketFieldNode(node)) {
-      return extractDefinition((WkSrlzInputPacketFieldFrameNode<?,?,?>)node);
+      return extractDefinition((WkSerdeDtreeNodeDataInputComponent<?,?,?>)node);
     }
     throw new IllegalArgumentException();
   }
@@ -81,7 +81,7 @@ public abstract class WkSrlzPacketNodePredicate<
   }
 
   protected static boolean isAnInputPacketFieldNode(WkSerdeDtreeNodeDataFilterable node) {
-    return node instanceof WkSrlzInputPacketFieldFrameNode;
+    return node instanceof WkSerdeDtreeNodeDataInputComponent;
   }
 
   protected static WkSerdeDtreeNodeStructDefinition<?> extractDefinition(
@@ -90,7 +90,7 @@ public abstract class WkSrlzPacketNodePredicate<
   }
 
   protected static WkSerdeDtreeNodeStructDefinition<?> extractDefinition(
-    WkSrlzInputPacketFieldFrameNode<?,?,?> fieldNode) {
+    WkSerdeDtreeNodeDataInputComponent<?,?,?> fieldNode) {
     return fieldNode.structComponent().definition();
   }
 

@@ -20,21 +20,21 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSzOutputBytestream;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public class WkSerdeUnsignedBigEndianIntegerWriter
     implements WkSerdeDtreeNumberWriter<
                         Long,
-                        WkSettingsSrlzPacketOperationData,
-                        WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream>,
-                        WkResultSrlzPacketOperationData<Long>,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                        WkSerdeDtreeOperationResult<Long>,
                         WkSerdeUnsignedBigEndianInteger>
 {
 
@@ -46,9 +46,9 @@ public class WkSerdeUnsignedBigEndianIntegerWriter
   WkSerdeUnsignedBigEndianIntegerWriter(
     int index,
     Long serializable,
-    WkSettingsSrlzPacketOperationData settings,
-    WkSzOutputBytestreamBase<?> parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+    WkSerdeDtreeNodeDataOutputComponentCore<
       Long,?,WkSerdeUnsignedBigEndianInteger,?,?,?> serializingfieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Long,?,WkSerdeUnsignedBigEndianIntegerWriter,WkSerdeUnsignedBigEndianInteger> definitionCore) {
@@ -68,17 +68,17 @@ public class WkSerdeUnsignedBigEndianIntegerWriter
   }
 
   @Override
-  public WkSettingsSrlzPacketOperationData settings() {
+  public WkSerdeDtreeOperationSettings settings() {
     return this.operationCore.settings();
   }
 
   @Override
-  public WkEncodingRuntimeSrlzPacketOperationData<WkSzOutputBytestream> dashboard() {
+  public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
     return this.operationCore.dashboard();
   }
 
   @Override
-  public Optional<WkResultSrlzPacketOperationData<Long>> result() {
+  public Optional<WkSerdeDtreeOperationResult<Long>> result() {
     return this.operationCore.result();
   }
 
@@ -88,7 +88,7 @@ public class WkSerdeUnsignedBigEndianIntegerWriter
   }
 
   @Override
-  public WkSrlzOutputPacketFieldFrameNode<Long, WkSerdeUnsignedBigEndianInteger, ?> packetField() {
+  public WkSerdeDtreeNodeDataOutputComponent<Long, WkSerdeUnsignedBigEndianInteger, ?> packetField() {
     return this.operationCore.packetField();
   }
 

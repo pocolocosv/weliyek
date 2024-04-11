@@ -17,24 +17,24 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkSequenceEncodingRuntimeSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeNodeLeafDataWriterCore;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public abstract class WkSerdeDtreeGenericPrimitiveArrayWriterCore<
                         Y extends WkPrimitiveArrayBase<?,?>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkSequenceEncodingRuntimeSrlzPacketOperationData<?>,
-                        YQC extends WkSequenceEncodingRuntimeSrlzPacketOperationCtrl<?,?,YQ>,
-                        YR extends WkResultSrlzPacketOperationData<Y>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntimeSequenceCommon<?>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,YQ>,
+                        YR extends WkSerdeDtreeOperationResult<Y>,
                         YO extends WkSerdeDtreePrimitiveArrayWriter<Y,YS,YQ,YR,YD>,
                         YOC extends WkSerdeDtreeGenericPrimitiveArrayWriterCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSerdeDtreePrimitiveArrayDefinition<Y>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
         extends WkSerdeDtreeNodeLeafDataWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
         implements WkSerdeDtreePrimitiveArrayWriter<Y, YS, YQ, YR, YD>
@@ -47,7 +47,7 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayWriterCore<
     Y serializable,
     YS settings,
     AYB parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<Y,?,YD,?,?,?> serializingfieldCore,
+    WkSerdeDtreeNodeDataOutputComponentCore<Y,?,YD,?,?,?> serializingfieldCore,
     DC definitionCore,
     YO operationBody) {
     super(

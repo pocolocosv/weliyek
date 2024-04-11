@@ -19,7 +19,7 @@ package weliyek.serialization.sequence;
 
 import java.util.Objects;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeNodeDataReaderCore;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriterCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
@@ -32,7 +32,7 @@ public class SequenceFixedSizeParameter<T>
   private final int sequenceExpectedSize;
   private final WkSerdeDtreeNodeStructDefinitionCore<
                         T,?,?,
-                        ? extends WkResultSrlzPacketOperationData<T>,
+                        ? extends WkSerdeDtreeOperationResult<T>,
                         ? extends WkSerdeDtreeFixedSizeSequenceDefinition<T>,
                         ? extends WkSerdeDtreeFixedSizeSequenceReader<T,?,?,?,?>,
                         ?,?,?,?,
@@ -44,7 +44,7 @@ public class SequenceFixedSizeParameter<T>
     int sequenceExpectedSize,
     WkSerdeDtreeNodeStructDefinitionCore<
       T,?,?,
-      ? extends WkResultSrlzPacketOperationData<T>,
+      ? extends WkSerdeDtreeOperationResult<T>,
       ? extends WkSerdeDtreeFixedSizeSequenceDefinition<T>,
       ? extends WkSerdeDtreeFixedSizeSequenceReader<T,?,?,?,?>,
       ?,?,?,?,
@@ -74,7 +74,7 @@ public class SequenceFixedSizeParameter<T>
   void onAfterFullCompletionDeserialization(
     WkSerdeDtreeNodeDataReaderCore<
       T,?,?,?,
-      ? extends WkResultSrlzPacketOperationData<T>,
+      ? extends WkSerdeDtreeOperationResult<T>,
       ? extends WkSerdeDtreeFixedSizeSequenceReader<T,?,?,?,?>,?,
       ? extends WkSerdeDtreeFixedSizeSequenceDefinition<T>,?,?> deserializer) {
     T sequence = deserializer.result().get().serializable().get();

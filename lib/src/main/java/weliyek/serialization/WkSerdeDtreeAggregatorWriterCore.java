@@ -22,16 +22,16 @@ import java.util.Optional;
 
 public abstract class WkSerdeDtreeAggregatorWriterCore<
                         T,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YB extends WkSzOutputBytestream,
-                        YBC extends WkSzOutputBytestreamBase<? extends YB>,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<YB>,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<YB,YBC,YQ>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YB extends WkSerdeDtreeBytestreamOutput,
+                        YBC extends WkSerdeDtreeBytestreamOutputBase<? extends YB>,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<YB>,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<YB,YBC,YQ>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeAggregatorDefinition<T>,
                         YO extends WkSerdeDtreeAggregatorWriter<T,YS,YQ,YR,YD>,
                         YOC extends WkSerdeDtreeAggregatorWriterCore<T,YS,YB,YBC,YQ,YQC,YR,YD,YO,?,AYB,DC>,
-                        AYB extends WkSzOutputBytestreamBase<?>,
+                        AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         DC extends WkSerdeDtreeAggregatorDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYB,?,DC>>
         extends WkSerdeDtreeNodeDataWriterCore<T, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
@@ -45,7 +45,7 @@ public abstract class WkSerdeDtreeAggregatorWriterCore<
     T serializable,
     YS settings,
     AYB parentBytestream,
-    WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
@@ -75,7 +75,7 @@ public abstract class WkSerdeDtreeAggregatorWriterCore<
 
   @SuppressWarnings("unchecked")
   public <SY,
-             SYS extends WkSettingsSrlzPacketOperationData,
+             SYS extends WkSerdeDtreeOperationSettings,
              SYD extends WkSerdeDtreeNodeStructDefinition<SY>,
              SYO extends WkSerdeDtreeNodeDataWriter<SY,SYS,?,?,SYD>>
   WkSrlzOutputPacketSubfieldFrameNodeCore<SY,SYS,SYD,SYO,T,YBC,YD,YO> getSubfieldpacketFor(

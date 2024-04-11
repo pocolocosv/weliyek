@@ -22,18 +22,18 @@ import java.util.function.Predicate;
 
 public class WkSrlzInputPacketSubfieldFrameNodeCore<
                         ST,
-                        SXS extends WkSettingsSrlzPacketOperationData,
+                        SXS extends WkSerdeDtreeOperationSettings,
                         SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
                         SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>,
                         T,
-                        XBC extends WkSzInputBytestreamBase<?>,
+                        XBC extends WkSerdeDtreeBytestreamInputBase<?>,
                         XD extends WkSerdeDtreeAggregatorDefinition<T>,
-                        XO extends WkSerdeDtreeAggregatorReader<T,?,? extends WkDecodingRuntimeSrlzPacketOperationData<?>,?,XD>>
+                        XO extends WkSerdeDtreeAggregatorReader<T,?,? extends WkSerdeDtreeOperationInputRuntime<?>,?,XD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SXS, SXD,
                         WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,?,XBC,XD,XO,?,?,?,?,?,?,? extends SXD,? extends XD>,
-                        WkSrlzInputPacketFieldFrameNode<ST,SXD,SXO>,
-                        WkSrlzInputPacketFieldFrameNodeCore<ST,SXS,SXD,SXO,XBC,XO>,
+                        WkSerdeDtreeNodeDataInputComponent<ST,SXD,SXO>,
+                        WkSerdeDtreeNodeDataInputComponentCore<ST,SXS,SXD,SXO,XBC,XO>,
                         WkSrlzInputPacketSubfieldFrameNode<ST,SXD,SXO>,
                         WkSerdeDtreeAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>,
                         XD>
@@ -64,8 +64,8 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected WkSrlzInputPacketFieldFrameNodeNonrootCore<ST,SXS,SXD,SXO,XBC,XO> newPacket() {
-    return new WkSrlzInputPacketFieldFrameNodeNonrootCore<>(1, this);
+  protected WkSerdeDtreeNodeDataInputComponentCoreNonroot<ST,SXS,SXD,SXO,XBC,XO> newPacket() {
+    return new WkSerdeDtreeNodeDataInputComponentCoreNonroot<>(1, this);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  public WkSrlzStructComponentFrameNodeCore<ST,SXS,SXD,SXO,XBC,?,?,?,?,? extends SXD> protocolFieldCore() {
+  public WkSerdeDtreeNodeStructComponentCore<ST,SXS,SXD,SXO,XBC,?,?,?,?,? extends SXD> protocolFieldCore() {
     return subcomponentHandlerCore().protocolFieldCore();
   }
 

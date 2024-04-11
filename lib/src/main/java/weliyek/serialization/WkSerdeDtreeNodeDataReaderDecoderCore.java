@@ -23,14 +23,14 @@ import java.util.Optional;
 
 public abstract class WkSerdeDtreeNodeDataReaderDecoderCore<
                         X,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
-                        XR extends WkResultSrlzPacketOperationData<X>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<?,?,XQ>,
+                        XR extends WkSerdeDtreeOperationResult<X>,
                         XO extends WkSerdeDtreeNodeDataReader<X,XS,XQ,XR,XD>,
                         XOC extends WkSerdeDtreeNodeDataReaderDecoderCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSerdeDtreeNodeStructDefinition<X>,
-                        AXB extends WkSzInputBytestreamBase<?>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         DC extends WkSerdeDtreeNodeLeafStructDefinitionCore<
                                       X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
         extends WkSerdeDtreeNodeDataReaderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
@@ -42,7 +42,7 @@ public abstract class WkSerdeDtreeNodeDataReaderDecoderCore<
         int index,
         XS settings,
         AXB parentBytestream,
-        WkSrlzInputPacketFieldFrameNodeCore<X,?,XD,?,?,?> packetField,
+        WkSerdeDtreeNodeDataInputComponentCore<X,?,XD,?,?,?> packetField,
         DC definitionCore,
         XO operationBody) {
         super(index, settings, parentBytestream, packetField, definitionCore, operationBody);

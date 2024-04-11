@@ -17,18 +17,18 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzOutputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 
 public interface WkSerdeStringFromBytesWriter<
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQ extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        YR extends WkResultSrlzPacketOperationData<String>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
+                        YR extends WkSerdeDtreeOperationResult<String>,
                         YD extends WkSerdeStringFromBytesDefinition<?,?,? extends SD>,
                         SD extends WkSerdeDtreeByteArrayDefinition,
                         SYO extends WkSerdeDtreeByteArrayWriter<?,?,?,SD>>
@@ -37,9 +37,9 @@ public interface WkSerdeStringFromBytesWriter<
                         WkByteArray, SD, SYO>,
             WkSerdeStringFromBytesOperation<
                         YS, YQ, YR, YD,
-                        WkSrlzOutputPacketFieldFrameNode<String,YD,?>,
+                        WkSerdeDtreeNodeDataOutputComponent<String,YD,?>,
                         SYO,
-                        WkSrlzOutputPacketFieldFrameNode<WkByteArray,SD,SYO>>
+                        WkSerdeDtreeNodeDataOutputComponent<WkByteArray,SD,SYO>>
 {
 
 }

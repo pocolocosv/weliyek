@@ -17,29 +17,29 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeAggregatorReader;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
 
 public interface WkSerdeStringFromPrimitiveArrayReader<
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkResultSrlzPacketOperationData<String>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XR extends WkSerdeDtreeOperationResult<String>,
                         XD extends WkSerdeStringFromPrimitiveArrayDefinition<?,?,? extends SXD>,
                         SX extends WkPrimitiveArray<?,?>,
                         SXD extends WkSerdeDtreePrimitiveArrayDefinition<SX>,
                         SXO extends WkSerdeDtreePrimitiveArrayReader<SX,?,?,?,SXD>>
         extends WkSerdeStringFromPrimitiveArrayOperation<
                         XS, XQ, XR, XD,
-                        WkSrlzInputPacketFieldFrameNode<String,XD,?>,
+                        WkSerdeDtreeNodeDataInputComponent<String,XD,?>,
                         SXO,
-                        WkSrlzInputPacketFieldFrameNode<SX,SXD,SXO>>,
+                        WkSerdeDtreeNodeDataInputComponent<SX,SXD,SXO>>,
                 WkSerdeDtreeNodeDataReader<String,XS,XQ,XR,XD>,
                 WkSerdeDtreeAggregatorReader<String, XS, XQ, XR, XD>
 {

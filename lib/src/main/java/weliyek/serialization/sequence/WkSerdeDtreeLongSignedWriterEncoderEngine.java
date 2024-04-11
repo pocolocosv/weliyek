@@ -19,7 +19,7 @@ package weliyek.serialization.sequence;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.number.WkSerdeDtreePrimitiveWriterEncoderEngine;
 import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 
@@ -28,7 +28,7 @@ public abstract class WkSerdeDtreeLongSignedWriterEncoderEngine
 {
 
   protected WkSerdeDtreeLongSignedWriterEncoderEngine(
-    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
     WkSerdeDtreeNumberWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

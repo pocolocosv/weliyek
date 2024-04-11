@@ -22,31 +22,31 @@ import java.util.List;
 import java.util.function.Function;
 
 import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestreamBase;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 
 public final class WkSerdeVariableSizeElementCollection<
                         T extends Collection<ET>,
-                        XS extends WkSzVariableLengthOperationSettings,
-                        YS extends WkSettingsSrlzPacketOperationData,
+                        XS extends WkSerdeDtreeOperationSettingsVariableLength,
+                        YS extends WkSerdeDtreeOperationSettings,
                         ET,
-                        EXS extends WkSettingsSrlzPacketOperationData,
+                        EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                        EYS extends WkSettingsSrlzPacketOperationData,
+                        EYS extends WkSerdeDtreeOperationSettings,
                         EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
                         ED extends WkSerdeDtreeNodeStructDefinition<ET>>
@@ -60,26 +60,26 @@ public final class WkSerdeVariableSizeElementCollection<
 {
 
   public static <T extends Collection<ET>,
-                 XS extends WkSzVariableLengthOperationSettings,
-                 YS extends WkSettingsSrlzPacketOperationData,
+                 XS extends WkSerdeDtreeOperationSettingsVariableLength,
+                 YS extends WkSerdeDtreeOperationSettings,
                  ET,
-                 EXS extends WkSettingsSrlzPacketOperationData,
+                 EXS extends WkSerdeDtreeOperationSettings,
                  EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                 EYS extends WkSettingsSrlzPacketOperationData,
+                 EYS extends WkSerdeDtreeOperationSettings,
                  EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
                  ED extends WkSerdeDtreeNodeStructDefinition<ET>>
-  WkSrlzStruct<
+  WkSerdeDtreeStruct<
                  T,
                  XS,
                  WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                  WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
-                 WkSzInputBytestreamBase<?>,
+                 WkSerdeDtreeBytestreamInputBase<?>,
                  YS,
                  WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                  WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
-                 WkSzOutputBytestreamBase<?>,
+                 WkSerdeDtreeBytestreamOutputBase<?>,
                  WkSerdeVariableSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
   newStruct(
     String label,
@@ -88,14 +88,14 @@ public final class WkSerdeVariableSizeElementCollection<
     int maxSize,
     Class<T> collectionClass,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
-      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     Function<List<ET>, T> collectionFactory) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                   label,
         (pc) -> WkSerdeVariableSizeElementCollection.newCore(
                     elementsLabel,
@@ -107,18 +107,18 @@ public final class WkSerdeVariableSizeElementCollection<
                     elementsDefinitionFactory,
                     collectionFactory,
                     pc),
-        WkSzCountingInputBytestream::new,
-        WkSzCountingOutputBytestream::new);
+        WkSerdeDtreeBytestreamCountingInputStream::new,
+        WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   public static <T extends Collection<ET>,
-                 XS extends WkSzVariableLengthOperationSettings,
-                 YS extends WkSettingsSrlzPacketOperationData,
+                 XS extends WkSerdeDtreeOperationSettingsVariableLength,
+                 YS extends WkSerdeDtreeOperationSettings,
                  ET,
-                 EXS extends WkSettingsSrlzPacketOperationData,
+                 EXS extends WkSerdeDtreeOperationSettings,
                  EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                 EYS extends WkSettingsSrlzPacketOperationData,
+                 EYS extends WkSerdeDtreeOperationSettings,
                  EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
                  ED extends WkSerdeDtreeNodeStructDefinition<ET>>
@@ -127,11 +127,11 @@ public final class WkSerdeVariableSizeElementCollection<
                  XS,?,?,
                  WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                  WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
-                 WkSzInputBytestreamBase<?>,
+                 WkSerdeDtreeBytestreamInputBase<?>,
                  YS,?,?,
                  WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                  WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
-                 WkSzOutputBytestreamBase<?>,
+                 WkSerdeDtreeBytestreamOutputBase<?>,
                  WkSerdeVariableSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,?>
   newCore(
     String elementsLabel,
@@ -143,10 +143,10 @@ public final class WkSerdeVariableSizeElementCollection<
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
-      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeVariableSizeElementCollection<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
   }
 
@@ -165,7 +165,7 @@ public final class WkSerdeVariableSizeElementCollection<
   private WkSerdeVariableSizeElementCollection(
     int minSize,
     int maxSize,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     WkOperationSettingsFactory<
@@ -173,8 +173,8 @@ public final class WkSerdeVariableSizeElementCollection<
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
-      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
+      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory) {
     this.definitionCore = new WkSerdeElementCollectionDefinitionCoreSimplified<
                                 T,
@@ -200,7 +200,7 @@ public final class WkSerdeVariableSizeElementCollection<
     this.sizeLimits = new SequenceSizeParameters<T>(minSize, maxSize, definitionCore);
   }
 
-  private static <XS extends WkSzVariableLengthOperationSettings>
+  private static <XS extends WkSerdeDtreeOperationSettingsVariableLength>
   int getNumberOfDeserializingOperations(WkSerdeVariableSizeElementCollectionReader<?,XS,?,?,?,?> aggregatingDeserializer) {
     return aggregatingDeserializer.settings().getRequestedLength();
   }

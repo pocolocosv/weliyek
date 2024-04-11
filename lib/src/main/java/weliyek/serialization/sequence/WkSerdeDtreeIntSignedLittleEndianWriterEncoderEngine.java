@@ -19,8 +19,8 @@ package weliyek.serialization.sequence;
 
 import java.io.IOException;
 
-import weliyek.serialization.WkSzPrimitiveWriteEngineFactory;
-import weliyek.serialization.WkEncodingRuntimeSrlzPacketOperationCtrl;
+import weliyek.serialization.WkSerdeDtreePrimitiveEncoderEngineFactory;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.number.WkSerdeDtreeIntegerSignedWriterEncoderEngine;
 import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
 
@@ -28,11 +28,11 @@ public final class WkSerdeDtreeIntSignedLittleEndianWriterEncoderEngine
         extends WkSerdeDtreeIntegerSignedWriterEncoderEngine
 {
 
-  public static final WkSzPrimitiveWriteEngineFactory<Integer> FACTORY =
-      new WkSzPrimitiveWriteEngineFactory<>("SINT32LE", WkSerdeDtreeIntSignedLittleEndianWriterEncoderEngine::new);
+  public static final WkSerdeDtreePrimitiveEncoderEngineFactory<Integer> FACTORY =
+      new WkSerdeDtreePrimitiveEncoderEngineFactory<>("SINT32LE", WkSerdeDtreeIntSignedLittleEndianWriterEncoderEngine::new);
 
   private WkSerdeDtreeIntSignedLittleEndianWriterEncoderEngine(
-    WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?> runtimeControl,
+    WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
     WkSerdeDtreeNumberWriter<Integer,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }

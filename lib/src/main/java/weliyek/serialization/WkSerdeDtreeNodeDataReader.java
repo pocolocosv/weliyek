@@ -23,13 +23,13 @@ import weliyek.serialization.filter.WkSerdeDtreeNodeDataFilterable;
 
 public interface WkSerdeDtreeNodeDataReader<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeNodeStructDefinition<T>>
         extends WkSerdeDtreeNodeDataOperation<
                         XS, XQ, XR, XD,
-                        WkSrlzInputPacketFieldFrameNode<T,XD,?>>,
+                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>>,
                 WkSerdeDtreeNodeDataFilterable,
                 WkSerdeDtreeNodeDataInput
 {

@@ -22,30 +22,30 @@ import java.util.List;
 import java.util.function.Function;
 
 import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeCore;
-import weliyek.serialization.WkSrlzStructComponentFrameNodeRootCore;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzCountingInputBytestream;
-import weliyek.serialization.WkSzCountingOutputBytestream;
-import weliyek.serialization.WkSzInputBytestreamBase;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public final class WkSerdeFixedSizeElementCollection<
                         T extends Collection<ET>,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        YS extends WkSettingsSrlzPacketOperationData,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        YS extends WkSerdeDtreeOperationSettings,
                         ET,
-                        EXS extends WkSettingsSrlzPacketOperationData,
+                        EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                        EYS extends WkSettingsSrlzPacketOperationData,
+                        EYS extends WkSerdeDtreeOperationSettings,
                         EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
                         ED extends WkSerdeDtreeNodeStructDefinition<ET>>
@@ -58,25 +58,25 @@ public final class WkSerdeFixedSizeElementCollection<
 {
 
   public static <T extends Collection<ET>,
-                 XS extends WkSettingsSrlzPacketOperationData,
-                 YS extends WkSettingsSrlzPacketOperationData,
+                 XS extends WkSerdeDtreeOperationSettings,
+                 YS extends WkSerdeDtreeOperationSettings,
                  ET,
-                 EXS extends WkSettingsSrlzPacketOperationData,
+                 EXS extends WkSerdeDtreeOperationSettings,
                  EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                 EYS extends WkSettingsSrlzPacketOperationData,
+                 EYS extends WkSerdeDtreeOperationSettings,
                  EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
                  ED extends WkSerdeDtreeNodeStructDefinition<ET>>
-  WkSrlzStruct<T,
+  WkSerdeDtreeStruct<T,
                   XS,
                   WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                   WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
-                  WkSzInputBytestreamBase<?>,
+                  WkSerdeDtreeBytestreamInputBase<?>,
                   YS,
                   WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                   WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
-                  WkSzOutputBytestreamBase<?>,
+                  WkSerdeDtreeBytestreamOutputBase<?>,
                   WkSerdeFixedSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
   newStruct(
     String label,
@@ -91,9 +91,9 @@ public final class WkSerdeFixedSizeElementCollection<
       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
-      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory) {
-    return new WkSrlzStructComponentFrameNodeRootCore<>(
+      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory) {
+    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
                       label,
                       (pc) -> WkSerdeFixedSizeElementCollection.newCore(
                                     expectedCollectionSize,
@@ -104,18 +104,18 @@ public final class WkSerdeFixedSizeElementCollection<
                                     elementsTxSettingsFactory,
                                     elementsDefinitionFactory,
                                     pc),
-                      WkSzCountingInputBytestream::new,
-                      WkSzCountingOutputBytestream::new);
+                      WkSerdeDtreeBytestreamCountingInputStream::new,
+                      WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   public static <T extends Collection<ET>,
-                 XS extends WkSettingsSrlzPacketOperationData,
-                 YS extends WkSettingsSrlzPacketOperationData,
+                 XS extends WkSerdeDtreeOperationSettings,
+                 YS extends WkSerdeDtreeOperationSettings,
                  ET,
-                 EXS extends WkSettingsSrlzPacketOperationData,
+                 EXS extends WkSerdeDtreeOperationSettings,
                  EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                 EYS extends WkSettingsSrlzPacketOperationData,
+                 EYS extends WkSerdeDtreeOperationSettings,
                  EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                  EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
                  ED extends WkSerdeDtreeNodeStructDefinition<ET>>
@@ -124,11 +124,11 @@ public final class WkSerdeFixedSizeElementCollection<
                       XS,?,?,
                       WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
                       WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
-                      WkSzInputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamInputBase<?>,
                       YS,?,?,
                       WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
                       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
-                      WkSzOutputBytestreamBase<?>,
+                      WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeFixedSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,?>
   newCore(
     int expectedCollectionSize,
@@ -142,9 +142,9 @@ public final class WkSerdeFixedSizeElementCollection<
       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
-      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeFixedSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>(
                         expectedCollectionSize,
                         componentCore,
@@ -169,7 +169,7 @@ public final class WkSerdeFixedSizeElementCollection<
 
   private WkSerdeFixedSizeElementCollection(
     int expectedCollectionSize,
-    WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     Function<List<ET>, T> collectionFactory,
@@ -180,8 +180,8 @@ public final class WkSerdeFixedSizeElementCollection<
       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSzInputBytestreamBase<?>,
-      EYS,EYD,EYO,WkSzOutputBytestreamBase<?>,ED> elementsDefinitionFactory) {
+      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory) {
     this.definitionCore = new WkSerdeElementCollectionDefinitionCoreSimplified<
                                   T, XS,
                                   WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,

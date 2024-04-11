@@ -17,21 +17,21 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSequenceDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
 
 public interface WkSerdeDtreeFixedSizeSequenceReader<
                         X,
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkSequenceDecodingRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData<X>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationInputRuntimeSequenceCommon<?>,
+                        R extends WkSerdeDtreeOperationResult<X>,
                         D extends WkSerdeDtreeFixedSizeSequenceDefinition<X>>
     extends WkSerdeDtreeSequenceReader<X, S, Q, R, D>,
             WkSerdeDtreeFixedSizeSequenceOperation<
                         S, Q, R, D,
-                        WkSrlzInputPacketFieldFrameNode<X,D,?>>
+                        WkSerdeDtreeNodeDataInputComponent<X,D,?>>
 {
 
 }

@@ -20,11 +20,11 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 
 import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReader;
 import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSzVariableLengthOperationSettings;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceDefinition;
 
@@ -34,15 +34,15 @@ public interface WkSerdeDtreeDynamicCollectionDefinition<
                         YO extends WkSerdeDtreeDynamicCollectionWriter<T,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZD extends WkSerdeDtreeNumberDefinition<?>,
                         ET,
-                        EXS extends WkSettingsSrlzPacketOperationData,
+                        EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
-                        EYS extends WkSettingsSrlzPacketOperationData,
+                        EYS extends WkSerdeDtreeOperationSettings,
                         EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
                         EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
                         ED extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        VXS extends WkSzVariableLengthOperationSettings,
-                        VYS extends WkSettingsSrlzPacketOperationData>
+                        VXS extends WkSerdeDtreeOperationSettingsVariableLength,
+                        VYS extends WkSerdeDtreeOperationSettings>
     extends WkSerdeDtreeDynamicCollection<
                         WkSerdeDtreeNodeStructComponentHandler<XO, YO, ZD>,
                         WkSerdeDtreeNodeStructComponentHandler<

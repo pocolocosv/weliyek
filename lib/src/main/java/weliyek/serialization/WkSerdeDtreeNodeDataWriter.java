@@ -21,13 +21,13 @@ import java.util.List;
 
 public interface WkSerdeDtreeNodeDataWriter<
                         T,
-                        S extends WkSettingsSrlzPacketOperationData,
-                        Q extends WkEncodingRuntimeSrlzPacketOperationData<?>,
-                        R extends WkResultSrlzPacketOperationData<T>,
+                        S extends WkSerdeDtreeOperationSettings,
+                        Q extends WkSerdeDtreeOperationOutputRuntime<?>,
+                        R extends WkSerdeDtreeOperationResult<T>,
                         D extends WkSerdeDtreeNodeStructDefinition<T>>
         extends WkSerdeDtreeNodeDataOperation<
                         S, Q, R, D,
-                        WkSrlzOutputPacketFieldFrameNode<T,D,?>>,
+                        WkSerdeDtreeNodeDataOutputComponent<T,D,?>>,
                 WkSerdeDtreeNodeDataOutput
 {
 

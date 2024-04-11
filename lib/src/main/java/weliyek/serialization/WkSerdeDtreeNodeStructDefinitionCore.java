@@ -26,18 +26,18 @@ import java.util.function.Function;
 
 public abstract class WkSerdeDtreeNodeStructDefinitionCore<
                         T,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        XR extends WkResultSrlzPacketOperationData<T>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
+                        XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeDtreeNodeStructDefinition<T>,
                         XO extends WkSerdeDtreeNodeDataReader<T,XS,?,XR,XD>,
-                        AXBC extends WkSzInputBytestreamBase<?>,
-                        YS extends WkSettingsSrlzPacketOperationData,
-                        YQC extends WkEncodingRuntimeSrlzPacketOperationCtrl<?,?,?>,
-                        YR extends WkResultSrlzPacketOperationData<T>,
+                        AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?>,
+                        YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeNodeStructDefinition<T>,
                         YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,YR,YD>,
-                        AYBC extends WkSzOutputBytestreamBase<?>,
+                        AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         D extends WkSerdeDtreeNodeStructDefinition<T>,
                         DC extends WkSerdeDtreeNodeStructDefinitionCore<
                                       T,XS,XQC,XR,XD,XO,AXBC,YS,YQC,YR,YD,YO,AYBC,D,?>>
@@ -47,7 +47,7 @@ public abstract class WkSerdeDtreeNodeStructDefinitionCore<
     public static final char NAME_PREFIX = '<';
     public static final char NAME_SUFFIX = '>';
 
-    private final WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore;
+    private final WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore;
     private final Function<AXBC, XQC> rxRuntimeFactory;
     private final Function<AYBC, YQC> txRuntimeFactory;
     private final BiFunction<XO, T, XR> rxResultFactory;
@@ -63,7 +63,7 @@ public abstract class WkSerdeDtreeNodeStructDefinitionCore<
     private final List<Consumer<WkSerdeDtreeNodeDataReaderCore<T,? extends XS,?,?,?,? extends XO,?,? extends XD,?,?>>> onBeforeDeserializingObservers = new ArrayList<>();
 
     protected WkSerdeDtreeNodeStructDefinitionCore(
-      WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+      WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
       Function<AXBC,XQC> rxRuntimeFactory,
       BiFunction<XO,T,XR> rxResultFactory,
       WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXBC> readingOpFactory,
@@ -130,7 +130,7 @@ public abstract class WkSerdeDtreeNodeStructDefinitionCore<
       int index,
       XS settings,
       AXBC parentBytestream,
-      WkSrlzInputPacketFieldFrameNodeCore<T,?,XD,?,?,?> fieldCore) {
+      WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> fieldCore) {
       return this.readingOpFactory.newReadingCore(
           index,
           settings,
@@ -145,7 +145,7 @@ public abstract class WkSerdeDtreeNodeStructDefinitionCore<
       T serializable,
       YS settings,
       AYBC parentBytestream,
-      WkSrlzOutputPacketFieldFrameNodeCore<T,?,YD,?,?,?> writingFieldCore) {
+      WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> writingFieldCore) {
       return this.writingOpFactory.newWritingCore(
           index, serializable, settings, parentBytestream, writingFieldCore, getThis());
     }
@@ -156,7 +156,7 @@ public abstract class WkSerdeDtreeNodeStructDefinitionCore<
       return this.definitionBody;
     }
 
-    public WkSrlzStructComponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?> componentCore() {
+    public WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore() {
       return this.componentCore;
     }
 

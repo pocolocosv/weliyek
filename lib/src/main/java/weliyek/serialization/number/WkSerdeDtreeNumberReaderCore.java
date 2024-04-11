@@ -17,24 +17,24 @@
  */
 package weliyek.serialization.number;
 
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationCtrl;
-import weliyek.serialization.WkDecodingRuntimeSrlzPacketOperationData;
-import weliyek.serialization.WkResultSrlzPacketOperationData;
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeNodeDataReaderDecoderCore;
-import weliyek.serialization.WkSrlzInputPacketFieldFrameNodeCore;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
 public abstract class WkSerdeDtreeNumberReaderCore<
                         X extends Number,
-                        XS extends WkSettingsSrlzPacketOperationData,
-                        XQ extends WkDecodingRuntimeSrlzPacketOperationData<?>,
-                        XQC extends WkDecodingRuntimeSrlzPacketOperationCtrl<?,?,XQ>,
-                        XR extends WkResultSrlzPacketOperationData<X>,
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XQ extends WkSerdeDtreeOperationInputRuntime<?>,
+                        XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<?,?,XQ>,
+                        XR extends WkSerdeDtreeOperationResult<X>,
                         XO extends WkSerdeDtreeNumberReader<X,XS,XQ,XR,XD>,
                         XOC extends WkSerdeDtreeNumberReaderCore<X,XS,XQ,XQC,XR,XO,?,XD,AXB,DC>,
                         XD extends WkSerdeDtreeNumberDefinition<X>,
-                        AXB extends WkSzInputBytestreamBase<?>,
+                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         DC extends WkSerdeDtreeNumberDefinitionCore<X,XS,XQC,XR,XD,XO,AXB,?,?,?,?,?,?,? extends XD,DC>>
     extends WkSerdeDtreeNodeDataReaderDecoderCore<X, XS, XQ, XQC, XR, XO, XOC, XD, AXB, DC>
     implements WkSerdeDtreeNumberReader<X, XS, XQ, XR, XD>
@@ -44,7 +44,7 @@ public abstract class WkSerdeDtreeNumberReaderCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSrlzInputPacketFieldFrameNodeCore<X, ?, XD, ?, ?, ?> packetField,
+    WkSerdeDtreeNodeDataInputComponentCore<X, ?, XD, ?, ?, ?> packetField,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, packetField, definitionCore, operationBody);

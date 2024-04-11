@@ -31,11 +31,11 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSettingsSrlzPacketOperationData;
-import weliyek.serialization.WkSrlzStruct;
-import weliyek.serialization.WkSzInputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSzInputPacket;
-import weliyek.serialization.WkSzOutputBytestreamBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSzOutputPacket;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
@@ -49,17 +49,17 @@ public class WkSerdeStringDynamicBytesTest
 
   private static Charset defaultCharset = StandardCharsets.UTF_8;
 
-  private static WkSrlzStruct<
+  private static WkSerdeDtreeStruct<
                           String,
-                          WkSettingsSrlzPacketOperationData,
+                          WkSerdeDtreeOperationSettings,
                           WkSerdeStringDynamicBytes<Integer,
                                     WkSerdeSignedBigEndianInteger,
                                     WkSerdeSignedBigEndianIntegerReader,
                                     ?, ?,
                                     ? extends WkSerdeSignedBigEndianInteger>,
                           WkSerdeStringDynamicBytesReader<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
-                          WkSzInputBytestreamBase<?>,
-                          WkSettingsSrlzPacketOperationData,
+                          WkSerdeDtreeBytestreamInputBase<?>,
+                          WkSerdeDtreeOperationSettings,
                           WkSerdeStringDynamicBytes<
                                     Integer, ?, ?,
                                     WkSerdeSignedBigEndianInteger,
@@ -69,7 +69,7 @@ public class WkSerdeStringDynamicBytesTest
                                     Integer,
                                     WkSerdeSignedBigEndianInteger,
                                     WkSerdeSignedBigEndianIntegerWriter>,
-                          WkSzOutputBytestreamBase<?>,
+                          WkSerdeDtreeBytestreamOutputBase<?>,
                           WkSerdeStringDynamicBytes<
                                     Integer,
                                     WkSerdeSignedBigEndianInteger,
@@ -123,7 +123,7 @@ public class WkSerdeStringDynamicBytesTest
                 WkSerdeStringDynamicBytesWriter<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>>
       dynstrWriting = DYNAMIC_STR_STRUCT.newOutputPacket(
                                               originalStr,
-                                              WkSettingsSrlzPacketOperationData.EMPTY,
+                                              WkSerdeDtreeOperationSettings.EMPTY,
                                               outputstream);
     logger.info(dynstrWriting.name() + " created");
     while(dynstrWriting.isInProgress()) {
@@ -160,7 +160,7 @@ public class WkSerdeStringDynamicBytesTest
           String,
           WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader,?,?,? extends WkSerdeSignedBigEndianInteger>,
           WkSerdeStringDynamicBytesReader<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>>
-      dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(WkSettingsSrlzPacketOperationData.EMPTY, outputstream.inputStream());
+      dynstrReading = DYNAMIC_STR_STRUCT.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
 
     while(dynstrReading.isInProgress()) {
       dynstrReading.processBytestream();

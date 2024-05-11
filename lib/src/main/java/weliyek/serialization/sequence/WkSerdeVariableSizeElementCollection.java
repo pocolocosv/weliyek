@@ -23,13 +23,13 @@ import java.util.function.Function;
 
 import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
 import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
@@ -44,12 +44,12 @@ public final class WkSerdeVariableSizeElementCollection<
                         YS extends WkSerdeDtreeOperationSettings,
                         ET,
                         EXS extends WkSerdeDtreeOperationSettings,
-                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
                         EYS extends WkSerdeDtreeOperationSettings,
-                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                        ED extends WkSerdeDtreeNodeStructDefinition<ET>>
+                        EYD extends WkSerdeDtreeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
+                        ED extends WkSerdeDtreeStructDefinition<ET>>
     implements WkSerdeElementCollectionDefinition<
                         T,
                         WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
@@ -64,12 +64,12 @@ public final class WkSerdeVariableSizeElementCollection<
                  YS extends WkSerdeDtreeOperationSettings,
                  ET,
                  EXS extends WkSerdeDtreeOperationSettings,
-                 EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                 EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
+                 EXD extends WkSerdeDtreeStructDefinition<ET>,
+                 EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
                  EYS extends WkSerdeDtreeOperationSettings,
-                 EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                 EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                 ED extends WkSerdeDtreeNodeStructDefinition<ET>>
+                 EYD extends WkSerdeDtreeStructDefinition<ET>,
+                 EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
+                 ED extends WkSerdeDtreeStructDefinition<ET>>
   WkSerdeDtreeStruct<
                  T,
                  XS,
@@ -95,7 +95,7 @@ public final class WkSerdeVariableSizeElementCollection<
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     Function<List<ET>, T> collectionFactory) {
-    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
+    return new WkSerdeDtreeStructCore<>(
                   label,
         (pc) -> WkSerdeVariableSizeElementCollection.newCore(
                     elementsLabel,
@@ -116,13 +116,13 @@ public final class WkSerdeVariableSizeElementCollection<
                  YS extends WkSerdeDtreeOperationSettings,
                  ET,
                  EXS extends WkSerdeDtreeOperationSettings,
-                 EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                 EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
+                 EXD extends WkSerdeDtreeStructDefinition<ET>,
+                 EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
                  EYS extends WkSerdeDtreeOperationSettings,
-                 EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                 EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                 ED extends WkSerdeDtreeNodeStructDefinition<ET>>
-  WkSerdeDtreeNodeStructDefinitionCore<
+                 EYD extends WkSerdeDtreeStructDefinition<ET>,
+                 EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
+                 ED extends WkSerdeDtreeStructDefinition<ET>>
+  WkSerdeDtreeStructDefinitionCore<
                  T,
                  XS,?,?,
                  WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
@@ -146,7 +146,7 @@ public final class WkSerdeVariableSizeElementCollection<
       ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
       EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeVariableSizeElementCollection<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
   }
 
@@ -165,7 +165,7 @@ public final class WkSerdeVariableSizeElementCollection<
   private WkSerdeVariableSizeElementCollection(
     int minSize,
     int maxSize,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     WkOperationSettingsFactory<

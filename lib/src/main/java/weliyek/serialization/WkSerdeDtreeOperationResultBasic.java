@@ -31,7 +31,7 @@ public class WkSerdeDtreeOperationResultBasic<X>
     private final Optional<X> serializable;
 
     public WkSerdeDtreeOperationResultBasic(
-            WkSerdeDtreeNodeDataOperation<?,?,?,? extends WkSerdeDtreeNodeStructDefinition<X>,?> operation,
+            WkSerdeDtreeMsgOperation<?,?,?,? extends WkSerdeDtreeStructDefinition<X>> operation,
             X serializable) {
         this.serializable = Optional.ofNullable(serializable);
     }

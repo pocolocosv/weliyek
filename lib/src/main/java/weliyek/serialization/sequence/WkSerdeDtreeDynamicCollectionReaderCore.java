@@ -23,14 +23,14 @@ import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceReaderCore;
 
 public final class WkSerdeDtreeDynamicCollectionReaderCore<
@@ -45,12 +45,12 @@ public final class WkSerdeDtreeDynamicCollectionReaderCore<
                                         T,XO,?,?,ET,EXS,?,EXO,?,?,?,?,VXS,?>,
                         ZT extends Number,
                         ZXS extends WkSerdeDtreeOperationSettings,
-                        ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZXO extends WkSerdeDtreeNumberMsgReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         ET,
                         EXS extends WkSerdeDtreeOperationSettings,
-                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
                         VXS extends WkSerdeDtreeOperationSettingsVariableLength>
     extends WkSerdeDtreeDynamicSequenceReaderCore<
                         T, XS,
@@ -83,7 +83,7 @@ public final class WkSerdeDtreeDynamicCollectionReaderCore<
     int index,
     XS settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<T,?,XD,?,?,?> packetfieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
       T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?> definitionCore,
     XO operationBody) {

@@ -24,25 +24,25 @@ public class WkSzStructComponentException extends WkSerdeDtreeNodeException
 
   private static final long serialVersionUID = 2018_03_05_000L;
 
-  private final WkSerdeDtreeNodeStructComponent<?> structComponent;
+  private final WkSerdeDtreeStructField<?> structComponent;
 
-  public WkSzStructComponentException(WkSerdeDtreeNodeStructComponent<?> structComponent) {
+  public WkSzStructComponentException(WkSerdeDtreeStructField<?> structComponent) {
     super(structComponent);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
-  public WkSzStructComponentException(WkSerdeDtreeNodeStructComponent<?> structComponent, String message) {
+  public WkSzStructComponentException(WkSerdeDtreeStructField<?> structComponent, String message) {
     super(structComponent, message);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
-  public WkSzStructComponentException(WkSerdeDtreeNodeStructComponent<?> structComponent, Throwable cause) {
+  public WkSzStructComponentException(WkSerdeDtreeStructField<?> structComponent, Throwable cause) {
     super(structComponent, cause);
     this.structComponent = Objects.requireNonNull(structComponent);
   }
 
   public WkSzStructComponentException(
-    WkSerdeDtreeNodeStructComponent<?> structComponent,
+    WkSerdeDtreeStructField<?> structComponent,
     String message,
     Throwable cause) {
     super(structComponent, message, cause);
@@ -50,7 +50,7 @@ public class WkSzStructComponentException extends WkSerdeDtreeNodeException
   }
 
   public WkSzStructComponentException(
-    WkSerdeDtreeNodeStructComponent<?> structComponent,
+    WkSerdeDtreeStructField<?> structComponent,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -59,7 +59,7 @@ public class WkSzStructComponentException extends WkSerdeDtreeNodeException
     this.structComponent = Objects.requireNonNull(structComponent);
   }
   
-  public WkSerdeDtreeNodeStructComponent<?> getStructComponent() {
+  public WkSerdeDtreeStructField<?> getStructComponent() {
     return this.structComponent;
   }
 

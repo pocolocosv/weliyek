@@ -20,48 +20,54 @@ package weliyek.serialization.number;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgPrimitiveReaderFactory;
+import weliyek.serialization.WkSerdeDtreeMsgPrimitiveWriterCoreFactory;
+import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
+import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeLeafStructDefinitionCore;
-import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
-import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
-import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
+import weliyek.serialization.WkSerdeDtreePrimitiveStructDefinitionCore;
 
 public abstract class WkSerdeDtreeNumberDefinitionCore<
                         T extends Number,
                         XS extends WkSerdeDtreeOperationSettings,
                         XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
                         XR extends WkSerdeDtreeOperationResult<T>,
-                        XD extends WkSerdeDtreeNumberDefinition<T>,
-                        XO extends WkSerdeDtreeNumberReader<T,XS,?,XR,XD>,
+                        XD extends WkSerdeDtreeNumberStructDefinition<T>,
+                        XDC extends WkSerdeDtreeNumberDefinitionCore<T,XS,XQC,XR,XD,?,XO,XOC,AXB,?,?,?,?,?,?,?,?,? extends XD,?>,
+                        XO extends WkSerdeDtreeNumberMsgReader<T,XS,?,XR,XD>,
+                        XOC extends WkSerdeDtreeNumberMsgReaderCore<T,XS,?,XQC,XR,XO,?,XD,XDC,AXB>,
                         AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         YS extends WkSerdeDtreeOperationSettings,
                         YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?>,
                         YR extends WkSerdeDtreeOperationResult<T>,
-                        YD extends WkSerdeDtreeNumberDefinition<T>,
-                        YO extends WkSerdeDtreeNumberWriter<T,YS,?,YR,YD>,
+                        YD extends WkSerdeDtreeNumberStructDefinition<T>,
+                        YDC extends WkSerdeDtreeNumberDefinitionCore<T,?,?,?,?,?,?,?,?,YS,YQC,YR,YD,?,YO,YOC,AYB,? extends YD,?>,
+                        YO extends WkSerdeDtreeNumberMsgWriter<T,YS,?,YR,YD>,
+                        YOC extends WkSerdeDtreeNumberMsgWriterCore<T,YS,?,YQC,YR,YO,?,YD,YDC,AYB>,
                         AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
-                        D extends WkSerdeDtreeNumberDefinition<T>,
-                        DC extends WkSerdeDtreeNumberDefinitionCore<T,XS,XQC,XR,XD,XO,AXB,YS,YQC,YR,YD,YO,AYB,D,?>>
-    extends WkSerdeDtreeNodeLeafStructDefinitionCore<T, XS, XQC, XR, XD, XO, AXB, YS, YQC, YR, YD, YO, AYB, D, DC>
-    implements WkSerdeDtreeNumberDefinition<T>
+                        D extends WkSerdeDtreeNumberStructDefinition<T>,
+                        DC extends WkSerdeDtreeNumberDefinitionCore<
+                                        T,XS,XQC,XR,XD,XDC,XO,XOC,AXB,YS,YQC,YR,YD,YDC,YO,YOC,AYB,D,?>>
+    extends WkSerdeDtreePrimitiveStructDefinitionCore<
+                        T, XS, XQC, XR, XD, XDC, XO, XOC, AXB, YS, YQC, YR, YD, YDC, YO, YOC, AYB, D, DC>
+    implements WkSerdeDtreeNumberStructDefinition<T>
 {
 
   protected WkSerdeDtreeNumberDefinitionCore(
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
-    WkSzPacketReaderOperationCoreFactory<T,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSerdeDtreeMsgPrimitiveReaderFactory<XS,XDC,XOC,AXB> readingOpFactory,
     WkSerdeDtreeNodeDataDecoderEngineFactory<T, ? super XQC, ? super XO> rxSerializerFactory,
     Function<AYB,YQC> txRuntimeFactory,
     BiFunction<YO,T,YR> txResultFactory,
-    WkSzPacketWriterOperationCoreFactory<T,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSerdeDtreeMsgPrimitiveWriterCoreFactory<T,YS,YDC,YOC,AYB> writingOpFactory,
     WkSerdeDtreeNodeDataEncoderEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {

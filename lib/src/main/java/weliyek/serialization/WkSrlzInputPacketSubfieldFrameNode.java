@@ -17,12 +17,13 @@
  */
 package weliyek.serialization;
 
+@Deprecated
 public interface WkSrlzInputPacketSubfieldFrameNode<
                         T,
-                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDtreeNodeDataReader<T,?,?,?,XD>>
-    extends WkSerdeDtreeNodeDataComponentHandler<WkSerdeDtreeNodeDataInputComponent<T, XD, XO>>,
-            WkSerdeDtreeNodeDataInput
+                        XD extends WkSerdeDtreeStructDefinition<T>,
+                        XO extends WkSerdeDtreeMsgReader<T,?,?,?,XD>>
+    extends WkSerdeDtreeNodeDataComponentHandler<WkSerdeDtreeMsgInputField<T, XD, XO>>,
+            WkSerdeDtreeMsgInput
 {
 
   /**

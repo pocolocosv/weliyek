@@ -17,16 +17,16 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeNodeLeafDataWriterCore;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreePrimitiveMsgWriterCore;
 
 public abstract class WkSerdeDtreeGenericPrimitiveArrayWriterCore<
-                        Y extends WkPrimitiveArrayBase<?,?>,
+                        Y extends WkPrimitiveArray<?,?>,
                         YS extends WkSerdeDtreeOperationSettings,
                         YQ extends WkSerdeDtreeOperationOutputRuntimeSequenceCommon<?>,
                         YQC extends WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,YQ>,
@@ -35,8 +35,9 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayWriterCore<
                         YOC extends WkSerdeDtreeGenericPrimitiveArrayWriterCore<Y,YS,YQ,YQC,YR,YO,?,YD,AYB,DC>,
                         YD extends WkSerdeDtreePrimitiveArrayDefinition<Y>,
                         AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
-                        DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<Y,?,?,?,?,?,?,YS,YQC,YR,YD,YO,AYB,? extends YD,DC>>
-        extends WkSerdeDtreeNodeLeafDataWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, AYB, DC>
+                        DC extends WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<
+                                      Y,?,?,?,?,?,?,?,?,YS,YQC,YR,YD,?,YO,YOC,AYB,? extends YD,?>>
+        extends WkSerdeDtreePrimitiveMsgWriterCore<Y, YS, YQ, YQC, YR, YO, YOC, YD, DC, AYB>
         implements WkSerdeDtreePrimitiveArrayWriter<Y, YS, YQ, YR, YD>
 {
 
@@ -47,15 +48,15 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayWriterCore<
     Y serializable,
     YS settings,
     AYB parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<Y,?,YD,?,?,?> serializingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     DC definitionCore,
     YO operationBody) {
     super(
           index,
-          serializable,
           settings,
           parentBytestream,
-          serializingfieldCore,
+          serializable,
+          msgFieldCore,
           definitionCore,
           operationBody);
     this.requestedLength = definitionCore.txRequestedLengthEvaluator.retriveLength(

@@ -24,8 +24,8 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
@@ -55,7 +55,7 @@ public class WkSerdeStringFixedLengthBytesReader
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<
+    WkSerdeDtreeMsgInputFieldCore<
       String,?,WkSerdeStringFixedLengthBytes,?,?,?> deserializingfieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       WkSerdeDtreeOperationSettings,WkSerdeStringFixedLengthBytesReader,
@@ -79,7 +79,7 @@ public class WkSerdeStringFixedLengthBytesReader
 
   @Override
   public
-  Optional<WkSerdeDtreeNodeDataInputComponent<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayReader>>
+  Optional<WkSerdeDtreeMsgInputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayReader>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -110,7 +110,7 @@ public class WkSerdeStringFixedLengthBytesReader
   }
 
   @Override
-  public WkSerdeDtreeNodeDataInputComponent<String, WkSerdeStringFixedLengthBytes, ?> packetField() {
+  public WkSerdeDtreeMsgInputField<String, WkSerdeStringFixedLengthBytes, ?> packetField() {
     return this.operationCore.packetField();
   }
 
@@ -126,7 +126,7 @@ public class WkSerdeStringFixedLengthBytesReader
 
   @Override
   public
-  Optional<WkSerdeDtreeNodeDataInputComponent<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayReader>>
+  Optional<WkSerdeDtreeMsgInputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayReader>>
   bytes() {
     return this.operationCore.bytes();
   }

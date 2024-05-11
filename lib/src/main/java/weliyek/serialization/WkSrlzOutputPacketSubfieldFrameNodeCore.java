@@ -19,22 +19,23 @@ package weliyek.serialization;
 
 import java.util.function.Predicate;
 
+@Deprecated
 public class WkSrlzOutputPacketSubfieldFrameNodeCore<
                         ST,
                         SYS extends WkSerdeDtreeOperationSettings,
-                        SYD extends WkSerdeDtreeNodeStructDefinition<ST>,
-                        SYO extends WkSerdeDtreeNodeDataWriter<ST,SYS,?,?,SYD>,
+                        SYD extends WkSerdeDtreeStructDefinition<ST>,
+                        SYO extends WkSerdeDtreeMsgWriter<ST,SYS,?,?,SYD>,
                         T,
                         YBC extends WkSerdeDtreeBytestreamOutputBase<?>,
-                        YD extends WkSerdeDtreeAggregatorDefinition<T>,
-                        YO extends WkSerdeDtreeAggregatorWriter<T,?,? extends WkSerdeDtreeOperationOutputRuntime<?>,?,YD>>
+                        YD extends WkSerdeDtreeAggregatorStructDefinition<T>,
+                        YO extends WkSerdeDtreeAggregatorMsgWriter<T,?,? extends WkSerdeDtreeOperationOutputRuntime<?>,?,YD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SYS, SYD,
                         WkSrlzStructSubcomponentFrameNodeCore<ST,?,?,?,T,?,?,?,SYS,SYD,SYO,YBC,YD,YO,? extends SYD,? extends YD>,
-                        WkSerdeDtreeNodeDataOutputComponent<ST,SYD,SYO>,
-                        WkSerdeDtreeNodeDataOutputComponentCore<ST,SYS,SYD,SYO,YBC,YO>,
+                        WkSerdeDtreeMsgOutputField<ST,SYD,SYO>,
+                        WkSerdeDtreeMsgOutputFieldCore<ST,SYS,SYD,SYO,YBC,YO>,
                         WkSrlzOutputPacketSubfieldFrameNode<ST,SYD,SYO>,
-                        WkSerdeDtreeAggregatorWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>,
+                        WkSerdeDtreeAggregatorMsgWriterCore<?,?,?,YBC,?,?,?,YD,YO,?,?,?>,
                         YD>
     implements WkSrlzOutputPacketSubfieldFrameNode<ST,SYD,SYO>
 {
@@ -45,8 +46,8 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
 
 
   @Override
-  protected WkSerdeDtreeNodeDataOutputComponentCoreNonroot<ST,SYS,SYD,SYO,T,YBC,YO> newPacket() {
-    return new WkSerdeDtreeNodeDataOutputComponentCoreNonroot<>(1, this);
+  protected WkSerdeDtreeMsgOutputSubfieldCore<ST,SYS,SYD,SYO,T,YBC,YO> newPacket() {
+    return new WkSerdeDtreeMsgOutputSubfieldCore<>(1, this);
   }
 
   @Override
@@ -77,7 +78,7 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  public WkSerdeDtreeNodeStructComponentCore<ST,?,?,?,?,SYS,SYD,SYO,YBC,? extends SYD> protocolFieldCore() {
+  public WkSerdeDtreeStructFieldCore<ST,?,?,?,?,SYS,SYD,SYO,YBC,? extends SYD> protocolFieldCore() {
     return subcomponentHandlerCore().protocolFieldCore();
   }
 
@@ -87,7 +88,7 @@ public class WkSrlzOutputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected WkSerdeDtreeNodeStructComponent<? extends SYD> protocolField() {
+  protected WkSerdeDtreeStructField<? extends SYD> protocolField() {
     return protocolFieldCore().asProtocolField();
   }
 

@@ -19,14 +19,14 @@ package weliyek.bitcoin;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReader;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
@@ -35,7 +35,7 @@ import weliyek.serialization.number.WkSerdeSignedLittleEndianLongReader;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 
 public class WkBitcoinNodeServicesSrlzInputNode 
-    implements WkSerdeDtreeAggregatorReader<
+    implements WkSerdeDtreeAggregatorMsgReader<
                         WkBitcoinNodeServices, 
                         WkSerdeDtreeOperationSettings, 
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>, 
@@ -62,7 +62,7 @@ public class WkBitcoinNodeServicesSrlzInputNode
     int index, 
     WkSerdeDtreeOperationSettings settings, 
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream, 
-    WkSerdeDtreeNodeDataInputComponentCore<WkBitcoinNodeServices, ?, WkBitcoinNodeServicesSrlzStructNode, ?, ?, ?> packetFieldCore, 
+    WkSerdeDtreeMsgInputFieldCore<WkBitcoinNodeServices, ?, WkBitcoinNodeServicesSrlzStructNode, ?, ?, ?> packetFieldCore, 
     WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkBitcoinNodeServices, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode, ?, ?, ?, ? extends WkBitcoinNodeServicesSrlzStructNode> structCore) {
     this.inputCore = new WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
           WkBitcoinNodeServices, 
@@ -113,7 +113,7 @@ public class WkBitcoinNodeServicesSrlzInputNode
 
   @Override
   public
-      WkSerdeDtreeNodeDataInputComponent<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, ?>
+      WkSerdeDtreeMsgInputField<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, ?>
       packetField() {
     return this.inputCore.packetField();
   }

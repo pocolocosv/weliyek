@@ -18,7 +18,7 @@ package weliyek.util.array;
 
 import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDtreeMsgField;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 
 public interface WkSerdeDtreePrimitiveArrayOperationIO<
@@ -26,7 +26,7 @@ public interface WkSerdeDtreePrimitiveArrayOperationIO<
                         Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeDtreePrimitiveArrayDefinition<?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
+                        K extends WkSerdeDtreeMsgField<?,?,?>>
     extends WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D, K>
 {
 

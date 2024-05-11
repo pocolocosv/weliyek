@@ -19,11 +19,11 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReader;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
 
 public interface WkSerdeDtreeCollectionReader<
                         T extends Collection<?>,
@@ -33,8 +33,8 @@ public interface WkSerdeDtreeCollectionReader<
                         XD extends WkSerdeDtreeCollectionDefinition<T>>
     extends WkSerdeDtreeCollectionOperation<
                         XS, XQ, XR, XD,
-                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>>,
-            WkSerdeDtreeAggregatorReader<T, XS, XQ, XR, XD>,
+                        WkSerdeDtreeMsgInputField<T,XD,?>>,
+            WkSerdeDtreeAggregatorMsgReader<T, XS, XQ, XR, XD>,
             WkSerdeDtreeSequenceReader<T, XS, XQ, XR, XD>
 {
 

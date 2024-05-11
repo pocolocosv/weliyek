@@ -24,7 +24,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
@@ -32,11 +32,11 @@ import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
@@ -44,9 +44,9 @@ import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgReaderFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgWriterFactory;
 
 public abstract class WkSerdeElementCollectionDefinitionCore<
                         T extends Collection<ET>,
@@ -70,18 +70,18 @@ public abstract class WkSerdeElementCollectionDefinitionCore<
                         AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         ET,
                         EXS extends WkSerdeDtreeOperationSettings,
-                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
                         EYS extends WkSerdeDtreeOperationSettings,
-                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                        ED extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EYD extends WkSerdeDtreeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
+                        ED extends WkSerdeDtreeStructDefinition<ET>,
                         D extends WkSerdeElementCollectionDefinition<T,XO,YO,ET,ED>,
                         DC extends WkSerdeElementCollectionDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXB,
                                         YS,YB,YBC,YQC,YR,YD,YO,AYB,
                                         ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,D,?>>
-    extends WkSerdeDtreeAggregatorDefinitionCore<
+    extends WkSerdeDtreeAggregatorStructDefinitionCore<
                         T, XS, XB, XBC, XQC, XR, XD, XO, AXB,
                         YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
     implements WkSerdeElementCollectionDefinition<T, XO, YO, ET, ED>
@@ -92,13 +92,13 @@ public abstract class WkSerdeElementCollectionDefinitionCore<
   final Function<XO, T> collectionSerializingFactory;
 
   protected WkSerdeElementCollectionDefinitionCore(
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB, XQC> rxRuntimeFactory,
     BiFunction<XO, T, XR> rxResultFactory,
-    WkSzPacketReaderOperationCoreFactory<T, XS, XD, DC, XO, AXB> readingOpFactory,
+    WkSerdeDtreeMsgReaderFactory<T, XS, XD, DC, XO, AXB> readingOpFactory,
     Function<AYB, YQC> txRuntimeFactory,
     BiFunction<YO, T, YR> txResultFactory,
-    WkSzPacketWriterOperationCoreFactory<T, YS, YD, DC, YO, AYB> writingOpFactory,
+    WkSerdeDtreeMsgWriterFactory<T, YS, YD, DC, YO, AYB> writingOpFactory,
     String elementsLabel,
     ToIntFunction<? super XO> elementsDeserializingNumOfOps,
     WkOperationSettingsFactory<XO, EXS> elementsRxSettingsFactory,
@@ -135,9 +135,9 @@ public abstract class WkSerdeElementCollectionDefinitionCore<
   private static <T extends Collection<ET>,
                   YO extends WkSerdeElementCollectionWriter<T,?,?,?,?,ET,EYD,?>,
                   ET,
-                  EYD extends WkSerdeDtreeNodeStructDefinition<ET>>
+                  EYD extends WkSerdeDtreeStructDefinition<ET>>
   ET disaggregateCollection(
-    WkSerdeDtreeNodeDataOutputComponent<ET,EYD,?> serializingField,
+    WkSerdeDtreeMsgOutputField<ET,EYD,?> serializingField,
     YO collectionWritingOp,
     int index) {
     if (collectionWritingOp.serializableAsList().size() <= index) {

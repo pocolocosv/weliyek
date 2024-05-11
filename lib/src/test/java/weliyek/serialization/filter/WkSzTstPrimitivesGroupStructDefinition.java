@@ -22,11 +22,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorDefinition;
-import weliyek.serialization.WkSerdeDtreeAggregatorDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinition;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
@@ -53,7 +53,7 @@ import weliyek.serialization.string.WkSerdeStringFixedLengthBytesWriter;
 import weliyek.serialization.string.WkSerdeStringFixedLengthBytes;
 
 public class WkSzTstPrimitivesGroupStructDefinition
-        implements WkSerdeDtreeAggregatorDefinition<
+        implements WkSerdeDtreeAggregatorStructDefinition<
                         WkSzTstPrimitivesGroup>
 {
 
@@ -170,7 +170,7 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSzTstPrimitivesGroupStructDefinition> dynStrSubcomponent;
 
   WkSzTstPrimitivesGroupStructDefinition(
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                                   WkSzTstPrimitivesGroup,
                                   WkSerdeDtreeOperationSettings,
@@ -219,10 +219,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                addSubcomponent(
                                     "BYTE",
                                     Optional.empty(),
-                                    WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                                    WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                                     WkSerdeDtreeOperationSettings::none,
                                     Optional.empty(),
-                                    WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                                    WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                                     WkSerdeDtreeOperationSettings::none,
                                     (k,ao,i) -> ao.serializable().b,
                                     false,
@@ -251,10 +251,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                     addSubcomponent(
                           "SHORT",
                           Optional.empty(),
-                          WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                          WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                           WkSerdeDtreeOperationSettings::none,
                           Optional.empty(),
-                          WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                          WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                           WkSerdeDtreeOperationSettings::none,
                           (k,ao,i) -> ao.serializable().s,
                           false,
@@ -283,10 +283,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                     addSubcomponent(
                             "INT",
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             (k,ao,i) -> ao.serializable().i,
                             false,
@@ -315,10 +315,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                       addSubcomponent(
                             "LONG",
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             (k,ao,i) -> ao.serializable().l,
                             false,
@@ -356,10 +356,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSerdeStringFixedLengthBytes>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,
@@ -400,10 +400,10 @@ public class WkSzTstPrimitivesGroupStructDefinition
                                 WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>>addSubcomponent(
                             "FIXEDSTR",
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             Optional.empty(),
-                            WkSerdeDtreeAggregatorDefinitionCore.singleOperation(),
+                            WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
                             WkSerdeDtreeOperationSettings::none,
                             (k,ao,i) -> ao.serializable().fixedLengthStr,
                             false,

@@ -19,16 +19,16 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorReaderCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReaderCore;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
@@ -47,14 +47,14 @@ public abstract class WkSerdeElementCollectionReaderCore<
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
                         ET,
                         EXS extends WkSerdeDtreeOperationSettings,
-                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
                         DC extends WkSerdeElementCollectionDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XD,XO,AXBC,
                                         ?,?,?,?,?,?,?,?,
                                         ET,EXS,EXD,EXO,
                                         ?,?,?,?,?,DC>>
-        extends WkSerdeDtreeAggregatorReaderCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXBC, DC>
+        extends WkSerdeDtreeAggregatorMsgReaderCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXBC, DC>
         implements WkSerdeElementCollectionReader<T, XS, XQ, XR, XD, ET, EXD, EXO>
 {
 
@@ -64,7 +64,7 @@ public abstract class WkSerdeElementCollectionReaderCore<
     int index,
     XS settings,
     AXBC parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<T,?,XD,?,?,?> packetfieldCore,
     DC definitionCore,
     XO operationBody) {
     super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);

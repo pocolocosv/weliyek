@@ -24,11 +24,11 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
@@ -37,8 +37,8 @@ public final class WkSerdeFixedSizeElementCollectionReader<
                         XS extends WkSerdeDtreeOperationSettings,
                         ET,
                         EXS extends WkSerdeDtreeOperationSettings,
-                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>>
+                        EXD extends WkSerdeDtreeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>>
     implements WkSerdeElementCollectionReader<
                         T,
                         XS,
@@ -64,7 +64,7 @@ public final class WkSerdeFixedSizeElementCollectionReader<
     int index,
     XS settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<
+    WkSerdeDtreeMsgInputFieldCore<
       T,?,WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
       ?,?,?> deserializingfieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
@@ -115,7 +115,7 @@ public final class WkSerdeFixedSizeElementCollectionReader<
   }
 
   @Override
-  public WkSerdeDtreeNodeDataInputComponent<T, WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
+  public WkSerdeDtreeMsgInputField<T, WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
   packetField() {
     return this.operationCore.packetField();
   }

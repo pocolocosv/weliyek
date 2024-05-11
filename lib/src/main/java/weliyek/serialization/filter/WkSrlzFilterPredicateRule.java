@@ -20,7 +20,7 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Set;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public interface WkSrlzFilterPredicateRule
 {
@@ -51,6 +51,6 @@ public interface WkSrlzFilterPredicateRule
 
     Set<? extends WkSrlzFilterPredicateRule> subrules();
 
-    List<WkSerdeDtreeNodeStructDefinition<?>> matchTargets();
+    List<WkSerdeDtreeStructDefinition<?>> matchTargets();
 
 }

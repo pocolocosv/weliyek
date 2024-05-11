@@ -19,10 +19,10 @@ package weliyek.serialization.string;
 
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeAggregatorReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
@@ -37,11 +37,11 @@ public interface WkSerdeStringFromPrimitiveArrayReader<
                         SXO extends WkSerdeDtreePrimitiveArrayReader<SX,?,?,?,SXD>>
         extends WkSerdeStringFromPrimitiveArrayOperation<
                         XS, XQ, XR, XD,
-                        WkSerdeDtreeNodeDataInputComponent<String,XD,?>,
+                        WkSerdeDtreeMsgInputField<String,XD,?>,
                         SXO,
-                        WkSerdeDtreeNodeDataInputComponent<SX,SXD,SXO>>,
-                WkSerdeDtreeNodeDataReader<String,XS,XQ,XR,XD>,
-                WkSerdeDtreeAggregatorReader<String, XS, XQ, XR, XD>
+                        WkSerdeDtreeMsgInputField<SX,SXD,SXO>>,
+                WkSerdeDtreeMsgReader<String,XS,XQ,XR,XD>,
+                WkSerdeDtreeAggregatorMsgReader<String, XS, XQ, XR, XD>
 {
 
   static boolean isPrimitiveArrayReady(WkSerdeStringFromPrimitiveArrayReader<?,?,?,?,?,?,?> stringReading) {

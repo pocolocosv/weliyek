@@ -22,10 +22,10 @@ import java.util.Collection;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public interface WkSerdeElementCollectionReader<
                         T extends Collection<ET>,
@@ -34,13 +34,13 @@ public interface WkSerdeElementCollectionReader<
                         XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeElementCollectionDefinition<T,?,?,ET,?>,
                         ET,
-                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeNodeDataReader<ET,?,?,?,EXD>>
+                        EXD extends WkSerdeDtreeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeMsgReader<ET,?,?,?,EXD>>
         extends WkSerdeElementCollectionOperation<
                         XS, XQ, XR, XD,
-                        WkSerdeDtreeNodeDataInputComponent<T,XD,?>,
+                        WkSerdeDtreeMsgInputField<T,XD,?>,
                         EXO,
-                        WkSerdeDtreeNodeDataInputComponent<ET,EXD,EXO>,
+                        WkSerdeDtreeMsgInputField<ET,EXD,EXO>,
                         WkSrlzInputPacketSubfieldFrameNode<ET,EXD,EXO>>,
                 WkSerdeDtreeCollectionReader<T, XS, XQ, XR, XD>
 {

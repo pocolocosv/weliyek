@@ -31,7 +31,7 @@ public final class WkSerdeDtreeByteUnsignedReaderDecoderEngine
 
   private WkSerdeDtreeByteUnsignedReaderDecoderEngine(
     WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
-    WkSerdeDtreeNumberReader<Integer,?,?,?,?> readingOperation) {
+    WkSerdeDtreeNumberMsgReader<Integer,?,?,?,?> readingOperation) {
     super(Integer::valueOf, runtimeCtrl, readingOperation);
   }
 

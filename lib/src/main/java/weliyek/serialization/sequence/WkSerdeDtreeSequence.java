@@ -17,9 +17,9 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSerdeDtreeNodeType;
+import weliyek.serialization.WkSerdeDtreeDatatype;
 
-public interface WkSerdeDtreeSequence extends WkSerdeDtreeNodeType
+public interface WkSerdeDtreeSequence extends WkSerdeDtreeDatatype
 {
 
 }

@@ -20,7 +20,7 @@ package weliyek.serialization.string;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
@@ -35,9 +35,9 @@ public interface WkSerdeStringFromBytesReader<
     extends WkSerdeStringFromPrimitiveArrayReader<XS, XQ, XR, XD, WkByteArray, SXD, SXO>,
             WkSerdeStringFromBytesOperation<
                         XS, XQ, XR, XD,
-                        WkSerdeDtreeNodeDataInputComponent<String,XD,?>,
+                        WkSerdeDtreeMsgInputField<String,XD,?>,
                         SXO,
-                        WkSerdeDtreeNodeDataInputComponent<WkByteArray,SXD,SXO>>
+                        WkSerdeDtreeMsgInputField<WkByteArray,SXD,SXO>>
 {
 
 }

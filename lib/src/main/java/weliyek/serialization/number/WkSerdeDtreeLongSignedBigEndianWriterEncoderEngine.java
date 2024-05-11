@@ -32,7 +32,7 @@ public final class WkSerdeDtreeLongSignedBigEndianWriterEncoderEngine
 
   private WkSerdeDtreeLongSignedBigEndianWriterEncoderEngine(
     WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeNumberWriter<Long,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberMsgWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

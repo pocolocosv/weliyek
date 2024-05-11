@@ -19,19 +19,17 @@ package weliyek.util.array;
 
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.sequence.WkSerdeDtreeOperationRuntimeSequenceCommon;
 import weliyek.serialization.sequence.WkSerdeDtreeFixedSizeSequenceOperation;
+import weliyek.serialization.sequence.WkSerdeDtreeOperationRuntimeSequenceCommon;
 
 public interface WkSerdeDtreeFixedSizePrimitiveArrayOperation<
                         S extends WkSerdeDtreeOperationSettings,
                         Q extends WkSerdeDtreeOperationRuntimeSequenceCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
-                        D extends WkSerdeDtreeFixedSizePrimitiveArrayDefinition<?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
+                        D extends WkSerdeDtreeFixedSizePrimitiveArrayDefinition<?>>
     extends WkSerdeDtreeFixedSizePrimitiveArray,
-            WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D, K>,
-            WkSerdeDtreeFixedSizeSequenceOperation<S, Q, R, D, K>
+            WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D>,
+            WkSerdeDtreeFixedSizeSequenceOperation<S, Q, R, D>
 {
 
 }

@@ -19,19 +19,18 @@ package weliyek.util.array;
 
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorReaderCore;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReaderCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
 
@@ -45,58 +44,51 @@ public abstract class WkSerdeDtreeDynamicSequenceReaderCore<
                         XR extends WkSerdeDtreeOperationResult<T>,
                         XO extends WkSerdeDtreeDynamicSequenceReader<T,XS,XQ,XR,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XOC extends WkSerdeDtreeDynamicSequenceReaderCore<
-                                        T,XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,
+                                        T,XS,XB,XBC,XQ,XQC,XR,XO,?,XD,XDC,AXBC,
                                         ZT,ZXS,ZXO,ZXD,
-                                        VXS,VXO,VXD,
-                                        DC>,
+                                        VXS,VXO,VXD>,
                         XD extends WkSerdeDtreeDynamicSequenceDefinition<T,XO,?,?,?>,
-                        AXB extends WkSerdeDtreeBytestreamInputBase<?>,
+                        XDC extends WkSerdeDtreeDynamicSequenceDefinitionCore<
+                                        T,XS,XB,XBC,XQC,XR,XO,XOC,XD,?,AXBC,
+                                        ?,?,?,?,?,?,?,?,?,?,
+                                        ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,
+                                        VXS,VXO,VXD,?,?,?,? extends VXD,
+                                        ? extends XD,?>,
+                        AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
                         ZT extends Number,
                         ZXS extends WkSerdeDtreeOperationSettings,
-                        ZXO extends WkSerdeDtreeNumberReader<ZT,ZXS,?,?,ZXD>,
-                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZXO extends WkSerdeDtreeNumberMsgReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         VXS extends WkSerdeDtreeOperationSettingsVariableLength,
                         VXO extends WkSerdeDtreeVariableSizeSequenceReader<T,VXS,?,?,VXD>,
-                        VXD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
-                        DC extends WkSerdeDtreeDynamicSequenceDefinitionCore<
-                                        T,XS,XB,XBC,XQC,XR,XO,XD,AXB,
-                                        ?,?,?,?,?,?,?,?,
-                                        ZT,ZXS,ZXO,ZXD,?,?,?,?,
-                                        VXS,VXO,VXD,?,?,?,?,
-                                        ?,DC>>
-    extends WkSerdeDtreeAggregatorReaderCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
+                        VXD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>>
+    extends WkSerdeDtreeAggregatorMsgReaderCore<
+                        T, XS, XB, XBC, XQ, XQC, XR, XD, XDC, XO, XOC, AXBC>
     implements WkSerdeDtreeDynamicSequenceReader<T, XS, XQ, XR, XD, ZT, ZXO, ZXD, VXO, VXD>
 {
-
-  private WkSrlzInputPacketSubfieldFrameNodeCore<ZT,ZXS,ZXD,ZXO,T,XBC,XD,XO>
-                        sizeReadFieldHandler;
-  private WkSrlzInputPacketSubfieldFrameNodeCore<T,VXS,VXD,VXO,T,XBC,XD,XO>
-                        varseqReadFieldHandler;
 
   protected WkSerdeDtreeDynamicSequenceReaderCore(
     int index,
     XS settings,
-    AXB parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> packetfieldCore,
-    DC definitionCore,
+    AXBC parentBytestream,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);
-    this.sizeReadFieldHandler = getSubfieldpacketFor(definitionCore().sizeComponent);
-    this.varseqReadFieldHandler = getSubfieldpacketFor(definitionCore().varseqComponent);
+    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
   }
 
   @Override
   protected void onAggregatorReadingInitialization() {
   }
-  
+
   @Override
-  public Optional<WkSerdeDtreeNodeDataInputComponent<ZT, ZXD, ZXO>> size() {
-    return this.sizeReadFieldHandler.field();
+  public Optional<WkSerdeDtreeMsgInputField<ZT, ZXD, ZXO>> size() {
+    return Optional.ofNullable(getSubfieldpacketFor(definitionCore().sizeComponent));
   }
-  
+
   @Override
-  public Optional<WkSerdeDtreeNodeDataInputComponent<T, VXD, VXO>> variableSequence() {
-    return this.varseqReadFieldHandler.field();
+  public Optional<WkSerdeDtreeMsgInputField<T, VXD, VXO>> variableSequence() {
+    return Optional.ofNullable(getSubfieldpacketFor(definitionCore().varseqComponent));
   }
 
 }

@@ -32,16 +32,16 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgReaderFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgWriterFactory;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
@@ -84,13 +84,13 @@ public abstract class WkSerdeStringFromBytesDefinitionCore<
 
   protected WkSerdeStringFromBytesDefinitionCore(
     Charset defaultCharset,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,String,XR> rxResultFactory,
-    WkSzPacketReaderOperationCoreFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSerdeDtreeMsgReaderFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
     Function<AYB,YQC> txRuntimeFactory,
     BiFunction<YO,String,YR> txResultFactory,
-    WkSzPacketWriterOperationCoreFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSerdeDtreeMsgWriterFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
     String bytesLabel,
     Optional<Predicate<? super XO>> bytesDeserializationEnablingTest,
     WkOperationSettingsFactory<XO, SXS> bytesDeserializingSettingsFactory,

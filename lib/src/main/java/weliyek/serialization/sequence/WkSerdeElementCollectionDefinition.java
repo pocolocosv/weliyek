@@ -19,7 +19,7 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 
 public interface WkSerdeElementCollectionDefinition<
@@ -27,7 +27,7 @@ public interface WkSerdeElementCollectionDefinition<
                         XO extends WkSerdeElementCollectionReader<T,?,?,?,?,?,?,?>,
                         YO extends WkSerdeElementCollectionWriter<T,?,?,?,?,?,?,?>,
                         ET,
-                        ED extends WkSerdeDtreeNodeStructDefinition<ET>>
+                        ED extends WkSerdeDtreeStructDefinition<ET>>
         extends WkSerdeElementCollection<WkSerdeDtreeNodeStructComponentHandler<XO, YO, ED>>,
                 WkSerdeDtreeCollectionDefinition<T>
 {

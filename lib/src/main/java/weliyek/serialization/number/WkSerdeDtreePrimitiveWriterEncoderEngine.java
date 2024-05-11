@@ -22,22 +22,22 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSerdeDtreeNodeDataWriterEncoderEngine;
+import weliyek.serialization.WkSerdeDtreePrimitiveMsgWriterEngine;
 import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 
 public abstract class WkSerdeDtreePrimitiveWriterEncoderEngine<T extends Number>
-    extends WkSerdeDtreeNodeDataWriterEncoderEngine<
+    extends WkSerdeDtreePrimitiveMsgWriterEngine<
                         T,
                         WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?>,
-                        WkSerdeDtreeNumberWriter<T,?,?,?,?>>
+                        WkSerdeDtreeNumberMsgWriter<T,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkSerdeDtreePrimitiveWriterEncoderEngine.class);
 
   protected WkSerdeDtreePrimitiveWriterEncoderEngine(
     WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeNumberWriter<T,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberMsgWriter<T,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

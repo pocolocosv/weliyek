@@ -19,19 +19,18 @@ package weliyek.serialization.number;
 
 import java.util.List;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
 
 public class WkSerdeSignedBigEndianShort
-    implements WkSerdeDtreeNumberDefinition<Short>
+    implements WkSerdeDtreeNumberStructDefinition<Short>
 {
 
   public static WkSerdeDtreeStruct<
@@ -46,25 +45,19 @@ public class WkSerdeSignedBigEndianShort
                       WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeSignedBigEndianShort>
   newStruct(String label) {
-    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
+    return new WkSerdeDtreeStructCore<>(
                       label,
                       WkSerdeSignedBigEndianShort::newCore,
                       WkSerdeDtreeBytestreamCountingInputStream::new,
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static WkSerdeDtreeNodeStructDefinitionCore<
-                      Short,
-                      WkSerdeDtreeOperationSettings,?,?,
-                      WkSerdeSignedBigEndianShort,
-                      WkSerdeSignedBigEndianShortReader,
-                      WkSerdeDtreeBytestreamInputBase<?>,
-                      WkSerdeDtreeOperationSettings,?,?,
-                      WkSerdeSignedBigEndianShort,
-                      WkSerdeSignedBigEndianShortWriter,
-                      WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkSerdeSignedBigEndianShort,?>
-  newCore(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  public static WkSerdeDtreeNumberDefinitionCoreSimplified<
+                        Short,
+                        WkSerdeSignedBigEndianShortReader,
+                        WkSerdeSignedBigEndianShortWriter,
+                        WkSerdeSignedBigEndianShort>
+  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     return new WkSerdeSignedBigEndianShort(componentCore).definitionCore;
   }
 
@@ -75,7 +68,7 @@ public class WkSerdeSignedBigEndianShort
                         WkSerdeSignedBigEndianShort> definitionCore;
 
   public WkSerdeSignedBigEndianShort(
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<
                                   Short,
                                   WkSerdeSignedBigEndianShortReader,
@@ -96,7 +89,7 @@ public class WkSerdeSignedBigEndianShort
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeStructField<?>> subfields() {
     return this.definitionCore.subfields();
   }
 

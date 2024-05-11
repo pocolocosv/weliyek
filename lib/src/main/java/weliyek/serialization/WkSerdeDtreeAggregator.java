@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-public interface WkSerdeDtreeAggregator extends WkSerdeDtreeNodeType
+public interface WkSerdeDtreeAggregator extends WkSerdeDtreeDatatype
 {
 
 }

@@ -20,16 +20,16 @@ package weliyek.util.array;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 
 public class WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
-                        Y extends WkPrimitiveArrayBase<?,?>,
+                        Y extends WkPrimitiveArray<?,?>,
                         YS extends WkSerdeDtreeOperationSettings,
                         D extends WkSerdeDtreePrimitiveArrayDefinition<Y>,
                         YO extends WkSerdeDtreePrimitiveArrayWriter<
@@ -62,11 +62,11 @@ public class WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
     Y serializable,
     YS settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<Y,?,D,?,?,?> serializingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,
     Consumer<? super WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<Y,YS,D,YO>> onInitializing) {
-    super(index, serializable, settings, parentBytestream, serializingfieldCore, definitionCore, operationBody);
+    super(index, serializable, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
     this.onInitializing = Objects.requireNonNull(onInitializing);
   }
 

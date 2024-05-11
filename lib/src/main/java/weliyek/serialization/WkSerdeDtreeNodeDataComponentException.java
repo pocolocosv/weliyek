@@ -24,15 +24,15 @@ public class WkSerdeDtreeNodeDataComponentException extends WkSerdeDtreeNodeExce
 
     private static final long serialVersionUID = 2020_05_01_000L;
 
-    private final WkSerdeDtreeNodeDataComponent<?,?,?> dataComponent;
+    private final WkSerdeDtreeMsgField<?,?,?> dataComponent;
 
-    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeNodeDataComponent<?,?,?> dataComponent) {
+    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeMsgField<?,?,?> dataComponent) {
         super(dataComponent);
         this.dataComponent = Objects.requireNonNull(dataComponent);
     }
 
     public WkSerdeDtreeNodeDataComponentException(
-        WkSerdeDtreeNodeDataComponent<?,?,?> dataComponent,
+        WkSerdeDtreeMsgField<?,?,?> dataComponent,
         String message,
         Throwable cause,
         boolean enableSuppression,
@@ -41,22 +41,22 @@ public class WkSerdeDtreeNodeDataComponentException extends WkSerdeDtreeNodeExce
         this.dataComponent = Objects.requireNonNull(dataComponent);
     }
 
-    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeNodeDataComponent<?,?,?> dataComponent, String message, Throwable cause) {
+    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeMsgField<?,?,?> dataComponent, String message, Throwable cause) {
         super(dataComponent, message, cause);
         this.dataComponent = Objects.requireNonNull(dataComponent);
     }
 
-    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeNodeDataComponent<?,?,?> dataComponent, String message) {
+    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeMsgField<?,?,?> dataComponent, String message) {
         super(dataComponent, message);
         this.dataComponent = Objects.requireNonNull(dataComponent);
     }
 
-    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeNodeDataComponent<?,?,?> dataComponent, Throwable cause) {
+    public WkSerdeDtreeNodeDataComponentException(WkSerdeDtreeMsgField<?,?,?> dataComponent, Throwable cause) {
         super(dataComponent, cause);
         this.dataComponent = Objects.requireNonNull(dataComponent);
     }
 
-    public final WkSerdeDtreeNodeDataComponent<?,?,?> dataComponent() {
+    public final WkSerdeDtreeMsgField<?,?,?> dataComponent() {
         return this.dataComponent;
     }
 

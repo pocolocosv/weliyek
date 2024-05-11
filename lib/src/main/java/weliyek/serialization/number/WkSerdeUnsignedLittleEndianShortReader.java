@@ -20,17 +20,16 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
-import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 
 public final class WkSerdeUnsignedLittleEndianShortReader
-        implements WkSerdeDtreeNumberReader<
+        implements WkSerdeDtreeNumberMsgReader<
                         Integer,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
@@ -38,7 +37,7 @@ public final class WkSerdeUnsignedLittleEndianShortReader
                         WkSerdeUnsignedLittleEndianShort>
 {
 
-  final WkSerdeDtreeNumberReaderCoreSimplified<
+  final WkSerdeDtreeNumberMsgReaderCoreSimplified<
                       Integer,
                       WkSerdeUnsignedLittleEndianShortReader,
                       WkSerdeUnsignedLittleEndianShort> operationCore;
@@ -47,15 +46,14 @@ public final class WkSerdeUnsignedLittleEndianShortReader
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<
-      Integer,?,WkSerdeUnsignedLittleEndianShort,?,?,?> packetfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Integer,WkSerdeUnsignedLittleEndianShortReader,?,WkSerdeUnsignedLittleEndianShort> definitionCore) {
-    operationCore = new WkSerdeDtreeNumberReaderCoreSimplified<>(
+    operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<Integer, WkSerdeUnsignedLittleEndianShortReader, WkSerdeUnsignedLittleEndianShort>(
                             index,
                             settings,
                             parentBytestream,
-                            packetfieldCore,
+                            msgFieldCore,
                             definitionCore,
                             this);
   }
@@ -81,12 +79,12 @@ public final class WkSerdeUnsignedLittleEndianShortReader
   }
 
   @Override
-  public WkSerdeDtreeNodeDataInputComponent<Integer, WkSerdeUnsignedLittleEndianShort, ?> packetField() {
-    return this.operationCore.packet();
+  public WkSerdeDtreeMsgInputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
-  public final List<WkSrlzInputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public final List<WkSerdeDtreeMsgInputField<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 

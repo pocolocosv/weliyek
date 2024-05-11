@@ -32,7 +32,7 @@ public abstract class WkSerdeDtreeIntPrimitiveReaderDecoderEngine<X extends Numb
   protected WkSerdeDtreeIntPrimitiveReaderDecoderEngine(
       IntFunction<X> converter,
       WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
-      WkSerdeDtreeNumberReader<X,?,?,?,?> readingOperation) {
+      WkSerdeDtreeNumberMsgReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
     this.converter = Objects.requireNonNull(converter);
   }

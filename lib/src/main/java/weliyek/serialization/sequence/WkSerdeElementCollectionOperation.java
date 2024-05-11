@@ -19,8 +19,8 @@ package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOperation;
+import weliyek.serialization.WkSerdeDtreeMsgField;
+import weliyek.serialization.WkSerdeDtreeMsgOperation;
 import weliyek.serialization.WkSerdeDtreeNodeDataComponentHandler;
 
 public interface WkSerdeElementCollectionOperation<
@@ -28,9 +28,9 @@ public interface WkSerdeElementCollectionOperation<
                         Q extends WkSerdeDtreeOperationRuntimeSequenceCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeElementCollectionDefinition<?,?,?,?,?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
-                        EO extends WkSerdeDtreeNodeDataOperation<?,?,?,?,?>,
-                        EK extends WkSerdeDtreeNodeDataComponent<?,EO,?>,
+                        K extends WkSerdeDtreeMsgField<?,?,?>,
+                        EO extends WkSerdeDtreeMsgOperation<?,?,?,?,?>,
+                        EK extends WkSerdeDtreeMsgField<?,EO,?>,
                         EJ extends WkSerdeDtreeNodeDataComponentHandler<EK>>
         extends WkSerdeElementCollection<EJ>,
                 WkSerdeDtreeCollectionOperation<S, Q, R, D, K>

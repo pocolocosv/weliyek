@@ -20,28 +20,31 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.function.IntFunction;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 
 public class WkSerdeDynamicByteArray<
                         ZT extends Number,
-                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
-                        ZXO extends WkSerdeDtreeNumberReader<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD>,
-                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
-                        ZYO extends WkSerdeDtreeNumberWriter<ZT,WkSerdeDtreeOperationSettings,?,?,ZYD>,
-                        ZD extends WkSerdeDtreeNumberDefinition<ZT>>
+                        ZXD extends WkSerdeDtreeNumberStructDefinition<ZT>,
+                        ZXO extends WkSerdeDtreeNumberMsgReader<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD>,
+                        ZYD extends WkSerdeDtreeNumberStructDefinition<ZT>,
+                        ZYO extends WkSerdeDtreeNumberMsgWriter<ZT,WkSerdeDtreeOperationSettings,?,?,ZYD>,
+                        ZD extends WkSerdeDtreeNumberStructDefinition<ZT>>
     implements WkSerdeDtreeByteArrayDefinition,
                WkSerdeDtreeDynamicPrimitiveArrayDefinition<
                         WkByteArray,
@@ -50,78 +53,87 @@ public class WkSerdeDynamicByteArray<
                         ZD,
                         WkSerdeDtreeVariableSizeByteArray>
 {
-  public static <ZX extends Number,
-                 ZXD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZXO extends WkSerdeDtreeNumberReader<ZX,WkSerdeDtreeOperationSettings,?,?,ZXD>,
-                 ZYD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZYO extends WkSerdeDtreeNumberWriter<ZX,WkSerdeDtreeOperationSettings,?,?,ZYD>,
-                 ZD extends WkSerdeDtreeNumberDefinition<ZX>>
+
+  public static <ZT extends Number,
+                 ZXD extends WkSerdeDtreeNumberStructDefinition<ZT>,
+                 ZXO extends WkSerdeDtreeNumberMsgReader<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD>,
+                 ZYD extends WkSerdeDtreeNumberStructDefinition<ZT>,
+                 ZYO extends WkSerdeDtreeNumberMsgWriter<ZT,WkSerdeDtreeOperationSettings,?,?,ZYD>,
+                 ZD extends WkSerdeDtreeNumberStructDefinition<ZT>>
   WkSerdeDtreeStruct<WkByteArray,
                   WkSerdeDtreeOperationSettings,
-                  WkSerdeDynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
-                  WkSerdeDynamicByteArrayReader<ZX,ZXO,ZXD>,
+                  WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
+                  WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
                   WkSerdeDtreeBytestreamInputBase<?>,
                   WkSerdeDtreeOperationSettings,
-                  WkSerdeDynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
-                  WkSerdeDynamicByteArrayWriter<ZX,ZYO,ZYD>,
+                  WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
+                  WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
                   WkSerdeDtreeBytestreamOutputBase<?>,
-                  WkSerdeDynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>>
+                  WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
   newStruct(
     String label,
     String sizeLabel,
     String bytearrayLabel,
     int minLength,
     int maxLength,
-    IntFunction<ZX> sizeWrapper,
+    IntFunction<ZT> sizeWrapper,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZX,WkSerdeDtreeOperationSettings,ZXD,ZXO,WkSerdeDtreeBytestreamInputBase<?>,
-      WkSerdeDtreeOperationSettings,ZYD,ZYO,WkSerdeDtreeBytestreamOutputBase<?>,ZD>  sizeDefinition)
+    ? extends WkSerdeDtreeStructDefinitionCore<ZT, WkSerdeDtreeOperationSettings,
+    ?,?,ZXD,?,ZXO,?,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+    WkSerdeDtreeOperationSettings,?,?,ZYD,?,ZYO,?,
+    WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+    ZD,?>> sizeFieldDefinitionFactory)
   {
-    return new WkSerdeDtreeNodeStructComponentCoreRoot<WkByteArray,
-        WkSerdeDtreeOperationSettings,
-        WkSerdeDynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
-        WkSerdeDynamicByteArrayReader<ZX,ZXO,ZXD>,
-        WkSerdeDtreeBytestreamInputBase<?>,
-        WkSerdeDtreeOperationSettings,
-        WkSerdeDynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
-        WkSerdeDynamicByteArrayWriter<ZX,ZYO,ZYD>,
-        WkSerdeDtreeBytestreamOutputBase<?>,
-        WkSerdeDynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>>(
-                  label,
-                  (pc) -> WkSerdeDynamicByteArray.newCore(
-                              pc, sizeLabel, sizeWrapper, bytearrayLabel, minLength, maxLength, sizeDefinition),
-                  WkSerdeDtreeBytestreamCountingInputStream::new,
-                  WkSerdeDtreeBytestreamCountingOutputStream::new);
+    return new WkSerdeDtreeStructCore<WkByteArray,
+                  WkSerdeDtreeOperationSettings,
+                  WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
+                  WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
+                  WkSerdeDtreeBytestreamInputBase<?>,
+                  WkSerdeDtreeOperationSettings,
+                  WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
+                  WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
+                  WkSerdeDtreeBytestreamOutputBase<?>,
+                  WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>(
+                      label,
+                      (pc) -> WkSerdeDynamicByteArray.newCore(
+                              pc, sizeLabel, sizeWrapper, bytearrayLabel, minLength, maxLength, sizeFieldDefinitionFactory),
+                      WkSerdeDtreeBytestreamCountingInputStream::new,
+                      WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static <ZX extends Number,
-                 ZXD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZXO extends WkSerdeDtreeNumberReader<ZX,WkSerdeDtreeOperationSettings,?,?,ZXD>,
-                 ZYD extends WkSerdeDtreeNumberDefinition<ZX>,
-                 ZYO extends WkSerdeDtreeNumberWriter<ZX,WkSerdeDtreeOperationSettings,?,?,ZYD>,
-                 ZD extends WkSerdeDtreeNumberDefinition<ZX>>
-  WkSerdeDtreeNodeStructDefinitionCore<WkByteArray,
-                        WkSerdeDtreeOperationSettings,?,?,
-                        WkSerdeDynamicByteArray<ZX,ZXD,ZXO,?,?,? extends ZXD>,
-                        WkSerdeDynamicByteArrayReader<ZX,ZXO,ZXD>,
-                        WkSerdeDtreeBytestreamInputBase<?>,
-                        WkSerdeDtreeOperationSettings,?,?,
-                        WkSerdeDynamicByteArray<ZX,?,?,ZYD,ZYO,? extends ZYD>,
-                        WkSerdeDynamicByteArrayWriter<ZX,ZYO,ZYD>,
-                        WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkSerdeDynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>,?>
+  public static <ZT extends Number,
+                 ZXD extends WkSerdeDtreeNumberStructDefinition<ZT>,
+                 ZXO extends WkSerdeDtreeNumberMsgReader<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD>,
+                 ZYD extends WkSerdeDtreeNumberStructDefinition<ZT>,
+                 ZYO extends WkSerdeDtreeNumberMsgWriter<ZT,WkSerdeDtreeOperationSettings,?,?,ZYD>,
+                 ZD extends WkSerdeDtreeNumberStructDefinition<ZT>>
+  WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
+                WkByteArray,
+                WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
+                WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
+                WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
+                WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
+                ZT, ZXD, ZXO, ZYD, ZYO, ZD,
+                WkSerdeDtreeVariableSizeByteArray,
+                WkSerdeDtreeVariableSizeByteArrayReader,
+                WkSerdeDtreeVariableSizeByteArray,
+                WkSerdeDtreeVariableSizeByteArrayWriter,
+                WkSerdeDtreeVariableSizeByteArray,
+                WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
   newCore(
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
     String sizeLabel,
-    IntFunction<ZX> wrapperSizeGetter,
+    IntFunction<ZT> wrapperSizeGetter,
     String arrayLabel,
     int minLength,
     int maxLength,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZX,WkSerdeDtreeOperationSettings,ZXD,ZXO,WkSerdeDtreeBytestreamInputBase<?>,
-      WkSerdeDtreeOperationSettings,ZYD,ZYO,WkSerdeDtreeBytestreamOutputBase<?>,ZD> sizeDefinitionFactory)
-  {
-    return new WkSerdeDynamicByteArray<ZX,ZXD,ZXO,ZYD,ZYO,ZD>(componentCore, sizeLabel, wrapperSizeGetter, arrayLabel, minLength, maxLength, sizeDefinitionFactory).definitionCore;
+      ? extends WkSerdeDtreeStructDefinitionCore<ZT, WkSerdeDtreeOperationSettings,
+      ?,?,ZXD,?,ZXO,?,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+      WkSerdeDtreeOperationSettings,?,?,ZYD,?,ZYO,?,
+      WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+      ZD,?>> sizeFieldDefinitionFactory) {
+    return new WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>(componentCore, sizeLabel, wrapperSizeGetter, arrayLabel, minLength, maxLength, sizeFieldDefinitionFactory).definitionCore;
   }
 
   private final WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
@@ -138,15 +150,18 @@ public class WkSerdeDynamicByteArray<
                         WkSerdeDtreeVariableSizeByteArray,
                         WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>> definitionCore;
 
-  WkSerdeDynamicByteArray(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+  WkSerdeDynamicByteArray(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
     String sizeLabel,
     IntFunction<ZT> wrapperSizeGetter,
     String arrayLabel,
     int minLength,
     int maxLength,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ZT,WkSerdeDtreeOperationSettings,ZXD,ZXO,WkSerdeDtreeBytestreamInputBase<?>,WkSerdeDtreeOperationSettings,
-      ZYD,ZYO,WkSerdeDtreeBytestreamOutputBase<?>,ZD> sizeComponentDefinitionFactory) {
+      ? extends WkSerdeDtreeStructDefinitionCore<ZT, WkSerdeDtreeOperationSettings,
+      ?,?,ZXD,?,ZXO,?,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+      WkSerdeDtreeOperationSettings,?,?,ZYD,?,ZYO,?,
+      WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+      ZD,?>> sizeComponentDefinitionFactory) {
     this.definitionCore = new WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
                                 WkByteArray,
                                 WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
@@ -178,26 +193,26 @@ public class WkSerdeDynamicByteArray<
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeStructField<?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-      WkSerdeDtreeNodeStructComponentHandler<WkSerdeDynamicByteArrayReader<ZT, ZXO, ZXD>, WkSerdeDynamicByteArrayWriter<ZT, ZYO, ZYD>, ZD>
-      size() {
+  WkSerdeDtreeStructSubfield<WkSerdeDynamicByteArrayReader<ZT, ZXO, ZXD>, WkSerdeDynamicByteArrayWriter<ZT, ZYO, ZYD>, ZD>
+  size() {
     return this.definitionCore.size();
   }
 
   @Override
   public
-      WkSerdeDtreeNodeStructComponentHandler<WkSerdeDynamicByteArrayReader<ZT, ZXO, ZXD>, WkSerdeDynamicByteArrayWriter<ZT, ZYO, ZYD>, WkSerdeDtreeVariableSizeByteArray>
-      variableSequence() {
+  WkSerdeDtreeStructSubfield<WkSerdeDynamicByteArrayReader<ZT, ZXO, ZXD>, WkSerdeDynamicByteArrayWriter<ZT, ZYO, ZYD>, WkSerdeDtreeVariableSizeByteArray>
+  variableSequence() {
     return this.definitionCore.variableSequence();
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDtreeStructField<?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 

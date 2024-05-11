@@ -20,17 +20,16 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public final class WkSerdeSignedLittleEndianShortWriter
-        implements WkSerdeDtreeNumberWriter<
+        implements WkSerdeDtreeNumberMsgWriter<
                         Short,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
@@ -38,7 +37,7 @@ public final class WkSerdeSignedLittleEndianShortWriter
                         WkSerdeSignedLittleEndianShort>
 {
 
-  final WkSerdeDtreeNumberWriterCoreSimplified<
+  final WkSerdeDtreeNumberMsgWriterCoreSimplified<
                         Short,
                         WkSerdeSignedLittleEndianShortWriter,
                         WkSerdeSignedLittleEndianShort> operationCore;
@@ -48,16 +47,15 @@ public final class WkSerdeSignedLittleEndianShortWriter
     Short serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<
-      Short,?,WkSerdeSignedLittleEndianShort,?,?,?> serializingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Short,?,WkSerdeSignedLittleEndianShortWriter,WkSerdeSignedLittleEndianShort> definitionCore) {
-    operationCore = new WkSerdeDtreeNumberWriterCoreSimplified<>(
+    operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<Short, WkSerdeSignedLittleEndianShortWriter, WkSerdeSignedLittleEndianShort>(
                             index,
                             serializable,
                             settings,
                             parentBytestream,
-                            serializingfieldCore,
+                            msgFieldCore,
                             definitionCore,
                             this);
   }
@@ -88,13 +86,13 @@ public final class WkSerdeSignedLittleEndianShortWriter
   }
 
   @Override
-  public List<WkSrlzOutputPacketSubfieldFrameNode<?,?,?>> subfields() {
-    return this.operationCore.subfields();
+  public WkSerdeDtreeMsgOutputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
-  public WkSerdeDtreeNodeDataOutputComponent<Short, WkSerdeSignedLittleEndianShort, ?> packetField() {
-    return this.operationCore.packetFieldCore().asPacket();
+  public List<WkSerdeDtreeMsgOutputField<?,?,?>> subfields() {
+    return this.operationCore.subfields();
   }
 
   @Override

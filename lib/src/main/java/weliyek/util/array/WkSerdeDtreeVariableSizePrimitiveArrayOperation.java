@@ -19,7 +19,6 @@ package weliyek.util.array;
 
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
 import weliyek.serialization.sequence.WkSerdeDtreeOperationRuntimeSequenceCommon;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceOperation;
 
@@ -27,11 +26,10 @@ public interface WkSerdeDtreeVariableSizePrimitiveArrayOperation<
                         S extends WkSerdeDtreeOperationSettings,
                         Q extends WkSerdeDtreeOperationRuntimeSequenceCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
-                        D extends WkSerdeDtreeVariableSizePrimitiveArrayDefinition<?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
+                        D extends WkSerdeDtreeVariableSizePrimitiveArrayDefinition<?>>
     extends WkSerdeDtreeVariableSizePrimitiveArray,
-            WkSerdeDtreeVariableSizeSequenceOperation<S, Q, R, D, K>,
-            WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D, K>
+            WkSerdeDtreeVariableSizeSequenceOperation<S, Q, R, D>,
+            WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D>
 {
 
 }

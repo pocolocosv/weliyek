@@ -25,10 +25,10 @@ import java.util.List;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public interface WkSerdeElementCollectionWriter<
                         T extends Collection<ET>,
@@ -37,13 +37,13 @@ public interface WkSerdeElementCollectionWriter<
                         YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeElementCollectionDefinition<T,?,?,ET,?>,
                         ET,
-                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDtreeNodeDataWriter<ET,?,?,?,EYD>>
+                        EYD extends WkSerdeDtreeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeMsgWriter<ET,?,?,?,EYD>>
         extends WkSerdeElementCollectionOperation<
                         YS, YQ, YR, YD,
-                        WkSerdeDtreeNodeDataOutputComponent<T,YD,?>,
+                        WkSerdeDtreeMsgOutputField<T,YD,?>,
                         EYO,
-                        WkSerdeDtreeNodeDataOutputComponent<ET,EYD,EYO>,
+                        WkSerdeDtreeMsgOutputField<ET,EYD,EYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<ET,EYD,EYO>>,
                 WkSerdeDtreeCollectionWriter<T, YS, YQ, YR, YD>
 {

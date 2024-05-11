@@ -17,20 +17,18 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
+import weliyek.serialization.WkSerdeDtreeMsgOperation;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOperation;
 
 public interface WkSerdeDtreeSequenceOperation<
                         S extends WkSerdeDtreeOperationSettings,
                         Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
-                        D extends WkSerdeDtreeSequenceDefinition<?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
+                        D extends WkSerdeDtreeSequenceDefinition<?>>
         extends WkSerdeDtreeSequence,
-                WkSerdeDtreeNodeDataOperation<S, Q, R, D, K>
+                WkSerdeDtreeMsgOperation<S, Q, R, D>
 {
 
 }

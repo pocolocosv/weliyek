@@ -32,9 +32,9 @@ import org.slf4j.LoggerFactory;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSzInputPacket;
+import weliyek.serialization.WkSerdeDtreeReader;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzOutputPacket;
+import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkSerdeStringFixedLengthBytesTest
@@ -75,7 +75,7 @@ public class WkSerdeStringFixedLengthBytesTest
 
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-        WkSzOutputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesWriter>
+        WkSerdeDtreeWriter<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesWriter>
           stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(shortStr, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
         logger.info(stringWithFixedSizeSerializing.name() + " created");
 
@@ -89,7 +89,7 @@ public class WkSerdeStringFixedLengthBytesTest
 
         assertTrue(outputstream.equals(expectedByteArray));
 
-        WkSzInputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesReader>
+        WkSerdeDtreeReader<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesReader>
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 
@@ -112,7 +112,7 @@ public class WkSerdeStringFixedLengthBytesTest
 
         KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
 
-        WkSzOutputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesWriter>
+        WkSerdeDtreeWriter<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesWriter>
         stringWithFixedSizeSerializing = stringWithFixedSizeBytes.newOutputPacket(longStr, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
 
         logger.info(stringWithFixedSizeSerializing.name() + " created");
@@ -127,7 +127,7 @@ public class WkSerdeStringFixedLengthBytesTest
 
         assertTrue(outputstream.equals(expectedByteArray));
 
-        WkSzInputPacket<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesReader>
+        WkSerdeDtreeReader<String, WkSerdeStringFixedLengthBytes, WkSerdeStringFixedLengthBytesReader>
           stringWithFixedSizeBytesDeserializing = stringWithFixedSizeBytes.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
         logger.info(stringWithFixedSizeBytesDeserializing.name() + " created");
 

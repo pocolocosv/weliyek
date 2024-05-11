@@ -19,11 +19,11 @@ package weliyek.util.array;
 
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriter;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceWriter;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
@@ -35,19 +35,19 @@ public interface WkSerdeDtreeDynamicSequenceWriter<
                         YR extends WkSerdeDtreeOperationResult<T>,
                         D extends WkSerdeDtreeDynamicSequenceDefinition<T,?,?,?,?>,
                         ZY extends Number,
-                        ZYO extends WkSerdeDtreeNumberWriter<ZY,?,?,?,ZD>,
-                        ZD extends WkSerdeDtreeNumberDefinition<ZY>,
+                        ZYO extends WkSerdeDtreeNumberMsgWriter<ZY,?,?,?,ZD>,
+                        ZD extends WkSerdeDtreeNumberStructDefinition<ZY>,
                         VYO extends WkSerdeDtreeVariableSizeSequenceWriter<T,?,?,?,VD>,
                         VD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>>
     extends WkSerdeDtreeDynamicSequenceOperation<
                         YS, YQ, YR, D,
-                        WkSerdeDtreeNodeDataOutputComponent<T,D,?>,
+                        WkSerdeDtreeMsgOutputField<T,D,?>,
                         ZYO,
-                        WkSerdeDtreeNodeDataOutputComponent<ZY,ZD,ZYO>,
+                        WkSerdeDtreeMsgOutputField<ZY,ZD,ZYO>,
                         VYO,
-                        WkSerdeDtreeNodeDataOutputComponent<T,VD,VYO>>,
+                        WkSerdeDtreeMsgOutputField<T,VD,VYO>>,
             WkSerdeDtreeSequenceWriter<T, YS, YQ, YR, D>,
-            WkSerdeDtreeAggregatorWriter<T, YS, YQ, YR, D>
+            WkSerdeDtreeAggregatorMsgWriter<T, YS, YQ, YR, D>
 {
 
 }

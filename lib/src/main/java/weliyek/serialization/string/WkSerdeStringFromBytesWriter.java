@@ -20,7 +20,7 @@ package weliyek.serialization.string;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
@@ -37,9 +37,9 @@ public interface WkSerdeStringFromBytesWriter<
                         WkByteArray, SD, SYO>,
             WkSerdeStringFromBytesOperation<
                         YS, YQ, YR, YD,
-                        WkSerdeDtreeNodeDataOutputComponent<String,YD,?>,
+                        WkSerdeDtreeMsgOutputField<String,YD,?>,
                         SYO,
-                        WkSerdeDtreeNodeDataOutputComponent<WkByteArray,SD,SYO>>
+                        WkSerdeDtreeMsgOutputField<WkByteArray,SD,SYO>>
 {
 
 }

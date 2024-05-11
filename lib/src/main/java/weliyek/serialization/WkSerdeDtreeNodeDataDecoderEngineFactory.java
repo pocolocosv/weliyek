@@ -22,11 +22,11 @@ import java.util.function.BiFunction;
 public class WkSerdeDtreeNodeDataDecoderEngineFactory<
                         T,
                         QC extends WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
-                        O extends WkSerdeDtreeNodeDataReader<T,?,?,?,?>>
+                        O extends WkSerdeDtreeMsgReader<T,?,?,?,?>>
     extends WkSerdeDtreeNodeDataEncoderDecoderEngineFactory<
                         QC,
                         O,
-                        WkSerdeDtreeNodeDataReaderDecoderEngine<T, ? super QC, ? super O>>
+                        WkSerdeDtreePrimitiveMsgReaderEngine<T, ? super QC, ? super O>>
 {
 
   public WkSerdeDtreeNodeDataDecoderEngineFactory(
@@ -34,7 +34,7 @@ public class WkSerdeDtreeNodeDataDecoderEngineFactory<
       BiFunction<
         QC,
         O,
-        WkSerdeDtreeNodeDataReaderDecoderEngine<T,? super QC,? super O>> engineSupplier) {
+        WkSerdeDtreePrimitiveMsgReaderEngine<T,? super QC,? super O>> engineSupplier) {
     super(label, engineSupplier);
   }
 

@@ -19,19 +19,18 @@ package weliyek.serialization.number;
 
 import java.util.List;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
 
 public class WkSerdeSignedByte
-    implements WkSerdeDtreeNumberDefinition<Byte>
+    implements WkSerdeDtreeNumberStructDefinition<Byte>
 {
 
   public static WkSerdeDtreeStruct<
@@ -46,25 +45,19 @@ public class WkSerdeSignedByte
                       WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeSignedByte>
   newStruct(String label) {
-    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
+    return new WkSerdeDtreeStructCore<>(
                       label,
                       WkSerdeSignedByte::newCore,
                       WkSerdeDtreeBytestreamCountingInputStream::new,
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static WkSerdeDtreeNodeStructDefinitionCore<
-                      Byte,
-                      WkSerdeDtreeOperationSettings,?,?,
-                      WkSerdeSignedByte,
-                      WkSerdeSignedByteReader,
-                      WkSerdeDtreeBytestreamInputBase<?>,
-                      WkSerdeDtreeOperationSettings,?,?,
-                      WkSerdeSignedByte,
-                      WkSerdeSignedByteWriter,
-                      WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkSerdeSignedByte,?>
-  newCore(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  public static WkSerdeDtreeNumberDefinitionCoreSimplified<
+                    Byte,
+                    WkSerdeSignedByteReader,
+                    WkSerdeSignedByteWriter,
+                    WkSerdeSignedByte>
+  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     return new WkSerdeSignedByte(componentCore).definitionCore;
   }
 
@@ -74,14 +67,15 @@ public class WkSerdeSignedByte
                         WkSerdeSignedByteWriter,
                         WkSerdeSignedByte> definitionCore;
 
-  private WkSerdeSignedByte(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  private WkSerdeSignedByte(
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<
                                 Byte,
                                 WkSerdeSignedByteReader,
                                 WkSerdeSignedByteWriter,
                                 WkSerdeSignedByte>(
                                     componentCore,
-                                    (i,xs,xab,xkc,xdc) -> new WkSerdeSignedByteReader(i,xs,xab,xkc,xdc).operationCore,
+                                    (i,xs,axb,xkc,xdc) -> new WkSerdeSignedByteReader(i,xs,axb,xkc,xdc).operationCore,
                                     WkSerdeDtreeByteSignedReaderDecoderEngine.FACTORY,
                                     (i,y,ys,yab,ykc,ydc) -> new WkSerdeSignedByteWriter(i,y,ys,yab,ykc,ydc).writingCore,
                                     WkSerdeDtreeByteSignedWriterEncoderEngine.FACTORY,
@@ -95,7 +89,7 @@ public class WkSerdeSignedByte
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeStructField<?>> subfields() {
     return this.definitionCore.subfields();
   }
 

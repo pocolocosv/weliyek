@@ -20,18 +20,9 @@ package weliyek.serialization;
 import java.util.function.Function;
 
 public interface WkSrlzStructDefinitionFrameNodeCoreFactory<
-                        T,
-                        XS extends WkSerdeDtreeOperationSettings,
-                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
-                        AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
-                        YS extends WkSerdeDtreeOperationSettings,
-                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
-                        AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
-                        D extends WkSerdeDtreeNodeStructDefinition<T>>
-    extends Function<WkSerdeDtreeNodeStructComponentCore<T,XS,XD,XO,AXBC,YS,YD,YO,AYBC,D>,
-                     WkSerdeDtreeNodeStructDefinitionCore<T,XS,?,?,XD,XO,AXBC,YS,?,?,YD,YO,AYBC,D,?>>
+                        DC extends WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>>
+    extends Function<WkSerdeDtreeStructFieldCore<?,?,?,?,?>,
+                     DC>
 {
 
 }

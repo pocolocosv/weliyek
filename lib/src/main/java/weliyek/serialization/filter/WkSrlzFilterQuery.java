@@ -20,18 +20,18 @@ package weliyek.serialization.filter;
 import java.util.List;
 import java.util.Objects;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public class WkSrlzFilterQuery
 {
 
     final WkSrlzFilterPredicateRuleBase rule;
 
-    private final WkSerdeDtreeNodeStructDefinition<?> mySearchTargetField;
+    private final WkSerdeDtreeStructDefinition<?> mySearchTargetField;
 
     private final String description;
 
-    WkSrlzFilterQuery(WkSerdeDtreeNodeStructDefinition<?> searchedField,
+    WkSrlzFilterQuery(WkSerdeDtreeStructDefinition<?> searchedField,
                 String desc,
                 WkSrlzFilterPredicateRuleBase rule) {
         this.mySearchTargetField = Objects.requireNonNull(searchedField);
@@ -39,11 +39,11 @@ public class WkSrlzFilterQuery
         this.description = "Query:" + Objects.requireNonNull(desc);
     }
 
-    public WkSerdeDtreeNodeStructDefinition<?> searchedField() {
+    public WkSerdeDtreeStructDefinition<?> searchedField() {
         return this.mySearchTargetField;
     }
 
-    public List<WkSerdeDtreeNodeStructDefinition<?>> matchTargetFields() {
+    public List<WkSerdeDtreeStructDefinition<?>> matchTargetFields() {
         return rule.matchTargets();
     }
 

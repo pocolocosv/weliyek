@@ -23,14 +23,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriterEncoderEngine;
+import weliyek.serialization.WkSerdeDtreePrimitiveMsgWriterEngine;
 import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
 
 public abstract class WkSerdeDtreePrimitiveArrayWriterEncoderEngine<
                         Y extends WkPrimitiveArrayBase<V, ?>,
                         V,
                         QC extends WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<?,?,?>>
-        extends WkSerdeDtreeNodeDataWriterEncoderEngine<
+        extends WkSerdeDtreePrimitiveMsgWriterEngine<
                         Y,
                         QC,
                         WkSerdeDtreePrimitiveArrayWriter<? extends Y,?,?,?,?>>

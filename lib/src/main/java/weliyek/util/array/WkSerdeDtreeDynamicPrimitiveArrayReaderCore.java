@@ -17,16 +17,16 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
 
 public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -36,13 +36,14 @@ public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
                                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                                         WkSerdeDtreeOperationResult<T>,
                                         XD,ZT,ZXO,ZXD,VXO,VXD>,
-                        XD extends WkSerdeDtreeDynamicPrimitiveArrayDefinition<T,XO,?,? extends ZXD,? extends VXD>,
+                        XD extends WkSerdeDtreeDynamicPrimitiveArrayDefinition<
+                                        T,XO,?,? extends ZXD,? extends VXD>,
                         ZT extends Number,
-                        ZXO extends WkSerdeDtreeNumberReader<
+                        ZXO extends WkSerdeDtreeNumberMsgReader<
                                         ZT,
                                         WkSerdeDtreeOperationSettings,
                                         ?,?,ZXD>,
-                        ZXD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZXD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         VXO extends WkSerdeDtreeVariableSizePrimitiveArrayReader<
                                         T,
                                         WkSerdeDtreeOperationSettingsVariableLength,
@@ -62,6 +63,10 @@ public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
                         XO,
                         WkSerdeDtreeDynamicPrimitiveArrayReaderCore<T,XO,XD,ZT,ZXO,ZXD,VXO,VXD>,
                         XD,
+                        WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
+                          T,XD,XO,?,?,
+                          ZT,ZXD,ZXO,?,?,? extends ZXD,
+                          VXD,VXO,?,?,? extends VXD,? extends XD>,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         ZT,
                         WkSerdeDtreeOperationSettings,
@@ -69,11 +74,7 @@ public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
                         ZXD,
                         WkSerdeDtreeOperationSettingsVariableLength,
                         VXO,
-                        VXD,
-                        WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
-                          T,XD,XO,?,?,
-                          ZT,ZXD,ZXO,?,?,?,
-                          VXD,VXO,?,?,?,?>>
+                        VXD>
     implements WkSerdeDtreeDynamicPrimitiveArrayReader<
                         T,
                         WkSerdeDtreeOperationSettings,
@@ -86,13 +87,13 @@ public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<T,?,XD,?,?,?> deserializingfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       T,XD,XO,?,?,
-      ZT,ZXD,ZXO,?,?,?,
-      VXD,VXO,?,?,?,?> definitionCore,
+      ZT,ZXD,ZXO,?,?,? extends ZXD,
+      VXD,VXO,?,?,? extends VXD,? extends XD> definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, deserializingfieldCore, definitionCore, operationBody);
+    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

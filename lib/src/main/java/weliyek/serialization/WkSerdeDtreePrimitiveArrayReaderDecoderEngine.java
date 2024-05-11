@@ -31,7 +31,7 @@ public abstract class WkSerdeDtreePrimitiveArrayReaderDecoderEngine<
                         X extends WkPrimitiveArray<V, ?>,
                         V,
                         QC extends WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?>>
-        extends WkSerdeDtreeNodeDataReaderDecoderEngine<
+        extends WkSerdeDtreePrimitiveMsgReaderEngine<
                         X,
                         QC,
                         WkSerdeDtreePrimitiveArrayReader<X,?,?,?,?>>

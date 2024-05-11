@@ -19,11 +19,11 @@ package weliyek.util.array;
 
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeAggregatorReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReader;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceReader;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
@@ -35,19 +35,19 @@ public interface WkSerdeDtreeDynamicSequenceReader<
                         XR extends WkSerdeDtreeOperationResult<T>,
                         D extends WkSerdeDtreeDynamicSequenceDefinition<T,?,?,?,?>,
                         ZX extends Number,
-                        ZXO extends WkSerdeDtreeNumberReader<ZX,?,?,?,ZXD>,
-                        ZXD extends WkSerdeDtreeNumberDefinition<ZX>,
+                        ZXO extends WkSerdeDtreeNumberMsgReader<ZX,?,?,?,ZXD>,
+                        ZXD extends WkSerdeDtreeNumberStructDefinition<ZX>,
                         VXO extends WkSerdeDtreeVariableSizeSequenceReader<T,?,?,?,VXD>,
                         VXD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>>
     extends WkSerdeDtreeDynamicSequenceOperation<
                         XS, XQ, XR, D,
-                        WkSerdeDtreeNodeDataInputComponent<T,D,?>,
+                        WkSerdeDtreeMsgInputField<T,D,?>,
                         ZXO,
-                        WkSerdeDtreeNodeDataInputComponent<ZX,ZXD,ZXO>,
+                        WkSerdeDtreeMsgInputField<ZX,ZXD,ZXO>,
                         VXO,
-                        WkSerdeDtreeNodeDataInputComponent<T,VXD,VXO>>,
+                        WkSerdeDtreeMsgInputField<T,VXD,VXO>>,
             WkSerdeDtreeSequenceReader<T, XS, XQ, XR, D>,
-            WkSerdeDtreeAggregatorReader<T, XS, XQ, XR, D>
+            WkSerdeDtreeAggregatorMsgReader<T, XS, XQ, XR, D>
 {
 
 }

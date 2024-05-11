@@ -19,9 +19,9 @@ package weliyek.serialization.string;
 
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeAggregatorWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriter;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
@@ -36,10 +36,10 @@ public interface WkSerdeStringFromPrimitiveArrayWriter<
                         SYO extends WkSerdeDtreePrimitiveArrayWriter<SY,?,?,?,SYD>>
         extends WkSerdeStringFromPrimitiveArrayOperation<
                         YS, YQ, YR, YD,
-                        WkSerdeDtreeNodeDataOutputComponent<String,YD,?>,
+                        WkSerdeDtreeMsgOutputField<String,YD,?>,
                         SYO,
-                        WkSerdeDtreeNodeDataOutputComponent<SY,SYD,SYO>>,
-                WkSerdeDtreeAggregatorWriter<String, YS, YQ, YR, YD>
+                        WkSerdeDtreeMsgOutputField<SY,SYD,SYO>>,
+                WkSerdeDtreeAggregatorMsgWriter<String, YS, YQ, YR, YD>
 {
 
 }

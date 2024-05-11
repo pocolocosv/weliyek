@@ -24,28 +24,29 @@ import weliyek.serialization.filter.WkSrlzFilter;
 public interface WkSerdeDtreeStruct<
                         T,
                         XS extends WkSerdeDtreeOperationSettings,
-                        XD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        XO extends WkSerdeDtreeNodeDataReader<T,XS,?,?,XD>,
+                        XD extends WkSerdeDtreeStructDefinition<T>,
+                        XO extends WkSerdeDtreeMsgReader<T,XS,?,?,XD>,
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
                         YS extends WkSerdeDtreeOperationSettings,
-                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDtreeNodeDataWriter<T,YS,?,?,YD>,
+                        YD extends WkSerdeDtreeStructDefinition<T>,
+                        YO extends WkSerdeDtreeMsgWriter<T,YS,?,?,YD>,
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
-                        D extends WkSerdeDtreeNodeStructDefinition<T>>
-    extends WkSerdeDtreeNodeStructComponent<D>
+                        D extends WkSerdeDtreeStructDefinition<T>>
+    extends WkSerdeDtreeStructField<D>
 {
-  WkSzInputPacket<T, XD, XO> newInputPacket(XS settings, InputStream inputstream);
 
-  WkSzInputPacket<T, XD, XO> newInputPacket(XS settings, InputStream inputstream, WkSrlzFilter filter);
+  WkSerdeDtreeReader<T, XD, XO> newInputPacket(XS settings, InputStream inputstream);
 
-  WkSzInputPacket<T, XD, XO> newInputPacket(XS settings, AXBC inputBytestream);
+  WkSerdeDtreeReader<T, XD, XO> newInputPacket(XS settings, InputStream inputstream, WkSrlzFilter filter);
 
-  WkSzInputPacket<T, XD, XO> newInputPacket(XS settings, AXBC inputBytestream, WkSrlzFilter filter);
+  WkSerdeDtreeReader<T, XD, XO> newInputPacket(XS settings, AXBC inputBytestream);
 
-  WkSzOutputPacket<T, YD, YO> newOutputPacket(T serializable, YS settings, OutputStream outputstream);
+  WkSerdeDtreeReader<T, XD, XO> newInputPacket(XS settings, AXBC inputBytestream, WkSrlzFilter filter);
 
-  WkSzOutputPacket<T, YD, YO> newOutputPacket(T serializable, YS settings, AYBC outputBytestream);
+  WkSerdeDtreeWriter<T, YD, YO> newOutputPacket(T serializable, YS settings, OutputStream outputstream);
 
-  WkSzOutputPacket<T, YD, YO> newOutputPacket(T serializable, YS settings, AYBC outputBytestream, WkSrlzFilter filter);
+  WkSerdeDtreeWriter<T, YD, YO> newOutputPacket(T serializable, YS settings, AYBC outputBytestream);
+
+  WkSerdeDtreeWriter<T, YD, YO> newOutputPacket(T serializable, YS settings, AYBC outputBytestream, WkSrlzFilter filter);
 
 }

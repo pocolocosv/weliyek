@@ -22,7 +22,7 @@ import java.io.IOException;
 import weliyek.serialization.WkSerdeDtreePrimitiveEncoderEngineFactory;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.number.WkSerdeDtreePrimitiveWriterEncoderEngine;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 
 public final class WkSerdeDtreeShortSignedLittleEndianWriterEncoderEngine
     extends WkSerdeDtreePrimitiveWriterEncoderEngine<Short>
@@ -33,7 +33,7 @@ public final class WkSerdeDtreeShortSignedLittleEndianWriterEncoderEngine
 
   private WkSerdeDtreeShortSignedLittleEndianWriterEncoderEngine(
     WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeNumberWriter<Short,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberMsgWriter<Short,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

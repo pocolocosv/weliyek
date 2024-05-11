@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.number.WkSerdeDtreePrimitiveWriterEncoderEngine;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 
 public abstract class WkSerdeDtreeLongSignedWriterEncoderEngine
     extends WkSerdeDtreePrimitiveWriterEncoderEngine<Long>
@@ -29,7 +29,7 @@ public abstract class WkSerdeDtreeLongSignedWriterEncoderEngine
 
   protected WkSerdeDtreeLongSignedWriterEncoderEngine(
     WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeNumberWriter<Long,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberMsgWriter<Long,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

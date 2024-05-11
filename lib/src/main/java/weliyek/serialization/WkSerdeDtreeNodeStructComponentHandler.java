@@ -21,22 +21,23 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
-import weliyek.serialization.tree.WkSerdeDtreeNodeCtrl;
-import weliyek.serialization.tree.WkSerdeDtreeNodeStruct;
+import weliyek.serialization.tree.WkSerdeDtreeCtrl;
+import weliyek.serialization.tree.WkSerdeDtreeStruct;
 
 /**
- * Handles a child {@link WkSerdeDtreeNodeStructComponent} for a given data type {@link WkSerdeDtreeNodeStructDefinition}.
+ * Handles a child {@link WkSerdeDtreeStructField} for a given data type {@link WkSerdeDtreeStructDefinition}.
  *  
- * @param <AXO> The subcomponent {@link WkSerdeDtreeNodeDataReader} type.
- * @param <AYO> The subcomponent {@link WkSerdeDtreeNodeDataWriter} type.
- * @param <D> The subcomponent {@link WkSerdeDtreeNodeStructDefinition} type.
+ * @param <AXO> The subcomponent {@link WkSerdeDtreeMsgReader} type.
+ * @param <AYO> The subcomponent {@link WkSerdeDtreeMsgWriter} type.
+ * @param <D> The subcomponent {@link WkSerdeDtreeStructDefinition} type.
  */
+@Deprecated
 public interface WkSerdeDtreeNodeStructComponentHandler<
-                        AXO extends WkSerdeDtreeNodeDataReader<?,?,?,?,?>,
-                        AYO extends WkSerdeDtreeNodeDataWriter<?,?,?,?,?>,
-                        D extends WkSerdeDtreeNodeStructDefinition<?>>
-    extends WkSerdeDtreeNodeStruct,
-            WkSerdeDtreeNodeCtrl
+                        AXO extends WkSerdeDtreeMsgReader<?,?,?,?,?>,
+                        AYO extends WkSerdeDtreeMsgWriter<?,?,?,?,?>,
+                        D extends WkSerdeDtreeStructDefinition<?>>
+    extends WkSerdeDtreeStruct,
+            WkSerdeDtreeCtrl
 {
 
   default boolean isRxRequired() { return rxOptionalityTest().isEmpty(); }
@@ -61,7 +62,7 @@ public interface WkSerdeDtreeNodeStructComponentHandler<
 
   ToIntFunction<? super AYO> numberOfTxOperationsEvaluator();
 
-  WkSerdeDtreeNodeStructComponent<D> field();
+  WkSerdeDtreeStructField<D> field();
 
   /**
    * Subcomponents are executed in the order as chosen when adding them to the

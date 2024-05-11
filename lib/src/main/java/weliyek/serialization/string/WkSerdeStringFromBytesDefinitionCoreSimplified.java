@@ -31,15 +31,15 @@ import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrlSimplified;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrlSimplified;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgReaderFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgWriterFactory;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
@@ -104,12 +104,12 @@ public class WkSerdeStringFromBytesDefinitionCoreSimplified<
 
   protected WkSerdeStringFromBytesDefinitionCoreSimplified(
     Charset defaultCharset,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
-    WkSzPacketReaderOperationCoreFactory<
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeMsgReaderFactory<
       String,XS,XD,WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       XO,WkSerdeDtreeBytestreamInputBase<?>>
         readingOpFactory,
-    WkSzPacketWriterOperationCoreFactory<
+    WkSerdeDtreeMsgWriterFactory<
       String,YS,YD,WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,YS,YO,YD,SXS,SXO,SXD,SYS,SYO,SYD,SD,D>,
       YO,WkSerdeDtreeBytestreamOutputBase<?>>
         writingOpFactory,

@@ -20,14 +20,14 @@ package weliyek.serialization;
 public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                         X,
                         XS extends WkSerdeDtreeOperationSettings,
-                        XD extends WkSerdeDtreeAggregatorDefinition<X>,
-                        XO extends WkSerdeDtreeAggregatorReader<
+                        XD extends WkSerdeDtreeAggregatorStructDefinition<X>,
+                        XO extends WkSerdeDtreeAggregatorMsgReader<
                                         X,
                                         XS,
                                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                                         WkSerdeDtreeOperationResult<X>,
                                         XD>>
-    extends WkSerdeDtreeAggregatorReaderCore<
+    extends WkSerdeDtreeAggregatorMsgReaderCore<
                         X,
                         XS,
                         WkSerdeDtreeBytestreamInput,
@@ -49,7 +49,7 @@ public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
     int index,
     XS settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<X,?,XD,?,?,?> deserializingFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<X,?,XD,?,?,?> deserializingFieldCore,
     WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<X,XS,XD,XO,?,?,?,? extends XD> definitionCore,
     XO body) {
     super(index, settings, parentBytestream, deserializingFieldCore, definitionCore, body);

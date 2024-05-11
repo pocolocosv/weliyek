@@ -17,9 +17,8 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 
 public interface WkSerdeDtreeVariableSizeSequenceReader<
@@ -29,9 +28,7 @@ public interface WkSerdeDtreeVariableSizeSequenceReader<
                         R extends WkSerdeDtreeOperationResult<X>,
                         D extends WkSerdeDtreeVariableSizeSequenceDefinition<X>>
         extends WkSerdeDtreeSequenceReader<X, S, Q, R, D>,
-                WkSerdeDtreeVariableSizeSequenceOperation<
-                        S, Q, R, D,
-                        WkSerdeDtreeNodeDataInputComponent<X,D,?>>
+                WkSerdeDtreeVariableSizeSequenceOperation<S, Q, R, D>
 {
 
 }

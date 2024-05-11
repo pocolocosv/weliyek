@@ -31,7 +31,7 @@ public class WkSerdeDtreeByteUnsignedWriterEncoderEngine
 
   protected WkSerdeDtreeByteUnsignedWriterEncoderEngine(
     WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeNumberWriter<Integer, ?, ?, ?, ?> writingOperation) {
+    WkSerdeDtreeNumberMsgWriter<Integer, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

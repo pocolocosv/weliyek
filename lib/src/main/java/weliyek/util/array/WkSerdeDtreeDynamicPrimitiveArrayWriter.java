@@ -20,9 +20,9 @@ package weliyek.util.array;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 
 public interface WkSerdeDtreeDynamicPrimitiveArrayWriter<
                         T extends WkPrimitiveArray<?,?>,
@@ -31,17 +31,17 @@ public interface WkSerdeDtreeDynamicPrimitiveArrayWriter<
                         YR extends WkSerdeDtreeOperationResult<T>,
                         D extends WkSerdeDtreeDynamicPrimitiveArrayDefinition<T,?,?,?,?>,
                         ZT extends Number,
-                        ZYO extends WkSerdeDtreeNumberWriter<ZT,?,?,?,ZD>,
-                        ZD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZYO extends WkSerdeDtreeNumberMsgWriter<ZT,?,?,?,ZD>,
+                        ZD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         VYO extends WkSerdeDtreeVariableSizePrimitiveArrayWriter<T,?,?,?,VD>,
                         VD extends WkSerdeDtreeVariableSizePrimitiveArrayDefinition<T>>
     extends WkSerdeDtreeDynamicPrimitiveArrayOperation<
                         YS, YQ, YR, D,
-                        WkSerdeDtreeNodeDataOutputComponent<T,D,?>,
+                        WkSerdeDtreeMsgOutputField<T,D,?>,
                         ZYO,
-                        WkSerdeDtreeNodeDataOutputComponent<ZT,ZD,ZYO>,
+                        WkSerdeDtreeMsgOutputField<ZT,ZD,ZYO>,
                         VYO,
-                        WkSerdeDtreeNodeDataOutputComponent<T,VD,VYO>>,
+                        WkSerdeDtreeMsgOutputField<T,VD,VYO>>,
             WkSerdeDtreeDynamicSequenceWriter<T, YS, YQ, YR, D, ZT, ZYO, ZD, VYO, VD>
 {
 

@@ -23,7 +23,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
@@ -31,8 +31,8 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSrlzStructSubcomponentFrameNodeCore;
@@ -40,9 +40,9 @@ import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgReaderFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgWriterFactory;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayWriter;
@@ -78,7 +78,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
                                       XS,XB,XBC,XQC,XR,XO,XD,AXB,
                                       YS,YB,YBC,YQC,YR,YO,YD,AYB,
                                       ST,SXS,SXO,SXD,SYS,SYO,SYD,SD,D,?>>
-    extends WkSerdeDtreeAggregatorDefinitionCore<String, XS, XB, XBC, XQC, XR, XD, XO, AXB, YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
+    extends WkSerdeDtreeAggregatorStructDefinitionCore<String, XS, XB, XBC, XQC, XR, XD, XO, AXB, YS, YB, YBC, YQC, YR, YD, YO, AYB, D, DC>
     implements WkSerdeStringFromPrimitiveArrayDefinition<XO, YO, SD>
 {
 
@@ -88,13 +88,13 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
   final Function<XO, String> primitiveArrayDeserializingStringAggregator;
 
   protected WkSerdeStringFromPrimitiveArrayDefinitionCore(
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,String,XR> rxResultFactory,
-    WkSzPacketReaderOperationCoreFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
+    WkSerdeDtreeMsgReaderFactory<String,XS,XD,DC,XO,AXB> readingOpFactory,
     Function<AYB, YQC> txRuntimeFactory,
     BiFunction<YO, String, YR> txResultFactory,
-    WkSzPacketWriterOperationCoreFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
+    WkSerdeDtreeMsgWriterFactory<String,YS,YD,DC,YO,AYB> writingOpFactory,
     String primitiveArrayLabel,
     Optional<Predicate<? super XO>> primitiveArrayDeserializationEnablingTest,
     WkOperationSettingsFactory<XO,SXS> primitiveArrayDeserializingSettingsFactory,
@@ -139,7 +139,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
 
     @Override
     public ST disaggregate(
-      WkSerdeDtreeNodeDataOutputComponent<ST,SD,?> primitiveArraySerializingField,
+      WkSerdeDtreeMsgOutputField<ST,SD,?> primitiveArraySerializingField,
       YO stringSerializingOperation,
       int primitiveArraySerializingOperationIndex) {
       WA array = getPrimitiveArrayFromString(stringSerializingOperation);

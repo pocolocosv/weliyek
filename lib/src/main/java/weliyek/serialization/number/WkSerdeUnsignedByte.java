@@ -19,19 +19,18 @@ package weliyek.serialization.number;
 
 import java.util.List;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
 
 public class WkSerdeUnsignedByte
-    implements WkSerdeDtreeNumberDefinition<Integer>
+    implements WkSerdeDtreeNumberStructDefinition<Integer>
 {
 
   public static WkSerdeDtreeStruct<
@@ -46,25 +45,19 @@ public class WkSerdeUnsignedByte
                       WkSerdeDtreeBytestreamOutputBase<?>,
                       WkSerdeUnsignedByte>
   newStruct(String label) {
-    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
+    return new WkSerdeDtreeStructCore<>(
                       label,
                       WkSerdeUnsignedByte::newCore,
                       WkSerdeDtreeBytestreamCountingInputStream::new,
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static WkSerdeDtreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeNumberDefinitionCoreSimplified<
                       Integer,
-                      WkSerdeDtreeOperationSettings,?,?,
-                      WkSerdeUnsignedByte,
                       WkSerdeUnsignedByteReader,
-                      WkSerdeDtreeBytestreamInputBase<?>,
-                      WkSerdeDtreeOperationSettings, ?, ?,
-                      WkSerdeUnsignedByte,
                       WkSerdeUnsignedByteWriter,
-                      WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkSerdeUnsignedByte, ?>
-  newCore(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+                      WkSerdeUnsignedByte>
+  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     return new WkSerdeUnsignedByte(componentCore).definitionCore;
   }
 
@@ -74,7 +67,7 @@ public class WkSerdeUnsignedByte
                         WkSerdeUnsignedByteWriter,
                         WkSerdeUnsignedByte> definitionCore;
 
-  private WkSerdeUnsignedByte(WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+  private WkSerdeUnsignedByte(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<>(
                                   componentCore,
                                   (i,xs,axb,xkc,dc) -> new WkSerdeUnsignedByteReader(i,xs,axb,xkc,dc).operationCore,
@@ -91,7 +84,7 @@ public class WkSerdeUnsignedByte
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeStructField<?>> subfields() {
     return this.definitionCore.subfields();
   }
 

@@ -22,7 +22,7 @@ public interface WkSerdeDtreeOperationSettings extends WkSerdeDtreeOperationData
 
   final WkSerdeDtreeOperationSettings EMPTY = new WkSerdeDtreeOperationSettings(){};
 
-  public static <AO extends WkSerdeDtreeNodeDataOperation<?,?,?,?,?>>
+  public static <AO extends WkSerdeDtreeMsgOperation<?,?,?,?>>
   WkSerdeDtreeOperationSettings none(int index, AO parentOperation) {
     return EMPTY;
   }

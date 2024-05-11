@@ -17,12 +17,13 @@
  */
 package weliyek.serialization;
 
+@Deprecated
 public interface WkSrlzOutputPacketSubfieldFrameNode<
                         T,
-                        YD extends WkSerdeDtreeNodeStructDefinition<T>,
-                        YO extends WkSerdeDtreeNodeDataWriter<T,?,?,?,YD>>
-    extends WkSerdeDtreeNodeDataComponentHandler<WkSerdeDtreeNodeDataOutputComponent<T, YD, YO>>,
-            WkSerdeDtreeNodeDataOutput
+                        YD extends WkSerdeDtreeStructDefinition<T>,
+                        YO extends WkSerdeDtreeMsgWriter<T,?,?,?,YD>>
+    extends WkSerdeDtreeNodeDataComponentHandler<WkSerdeDtreeMsgOutputField<T, YD, YO>>,
+            WkSerdeDtreeMsgOutput
 {
 
 }

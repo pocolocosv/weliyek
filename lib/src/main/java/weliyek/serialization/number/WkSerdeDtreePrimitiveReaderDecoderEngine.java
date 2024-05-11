@@ -24,13 +24,13 @@ import org.slf4j.LoggerFactory;
 
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeNodeDataOperationException;
-import weliyek.serialization.WkSerdeDtreeNodeDataReaderDecoderEngine;
+import weliyek.serialization.WkSerdeDtreePrimitiveMsgReaderEngine;
 
 public abstract class WkSerdeDtreePrimitiveReaderDecoderEngine<X extends Number>
-    extends WkSerdeDtreeNodeDataReaderDecoderEngine<
+    extends WkSerdeDtreePrimitiveMsgReaderEngine<
                         X,
                         WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
-                        WkSerdeDtreeNumberReader<X,?,?,?,?>>
+                        WkSerdeDtreeNumberMsgReader<X,?,?,?,?>>
 {
 
   private static final Logger logger = LoggerFactory.getLogger(WkSerdeDtreePrimitiveReaderDecoderEngine.class);
@@ -39,7 +39,7 @@ public abstract class WkSerdeDtreePrimitiveReaderDecoderEngine<X extends Number>
 
   protected WkSerdeDtreePrimitiveReaderDecoderEngine(
       WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
-      WkSerdeDtreeNumberReader<X,?,?,?,?> readingOperation) {
+      WkSerdeDtreeNumberMsgReader<X,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

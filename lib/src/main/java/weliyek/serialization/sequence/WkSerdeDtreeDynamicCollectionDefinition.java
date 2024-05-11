@@ -19,28 +19,28 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceDefinition;
 
 public interface WkSerdeDtreeDynamicCollectionDefinition<
                         T extends Collection<ET>,
                         XO extends WkSerdeDtreeDynamicCollectionReader<T,?,?,?,?,?,?,?,?,?,?,?,?>,
                         YO extends WkSerdeDtreeDynamicCollectionWriter<T,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkSerdeDtreeNumberDefinition<?>,
+                        ZD extends WkSerdeDtreeNumberStructDefinition<?>,
                         ET,
                         EXS extends WkSerdeDtreeOperationSettings,
-                        EXD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeNodeDataReader<ET,EXS,?,?,EXD>,
+                        EXD extends WkSerdeDtreeStructDefinition<ET>,
+                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
                         EYS extends WkSerdeDtreeOperationSettings,
-                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
-                        ED extends WkSerdeDtreeNodeStructDefinition<ET>,
+                        EYD extends WkSerdeDtreeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
+                        ED extends WkSerdeDtreeStructDefinition<ET>,
                         VXS extends WkSerdeDtreeOperationSettingsVariableLength,
                         VYS extends WkSerdeDtreeOperationSettings>
     extends WkSerdeDtreeDynamicCollection<

@@ -31,7 +31,7 @@ public class WkSerdeDtreeIntegerUnsignedBigEndianWriterEncoderEngine
 
   private WkSerdeDtreeIntegerUnsignedBigEndianWriterEncoderEngine(
     WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeNumberWriter<Long, ?, ?, ?, ?> writingOperation) {
+    WkSerdeDtreeNumberMsgWriter<Long, ?, ?, ?, ?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

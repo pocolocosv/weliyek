@@ -19,15 +19,13 @@ package weliyek.serialization.sequence;
 
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
 
 public interface WkSerdeDtreeFixedSizeSequenceOperation<
                         S extends WkSerdeDtreeOperationSettings,
                         Q extends WkSerdeDtreeOperationRuntimeSequenceCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
-                        D extends WkSerdeDtreeFixedSizeSequenceDefinition<?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
-    extends WkSerdeDtreeSequenceOperation<S, Q, R, D, K>,
+                        D extends WkSerdeDtreeFixedSizeSequenceDefinition<?>>
+    extends WkSerdeDtreeSequenceOperation<S, Q, R, D>,
             WkSerdeDtreeFixedSizeSequence
 {
 

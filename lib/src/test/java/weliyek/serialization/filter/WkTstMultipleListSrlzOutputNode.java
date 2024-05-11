@@ -23,8 +23,8 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
@@ -73,7 +73,7 @@ public class WkTstMultipleListSrlzOutputNode
     WkSzTstMultipleLists serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<WkSzTstMultipleLists, ?, WkTstMultipleListSrlzStructNode, ?, ?, ?>
+    WkSerdeDtreeMsgOutputFieldCore<WkSzTstMultipleLists, ?, WkTstMultipleListSrlzStructNode, ?, ?, ?>
       serializerpacketCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<WkSzTstMultipleLists, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstMultipleListSrlzOutputNode, WkTstMultipleListSrlzStructNode, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, ?, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?, ?, WkSerdeDtreeOperationSettings, ?>
       definitionCore) {
@@ -83,14 +83,14 @@ public class WkTstMultipleListSrlzOutputNode
   }
 
   @Override
-  public Optional<WkSerdeDtreeNodeDataOutputComponent<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>>
+  public Optional<WkSerdeDtreeMsgOutputField<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>>
   size() {
     return this.operationCore.size();
   }
 
   @Override
   public
-  Optional<WkSerdeDtreeNodeDataOutputComponent<WkSzTstMultipleLists, WkSerdeVariableSizeElementCollection<WkSzTstMultipleLists, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, WkSerdeVariableSizeElementCollectionWriter<WkSzTstMultipleLists, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>>
+  Optional<WkSerdeDtreeMsgOutputField<WkSzTstMultipleLists, WkSerdeVariableSizeElementCollection<WkSzTstMultipleLists, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode, ?>, WkSerdeVariableSizeElementCollectionWriter<WkSzTstMultipleLists, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzStructNode, WkTstPrimitivesGroupListSrlzOutputNode>>>
   variableSequence() {
     return this.operationCore.variableSequence();
   }
@@ -121,7 +121,7 @@ public class WkTstMultipleListSrlzOutputNode
   }
 
   @Override
-  public WkSerdeDtreeNodeDataOutputComponent<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, ?> packetField() {
+  public WkSerdeDtreeMsgOutputField<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, ?> packetField() {
     return this.operationCore.packetField();
   }
 

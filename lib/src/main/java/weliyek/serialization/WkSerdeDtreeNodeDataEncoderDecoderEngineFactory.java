@@ -22,8 +22,8 @@ import java.util.function.BiFunction;
 
 public abstract class WkSerdeDtreeNodeDataEncoderDecoderEngineFactory<
                         QC extends WkSerdeDtreeOperationRuntimeCommonCtrl<?,?,?>,
-                        O extends WkSerdeDtreeNodeDataOperation<?,?,?,?,?>,
-                        T extends WkSerdeDtreeNodeDataEncoderDecoderEngine<? super QC, ? super O>>
+                        O extends WkSerdeDtreeMsgOperation<?,?,?,?>,
+                        T extends WkSerdeDtreePrimitiveMsgOperationEngine<? super QC, ? super O>>
 {
 
   private final String label;

@@ -20,14 +20,13 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArray;
 
 public class WkSerdeDtreeFixedSizeByteArrayWriter
@@ -55,8 +54,7 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
     WkByteArray serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<
-      WkByteArray,?,WkSerdeDtreeFixedSizeByteArray,?,?,?> serializingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,?,?,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArrayWriter,WkSerdeDtreeFixedSizeByteArray> definitionCore) {
     this.operationCore = new WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
@@ -68,7 +66,7 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
                                       serializable,
                                       settings,
                                       parentBytestream,
-                                      serializingfieldCore,
+                                      msgFieldCore,
                                       definitionCore,
                                       this,
                                       WkSerdeUtilsPrimitiveArray::onFixedSizeSerilizingInitialization);
@@ -80,7 +78,7 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
   }
 
   @Override
-  public List<WkSrlzOutputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDtreeMsgOutputField<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -110,9 +108,8 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
   }
 
   @Override
-  public WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeFixedSizeByteArray, ?>
-      packetField() {
-    return this.operationCore.packetField();
+  public WkSerdeDtreeMsgOutputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override

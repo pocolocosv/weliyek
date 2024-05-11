@@ -23,9 +23,9 @@ import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
@@ -42,8 +42,8 @@ public final class WkSerdeElementCollectionWriterCoreSimplified<
                                         ET,EYD,EYO>,
                         ET,
                         EYS extends WkSerdeDtreeOperationSettings,
-                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>>
+                        EYD extends WkSerdeDtreeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>>
     extends WkSerdeElementCollectionWriterCore<
                         T,
                         YS,
@@ -73,7 +73,7 @@ public final class WkSerdeElementCollectionWriterCoreSimplified<
     T serializable,
     YS settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,?,?,?,YS,YD,YO,ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore,
     YO operationBody) {

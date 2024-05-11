@@ -21,15 +21,15 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public class WkSrlzFilterQueryResults
 {
 
     private final WkSrlzFilterQuery query;
 
-    private LinkedHashMap<WkSerdeDtreeNodeDataReader<?,?,?,?,?>, WkSrlzPacketNodePredicateEvaluatorBase>
+    private LinkedHashMap<WkSerdeDtreeMsgReader<?,?,?,?,?>, WkSrlzPacketNodePredicateEvaluatorBase>
                       matchedTargetAndTests = new LinkedHashMap<>();
 
     private WkSrlzPacketNodePredicateEvaluatorBase currentResult;
@@ -47,8 +47,8 @@ public class WkSrlzFilterQueryResults
         return this.matchedTargetAndTests.values();
     }
 
-    public void test(WkSerdeDtreeNodeDataFilterable segmentUnderTest) {
-      WkSerdeDtreeNodeStructDefinition<?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segmentUnderTest);
+    public void test(WkSerdeDtreeMsgFilterable segmentUnderTest) {
+      WkSerdeDtreeStructDefinition<?> definitionUnderTest = WkSrlzPacketNodePredicate.extractProtocolDefinitionFrom(segmentUnderTest);
       final boolean definitionUnderTestIsBeingSearched = query.searchedField().equals(definitionUnderTest);
       final boolean definitionUnderTestIsASubfield = query.searchedField().isASubfield(definitionUnderTest);
       final boolean isNeitherSearchedOrASubfield =    (! definitionUnderTestIsBeingSearched)
@@ -63,7 +63,7 @@ public class WkSrlzFilterQueryResults
         this.currentResult.process(segmentUnderTest, this.query);
       } else if (definitionUnderTestIsBeingSearched) {
         if (this.currentResult.isPremiseFound()) {
-          this.matchedTargetAndTests.put((WkSerdeDtreeNodeDataReader<?,?,?,?,?>) segmentUnderTest, currentResult);
+          this.matchedTargetAndTests.put((WkSerdeDtreeMsgReader<?,?,?,?,?>) segmentUnderTest, currentResult);
         }
         // Restart rules because the old one could contain true predicates.
         this.currentResult = null;

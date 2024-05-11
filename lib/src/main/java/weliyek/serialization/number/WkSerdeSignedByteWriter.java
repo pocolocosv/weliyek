@@ -20,17 +20,16 @@ package weliyek.serialization.number;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
 public final class WkSerdeSignedByteWriter
-    implements WkSerdeDtreeNumberWriter<
+    implements WkSerdeDtreeNumberMsgWriter<
                     Byte,
                     WkSerdeDtreeOperationSettings,
                     WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
@@ -38,27 +37,7 @@ public final class WkSerdeSignedByteWriter
                     WkSerdeSignedByte>
 {
 
-  static WkSerdeDtreeNumberWriterCoreSimplified<
-                    Byte,
-                    WkSerdeSignedByteWriter,
-                    WkSerdeSignedByte> newCore(
-    int index,
-    Byte serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<Byte,?,WkSerdeSignedByte,?,?,?> writingfieldCore,
-    WkSerdeDtreeNumberDefinitionCoreSimplified<
-      Byte,?,WkSerdeSignedByteWriter,WkSerdeSignedByte> defintionCore) {
-    return new WkSerdeSignedByteWriter(
-                    index,
-                    serializable,
-                    settings,
-                    parentBytestream,
-                    writingfieldCore,
-                    defintionCore).writingCore;
-  }
-
-  final WkSerdeDtreeNumberWriterCoreSimplified<
+  final WkSerdeDtreeNumberMsgWriterCoreSimplified<
                     Byte,
                     WkSerdeSignedByteWriter,
                     WkSerdeSignedByte> writingCore;
@@ -68,17 +47,17 @@ public final class WkSerdeSignedByteWriter
     Byte serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<Byte,?,WkSerdeSignedByte,?,?,?> writingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
-      Byte,?,WkSerdeSignedByteWriter,WkSerdeSignedByte> defintionCore) {
-    this.writingCore = new WkSerdeDtreeNumberWriterCoreSimplified<
+      Byte, ?, WkSerdeSignedByteWriter, WkSerdeSignedByte> definitionCore) {
+    this.writingCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<
                               Byte, WkSerdeSignedByteWriter, WkSerdeSignedByte>(
                                     index,
                                     serializable,
                                     settings,
                                     parentBytestream,
-                                    writingfieldCore,
-                                    defintionCore,
+                                    msgFieldCore,
+                                    definitionCore,
                                     this);
   }
 
@@ -108,12 +87,12 @@ public final class WkSerdeSignedByteWriter
   }
 
   @Override
-  public WkSerdeDtreeNodeDataOutputComponent<Byte, WkSerdeSignedByte, ?> packetField() {
-    return this.writingCore.packetField();
+  public WkSerdeDtreeMsgOutputField<?, ?, ?> parentField() {
+    return this.writingCore.packetFieldCore().asPacket();
   }
 
   @Override
-  public List<WkSrlzOutputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDtreeMsgOutputField<?,?,?>> subfields() {
     return this.writingCore.subfields();
   }
 

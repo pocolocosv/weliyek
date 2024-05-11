@@ -20,13 +20,12 @@ package weliyek.util.array;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArray;
 
@@ -54,8 +53,7 @@ public final class WkSerdeDtreeVariableSizeByteArrayReader
     int index,
     WkSerdeDtreeOperationSettingsVariableLength settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataInputComponentCore<
-      WkByteArray,?,WkSerdeDtreeVariableSizeByteArray,?,?,?> deserializingfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,WkSerdeDtreeOperationSettingsVariableLength,WkSerdeDtreeVariableSizeByteArrayReader,?,?,WkSerdeDtreeVariableSizeByteArray> definitionCore) {
     this.operationCore = new WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
@@ -66,14 +64,14 @@ public final class WkSerdeDtreeVariableSizeByteArrayReader
                                     index,
                                     settings,
                                     parentBytestream,
-                                    deserializingfieldCore,
+                                    msgFieldCore,
                                     definitionCore,
                                     this,
                                     WkSerdeUtilsPrimitiveArray::onVariableSizeDeserilizingInitialization);
   }
 
   @Override
-  public List<WkSrlzInputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public final List<WkSerdeDtreeMsgInputField<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 
@@ -103,9 +101,8 @@ public final class WkSerdeDtreeVariableSizeByteArrayReader
   }
 
   @Override
-  public WkSerdeDtreeNodeDataInputComponent<WkByteArray, WkSerdeDtreeVariableSizeByteArray, ?>
-  packetField() {
-    return this.operationCore.packetField();
+  public WkSerdeDtreeMsgInputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override

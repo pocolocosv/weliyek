@@ -24,8 +24,8 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.util.array.WkByteArray;
@@ -60,7 +60,7 @@ public abstract class WkSerdeStringFromBytesWriterCore<
     String serializable,
     YS settings,
     AYB parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<String,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeMsgOutputFieldCore<String,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(
@@ -74,7 +74,7 @@ public abstract class WkSerdeStringFromBytesWriterCore<
   }
 
   @Override
-  public final Optional<WkSerdeDtreeNodeDataOutputComponent<WkByteArray, SYD, SYO>> bytes() {
+  public final Optional<WkSerdeDtreeMsgOutputField<WkByteArray, SYD, SYO>> bytes() {
     return primitiveArray();
   }
 

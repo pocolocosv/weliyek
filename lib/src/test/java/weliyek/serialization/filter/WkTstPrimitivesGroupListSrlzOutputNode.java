@@ -23,8 +23,8 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
@@ -73,7 +73,7 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
       WkSzTstPrimitivesGroupList serializable,
       WkSerdeDtreeOperationSettings settings,
       WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-      WkSerdeDtreeNodeDataOutputComponentCore<WkSzTstPrimitivesGroupList, ?, WkTstPrimitivesGroupListSrlzStructNode, ?, ?, ?>
+      WkSerdeDtreeMsgOutputFieldCore<WkSzTstPrimitivesGroupList, ?, WkTstPrimitivesGroupListSrlzStructNode, ?, ?, ?>
         serializerpacketCore,
       WkSerdeDtreeDynamicCollectionDefinitionCore<WkSzTstPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzOutputNode, WkTstPrimitivesGroupListSrlzStructNode, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, WkSzTstPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?, ?, WkSerdeDtreeOperationSettings, ?>
         definitionCore) {
@@ -83,14 +83,14 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
 
     @Override
     public
-    Optional<WkSerdeDtreeNodeDataOutputComponent<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerWriter>>
+    Optional<WkSerdeDtreeMsgOutputField<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerWriter>>
     size() {
       return this.writingCore.size();
     }
 
     @Override
     public
-    Optional<WkSerdeDtreeNodeDataOutputComponent<WkSzTstPrimitivesGroupList, WkSerdeVariableSizeElementCollection<WkSzTstPrimitivesGroupList, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, WkSerdeVariableSizeElementCollectionWriter<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>>
+    Optional<WkSerdeDtreeMsgOutputField<WkSzTstPrimitivesGroupList, WkSerdeVariableSizeElementCollection<WkSzTstPrimitivesGroupList, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter, ?>, WkSerdeVariableSizeElementCollectionWriter<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketWriter>>>
     variableSequence() {
       return this.writingCore.variableSequence();
     }
@@ -121,7 +121,7 @@ public class WkTstPrimitivesGroupListSrlzOutputNode
     }
 
     @Override
-    public WkSerdeDtreeNodeDataOutputComponent<WkSzTstPrimitivesGroupList, WkTstPrimitivesGroupListSrlzStructNode, ?> packetField() {
+    public WkSerdeDtreeMsgOutputField<WkSzTstPrimitivesGroupList, WkTstPrimitivesGroupListSrlzStructNode, ?> packetField() {
       return this.writingCore.packetField();
     }
 

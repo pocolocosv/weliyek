@@ -17,11 +17,11 @@
  */
 package weliyek.serialization.sequence;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public interface WkSerdeDtreeSequenceDefinition<T>
         extends WkSerdeDtreeSequence,
-                WkSerdeDtreeNodeStructDefinition<T>
+                WkSerdeDtreeStructDefinition<T>
 {
 
     /**

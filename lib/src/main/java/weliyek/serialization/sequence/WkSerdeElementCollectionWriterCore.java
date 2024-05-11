@@ -20,16 +20,16 @@ package weliyek.serialization.sequence;
 import java.util.Collection;
 import java.util.List;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorWriterCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriterCore;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 
@@ -47,12 +47,12 @@ public abstract class WkSerdeElementCollectionWriterCore<
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         ET,
                         EYS extends WkSerdeDtreeOperationSettings,
-                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                        EYD extends WkSerdeDtreeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
                         DC extends WkSerdeElementCollectionDefinitionCore<
                                         T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YD,YO,AYBC,
                                         ET,?,?,?,EYS,EYD,EYO,?,?,DC>>
-        extends WkSerdeDtreeAggregatorWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
+        extends WkSerdeDtreeAggregatorMsgWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
         implements WkSerdeElementCollectionWriter<T, YS, YQ, YR, YD, ET, EYD, EYO>
 {
 
@@ -65,7 +65,7 @@ public abstract class WkSerdeElementCollectionWriterCore<
     T serializable,
     YS settings,
     AYBC parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
     super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);

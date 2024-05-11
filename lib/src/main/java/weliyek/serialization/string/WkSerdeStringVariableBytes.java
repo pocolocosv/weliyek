@@ -24,9 +24,9 @@ import java.util.Optional;
 import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
@@ -65,7 +65,7 @@ public class WkSerdeStringVariableBytes
     int minimalLength,
     int maximalLength,
     Charset defaultCharset) {
-    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
+    return new WkSerdeDtreeStructCore<>(
                       label,
                       (pc) -> WkSerdeStringVariableBytes.newCore(
                                     bytesLabel, minimalLength, maximalLength, defaultCharset, pc),
@@ -73,7 +73,7 @@ public class WkSerdeStringVariableBytes
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static WkSerdeDtreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeStructDefinitionCore<
                       String,
                       WkSerdeDtreeOperationSettingsVariableLength,?,?,
                       WkSerdeStringVariableBytes,
@@ -89,7 +89,7 @@ public class WkSerdeStringVariableBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeStringVariableBytes(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -114,7 +114,7 @@ public class WkSerdeStringVariableBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                     defaultCharset,
                                     componentCore,

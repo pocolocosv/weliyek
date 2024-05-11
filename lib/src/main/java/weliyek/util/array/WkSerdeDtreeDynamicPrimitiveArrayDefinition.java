@@ -17,18 +17,18 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 
 public interface WkSerdeDtreeDynamicPrimitiveArrayDefinition<
                         T extends WkPrimitiveArray<?,?>,
                         XO extends WkSerdeDtreeDynamicPrimitiveArrayReader<T,?,?,?,?,?,?,?,?,?>,
                         YO extends WkSerdeDtreeDynamicPrimitiveArrayWriter<T,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkSerdeDtreeNumberDefinition<?>,
+                        ZD extends WkSerdeDtreeNumberStructDefinition<?>,
                         VD extends WkSerdeDtreeVariableSizePrimitiveArrayDefinition<T>>
     extends WkSerdeDtreeDynamicPrimitiveArray<
-                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, ZD>,
-                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, VD>>,
+                        WkSerdeDtreeStructSubfield<XO, YO, ZD>,
+                        WkSerdeDtreeStructSubfield<XO, YO, VD>>,
             WkSerdeDtreeDynamicSequenceDefinition<T, XO, YO, ZD, VD>
 {
 

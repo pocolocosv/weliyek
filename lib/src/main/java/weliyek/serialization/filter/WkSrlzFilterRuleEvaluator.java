@@ -25,7 +25,7 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public class WkSrlzFilterRuleEvaluator
         extends WkSrlzPacketNodePredicateEvaluatorBase
@@ -33,7 +33,7 @@ public class WkSrlzFilterRuleEvaluator
 
     private static final Logger logger = LoggerFactory.getLogger(WkSrlzFilterRuleEvaluator.class);
 
-    private WkSerdeDtreeNodeDataFilterable fulfillingSegment;
+    private WkSerdeDtreeMsgFilterable fulfillingSegment;
 
     WkSrlzFilterRuleEvaluator(
         WkSrlzFilterRule rule) {
@@ -41,7 +41,7 @@ public class WkSrlzFilterRuleEvaluator
     }
 
     @Override
-    protected boolean onTest(WkSerdeDtreeNodeDataFilterable segment) {
+    protected boolean onTest(WkSerdeDtreeMsgFilterable segment) {
       if (isPremiseFound()) {
         // Segment that fulfills the rule was found. Nothing else to do.
         return true;
@@ -67,7 +67,7 @@ public class WkSrlzFilterRuleEvaluator
     }
 
     @Override
-    public List<WkSerdeDtreeNodeStructDefinition<?>> matchTargets() {
+    public List<WkSerdeDtreeStructDefinition<?>> matchTargets() {
         return rule().matchTargets();
     }
 

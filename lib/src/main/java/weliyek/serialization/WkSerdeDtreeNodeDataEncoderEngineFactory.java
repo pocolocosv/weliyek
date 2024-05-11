@@ -22,13 +22,13 @@ import java.util.function.BiFunction;
 public class WkSerdeDtreeNodeDataEncoderEngineFactory<
                         T,
                         QC extends WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?>,
-                        O extends WkSerdeDtreeNodeDataWriter<? extends T,?,?,?,?>>
-    extends WkSerdeDtreeNodeDataEncoderDecoderEngineFactory<QC, O, WkSerdeDtreeNodeDataWriterEncoderEngine<T,QC,O>>
+                        O extends WkSerdeDtreeMsgWriter<? extends T,?,?,?,?>>
+    extends WkSerdeDtreeNodeDataEncoderDecoderEngineFactory<QC, O, WkSerdeDtreePrimitiveMsgWriterEngine<T,QC,O>>
 {
 
   public WkSerdeDtreeNodeDataEncoderEngineFactory(
       String label,
-      BiFunction<QC, O, WkSerdeDtreeNodeDataWriterEncoderEngine<T, QC, O>> engineSupplier) {
+      BiFunction<QC, O, WkSerdeDtreePrimitiveMsgWriterEngine<T, QC, O>> engineSupplier) {
     super(label, engineSupplier);
   }
 

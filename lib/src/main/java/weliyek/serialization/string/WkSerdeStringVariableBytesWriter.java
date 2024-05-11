@@ -24,8 +24,8 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsOptionalLength;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
@@ -57,7 +57,7 @@ public class WkSerdeStringVariableBytesWriter
     String serializable,
     WkSerdeDtreeOperationSettingsOptionalLength settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<
+    WkSerdeDtreeMsgOutputFieldCore<
       String,?,WkSerdeStringVariableBytes,?,?,?> serializingfieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       ?,?,?,WkSerdeDtreeOperationSettingsOptionalLength,WkSerdeStringVariableBytesWriter,
@@ -82,7 +82,7 @@ public class WkSerdeStringVariableBytesWriter
 
   @Override
   public
-  Optional<WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
+  Optional<WkSerdeDtreeMsgOutputField<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -113,7 +113,7 @@ public class WkSerdeStringVariableBytesWriter
   }
 
   @Override
-  public WkSerdeDtreeNodeDataOutputComponent<String, WkSerdeStringVariableBytes, ?> packetField() {
+  public WkSerdeDtreeMsgOutputField<String, WkSerdeStringVariableBytes, ?> packetField() {
     return this.operationCore.packetField();
   }
 
@@ -134,7 +134,7 @@ public class WkSerdeStringVariableBytesWriter
 
   @Override
   public
-  Optional<WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
+  Optional<WkSerdeDtreeMsgOutputField<WkByteArray, WkSerdeDtreeVariableSizeByteArray, WkSerdeDtreeVariableSizeByteArrayWriter>>
   bytes() {
     return this.operationCore.bytes();
   }

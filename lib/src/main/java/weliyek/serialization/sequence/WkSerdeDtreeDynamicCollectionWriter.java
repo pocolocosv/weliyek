@@ -22,12 +22,12 @@ import java.util.Collection;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceWriter;
 
 public interface WkSerdeDtreeDynamicCollectionWriter<
@@ -37,21 +37,21 @@ public interface WkSerdeDtreeDynamicCollectionWriter<
                         YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeDynamicCollectionDefinition<T,?,?,?,?,?,?,?,?,?,?,?,?,?>,
                         ZT extends Number,
-                        ZYO extends WkSerdeDtreeNumberWriter<ZT,?,?,?,ZYD>,
-                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZYO extends WkSerdeDtreeNumberMsgWriter<ZT,?,?,?,ZYD>,
+                        ZYD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         ET,
                         EYS extends WkSerdeDtreeOperationSettings,
-                        EYD extends WkSerdeDtreeNodeStructDefinition<ET>,
-                        EYO extends WkSerdeDtreeNodeDataWriter<ET,EYS,?,?,EYD>,
+                        EYD extends WkSerdeDtreeStructDefinition<ET>,
+                        EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
                         VYS extends WkSerdeDtreeOperationSettings>
     extends WkSerdeDtreeDynamicCollectionOperation<
                         YS, YQ, YR, YD,
-                        WkSerdeDtreeNodeDataOutputComponent<T,YD,?>,
+                        WkSerdeDtreeMsgOutputField<T,YD,?>,
                         ZYO,
-                        WkSerdeDtreeNodeDataOutputComponent<ZT,ZYD,ZYO>,
+                        WkSerdeDtreeMsgOutputField<ZT,ZYD,ZYO>,
                         WkSrlzOutputPacketSubfieldFrameNode<ZT,ZYD,ZYO>,
                         WkSerdeVariableSizeElementCollectionWriter<T,VYS,ET,EYS,EYD,EYO>,
-                        WkSerdeDtreeNodeDataOutputComponent<
+                        WkSerdeDtreeMsgOutputField<
                           T,
                           WkSerdeVariableSizeElementCollection<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
                           WkSerdeVariableSizeElementCollectionWriter<T,VYS,ET,EYS,EYD,EYO>>,

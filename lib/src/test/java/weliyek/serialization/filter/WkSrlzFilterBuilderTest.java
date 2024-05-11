@@ -27,12 +27,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
 import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSzInputPacket;
+import weliyek.serialization.WkSerdeDtreeReader;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzOutputPacket;
+import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedBigEndianLong;
@@ -45,11 +45,11 @@ import weliyek.serialization.util.KetzaByteOutputStream;
 public class WkSrlzFilterBuilderTest
 {
 
-  private static Predicate<WkSerdeDtreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
-  private static Predicate<WkSerdeDtreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().serializable().get().byteValue() != (byte)1;
-  private static Predicate<WkSerdeDtreeNodeDataReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)2;
+  private static Predicate<WkSerdeDtreeMsgReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
+  private static Predicate<WkSerdeDtreeMsgReader<Byte,?,?,?,?>> BYTE_IS_NOTEQUAL_TO_ONE = (xo) -> xo.result().get().serializable().get().byteValue() != (byte)1;
+  private static Predicate<WkSerdeDtreeMsgReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_TWO    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)2;
 
-  private static Predicate<WkSerdeDtreeNodeDataReader<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
+  private static Predicate<WkSerdeDtreeMsgReader<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
 
   private static WkSerdeDtreeStruct<
                       WkSzTstMultipleLists,
@@ -235,14 +235,14 @@ public class WkSrlzFilterBuilderTest
 
       KetzaByteOutputStream out = new KetzaByteOutputStream();
 
-      WkSzOutputPacket<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzOutputNode>
+      WkSerdeDtreeWriter<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzOutputNode>
         multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSerdeDtreeOperationSettings.EMPTY, out);
 
       while(multiListsSerializer.isInProgress()) {
         multiListsSerializer.processBytestream();
       }
 
-      WkSzInputPacket<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzInputNode>
+      WkSerdeDtreeReader<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzInputNode>
         multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, out.inputStream(), filter);
 
       while(multiListsDeserializer.isInProgress()) {

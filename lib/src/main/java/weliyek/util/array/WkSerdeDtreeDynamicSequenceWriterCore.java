@@ -19,18 +19,17 @@ package weliyek.util.array;
 
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorWriterCore;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriterCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
 
@@ -45,42 +44,37 @@ public abstract class WkSerdeDtreeDynamicSequenceWriterCore<
                         YO extends WkSerdeDtreeDynamicSequenceWriter<
                                         T,YS,YQ,YR,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YOC extends WkSerdeDtreeDynamicSequenceWriterCore<
-                                        T,YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYBC,
+                                        T,YS,YB,YBC,YQ,YQC,YR,YO,?,YD,YDC,AYBC,
                                         ZT,ZYS,ZYO,ZYD,
-                                        VYS,VYO,VYD,
-                                        DC>,
+                                        VYS,VYO,VYD>,
                         YD extends WkSerdeDtreeDynamicSequenceDefinition<T,?,YO,?,?>,
+                        YDC extends WkSerdeDtreeDynamicSequenceDefinitionCore<
+                                        T,?,?,?,?,?,?,?,?,?,?,
+                                        YS,YB,YBC,YQC,YR,YO,YOC,YD,?,AYBC,
+                                        ZT,?,?,?,ZYS,ZYO,ZYD,? extends ZYD,
+                                        ?,?,?,VYS,VYO,VYD,? extends VYD,
+                                        ? extends YD,?>,
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         ZT extends Number,
                         ZYS extends WkSerdeDtreeOperationSettings,
-                        ZYO extends WkSerdeDtreeNumberWriter<ZT,ZYS,?,?,ZYD>,
-                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZYO extends WkSerdeDtreeNumberMsgWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         VYS extends WkSerdeDtreeOperationSettings,
                         VYO extends WkSerdeDtreeVariableSizeSequenceWriter<T,VYS,?,?,VYD>,
-                        VYD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
-                        DC extends WkSerdeDtreeDynamicSequenceDefinitionCore<
-                                        T,?,?,?,?,?,?,?,?,YS,YB,YBC,YQC,YR,YO,YD,AYBC,
-                                        ZT,?,?,?,ZYS,ZYO,ZYD,
-                                        ?,?,?,?,VYS,VYO,VYD,
-                                        ?,?,DC>>
-    extends WkSerdeDtreeAggregatorWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YO, YOC, AYBC, DC>
+                        VYD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>>
+    extends WkSerdeDtreeAggregatorMsgWriterCore<T, YS, YB, YBC, YQ, YQC, YR, YD, YDC, YO, YOC, AYBC>
     implements WkSerdeDtreeDynamicSequenceWriter<T, YS, YQ, YR, YD, ZT, ZYO, ZYD, VYO, VYD>
 {
-
-  private WkSrlzOutputPacketSubfieldFrameNodeCore<ZT,ZYS,ZYD,ZYO,T,?,YD,YO> sizeWriteField;
-  private WkSrlzOutputPacketSubfieldFrameNodeCore<T,VYS,VYD,VYO,T,?,YD,YO> varseqWriteField;
 
   protected WkSerdeDtreeDynamicSequenceWriterCore(
     int index,
     T serializable,
     YS settings,
     AYBC parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
-    DC definitionCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> dataFieldCore,
+    YDC definitionCore,
     YO operationBody) {
-    super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
-    this.sizeWriteField = getSubfieldpacketFor(definitionCore().sizeComponent);
-    this.varseqWriteField = getSubfieldpacketFor(definitionCore().varseqComponent);
+    super(index, settings, parentBytestream, serializable, dataFieldCore, definitionCore, operationBody);
   }
 
   @Override
@@ -88,13 +82,13 @@ public abstract class WkSerdeDtreeDynamicSequenceWriterCore<
   }
 
   @Override
-  public Optional<WkSerdeDtreeNodeDataOutputComponent<ZT, ZYD, ZYO>> size() {
-    return this.sizeWriteField.field();
+  public Optional<WkSerdeDtreeMsgOutputField<ZT, ZYD, ZYO>> size() {
+    return Optional.ofNullable(getSubfieldpacketFor(definitionCore().sizeComponent));
   }
 
   @Override
-  public Optional<WkSerdeDtreeNodeDataOutputComponent<T, VYD, VYO>> variableSequence() {
-    return this.varseqWriteField.field();
+  public Optional<WkSerdeDtreeMsgOutputField<T, VYD, VYO>> variableSequence() {
+    return Optional.ofNullable(getSubfieldpacketFor(definitionCore().varseqComponent));
   }
 
 }

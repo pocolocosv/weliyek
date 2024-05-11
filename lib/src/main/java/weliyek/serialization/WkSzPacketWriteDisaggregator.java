@@ -20,21 +20,21 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSzPacketWriteDisaggregator<
                         T,
-                        D extends WkSerdeDtreeNodeStructDefinition<T>,
+                        D extends WkSerdeDtreeStructDefinition<T>,
                         AT,
-                        AO extends WkSerdeDtreeNodeDataWriter<? extends AT,?,?,?,?>>
+                        AO extends WkSerdeDtreeMsgWriter<? extends AT,?,?,?,?>>
 {
 
   /**
    * Extracts serializable value from the parent operation.
    *
-   * @param packetField The current writing field that owns the writing operation being created.
+   * @param dataField The current writing field that owns the writing operation being created.
    * @param parentOperation The parent operation used to extract the disaggregated value from.
    * @param i The index on the current writing operation in the writing field.
    * @return The disaggregated value that will be used by the writing operation.
    */
   T disaggregate(
-    WkSerdeDtreeNodeDataOutputComponent<T,D,?> packetField,
+    WkSerdeDtreeMsgOutputField<T,D,?> dataField,
     AO parentOperation,
     int i);
 

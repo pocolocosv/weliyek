@@ -27,7 +27,7 @@ public abstract class WkSerdeDtreeLongPrimitiveReaderDecoderEngine
 
   protected WkSerdeDtreeLongPrimitiveReaderDecoderEngine(
     WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
-    WkSerdeDtreeNumberReader<Long,?,?,?,?> readingOperation) {
+    WkSerdeDtreeNumberMsgReader<Long,?,?,?,?> readingOperation) {
     super(runtimeCtrl, readingOperation);
   }
 

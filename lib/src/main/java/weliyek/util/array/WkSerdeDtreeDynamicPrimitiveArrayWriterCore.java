@@ -17,15 +17,15 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.number.WkSerdeDtreeNumberWriter;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 
 public class WkSerdeDtreeDynamicPrimitiveArrayWriterCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -37,11 +37,11 @@ public class WkSerdeDtreeDynamicPrimitiveArrayWriterCore<
                                         YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD extends WkSerdeDtreeDynamicPrimitiveArrayDefinition<T,?,YO,? extends ZYD,? extends VYD>,
                         ZT extends Number,
-                        ZYO extends WkSerdeDtreeNumberWriter<
+                        ZYO extends WkSerdeDtreeNumberMsgWriter<
                                         ZT,
                                         WkSerdeDtreeOperationSettings,
                                         ?,?,ZYD>,
-                        ZYD extends WkSerdeDtreeNumberDefinition<ZT>,
+                        ZYD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         VYO extends WkSerdeDtreeVariableSizePrimitiveArrayWriter<
                                         T,
                                         WkSerdeDtreeOperationSettings,
@@ -61,6 +61,10 @@ public class WkSerdeDtreeDynamicPrimitiveArrayWriterCore<
                         YO,
                         WkSerdeDtreeDynamicPrimitiveArrayWriterCore<T,YO,YD,ZT,ZYO,ZYD,VYO,VYD>,
                         YD,
+                        WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
+                          T,?,?,YD,YO,
+                          ZT,?,?,ZYD,ZYO,? extends ZYD,
+                          ?,?,VYD,VYO,? extends VYD,? extends YD>,
                         WkSerdeDtreeBytestreamOutputBase<?>,
                         ZT,
                         WkSerdeDtreeOperationSettings,
@@ -68,11 +72,7 @@ public class WkSerdeDtreeDynamicPrimitiveArrayWriterCore<
                         ZYD,
                         WkSerdeDtreeOperationSettings,
                         VYO,
-                        VYD,
-                        WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
-                          T,?,?,YD,YO,
-                          ZT,?,?,ZYD,ZYO,?,
-                          ?,?,VYD,VYO,?,?>>
+                        VYD>
     implements WkSerdeDtreeDynamicPrimitiveArrayWriter<
                         T,
                         WkSerdeDtreeOperationSettings,
@@ -86,13 +86,13 @@ public class WkSerdeDtreeDynamicPrimitiveArrayWriterCore<
     T serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       T,?,?,YD,YO,
-      ZT,?,?,ZYD,ZYO,?,
-      ?,?,VYD,VYO,?,?> definitionCore,
+      ZT,?,?,ZYD,ZYO,? extends ZYD,
+      ?,?,VYD,VYO,? extends VYD,? extends YD> definitionCore,
     YO operationBody) {
-    super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
+    super(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, operationBody);
   }
 
   @Override

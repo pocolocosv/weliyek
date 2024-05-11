@@ -17,11 +17,10 @@
  */
 package weliyek.serialization.sequence;
 
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataWriter;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
 
 public interface WkSerdeDtreeSequenceWriter<
                         T,
@@ -29,10 +28,8 @@ public interface WkSerdeDtreeSequenceWriter<
                         YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
                         YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeSequenceDefinition<T>>
-        extends WkSerdeDtreeNodeDataWriter<T, YS, YQ, YR, YD>,
-                WkSerdeDtreeSequenceOperation<
-                        YS, YQ, YR, YD,
-                        WkSerdeDtreeNodeDataOutputComponent<T,YD,?>>
+        extends WkSerdeDtreeMsgWriter<T, YS, YQ, YR, YD>,
+                WkSerdeDtreeSequenceOperation< YS, YQ, YR, YD>
 {
 
 }

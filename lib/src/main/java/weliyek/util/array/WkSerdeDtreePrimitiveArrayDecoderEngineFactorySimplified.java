@@ -20,7 +20,7 @@ package weliyek.util.array;
 import java.util.function.BiFunction;
 
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeNodeDataReaderDecoderEngine;
+import weliyek.serialization.WkSerdeDtreePrimitiveMsgReaderEngine;
 
 public class WkSerdeDtreePrimitiveArrayDecoderEngineFactorySimplified<
                         X extends WkPrimitiveArray<?,?>>
@@ -35,7 +35,7 @@ public class WkSerdeDtreePrimitiveArrayDecoderEngineFactorySimplified<
       BiFunction<
         WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?>,
         WkSerdeDtreePrimitiveArrayReader<X,?,?,?,?>,
-        WkSerdeDtreeNodeDataReaderDecoderEngine<
+        WkSerdeDtreePrimitiveMsgReaderEngine<
           X,
           ? super WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<?,?,?>,
           ? super WkSerdeDtreePrimitiveArrayReader<X,?,?,?,?>>> engineSupplier) {

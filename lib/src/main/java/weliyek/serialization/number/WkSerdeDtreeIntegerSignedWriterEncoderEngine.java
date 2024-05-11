@@ -27,7 +27,7 @@ public abstract class WkSerdeDtreeIntegerSignedWriterEncoderEngine
 
   protected WkSerdeDtreeIntegerSignedWriterEncoderEngine(
     WkSerdeDtreeOperationOutputRuntimeCtrl<?,?,?> runtimeControl,
-    WkSerdeDtreeNumberWriter<Integer,?,?,?,?> writingOperation) {
+    WkSerdeDtreeNumberMsgWriter<Integer,?,?,?,?> writingOperation) {
     super(runtimeControl, writingOperation);
   }
 

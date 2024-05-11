@@ -19,24 +19,24 @@ package weliyek.serialization;
 
 import java.util.function.BiFunction;
 
-import weliyek.serialization.number.WkSerdeDtreeNumberReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
 
 public class WkSerdeDtreePrimitiveDecoderEngineFactory<X extends Number>
     extends WkSerdeDtreeNodeDataDecoderEngineFactory<
                         X,
                         WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
-                        WkSerdeDtreeNumberReader<X,?,?,?,?>>
+                        WkSerdeDtreeNumberMsgReader<X,?,?,?,?>>
 {
 
   public WkSerdeDtreePrimitiveDecoderEngineFactory(
       String label,
       BiFunction<
         WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
-        WkSerdeDtreeNumberReader<X,?,?,?,?>,
-        WkSerdeDtreeNodeDataReaderDecoderEngine<
+        WkSerdeDtreeNumberMsgReader<X,?,?,?,?>,
+        WkSerdeDtreePrimitiveMsgReaderEngine<
           X,
           ? super WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?>,
-          ? super WkSerdeDtreeNumberReader<X,?,?,?,?>>> engineSupplier) {
+          ? super WkSerdeDtreeNumberMsgReader<X,?,?,?,?>>> engineSupplier) {
     super(label, engineSupplier);
   }
 

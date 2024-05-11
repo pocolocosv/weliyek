@@ -23,9 +23,9 @@ import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCoreRoot;
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
@@ -67,7 +67,7 @@ public class WkSerdeStringFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset) {
-    return new WkSerdeDtreeNodeStructComponentCoreRoot<>(
+    return new WkSerdeDtreeStructCore<>(
                       label,
                       (pc) -> WkSerdeStringFixedLengthBytes.newCore(
                                     bytesLabel, expectedSize, defaultCharset, pc),
@@ -75,7 +75,7 @@ public class WkSerdeStringFixedLengthBytes
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static WkSerdeDtreeNodeStructDefinitionCore<
+  public static WkSerdeDtreeStructDefinitionCore<
                       String,
                       WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeStringFixedLengthBytes,
@@ -90,7 +90,7 @@ public class WkSerdeStringFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeStringFixedLengthBytes(bytesLabel, expectedSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -114,7 +114,7 @@ public class WkSerdeStringFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
 
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                   defaultCharset,

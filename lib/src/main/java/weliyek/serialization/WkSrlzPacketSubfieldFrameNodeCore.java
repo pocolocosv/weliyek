@@ -20,15 +20,16 @@ package weliyek.serialization;
 import java.util.Objects;
 import java.util.Optional;
 
+@Deprecated
 public abstract class WkSrlzPacketSubfieldFrameNodeCore<
                         S extends WkSerdeDtreeOperationSettings,
-                        TD extends WkSerdeDtreeNodeStructDefinition<?>,
+                        TD extends WkSerdeDtreeStructDefinition<?>,
                         NC extends WkSrlzStructSubcomponentFrameNodeCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
-                        KC extends WkSerdeDtreeNodeDataComponentCore<?,?,?,?,?,?,? extends K,?,?>,
+                        K extends WkSerdeDtreeMsgField<?,?,?>,
+                        KC extends WkSerdeDtreeMsgFieldCore<?,?,?,?,?,?,? extends K,?,?>,
                         J extends WkSerdeDtreeNodeDataComponentHandler<?>,
-                        AOC extends WkSerdeDtreeNodeDataOperationCore<?,?,?,?,AD,?,?,?,?,?,?>,
-                        AD extends WkSerdeDtreeNodeStructDefinition<?>>
+                        AOC extends WkSerdeDtreeMsgOperationCore<?,?,?,?,AD,?,?,?,?,?,?>,
+                        AD extends WkSerdeDtreeStructDefinition<?>>
     implements WkSerdeDtreeNodeDataComponentHandler<K>
 {
 
@@ -111,15 +112,15 @@ public abstract class WkSrlzPacketSubfieldFrameNodeCore<
 
   protected abstract void onReset();
 
-  public final Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> processBytestream() {
+  public final Optional<WkSerdeDtreeMsgOperation<?,?,?,?,?>> processBytestream() {
     return this.packetFieldCore.processSingleStepBytestream();
   }
 
   protected abstract TD definition();
 
-  protected abstract WkSerdeDtreeNodeStructComponent<? extends TD> protocolField();
+  protected abstract WkSerdeDtreeStructField<? extends TD> protocolField();
 
-  public abstract WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> protocolFieldCore();
+  public abstract WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> protocolFieldCore();
 
   public AOC parentOperationCore() {
     return this.parentOperationCore;

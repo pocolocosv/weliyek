@@ -33,7 +33,7 @@ public final class WkSerdeDtreeShortSignedBigEndianReaderDecoderEngine
 
   private WkSerdeDtreeShortSignedBigEndianReaderDecoderEngine(
     WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
-    WkSerdeDtreeNumberReader<Short,?,?,?,?> readingOperation) {
+    WkSerdeDtreeNumberMsgReader<Short,?,?,?,?> readingOperation) {
     super((i) -> Short.valueOf((short)i), runtimeCtrl, readingOperation);
   }
 

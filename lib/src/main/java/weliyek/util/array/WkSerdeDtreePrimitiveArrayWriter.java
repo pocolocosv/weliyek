@@ -20,7 +20,6 @@ package weliyek.util.array;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceWriter;
 
 public interface WkSerdeDtreePrimitiveArrayWriter<
@@ -29,9 +28,7 @@ public interface WkSerdeDtreePrimitiveArrayWriter<
                         Q extends WkSerdeDtreeOperationOutputRuntime<?>,
                         R extends WkSerdeDtreeOperationResult<Y>,
                         D extends WkSerdeDtreePrimitiveArrayDefinition<Y>>
-        extends WkSerdeDtreePrimitiveArrayOperation<
-                        S, Q, R, D,
-                        WkSerdeDtreeNodeDataOutputComponent<Y,D,?>>,
+        extends WkSerdeDtreePrimitiveArrayOperation<S, Q, R, D>,
                 WkSerdeDtreeSequenceWriter<Y, S, Q, R, D>
 {
 

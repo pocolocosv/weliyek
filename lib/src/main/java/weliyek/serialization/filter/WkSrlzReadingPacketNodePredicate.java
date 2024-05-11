@@ -19,12 +19,12 @@ package weliyek.serialization.filter;
 
 import java.util.function.Predicate;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeNodeDataReader;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
 
 public class WkSrlzReadingPacketNodePredicate<
-                        D extends WkSerdeDtreeNodeStructDefinition<?>,
-                        O extends WkSerdeDtreeNodeDataReader<?,?,?,?,D>>
+                        D extends WkSerdeDtreeStructDefinition<?>,
+                        O extends WkSerdeDtreeMsgReader<?,?,?,?,D>>
     extends WkSrlzPacketNodePredicate<D, O>
 {
 
@@ -39,9 +39,9 @@ public class WkSrlzReadingPacketNodePredicate<
   }
 
   @Override
-  public boolean canBeTestedAgainst(WkSerdeDtreeNodeDataFilterable node) {
+  public boolean canBeTestedAgainst(WkSerdeDtreeMsgFilterable node) {
     if (isAnInputPacketReadingNode(node)) {
-      WkSerdeDtreeNodeStructDefinition<?> structDef = extractDefinition((WkSerdeDtreeNodeDataReader<?,?,?,?,?>)node);
+      WkSerdeDtreeStructDefinition<?> structDef = extractDefinition((WkSerdeDtreeMsgReader<?,?,?,?,?>)node);
       return targetProtocolField().equals(structDef);
     }
     return false;

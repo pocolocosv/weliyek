@@ -21,31 +21,31 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
 {
 
   private static final long serialVersionUID = 2022_07_04_0000L;
-  
-  private final WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore;
+
+  private final WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?> operationCore;
 
   public WkSzPacketOperationException(
-    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore) {
+    WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?> operationCore) {
     super(operationCore.definitionCore());
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?> operationCore,
     Throwable cause) {
     super(operationCore.definitionCore(), cause);
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?> operationCore,
     String message) {
     super(operationCore.definitionCore(), message);
     this.operationCore = operationCore;
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause) {
     super(operationCore.definitionCore(), message, cause);
@@ -53,7 +53,7 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
   }
 
   public WkSzPacketOperationException(
-    WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> operationCore,
+    WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?> operationCore,
     String message,
     Throwable cause,
     boolean enableSuppression,
@@ -61,8 +61,8 @@ public class WkSzPacketOperationException extends WkSzDefinitionCoreException
     super(operationCore.definitionCore(), message, cause, enableSuppression, writableStackTrace);
     this.operationCore = operationCore;
   }
-  
-  public WkSerdeDtreeNodeDataOperationCore<?,?,?,?,?,?,?,?,?,?,?> getOperationCore() {
+
+  public WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?> getOperationCore() {
     return this.operationCore;
   }
 

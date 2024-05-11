@@ -19,25 +19,25 @@ package weliyek.util.array;
 
 import java.util.function.ToIntBiFunction;
 
-import weliyek.serialization.WkSerdeDtreeOperationResultBasic;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrlSimplified;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzPacketReaderOperationCoreFactory;
-import weliyek.serialization.WkSzPacketWriterOperationCoreFactory;
+import weliyek.serialization.WkSerdeDtreeMsgPrimitiveReaderFactory;
+import weliyek.serialization.WkSerdeDtreeMsgPrimitiveWriterCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
-import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArrayLengthGetter;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrlSimplified;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationResultBasic;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.sequence.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrlSimplified;
+import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArrayLengthGetter;
 
 public class WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
                         T extends WkPrimitiveArray<?, ?>,
@@ -64,7 +64,10 @@ public class WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
                           WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
                           WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>>,
                         WkSerdeDtreeOperationResult<T>,
-                        D, XO,
+                        D,
+                        WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<T,XS,XO,?,?,D>,
+                        XO,
+                        WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<T,XS,D,XO>,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         YS,
                         WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<
@@ -72,7 +75,10 @@ public class WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
                           WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
                           WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>>,
                         WkSerdeDtreeOperationResult<T>,
-                        D, YO,
+                        D,
+                        WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<T,?,?,YS,YO,D>,
+                        YO,
+                        WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<T,YS,D,YO>,
                         WkSerdeDtreeBytestreamOutputBase<?>,
                         D,
                         WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<T,XS,XO,YS,YO,D>>
@@ -80,12 +86,20 @@ public class WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
 
   public WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified(
     int stepSize,
-    WkSerdeDtreeNodeStructComponentCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, D> rxRequestedLengthEvaluator,
-    WkSzPacketReaderOperationCoreFactory<T, XS, D, WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<T, XS, XO, YS, YO, D>, XO, WkSerdeDtreeBytestreamInputBase<?>> readingOpFactory,
+    WkSerdeDtreeMsgPrimitiveReaderFactory<
+      XS,
+      WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<T,XS,XO,?,?,D>,
+      WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<T,XS,D,XO>,
+      WkSerdeDtreeBytestreamInputBase<?>> readingOpFactory,
     WkSerdeDtreeNodeDataDecoderEngineFactory<T, ? super WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<WkSerdeDtreeBytestreamInput, WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>, WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>>, ? super XO> rxSerializerFactory,
     WkSerdeUtilsPrimitiveArrayLengthGetter<? super T,? super YS,? super D> txRequestedLengthEvaluator,
-    WkSzPacketWriterOperationCoreFactory<T, YS, D, WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<T, XS, XO, YS, YO, D>, YO, WkSerdeDtreeBytestreamOutputBase<?>> writingOpFactory,
+    WkSerdeDtreeMsgPrimitiveWriterCoreFactory<
+      T,YS,
+      WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<T,?,?,YS,YO,D>,
+      WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<T,YS,D,YO>,
+      WkSerdeDtreeBytestreamOutputBase<?>> writingOpFactory,
     WkSerdeDtreeNodeDataEncoderEngineFactory<T, ? super WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl<WkSerdeDtreeBytestreamOutput, WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>, WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>>, ? super YO> txSerializerFactory,
     D definitionBody,
     Class<T> serializableClass) {

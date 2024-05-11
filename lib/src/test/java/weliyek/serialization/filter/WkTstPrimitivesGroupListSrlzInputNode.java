@@ -23,8 +23,8 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
@@ -73,7 +73,7 @@ public class WkTstPrimitivesGroupListSrlzInputNode
       int index,
       WkSerdeDtreeOperationSettings settings,
       WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-      WkSerdeDtreeNodeDataInputComponentCore<WkSzTstPrimitivesGroupList, ?, WkTstPrimitivesGroupListSrlzStructNode, ?, ?, ?>
+      WkSerdeDtreeMsgInputFieldCore<WkSzTstPrimitivesGroupList, ?, WkTstPrimitivesGroupListSrlzStructNode, ?, ?, ?>
         packetfieldCore,
       WkSerdeDtreeDynamicCollectionDefinitionCore<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkTstPrimitivesGroupListSrlzInputNode, WkTstPrimitivesGroupListSrlzStructNode, ?, ?, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?, WkSerdeDtreeOperationSettingsVariableLength, ?, ?>
         definitionCore) {
@@ -83,14 +83,14 @@ public class WkTstPrimitivesGroupListSrlzInputNode
 
     @Override
     public
-    Optional<WkSerdeDtreeNodeDataInputComponent<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerReader>>
+    Optional<WkSerdeDtreeMsgInputField<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerReader>>
     size() {
       return this.readingCore.size();
     }
 
     @Override
     public
-    Optional<WkSerdeDtreeNodeDataInputComponent<WkSzTstPrimitivesGroupList, WkSerdeVariableSizeElementCollection<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettingsVariableLength, ?, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?>, WkSerdeVariableSizeElementCollectionReader<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettingsVariableLength, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader>>>
+    Optional<WkSerdeDtreeMsgInputField<WkSzTstPrimitivesGroupList, WkSerdeVariableSizeElementCollection<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettingsVariableLength, ?, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader, ?, ?, ?, ?>, WkSerdeVariableSizeElementCollectionReader<WkSzTstPrimitivesGroupList, WkSerdeDtreeOperationSettingsVariableLength, WkSzTstPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSzTstPrimitivesGroupStructDefinition, WkSzTstPrimitivesGroupPacketReader>>>
     variableSequence() {
       return this.readingCore.variableSequence();
     }
@@ -121,7 +121,7 @@ public class WkTstPrimitivesGroupListSrlzInputNode
     }
 
     @Override
-    public WkSerdeDtreeNodeDataInputComponent<WkSzTstPrimitivesGroupList, WkTstPrimitivesGroupListSrlzStructNode, ?> packetField() {
+    public WkSerdeDtreeMsgInputField<WkSzTstPrimitivesGroupList, WkTstPrimitivesGroupListSrlzStructNode, ?> packetField() {
       return this.readingCore.packetField();
     }
 

@@ -19,12 +19,13 @@ package weliyek.serialization;
 
 import java.util.Optional;
 
-import weliyek.serialization.tree.WkSerdeDtreeNodeCtrl;
-import weliyek.serialization.tree.WkSerdeDtreeNodeData;
+import weliyek.serialization.tree.WkSerdeDtreeCtrl;
+import weliyek.serialization.tree.WkSerdeDtreeMsg;
 
-public interface WkSerdeDtreeNodeDataComponentHandler<K extends WkSerdeDtreeNodeDataComponent<?,?,?>>
-    extends WkSerdeDtreeNodeData,
-            WkSerdeDtreeNodeCtrl
+@Deprecated
+public interface WkSerdeDtreeNodeDataComponentHandler<K extends WkSerdeDtreeMsgField<?,?,?>>
+    extends WkSerdeDtreeMsg,
+            WkSerdeDtreeCtrl
 {
 
   boolean isAwaitingActivation();

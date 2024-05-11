@@ -17,9 +17,9 @@
  */
 package weliyek.util.array;
 
-import weliyek.serialization.WkSerdeDtreeAggregatorDefinition;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.number.WkSerdeDtreeNumberDefinition;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 
@@ -27,13 +27,13 @@ public interface WkSerdeDtreeDynamicSequenceDefinition<
                         T,
                         XO extends WkSerdeDtreeDynamicSequenceReader<T,?,?,?,?,?,?,?,?,?>,
                         YO extends WkSerdeDtreeDynamicSequenceWriter<T,?,?,?,?,?,?,?,?,?>,
-                        ZD extends WkSerdeDtreeNumberDefinition<?>,
+                        ZD extends WkSerdeDtreeNumberStructDefinition<?>,
                         VD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>>
     extends WkSerdeDtreeDynamicSequence<
-                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, ZD>,
-                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, VD>>,
+                        WkSerdeDtreeStructSubfield<XO, YO, ZD>,
+                        WkSerdeDtreeStructSubfield<XO, YO, VD>>,
             WkSerdeDtreeSequenceDefinition<T>,
-            WkSerdeDtreeAggregatorDefinition<T>
+            WkSerdeDtreeAggregatorStructDefinition<T>
 {
 
 }

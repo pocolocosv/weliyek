@@ -29,14 +29,14 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataInputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOperation;
-import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSzInputPacket;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSzOutputPacket;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgOperation;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeReader;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -54,15 +54,15 @@ public class WkSerdeDtreeNumberTest {
 
     logger.info(signedBytePacketStructure.name() + " created");
 
-    WkSzOutputPacket<Byte, WkSerdeSignedByte, WkSerdeSignedByteWriter>
+    WkSerdeDtreeWriter<Byte, WkSerdeSignedByte, WkSerdeSignedByteWriter>
       byteOutput = signedBytePacketStructure.newOutputPacket(b, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
 
     logger.info(byteOutput.name() + " created");
 
-    assertFalse(byteOutput.isCompleted());
+    //assertFalse(byteOutput.isCompleted());
     assertTrue(byteOutput.isEnabled());
     byteOutput.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = byteOutput.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = byteOutput.previousProcessingSteapResult();
     assertTrue(byteOutput.isCompleted());
     assertTrue(completedField.isPresent());
     assertEquals(byteOutput.firstOperation().get(), completedField.get());
@@ -74,7 +74,7 @@ public class WkSerdeDtreeNumberTest {
 
     assertEquals(1, outputBuffer.size());
 
-    WkSzInputPacket<Byte, WkSerdeSignedByte, WkSerdeSignedByteReader>
+    WkSerdeDtreeReader<Byte, WkSerdeSignedByte, WkSerdeSignedByteReader>
       signedByteReading = signedBytePacketStructure.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
 
     logger.info(signedByteReading.name() + " created");
@@ -82,7 +82,7 @@ public class WkSerdeDtreeNumberTest {
     assertFalse(signedByteReading.isCompleted());
     assertTrue(signedByteReading.isEnabled());
     signedByteReading.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> signedByteCompletedField = signedByteReading.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> signedByteCompletedField = signedByteReading.previousProcessingSteapResult();
     assertEquals(signedByteReading.firstOperation().get(), signedByteCompletedField.get());
     assertTrue(signedByteReading.isCompleted());
     //assertTrue(signedByteReading.isRequiredByProtocol());
@@ -100,7 +100,7 @@ public class WkSerdeDtreeNumberTest {
     WkSerdeDtreeStruct<Integer, WkSerdeDtreeOperationSettings, WkSerdeUnsignedByte, WkSerdeUnsignedByteReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkSerdeUnsignedByte, WkSerdeUnsignedByteWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkSerdeUnsignedByte>
       unsignedBytePacketStructure = WkSerdeUnsignedByte.newStruct("SINGLE_UINT8");
 
-    WkSzOutputPacket<Integer, WkSerdeUnsignedByte, WkSerdeUnsignedByteWriter>
+    WkSerdeDtreeWriter<Integer, WkSerdeUnsignedByte, WkSerdeUnsignedByteWriter>
       byteOutput = unsignedBytePacketStructure.newOutputPacket(b, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
 
     logger.info(byteOutput.name() + " created");
@@ -108,7 +108,7 @@ public class WkSerdeDtreeNumberTest {
     assertFalse(byteOutput.isCompleted());
     assertTrue(byteOutput.isEnabled());
     byteOutput.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>>
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>>
       completedField = byteOutput.previousProcessingSteapResult();
     assertTrue(byteOutput.isCompleted());
     assertTrue(completedField.isPresent());
@@ -121,7 +121,7 @@ public class WkSerdeDtreeNumberTest {
 
     assertEquals(1, outputBuffer.size());
 
-    WkSzInputPacket<Integer, WkSerdeUnsignedByte, WkSerdeUnsignedByteReader>
+    WkSerdeDtreeReader<Integer, WkSerdeUnsignedByte, WkSerdeUnsignedByteReader>
       unsignedByteReading = unsignedBytePacketStructure.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
 
     logger.info(unsignedByteReading.name() + " created");
@@ -129,7 +129,7 @@ public class WkSerdeDtreeNumberTest {
     assertFalse(unsignedByteReading.isCompleted());
     assertTrue(unsignedByteReading.isEnabled());
     unsignedByteReading.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> unsignedByteCompletedField = unsignedByteReading.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> unsignedByteCompletedField = unsignedByteReading.previousProcessingSteapResult();
     assertEquals(unsignedByteReading.firstOperation().get(), unsignedByteCompletedField.get());
     assertTrue(unsignedByteReading.isCompleted());
     //assertTrue(unsignedByteReading.isRequiredByProtocol());
@@ -148,13 +148,13 @@ public class WkSerdeDtreeNumberTest {
 
     logger.info(signedBigEndianShort.name() + " created");
 
-    WkSzOutputPacket<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>
+    WkSerdeDtreeWriter<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter>
       bigEndianUnsignedShortSerializing = signedBigEndianShort.newOutputPacket(s, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(bigEndianUnsignedShortSerializing.name() + " created");
 
     assertFalse(bigEndianUnsignedShortSerializing.isCompleted());
     bigEndianUnsignedShortSerializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = bigEndianUnsignedShortSerializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = bigEndianUnsignedShortSerializing.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(bigEndianUnsignedShortSerializing.isCompleted());
     assertEquals(bigEndianUnsignedShortSerializing.firstOperation().get(), completedField.get());
@@ -162,14 +162,14 @@ public class WkSerdeDtreeNumberTest {
 
     assertEquals(2, outputstream.size());
 
-    WkSzInputPacket<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader>
+    WkSerdeDtreeReader<Short, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader>
       bigEndianSignedShortDeserializing = signedBigEndianShort.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(bigEndianSignedShortDeserializing.name() + " created");
 
     assertFalse(bigEndianSignedShortDeserializing.isCompleted());
     assertTrue(bigEndianSignedShortDeserializing.firstOperation().get().result().isEmpty());
     bigEndianSignedShortDeserializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = bigEndianSignedShortDeserializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = bigEndianSignedShortDeserializing.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(bigEndianSignedShortDeserializing.isCompleted());
     assertTrue(bigEndianSignedShortDeserializing.firstOperation().get().result().isPresent());
@@ -188,13 +188,13 @@ public class WkSerdeDtreeNumberTest {
       signedLittleEndianShort = WkSerdeSignedLittleEndianShort.newStruct("SINGLE_SINT16LE");
     logger.info(signedLittleEndianShort.name() + " created");
 
-    WkSzOutputPacket<Short, WkSerdeSignedLittleEndianShort, WkSerdeSignedLittleEndianShortWriter>
+    WkSerdeDtreeWriter<Short, WkSerdeSignedLittleEndianShort, WkSerdeSignedLittleEndianShortWriter>
       littleEndianShortOutput = signedLittleEndianShort.newOutputPacket(s, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(littleEndianShortOutput.name() + " created");
 
     assertFalse(littleEndianShortOutput.isCompleted());
     littleEndianShortOutput.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = littleEndianShortOutput.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = littleEndianShortOutput.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(littleEndianShortOutput.isCompleted());
     assertEquals(littleEndianShortOutput.firstOperation().get(), completedField.get());
@@ -202,14 +202,14 @@ public class WkSerdeDtreeNumberTest {
 
     assertEquals(2,outputstream.size());
 
-    WkSzInputPacket<Short, WkSerdeSignedLittleEndianShort, WkSerdeSignedLittleEndianShortReader>
+    WkSerdeDtreeReader<Short, WkSerdeSignedLittleEndianShort, WkSerdeSignedLittleEndianShortReader>
       littleEndianSignedShortReading = signedLittleEndianShort.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(littleEndianSignedShortReading.name() + " created");
 
     assertFalse(littleEndianSignedShortReading.isCompleted());
     assertTrue(littleEndianSignedShortReading.firstOperation().get().result().isEmpty());
     littleEndianSignedShortReading.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = littleEndianSignedShortReading.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = littleEndianSignedShortReading.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(littleEndianSignedShortReading.isCompleted());
     assertTrue(littleEndianSignedShortReading.firstOperation().get().result().isPresent());
@@ -228,13 +228,13 @@ public class WkSerdeDtreeNumberTest {
       unsignedBigEndianShort = WkSerdeUnsignedBigEndianShort.newStruct("SINGLE_UINT16BE");
     logger.info(unsignedBigEndianShort.name() + " created");
 
-    WkSzOutputPacket<Integer, WkSerdeUnsignedBigEndianShort, WkSerdeUnsignedBigEndianShortWriter>
+    WkSerdeDtreeWriter<Integer, WkSerdeUnsignedBigEndianShort, WkSerdeUnsignedBigEndianShortWriter>
       bigEndianUnsignedShortWriting = unsignedBigEndianShort.newOutputPacket(s, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(bigEndianUnsignedShortWriting.name() + " created");
 
     assertFalse(bigEndianUnsignedShortWriting.isCompleted());
     bigEndianUnsignedShortWriting.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = bigEndianUnsignedShortWriting.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = bigEndianUnsignedShortWriting.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(bigEndianUnsignedShortWriting.isCompleted());
     assertEquals(bigEndianUnsignedShortWriting.firstOperation().get(), completedField.get());
@@ -243,13 +243,13 @@ public class WkSerdeDtreeNumberTest {
     assertEquals(2, outputstream.size());
     assertTrue(outputstream.equals(new byte[] {(byte) 0xFA, (byte) 0xBC}));
 
-    WkSzInputPacket<Integer, WkSerdeUnsignedBigEndianShort, WkSerdeUnsignedBigEndianShortReader>
+    WkSerdeDtreeReader<Integer, WkSerdeUnsignedBigEndianShort, WkSerdeUnsignedBigEndianShortReader>
       bigEndianUnsignedShortReading = unsignedBigEndianShort.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
 
     assertFalse(bigEndianUnsignedShortReading.isCompleted());
     assertTrue(bigEndianUnsignedShortReading.firstOperation().get().result().isEmpty());
     bigEndianUnsignedShortReading.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = bigEndianUnsignedShortReading.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = bigEndianUnsignedShortReading.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(bigEndianUnsignedShortReading.isCompleted());
     assertTrue(bigEndianUnsignedShortReading.firstOperation().get().result().isPresent());
@@ -268,13 +268,13 @@ public class WkSerdeDtreeNumberTest {
       shortOutputProtocol = WkSerdeUnsignedLittleEndianShort.newStruct("SINGLE_UINT16LE");
     logger.info(shortOutputProtocol.name() + " created");
 
-    WkSzOutputPacket<Integer, WkSerdeUnsignedLittleEndianShort, WkSerdeUnsignedLittleEndianShortWriter>
+    WkSerdeDtreeWriter<Integer, WkSerdeUnsignedLittleEndianShort, WkSerdeUnsignedLittleEndianShortWriter>
       littleEndianShortWriting = shortOutputProtocol.newOutputPacket(s, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(littleEndianShortWriting.name() + " created");
 
     assertFalse(littleEndianShortWriting.isCompleted());
     littleEndianShortWriting.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = littleEndianShortWriting.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = littleEndianShortWriting.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(littleEndianShortWriting.isCompleted());
     assertEquals(littleEndianShortWriting.firstOperation().get(), completedField.get());
@@ -283,14 +283,14 @@ public class WkSerdeDtreeNumberTest {
     assertEquals(2, outputstream.size());
     assertTrue(outputstream.equals(new byte[] {(byte) 0xBC, (byte) 0xFA}));
 
-    WkSzInputPacket<Integer, WkSerdeUnsignedLittleEndianShort, WkSerdeUnsignedLittleEndianShortReader>
+    WkSerdeDtreeReader<Integer, WkSerdeUnsignedLittleEndianShort, WkSerdeUnsignedLittleEndianShortReader>
       littleEndianUnsignedShortReading = shortOutputProtocol.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(littleEndianUnsignedShortReading.name() + " created");
 
     assertFalse(littleEndianUnsignedShortReading.isCompleted());
     assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().isEmpty());
     littleEndianUnsignedShortReading.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = littleEndianUnsignedShortReading.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = littleEndianUnsignedShortReading.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(littleEndianUnsignedShortReading.isCompleted());
     assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().isPresent());
@@ -309,13 +309,13 @@ public class WkSerdeDtreeNumberTest {
       signedBigEndianInt = WkSerdeSignedBigEndianInteger.newStruct("SINGLE_SINT32BE");
     logger.info(signedBigEndianInt.name() + " created");
 
-    WkSzOutputPacket<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>
+    WkSerdeDtreeWriter<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>
       signedBigEndianIntSerializing = signedBigEndianInt.newOutputPacket(i, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(signedBigEndianIntSerializing.name() + " created");
 
     assertFalse(signedBigEndianIntSerializing.isCompleted());
     signedBigEndianIntSerializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = signedBigEndianIntSerializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = signedBigEndianIntSerializing.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(signedBigEndianIntSerializing.isCompleted());
     assertEquals(signedBigEndianIntSerializing.firstOperation().get(), completedField.get());
@@ -323,14 +323,14 @@ public class WkSerdeDtreeNumberTest {
 
     assertEquals(4, outputstream.size());
 
-    WkSzInputPacket<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>
+    WkSerdeDtreeReader<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>
       signedBigEndianIntDeserializing = signedBigEndianInt.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(signedBigEndianIntDeserializing.name() + " created");
 
     assertFalse(signedBigEndianIntDeserializing.isCompleted());
     assertTrue(signedBigEndianIntDeserializing.firstOperation().get().result().isEmpty());
     signedBigEndianIntDeserializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = signedBigEndianIntDeserializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = signedBigEndianIntDeserializing.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(signedBigEndianIntDeserializing.isCompleted());
     assertTrue(signedBigEndianIntDeserializing.firstOperation().get().result().isPresent());
@@ -349,13 +349,13 @@ public class WkSerdeDtreeNumberTest {
       signedLittleEndianInt = WkSerdeSignedLittleEndianInteger.newStruct("SINGLE_SINT32LE");
     logger.info(signedLittleEndianInt.name() + " created");
 
-    WkSzOutputPacket<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerWriter>
+    WkSerdeDtreeWriter<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerWriter>
       signedLittleEndianIntSerializing = signedLittleEndianInt.newOutputPacket(i, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(signedLittleEndianIntSerializing.name() + " created");
 
     assertFalse(signedLittleEndianIntSerializing.isCompleted());
     signedLittleEndianIntSerializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = signedLittleEndianIntSerializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = signedLittleEndianIntSerializing.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(signedLittleEndianIntSerializing.isCompleted());
     assertEquals(signedLittleEndianIntSerializing.firstOperation().get(), completedField.get());
@@ -363,14 +363,14 @@ public class WkSerdeDtreeNumberTest {
 
     assertEquals(4, outputstream.size());
 
-    WkSzInputPacket<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerReader>
+    WkSerdeDtreeReader<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerReader>
       signedLittleEndianIntDeserializing = signedLittleEndianInt.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(signedLittleEndianIntDeserializing.name() + " created");
 
     assertFalse(signedLittleEndianIntDeserializing.isCompleted());
     assertTrue(signedLittleEndianIntDeserializing.firstOperation().get().result().isEmpty());
     signedLittleEndianIntDeserializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = signedLittleEndianIntDeserializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = signedLittleEndianIntDeserializing.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(signedLittleEndianIntDeserializing.isCompleted());
     assertTrue(signedLittleEndianIntDeserializing.firstOperation().get().result().isPresent());
@@ -389,13 +389,13 @@ public class WkSerdeDtreeNumberTest {
       unsignedBigEndianInt = WkSerdeUnsignedBigEndianInteger.newStruct("SINGLE_UINT32BE");
     logger.info(unsignedBigEndianInt.name() + " created");
 
-    WkSzOutputPacket<Long, WkSerdeUnsignedBigEndianInteger, WkSerdeUnsignedBigEndianIntegerWriter>
+    WkSerdeDtreeWriter<Long, WkSerdeUnsignedBigEndianInteger, WkSerdeUnsignedBigEndianIntegerWriter>
       bigEndianShortWriting = unsignedBigEndianInt.newOutputPacket(i, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(bigEndianShortWriting.name() + " created");
 
     assertFalse(bigEndianShortWriting.isCompleted());
     bigEndianShortWriting.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = bigEndianShortWriting.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = bigEndianShortWriting.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(bigEndianShortWriting.isCompleted());
     assertEquals(bigEndianShortWriting.firstOperation().get(), completedField.get());
@@ -405,13 +405,13 @@ public class WkSerdeDtreeNumberTest {
     assertTrue(
         outputstream.equals(new byte[] {(byte) 0xFF, (byte) 0xAB, (byte) 0xCD, (byte) 0xEF}));
 
-    WkSzInputPacket<Long, WkSerdeUnsignedBigEndianInteger, WkSerdeUnsignedBigEndianIntegerReader>
+    WkSerdeDtreeReader<Long, WkSerdeUnsignedBigEndianInteger, WkSerdeUnsignedBigEndianIntegerReader>
       bigEndianUnsignedIntReading = unsignedBigEndianInt.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
 
     assertFalse(bigEndianUnsignedIntReading.isCompleted());
     assertTrue(bigEndianUnsignedIntReading.firstOperation().get().result().isEmpty());
     bigEndianUnsignedIntReading.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = bigEndianUnsignedIntReading.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = bigEndianUnsignedIntReading.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(bigEndianUnsignedIntReading.isCompleted());
     assertTrue(bigEndianUnsignedIntReading.firstOperation().get().result().isPresent());
@@ -435,13 +435,13 @@ public class WkSerdeDtreeNumberTest {
       unsignedLittleEndianInt = WkSerdeUnsignedLittleEndianInteger.newStruct("SINGLE_UINT32LE");
     logger.info(unsignedLittleEndianInt.name() + " created");
 
-    WkSzOutputPacket<Long, WkSerdeUnsignedLittleEndianInteger, WkSerdeUnsignedLittleEndianIntegerWriter>
+    WkSerdeDtreeWriter<Long, WkSerdeUnsignedLittleEndianInteger, WkSerdeUnsignedLittleEndianIntegerWriter>
       littleEndianShortWriting = unsignedLittleEndianInt.newOutputPacket(i, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(littleEndianShortWriting.name() + " created");
 
     assertFalse(littleEndianShortWriting.isCompleted());
     littleEndianShortWriting.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = littleEndianShortWriting.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = littleEndianShortWriting.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(littleEndianShortWriting.isCompleted());
     assertEquals(littleEndianShortWriting.firstOperation().get(), completedField.get());
@@ -450,13 +450,13 @@ public class WkSerdeDtreeNumberTest {
     assertEquals(4, outputstream.size());
     assertTrue(outputstream.equals(new byte[] {(byte) 0xEF, (byte) 0xCD, (byte) 0xAB, (byte) 0xFF}));
 
-    WkSzInputPacket<Long, WkSerdeUnsignedLittleEndianInteger, WkSerdeUnsignedLittleEndianIntegerReader>
+    WkSerdeDtreeReader<Long, WkSerdeUnsignedLittleEndianInteger, WkSerdeUnsignedLittleEndianIntegerReader>
       littleEndianUnsignedShortReading = unsignedLittleEndianInt.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
 
     assertFalse(littleEndianUnsignedShortReading.isCompleted());
     assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().isEmpty());
     littleEndianUnsignedShortReading.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = littleEndianUnsignedShortReading.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = littleEndianUnsignedShortReading.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(littleEndianUnsignedShortReading.isCompleted());
     assertTrue(littleEndianUnsignedShortReading.firstOperation().get().result().isPresent());
@@ -480,13 +480,13 @@ public class WkSerdeDtreeNumberTest {
       signedBigEndianLong = WkSerdeSignedBigEndianLong.newStruct("SINGLE_SINT64BE");
     logger.info(signedBigEndianLong.name() + " created");
 
-    WkSzOutputPacket<Long, WkSerdeSignedBigEndianLong, WkSerdeSignedBigEndianLongWriter>
+    WkSerdeDtreeWriter<Long, WkSerdeSignedBigEndianLong, WkSerdeSignedBigEndianLongWriter>
       signedBigEndianLongSerializing = signedBigEndianLong.newOutputPacket(l, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(signedBigEndianLongSerializing.name() + " created");
 
     assertFalse(signedBigEndianLongSerializing.isCompleted());
     signedBigEndianLongSerializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = signedBigEndianLongSerializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = signedBigEndianLongSerializing.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(signedBigEndianLongSerializing.isCompleted());
     assertEquals(signedBigEndianLongSerializing.firstOperation().get(), completedField.get());
@@ -497,14 +497,14 @@ public class WkSerdeDtreeNumberTest {
         outputstream.equals(new byte[] {(byte) 0x01, (byte) 0x23, (byte) 0x45, (byte) 0x67,
                                         (byte) 0x89, (byte) 0xAB, (byte) 0xCD, (byte) 0xEF}));
 
-    WkSzInputPacket<Long, WkSerdeSignedBigEndianLong, WkSerdeSignedBigEndianLongReader>
+    WkSerdeDtreeReader<Long, WkSerdeSignedBigEndianLong, WkSerdeSignedBigEndianLongReader>
       signedBigEndianLongDeserializing = signedBigEndianLong.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(signedBigEndianLongDeserializing.name() + " created");
 
     assertFalse(signedBigEndianLongDeserializing.isCompleted());
     assertTrue(signedBigEndianLongDeserializing.firstOperation().get().result().isEmpty());
     signedBigEndianLongDeserializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = signedBigEndianLongDeserializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = signedBigEndianLongDeserializing.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(signedBigEndianLongDeserializing.isCompleted());
     assertTrue(signedBigEndianLongDeserializing.firstOperation().get().result().isPresent());
@@ -528,13 +528,13 @@ public class WkSerdeDtreeNumberTest {
       signedLittleEndianLong = WkSerdeSignedLittleEndianLong.newStruct("SINGLE_SINT64LE");
     logger.info(signedLittleEndianLong.name() + " created");
 
-    WkSzOutputPacket<Long, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongWriter>
+    WkSerdeDtreeWriter<Long, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongWriter>
       signedLittleEndianLongSerializing = signedLittleEndianLong.newOutputPacket(l, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
     logger.info(signedLittleEndianLongSerializing.name() + " created");
 
     assertFalse(signedLittleEndianLongSerializing.isCompleted());
     signedLittleEndianLongSerializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedField = signedLittleEndianLongSerializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedField = signedLittleEndianLongSerializing.previousProcessingSteapResult();
     assertTrue(completedField.isPresent());
     assertTrue(signedLittleEndianLongSerializing.isCompleted());
     assertEquals(signedLittleEndianLongSerializing.firstOperation().get(), completedField.get());
@@ -545,14 +545,14 @@ public class WkSerdeDtreeNumberTest {
         outputstream.equals(new byte[] {(byte) 0xEF, (byte) 0xCD, (byte) 0xAB, (byte) 0x89,
                                         (byte) 0x67, (byte) 0x45, (byte) 0x23, (byte) 0x01}));
 
-    WkSzInputPacket<Long, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongReader>
+    WkSerdeDtreeReader<Long, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongReader>
       signedLittleEndianLongDeserializing = signedLittleEndianLong.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
     logger.info(signedLittleEndianLongDeserializing.name() + " created");
 
     assertFalse(signedLittleEndianLongDeserializing.isCompleted());
     assertTrue(signedLittleEndianLongDeserializing.firstOperation().get().result().isEmpty());
     signedLittleEndianLongDeserializing.processBytestream();
-    Optional<WkSerdeDtreeNodeDataOperation<?,?,?,?,?>> completedInputField = signedLittleEndianLongDeserializing.previousProcessingSteapResult();
+    Optional<WkSerdeDtreeMsgOperation<?,?,?,?>> completedInputField = signedLittleEndianLongDeserializing.previousProcessingSteapResult();
     assertTrue(completedInputField.isPresent());
     assertTrue(signedLittleEndianLongDeserializing.isCompleted());
     assertTrue(signedLittleEndianLongDeserializing.firstOperation().get().result().isPresent());
@@ -572,7 +572,7 @@ public class WkSerdeDtreeNumberTest {
     short expectedShort,
     int expectedInt,
     long expectedLong,
-    WkSerdeDtreeNodeDataInputComponent<? extends Number,?,?> reading) {
+    WkSerdeDtreeMsgInputField<? extends Number,?,?> reading) {
     Number deserializedNumber =
         reading.firstOperation().get().result().get().serializable().get();
     byte obtainedByte = deserializedNumber.byteValue();

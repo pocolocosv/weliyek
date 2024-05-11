@@ -20,22 +20,23 @@ package weliyek.serialization;
 import java.util.List;
 import java.util.function.Predicate;
 
+@Deprecated
 public class WkSrlzInputPacketSubfieldFrameNodeCore<
                         ST,
                         SXS extends WkSerdeDtreeOperationSettings,
-                        SXD extends WkSerdeDtreeNodeStructDefinition<ST>,
-                        SXO extends WkSerdeDtreeNodeDataReader<ST,SXS,?,?,SXD>,
+                        SXD extends WkSerdeDtreeStructDefinition<ST>,
+                        SXO extends WkSerdeDtreeMsgReader<ST,SXS,?,?,SXD>,
                         T,
                         XBC extends WkSerdeDtreeBytestreamInputBase<?>,
-                        XD extends WkSerdeDtreeAggregatorDefinition<T>,
-                        XO extends WkSerdeDtreeAggregatorReader<T,?,? extends WkSerdeDtreeOperationInputRuntime<?>,?,XD>>
+                        XD extends WkSerdeDtreeAggregatorStructDefinition<T>,
+                        XO extends WkSerdeDtreeAggregatorMsgReader<T,?,? extends WkSerdeDtreeOperationInputRuntime<?>,?,XD>>
     extends WkSrlzPacketSubfieldFrameNodeCore<
                         SXS, SXD,
                         WkSrlzStructSubcomponentFrameNodeCore<ST,SXS,SXD,SXO,?,XBC,XD,XO,?,?,?,?,?,?,? extends SXD,? extends XD>,
-                        WkSerdeDtreeNodeDataInputComponent<ST,SXD,SXO>,
-                        WkSerdeDtreeNodeDataInputComponentCore<ST,SXS,SXD,SXO,XBC,XO>,
+                        WkSerdeDtreeMsgInputField<ST,SXD,SXO>,
+                        WkSerdeDtreeMsgInputFieldCore<ST,SXS,SXD,SXO,XBC,XO>,
                         WkSrlzInputPacketSubfieldFrameNode<ST,SXD,SXO>,
-                        WkSerdeDtreeAggregatorReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>,
+                        WkSerdeDtreeAggregatorMsgReaderCore<?,?,?,XBC,?,?,?,XD,XO,?,?,?>,
                         XD>
     implements WkSrlzInputPacketSubfieldFrameNode<ST,SXD,SXO>
 {
@@ -48,8 +49,8 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
 
   @Override
   protected void onInitialization() {
-    final WkSerdeDtreeAggregatorReaderCore<?,?,?,?,?,?,?,XD,XO,?,?,?> parentOpCore = parentOperationCore();
-    WkSerdeDtreeAggregatorDefinition<?> parentDef = parentOpCore.definition();
+    final WkSerdeDtreeAggregatorMsgReaderCore<?,?,?,?,?,?,?,XD,XO,?,?,?> parentOpCore = parentOperationCore();
+    WkSerdeDtreeAggregatorStructDefinition<?> parentDef = parentOpCore.definition();
     List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> requiredSubfields = parentDef.requiredSubfields();
     if(-1 != requiredSubfields.indexOf(subcomponentHandlerCore().body())) {
       this.isRequiredByProto = true;
@@ -64,8 +65,8 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected WkSerdeDtreeNodeDataInputComponentCoreNonroot<ST,SXS,SXD,SXO,XBC,XO> newPacket() {
-    return new WkSerdeDtreeNodeDataInputComponentCoreNonroot<>(1, this);
+  protected WkSerdeDtreeMsgInputSubfieldCore<ST,SXS,SXD,SXO,XBC,XO> newPacket() {
+    return new WkSerdeDtreeMsgInputSubfieldCore<>(1, this);
   }
 
   @Override
@@ -91,7 +92,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  public WkSerdeDtreeNodeStructComponentCore<ST,SXS,SXD,SXO,XBC,?,?,?,?,? extends SXD> protocolFieldCore() {
+  public WkSerdeDtreeStructFieldCore<ST,SXS,SXD,SXO,XBC,?,?,?,?,? extends SXD> protocolFieldCore() {
     return subcomponentHandlerCore().protocolFieldCore();
   }
 
@@ -101,7 +102,7 @@ public class WkSrlzInputPacketSubfieldFrameNodeCore<
   }
 
   @Override
-  protected final WkSerdeDtreeNodeStructComponent<? extends SXD> protocolField() {
+  protected final WkSerdeDtreeStructField<? extends SXD> protocolField() {
     return protocolFieldCore().asProtocolField();
   }
 

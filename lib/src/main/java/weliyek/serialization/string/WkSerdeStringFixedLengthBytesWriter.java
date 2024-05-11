@@ -24,8 +24,8 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponent;
-import weliyek.serialization.WkSerdeDtreeNodeDataOutputComponentCore;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
@@ -56,7 +56,7 @@ public class WkSerdeStringFixedLengthBytesWriter
     String serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeNodeDataOutputComponentCore<
+    WkSerdeDtreeMsgOutputFieldCore<
       String,?,WkSerdeStringFixedLengthBytes,?,?,?> serializingfieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       ?,?,?,WkSerdeDtreeOperationSettings,WkSerdeStringFixedLengthBytesWriter,
@@ -80,7 +80,7 @@ public class WkSerdeStringFixedLengthBytesWriter
 
   @Override
   public
-  Optional<WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>
+  Optional<WkSerdeDtreeMsgOutputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>
   primitiveArray() {
     return this.operationCore.primitiveArray();
   }
@@ -111,7 +111,7 @@ public class WkSerdeStringFixedLengthBytesWriter
   }
 
   @Override
-  public WkSerdeDtreeNodeDataOutputComponent<String, WkSerdeStringFixedLengthBytes, ?> packetField() {
+  public WkSerdeDtreeMsgOutputField<String, WkSerdeStringFixedLengthBytes, ?> packetField() {
     return this.operationCore.packetField();
   }
 
@@ -132,7 +132,7 @@ public class WkSerdeStringFixedLengthBytesWriter
 
   @Override
   public
-  Optional<WkSerdeDtreeNodeDataOutputComponent<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>
+  Optional<WkSerdeDtreeMsgOutputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>
   bytes() {
     return this.operationCore.bytes();
   }

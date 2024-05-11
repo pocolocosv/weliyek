@@ -20,7 +20,7 @@ package weliyek.serialization;
 public interface WkSerdeDtreeOperationSettingsVariableLength extends WkSerdeDtreeOperationSettings
 {
 
-  static <AO extends WkSerdeDtreeNodeDataOperation<WkSerdeDtreeOperationSettingsVariableLength,?,?,?,?>>
+  static <AO extends WkSerdeDtreeMsgOperation<WkSerdeDtreeOperationSettingsVariableLength,?,?,?>>
   WkOperationSettingsFactory<AO, WkSerdeDtreeOperationSettingsVariableLength>
   builderWithLength(int length) {
     return new WkOperationSettingsFactory<AO, WkSerdeDtreeOperationSettingsVariableLength>() {

@@ -19,12 +19,12 @@ package weliyek.util.array;
 
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgOperation;
+import weliyek.serialization.WkSerdeDtreeMsgField;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeAggregatorOperation;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.number.WkSerdeDtreeNumberOperation;
+import weliyek.serialization.number.WkSerdeDtreeNumberMsgOperation;
 import weliyek.serialization.sequence.WkSerdeDtreeSequenceOperation;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceOperation;
 
@@ -33,14 +33,14 @@ public interface WkSerdeDtreeDynamicSequenceOperation<
                         Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeDtreeDynamicSequenceDefinition<?,?,?,?,?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
-                        ZO extends WkSerdeDtreeNumberOperation<?,?,?,?,?>,
-                        ZK extends WkSerdeDtreeNodeDataComponent<?,ZO,?>,
-                        VO extends WkSerdeDtreeVariableSizeSequenceOperation<?,?,?,?,?>,
-                        VK extends WkSerdeDtreeNodeDataComponent<?,VO,?>>
+                        K extends WkSerdeDtreeMsgField<?,?,?>,
+                        ZO extends WkSerdeDtreeNumberMsgOperation<?,?,?,?>,
+                        ZK extends WkSerdeDtreeMsgField<?,ZO,?>,
+                        VO extends WkSerdeDtreeVariableSizeSequenceOperation<?,?,?,?>,
+                        VK extends WkSerdeDtreeMsgField<?,VO,?>>
     extends WkSerdeDtreeDynamicSequence<Optional<ZK>, Optional<VK>>,
-            WkSerdeDtreeSequenceOperation<S, Q, R, D, K>,
-            WkSerdeDtreeAggregatorOperation<S, Q, R, D, K>
+            WkSerdeDtreeSequenceOperation<S, Q, R, D>,
+            WkSerdeDtreeAggregatorMsgOperation<S, Q, R, D>
 {
 
 }

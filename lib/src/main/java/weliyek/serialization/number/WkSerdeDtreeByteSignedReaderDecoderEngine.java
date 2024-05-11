@@ -31,7 +31,7 @@ public final class WkSerdeDtreeByteSignedReaderDecoderEngine
 
   public WkSerdeDtreeByteSignedReaderDecoderEngine(
       WkSerdeDtreeOperationInputRuntimeCtrl<?,?,?> runtimeCtrl,
-      WkSerdeDtreeNumberReader<Byte,?,?,?,?> readingOperation) {
+      WkSerdeDtreeNumberMsgReader<Byte,?,?,?,?> readingOperation) {
     super((i) -> Byte.valueOf((byte) i), runtimeCtrl, readingOperation);
   }
 

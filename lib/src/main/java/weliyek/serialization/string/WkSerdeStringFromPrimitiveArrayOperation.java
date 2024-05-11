@@ -21,8 +21,8 @@ import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeOperationRuntimeCommon;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeAggregatorOperation;
-import weliyek.serialization.WkSerdeDtreeNodeDataComponent;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgOperation;
+import weliyek.serialization.WkSerdeDtreeMsgField;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayOperation;
 
@@ -31,11 +31,11 @@ public interface WkSerdeStringFromPrimitiveArrayOperation<
                         Q extends WkSerdeDtreeOperationRuntimeCommon<?>,
                         R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeStringFromPrimitiveArrayDefinition<?,?,?>,
-                        K extends WkSerdeDtreeNodeDataComponent<?,?,?>,
+                        K extends WkSerdeDtreeMsgField<?,?,?>,
                         SO extends WkSerdeDtreePrimitiveArrayOperation<?,?,?,?,?>,
-                        SK extends WkSerdeDtreeNodeDataComponent<?,SO,?>>
+                        SK extends WkSerdeDtreeMsgField<?,SO,?>>
         extends WkSerdeStringFromPrimitiveArray<Optional<SK>>,
-                WkSerdeDtreeAggregatorOperation<S, Q, R, D, K>
+                WkSerdeDtreeAggregatorMsgOperation<S, Q, R, D, K>
 {
 
 }

@@ -63,7 +63,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayWriterCore<
     WkSerdeDtreeMsgOutputFieldCore<String,?,YD,?,?,?> packetHandlerCore,
     DC definitionCore,
     YO operationBody) {
-    super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
+    super(index, parentBytestream, serializable, settings, packetHandlerCore, definitionCore, operationBody);
   }
 
   @Override

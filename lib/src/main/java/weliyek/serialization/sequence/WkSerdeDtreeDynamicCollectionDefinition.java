@@ -19,12 +19,12 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeMsgReader;
 import weliyek.serialization.WkSerdeDtreeMsgWriter;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.util.array.WkSerdeDtreeDynamicSequenceDefinition;
 
@@ -44,8 +44,8 @@ public interface WkSerdeDtreeDynamicCollectionDefinition<
                         VXS extends WkSerdeDtreeOperationSettingsVariableLength,
                         VYS extends WkSerdeDtreeOperationSettings>
     extends WkSerdeDtreeDynamicCollection<
-                        WkSerdeDtreeNodeStructComponentHandler<XO, YO, ZD>,
-                        WkSerdeDtreeNodeStructComponentHandler<
+                        WkSerdeDtreeStructSubfield<XO, YO, ZD>,
+                        WkSerdeDtreeStructSubfield<
                           XO, YO, WkSerdeVariableSizeElementCollection<T,VXS,VYS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>>,
             WkSerdeDtreeCollectionDefinition<T>,
             WkSerdeDtreeDynamicSequenceDefinition<

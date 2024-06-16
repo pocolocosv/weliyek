@@ -44,9 +44,9 @@ public abstract class WkSerdeDtreeAggregatorMsgWriterCore<
 
   protected WkSerdeDtreeAggregatorMsgWriterCore(
     int index,
+    T serializable,
     YS settings,
     AYB parentBytestream,
-    T serializable,
     WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> dataFieldCore,
     YDC definitionCore,
     YO operationBody) {

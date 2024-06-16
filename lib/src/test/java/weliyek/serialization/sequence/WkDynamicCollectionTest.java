@@ -28,24 +28,24 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
-import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeReader;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
+import weliyek.serialization.WkSerdeDtreeReader;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeWriter;
+import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShortReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShortWriter;
-import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
+import weliyek.serialization.number.WkSerdeSignedLittleEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerWriter;
-import weliyek.serialization.number.WkSerdeSignedLittleEndianInteger;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkDynamicCollectionTest
@@ -56,16 +56,31 @@ public class WkDynamicCollectionTest
                                                                 Short.valueOf((short) 2),
                                                                 Short.valueOf((short) 3));
   private static WkSerdeDtreeStruct<
-                          List<Short>,
-                          WkSerdeDtreeOperationSettings,
-                          WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSerdeDtreeOperationSettingsVariableLength, ?>,
-                          WkSerdeDtreeDynamicCollectionReader<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>, WkSerdeDtreeOperationResult<List<Short>>, WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSerdeDtreeOperationSettingsVariableLength, ?>, Integer, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSerdeDtreeOperationSettingsVariableLength>,
-                          WkSerdeDtreeBytestreamInputBase<?>,
-                          WkSerdeDtreeOperationSettings,
-                          WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSerdeDtreeOperationSettings>,
-                          WkSerdeDtreeDynamicCollectionWriter< List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>, WkSerdeDtreeOperationResult<List<Short>>, WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSerdeDtreeOperationSettings>, Integer, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeDtreeOperationSettings>,
-                          WkSerdeDtreeBytestreamOutputBase<?>,
-                          WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationSettings, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSerdeDtreeOperationSettingsVariableLength, WkSerdeDtreeOperationSettings>>
+                      List<Short>,
+                      WkSerdeDtreeOperationSettings,
+                      WkSerdeDynamicCollection<
+                        List<Short>, WkSerdeDtreeOperationSettings, ?, Integer,
+                        WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader,
+                        WkSerdeSignedLittleEndianInteger, ?, ?, ?,
+                        ? extends WkSerdeSignedLittleEndianInteger, Short,
+                        WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort,
+                        WkSerdeSignedBigEndianShortReader, ?, ?, ?,
+                        ? extends WkSerdeSignedBigEndianShort,
+                        WkSerdeDtreeOperationSettingsVariableLength, ?>,
+                      WkSerdeDtreeDynamicCollectionReader<
+                        List<Short>, WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                        WkSerdeDtreeOperationResult<List<Short>>,
+                        WkSerdeDynamicCollection<
+                          List<Short>, WkSerdeDtreeOperationSettings, ?, Integer,
+                          WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader,
+                          WkSerdeSignedLittleEndianInteger, ?, ?, ?,
+                          ? extends WkSerdeSignedLittleEndianInteger, Short,
+                          WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort,
+                          WkSerdeSignedBigEndianShortReader, ?, ?, ?,
+                          ? extends WkSerdeSignedBigEndianShort, WkSerdeDtreeOperationSettingsVariableLength, ?>,
+                      Integer, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSerdeDtreeOperationSettingsVariableLength>, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings,
+                      WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ? extends WkSerdeSignedLittleEndianInteger, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ? extends WkSerdeSignedBigEndianShort, ?, WkSerdeDtreeOperationSettings>, WkSerdeDtreeDynamicCollectionWriter<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>, WkSerdeDtreeOperationResult<List<Short>>, WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ? extends WkSerdeSignedLittleEndianInteger, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ? extends WkSerdeSignedBigEndianShort, ?, WkSerdeDtreeOperationSettings>, Integer, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeDtreeOperationSettings>, WkSerdeDtreeBytestreamOutputBase<?>, WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationSettings, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSerdeDtreeOperationSettingsVariableLength, WkSerdeDtreeOperationSettings>>
                               DYN_LIST_PACKET;
 
   @SuppressWarnings("unchecked")
@@ -128,14 +143,14 @@ public class WkDynamicCollectionTest
   @Test
   public void test() {
     KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
-    WkSerdeDtreeWriter<List<Short>, WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSerdeDtreeOperationSettings>, WkSerdeDtreeDynamicCollectionWriter<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>, WkSerdeDtreeOperationResult<List<Short>>, WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ?, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ?, ?, WkSerdeDtreeOperationSettings>, Integer, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeDtreeOperationSettings>>
+    WkSerdeDtreeWriter<List<Short>, WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ? extends WkSerdeSignedLittleEndianInteger, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ? extends WkSerdeSignedBigEndianShort, ?, WkSerdeDtreeOperationSettings>, WkSerdeDtreeDynamicCollectionWriter<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>, WkSerdeDtreeOperationResult<List<Short>>, WkSerdeDynamicCollection<List<Short>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ? extends WkSerdeSignedLittleEndianInteger, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, ? extends WkSerdeSignedBigEndianShort, ?, WkSerdeDtreeOperationSettings>, Integer, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeDtreeOperationSettings>>
       dynlistSerializer = DYN_LIST_PACKET.newOutputPacket(ORIGINAL_LIST, WkSerdeDtreeOperationSettings.EMPTY, outputstream);
 
     while(dynlistSerializer.isInProgress()) {
       dynlistSerializer.processBytestream();
     }
 
-    WkSerdeDtreeReader<List<Short>, WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSerdeDtreeOperationSettingsVariableLength, ?>, WkSerdeDtreeDynamicCollectionReader<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>, WkSerdeDtreeOperationResult<List<Short>>, WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ?, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ?, WkSerdeDtreeOperationSettingsVariableLength, ?>, Integer, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSerdeDtreeOperationSettingsVariableLength>>
+    WkSerdeDtreeReader<List<Short>, WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ? extends WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ? extends WkSerdeSignedBigEndianShort, WkSerdeDtreeOperationSettingsVariableLength, ?>, WkSerdeDtreeDynamicCollectionReader<List<Short>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>, WkSerdeDtreeOperationResult<List<Short>>, WkSerdeDynamicCollection<List<Short>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, ?, ?, ?, ? extends WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, ?, ?, ?, ? extends WkSerdeSignedBigEndianShort, WkSerdeDtreeOperationSettingsVariableLength, ?>, Integer, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSerdeDtreeOperationSettingsVariableLength>>
       dynlistDeserializer = DYN_LIST_PACKET.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
 
     while(dynlistDeserializer.isInProgress()) {

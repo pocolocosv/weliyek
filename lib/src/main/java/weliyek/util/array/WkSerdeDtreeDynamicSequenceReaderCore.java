@@ -29,8 +29,8 @@ import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
-import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
 
@@ -71,10 +71,10 @@ public abstract class WkSerdeDtreeDynamicSequenceReaderCore<
     int index,
     XS settings,
     AXBC parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
     XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
+    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

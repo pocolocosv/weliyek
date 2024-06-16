@@ -21,17 +21,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgReader;
-import weliyek.serialization.WkSerdeDtreeMsgInputField;
-import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
-import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 
@@ -52,7 +51,7 @@ public class WkSerdeDynamicCollectionReader<
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                         WkSerdeDtreeOperationResult<T>,
                         WkSerdeDynamicCollection<
-                          T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
+                          T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>,
                         ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>
 {
 
@@ -63,43 +62,47 @@ public class WkSerdeDynamicCollectionReader<
                           WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                           WkSerdeDtreeOperationResult<T>,
                           WkSerdeDynamicCollection<
-                            T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
+                            T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>,
                           ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
                         WkSerdeDynamicCollection<
-                          T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
+                          T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>,
                         ZT, ZXS, ZXO, ZXD, ET, EXS, EXD, EXO, VXS> operationCore;
 
   WkSerdeDynamicCollectionReader(
     int index,
     XS settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<
-      T,?,WkSerdeDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
-      ?,?,?> packetfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
-      T,XS,
+      T, XS,
       WkSerdeDtreeDynamicCollectionReader<
-        T,XS,WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,WkSerdeDtreeOperationResult<T>,
-        WkSerdeDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
-        ZT,ZXO,ZXD,ET,EXS,EXD,EXO,VXS>,
-      WkSerdeDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
-      ?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?,?> definitionCore) {
+        T, XS,
+        WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+        WkSerdeDtreeOperationResult<T>,
+        WkSerdeDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ? extends ZXD, ET, EXS, EXD, EXO, ?, ?, ?, ? extends EXD, VXS, ?>,
+        ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
+      WkSerdeDynamicCollection<
+        T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>,
+      ?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?,
+      ? extends WkSerdeDynamicCollection<
+                  T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>>
+      definitionCore) {
     this.operationCore = new WkSerdeDtreeDynamicCollectionReaderCore<
                                 T, XS,
                                 WkSerdeDtreeDynamicCollectionReader<
-                                T, XS,
-                                WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
-                                WkSerdeDtreeOperationResult<T>,
+                                  T, XS,
+                                  WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                  WkSerdeDtreeOperationResult<T>,
+                                  WkSerdeDynamicCollection<
+                                    T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>,
+                                  ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
                                 WkSerdeDynamicCollection<
-                                  T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
-                                ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>,
-                                WkSerdeDynamicCollection<
-                                  T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>,
+                                  T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>,
                                 ZT, ZXS, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>(
                                     index,
                                     settings,
                                     parentBytestream,
-                                    packetfieldCore,
+                                    readerFieldCore,
                                     definitionCore,
                                     this);
   }
@@ -118,7 +121,7 @@ public class WkSerdeDynamicCollectionReader<
 
   @Override
   public
-  WkSerdeDynamicCollection<T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,VXS,?>
+  WkSerdeDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ? extends ZXD, ET, EXS, EXD, EXO, ?, ?, ?, ? extends EXD, VXS, ?>
   definition() {
     return this.operationCore.definition();
   }
@@ -145,9 +148,9 @@ public class WkSerdeDynamicCollectionReader<
 
   @Override
   public
-  WkSerdeDtreeMsgInputField<T, WkSerdeDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ?, ET, EXS, EXD, EXO, ?, ?, ?, ?, VXS, ?>, ?>
-  packetField() {
-    return this.operationCore.packetField();
+  WkSerdeDtreeMsgInputField<?,?,?>
+  parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
@@ -156,7 +159,7 @@ public class WkSerdeDynamicCollectionReader<
   }
 
   @Override
-  public List<WkSrlzInputPacketSubfieldFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeMsgInputField<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 

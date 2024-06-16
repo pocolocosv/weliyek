@@ -52,7 +52,7 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
     WkSerdeDtreeMsgOutputFieldCore<T,?,YD,?,?,?> serializingfieldCore,
     WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T,?,?,?,YS,YD,YO,?> definitionCore,
     YO body) {
-    super(index, serializable, settings, parentBytestream, serializingfieldCore, definitionCore, body);
+    super(index, parentBytestream, serializable, settings, serializingfieldCore, definitionCore, body);
   }
 
   @Override

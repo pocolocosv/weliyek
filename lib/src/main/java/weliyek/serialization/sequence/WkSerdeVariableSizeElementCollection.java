@@ -22,21 +22,24 @@ import java.util.List;
 import java.util.function.Function;
 
 import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeMsgReader;
 import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
-import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
-import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
-import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 
 public final class WkSerdeVariableSizeElementCollection<
                         T extends Collection<ET>,
@@ -88,8 +91,12 @@ public final class WkSerdeVariableSizeElementCollection<
     int maxSize,
     Class<T> collectionClass,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
-      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
+      ? extends WkSerdeDtreeStructDefinitionCore<
+        ET,EXS,?,?,EXD,?,EXO,?,
+        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+        EYS,?,?,EYD,?,EYO,?,
+        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+        ED,?>> elementsDefinitionFactory,
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
     WkOperationSettingsFactory<
@@ -122,17 +129,16 @@ public final class WkSerdeVariableSizeElementCollection<
                  EYD extends WkSerdeDtreeStructDefinition<ET>,
                  EYO extends WkSerdeDtreeMsgWriter<ET,EYS,?,?,EYD>,
                  ED extends WkSerdeDtreeStructDefinition<ET>>
-  WkSerdeDtreeStructDefinitionCore<
-                 T,
-                 XS,?,?,
-                 WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-                 WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
-                 WkSerdeDtreeBytestreamInputBase<?>,
-                 YS,?,?,
-                 WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-                 WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
-                 WkSerdeDtreeBytestreamOutputBase<?>,
-                 WkSerdeVariableSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>,?>
+  WkSerdeElementCollectionDefinitionCoreSimplified<
+                  T,
+                  XS,
+                  WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                  WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
+                  YS,
+                  WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                  WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
+                  ET, EXS, EXD, EXO, EYS, EYD, EYO, ED,
+                  WkSerdeVariableSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>
   newCore(
     String elementsLabel,
     int minSize,
@@ -143,10 +149,14 @@ public final class WkSerdeVariableSizeElementCollection<
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
-      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
+      ? extends WkSerdeDtreeStructDefinitionCore<
+        ET,EXS,?,?,EXD,?,EXO,?,
+        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+        EYS,?,?,EYD,?,EYO,?,
+        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+        ED,?>> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     return new WkSerdeVariableSizeElementCollection<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
   }
 
@@ -165,7 +175,7 @@ public final class WkSerdeVariableSizeElementCollection<
   private WkSerdeVariableSizeElementCollection(
     int minSize,
     int maxSize,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     WkOperationSettingsFactory<
@@ -173,8 +183,12 @@ public final class WkSerdeVariableSizeElementCollection<
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ET,EXS,EXD,EXO,WkSerdeDtreeBytestreamInputBase<?>,
-      EYS,EYD,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
+      ? extends WkSerdeDtreeStructDefinitionCore<
+        ET,EXS,?,?,EXD,?,EXO,?,
+        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+        EYS,?,?,EYD,?,EYO,?,
+        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+        ED,?>> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory) {
     this.definitionCore = new WkSerdeElementCollectionDefinitionCoreSimplified<
                                 T,
@@ -206,16 +220,15 @@ public final class WkSerdeVariableSizeElementCollection<
   }
 
   @Override
-  public
-  WkSerdeDtreeNodeStructComponentHandler<
-    WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
-    WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>, ED>
+  public WkSerdeDtreeStructSubfield<
+            WkSerdeVariableSizeElementCollectionReader<T, XS, ET, EXS, EXD, EXO>,
+            WkSerdeVariableSizeElementCollectionWriter<T, YS, ET, EYS, EYD, EYO>, ED>
   elements() {
     return this.definitionCore.elements();
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDtreeStructField<?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -225,7 +238,7 @@ public final class WkSerdeVariableSizeElementCollection<
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeStructField<?>> subfields() {
     return this.definitionCore.subfields();
   }
 

@@ -30,10 +30,6 @@ import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
@@ -41,11 +37,15 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
+import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
+import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.WkSzPacketWriteDisaggregator;
-import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceReader;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
@@ -131,7 +131,8 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
     WkOperationSettingsFactory<YO, ZYS> sizeComponentTxSettingsFactory,
     WkSzPacketWriteDisaggregator<ZX, ZYD, T, YO> sizeComponentTxDesaggregator,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ZX,ZXS,?,?,ZXD,?,ZXO,?,XBC,ZYS,?,?,ZYD,?,ZYO,?,YBC,ZD,?>> sizeComponentDefinitionFactory,
+      ? extends WkSerdeDtreeStructDefinitionCore<ZX,ZXS,?,?,ZXD,?,ZXO,?,XBC,ZYS,?,?,ZYD,?,ZYO,?,YBC,ZD,?>>
+        sizeComponentDefinitionFactory,
     String varseqComponentLabel,
     WkOperationSettingsFactory<XO,VXS> varseqComponentRxSettingsFactory,
     WkOperationSettingsFactory<YO,VYS> varseqComponentTxSettingsFactory,

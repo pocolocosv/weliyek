@@ -21,16 +21,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgWriter;
-import weliyek.serialization.WkSerdeDtreeMsgOutputField;
-import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public final class WkSerdeVariableSizeElementCollectionWriter<
                         T extends Collection<ET>,
@@ -67,12 +66,12 @@ public final class WkSerdeVariableSizeElementCollectionWriter<
     T serializable,
     YS settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<
-      T,?,WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,?,?,?> serializingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,?,?,?,YS,WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
-      ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore) {
+      ET,?,?,?,EYS,EYD,EYO,? extends EYD,
+      ? extends WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>> definitionCore) {
     this.operationCore = new WkSerdeElementCollectionWriterCoreSimplified<
                                 T,
                                 YS,
@@ -83,13 +82,13 @@ public final class WkSerdeVariableSizeElementCollectionWriter<
                                     serializable,
                                     settings,
                                     parentBytestream,
-                                    serializingfieldCore,
+                                    writerFieldCore,
                                     definitionCore,
                                     this);
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<ET, EYD, EYO> elements() {
+  public Optional<WkSerdeDtreeMsgOutputField<ET, EYD, EYO>> elements() {
     return this.operationCore.elements();
   }
 
@@ -119,13 +118,12 @@ public final class WkSerdeVariableSizeElementCollectionWriter<
   }
 
   @Override
-  public WkSerdeDtreeMsgOutputField<T, WkSerdeVariableSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>, ?>
-  packetField() {
-    return this.operationCore.packetField();
+  public WkSerdeDtreeMsgOutputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
-  public List<WkSrlzOutputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDtreeMsgOutputField<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 

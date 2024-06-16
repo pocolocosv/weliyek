@@ -28,8 +28,8 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceDefinition;
 import weliyek.serialization.sequence.WkSerdeDtreeVariableSizeSequenceWriter;
 
@@ -71,10 +71,10 @@ public abstract class WkSerdeDtreeDynamicSequenceWriterCore<
     T serializable,
     YS settings,
     AYBC parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> dataFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
     YDC definitionCore,
     YO operationBody) {
-    super(index, settings, parentBytestream, serializable, dataFieldCore, definitionCore, operationBody);
+    super(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, operationBody);
   }
 
   @Override

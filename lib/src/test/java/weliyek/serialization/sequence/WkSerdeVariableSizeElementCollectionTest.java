@@ -32,39 +32,27 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeReader;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeWriter;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
+import weliyek.serialization.WkSerdeDtreeReader;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeWriter;
+import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
-import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-public class WkFixedAndVariableSizeCollectionTest
+public class WkSerdeVariableSizeElementCollectionTest
 {
 
-  private static final Logger logger = LoggerFactory.getLogger(WkFixedAndVariableSizeCollectionTest.class);
+  private static final Logger logger = LoggerFactory.getLogger(WkSerdeVariableSizeElementCollectionTest.class);
 
   public static final List<Integer> ORIGINAL_LIST = Arrays.asList(Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3));
   public static final int LIST_SIZE = ORIGINAL_LIST.size();
 
-  private static WkSerdeDtreeStruct<
-                        List<Integer>,
-                        WkSerdeDtreeOperationSettings,
-                        WkSerdeFixedSizeElementCollection<List<Integer>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ?, ?>,
-                        WkSerdeFixedSizeElementCollectionReader<List<Integer>, WkSerdeDtreeOperationSettings, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
-                        WkSerdeDtreeBytestreamInputBase<?>,
-                        WkSerdeDtreeOperationSettings,
-                        WkSerdeFixedSizeElementCollection<List<Integer>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ?>,
-                        WkSerdeFixedSizeElementCollectionWriter<List<Integer>, WkSerdeDtreeOperationSettings, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
-                        WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkSerdeFixedSizeElementCollection<List<Integer>, WkSerdeDtreeOperationSettings, WkSerdeDtreeOperationSettings, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>>
-                          FIXED_SIZE_INT_LIST;
 
   private static WkSerdeDtreeStruct<
                         List<Integer>,
@@ -83,27 +71,6 @@ public class WkFixedAndVariableSizeCollectionTest
   @SuppressWarnings("unchecked")
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    FIXED_SIZE_INT_LIST = WkSerdeFixedSizeElementCollection.<
-                              List<Integer>,
-                              WkSerdeDtreeOperationSettings,
-                              WkSerdeDtreeOperationSettings,
-                              Integer,
-                              WkSerdeDtreeOperationSettings,
-                              WkSerdeSignedBigEndianInteger,
-                              WkSerdeSignedBigEndianIntegerReader,
-                              WkSerdeDtreeOperationSettings,
-                              WkSerdeSignedBigEndianInteger,
-                              WkSerdeSignedBigEndianIntegerWriter,
-                              WkSerdeSignedBigEndianInteger>newStruct(
-                                  "FIXEDINTLIST",
-                                  "INT",
-                                  ORIGINAL_LIST.size(),
-                                  (Class<List<Integer>>)(Class<?>)List.class,
-                                  (l) -> l,
-                                  WkSerdeDtreeOperationSettings::none,
-                                  WkSerdeDtreeOperationSettings::none,
-                                  WkSerdeSignedBigEndianInteger::newCore);
-
     VAR_SIZE_INT_LIST = WkSerdeVariableSizeElementCollection.<
                               List<Integer>,
                               WkSerdeDtreeOperationSettingsVariableLength,
@@ -137,41 +104,6 @@ public class WkFixedAndVariableSizeCollectionTest
 
   @After
   public void tearDown() throws Exception {
-  }
-
-  @Test
-  public void testFixedSizeCollectionField() {
-    KetzaByteOutputStream outputstream = new KetzaByteOutputStream();
-
-    WkSerdeDtreeWriter<List<Integer>, WkSerdeFixedSizeElementCollection<List<Integer>, ?, WkSerdeDtreeOperationSettings, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ?>, WkSerdeFixedSizeElementCollectionWriter<List<Integer>, WkSerdeDtreeOperationSettings, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>>
-      listWriting = FIXED_SIZE_INT_LIST.newOutputPacket(ORIGINAL_LIST,
-                                                        WkSerdeDtreeOperationSettings.EMPTY,
-                                                        outputstream);
-    logger.info(listWriting.toString() + " created");
-
-    assertFalse(listWriting.isCompleted());
-    assertEquals(0, listWriting.firstOperation().get().dashboard().nextElementIndex());
-
-    while(listWriting.isInProgress()) {
-      listWriting.processBytestream();
-    }
-
-    assertTrue(listWriting.isCompleted());
-
-    assertEquals(ORIGINAL_LIST, listWriting.firstOperation().get().serializable());
-
-    WkSerdeDtreeReader<List<Integer>, WkSerdeFixedSizeElementCollection<List<Integer>, WkSerdeDtreeOperationSettings, ?, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ?, ?>, WkSerdeFixedSizeElementCollectionReader<List<Integer>, WkSerdeDtreeOperationSettings, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>>
-      listReading = FIXED_SIZE_INT_LIST.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputstream.inputStream());
-
-    logger.info(listReading + " created");
-
-    while(listReading.isInProgress()) {
-      listReading.processBytestream();
-    }
-
-    assertTrue(listReading.isCompleted());
-
-    assertEquals(ORIGINAL_LIST, listReading.firstOperation().get().result().get().serializable().get());
   }
 
   @Test

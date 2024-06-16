@@ -21,16 +21,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgReader;
-import weliyek.serialization.WkSerdeDtreeMsgInputField;
-import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public final class WkSerdeFixedSizeElementCollectionReader<
                         T extends Collection<ET>,
@@ -44,19 +43,19 @@ public final class WkSerdeFixedSizeElementCollectionReader<
                         XS,
                         WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>,
                         WkSerdeDtreeOperationResult<T>,
-                        WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                        WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>,
                         ET, EXD, EXO>,
                 WkSerdeDtreeFixedSizeSequenceReader<
                         T,
                         XS,
                         WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>,
                         WkSerdeDtreeOperationResult<T>,
-                        WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>>
+                        WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>>
 {
 
   final WkSerdeElementCollectionReaderCoreSimplified<
                         T, XS,
-                        WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                        WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>,
                         WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
                         ET, EXS, EXD, EXO> operationCore;
 
@@ -64,33 +63,33 @@ public final class WkSerdeFixedSizeElementCollectionReader<
     int index,
     XS settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<
-      T,?,WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
-      ?,?,?> deserializingfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
-      T,XS,WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+      T,XS,
+      WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>,
       WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
-      ?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore) {
+      ?,?,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD,
+      ? extends WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>> definitionCore) {
     this.operationCore = new WkSerdeElementCollectionReaderCoreSimplified<
                                 T, XS,
-                                WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
+                                WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>,
                                 WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
                                 ET, EXS, EXD, EXO>(
                                     index,
                                     settings,
                                     parentBytestream,
-                                    deserializingfieldCore,
+                                    readerFieldCore,
                                     definitionCore,
                                     this);
   }
 
   @Override
-  public WkSrlzInputPacketSubfieldFrameNode<ET,EXD,EXO> elements() {
+  public Optional<WkSerdeDtreeMsgInputField<ET, EXD, EXO>> elements() {
     return this.operationCore.elements();
   }
 
   @Override
-  public WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?> definition() {
+  public WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD> definition() {
     return this.operationCore.definition();
   }
 
@@ -115,13 +114,12 @@ public final class WkSerdeFixedSizeElementCollectionReader<
   }
 
   @Override
-  public WkSerdeDtreeMsgInputField<T, WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,?>
-  packetField() {
-    return this.operationCore.packetField();
+  public WkSerdeDtreeMsgInputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
-  public List<WkSrlzInputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDtreeMsgInputField<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 

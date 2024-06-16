@@ -23,7 +23,6 @@ import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriter;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgOutputField;
 
 public interface WkSerdeDtreeCollectionWriter<
                         T extends Collection<?>,
@@ -31,9 +30,7 @@ public interface WkSerdeDtreeCollectionWriter<
                         YQ extends WkSerdeDtreeOperationOutputRuntime<?>,
                         YR extends WkSerdeDtreeOperationResult<T>,
                         YD extends WkSerdeDtreeCollectionDefinition<T>>
-    extends WkSerdeDtreeCollectionOperation<
-                        YS, YQ, YR, YD,
-                        WkSerdeDtreeMsgOutputField<T,YD,?>>,
+    extends WkSerdeDtreeCollectionOperation<YS, YQ, YR, YD>,
             WkSerdeDtreeAggregatorMsgWriter<T, YS, YQ, YR, YD>,
             WkSerdeDtreeSequenceWriter<T, YS, YQ, YR, YD>
 {

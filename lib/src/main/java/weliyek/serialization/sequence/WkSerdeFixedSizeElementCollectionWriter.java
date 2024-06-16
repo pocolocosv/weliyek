@@ -21,16 +21,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgWriter;
-import weliyek.serialization.WkSerdeDtreeMsgOutputField;
-import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public final class WkSerdeFixedSizeElementCollectionWriter<
                         T extends Collection<ET>,
@@ -44,7 +43,7 @@ public final class WkSerdeFixedSizeElementCollectionWriter<
                         YS,
                         WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
                         WkSerdeDtreeOperationResult<T>,
-                        WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                        WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD>,
                         ET,
                         EYD,
                         EYO>,
@@ -53,12 +52,12 @@ public final class WkSerdeFixedSizeElementCollectionWriter<
                         YS,
                         WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>,
                         WkSerdeDtreeOperationResult<T>,
-                        WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>>
+                        WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD>>
 {
 
   final WkSerdeElementCollectionWriterCoreSimplified<
                         T, YS,
-                        WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                        WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD>,
                         WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
                         ET,EYS,EYD,EYO> operationCore;
 
@@ -67,34 +66,34 @@ public final class WkSerdeFixedSizeElementCollectionWriter<
     T serializable,
     YS settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<
-      T,?,WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
-      ?,?,?> serializingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
-      T,?,?,?,YS,WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+      T,?,?,?,YS,
+      WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD>,
       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
-      ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore) {
+      ET,?,?,?,EYS,EYD,EYO,? extends EYD,
+      ? extends WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD>> definitionCore) {
     this.operationCore = new WkSerdeElementCollectionWriterCoreSimplified<
                                   T, YS,
-                                  WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,
+                                  WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD>,
                                   WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
                                   ET,EYS,EYD,EYO>(
                                       index,
                                       serializable,
                                       settings,
                                       parentBytestream,
-                                      serializingfieldCore,
+                                      writerFieldCore,
                                       definitionCore,
                                       this);
   }
 
   @Override
-  public WkSrlzOutputPacketSubfieldFrameNode<ET, EYD, EYO> elements() {
+  public Optional<WkSerdeDtreeMsgOutputField<ET, EYD, EYO>> elements() {
     return this.operationCore.elements();
   }
 
   @Override
-  public WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?> definition() {
+  public WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD> definition() {
     return this.operationCore.definition();
   }
 
@@ -119,13 +118,12 @@ public final class WkSerdeFixedSizeElementCollectionWriter<
   }
 
   @Override
-  public WkSerdeDtreeMsgOutputField<T, WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,?>,?>
-  packetField() {
-    return this.operationCore.packetField();
+  public WkSerdeDtreeMsgOutputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
-  public List<WkSrlzOutputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDtreeMsgOutputField<?,?,?>> subfields() {
     return this.operationCore.subfields();
   }
 

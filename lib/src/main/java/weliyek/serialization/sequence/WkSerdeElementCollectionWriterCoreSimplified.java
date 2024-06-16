@@ -19,15 +19,15 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgWriter;
-import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public final class WkSerdeElementCollectionWriterCoreSimplified<
                         T extends Collection<ET>,
@@ -56,16 +56,16 @@ public final class WkSerdeElementCollectionWriterCoreSimplified<
                           WkSerdeDtreeOperationOutputRuntimeSequenceCommon<WkSerdeDtreeBytestreamOutput>>,
                         WkSerdeDtreeOperationResult<T>,
                         YD,
+                        WkSerdeElementCollectionDefinitionCoreSimplified<
+                          T,?,?,?,YS,YD,YO, ET,?,?,?,EYS,EYD,EYO,? extends EYD,? extends YD>,
                         YO,
-                        WkSerdeElementCollectionWriterCoreSimplified<T,YS,YD,YO,ET,EYS,EYD,EYO>,
+                        WkSerdeElementCollectionWriterCoreSimplified<
+                          T,YS,YD,YO,ET,EYS,EYD,EYO>,
                         WkSerdeDtreeBytestreamOutputBase<?>,
                         ET,
                         EYS,
                         EYD,
-                        EYO,
-                        WkSerdeElementCollectionDefinitionCoreSimplified<
-                          T,?,?,?,YS,YD,YO,
-                          ET,?,?,?,EYS,EYD,EYO,?,?>>
+                        EYO>
 {
 
   WkSerdeElementCollectionWriterCoreSimplified(
@@ -73,11 +73,11 @@ public final class WkSerdeElementCollectionWriterCoreSimplified<
     T serializable,
     YS settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<T,?,YD,?,?,?> packetHandlerCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
-      T,?,?,?,YS,YD,YO,ET,?,?,?,EYS,EYD,EYO,?,?> definitionCore,
+      T,?,?,?,YS,YD,YO, ET,?,?,?,EYS,EYD,EYO,? extends EYD,? extends YD> definitionCore,
     YO operationBody) {
-    super(index, serializable, settings, parentBytestream, packetHandlerCore, definitionCore, operationBody);
+    super(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, operationBody);
   }
 
   @Override

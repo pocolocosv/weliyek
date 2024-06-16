@@ -18,19 +18,19 @@
 package weliyek.serialization.sequence;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorMsgReaderCore;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgReader;
-import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public abstract class WkSerdeElementCollectionReaderCore<
                         T extends Collection<ET>,
@@ -41,34 +41,31 @@ public abstract class WkSerdeElementCollectionReaderCore<
                         XQC extends WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl<XB,XBC,XQ>,
                         XR extends WkSerdeDtreeOperationResult<T>,
                         XD extends WkSerdeElementCollectionDefinition<T,XO,?,ET,?>,
+                        XDC extends WkSerdeElementCollectionDefinitionCore<
+                                      T,XS,XB,XBC,XQC,XR,XD,?,XO,XOC,AXBC,
+                                      ?,?,?,?,?,?,?,?,?,?,
+                                      ET,EXS,EXD,EXO,?,
+                                      ?,?,? extends EXD,? extends XD,?>,
                         XO extends WkSerdeElementCollectionReader<T,XS,XQ,XR,XD,ET,EXD,EXO>,
                         XOC extends WkSerdeElementCollectionReaderCore<
-                                        T,XS,XB,XBC,XQ,XQC,XR,XD,XO,?,AXBC,ET,EXS,EXD,EXO,DC>,
+                                        T,XS,XB,XBC,XQ,XQC,XR,XD,XDC,XO,?,AXBC,ET,EXS,EXD,EXO>,
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
                         ET,
                         EXS extends WkSerdeDtreeOperationSettings,
                         EXD extends WkSerdeDtreeStructDefinition<ET>,
-                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>,
-                        DC extends WkSerdeElementCollectionDefinitionCore<
-                                        T,XS,XB,XBC,XQC,XR,XD,XO,AXBC,
-                                        ?,?,?,?,?,?,?,?,
-                                        ET,EXS,EXD,EXO,
-                                        ?,?,?,?,?,DC>>
-        extends WkSerdeDtreeAggregatorMsgReaderCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXBC, DC>
+                        EXO extends WkSerdeDtreeMsgReader<ET,EXS,?,?,EXD>>
+        extends WkSerdeDtreeAggregatorMsgReaderCore<T, XS, XB, XBC, XQ, XQC, XR, XD, XDC, XO, XOC, AXBC>
         implements WkSerdeElementCollectionReader<T, XS, XQ, XR, XD, ET, EXD, EXO>
 {
-
-  private WkSrlzInputPacketSubfieldFrameNodeCore<ET,EXS,EXD,EXO,T,XBC,XD,XO> elementPacketSubfield;
 
   protected WkSerdeElementCollectionReaderCore(
     int index,
     XS settings,
     AXBC parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<T,?,XD,?,?,?> packetfieldCore,
-    DC definitionCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);
-    this.elementPacketSubfield = getSubfieldpacketFor(definitionCore().elementComponent);
+    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
   }
 
   @Override
@@ -89,8 +86,8 @@ public abstract class WkSerdeElementCollectionReaderCore<
   }
 
   @Override
-  public final WkSrlzInputPacketSubfieldFrameNode<ET, EXD, EXO> elements() {
-    return this.elementPacketSubfield.asSubfield();
+  public final Optional<WkSerdeDtreeMsgInputField<ET, EXD, EXO>> elements() {
+    return Optional.ofNullable(getSubfieldpacketFor(definitionCore().elementComponent).asPacket());
   }
 
 }

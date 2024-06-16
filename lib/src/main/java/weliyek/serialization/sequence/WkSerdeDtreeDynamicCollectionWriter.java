@@ -19,12 +19,11 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgWriter;
-import weliyek.serialization.WkSerdeDtreeMsgOutputField;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
 import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
@@ -49,14 +48,10 @@ public interface WkSerdeDtreeDynamicCollectionWriter<
                         WkSerdeDtreeMsgOutputField<T,YD,?>,
                         ZYO,
                         WkSerdeDtreeMsgOutputField<ZT,ZYD,ZYO>,
-                        WkSrlzOutputPacketSubfieldFrameNode<ZT,ZYD,ZYO>,
                         WkSerdeVariableSizeElementCollectionWriter<T,VYS,ET,EYS,EYD,EYO>,
                         WkSerdeDtreeMsgOutputField<
                           T,
                           WkSerdeVariableSizeElementCollection<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
-                          WkSerdeVariableSizeElementCollectionWriter<T,VYS,ET,EYS,EYD,EYO>>,
-                        WkSrlzOutputPacketSubfieldFrameNode<T,
-                        WkSerdeVariableSizeElementCollection<T,?,VYS,ET,?,?,?,EYS,EYD,EYO,?>,
                           WkSerdeVariableSizeElementCollectionWriter<T,VYS,ET,EYS,EYD,EYO>>>,
             WkSerdeDtreeCollectionWriter<T, YS, YQ, YR, YD>,
             WkSerdeDtreeDynamicSequenceWriter<T, YS, YQ, YR, YD, ZT, ZYO, ZYD,

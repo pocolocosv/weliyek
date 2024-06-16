@@ -19,15 +19,15 @@ package weliyek.serialization.sequence;
 
 import java.util.Collection;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgReader;
-import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinition;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public final class WkSerdeElementCollectionReaderCoreSimplified<
                         T extends Collection<ET>,
@@ -56,25 +56,27 @@ public final class WkSerdeElementCollectionReaderCoreSimplified<
                           WkSerdeDtreeOperationInputRuntimeSequenceCommon<WkSerdeDtreeBytestreamInput>>,
                         WkSerdeDtreeOperationResult<T>,
                         XD,
+                        WkSerdeElementCollectionDefinitionCoreSimplified<
+                          T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD,? extends XD>,
                         XO,
-                        WkSerdeElementCollectionReaderCoreSimplified<T,XS,XD,XO,ET,EXS,EXD,EXO>,
+                        WkSerdeElementCollectionReaderCoreSimplified<
+                          T,XS,XD,XO,ET,EXS,EXD,EXO>,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         ET,
                         EXS,
                         EXD,
-                        EXO,
-                        WkSerdeElementCollectionDefinitionCoreSimplified<T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?>>
+                        EXO>
 {
 
   WkSerdeElementCollectionReaderCoreSimplified(
     int index,
     XS settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<T,?,XD,?,?,?> packetfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
-      T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,?,?> definitionCore,
+      T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD,? extends XD> definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, packetfieldCore, definitionCore, operationBody);
+    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

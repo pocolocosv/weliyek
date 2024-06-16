@@ -22,12 +22,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgWriter;
 import weliyek.serialization.WkSerdeDtreeMsgOutputField;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
+import weliyek.serialization.WkSerdeDtreeMsgWriter;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommon;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
 
 public interface WkSerdeElementCollectionWriter<
@@ -41,10 +40,7 @@ public interface WkSerdeElementCollectionWriter<
                         EYO extends WkSerdeDtreeMsgWriter<ET,?,?,?,EYD>>
         extends WkSerdeElementCollectionOperation<
                         YS, YQ, YR, YD,
-                        WkSerdeDtreeMsgOutputField<T,YD,?>,
-                        EYO,
-                        WkSerdeDtreeMsgOutputField<ET,EYD,EYO>,
-                        WkSrlzOutputPacketSubfieldFrameNode<ET,EYD,EYO>>,
+                        WkSerdeDtreeMsgOutputField<ET, EYD, EYO>>,
                 WkSerdeDtreeCollectionWriter<T, YS, YQ, YR, YD>
 {
 

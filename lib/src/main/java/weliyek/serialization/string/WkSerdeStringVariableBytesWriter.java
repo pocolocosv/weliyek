@@ -21,18 +21,17 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgOutputField;
-import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
-import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsOptionalLength;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayWriter;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArray;
+import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayWriter;
 
 public class WkSerdeStringVariableBytesWriter
     implements WkSerdeStringFromBytesWriter<
@@ -57,12 +56,12 @@ public class WkSerdeStringVariableBytesWriter
     String serializable,
     WkSerdeDtreeOperationSettingsOptionalLength settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<
-      String,?,WkSerdeStringVariableBytes,?,?,?> serializingfieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
-      ?,?,?,WkSerdeDtreeOperationSettingsOptionalLength,WkSerdeStringVariableBytesWriter,
-      WkSerdeStringVariableBytes,?,?,?,WkSerdeDtreeOperationSettings,
-      WkSerdeDtreeVariableSizeByteArrayWriter,WkSerdeDtreeVariableSizeByteArray,?,
+      ?,?,?,WkSerdeDtreeOperationSettingsOptionalLength, WkSerdeStringVariableBytesWriter,
+      WkSerdeStringVariableBytes, ?, ?, ?, WkSerdeDtreeOperationSettings,
+      WkSerdeDtreeVariableSizeByteArrayWriter, WkSerdeDtreeVariableSizeByteArray,
+      ? extends WkSerdeDtreeVariableSizeByteArray,
       ? extends WkSerdeStringVariableBytes> definitionCore) {
     this.operationCore = new WkSerdeStringFromBytesWriterCoreSimplified<
                                 WkSerdeDtreeOperationSettingsOptionalLength,
@@ -75,7 +74,7 @@ public class WkSerdeStringVariableBytesWriter
                                     serializable,
                                     settings,
                                     parentBytestream,
-                                    serializingfieldCore,
+                                    writerFieldCore,
                                     definitionCore,
                                     this);
   }
@@ -113,12 +112,12 @@ public class WkSerdeStringVariableBytesWriter
   }
 
   @Override
-  public WkSerdeDtreeMsgOutputField<String, WkSerdeStringVariableBytes, ?> packetField() {
-    return this.operationCore.packetField();
+  public WkSerdeDtreeMsgOutputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
-  public List<WkSrlzOutputPacketSubfieldFrameNode<?,?,?>> subfields() {
+  public List<WkSerdeDtreeMsgOutputField<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 

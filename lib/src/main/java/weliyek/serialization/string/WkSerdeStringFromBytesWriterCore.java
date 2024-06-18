@@ -20,14 +20,14 @@ package weliyek.serialization.string;
 import java.nio.charset.Charset;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgOutputField;
-import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgOutputField;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
@@ -40,18 +40,19 @@ public abstract class WkSerdeStringFromBytesWriterCore<
                         YQC extends WkSerdeDtreeOperationOutputRuntimeCtrl<YB,YBC,YQ>,
                         YR extends WkSerdeDtreeOperationResult<String>,
                         YO extends WkSerdeStringFromBytesWriter<YS,YQ,YR,YD,SYD,SYO>,
-                        YOC extends WkSerdeStringFromBytesWriterCore<YS,YB,YBC,YQ,YQC,YR,YO,?,YD,AYB,SYS,SYO,SYD,DC>,
+                        YOC extends WkSerdeStringFromBytesWriterCore<
+                                        YS,YB,YBC,YQ,YQC,YR,YO,?,YD,YDC,AYB,SYS,SYO,SYD>,
                         YD extends WkSerdeStringFromBytesDefinition<?,YO,? extends SYD>,
+                        YDC extends WkSerdeStringFromBytesDefinitionCore<
+                                        ?,?,?,?,?,?,?,?,?,?,
+                                        YS,YB,YBC,YQC,YR,YO,YOC,YD,?,AYB,
+                                        ?,?,?,SYS,SYO,SYD,? extends SYD,? extends YD,?>,
                         AYB extends WkSerdeDtreeBytestreamOutputBase<?>,
                         SYS extends WkSerdeDtreeOperationSettings,
                         SYO extends WkSerdeDtreeByteArrayWriter<SYS,?,?,SYD>,
-                        SYD extends WkSerdeDtreeByteArrayDefinition,
-                        DC extends WkSerdeStringFromBytesDefinitionCore<
-                                      ?,?,?,?,?,?,?,?,
-                                      YS,YB,YBC,YQC,YR,YO,YD,AYB,
-                                      ?,?,?,SYS,SYO,SYD,?,?,DC>>
+                        SYD extends WkSerdeDtreeByteArrayDefinition>
     extends WkSerdeStringFromPrimitiveArrayWriterCore<
-                        YS,YB,YBC,YQ,YQC,YR,YO,YOC,YD,AYB,WkByteArray,SYS,SYO,SYD,DC>
+                        YS,YB,YBC,YQ,YQC,YR,YO,YOC,YD,YDC,AYB,WkByteArray,SYS,SYO,SYD>
     implements WkSerdeStringFromBytesWriter<YS, YQ, YR, YD, SYD, SYO>
 {
 
@@ -60,15 +61,15 @@ public abstract class WkSerdeStringFromBytesWriterCore<
     String serializable,
     YS settings,
     AYB parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<String,?,YD,?,?,?> packetHandlerCore,
-    DC definitionCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    YDC definitionCore,
     YO operationBody) {
     super(
         index,
         serializable,
         settings,
         parentBytestream,
-        packetHandlerCore,
+        writerFieldCore,
         definitionCore,
         operationBody);
   }

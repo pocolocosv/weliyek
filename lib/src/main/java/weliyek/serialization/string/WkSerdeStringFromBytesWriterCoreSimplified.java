@@ -17,15 +17,15 @@
  */
 package weliyek.serialization.string;
 
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
+import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
+import weliyek.util.array.WkSerdeDtreeByteArrayWriter;
 
 public class WkSerdeStringFromBytesWriterCoreSimplified<
                         YS extends WkSerdeDtreeOperationSettings,
@@ -51,9 +51,9 @@ public class WkSerdeStringFromBytesWriterCoreSimplified<
                         YO,
                         WkSerdeStringFromBytesWriterCoreSimplified<YS,YO,YD,SYS,SYO,SYD>,
                         YD,
+                        WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,? extends SYD,? extends YD>,
                         WkSerdeDtreeBytestreamOutputBase<?>,
-                        SYS, SYO, SYD,
-                        WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?>>
+                        SYS, SYO, SYD>
 {
 
   public WkSerdeStringFromBytesWriterCoreSimplified(
@@ -61,16 +61,17 @@ public class WkSerdeStringFromBytesWriterCoreSimplified<
     String serializable,
     YS settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<String,?,YD,?,?,?> packetHandlerCore,
-    WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,?,?> definitionCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,? extends SYD,? extends YD> definitionCore,
     YO operationBody) {
     super(
         index,
         serializable,
         settings,
         parentBytestream,
-        packetHandlerCore,
-        definitionCore, operationBody);
+        writerFieldCore,
+        definitionCore,
+        operationBody);
   }
 
 

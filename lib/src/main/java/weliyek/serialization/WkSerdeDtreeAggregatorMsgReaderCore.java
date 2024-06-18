@@ -46,10 +46,10 @@ public abstract class WkSerdeDtreeAggregatorMsgReaderCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
     XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
+    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
     this.readinHandlerList = new WkSerdeDtreeAggregatorMsgSubfieldsReaders<>(this);
   }
 
@@ -59,7 +59,7 @@ public abstract class WkSerdeDtreeAggregatorMsgReaderCore<
           SXD extends WkSerdeDtreeStructDefinition<ST>,
           SXO extends WkSerdeDtreeMsgReader<ST,SXS,?,?,SXD>>
   WkSerdeDtreeMsgInputSubfieldCore<ST,SXS,SXD,SXO,T,XBC,XO> getSubfieldpacketFor(
-    WkSerdeDtreeStructSubfieldCore<ST,T,SXS,SXD,SXO,XBC,XO,?,?,?,?,?,? extends SXD> protocolSubfieldCore) {
+    WkSerdeDtreeStructSubfieldCore<ST,T,SXS,SXD,SXO,?,?,?,?,?,?,?,? extends SXD> protocolSubfieldCore) {
     return (WkSerdeDtreeMsgInputSubfieldCore<ST,SXS,SXD,SXO,T,XBC,XO>) this.readinHandlerList.getMsgSubfield(protocolSubfieldCore);
   }
 

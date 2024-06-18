@@ -31,7 +31,7 @@ public interface WkSerdeStringFromBytesOperation<
                         R extends WkSerdeDtreeOperationResult<?>,
                         D extends WkSerdeStringFromBytesDefinition<?,?,?>,
                         K extends WkSerdeDtreeMsgField<?,?,?>,
-                        SO extends WkSerdeDtreeByteArrayOperation<?, ?, ?, ?, ?>,
+                        SO extends WkSerdeDtreeByteArrayOperation<?, ?, ?, ?>,
                         SK extends WkSerdeDtreeMsgField<?,SO,?>>
     extends WkSerdeStringFromPrimitiveArrayOperation<
                         S, Q, R, D, K, SO, SK>,

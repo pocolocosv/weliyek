@@ -22,24 +22,24 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.serialization.WkOperationSettingsFactory;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeOperationSettingsOptionalLength;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeOperationSettingsOptionalLength;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.string.WkSerdeStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
+import weliyek.util.array.WkSerdeDtreeVariableSizeByteArray;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeVariableSizeByteArrayWriter;
-import weliyek.util.array.WkSerdeDtreeVariableSizeByteArray;
 
 public class WkSerdeStringVariableBytes
     implements WkSerdeStringFromBytesDefinition<
@@ -73,23 +73,27 @@ public class WkSerdeStringVariableBytes
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static WkSerdeDtreeStructDefinitionCore<
-                      String,
-                      WkSerdeDtreeOperationSettingsVariableLength,?,?,
-                      WkSerdeStringVariableBytes,
+  public static WkSerdeStringFromBytesDefinitionCoreSimplified<
+                      WkSerdeDtreeOperationSettingsVariableLength,
                       WkSerdeStringVariableBytesReader,
-                      WkSerdeDtreeBytestreamInputBase<?>,
-                      WkSerdeDtreeOperationSettingsOptionalLength,?,?,
                       WkSerdeStringVariableBytes,
+                      WkSerdeDtreeOperationSettingsOptionalLength,
                       WkSerdeStringVariableBytesWriter,
-                      WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkSerdeStringVariableBytes,?>
+                      WkSerdeStringVariableBytes,
+                      WkSerdeDtreeOperationSettingsVariableLength,
+                      WkSerdeDtreeVariableSizeByteArrayReader,
+                      WkSerdeDtreeVariableSizeByteArray,
+                      WkSerdeDtreeOperationSettings,
+                      WkSerdeDtreeVariableSizeByteArrayWriter,
+                      WkSerdeDtreeVariableSizeByteArray,
+                      WkSerdeDtreeVariableSizeByteArray,
+                      WkSerdeStringVariableBytes>
   newCore(
     String bytesLabel,
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     return new WkSerdeStringVariableBytes(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -114,7 +118,7 @@ public class WkSerdeStringVariableBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                     defaultCharset,
                                     componentCore,
@@ -160,13 +164,13 @@ public class WkSerdeStringVariableBytes
 
   @Override
   public
-  WkSerdeDtreeNodeStructComponentHandler<WkSerdeStringVariableBytesReader, WkSerdeStringVariableBytesWriter, WkSerdeDtreeVariableSizeByteArray>
+  WkSerdeDtreeStructSubfield<WkSerdeStringVariableBytesReader, WkSerdeStringVariableBytesWriter, WkSerdeDtreeVariableSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> requiredSubfields() {
+  public List<WkSerdeDtreeStructField<?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -176,13 +180,13 @@ public class WkSerdeStringVariableBytes
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeStructField<?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-  WkSerdeDtreeNodeStructComponentHandler<WkSerdeStringVariableBytesReader, WkSerdeStringVariableBytesWriter, WkSerdeDtreeVariableSizeByteArray>
+  WkSerdeDtreeStructSubfield<WkSerdeStringVariableBytesReader, WkSerdeStringVariableBytesWriter, WkSerdeDtreeVariableSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

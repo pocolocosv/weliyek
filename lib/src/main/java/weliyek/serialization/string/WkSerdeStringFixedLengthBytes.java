@@ -21,22 +21,22 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.string.WkSerdeStringFromBytesDefinitionCore.ByteArrayFromStringDisaggregator;
 import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
+import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayWriter;
-import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
-import weliyek.util.array.WkPrimitiveArray.ContigousIntsCounter;
 
 /**
  * Packet structure and data for handling fixed length bytes array. The serialization
@@ -75,22 +75,26 @@ public class WkSerdeStringFixedLengthBytes
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
-  public static WkSerdeDtreeStructDefinitionCore<
-                      String,
-                      WkSerdeDtreeOperationSettings,?,?,
-                      WkSerdeStringFixedLengthBytes,
+  public static WkSerdeStringFromBytesDefinitionCoreSimplified<
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeStringFixedLengthBytesReader,
-                      WkSerdeDtreeBytestreamInputBase<?>,
-                      WkSerdeDtreeOperationSettings,?,?,
                       WkSerdeStringFixedLengthBytes,
+                      WkSerdeDtreeOperationSettings,
                       WkSerdeStringFixedLengthBytesWriter,
-                      WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkSerdeStringFixedLengthBytes,?>
+                      WkSerdeStringFixedLengthBytes,
+                      WkSerdeDtreeOperationSettings,
+                      WkSerdeDtreeFixedSizeByteArrayReader,
+                      WkSerdeDtreeFixedSizeByteArray,
+                      WkSerdeDtreeOperationSettings,
+                      WkSerdeDtreeFixedSizeByteArrayWriter,
+                      WkSerdeDtreeFixedSizeByteArray,
+                      WkSerdeDtreeFixedSizeByteArray,
+                      WkSerdeStringFixedLengthBytes>
   newCore(
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
     return new WkSerdeStringFixedLengthBytes(bytesLabel, expectedSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -114,7 +118,7 @@ public class WkSerdeStringFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
 
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                   defaultCharset,
@@ -167,13 +171,13 @@ public class WkSerdeStringFixedLengthBytes
 
   @Override
   public
-  WkSerdeDtreeNodeStructComponentHandler<WkSerdeStringFixedLengthBytesReader, WkSerdeStringFixedLengthBytesWriter, WkSerdeDtreeFixedSizeByteArray>
+  WkSerdeDtreeStructSubfield<WkSerdeStringFixedLengthBytesReader, WkSerdeStringFixedLengthBytesWriter, WkSerdeDtreeFixedSizeByteArray>
   primitiveArray() {
     return this.definitionCore.primitiveArray();
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> requiredSubfields() {
+  public List<WkSerdeDtreeStructField<?>> requiredSubfields() {
     return this.definitionCore.requiredSubfields();
   }
 
@@ -183,13 +187,13 @@ public class WkSerdeStringFixedLengthBytes
   }
 
   @Override
-  public List<WkSerdeDtreeNodeStructComponentHandler<?,?,?>> subfields() {
+  public List<WkSerdeDtreeStructField<?>> subfields() {
     return this.definitionCore.subfields();
   }
 
   @Override
   public
-  WkSerdeDtreeNodeStructComponentHandler<WkSerdeStringFixedLengthBytesReader, WkSerdeStringFixedLengthBytesWriter, WkSerdeDtreeFixedSizeByteArray>
+  WkSerdeDtreeStructSubfield<WkSerdeStringFixedLengthBytesReader, WkSerdeStringFixedLengthBytesWriter, WkSerdeDtreeFixedSizeByteArray>
   bytes() {
     return this.definitionCore.bytes();
   }

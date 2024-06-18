@@ -31,15 +31,15 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeReader;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeReader;
+import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeWriter;
+import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
-import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
 public class WkSerdeStringDynamicBytesTest
@@ -128,11 +128,13 @@ public class WkSerdeStringDynamicBytesTest
     logger.info(dynstrWriting.name() + " created");
     while(dynstrWriting.isInProgress()) {
       dynstrWriting.processBytestream();
-      if (dynstrWriting.previousProcessingSteapResult().isPresent()) break;
+      if (dynstrWriting.previousProcessingSteapResult().isPresent()) {
+        break;
+      }
     }
     logger.info("Checking if is "
-                + DYNAMIC_STR_STRUCT.definition().bytes().field().definition().size().field().definition());
-    assertEquals(DYNAMIC_STR_STRUCT.definition().bytes().field().definition().size().field().definition(),
+                + DYNAMIC_STR_STRUCT.definition().bytes().definition().size().definition());
+    assertEquals(DYNAMIC_STR_STRUCT.definition().bytes().definition().size().definition(),
                  dynstrWriting.previousProcessingSteapResult().get().definition());
     assertEquals(expectedBytes.length,
                  dynstrWriting.firstOperation().get()
@@ -143,11 +145,13 @@ public class WkSerdeStringDynamicBytesTest
                               .serializable().intValue());
     while(dynstrWriting.isInProgress()) {
       dynstrWriting.processBytestream();
-      if (dynstrWriting.previousProcessingSteapResult().isPresent()) break;
+      if (dynstrWriting.previousProcessingSteapResult().isPresent()) {
+        break;
+      }
     }
     logger.info("Checking if is "
-                + DYNAMIC_STR_STRUCT.definition().bytes().field().definition().variableSequence().field().definition());
-    assertEquals(DYNAMIC_STR_STRUCT.definition().bytes().field().definition().variableSequence().field().definition(),
+                + DYNAMIC_STR_STRUCT.definition().bytes().definition().variableSequence().definition());
+    assertEquals(DYNAMIC_STR_STRUCT.definition().bytes().definition().variableSequence().definition(),
                  dynstrWriting.previousProcessingSteapResult().get().definition());
     assertTrue(dynstrWriting.firstOperation().get()
                      .bytes().get()
@@ -164,12 +168,16 @@ public class WkSerdeStringDynamicBytesTest
 
     while(dynstrReading.isInProgress()) {
       dynstrReading.processBytestream();
-      if (dynstrReading.previousProcessingSteapResult().isPresent()) break;
+      if (dynstrReading.previousProcessingSteapResult().isPresent()) {
+        break;
+      }
     }
 
     while(dynstrReading.isInProgress()) {
       dynstrReading.processBytestream();
-      if (dynstrReading.previousProcessingSteapResult().isPresent()) break;
+      if (dynstrReading.previousProcessingSteapResult().isPresent()) {
+        break;
+      }
     }
 
     while(dynstrReading.isInProgress()) {

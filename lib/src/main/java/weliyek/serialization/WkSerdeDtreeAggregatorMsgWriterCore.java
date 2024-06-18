@@ -47,10 +47,10 @@ public abstract class WkSerdeDtreeAggregatorMsgWriterCore<
     T serializable,
     YS settings,
     AYB parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> dataFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
     YDC definitionCore,
     YO operationBody) {
-    super(index, settings, parentBytestream, serializable, dataFieldCore, definitionCore, operationBody);
+    super(index, settings, parentBytestream, serializable, writerFieldCore, definitionCore, operationBody);
     this.writingSubfields = new WkSerdeDtreeAggregatorMsgSubfieldsWriters<>(this);
   }
 
@@ -79,8 +79,6 @@ public abstract class WkSerdeDtreeAggregatorMsgWriterCore<
   public <SY,
           SYS extends WkSerdeDtreeOperationSettings,
           SYD extends WkSerdeDtreeStructDefinition<SY>,
-          SYDC extends WkSerdeDtreeStructDefinitionCore<
-                          SY,?,?,?,?,?,?,?,?,SYS,?,?,SYD,?,SYO,?,YBC,? extends SYD,?>,
           SYO extends WkSerdeDtreeMsgWriter<SY,SYS,?,?,SYD>>
   WkSerdeDtreeMsgOutputSubfieldCore<SY,SYS,SYD,SYO,T,YBC,YO> getSubfieldpacketFor(
     WkSerdeDtreeStructSubfieldCore<SY,T,?,?,?,?,?,SYS,SYD,SYO,?,?,? extends SYD> structField) {

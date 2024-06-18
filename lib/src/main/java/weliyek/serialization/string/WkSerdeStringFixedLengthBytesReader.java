@@ -21,17 +21,16 @@ import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Optional;
 
+import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgInputField;
-import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
-import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.util.array.WkByteArray;
-import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
+import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
 
 public class WkSerdeStringFixedLengthBytesReader
     implements WkSerdeStringFromBytesReader<
@@ -55,12 +54,13 @@ public class WkSerdeStringFixedLengthBytesReader
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<
-      String,?,WkSerdeStringFixedLengthBytes,?,?,?> deserializingfieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
-      WkSerdeDtreeOperationSettings,WkSerdeStringFixedLengthBytesReader,
-      WkSerdeStringFixedLengthBytes,?,?,?,WkSerdeDtreeOperationSettings,
-      WkSerdeDtreeFixedSizeByteArrayReader,WkSerdeDtreeFixedSizeByteArray,?,?,?,?,
+      WkSerdeDtreeOperationSettings, WkSerdeStringFixedLengthBytesReader,
+      WkSerdeStringFixedLengthBytes, ?, ?, ?,
+      WkSerdeDtreeOperationSettings, WkSerdeDtreeFixedSizeByteArrayReader,
+      WkSerdeDtreeFixedSizeByteArray, ?, ?, ?,
+      ? extends WkSerdeDtreeFixedSizeByteArray,
       ? extends WkSerdeStringFixedLengthBytes> definitionCore) {
     this.operationCore = new WkSerdeStringFromBytesReaderCoreSimplified<
                                 WkSerdeDtreeOperationSettings,
@@ -72,7 +72,7 @@ public class WkSerdeStringFixedLengthBytesReader
                                   index,
                                   settings,
                                   parentBytestream,
-                                  deserializingfieldCore,
+                                  readerFieldCore,
                                   definitionCore,
                                   this);
   }
@@ -110,12 +110,12 @@ public class WkSerdeStringFixedLengthBytesReader
   }
 
   @Override
-  public WkSerdeDtreeMsgInputField<String, WkSerdeStringFixedLengthBytes, ?> packetField() {
-    return this.operationCore.packetField();
+  public WkSerdeDtreeMsgInputField<?,?,?> parentField() {
+    return this.operationCore.parentField();
   }
 
   @Override
-  public List<WkSrlzInputPacketSubfieldFrameNode<?, ?, ?>> subfields() {
+  public List<WkSerdeDtreeMsgInputField<?, ?, ?>> subfields() {
     return this.operationCore.subfields();
   }
 

@@ -18,14 +18,14 @@
 package weliyek.serialization.string;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinition;
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 
 public interface WkSerdeStringFromPrimitiveArrayDefinition<
                         XO extends WkSerdeStringFromPrimitiveArrayReader<?,?,?,?,?,?,?>,
                         YO extends WkSerdeStringFromPrimitiveArrayWriter<?,?,?,?,?,?,?>,
                         SD extends WkSerdeDtreePrimitiveArrayDefinition<?>>
-        extends WkSerdeStringFromPrimitiveArray<WkSerdeDtreeNodeStructComponentHandler<XO, YO, SD>>,
+        extends WkSerdeStringFromPrimitiveArray<WkSerdeDtreeStructSubfield<XO, YO, SD>>,
                 WkSerdeDtreeAggregatorStructDefinition<String>
 {
 

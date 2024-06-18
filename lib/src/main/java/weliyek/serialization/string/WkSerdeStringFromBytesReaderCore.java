@@ -20,14 +20,14 @@ package weliyek.serialization.string;
 import java.nio.charset.Charset;
 import java.util.Optional;
 
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgInputField;
-import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 import weliyek.util.array.WkSerdeDtreeByteArrayReader;
@@ -40,19 +40,20 @@ public abstract class WkSerdeStringFromBytesReaderCore<
                         XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<XB,XBC,XQ>,
                         XR extends WkSerdeDtreeOperationResult<String>,
                         XO extends WkSerdeStringFromBytesReader<XS,XQ,XR,XD,SXD,SXO>,
-                        XOC extends WkSerdeStringFromBytesReaderCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SXS,SXO,SXD,DC>,
+                        XOC extends WkSerdeStringFromBytesReaderCore<
+                                        XS,XB,XBC,XQ,XQC,XR,XO,?,XD,XDC,AXB,SXS,SXO,SXD>,
                         XD extends WkSerdeStringFromBytesDefinition<XO,?,? extends SXD>,
+                        XDC extends WkSerdeStringFromBytesDefinitionCore<
+                                        XS,XB,XBC,XQC,XR,XO,XOC,XD,?,AXB,
+                                        ?,?,?,?,?,?,?,?,?,?,
+                                        SXS,SXO,SXD,?,?,?,? extends SXD,? extends XD,?>,
                         AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         SXS extends WkSerdeDtreeOperationSettings,
                         SXO extends WkSerdeDtreeByteArrayReader<SXS,?,?,SXD>,
-                        SXD extends WkSerdeDtreeByteArrayDefinition,
-                        DC extends WkSerdeStringFromBytesDefinitionCore<
-                                      XS,XB,XBC,XQC,XR,XO,XD,AXB,
-                                      ?,?,?,?,?,?,?,?,
-                                      SXS,SXO,SXD,?,?,?,?,?,DC>>
+                        SXD extends WkSerdeDtreeByteArrayDefinition>
     extends WkSerdeStringFromPrimitiveArrayReaderCore<
-                        XS, XB, XBC, XQ, XQC, XR, XO, XOC, XD, AXB,
-                        WkByteArray, SXS, SXO, SXD, DC>
+                        XS, XB, XBC, XQ, XQC, XR, XO, XOC, XD, XDC, AXB,
+                        WkByteArray, SXS, SXO, SXD>
     implements WkSerdeStringFromBytesReader<XS, XQ, XR, XD, SXD, SXO>
 {
 
@@ -60,14 +61,14 @@ public abstract class WkSerdeStringFromBytesReaderCore<
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<String,?,XD,?,?,?> packetField,
-    DC definitionCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    XDC definitionCore,
     XO operationBody) {
     super(
         index,
         settings,
         parentBytestream,
-        packetField,
+        readerFieldCore,
         definitionCore,
         operationBody);
   }

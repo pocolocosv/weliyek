@@ -20,15 +20,14 @@ package weliyek.serialization.string;
 import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorMsgReaderCore;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
-import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
-import weliyek.serialization.WkSerdeDtreeOperationResult;
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgInputField;
-import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
-import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNodeCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeMsgInputField;
+import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
+import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
+import weliyek.serialization.WkSerdeDtreeOperationResult;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.util.array.WkPrimitiveArray;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayDefinition;
 import weliyek.util.array.WkSerdeDtreePrimitiveArrayReader;
@@ -41,29 +40,30 @@ public abstract class WkSerdeStringFromPrimitiveArrayReaderCore<
                         XQC extends WkSerdeDtreeOperationInputRuntimeCtrl<XB,XBC,XQ>,
                         XR extends WkSerdeDtreeOperationResult<String>,
                         XO extends WkSerdeStringFromPrimitiveArrayReader<XS,XQ,XR,XD,SX,SXD,SXO>,
-                        XOC extends WkSerdeStringFromPrimitiveArrayReaderCore<XS,XB,XBC,XQ,XQC,XR,XO,?,XD,AXB,SX,SXS,SXO,SXD,DC>,
+                        XOC extends WkSerdeStringFromPrimitiveArrayReaderCore<
+                                        XS,XB,XBC,XQ,XQC,XR,XO,?,XD,XDC,AXB,SX,SXS,SXO,SXD>,
                         XD extends WkSerdeStringFromPrimitiveArrayDefinition<XO,?,? extends SXD>,
+                        XDC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<
+                                        XS,XB,XBC,XQC,XR,XO,XOC,XD,?,AXB,
+                                        ?,?,?,?,?,?,?,?,?,?,
+                                        SX,SXS,SXO,SXD,?,?,?,? extends SXD,? extends XD,?>,
                         AXB extends WkSerdeDtreeBytestreamInputBase<?>,
                         SX extends WkPrimitiveArray<?,?>,
                         SXS extends WkSerdeDtreeOperationSettings,
                         SXO extends WkSerdeDtreePrimitiveArrayReader<SX,SXS,?,?,SXD>,
-                        SXD extends WkSerdeDtreePrimitiveArrayDefinition<SX>,
-                        DC extends WkSerdeStringFromPrimitiveArrayDefinitionCore<XS,XB,XBC,XQC,XR,XO,XD,AXB,?,?,?,?,?,?,?,?,SX,SXS,SXO,SXD,?,?,?,?,?,DC>>
-       extends WkSerdeDtreeAggregatorMsgReaderCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XO, XOC, AXB, DC>
+                        SXD extends WkSerdeDtreePrimitiveArrayDefinition<SX>>
+       extends WkSerdeDtreeAggregatorMsgReaderCore<String, XS, XB, XBC, XQ, XQC, XR, XD, XDC, XO, XOC, AXB>
        implements WkSerdeStringFromPrimitiveArrayReader<XS, XQ, XR, XD, SX, SXD, SXO>
 {
-
-  private WkSrlzInputPacketSubfieldFrameNodeCore<SX,SXS,SXD,SXO,String,XBC,XD,XO>
-                    primitiveArraySubfieldpacket;
 
   protected WkSerdeStringFromPrimitiveArrayReaderCore(
     int index,
     XS settings,
     AXB parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<String,?,XD,?,?,?> deserializingfieldCore,
-    DC definitionCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, deserializingfieldCore, definitionCore, operationBody);
+    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override
@@ -71,23 +71,6 @@ public abstract class WkSerdeStringFromPrimitiveArrayReaderCore<
     String aggregatedStr = definitionCore().primitiveArrayDeserializingStringAggregator.apply(body());
     return aggregatedStr;
   }
-
-  /*
-  private String buildDeserializedString(SX wrapper) {
-    int paddingLen = countPaddingElements(wrapper);
-    int strLen = wrapper.getLength() - paddingLen;
-    return newStringFromWrapper(wrapper, strLen);
-  }
-
-  protected abstract String newStringFromWrapper(SX wrapper, int lenWithoutPadding);
-
-  private int countPaddingElements(SX wrapper) {
-    int padding  = effectivePrimitiveArrayPadding.intValue();
-    ContigousIntsCounter paddingCounter = new ContigousIntsCounter(padding);
-    wrapper.iterateAsIntsBackwardsWhileTrue(paddingCounter);
-    return paddingCounter.count();
-  }
-  */
 
   protected SX getPrimitiveArray() {
     if ( ! WkSerdeStringFromPrimitiveArrayReader.isPrimitiveArrayReady(body())) {
@@ -99,7 +82,6 @@ public abstract class WkSerdeStringFromPrimitiveArrayReaderCore<
 
   @Override
   protected void onAggregatorReadingInitialization() {
-    primitiveArraySubfieldpacket = getSubfieldpacketFor(definitionCore().primitiveArraySubcomponent);
     onStringFromPrimitiveReadingInitialization();
   }
 
@@ -107,7 +89,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayReaderCore<
 
   @Override
   public Optional<WkSerdeDtreeMsgInputField<SX, SXD, SXO>> primitiveArray() {
-    return this.primitiveArraySubfieldpacket.field();
+    return Optional.ofNullable(getSubfieldpacketFor(definitionCore().primitiveArraySubcomponent).asPacket());
   }
 
 }

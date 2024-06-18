@@ -19,7 +19,7 @@ package weliyek.serialization.string;
 
 import java.nio.charset.Charset;
 
-import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
+import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.util.array.WkSerdeDtreeByteArrayDefinition;
 
 public interface WkSerdeStringFromBytesDefinition<
@@ -27,7 +27,7 @@ public interface WkSerdeStringFromBytesDefinition<
                         YO extends WkSerdeStringFromBytesWriter<?,?,?,?,?,?>,
                         SD extends WkSerdeDtreeByteArrayDefinition>
     extends WkSerdeStringFromPrimitiveArrayDefinition<XO, YO, SD>,
-            WkSerdeStringFromBytes<WkSerdeDtreeNodeStructComponentHandler<XO, YO, SD>>
+            WkSerdeStringFromBytes<WkSerdeDtreeStructSubfield<XO, YO, SD>>
 {
 
   @Override

@@ -39,18 +39,18 @@ class WkBitcoinNodeServicesTest
   public static WkSerdeDtreeStruct<
                         WkBitcoinNodeServices,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinNodeServicesSrlzStructNode,
-                        WkBitcoinNodeServicesSrlzInputNode,
+                        WkBitcoinNodeServicesSerdeField,
+                        WkBitcoinNodeServicesSerdeFieldReader,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinNodeServicesSrlzStructNode,
-                        WkBitcoinNodeServicesSrlzOutputNode,
+                        WkBitcoinNodeServicesSerdeField,
+                        WkBitcoinNodeServicesSerdeFieldWriter,
                         WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkBitcoinNodeServicesSrlzStructNode>
+                        WkBitcoinNodeServicesSerdeField>
   newStruct(String label) {
     return new WkSerdeDtreeStructCore<>(
                       label,
-                      WkBitcoinNodeServicesSrlzStructNode::newCore,
+                      WkBitcoinNodeServicesSerdeField::newCore,
                       WkSerdeDtreeBytestreamCountingInputStream::new,
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
@@ -108,10 +108,10 @@ class WkBitcoinNodeServicesTest
         | WkBitcoinServiceFlag.BIT09.bitmask);
     
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
-    WkSerdeDtreeStruct<WkBitcoinNodeServices, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, WkSerdeDtreeBytestreamOutputBase<?>, WkBitcoinNodeServicesSrlzStructNode> 
+    WkSerdeDtreeStruct<WkBitcoinNodeServices, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBitcoinNodeServicesSerdeField> 
       servicesStruct = newStruct("SERVICES");
     
-    WkSerdeDtreeWriter<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode> servicesWrite = servicesStruct.newOutputPacket(services, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
+    WkSerdeDtreeWriter<WkBitcoinNodeServices, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldWriter> servicesWrite = servicesStruct.newOutputPacket(services, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
     
     servicesWrite.processBytestream();
     
@@ -119,7 +119,7 @@ class WkBitcoinNodeServicesTest
     
     assertEquals(8, outputBuffer.size());
     
-    WkSerdeDtreeReader<WkBitcoinNodeServices, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode> servicesRead = servicesStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
+    WkSerdeDtreeReader<WkBitcoinNodeServices, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldReader> servicesRead = servicesStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
     
     servicesRead.processBytestream();
     

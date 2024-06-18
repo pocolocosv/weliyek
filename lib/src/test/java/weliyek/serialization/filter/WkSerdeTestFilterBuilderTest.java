@@ -26,23 +26,23 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeMsgReader;
-import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeReader;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeMsgReader;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeReader;
+import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeWriter;
-import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
+import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianLong;
-import weliyek.serialization.number.WkSerdeSignedBigEndianShortReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianShort;
-import weliyek.serialization.number.WkSerdeSignedByteReader;
+import weliyek.serialization.number.WkSerdeSignedBigEndianShortReader;
 import weliyek.serialization.number.WkSerdeSignedByte;
+import weliyek.serialization.number.WkSerdeSignedByteReader;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-public class WkSrlzFilterBuilderTest
+public class WkSerdeTestFilterBuilderTest
 {
 
   private static Predicate<WkSerdeDtreeMsgReader<Byte,?,?,?,?>> BYTE_IS_EQUAL_TO_ONE    = (xo) -> xo.result().get().serializable().get().byteValue() == (byte)1;
@@ -52,18 +52,18 @@ public class WkSrlzFilterBuilderTest
   private static Predicate<WkSerdeDtreeMsgReader<Integer,?,?,?,?>> INT_IS_EQUAL_TO_400 = (xo) -> xo.result().get().serializable().get().intValue() == 400;
 
   private static WkSerdeDtreeStruct<
-                      WkSzTstMultipleLists,
+                      WkSerdeTestMultipleLists,
                       WkSerdeDtreeOperationSettings,
-                      WkTstMultipleListSrlzStructNode,
-                      WkTstMultipleListSrlzInputNode,
+                      WkSerdeTestMultipleListStructDefinition,
+                      WkSerdeTestMultipleListMsgReader,
                       WkSerdeDtreeBytestreamInputBase<?>,
                       WkSerdeDtreeOperationSettings,
-                      WkTstMultipleListSrlzStructNode,
-                      WkTstMultipleListSrlzOutputNode,
+                      WkSerdeTestMultipleListStructDefinition,
+                      WkSerdeTestMultipleListMsgWriter,
                       WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkTstMultipleListSrlzStructNode> MULTIPLE_LIST_PACKET;
-  static WkTstPrimitivesGroupListSrlzStructNode PRIMITIVELIST_FIELD;
-  static WkSzTstPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
+                      WkSerdeTestMultipleListStructDefinition> MULTIPLE_LIST_PACKET;
+  static WkSerdeTestPrimitivesGroupListStructDefinition PRIMITIVELIST_FIELD;
+  static WkSerdeTestPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
   static WkSerdeSignedByte BYTE_FIELD;
   static WkSerdeSignedBigEndianInteger INT_FIELD;
   static WkSerdeSignedBigEndianLong LONG_FIELD;
@@ -90,19 +90,19 @@ public class WkSrlzFilterBuilderTest
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    MULTIPLE_LIST_PACKET = WkTstMultipleListSrlzStructNode.newStruct();
-    PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().field().definition().elements().field().definition();
-    PRIMITIVEGROUP_FIELD = PRIMITIVELIST_FIELD.variableSequence().field().definition().elements().field().definition();
-    BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.field().definition();
-    INT_FIELD = PRIMITIVEGROUP_FIELD.intSubcomponent.field().definition();
-    LONG_FIELD = PRIMITIVEGROUP_FIELD.longSubcomponent.field().definition();
+    MULTIPLE_LIST_PACKET = WkSerdeTestMultipleListStructDefinition.newStruct();
+    PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().definition().elements().definition();
+    PRIMITIVEGROUP_FIELD = PRIMITIVELIST_FIELD.variableSequence().definition().elements().definition();
+    BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.definition();
+    INT_FIELD = PRIMITIVEGROUP_FIELD.intSubcomponent.definition();
+    LONG_FIELD = PRIMITIVEGROUP_FIELD.longSubcomponent.definition();
     PRIMITIVE_HAS_BYTE_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeSignedByte, WkSerdeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_EQUAL_TO_ONE");
     PRIMITIVE_HAS_BYTE_EQUAL_TO_TWO = new WkSrlzReadingPacketNodePredicate<WkSerdeSignedByte, WkSerdeSignedByteReader>(BYTE_FIELD, BYTE_IS_EQUAL_TO_TWO, "IS_PRIMITIVE_BYTE_EQUAL_TO_TWO");
     PRIMITIVE_HAS_BYTE_DIFFERENT_FROM_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeSignedByte, WkSerdeSignedByteReader>(BYTE_FIELD, BYTE_IS_NOTEQUAL_TO_ONE, "IS_PRIMITIVE_BYTE_DIFFERENT_TO_ONE");
 
     PRIMITIVE_HAS_INT_EQUAL_TO_400 = new WkSrlzReadingPacketNodePredicate<WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>(INT_FIELD, INT_IS_EQUAL_TO_400, "IS_PRIMITIVE_INT_EQUAL_FROM_400");
 
-    MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader>(MULTIPLE_LIST_PACKET.definition().size().field().definition(), xo -> xo.result().get().serializable().get().intValue() == 1,"IS_MULTIPLE_LIST_SIZE_EQUAL_TO_ONE");
+    MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader>(MULTIPLE_LIST_PACKET.definition().size().definition(), xo -> xo.result().get().serializable().get().intValue() == 1,"IS_MULTIPLE_LIST_SIZE_EQUAL_TO_ONE");
   }
 
   @Before
@@ -152,46 +152,46 @@ public class WkSrlzFilterBuilderTest
                                    .build();
       assertNotNull(filter);
 
-      final WkSzTstPrimitivesGroup primitive00 = new WkSzTstPrimitivesGroup(0, "zero");
-      final WkSzTstPrimitivesGroup primitive01 = new WkSzTstPrimitivesGroup(1, "one");
-      final WkSzTstPrimitivesGroup primitive02 = new WkSzTstPrimitivesGroup(2, "two");
-      final WkSzTstPrimitivesGroup primitive03 = new WkSzTstPrimitivesGroup(3, "three");
-      final WkSzTstPrimitivesGroup primitive04 = new WkSzTstPrimitivesGroup(4, "four");
-      final WkSzTstPrimitivesGroup primitive05 = new WkSzTstPrimitivesGroup(5, "five");
-      final WkSzTstPrimitivesGroup primitive06 = new WkSzTstPrimitivesGroup(6, "six");
-      final WkSzTstPrimitivesGroup primitive07 = new WkSzTstPrimitivesGroup(7, "seven");
+      final WkSerdeTestPrimitivesGroup primitive00 = new WkSerdeTestPrimitivesGroup(0, "zero");
+      final WkSerdeTestPrimitivesGroup primitive01 = new WkSerdeTestPrimitivesGroup(1, "one");
+      final WkSerdeTestPrimitivesGroup primitive02 = new WkSerdeTestPrimitivesGroup(2, "two");
+      final WkSerdeTestPrimitivesGroup primitive03 = new WkSerdeTestPrimitivesGroup(3, "three");
+      final WkSerdeTestPrimitivesGroup primitive04 = new WkSerdeTestPrimitivesGroup(4, "four");
+      final WkSerdeTestPrimitivesGroup primitive05 = new WkSerdeTestPrimitivesGroup(5, "five");
+      final WkSerdeTestPrimitivesGroup primitive06 = new WkSerdeTestPrimitivesGroup(6, "six");
+      final WkSerdeTestPrimitivesGroup primitive07 = new WkSerdeTestPrimitivesGroup(7, "seven");
 
-      WkSzTstPrimitivesGroupList.Builder primitiveListBuilder = new WkSzTstPrimitivesGroupList.Builder();
+      WkSerdeTestPrimitivesGroupList.Builder primitiveListBuilder = new WkSerdeTestPrimitivesGroupList.Builder();
 
-      final WkSzTstPrimitivesGroupList listNone = primitiveListBuilder.build();
-      final WkSzTstPrimitivesGroupList list00 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList listNone = primitiveListBuilder.build();
+      final WkSerdeTestPrimitivesGroupList list00 = primitiveListBuilder.addPrimitives(primitive00)
                                                         .build();
-      final WkSzTstPrimitivesGroupList list00_to_01 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList list00_to_01 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .build();
-      final WkSzTstPrimitivesGroupList list00_to_02 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList list00_to_02 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .build();
-      final WkSzTstPrimitivesGroupList list00_to_03 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList list00_to_03 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
                                                               .build();
-      final WkSzTstPrimitivesGroupList list00_to_04 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList list00_to_04 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
                                                               .addPrimitives(primitive04)
                                                               .build();
-      final WkSzTstPrimitivesGroupList list00_to_05 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList list00_to_05 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
                                                               .addPrimitives(primitive04)
                                                               .addPrimitives(primitive05)
                                                               .build();
-      final WkSzTstPrimitivesGroupList list00_to_06 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList list00_to_06 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
@@ -199,7 +199,7 @@ public class WkSrlzFilterBuilderTest
                                                               .addPrimitives(primitive05)
                                                               .addPrimitives(primitive06)
                                                               .build();
-      final WkSzTstPrimitivesGroupList list00_to_07 = primitiveListBuilder.addPrimitives(primitive00)
+      final WkSerdeTestPrimitivesGroupList list00_to_07 = primitiveListBuilder.addPrimitives(primitive00)
                                                               .addPrimitives(primitive01)
                                                               .addPrimitives(primitive02)
                                                               .addPrimitives(primitive03)
@@ -209,9 +209,9 @@ public class WkSrlzFilterBuilderTest
                                                               .addPrimitives(primitive07)
                                                               .build();
 
-      WkSzTstMultipleLists.Builder multiplePrimitiveListBuilder = new WkSzTstMultipleLists.Builder();
+      WkSerdeTestMultipleLists.Builder multiplePrimitiveListBuilder = new WkSerdeTestMultipleLists.Builder();
 
-      final WkSzTstMultipleLists msgWrite = multiplePrimitiveListBuilder.addPrimitivesList(listNone)
+      final WkSerdeTestMultipleLists msgWrite = multiplePrimitiveListBuilder.addPrimitivesList(listNone)
                                                                  .addPrimitivesList(list00)
                                                                  .addPrimitivesList(list00_to_01)
                                                                  .addPrimitivesList(list00_to_02)
@@ -235,14 +235,14 @@ public class WkSrlzFilterBuilderTest
 
       KetzaByteOutputStream out = new KetzaByteOutputStream();
 
-      WkSerdeDtreeWriter<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzOutputNode>
+      WkSerdeDtreeWriter<WkSerdeTestMultipleLists, WkSerdeTestMultipleListStructDefinition, WkSerdeTestMultipleListMsgWriter>
         multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSerdeDtreeOperationSettings.EMPTY, out);
 
       while(multiListsSerializer.isInProgress()) {
         multiListsSerializer.processBytestream();
       }
 
-      WkSerdeDtreeReader<WkSzTstMultipleLists, WkTstMultipleListSrlzStructNode, WkTstMultipleListSrlzInputNode>
+      WkSerdeDtreeReader<WkSerdeTestMultipleLists, WkSerdeTestMultipleListStructDefinition, WkSerdeTestMultipleListMsgReader>
         multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, out.inputStream(), filter);
 
       while(multiListsDeserializer.isInProgress()) {
@@ -250,7 +250,7 @@ public class WkSrlzFilterBuilderTest
       }
 
       if (multiListsDeserializer.firstOperation().get().result().get().serializable().isPresent()) {
-        final WkSzTstMultipleLists readRes = multiListsDeserializer.firstOperation().get().result().get().serializable().get();
+        final WkSerdeTestMultipleLists readRes = multiListsDeserializer.firstOperation().get().result().get().serializable().get();
 
         assertNotNull(readRes);
         assertEquals(listNone, readRes.get(0));

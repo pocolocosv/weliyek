@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
+public class WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         X,
                         XS extends WkSerdeDtreeOperationSettings,
                         XD extends WkSerdeDtreeAggregatorStructDefinition<X>,
@@ -39,20 +39,20 @@ public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
                           WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>>,
                         WkSerdeDtreeOperationResult<X>,
                         XD,
+                        WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<X,XS,XD,XO,?,?,?,? extends XD>,
                         XO,
-                        WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<X,XS,XD,XO>,
-                        WkSerdeDtreeBytestreamInputBase<?>,
-                        WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<X,XS,XD,XO,?,?,?,? extends XD>>
+                        WkSerdeDtreeAggregatorMsgReaderCoreSimplified<X,XS,XD,XO>,
+                        WkSerdeDtreeBytestreamInputBase<?>>
 {
 
-  public WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore(
+  public WkSerdeDtreeAggregatorMsgReaderCoreSimplified(
     int index,
     XS settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<X,?,XD,?,?,?> deserializingFieldCore,
-    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<X,XS,XD,XO,?,?,?,? extends XD> definitionCore,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<X,XS,XD,XO,?,?,?,? extends XD> definitionCore,
     XO body) {
-    super(index, settings, parentBytestream, deserializingFieldCore, definitionCore, body);
+    super(index, settings, parentBytestream, readerFieldCore, definitionCore, body);
   }
 
   @Override
@@ -71,7 +71,7 @@ public class WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
   }
 
   @Override
-  protected WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<X,XS,XD,XO> getThis() {
+  protected WkSerdeDtreeAggregatorMsgReaderCoreSimplified<X,XS,XD,XO> getThis() {
     return this;
   }
 

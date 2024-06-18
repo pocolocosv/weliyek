@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
+public class WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                         T,
                         XS extends WkSerdeDtreeOperationSettings,
                         XD extends WkSerdeDtreeAggregatorStructDefinition<T>,
@@ -50,7 +50,10 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                           WkSerdeDtreeBytestreamInputBase<?>,
                           WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>>,
                         WkSerdeDtreeOperationResult<T>,
-                        XD, XO,
+                        XD,
+                        WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T,XS,XD,XO,?,?,?,? extends XD>,
+                        XO,
+                        WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         YS,
                         WkSerdeDtreeBytestreamOutput,
@@ -60,25 +63,28 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
                           WkSerdeDtreeBytestreamOutputBase<?>,
                           WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>>,
                         WkSerdeDtreeOperationResult<T>,
-                        YD, YO,
+                        YD,
+                        WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T,?,?,?,YS,YD,YO,? extends YD>,
+                        YO,
+                        WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>,
                         WkSerdeDtreeBytestreamOutputBase<?>,
                         D,
-                        WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T,XS,XD,XO,YS,YD,YO,D>>
+                        WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T,XS,XD,XO,YS,YD,YO,D>>
 {
 
-  final Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onInitializing;
-  final Function<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>, T> onFullSerializing;
-  final Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onSkippedDeserializing;
-  final Consumer<? super WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>> onOutputInitializing;
+  final Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onInitializing;
+  final Function<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>, T> onFullSerializing;
+  final Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onSkippedDeserializing;
+  final Consumer<? super WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>> onOutputInitializing;
 
-  public WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore(
-    WkSerdeDtreeMsgReaderFactory<T, XS, XD, WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T, XS, XD, XO, YS, YD, YO, D>, XO, WkSerdeDtreeBytestreamInputBase<?>> deserializerFactory,
-    WkSerdeDtreeMsgWriterFactory<T, YS, YD, WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T, XS, XD, XO, YS, YD, YO, D>, YO, WkSerdeDtreeBytestreamOutputBase<?>> serializerFactory,
-    WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?, ?, ?> componentCore,
-    Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onInitializing,
-    Function<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>, T> onFullDeserializing,
-    Consumer<? super WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<T,XS,XD,XO>> onSkippedDeserializing,
-    Consumer<? super WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>> onOutputInitializing,
+  public WkSerdeDtreeAggregatorStructDefinitionCoreSimplified(
+    WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, XS, XD, XO, ?, ?, ?, ? extends XD>, WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T, XS, XD, XO>, WkSerdeDtreeBytestreamInputBase<?>> deserializerFactory,
+    WkSerdeDtreeAggregatorMsgWriterCoreFactory<T, YS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, ?, ?, ?, YS, YD, YO, ? extends YD>, WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T, YS, YD, YO>, WkSerdeDtreeBytestreamOutputBase<?>> serializerFactory,
+    WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?> componentCore,
+    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onInitializing,
+    Function<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>, T> onFullDeserializing,
+    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onSkippedDeserializing,
+    Consumer<? super WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>> onOutputInitializing,
     D body,
     Class<T> serializableClass) {
     super(
@@ -98,7 +104,7 @@ public class WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
   }
 
   @Override
-  protected WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T, XS, XD, XO, YS, YD, YO, D> getThis() {
+  protected WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, XS, XD, XO, YS, YD, YO, D> getThis() {
     return this;
   }
 

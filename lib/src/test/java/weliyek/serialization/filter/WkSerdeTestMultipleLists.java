@@ -24,23 +24,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class WkSzTstMultipleLists extends AbstractList<WkSzTstPrimitivesGroupList>
+public class WkSerdeTestMultipleLists extends AbstractList<WkSerdeTestPrimitivesGroupList>
 {
 
     public final static String SERIALIZER_LABEL = "MULTIPLEGROUPLISTS";
 
-    final List<WkSzTstPrimitivesGroupList> container;
+    final List<WkSerdeTestPrimitivesGroupList> container;
 
-    WkSzTstMultipleLists(List<WkSzTstPrimitivesGroupList> container) {
+    WkSerdeTestMultipleLists(List<WkSerdeTestPrimitivesGroupList> container) {
         this.container = Objects.requireNonNull(container);
     }
 
-    WkSzTstMultipleLists(Collection<WkSzTstPrimitivesGroupList> col) {
+    WkSerdeTestMultipleLists(Collection<WkSerdeTestPrimitivesGroupList> col) {
         this.container = new ArrayList<>(col);
     }
 
     @Override
-    public WkSzTstPrimitivesGroupList get(int index) {
+    public WkSerdeTestPrimitivesGroupList get(int index) {
         return container.get(index);
     }
 
@@ -49,34 +49,34 @@ public class WkSzTstMultipleLists extends AbstractList<WkSzTstPrimitivesGroupLis
         return container.size();
     }
 
-    public static class Builder extends AbstractList<WkSzTstPrimitivesGroupList>
+    public static class Builder extends AbstractList<WkSerdeTestPrimitivesGroupList>
     {
 
-        private LinkedList<WkSzTstPrimitivesGroupList> builderContainer = new LinkedList<>();
+        private LinkedList<WkSerdeTestPrimitivesGroupList> builderContainer = new LinkedList<>();
 
-        public WkSzTstMultipleLists build() {
-            ArrayList<WkSzTstPrimitivesGroupList> listContainer = new ArrayList<>(builderContainer);
+        public WkSerdeTestMultipleLists build() {
+            ArrayList<WkSerdeTestPrimitivesGroupList> listContainer = new ArrayList<>(builderContainer);
             builderContainer.clear();
-            return new WkSzTstMultipleLists(listContainer);
+            return new WkSerdeTestMultipleLists(listContainer);
         }
 
-        public Builder addPrimitivesList(WkSzTstPrimitivesGroupList list) {
+        public Builder addPrimitivesList(WkSerdeTestPrimitivesGroupList list) {
             this.add(list);
             return this;
         }
 
         @Override
-        public void add(int index, WkSzTstPrimitivesGroupList element) {
+        public void add(int index, WkSerdeTestPrimitivesGroupList element) {
             this.builderContainer.add(index, element);
         }
 
         @Override
-        public WkSzTstPrimitivesGroupList set(int index, WkSzTstPrimitivesGroupList element) {
+        public WkSerdeTestPrimitivesGroupList set(int index, WkSerdeTestPrimitivesGroupList element) {
             return this.builderContainer.set(index, element);
         }
 
         @Override
-        public WkSzTstPrimitivesGroupList get(int index) {
+        public WkSerdeTestPrimitivesGroupList get(int index) {
             return this.builderContainer.get(index);
         }
 

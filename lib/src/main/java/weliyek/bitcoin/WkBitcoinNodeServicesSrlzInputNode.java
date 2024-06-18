@@ -23,8 +23,8 @@ import weliyek.serialization.WkSerdeDtreeAggregatorMsgReader;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore;
-import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReaderCoreSimplified;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
 import weliyek.serialization.WkSerdeDtreeMsgInputField;
 import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSrlzInputPacketSubfieldFrameNode;
@@ -43,7 +43,7 @@ public class WkBitcoinNodeServicesSrlzInputNode
                         WkBitcoinNodeServicesSrlzStructNode>
 {
 
-  final WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
+  final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBitcoinNodeServices, 
                         WkSerdeDtreeOperationSettings, 
                         WkBitcoinNodeServicesSrlzStructNode, 
@@ -63,8 +63,8 @@ public class WkBitcoinNodeServicesSrlzInputNode
     WkSerdeDtreeOperationSettings settings, 
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream, 
     WkSerdeDtreeMsgInputFieldCore<WkBitcoinNodeServices, ?, WkBitcoinNodeServicesSrlzStructNode, ?, ?, ?> packetFieldCore, 
-    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkBitcoinNodeServices, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode, ?, ?, ?, ? extends WkBitcoinNodeServicesSrlzStructNode> structCore) {
-    this.inputCore = new WkSimplifiedAggregatorSrlzInputPacketDecoderFrameNodeCore<
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBitcoinNodeServices, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzInputNode, ?, ?, ?, ? extends WkBitcoinNodeServicesSrlzStructNode> structCore) {
+    this.inputCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
           WkBitcoinNodeServices, 
           WkSerdeDtreeOperationSettings, 
           WkBitcoinNodeServicesSrlzStructNode, 

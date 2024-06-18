@@ -19,7 +19,7 @@ package weliyek.serialization.filter;
 
 import java.util.Objects;
 
-public class WkSzTstPrimitivesGroup
+public class WkSerdeTestPrimitivesGroup
 {
 
     public final byte b;
@@ -31,7 +31,7 @@ public class WkSzTstPrimitivesGroup
 
     public static final int FIXED_STRING_LENGTH = 10;
 
-    WkSzTstPrimitivesGroup(int i, String str) {
+    WkSerdeTestPrimitivesGroup(int i, String str) {
         this.b = (byte)i;
         this.s = (short)(10*i);
         this.i = 100*i;
@@ -40,17 +40,17 @@ public class WkSzTstPrimitivesGroup
         this.varLengthStr = Objects.requireNonNull(str);
     }
 
-    WkSzTstPrimitivesGroup(WkSzTstPrimitivesGroupPacketReader deserializer) {
+    WkSerdeTestPrimitivesGroup(WkSerdeTestPrimitivesGroupMsgReader deserializer) {
       this(
-          deserializer.byteReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().byteValue(),
-          deserializer.shortReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().shortValue(),
-          deserializer.intReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().intValue(),
-          deserializer.longReadingSubfield.field().get().firstOperation().get().result().get().serializable().get().longValue(),
-          deserializer.fixedStrReadingSubfield.field().get().firstOperation().get().result().get().serializable().get(),
-          deserializer.dynStrReadingSubfield.field().get().firstOperation().get().result().get().serializable().get());
+          deserializer.singleByte().get().firstOperation().get().result().get().serializable().get().byteValue(),
+          deserializer.singleShort().get().firstOperation().get().result().get().serializable().get().shortValue(),
+          deserializer.singleInt().get().firstOperation().get().result().get().serializable().get().intValue(),
+          deserializer.singleLong().get().firstOperation().get().result().get().serializable().get().longValue(),
+          deserializer.fixedString().get().firstOperation().get().result().get().serializable().get(),
+          deserializer.dynamicString().get().firstOperation().get().result().get().serializable().get());
     }
 
-    WkSzTstPrimitivesGroup(byte b, short s, int i, long l, String fixedLengthStr, String varLengthStr) {
+    WkSerdeTestPrimitivesGroup(byte b, short s, int i, long l, String fixedLengthStr, String varLengthStr) {
         this.b = b;
         this.s = s;
         this.i = i;
@@ -74,25 +74,34 @@ public class WkSzTstPrimitivesGroup
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof WkSzTstPrimitivesGroup))
-            return false;
-        WkSzTstPrimitivesGroup other = (WkSzTstPrimitivesGroup) obj;
-        if (b != other.b)
-            return false;
-        if (!fixedLengthStr.equals(other.fixedLengthStr))
-            return false;
-        if (i != other.i)
-            return false;
-        if (l != other.l)
-            return false;
-        if (s != other.s)
-            return false;
-        if (!varLengthStr.equals(other.varLengthStr))
-            return false;
+        if (this == obj) {
+          return true;
+        }
+        if (obj == null) {
+          return false;
+        }
+        if (!(obj instanceof WkSerdeTestPrimitivesGroup)) {
+          return false;
+        }
+        WkSerdeTestPrimitivesGroup other = (WkSerdeTestPrimitivesGroup) obj;
+        if (b != other.b) {
+          return false;
+        }
+        if (!fixedLengthStr.equals(other.fixedLengthStr)) {
+          return false;
+        }
+        if (i != other.i) {
+          return false;
+        }
+        if (l != other.l) {
+          return false;
+        }
+        if (s != other.s) {
+          return false;
+        }
+        if (!varLengthStr.equals(other.varLengthStr)) {
+          return false;
+        }
         return true;
     }
 

@@ -22,7 +22,7 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinition;
 import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeNodeStructComponentHandler;
@@ -54,7 +54,7 @@ public class WkBitcoinNodeServicesSrlzStructNode
     return new WkBitcoinNodeServicesSrlzStructNode(componentCore).definitionCore;
   }
   
-  private final WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
+  private final WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                     WkBitcoinNodeServices, 
                     WkSerdeDtreeOperationSettings, 
                     WkBitcoinNodeServicesSrlzStructNode, 
@@ -84,7 +84,7 @@ public class WkBitcoinNodeServicesSrlzStructNode
 
   public WkBitcoinNodeServicesSrlzStructNode(
     WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?,?,?> componentCore) {
-    this.definitionCore = new WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<
+    this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
         WkBitcoinNodeServices, 
         WkSerdeDtreeOperationSettings, 
         WkBitcoinNodeServicesSrlzStructNode, 

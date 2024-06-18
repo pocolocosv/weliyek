@@ -17,7 +17,7 @@
  */
 package weliyek.serialization;
 
-public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
+public class WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         T,
                         YS extends WkSerdeDtreeOperationSettings,
                         YD extends WkSerdeDtreeAggregatorStructDefinition<T>,
@@ -38,21 +38,21 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
                           WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>>,
                         WkSerdeDtreeOperationResult<T>,
                         YD,
+                        WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T,?,?,?,YS,YD,YO,? extends YD>,
                         YO,
-                        WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO>,
-                        WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T,?,?,?,YS,YD,YO,?>>
+                        WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>,
+                        WkSerdeDtreeBytestreamOutputBase<?>>
 {
 
-  public WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore(
+  public WkSerdeDtreeAggregatorMsgWriterCoreSimplified(
     int index,
     T serializable,
     YS settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<T,?,YD,?,?,?> serializingfieldCore,
-    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<T,?,?,?,YS,YD,YO,?> definitionCore,
+    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, ?, ?, ?, YS, YD, YO, ? extends YD> definitionCore,
     YO body) {
-    super(index, parentBytestream, serializable, settings, serializingfieldCore, definitionCore, body);
+    super(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, body);
   }
 
   @Override
@@ -61,7 +61,7 @@ public class WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
   }
 
   @Override
-  protected WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<T,YS,YD,YO> getThis() {
+  protected WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO> getThis() {
     return this;
   }
 

@@ -24,25 +24,25 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class WkSzTstPrimitivesGroupList extends AbstractList<WkSzTstPrimitivesGroup>
+public class WkSerdeTestPrimitivesGroupList extends AbstractList<WkSerdeTestPrimitivesGroup>
 {
 
-    final List<WkSzTstPrimitivesGroup> container;
+    final List<WkSerdeTestPrimitivesGroup> container;
 
     /**
      * Uses supplied list as a container. Any changes done to the container
      * will be mirrored by this class.
      */
-    WkSzTstPrimitivesGroupList(List<WkSzTstPrimitivesGroup> container) {
+    WkSerdeTestPrimitivesGroupList(List<WkSerdeTestPrimitivesGroup> container) {
         this.container = Objects.requireNonNull(container);
     }
 
-    WkSzTstPrimitivesGroupList(Collection<WkSzTstPrimitivesGroup> collection) {
+    WkSerdeTestPrimitivesGroupList(Collection<WkSerdeTestPrimitivesGroup> collection) {
         this.container = new ArrayList<>(collection);
     }
 
     @Override
-    public WkSzTstPrimitivesGroup get(int index) {
+    public WkSerdeTestPrimitivesGroup get(int index) {
         return container.get(index);
     }
 
@@ -53,15 +53,15 @@ public class WkSzTstPrimitivesGroupList extends AbstractList<WkSzTstPrimitivesGr
 
     static class Builder {
 
-        private static LinkedList<WkSzTstPrimitivesGroup> builderContainer = new LinkedList<>();
+        private static LinkedList<WkSerdeTestPrimitivesGroup> builderContainer = new LinkedList<>();
 
-        public WkSzTstPrimitivesGroupList build() {
-            List<WkSzTstPrimitivesGroup> listContainer = new LinkedList<>(builderContainer);
+        public WkSerdeTestPrimitivesGroupList build() {
+            List<WkSerdeTestPrimitivesGroup> listContainer = new LinkedList<>(builderContainer);
             builderContainer.clear();
-            return new WkSzTstPrimitivesGroupList(listContainer);
+            return new WkSerdeTestPrimitivesGroupList(listContainer);
         }
 
-        public Builder addPrimitives(WkSzTstPrimitivesGroup primitive) {
+        public Builder addPrimitives(WkSerdeTestPrimitivesGroup primitive) {
             builderContainer.add(primitive);
             return this;
         }

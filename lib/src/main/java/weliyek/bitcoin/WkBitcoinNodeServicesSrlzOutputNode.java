@@ -23,8 +23,8 @@ import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriter;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore;
-import weliyek.serialization.WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriterCoreSimplified;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
 import weliyek.serialization.WkSerdeDtreeMsgOutputField;
 import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSrlzOutputPacketSubfieldFrameNode;
@@ -43,7 +43,7 @@ public class WkBitcoinNodeServicesSrlzOutputNode
                         WkBitcoinNodeServicesSrlzStructNode>
 {
 
-  final WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
+  final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBitcoinNodeServices, 
                         WkSerdeDtreeOperationSettings, 
                         WkBitcoinNodeServicesSrlzStructNode, 
@@ -64,8 +64,8 @@ public class WkBitcoinNodeServicesSrlzOutputNode
     WkSerdeDtreeOperationSettings settings, 
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream, 
     WkSerdeDtreeMsgOutputFieldCore<WkBitcoinNodeServices, ?, WkBitcoinNodeServicesSrlzStructNode, ?, ?, ?> packetFieldCore, 
-    WkSimplifiedAggregatorSrlzStructDefinitionFrameNodeCore<WkBitcoinNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, ?> structCore) {
-    this.outputCore = new WkSimplifiedAggregatorSrlzOutputPacketEncoderFrameNodeCore<
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBitcoinNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSrlzStructNode, WkBitcoinNodeServicesSrlzOutputNode, ?> structCore) {
+    this.outputCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                             WkBitcoinNodeServices, 
                             WkSerdeDtreeOperationSettings, 
                             WkBitcoinNodeServicesSrlzStructNode, 

@@ -20,8 +20,8 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSerdeDtreeMsgReaderFactory<
                         XS extends WkSerdeDtreeOperationSettings,
-                        XDC extends WkSerdeDtreeStructDefinitionCore<?,XS,?,?,?,?,?,XOC,AXBC,?,?,?,?,?,?,?,?,?,?>,
-                        XOC extends WkSerdeDtreeMsgReaderCore<?,XS,?,?,?,?,?,?,XDC,AXBC>,
+                        XDC extends WkSerdeDtreeStructDefinitionCore<?,? super XS,?,?,?,?,?,? super XOC,? super AXBC,?,?,?,?,?,?,?,?,?,?>,
+                        XOC extends WkSerdeDtreeMsgReaderCore<?,? super XS,?,?,?,?,?,?,? super XDC,? super AXBC>,
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>>
     extends WkSerdeDtreeMsgOperationFactory
 {

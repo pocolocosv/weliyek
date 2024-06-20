@@ -27,7 +27,6 @@ import weliyek.serialization.WkSerdeDtreeMsgPrimitiveReaderFactory;
 import weliyek.serialization.WkSerdeDtreeMsgPrimitiveWriterCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommon;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrlSimplified;
@@ -36,6 +35,7 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtr
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationResultBasic;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.sequence.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrlSimplified;
 import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArrayLengthGetter;
 

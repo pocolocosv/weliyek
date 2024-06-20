@@ -29,7 +29,7 @@ public abstract class WkSerdeDtreeStructFieldCore<
                         XO extends WkSerdeDtreeMsgReader<T,?,?,?,?>,
                         YO extends WkSerdeDtreeMsgWriter<T,?,?,?,?>,
                         D extends WkSerdeDtreeStructDefinition<T>,
-                        DC extends WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,D,?>>
+                        DC extends WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? super D,?>>
     implements WkSerdeDtreeStructField<D>
 {
 
@@ -58,8 +58,9 @@ public abstract class WkSerdeDtreeStructFieldCore<
   abstract protected Optional<WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>> parentDefinitionCore();
 
   @Override
+  @SuppressWarnings("unchecked")
   public D definition() {
-    return definitionCore().definition();
+    return (D) definitionCore().definition();
   }
 
   DC definitionCore() {

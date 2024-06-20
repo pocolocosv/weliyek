@@ -19,9 +19,9 @@ package weliyek.serialization;
 public interface WkSerdeDtreeAggregatorMsgReaderCoreFactory<
                         XS extends WkSerdeDtreeOperationSettings,
                         XDC extends WkSerdeDtreeAggregatorStructDefinitionCore<
-                                        ?,XS,?,?,?,?,?,?,?,XOC,AXBC,?,?,?,?,?,?,?,?,?,?,?,?>,
+                                        ?,? super XS,?,?,?,?,?,?,?,? super XOC,? super AXBC,?,?,?,?,?,?,?,?,?,?,?,?>,
                         XOC extends WkSerdeDtreeAggregatorMsgReaderCore<
-                                        ?,XS,?,?,?,?,?,?,XDC,?,?,AXBC>,
+                                        ?,? super XS,?,?,?,?,?,?,? super XDC,?,?,? super AXBC>,
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>>
     extends WkSerdeDtreeMsgReaderFactory<XS, XDC, XOC, AXBC>
 {

@@ -78,29 +78,29 @@ public class WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
   final Consumer<? super WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>> onOutputInitializing;
 
   public WkSerdeDtreeAggregatorStructDefinitionCoreSimplified(
-    WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, XS, XD, XO, ?, ?, ?, ? extends XD>, WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T, XS, XD, XO>, WkSerdeDtreeBytestreamInputBase<?>> deserializerFactory,
-    WkSerdeDtreeAggregatorMsgWriterCoreFactory<T, YS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, ?, ?, ?, YS, YD, YO, ? extends YD>, WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T, YS, YD, YO>, WkSerdeDtreeBytestreamOutputBase<?>> serializerFactory,
-    WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?> componentCore,
+    WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, XS, XD, XO, ?, ?, ?, ? extends XD>, WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T, XS, XD, XO>, WkSerdeDtreeBytestreamInputBase<?>> readerFactory,
+    WkSerdeDtreeAggregatorMsgWriterCoreFactory<T, YS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, ?, ?, ?, YS, YD, YO, ? extends YD>, WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T, YS, YD, YO>, WkSerdeDtreeBytestreamOutputBase<?>> writerFactory,
+    WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?> fieldCore,
     Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onInitializing,
-    Function<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>, T> onFullDeserializing,
-    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onSkippedDeserializing,
-    Consumer<? super WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>> onOutputInitializing,
+    Function<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>, T> onFullRead,
+    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onSkippedRead,
+    Consumer<? super WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>> onWrite,
     D body,
     Class<T> serializableClass) {
     super(
-          componentCore,
+          fieldCore,
           WkSerdeDtreeOperationInputRuntimeCtrlSimplified::new,
           WkSerdeDtreeOperationResultBasic::new,
-          deserializerFactory,
+          readerFactory,
           WkSerdeDtreeOperationOutputRuntimeCtrlSimplified::new,
           WkSerdeDtreeOperationResultBasic::new,
-          serializerFactory,
+          writerFactory,
           body,
           serializableClass);
     this.onInitializing = Objects.requireNonNull(onInitializing);
-    this.onFullSerializing = Objects.requireNonNull(onFullDeserializing);
-    this.onSkippedDeserializing = Objects.requireNonNull(onSkippedDeserializing);
-    this.onOutputInitializing = Objects.requireNonNull(onOutputInitializing);
+    this.onFullSerializing = Objects.requireNonNull(onFullRead);
+    this.onSkippedDeserializing = Objects.requireNonNull(onSkippedRead);
+    this.onOutputInitializing = Objects.requireNonNull(onWrite);
   }
 
   @Override

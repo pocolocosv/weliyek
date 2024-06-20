@@ -19,8 +19,8 @@ package weliyek.serialization;
 public interface WkSerdeDtreeMsgPrimitiveWriterCoreFactory<
                         T,
                         YS extends WkSerdeDtreeOperationSettings,
-                        YDC extends WkSerdeDtreePrimitiveStructDefinitionCore<T,?,?,?,?,?,?,?,?,YS,?,?,?,?,?,YOC,AYBC,?,?>,
-                        YOC extends WkSerdeDtreeMsgWriterCore<T,YS,?,?,?,?,?,?,YDC,AYBC>,
+                        YDC extends WkSerdeDtreePrimitiveStructDefinitionCore<? super T,?,?,?,?,?,?,?,?,? super YS,?,?,?,?,?,? super YOC,? super AYBC,?,?>,
+                        YOC extends WkSerdeDtreeMsgWriterCore<? super T,? super YS,?,?,?,?,?,?,? super YDC,? super AYBC>,
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>>
     extends WkSerdeDtreeMsgWriterFactory<T, YS, YDC, YOC, AYBC>
 {

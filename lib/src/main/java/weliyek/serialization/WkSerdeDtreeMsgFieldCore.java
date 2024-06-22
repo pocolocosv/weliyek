@@ -35,7 +35,7 @@ public abstract class WkSerdeDtreeMsgFieldCore<
                         K extends WkSerdeDtreeMsgField<T,O,?>,
                         ABC extends WkSerdeDtreeBytestreamBase<?,?>,
                         AOC extends WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?>,
-                        PC extends WkSerdeDtreeStructFieldCore<T,?,?,? extends D,?>>
+                        PC extends WkSerdeDtreeStructFieldCore<T,?,?,?,?,?,?,? extends D>>
     implements WkSerdeDtreeMsgField<T,O,D>
 {
 

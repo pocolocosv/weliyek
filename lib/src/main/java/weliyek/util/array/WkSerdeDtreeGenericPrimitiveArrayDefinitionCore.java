@@ -28,12 +28,12 @@ import weliyek.serialization.WkSerdeDtreeMsgPrimitiveReaderFactory;
 import weliyek.serialization.WkSerdeDtreeMsgPrimitiveWriterCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreePrimitiveStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArrayLengthGetter;
 
 public abstract class WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<
@@ -71,7 +71,7 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayDefinitionCore<
 
   protected WkSerdeDtreeGenericPrimitiveArrayDefinitionCore(
     int stepSize,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, ? super XD> rxRequestedLengthEvaluator,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,

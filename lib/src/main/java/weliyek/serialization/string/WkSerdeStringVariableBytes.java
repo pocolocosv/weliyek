@@ -93,7 +93,7 @@ public class WkSerdeStringVariableBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeStringVariableBytes(bytesLabel, minSize, maxSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -118,8 +118,22 @@ public class WkSerdeStringVariableBytes
     int minSize,
     int maxSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
-    this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
+    this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<
+                                  WkSerdeDtreeOperationSettingsVariableLength,
+                                  WkSerdeStringVariableBytesReader,
+                                  WkSerdeStringVariableBytes,
+                                  WkSerdeDtreeOperationSettingsOptionalLength,
+                                  WkSerdeStringVariableBytesWriter,
+                                  WkSerdeStringVariableBytes,
+                                  WkSerdeDtreeOperationSettingsVariableLength,
+                                  WkSerdeDtreeVariableSizeByteArrayReader,
+                                  WkSerdeDtreeVariableSizeByteArray,
+                                  WkSerdeDtreeOperationSettings,
+                                  WkSerdeDtreeVariableSizeByteArrayWriter,
+                                  WkSerdeDtreeVariableSizeByteArray,
+                                  WkSerdeDtreeVariableSizeByteArray,
+                                  WkSerdeStringVariableBytes>(
                                     defaultCharset,
                                     componentCore,
                                     (i,xs,axb,xpc,dc) -> new WkSerdeStringVariableBytesReader(i,xs,axb,xpc,dc).operationCore,

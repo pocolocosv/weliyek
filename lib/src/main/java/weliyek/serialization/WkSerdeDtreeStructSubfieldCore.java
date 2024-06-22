@@ -38,9 +38,7 @@ public class WkSerdeDtreeStructSubfieldCore<
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         AYO extends WkSerdeDtreeAggregatorMsgWriter<AT,?,?,?,?>,
                         D extends WkSerdeDtreeStructDefinition<T>>
-    extends WkSerdeDtreeStructFieldCore<
-                        T,XO,YO,D,
-                        WkSerdeDtreeStructDefinitionCore<T,XS,?,?,XD,?,XO,?,AXBC,YS,?,?,YD,?,YO,?,AYBC,D,?>>
+    extends WkSerdeDtreeStructFieldCore<T,XS,XO,AXBC,YS,YO,AYBC,D>
     implements WkSerdeDtreeStructSubfield<AXO, AYO, D>
 {
 
@@ -66,8 +64,7 @@ public class WkSerdeDtreeStructSubfieldCore<
     WkOperationSettingsFactory<AYO, YS> txSettingsFactory,
     WkSzPacketWriteDisaggregator<T, YD, AT, AYO> disaggregator,
     boolean deserializedRequiredByAggregator,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<T,XS,?,?,XD,?,XO,?,AXBC,YS,?,?,YD,?,YO,?,AYBC,D,?>> definitionFactory,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<T,XS,XO,AXBC,YS,YO,AYBC,D> definitionFactory,
     WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?> parentDefinitionCore) {
     super(label, definitionFactory);
     this.parentDefinitionCore = Optional.of(parentDefinitionCore);

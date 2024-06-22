@@ -24,14 +24,11 @@ import java.util.function.IntFunction;
 
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeStructCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfield;
@@ -85,10 +82,9 @@ public class WkSerdeStringDynamicBytes<
     Charset defaultCharset,
     IntFunction<ZT> wrapperSizeGetter,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD,?,ZXO,?,
-      WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-      WkSerdeDtreeOperationSettings, ?, ?, ZYD, ?, ZYO, ?,
-      WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>, ZD, ?>> sizeDefinitionFactory) {
+      ZT, WkSerdeDtreeOperationSettings, ZXO, WkSerdeDtreeBytestreamInputBase<?>,
+      WkSerdeDtreeOperationSettings, ZYO, WkSerdeDtreeBytestreamOutputBase<?>,
+      ZD> sizeDefinitionFactory) {
     return new WkSerdeDtreeStructCore<>(
                   label,
                   (pc) -> WkSerdeStringDynamicBytes.newCore(
@@ -119,7 +115,7 @@ public class WkSerdeStringDynamicBytes<
                         WkSerdeDynamicByteArray<ZT,ZXD,ZXO,ZYD,ZYO,ZD>,
                         WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>
   newCore(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     String bytesLabel,
     String sizeLabel,
     String arrayLabel,
@@ -128,10 +124,9 @@ public class WkSerdeStringDynamicBytes<
     Charset defaultCharset,
     IntFunction<ZT> wrapperSizeGetter,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD,?,ZXO,?,
-      WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-      WkSerdeDtreeOperationSettings, ?, ?, ZYD, ?, ZYO, ?,
-      WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>, ZD, ?>> sizeDefinitionFactory) {
+      ZT, WkSerdeDtreeOperationSettings, ZXO, WkSerdeDtreeBytestreamInputBase<?>,
+      WkSerdeDtreeOperationSettings, ZYO, WkSerdeDtreeBytestreamOutputBase<?>,
+      ZD> sizeDefinitionFactory) {
     return new WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,ZYD,ZYO,ZD>(
                         defaultCharset,
                         componentCore,
@@ -163,7 +158,7 @@ public class WkSerdeStringDynamicBytes<
 
   private WkSerdeStringDynamicBytes(
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     String bytesLabel,
     String szieLabel,
     IntFunction<ZT> wrapperSizeGetter,
@@ -171,10 +166,9 @@ public class WkSerdeStringDynamicBytes<
     int minLength,
     int maxLength,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ZT,WkSerdeDtreeOperationSettings,?,?,ZXD,?,ZXO,?,
-      WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-      WkSerdeDtreeOperationSettings, ?, ?, ZYD, ?, ZYO, ?,
-      WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>, ZD, ?>> sizeDefinitionFactory) {
+      ZT, WkSerdeDtreeOperationSettings, ZXO, WkSerdeDtreeBytestreamInputBase<?>,
+      WkSerdeDtreeOperationSettings, ZYO, WkSerdeDtreeBytestreamOutputBase<?>,
+      ZD> sizeDefinitionFactory) {
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<
                                   WkSerdeDtreeOperationSettings,
                                   WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>,

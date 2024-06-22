@@ -23,11 +23,11 @@ import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeStructField;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 
 public class WkSerdeUnsignedBigEndianInteger
     implements WkSerdeDtreeNumberStructDefinition<Long>
@@ -57,7 +57,7 @@ public class WkSerdeUnsignedBigEndianInteger
                         WkSerdeUnsignedBigEndianIntegerReader,
                         WkSerdeUnsignedBigEndianIntegerWriter,
                         WkSerdeUnsignedBigEndianInteger>
-  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeUnsignedBigEndianInteger(componentCore).definitionCore;
   }
 
@@ -68,7 +68,7 @@ public class WkSerdeUnsignedBigEndianInteger
                         WkSerdeUnsignedBigEndianInteger> definitionCore;
 
   private WkSerdeUnsignedBigEndianInteger(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<
                                   Long,
                                   WkSerdeUnsignedBigEndianIntegerReader,

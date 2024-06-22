@@ -86,7 +86,7 @@ public class WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
 
   public WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified(
     int stepSize,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     ToIntBiFunction<? super XS, D> rxRequestedLengthEvaluator,
     WkSerdeDtreeMsgPrimitiveReaderFactory<
       XS,

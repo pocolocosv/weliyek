@@ -26,23 +26,26 @@ import weliyek.serialization.tree.WkSerdeDtreeStruct;
 
 public abstract class WkSerdeDtreeStructFieldCore<
                         T,
-                        XO extends WkSerdeDtreeMsgReader<T,?,?,?,?>,
-                        YO extends WkSerdeDtreeMsgWriter<T,?,?,?,?>,
-                        D extends WkSerdeDtreeStructDefinition<T>,
-                        DC extends WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? super D,?>>
+                        XS extends WkSerdeDtreeOperationSettings,
+                        XO extends WkSerdeDtreeMsgReader<T,XS,?,?,?>,
+                        AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
+                        YS extends WkSerdeDtreeOperationSettings,
+                        YO extends WkSerdeDtreeMsgWriter<T,YS,?,?,?>,
+                        AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
+                        D extends WkSerdeDtreeStructDefinition<T>>
     implements WkSerdeDtreeStructField<D>
 {
 
   public static final char FIELD_NAME_SEPARATOR = '.';
 
   private final String label;
-  private final DC definitionCore;
+  private final WkSerdeDtreeStructDefinitionCore<T,XS,?,?,?,?,XO,?,AXBC,YS,?,?,?,?,YO,?,AYBC,D,?> definitionCore;
 
   private String name;
 
   protected WkSerdeDtreeStructFieldCore(
     String label,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<? extends DC> definitionFactory) {
+    WkSrlzStructDefinitionFrameNodeCoreFactory<T,XS,XO,AXBC,YS,YO,AYBC,D> definitionFactory) {
     this.label = Objects.requireNonNull(label);
     this.definitionCore = Objects.requireNonNull(definitionFactory).apply(this);
     this.definitionCore.initialize();
@@ -58,12 +61,12 @@ public abstract class WkSerdeDtreeStructFieldCore<
   abstract protected Optional<WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>> parentDefinitionCore();
 
   @Override
-  @SuppressWarnings("unchecked")
   public D definition() {
-    return (D) definitionCore().definition();
+    return definitionCore().definition();
   }
 
-  DC definitionCore() {
+  WkSerdeDtreeStructDefinitionCore<T,XS,?,?,?,?,XO,?,AXBC,YS,?,?,?,?,YO,?,AYBC,D,?>
+  definitionCore() {
     return this.definitionCore;
   }
 

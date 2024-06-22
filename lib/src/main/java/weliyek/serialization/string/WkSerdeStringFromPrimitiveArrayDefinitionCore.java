@@ -38,7 +38,6 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
@@ -103,7 +102,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
   final Function<XO, String> primitiveArrayDeserializingStringAggregator;
 
   protected WkSerdeStringFromPrimitiveArrayDefinitionCore(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,String,XR> rxResultFactory,
     WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS,XDC,XOC,AXB> readingOpFactory,
@@ -118,9 +117,7 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
     WkOperationSettingsFactory<YO,SYS> primitiveArraySerializingSettingsFactory,
     WkSzPacketWriteDisaggregator<ST, SYD, String, YO> primitiveArraySerializingDisaggregator,
     boolean primitiveArrayDeserializedRequired,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  ST,SXS,?,?,SXD,?,SXO,?,XBC,SYS,?,?,SYD,?,SYO,?,YBC,SD,?>> primitiveArrayDefinitionFactory,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<ST,SXS,SXO,XBC,SYS,SYO,YBC,SD> primitiveArrayDefinitionFactory,
     D definitionBody) {
     super(
           componentCore,

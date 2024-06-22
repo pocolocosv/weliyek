@@ -58,7 +58,7 @@ public abstract class WkSerdeDtreePrimitiveStructDefinitionCore<
   final WkSerdeDtreeNodeDataEncoderEngineFactory<T, ? super YQC, ? super YO> txSerializerFactory;
 
   protected WkSerdeDtreePrimitiveStructDefinitionCore(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     WkSerdeDtreeMsgPrimitiveReaderFactory<XS,XDC,XOC,AXBC> readingOpFactory,

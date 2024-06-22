@@ -51,7 +51,7 @@ public abstract class WkSerdeDtreeStructDefinitionCore<
     public static final char NAME_PREFIX = '<';
     public static final char NAME_SUFFIX = '>';
 
-    private final WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore;
+    private final WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore;
     private final Function<AXBC, XQC> rxRuntimeFactory;
     private final Function<AYBC, YQC> txRuntimeFactory;
     private final BiFunction<XO, T, XR> rxResultFactory;
@@ -65,7 +65,7 @@ public abstract class WkSerdeDtreeStructDefinitionCore<
     private final List<Consumer<WkSerdeDtreeMsgReaderCore<T,? extends XS,?,?,?,? extends XO,?,? extends XD,?,?>>> onBeforeDeserializingObservers = new ArrayList<>();
 
     protected WkSerdeDtreeStructDefinitionCore(
-      WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+      WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
       Function<AXBC,XQC> rxRuntimeFactory,
       BiFunction<XO,T,XR> rxResultFactory,
       WkSerdeDtreeMsgReaderFactory<XS,XDC,XOC,AXBC> readingOpFactory,
@@ -156,7 +156,7 @@ public abstract class WkSerdeDtreeStructDefinitionCore<
       return this.definitionBody;
     }
 
-    public WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore() {
+    public WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore() {
       return this.componentCore;
     }
 

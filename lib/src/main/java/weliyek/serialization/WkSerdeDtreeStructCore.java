@@ -55,9 +55,7 @@ public final class WkSerdeDtreeStructCore<
                         YO extends WkSerdeDtreeMsgWriter<T,YS,?,?,YD>,
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
                         D extends WkSerdeDtreeStructDefinition<T>>
-    extends WkSerdeDtreeStructFieldCore<
-                        T,XO,YO,D,
-                        WkSerdeDtreeStructDefinitionCore<T,XS,?,?,XD,?,XO,?,AXBC,YS,?,?,YD,?,YO,?,AYBC,D,?>>
+    extends WkSerdeDtreeStructFieldCore<T,XS,XO,AXBC,YS,YO,AYBC,D>
     implements WkSerdeDtreeStruct<T, XS, XD, XO, AXBC, YS, YD, YO, AYBC, D>
 {
 
@@ -67,8 +65,7 @@ public final class WkSerdeDtreeStructCore<
 
   public WkSerdeDtreeStructCore(
     String label,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<T,XS,?,?,XD,?,XO,?,AXBC,YS,?,?,YD,?,YO,?,AYBC,D,?>> definitionFactory,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<T,XS,XO,AXBC,YS,YO,AYBC,D> definitionFactory,
     Function<InputStream, AXBC> inputbytestreamFactory,
     Function<OutputStream, AYBC> outputbytestreamFactory) {
     super(label, definitionFactory);

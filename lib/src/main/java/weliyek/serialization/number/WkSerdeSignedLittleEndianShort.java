@@ -23,11 +23,11 @@ import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeStructField;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.sequence.WkSerdeDtreeShortSignedLittleEndianWriterEncoderEngine;
 
 public class WkSerdeSignedLittleEndianShort
@@ -58,7 +58,7 @@ public class WkSerdeSignedLittleEndianShort
                         WkSerdeSignedLittleEndianShortReader,
                         WkSerdeSignedLittleEndianShortWriter,
                         WkSerdeSignedLittleEndianShort>
-  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeSignedLittleEndianShort(componentCore).definitionCore;
   }
 
@@ -69,7 +69,7 @@ public class WkSerdeSignedLittleEndianShort
                         WkSerdeSignedLittleEndianShort> definitionCore;
 
   public WkSerdeSignedLittleEndianShort(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<
                                   Short,
                                   WkSerdeSignedLittleEndianShortReader,

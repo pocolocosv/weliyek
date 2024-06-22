@@ -42,7 +42,6 @@ import weliyek.serialization.WkSerdeDtreeOperationResultBasic;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
@@ -142,17 +141,18 @@ public final class WkSerdeDtreeDynamicCollectionDefinitionCore<
     WkOperationSettingsFactory<YO, ZYS> sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ZT,ZXS,?,?,ZXD,?,ZXO,?,WkSerdeDtreeBytestreamInputBase<?>,ZYS,?,?,ZYD,?,ZYO,?,WkSerdeDtreeBytestreamOutputBase<?>,ZD,?>>
-          sizeDefinitionFactory,
+      ZT,ZXS,ZXO,
+      WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+      ZYS,ZYO,
+      WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+      ZD> sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
     WkOperationSettingsFactory<XO,VXS> collectionAndElementsDeserializerSettingsFactory,
     WkOperationSettingsFactory<YO,VYS> collectionAndElementsSerializerSettingsFactory,
     String elementFieldLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  ET,EXS,?,?,EXD,?,EXO,?,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                  EYS,?,?,EYD,?,EYO,?,WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                  ED,?>> elementsDefinitionFactory,
+      ET, EXS, EXO, WkSerdeDtreeBytestreamInputBase<?>, EYS, EYO,
+      WkSerdeDtreeBytestreamOutputBase<?>, ED> elementsDefinitionFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionReader<T, VXS, ET, EXS, EXD, EXO>, EXS>
       elementDeserializerSettingsFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionWriter<T, VYS, ET, EYS, EYD, EYO>, EYS>
@@ -170,7 +170,7 @@ public final class WkSerdeDtreeDynamicCollectionDefinitionCore<
       WkSerdeDtreeBytestreamOutputBase<?>> serializerFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> serializableClass,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     D definitionBody) {
     super(
           sizeFieldLabel,

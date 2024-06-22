@@ -28,8 +28,7 @@ public abstract class WkSerdeDtreeMsgInputFieldCore<
                         AXOC extends WkSerdeDtreeMsgReaderCore<?,?,?,?,?,?,?,?,?,?>,
                         XK extends WkSerdeDtreeMsgInputField<T,XD,XO>,
                         XPC extends WkSerdeDtreeStructFieldCore<
-                                        T,XO,?,? extends XD,
-                                        ? extends WkSerdeDtreeStructDefinitionCore<T,XS,?,?,?,?,XO,?,AXBC,?,?,?,?,?,?,?,?,? extends XD,?>>>
+                                        T,XS,XO,AXBC,?,?,?,? extends XD>>
     extends WkSerdeDtreeMsgFieldCore<
                         T, XS, XD, XO,
                         WkSerdeDtreeMsgReaderCore<?,?,?,?,?,XO,?,?,?,?>,

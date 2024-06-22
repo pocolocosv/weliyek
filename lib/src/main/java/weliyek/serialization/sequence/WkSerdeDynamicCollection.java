@@ -39,7 +39,6 @@ import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfield;
@@ -147,10 +146,8 @@ public class WkSerdeDynamicCollection<
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-              ZT,ZXS,?,?,ZXD,?,ZXO,?,WkSerdeDtreeBytestreamInputBase<?>,
-              ZYS,?,?,ZYD,?,ZYO,?,WkSerdeDtreeBytestreamOutputBase<?>,
-              ZD,?>> sizeDefinitionFactory,
+      ZT,ZXS,ZXO,WkSerdeDtreeBytestreamInputBase<?>,
+      ZYS,ZYO,WkSerdeDtreeBytestreamOutputBase<?>,ZD> sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
     WkOperationSettingsFactory<WkSerdeDtreeDynamicCollectionReader<T, XS, WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>, WkSerdeDtreeOperationResult<T>, WkSerdeDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ? extends ZXD, ET, EXS, EXD, EXO, ?, ?, ?, ? extends EXD, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
@@ -158,10 +155,8 @@ public class WkSerdeDynamicCollection<
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-              ET,EXS,?,?,EXD,?,EXO,?,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-              EYS,?,?,EYD,?,EYO,?,WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-              ED,?>> elementDefinitionFactory,
+      ET,EXS,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO,WkSerdeDtreeBytestreamOutputBase<?>, ED> elementDefinitionFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionReader<T, VXS, ET, EXS, EXD, EXO>, EXS>
       elementDeserializerSettingsFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionWriter<T, VYS, ET, EYS, EYD, EYO>, EYS>
@@ -274,10 +269,8 @@ public class WkSerdeDynamicCollection<
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                ZT,ZXS,?,?,ZXD,?,ZXO,?,WkSerdeDtreeBytestreamInputBase<?>,
-                ZYS,?,?,ZYD,?,ZYO,?,WkSerdeDtreeBytestreamOutputBase<?>,
-                ZD,?>> sizeDefinitionFactory,
+      ZT,ZXS,ZXO,WkSerdeDtreeBytestreamInputBase<?>,
+      ZYS,ZYO,WkSerdeDtreeBytestreamOutputBase<?>,ZD> sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
     WkOperationSettingsFactory<WkSerdeDtreeDynamicCollectionReader<T, XS, WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>, WkSerdeDtreeOperationResult<T>, WkSerdeDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ? extends ZXD, ET, EXS, EXD, EXO, ?, ?, ?, ? extends EXD, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
@@ -285,17 +278,15 @@ public class WkSerdeDynamicCollection<
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                ET,EXS,?,?,EXD,?,EXO,?,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                EYS,?,?,EYD,?,EYO,?,WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                ED,?>> elementDefinitionFactory,
+      ET,EXS,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO,WkSerdeDtreeBytestreamOutputBase<?>, ED> elementDefinitionFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionReader<T, VXS, ET, EXS, EXD, EXO>, EXS>
       elementDeserializerSettingsFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionWriter<T, VYS, ET, EYS, EYD, EYO>, EYS>
       elementSerializerSettingsFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeDynamicCollection<
                  T,XS,YS,ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                  ET,EXS,EXD,EXO,EYS,EYD,EYO,ED,VXS,VYS>(
@@ -356,10 +347,8 @@ public class WkSerdeDynamicCollection<
       sizeSerializerSettingsFactory,
     IntFunction<ZT> sizeValueFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  ZT,ZXS,?,?,ZXD,?,ZXO,?,WkSerdeDtreeBytestreamInputBase<?>,
-                  ZYS,?,?,ZYD,?,ZYO,?,WkSerdeDtreeBytestreamOutputBase<?>,
-                  ZD,?>> sizeDefinitionFactory,
+      ZT,ZXS,ZXO,WkSerdeDtreeBytestreamInputBase<?>,
+      ZYS,ZYO,WkSerdeDtreeBytestreamOutputBase<?>,ZD> sizeDefinitionFactory,
     String collectionAndElementsFieldLabel,
     WkOperationSettingsFactory<WkSerdeDtreeDynamicCollectionReader<T, XS, WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>, WkSerdeDtreeOperationResult<T>, WkSerdeDynamicCollection<T, XS, ?, ZT, ZXS, ZXO, ZXD, ?, ?, ?, ? extends ZXD, ET, EXS, EXD, EXO, ?, ?, ?, ? extends EXD, VXS, ?>, ZT, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>, VXS>
       collectionAndElementsDeserializerSettingsFactory,
@@ -367,17 +356,15 @@ public class WkSerdeDynamicCollection<
       collectionAndElementsSerializerSettingsFactory,
     String elementLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  ET,EXS,?,?,EXD,?,EXO,?,WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                  EYS,?,?,EYD,?,EYO,?,WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                  ED,?>> elementDefinitionFactory,
+      ET,EXS,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO,WkSerdeDtreeBytestreamOutputBase<?>, ED> elementDefinitionFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionReader<T, VXS, ET, EXS, EXD, EXO>, EXS>
       elementDeserializerSettingsFactory,
     WkOperationSettingsFactory<WkSerdeVariableSizeElementCollectionWriter<T, VYS, ET, EYS, EYD, EYO>, EYS>
       elementSerializerSettingsFactory,
     Function<List<ET>, T> collectionFactory,
     Class<T> collectionClass,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeDynamicCollectionDefinitionCore<
                                   T, XS,
                                   WkSerdeDtreeDynamicCollectionReader<

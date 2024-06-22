@@ -80,7 +80,7 @@ public class WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
   public WkSerdeDtreeAggregatorStructDefinitionCoreSimplified(
     WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, XS, XD, XO, ?, ?, ?, ? extends XD>, WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T, XS, XD, XO>, WkSerdeDtreeBytestreamInputBase<?>> readerFactory,
     WkSerdeDtreeAggregatorMsgWriterCoreFactory<T, YS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, ?, ?, ?, YS, YD, YO, ? extends YD>, WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T, YS, YD, YO>, WkSerdeDtreeBytestreamOutputBase<?>> writerFactory,
-    WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?> fieldCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore,
     Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onInitializing,
     Function<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>, T> onFullRead,
     Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onSkippedRead,

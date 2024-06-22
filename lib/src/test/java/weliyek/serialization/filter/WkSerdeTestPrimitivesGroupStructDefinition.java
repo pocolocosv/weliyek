@@ -24,6 +24,7 @@ import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinition;
 import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
 import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
@@ -32,7 +33,6 @@ import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
-import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
 import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
@@ -158,7 +158,7 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>> dynStrSubcomponent;
 
   WkSerdeTestPrimitivesGroupStructDefinition(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                                   WkSerdeTestPrimitivesGroup,
                                   WkSerdeDtreeOperationSettings,

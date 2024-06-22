@@ -25,8 +25,6 @@ import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrlSimplified;
@@ -37,10 +35,11 @@ import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationResultBasic;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSrlzStructDefinitionFrameNodeCoreFactory;
-import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 
 public final class WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -132,20 +131,24 @@ public final class WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
     String sizeComponentLabel,
     IntFunction<ZT> sizeComponentIntToNumber,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  ZT,WkSerdeDtreeOperationSettings,?,?,ZXD,?,ZXO,?,
-                  WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                  WkSerdeDtreeOperationSettings,?,?,ZYD,?,ZYO,?,
-                  WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                  ZD,?>> sizeComponentDefinitionFactory,
+      ZT,
+      WkSerdeDtreeOperationSettings,
+      ZXO,
+      WkSerdeDtreeBytestreamInputBase<?>,
+      WkSerdeDtreeOperationSettings,
+      ZYO,
+      WkSerdeDtreeBytestreamOutputBase<?>,
+      ZD> sizeComponentDefinitionFactory,
     String varseqComponentLabel,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  T,WkSerdeDtreeOperationSettingsVariableLength,?,?,VXD,?,VXO,?,
-                  WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                  WkSerdeDtreeOperationSettings,?,?,VYD,?,VYO,?,
-                  WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                  VD,?>> varseqComponentDefinitionFactory,
+      T,
+      WkSerdeDtreeOperationSettingsVariableLength,
+      VXO,
+      WkSerdeDtreeBytestreamInputBase<?>,
+      WkSerdeDtreeOperationSettings,
+      VYO,
+      WkSerdeDtreeBytestreamOutputBase<?>,
+      VD> varseqComponentDefinitionFactory,
     WkSerdeDtreeAggregatorMsgReaderCoreFactory<
       WkSerdeDtreeOperationSettings,
       WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
@@ -158,7 +161,7 @@ public final class WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
         T,?,?,YD,YO,ZT,?,?,ZYD,ZYO,? extends ZYD,?,?,VYD,VYO,? extends VYD,? extends YD>,
       WkSerdeDtreeDynamicPrimitiveArrayWriterCore<T,YO,YD,ZT,ZYO,ZYD,VYO,VYD>,
       WkSerdeDtreeBytestreamOutputBase<?>> writingOpFactory,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     D definitionBody,
     Class<T> serializableClass) {
     super(

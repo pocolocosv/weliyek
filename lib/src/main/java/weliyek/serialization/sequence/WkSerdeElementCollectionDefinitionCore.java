@@ -42,7 +42,6 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeSequenceCommonCtr
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
@@ -105,7 +104,7 @@ public abstract class WkSerdeElementCollectionDefinitionCore<
   final Function<XO, T> collectionSerializingFactory;
 
   protected WkSerdeElementCollectionDefinitionCore(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     Function<AXB, XQC> rxRuntimeFactory,
     BiFunction<XO, T, XR> rxResultFactory,
     WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS,XDC,XOC,AXB> readingOpFactory,
@@ -117,9 +116,7 @@ public abstract class WkSerdeElementCollectionDefinitionCore<
     WkOperationSettingsFactory<XO, EXS> elementsRxSettingsFactory,
     WkOperationSettingsFactory<YO, EYS> elementsTxSettingsFactory,
     WkSzPacketWriteDisaggregator<ET,EYD,T,YO> elementsDisaggregator,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                    ET,EXS,?,?,EXD,?,EXO,?,XBC,EYS,?,?,EYD,?,EYO,?,YBC,ED,?>> elementsDefinitionFactory,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<ET,EXS,EXO,XBC,EYS,EYO,YBC,ED> elementsDefinitionFactory,
     Function<XO,T> collectionSerializingFactory,
     D definitionBody,
     Class<T> serializableClass) {

@@ -102,7 +102,7 @@ public class WkSerdeTestMultipleListStructDefinition
                       WkSerdeDtreeOperationSettings,
                       WkSerdeTestMultipleListStructDefinition> definitionCore;
 
-  WkSerdeTestMultipleListStructDefinition(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+  WkSerdeTestMultipleListStructDefinition(WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
       definitionCore = new WkSerdeDtreeDynamicCollectionDefinitionCore<
                               WkSerdeTestMultipleLists, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgReader, WkSerdeTestMultipleListStructDefinition, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgWriter, WkSerdeTestMultipleListStructDefinition, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortReader, WkSerdeSignedBigEndianShort, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShort, WkSerdeTestPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgReader, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgWriter, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeDtreeOperationSettingsVariableLength, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListStructDefinition>(
                                   0, // minSize

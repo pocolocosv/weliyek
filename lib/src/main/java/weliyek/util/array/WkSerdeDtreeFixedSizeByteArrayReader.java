@@ -43,6 +43,21 @@ public class WkSerdeDtreeFixedSizeByteArrayReader
                         WkSerdeDtreeFixedSizeByteArray>
 {
 
+  static WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
+                        WkByteArray,
+                        WkSerdeDtreeOperationSettings,
+                        WkSerdeDtreeFixedSizeByteArray,
+                        WkSerdeDtreeFixedSizeByteArrayReader>
+  newCore(
+    int index,
+    WkSerdeDtreeOperationSettings settings,
+    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
+    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
+      WkByteArray,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArrayReader,?,?,WkSerdeDtreeFixedSizeByteArray> definitionCore) {
+    return new WkSerdeDtreeFixedSizeByteArrayReader(index, settings, parentBytestream, msgFieldCore, definitionCore).operationCore;
+  }
+
   final WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
                         WkByteArray,
                         WkSerdeDtreeOperationSettings,

@@ -18,10 +18,12 @@
 package weliyek.bitcoin;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 import weliyek.util.array.WkByteArray;
@@ -34,21 +36,45 @@ public class WkBitcoinCommand
     }
 
     public static WkBitcoinCommand newCommand(byte[] array, int offset) {
-        if (CANONICAL_LENGTH != (array.length - offset))
+        if (CANONICAL_LENGTH != (array.length - offset)) {
           throw new IllegalArgumentException();
+        }
+        Optional<WkBitcoinCommand> cmd = findKnownCommand(array, offset);
+        if (cmd.isPresent()) {
+          return cmd.get();
+        }
         byte[] array_copy = Arrays.copyOfRange(array, offset, array.length - offset);
         WkByteArray wrapper = new WkByteArray(array_copy);
         return newCommand(wrapper);
     }
 
     public static WkBitcoinCommand newCommand(WkByteArray wrapper) {
-        if (CANONICAL_LENGTH != wrapper.getLength())
-            throw new IllegalArgumentException();
-        // Get existing instance if possible.
-        WkBitcoinCommand cmd = COMMAND_BY_BYTES.get(wrapper);
-        if (null == cmd)
-            cmd = new WkBitcoinCommand(wrapper);
-        return cmd;
+        if (CANONICAL_LENGTH != wrapper.getLength()) {
+          throw new IllegalArgumentException();
+        }
+        for (WkBitcoinCommand cmd : KNOWN_CMDS) {
+          if (cmd.bytes.equals(wrapper)) {
+            return cmd;
+          }
+        }
+        return new WkBitcoinCommand(wrapper);
+    }
+
+    public static Optional<WkBitcoinCommand> findKnownCommand(byte[] array) {
+      return findKnownCommand(array, 0);
+    }
+
+    public static Optional<WkBitcoinCommand> findKnownCommand(byte[] array, int offset) {
+      if (CANONICAL_LENGTH != (array.length - offset)) {
+        // Compared array must have the canonical length.
+        throw new IllegalArgumentException();
+      }
+      for (WkBitcoinCommand cmd : KNOWN_CMDS) {
+        if(0 == cmd.bytes.compare(array, offset, offset + CANONICAL_LENGTH)) {
+          return Optional.of(cmd);
+        }
+      }
+      return Optional.empty();
     }
 
     public static byte[] asCanonicalByteArray(String str) {
@@ -88,45 +114,41 @@ public class WkBitcoinCommand
     public static final WkBitcoinCommand GETBLOCKTXN = new WkBitcoinCommand("getblocktxn");
     public static final WkBitcoinCommand BLOCKTXN    = new WkBitcoinCommand("blocktxn");
 
-    /**
-     * This table helps to obtain all the existing instances by their bytes.
-     * We use the type {@link WkByteArray} because most of the time it will
-     * likely be this type of object that will be used over the byte[]. 
-     */
-    public static final Map<WkByteArray, WkBitcoinCommand> COMMAND_BY_BYTES;
+    static final List<WkBitcoinCommand> KNOWN_CMDS;
 
     static {
-        COMMAND_BY_BYTES = new HashMap<>();
-        COMMAND_BY_BYTES.put(VERSION.bytes,     VERSION);
-        COMMAND_BY_BYTES.put(VERACK.bytes,      VERACK);
-        COMMAND_BY_BYTES.put(ADDR.bytes,        ADDR);
-        COMMAND_BY_BYTES.put(INV.bytes,         INV);
-        COMMAND_BY_BYTES.put(GETDATA.bytes,     GETDATA);
-        COMMAND_BY_BYTES.put(NOTFOUND.bytes,    NOTFOUND);
-        COMMAND_BY_BYTES.put(GETBLOCKS.bytes,   GETBLOCKS);
-        COMMAND_BY_BYTES.put(GETHEADERS.bytes,  GETHEADERS);
-        COMMAND_BY_BYTES.put(TX.bytes,          TX);
-        COMMAND_BY_BYTES.put(BLOCK.bytes,       BLOCK);
-        COMMAND_BY_BYTES.put(HEADERS.bytes,     HEADERS);
-        COMMAND_BY_BYTES.put(GETADDR.bytes,     GETADDR);
-        COMMAND_BY_BYTES.put(MEMPOOL.bytes,     MEMPOOL);
-        COMMAND_BY_BYTES.put(CHECKORDER.bytes,  CHECKORDER);
-        COMMAND_BY_BYTES.put(SUBMITORDER.bytes, SUBMITORDER);
-        COMMAND_BY_BYTES.put(REPLY.bytes,       REPLY);
-        COMMAND_BY_BYTES.put(PING.bytes,        PING);
-        COMMAND_BY_BYTES.put(PONG.bytes,        PONG);
-        COMMAND_BY_BYTES.put(REJECT.bytes,      REJECT);
-        COMMAND_BY_BYTES.put(FILTERLOAD.bytes,  FILTERLOAD);
-        COMMAND_BY_BYTES.put(FILTERADD.bytes,   FILTERADD);
-        COMMAND_BY_BYTES.put(FILTERCLEAR.bytes, FILTERCLEAR);
-        COMMAND_BY_BYTES.put(MERKLEBLOCK.bytes, MERKLEBLOCK);
-        COMMAND_BY_BYTES.put(ALERT.bytes,       ALERT);
-        COMMAND_BY_BYTES.put(SENDHEADERS.bytes, SENDHEADERS);
-        COMMAND_BY_BYTES.put(FEEFILTER.bytes,   FEEFILTER);
-        COMMAND_BY_BYTES.put(SENDCMPCT.bytes,   SENDCMPCT);
-        COMMAND_BY_BYTES.put(CMPCTBLOCK.bytes,  CMPCTBLOCK);
-        COMMAND_BY_BYTES.put(GETBLOCKTXN.bytes, GETBLOCKTXN);
-        COMMAND_BY_BYTES.put(BLOCKTXN.bytes,    BLOCKTXN);
+        List<WkBitcoinCommand> cmds = new ArrayList<>();
+        cmds.add(VERSION);
+        cmds.add(VERACK);
+        cmds.add(ADDR);
+        cmds.add(INV);
+        cmds.add(GETDATA);
+        cmds.add(NOTFOUND);
+        cmds.add(GETBLOCKS);
+        cmds.add(GETHEADERS);
+        cmds.add(TX);
+        cmds.add(BLOCK);
+        cmds.add(HEADERS);
+        cmds.add(GETADDR);
+        cmds.add(MEMPOOL);
+        cmds.add(CHECKORDER);
+        cmds.add(SUBMITORDER);
+        cmds.add(REPLY);
+        cmds.add(PING);
+        cmds.add(PONG);
+        cmds.add(REJECT);
+        cmds.add(FILTERLOAD);
+        cmds.add(FILTERADD);
+        cmds.add(FILTERCLEAR);
+        cmds.add(MERKLEBLOCK);
+        cmds.add(ALERT);
+        cmds.add(SENDHEADERS);
+        cmds.add(FEEFILTER);
+        cmds.add(SENDCMPCT);
+        cmds.add(CMPCTBLOCK);
+        cmds.add(GETBLOCKTXN);
+        cmds.add(BLOCKTXN);
+        KNOWN_CMDS = Collections.unmodifiableList(cmds);
     }
 
     public final WkByteArray bytes;
@@ -142,6 +164,10 @@ public class WkBitcoinCommand
     private WkBitcoinCommand(WkByteArray wrapper) {
         this.bytes = Objects.requireNonNull(wrapper);
         this.name = Pattern.compile("\\p{C}").matcher(bytes.convertToString(StandardCharsets.US_ASCII)).replaceAll("?");
+    }
+
+    public boolean isKnown() {
+      return KNOWN_CMDS.contains(this);
     }
 
     @Override
@@ -160,15 +186,19 @@ public class WkBitcoinCommand
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof WkBitcoinCommand))
-            return false;
+        if (this == obj) {
+          return true;
+        }
+        if (obj == null) {
+          return false;
+        }
+        if (!(obj instanceof WkBitcoinCommand)) {
+          return false;
+        }
         WkBitcoinCommand other = (WkBitcoinCommand) obj;
-        if ( ! bytes.equals(other.bytes))
-            return false;
+        if ( ! bytes.equals(other.bytes)) {
+          return false;
+        }
         return true;
     }
 

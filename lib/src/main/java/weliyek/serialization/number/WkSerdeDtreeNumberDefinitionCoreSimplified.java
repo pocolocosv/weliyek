@@ -25,7 +25,6 @@ import weliyek.serialization.WkSerdeDtreeMsgPrimitiveReaderFactory;
 import weliyek.serialization.WkSerdeDtreeMsgPrimitiveWriterCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrlSimplified;
@@ -35,6 +34,7 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrlSimplified;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationResultBasic;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 
 public final class WkSerdeDtreeNumberDefinitionCoreSimplified<
                         T extends Number,
@@ -80,7 +80,7 @@ public final class WkSerdeDtreeNumberDefinitionCoreSimplified<
 {
 
   public WkSerdeDtreeNumberDefinitionCoreSimplified(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     WkSerdeDtreeMsgPrimitiveReaderFactory<
       WkSerdeDtreeOperationSettings,
       WkSerdeDtreeNumberDefinitionCoreSimplified<T,XO,?,D>,

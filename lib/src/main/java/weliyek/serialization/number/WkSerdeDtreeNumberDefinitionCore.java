@@ -26,12 +26,12 @@ import weliyek.serialization.WkSerdeDtreeMsgPrimitiveReaderFactory;
 import weliyek.serialization.WkSerdeDtreeMsgPrimitiveWriterCoreFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataDecoderEngineFactory;
 import weliyek.serialization.WkSerdeDtreeNodeDataEncoderEngineFactory;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreePrimitiveStructDefinitionCore;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 
 public abstract class WkSerdeDtreeNumberDefinitionCore<
                         T extends Number,
@@ -60,7 +60,7 @@ public abstract class WkSerdeDtreeNumberDefinitionCore<
 {
 
   protected WkSerdeDtreeNumberDefinitionCore(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     Function<AXB,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     WkSerdeDtreeMsgPrimitiveReaderFactory<XS,XDC,XOC,AXB> readingOpFactory,

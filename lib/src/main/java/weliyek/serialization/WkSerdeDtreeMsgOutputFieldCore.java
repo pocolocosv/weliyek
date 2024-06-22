@@ -26,8 +26,7 @@ public abstract class WkSerdeDtreeMsgOutputFieldCore<
                         AYOC extends WkSerdeDtreeMsgWriterCore<?,?,?,?,?,?,?,?,?,?>,
                         YK extends WkSerdeDtreeMsgOutputField<T,YD,YO>,
                         YPC extends WkSerdeDtreeStructFieldCore<
-                                        T,?,YO,? extends YD,
-                                        ? extends WkSerdeDtreeStructDefinitionCore<T,?,?,?,?,?,?,?,?,YS,?,?,?,?,YO,?,AYBC,? extends YD,?>>>
+                                        T,?,?,?,YS,YO,AYBC,? extends YD>>
     extends WkSerdeDtreeMsgFieldCore<
                         T, YS, YD, YO,
                         WkSerdeDtreeMsgWriterCore<?,?,?,?,?,YO,?,?,?,?>,

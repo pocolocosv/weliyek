@@ -43,6 +43,22 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
                         WkSerdeDtreeFixedSizeByteArray>
 {
 
+  static WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
+            WkByteArray,
+            WkSerdeDtreeOperationSettings,
+            WkSerdeDtreeFixedSizeByteArray,
+            WkSerdeDtreeFixedSizeByteArrayWriter>
+  newCore(
+      int index,
+      WkByteArray serializable,
+      WkSerdeDtreeOperationSettings settings,
+      WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
+      WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+      WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
+        WkByteArray,?,?,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArrayWriter,WkSerdeDtreeFixedSizeByteArray> definitionCore) {
+    return new WkSerdeDtreeFixedSizeByteArrayWriter(index, serializable, settings, parentBytestream, msgFieldCore, definitionCore).operationCore;
+  }
+
   final WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
                         WkByteArray,
                         WkSerdeDtreeOperationSettings,

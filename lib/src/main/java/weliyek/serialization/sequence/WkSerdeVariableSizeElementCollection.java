@@ -24,9 +24,7 @@ import java.util.function.Function;
 import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeMsgReader;
 import weliyek.serialization.WkSerdeDtreeMsgWriter;
@@ -35,7 +33,6 @@ import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfield;
@@ -91,12 +88,8 @@ public final class WkSerdeVariableSizeElementCollection<
     int maxSize,
     Class<T> collectionClass,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-        ET,EXS,?,?,EXD,?,EXO,?,
-        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-        EYS,?,?,EYD,?,EYO,?,
-        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-        ED,?>> elementsDefinitionFactory,
+      ET,EXS,EXO, WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO, WkSerdeDtreeBytestreamOutputBase<?>, ED> elementsDefinitionFactory,
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,EXS> elementsRxSettingsFactory,
     WkOperationSettingsFactory<
@@ -149,14 +142,10 @@ public final class WkSerdeVariableSizeElementCollection<
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-        ET,EXS,?,?,EXD,?,EXO,?,
-        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-        EYS,?,?,EYD,?,EYO,?,
-        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-        ED,?>> elementsDefinitionFactory,
+      ET,EXS,EXO, WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO, WkSerdeDtreeBytestreamOutputBase<?>, ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeVariableSizeElementCollection<>(minSize, maxSize, componentCore, elementsLabel, collectionClass, elementsRxSettingsFactory, elementsTxSettingsFactory, elementsDefinitionFactory, collectionFactory).definitionCore;
   }
 
@@ -175,7 +164,7 @@ public final class WkSerdeVariableSizeElementCollection<
   private WkSerdeVariableSizeElementCollection(
     int minSize,
     int maxSize,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     WkOperationSettingsFactory<
@@ -183,12 +172,8 @@ public final class WkSerdeVariableSizeElementCollection<
     WkOperationSettingsFactory<
       WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-        ET,EXS,?,?,EXD,?,EXO,?,
-        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-        EYS,?,?,EYD,?,EYO,?,
-        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-        ED,?>> elementsDefinitionFactory,
+      ET,EXS,EXO, WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO, WkSerdeDtreeBytestreamOutputBase<?>, ED> elementsDefinitionFactory,
     Function<List<ET>, T> collectionFactory) {
     this.definitionCore = new WkSerdeElementCollectionDefinitionCoreSimplified<
                                 T,

@@ -37,7 +37,6 @@ import weliyek.serialization.WkSerdeDtreeOperationOutputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfield;
 import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
@@ -60,16 +59,16 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
                         XO extends WkSerdeDtreeDynamicSequenceReader<
                                         T, XS,
                                         ? extends WkSerdeDtreeOperationInputRuntime<XB>,
-                                        XR, XD, ZX, ZXO, ZXD, VXO, VXD>,
+                                        XR, XD, ZT, ZXO, ZXD, VXO, VXD>,
                         XOC extends WkSerdeDtreeDynamicSequenceReaderCore<
                                         T,XS,XB,XBC,?,XQC,XR,XO,?,XD,XDC,AXBC,
-                                        ZX,ZXS,ZXO,ZXD,
+                                        ZT,ZXS,ZXO,ZXD,
                                         VXS,VXO,VXD>,
                         XD extends WkSerdeDtreeDynamicSequenceDefinition<T,XO,?,?,?>,
                         XDC extends WkSerdeDtreeDynamicSequenceDefinitionCore<
                                         T,XS,XB,XBC,XQC,XR,XO,XOC,XD,?,AXBC,
                                         ?,?,?,?,?,?,?,?,?,?,
-                                        ZX,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,
+                                        ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,
                                         VXS,VXO,VXD,?,?,?,? extends VXD,
                                         ? extends XD,?>,
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>,
@@ -92,14 +91,14 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
                                         ?,?,?,VYS,VYO,VYD,? extends VYD,
                                         ? extends YD,?>,
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>,
-                        ZX extends Number,
+                        ZT extends Number,
                         ZXS extends WkSerdeDtreeOperationSettings,
-                        ZXO extends WkSerdeDtreeNumberMsgReader<ZX,ZXS,?,?,ZXD>,
-                        ZXD extends WkSerdeDtreeNumberStructDefinition<ZX>,
+                        ZXO extends WkSerdeDtreeNumberMsgReader<ZT,ZXS,?,?,ZXD>,
+                        ZXD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         ZYS extends WkSerdeDtreeOperationSettings,
-                        ZYO extends WkSerdeDtreeNumberMsgWriter<ZX,ZYS,?,?,ZYD>,
-                        ZYD extends WkSerdeDtreeNumberStructDefinition<ZX>,
-                        ZD extends WkSerdeDtreeNumberStructDefinition<ZX>,
+                        ZYO extends WkSerdeDtreeNumberMsgWriter<ZT,ZYS,?,?,ZYD>,
+                        ZYD extends WkSerdeDtreeNumberStructDefinition<ZT>,
+                        ZD extends WkSerdeDtreeNumberStructDefinition<ZT>,
                         VXS extends WkSerdeDtreeOperationSettingsVariableLength,
                         VXO extends WkSerdeDtreeVariableSizeSequenceReader<T,VXS,?,?,VXD>,
                         VXD extends WkSerdeDtreeVariableSizeSequenceDefinition<T>,
@@ -111,7 +110,7 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
                         DC extends WkSerdeDtreeDynamicSequenceDefinitionCore<
                                       T,XS,XB,XBC,XQC,XR,XO,XOC,XD,XDC,AXBC,
                                       YS,YB,YBC,YQC,YR,YO,YOC,YD,YDC,AYBC,
-                                      ZX,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
+                                      ZT,ZXS,ZXO,ZXD,ZYS,ZYO,ZYD,ZD,
                                       VXS,VXO,VXD,VYS,VYO,VYD,VD,
                                       D,?>>
     extends WkSerdeDtreeAggregatorStructDefinitionCore<
@@ -120,7 +119,7 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
     implements WkSerdeDtreeDynamicSequenceDefinition<T, XO, YO, ZD, VD>
 {
 
-  final WkSerdeDtreeStructSubfieldCore<ZX,T,ZXS,ZXD,ZXO,XBC,XO,ZYS,ZYD,ZYO,YBC,YO,ZD>
+  final WkSerdeDtreeStructSubfieldCore<ZT,T,ZXS,ZXD,ZXO,XBC,XO,ZYS,ZYD,ZYO,YBC,YO,ZD>
                         sizeComponent;
   final WkSerdeDtreeStructSubfieldCore<T,T,VXS,VXD,VXO,XBC,XO,VYS,VYD,VYO,YBC,YO,VD>
                         varseqComponent;
@@ -129,17 +128,14 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
     String sizeComponentLabel,
     WkOperationSettingsFactory<XO,ZXS> sizeComponentRxSettingsFactory,
     WkOperationSettingsFactory<YO, ZYS> sizeComponentTxSettingsFactory,
-    WkSzPacketWriteDisaggregator<ZX, ZYD, T, YO> sizeComponentTxDesaggregator,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ZX,ZXS,?,?,ZXD,?,ZXO,?,XBC,ZYS,?,?,ZYD,?,ZYO,?,YBC,ZD,?>>
-        sizeComponentDefinitionFactory,
+    WkSzPacketWriteDisaggregator<ZT, ZYD, T, YO> sizeComponentTxDesaggregator,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<ZT,ZXS,ZXO,XBC,ZYS,ZYO,YBC,ZD> sizeComponentDefinitionFactory,
     String varseqComponentLabel,
     WkOperationSettingsFactory<XO,VXS> varseqComponentRxSettingsFactory,
     WkOperationSettingsFactory<YO,VYS> varseqComponentTxSettingsFactory,
     WkSzPacketWriteDisaggregator<T, VYD, T, YO> varseqComponentTxDesaggregator,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<T,VXS,?,?,VXD,?,VXO,?,XBC,VYS,?,?,VYD,?,VYO,?,YBC,VD,?>> varseqComponentDefinitionFactory,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSrlzStructDefinitionFrameNodeCoreFactory<T,VXS,VXO,XBC,VYS,VYO,YBC,VD> varseqComponentDefinitionFactory,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS,XDC,XOC,AXBC> readingOpFactory,
@@ -158,7 +154,7 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
           writingOpFactory,
           definitionBody,
           serializableClass);
-    this.sizeComponent = this.<ZX,ZXS,ZXD,ZXO,ZYS,ZYD,ZYO,ZD>addSubcomponent(
+    this.sizeComponent = this.<ZT,ZXS,ZXD,ZXO,ZYS,ZYD,ZYO,ZD>addSubcomponent(
                                     sizeComponentLabel,
                                     Optional.empty(), // Always enabled.
                                     singleOperation(),

@@ -23,13 +23,14 @@ import java.util.Optional;
 import weliyek.serialization.WkSerdeDtreeAggregatorMsgReaderCoreSimplified;
 import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriterCoreSimplified;
 import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinition;
-import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
+import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
@@ -48,12 +49,12 @@ public class WkBitcoinCommandSerdeField
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArray,
                         WkSerdeDtreeFixedSizeByteArrayReader,
-                        WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
+                        ? extends WkSerdeDtreeBytestreamInputBase<?>,
                         WkBitcoinCommandSerdeFieldReader,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArray,
                         WkSerdeDtreeFixedSizeByteArrayWriter,
-                        WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
+                        ? extends WkSerdeDtreeBytestreamOutputBase<?>,
                         WkBitcoinCommandSerdeFieldWriter,
                         WkSerdeDtreeFixedSizeByteArray> byteArray;
 
@@ -67,10 +68,41 @@ public class WkBitcoinCommandSerdeField
                         WkBitcoinCommandSerdeFieldWriter,
                         WkBitcoinCommandSerdeField> definitionCore;
 
-  public WkBitcoinCommandSerdeField(
-    WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?> fieldCore,
-    int expectedSize,
-    String label) {
+  static public WkSerdeDtreeStruct<
+                        WkBitcoinCommand,
+                        WkSerdeDtreeOperationSettings,
+                        WkBitcoinCommandSerdeField,
+                        WkBitcoinCommandSerdeFieldReader,
+                        WkSerdeDtreeBytestreamInputBase<?>,
+                        WkSerdeDtreeOperationSettings,
+                        WkBitcoinCommandSerdeField,
+                        WkBitcoinCommandSerdeFieldWriter,
+                        WkSerdeDtreeBytestreamOutputBase<?>,
+                        WkBitcoinCommandSerdeField>
+  newStruct(String label) {
+    return new WkSerdeDtreeStructCore<>(
+                            label,
+                            WkBitcoinCommandSerdeField::newCore,
+                            WkSerdeDtreeBytestreamCountingInputStream::new,
+                            WkSerdeDtreeBytestreamCountingOutputStream::new);
+  }
+
+  static public WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
+                        WkBitcoinCommand,
+                        WkSerdeDtreeOperationSettings,
+                        WkBitcoinCommandSerdeField,
+                        WkBitcoinCommandSerdeFieldReader,
+                        WkSerdeDtreeOperationSettings,
+                        WkBitcoinCommandSerdeField,
+                        WkBitcoinCommandSerdeFieldWriter,
+                        WkBitcoinCommandSerdeField>
+  newCore(
+      WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore) {
+    return new WkBitcoinCommandSerdeField(fieldCore).definitionCore;
+  }
+
+  WkBitcoinCommandSerdeField(
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBitcoinCommand, WkSerdeDtreeOperationSettings, WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldReader, WkSerdeDtreeOperationSettings, WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldWriter, WkBitcoinCommandSerdeField>(
                                   WkBitcoinCommandSerdeFieldReader::newReaderCore,
                                   WkBitcoinCommandSerdeFieldWriter::newWriter,
@@ -82,31 +114,18 @@ public class WkBitcoinCommandSerdeField
                                   this,
                                   WkBitcoinCommand.class);
 
-    this.byteArray = definitionCore.<WkByteArray, WkSerdeDtreeOperationSettings,
-                                    WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayReader,
-                                    WkSerdeDtreeOperationSettings, WkSerdeDtreeFixedSizeByteArray,
-                                    WkSerdeDtreeFixedSizeByteArrayWriter, WkSerdeDtreeFixedSizeByteArray>
-                        addSubcomponent(
-                                label,
+    this.byteArray = WkSerdeDtreeFixedSizeByteArray.<
+                        WkBitcoinCommand,
+                        WkBitcoinCommandSerdeFieldReader,
+                        WkBitcoinCommandSerdeFieldWriter>
+                            addAsSubfieldWithSingleOperation(
+                                WkBitcoinCommand.CANONICAL_LENGTH,
+                                definitionCore,
+                                "BYTES",
                                 Optional.empty(),
-                                WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
-                                WkSerdeDtreeOperationSettings::none,
                                 Optional.empty(),
-                                WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
-                                WkSerdeDtreeOperationSettings::none,
                                 (k,ao,i) -> ao.serializable().bytes,
-                                false,
-                                (pc) -> WkSerdeDtreeFixedSizeByteArray.newCore(expectedSize, pc));
-    /*
-    WkSerdeDtreeFixedSizeByteArray.addAsSubfield(
-        expectedSize,
-        definitionCore,
-        label,
-        Optional.empty(),
-        Optional.empty(),
-        (k,ao,i) -> ao.serializable().bytes,
-        false);
-        */
+                                false);
   }
 
   private static void onReadInit(
@@ -120,7 +139,8 @@ public class WkBitcoinCommandSerdeField
     WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
       WkBitcoinCommand, WkSerdeDtreeOperationSettings,
       WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldReader> readerCore) {
-    return null; // TODO
+    WkByteArray bytes = readerCore.body().byteArray().get().firstOperation().get().result().get().serializable().get();
+    return WkBitcoinCommand.newCommand(bytes);
   }
 
   private static void onSkippedRead(
@@ -139,20 +159,17 @@ public class WkBitcoinCommandSerdeField
 
   @Override
   public Class<WkBitcoinCommand> serializableClass() {
-    // TODO Auto-generated method stub
-    return null;
+    return WkBitcoinCommand.class;
   }
 
   @Override
   public List<WkSerdeDtreeStructField<?>> subfields() {
-    // TODO Auto-generated method stub
-    return null;
+    return this.definitionCore.subfields();
   }
 
   @Override
   public List<WkSerdeDtreeStructField<?>> requiredSubfields() {
-    // TODO Auto-generated method stub
-    return null;
+    return this.definitionCore.requiredSubfields();
   }
 
 }

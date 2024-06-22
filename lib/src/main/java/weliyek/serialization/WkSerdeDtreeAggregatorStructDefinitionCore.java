@@ -79,7 +79,7 @@ public abstract class WkSerdeDtreeAggregatorStructDefinitionCore<
   private List<WkSerdeDtreeStructField<?>> roRequiredSubfields;
 
   protected WkSerdeDtreeAggregatorStructDefinitionCore(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     Function<AXBC,XQC> rxRuntimeFactory,
     BiFunction<XO,T,XR> rxResultFactory,
     WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS,XDC,XOC,AXBC> readingOpFactory,
@@ -135,7 +135,7 @@ public abstract class WkSerdeDtreeAggregatorStructDefinitionCore<
     WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ST,SXS,?,?,SXD,?,SXO,?,XBC,SYS,?,?,SYD,?,SYO,?,YBC,SD,?>> definitionFactory) {
+      ST,SXS,SXO,XBC,SYS,SYO,YBC,SD> definitionFactory) {
     WkSerdeDtreeStructSubfieldCore<ST,T,SXS,SXD,SXO,XBC,XO,SYS,SYD,SYO,YBC,YO,SD>
       subcomponent = createSubcomponent(
                         label, rxEnablingTest, numberOfRxOperationsEvaluator,
@@ -166,8 +166,7 @@ public abstract class WkSerdeDtreeAggregatorStructDefinitionCore<
     WkOperationSettingsFactory<YO, SYS> txSettingsFactory,
     WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ST,SXS,?,?,SXD,?,SXO,?,XBC,SYS,?,?,SYD,?,SYO,?,YBC,SD,?>> definitionFactory) {
+    WkSrlzStructDefinitionFrameNodeCoreFactory<ST,SXS,SXO,XBC,SYS,SYO,YBC,SD> definitionFactory) {
     WkSerdeDtreeStructSubfieldCore<ST,T,SXS,SXD,SXO,XBC,XO,SYS,SYD,SYO,YBC,YO,SD>
       subcomponent = createSubcomponent(
                         label, rxEnablingTest, numberOfRxOperationsEvaluator,
@@ -198,8 +197,7 @@ public abstract class WkSerdeDtreeAggregatorStructDefinitionCore<
     WkOperationSettingsFactory<YO, SYS> txSettingsFactory,
     WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ST,SXS,?,?,SXD,?,SXO,?,XBC,SYS,?,?,SYD,?,SYO,?,YBC,SD,?>> definitionFactory) {
+    WkSrlzStructDefinitionFrameNodeCoreFactory<ST,SXS,SXO,XBC,SYS,SYO,YBC,SD> definitionFactory) {
     WkSerdeDtreeStructSubfieldCore<ST,T,SXS,SXD,SXO,XBC,XO,SYS,SYD,SYO,YBC,YO,SD>
       newStructSubfield = createSubcomponent(
                         label, rxEnablingTest, numberOfRxOperationsEvaluator,
@@ -229,8 +227,7 @@ public abstract class WkSerdeDtreeAggregatorStructDefinitionCore<
     WkOperationSettingsFactory<YO, SYS> txSettingsFactory,
     WkSzPacketWriteDisaggregator<ST,SYD,T,YO> disaggregator,
     boolean deserializedRequired,
-    WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<ST,SXS,?,?,SXD,?,SXO,?,XBC,SYS,?,?,SYD,?,SYO,?,YBC,SD,?>> definitionFactory) {
+    WkSrlzStructDefinitionFrameNodeCoreFactory<ST,SXS,SXO,XBC,SYS,SYO,YBC,SD> definitionFactory) {
     WkSerdeDtreeStructSubfieldCore<ST,T,SXS,SXD,SXO,XBC,XO,SYS,SYD,SYO,YBC,YO,SD>
       newStructSubfield = new WkSerdeDtreeStructSubfieldCore<ST,T,SXS,SXD,SXO,XBC,XO,SYS,SYD,SYO,YBC,YO,SD>(
                           label,

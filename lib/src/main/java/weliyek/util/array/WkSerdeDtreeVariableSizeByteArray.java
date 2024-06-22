@@ -23,12 +23,12 @@ import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
-import weliyek.serialization.WkSerdeDtreeStructField;
-import weliyek.serialization.WkSerdeDtreeStructFieldCore;
-import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
 import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeStructCore;
+import weliyek.serialization.WkSerdeDtreeStructField;
+import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.sequence.SequenceSizeParameters;
 import weliyek.serialization.sequence.WkSerdeUtilsPrimitiveArrayLengthGetter;
 
@@ -67,7 +67,7 @@ public class WkSerdeDtreeVariableSizeByteArray
   newCore(
     int minSize,
     int maxSize,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeDtreeVariableSizeByteArray(minSize, maxSize, componentCore).definitionCore;
   }
 
@@ -83,7 +83,7 @@ public class WkSerdeDtreeVariableSizeByteArray
   private WkSerdeDtreeVariableSizeByteArray(
     int minSize,
     int maxSize,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
         WkByteArray,
         WkSerdeDtreeOperationSettingsVariableLength,

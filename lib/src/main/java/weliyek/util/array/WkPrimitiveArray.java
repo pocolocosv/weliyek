@@ -34,6 +34,8 @@ public interface WkPrimitiveArray<A, W extends WkPrimitiveArray<A, ?>>
 
   int compare(A otherArray);
 
+  int compare(A otherArray, int otherFrom, int otherTo);
+
   int compare(int myFrom, int myTo, A otherArray, int otherFrom, int otherTo);
 
   boolean equalsToArray(A otherArray, int from);

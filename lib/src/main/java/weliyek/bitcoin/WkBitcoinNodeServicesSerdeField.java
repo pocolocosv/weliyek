@@ -47,7 +47,7 @@ public class WkBitcoinNodeServicesSerdeField
                         WkBitcoinNodeServicesSerdeField,
                         WkBitcoinNodeServicesSerdeFieldWriter,
                         WkBitcoinNodeServicesSerdeField>
-  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+  newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkBitcoinNodeServicesSerdeField(componentCore).definitionCore;
   }
 
@@ -77,7 +77,7 @@ public class WkBitcoinNodeServicesSerdeField
                     WkSerdeSignedLittleEndianLong> int64;
 
   public WkBitcoinNodeServicesSerdeField(
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
         WkBitcoinNodeServices,
         WkSerdeDtreeOperationSettings,

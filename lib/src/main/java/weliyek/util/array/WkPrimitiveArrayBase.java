@@ -134,6 +134,12 @@ public abstract class WkPrimitiveArrayBase<A, W extends WkPrimitiveArrayBase<A, 
   }
 
   @Override
+  public int compare(A otherArray, int otherFrom, int otherTo) {
+    WKArrayUtil.throwIfBoundsAreInvalid(getArrayLengthGetter().applyAsInt(otherArray),  otherFrom, otherTo);
+    return this.compare(getOffset(), getTo(), otherArray, otherFrom, otherTo);
+  }
+
+  @Override
   public int compare(int myFrom, int myTo, A otherArray, int otherFrom, int otherTo) {
     WKArrayUtil.throwIfBoundsAreInvalid(getLength(), myFrom, myTo);
     Objects.requireNonNull(otherArray);
@@ -266,19 +272,27 @@ public abstract class WkPrimitiveArrayBase<A, W extends WkPrimitiveArrayBase<A, 
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public boolean equals(Object obj) {
-    if (this == obj)
+    if (this == obj) {
       return true;
-    if (obj == null)
+    }
+    if (obj == null) {
       return false;
-    if (getClass() != obj.getClass())
+    }
+    if (this.array.getClass() == obj.getClass()) {
+      return equalsToArray((A) obj, 0);
+    }
+    if (getClass() != obj.getClass()) {
       return false;
+    }
     WkPrimitiveArrayBase<?,?> o = (WkPrimitiveArrayBase<?,?>) obj;
-    if (this.array.getClass() != o.array.getClass())
+    if (this.array.getClass() != o.array.getClass()) {
       return false;
-    if (this.getLength() != o.getLength())
+    }
+    if (this.getLength() != o.getLength()) {
       return false;
-    @SuppressWarnings("unchecked")
+    }
     WkPrimitiveArrayBase<A,?> other = (WkPrimitiveArrayBase<A,?>) o;
     return equalsToArray(other.array, other.getOffset());
   }

@@ -77,7 +77,7 @@ public class WkSerdeTestPrimitivesGroupListStructDefinition
                         WkSerdeDtreeOperationSettings,
                         WkSerdeTestPrimitivesGroupListStructDefinition> fieldCore;
 
-    WkSerdeTestPrimitivesGroupListStructDefinition(WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeTestPrimitivesGroupListStructDefinition(WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
         fieldCore = new WkSerdeDtreeDynamicCollectionDefinitionCore<
                             WkSerdeTestPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListMsgReader, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListMsgWriter, WkSerdeTestPrimitivesGroupListStructDefinition, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerReader, WkSerdeSignedLittleEndianInteger, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianInteger, WkSerdeTestPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgReader, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgWriter, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeDtreeOperationSettingsVariableLength, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition>(
                                 0, //minSize,

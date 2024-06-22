@@ -24,9 +24,7 @@ import java.util.function.Function;
 import weliyek.serialization.WkOperationSettingsFactory;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
-import weliyek.serialization.WkSerdeDtreeBytestreamInput;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
-import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeMsgReader;
 import weliyek.serialization.WkSerdeDtreeMsgWriter;
@@ -34,7 +32,6 @@ import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeStructDefinition;
-import weliyek.serialization.WkSerdeDtreeStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
 import weliyek.serialization.WkSerdeDtreeStructSubfield;
@@ -94,12 +91,8 @@ public final class WkSerdeFixedSizeElementCollection<
       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  ET,EXS,?,?,EXD,?,EXO,?,
-                  WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                  EYS,?,?,EYD,?,EYO,?,
-                  WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                  ED,?>> elementsDefinitionFactory) {
+      ET,EXS,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory) {
     return new WkSerdeDtreeStructCore<>(
                       label,
                       (pc) -> WkSerdeFixedSizeElementCollection.newCore(
@@ -147,13 +140,9 @@ public final class WkSerdeFixedSizeElementCollection<
       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                ET,EXS,?,?,EXD,?,EXO,?,
-                WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                EYS,?,?,EYD,?,EYO,?,
-                WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                ED,?>> elementsDefinitionFactory,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+      ET,EXS,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeFixedSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>(
                         expectedCollectionSize,
                         componentCore,
@@ -178,7 +167,7 @@ public final class WkSerdeFixedSizeElementCollection<
 
   private WkSerdeFixedSizeElementCollection(
     int expectedCollectionSize,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore,
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore,
     String elementsLabel,
     Class<T> collectionClass,
     Function<List<ET>, T> collectionFactory,
@@ -189,12 +178,8 @@ public final class WkSerdeFixedSizeElementCollection<
       WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
       EYS> elementsTxSettingsFactory,
     WkSrlzStructDefinitionFrameNodeCoreFactory<
-      ? extends WkSerdeDtreeStructDefinitionCore<
-                  ET,EXS,?,?,EXD,?,EXO,?,
-                  WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                  EYS,?,?,EYD,?,EYO,?,
-                  WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                  ED,?>> elementsDefinitionFactory) {
+      ET,EXS,EXO,WkSerdeDtreeBytestreamInputBase<?>,
+      EYS,EYO,WkSerdeDtreeBytestreamOutputBase<?>,ED> elementsDefinitionFactory) {
     this.definitionCore = new WkSerdeElementCollectionDefinitionCoreSimplified<
                                   T, XS,
                                   WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>,

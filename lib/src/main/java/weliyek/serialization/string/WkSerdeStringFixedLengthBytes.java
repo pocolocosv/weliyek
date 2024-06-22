@@ -94,7 +94,7 @@ public class WkSerdeStringFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     return new WkSerdeStringFixedLengthBytes(bytesLabel, expectedSize, defaultCharset, componentCore).definitionCore;
   }
 
@@ -118,7 +118,7 @@ public class WkSerdeStringFixedLengthBytes
     String bytesLabel,
     int expectedSize,
     Charset defaultCharset,
-    WkSerdeDtreeStructFieldCore<?,?,?,?,?> componentCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
 
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                   defaultCharset,

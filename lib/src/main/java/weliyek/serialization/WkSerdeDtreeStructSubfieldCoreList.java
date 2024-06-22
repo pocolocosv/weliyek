@@ -67,6 +67,7 @@ public class WkSerdeDtreeStructSubfieldCoreList<
         if (structFieldCoreList.contains(subfield)) {
             throw new IllegalArgumentException();    // Cannot add same subfield
         }
+        throwIfLabelAlreadyUsed(subfield);
         this.structFieldCoreList.add(subfield);
         this.subfieldList.add(subfield.asProtocolField());
         computeHandlersIndexes();
@@ -81,6 +82,7 @@ public class WkSerdeDtreeStructSubfieldCoreList<
       if (-1 == existingIndex) {
         throw new IllegalStateException();
       }
+      throwIfLabelAlreadyUsed(newSubfield);
       this.structFieldCoreList.set(existingIndex, newSubfield);
       this.subfieldList.set(existingIndex, newSubfield.asProtocolField());
       computeHandlersIndexes();
@@ -95,10 +97,20 @@ public class WkSerdeDtreeStructSubfieldCoreList<
       if (-1 == existingIndex) {
         throw new IllegalStateException();
       }
+      throwIfLabelAlreadyUsed(newSubfield);
       this.structFieldCoreList.set(existingIndex+1, newSubfield);
       this.subfieldList.set(existingIndex, newSubfield.asProtocolField());
       computeHandlersIndexes();
       return newSubfield;
+    }
+
+    private void throwIfLabelAlreadyUsed(WkSerdeDtreeStructSubfieldCore<?,?,?,?,?,?,?,?,?,?,?,?,?> newsubfield) {
+      for (WkSerdeDtreeStructSubfieldCore<?, T, ?, ?, ?, XBC, XO, ?, ?, ?, YBC, YO, ?> subfield : roStructFieldCoreList) {
+        if (subfield.label().equals(newsubfield.label())) {
+          // must use label only once per subfield
+          throw new IllegalArgumentException();
+        }
+      }
     }
 
     private void computeHandlersIndexes() {

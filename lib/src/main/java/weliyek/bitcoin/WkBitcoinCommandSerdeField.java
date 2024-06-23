@@ -68,7 +68,7 @@ public class WkBitcoinCommandSerdeField
                         WkBitcoinCommandSerdeFieldWriter,
                         WkBitcoinCommandSerdeField> definitionCore;
 
-  static public WkSerdeDtreeStruct<
+  static WkSerdeDtreeStruct<
                         WkBitcoinCommand,
                         WkSerdeDtreeOperationSettings,
                         WkBitcoinCommandSerdeField,

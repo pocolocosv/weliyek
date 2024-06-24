@@ -32,43 +32,43 @@ import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLongWriter;
 
-public class WkBitcoinNodeServicesSerdeFieldWriter
+public class WkBtcNetNodeServicesSerdeFieldWriter
     implements WkSerdeDtreeAggregatorMsgWriter<
-                        WkBitcoinNodeServices,
+                        WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
-                        WkSerdeDtreeOperationResult<WkBitcoinNodeServices>,
-                        WkBitcoinNodeServicesSerdeField>
+                        WkSerdeDtreeOperationResult<WkBtcNetNodeServices>,
+                        WkBtcNetNodeServicesSerdeField>
 {
 
   final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-                        WkBitcoinNodeServices,
+                        WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinNodeServicesSerdeField,
-                        WkBitcoinNodeServicesSerdeFieldWriter> outputCore;
+                        WkBtcNetNodeServicesSerdeField,
+                        WkBtcNetNodeServicesSerdeFieldWriter> outputCore;
 
-  WkBitcoinNodeServicesSerdeFieldWriter(
+  WkBtcNetNodeServicesSerdeFieldWriter(
     int index,
-    WkBitcoinNodeServices serializable,
+    WkBtcNetNodeServices serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
     WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBitcoinNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldWriter, ? extends WkBitcoinNodeServicesSerdeField> definitionCore) {
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldWriter, ? extends WkBtcNetNodeServicesSerdeField> definitionCore) {
     this.outputCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-                            WkBitcoinNodeServices,
+                            WkBtcNetNodeServices,
                             WkSerdeDtreeOperationSettings,
-                            WkBitcoinNodeServicesSerdeField,
-                            WkBitcoinNodeServicesSerdeFieldWriter>(
+                            WkBtcNetNodeServicesSerdeField,
+                            WkBtcNetNodeServicesSerdeFieldWriter>(
                                 index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
   }
 
   public Optional<WkSerdeDtreeMsgOutputField<Long, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongWriter>>
-  int64() {
-    return Optional.ofNullable(this.outputCore.getSubfieldpacketFor(this.definition().int64).asPacket());
+  int64le() {
+    return Optional.ofNullable(this.outputCore.getSubfieldpacketFor(this.definition().int64le).asPacket());
   }
 
   @Override
-  public WkBitcoinNodeServicesSerdeField definition() {
+  public WkBtcNetNodeServicesSerdeField definition() {
     return this.outputCore.definition();
   }
 
@@ -83,7 +83,7 @@ public class WkBitcoinNodeServicesSerdeFieldWriter
   }
 
   @Override
-  public Optional<WkSerdeDtreeOperationResult<WkBitcoinNodeServices>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkBtcNetNodeServices>> result() {
     return this.outputCore.result();
   }
 
@@ -103,7 +103,7 @@ public class WkBitcoinNodeServicesSerdeFieldWriter
   }
 
   @Override
-  public WkBitcoinNodeServices serializable() {
+  public WkBtcNetNodeServices serializable() {
     return this.outputCore.serializable();
   }
 

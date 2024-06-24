@@ -29,28 +29,28 @@ import java.util.stream.Collectors;
  * A set with the capabilities of a Bitcoin node which when serialized can be used
  * in the services field in the payload of the version command. 
  */
-public class WkBitcoinNodeServices
-    extends AbstractSet<WkBitcoinServiceFlag>
+public class WkBtcNetNodeServices
+    extends AbstractSet<WkBtcNetNodeServicesBit>
 {
 
-    private final EnumSet<WkBitcoinServiceFlag> flagSet;
+    private final EnumSet<WkBtcNetNodeServicesBit> flagSet;
 
-    public WkBitcoinNodeServices(WkBitcoinServiceFlag... flags) {
+    public WkBtcNetNodeServices(WkBtcNetNodeServicesBit... flags) {
       this(Arrays.asList(flags));
     }
 
-    public WkBitcoinNodeServices(Collection<WkBitcoinServiceFlag> flags) {
-      EnumSet<WkBitcoinServiceFlag> set = EnumSet.noneOf(WkBitcoinServiceFlag.class);
+    public WkBtcNetNodeServices(Collection<WkBtcNetNodeServicesBit> flags) {
+      EnumSet<WkBtcNetNodeServicesBit> set = EnumSet.noneOf(WkBtcNetNodeServicesBit.class);
       set.addAll(flags);
       this.flagSet = set;
     }
 
-    public WkBitcoinNodeServices(EnumSet<WkBitcoinServiceFlag> set) {
+    public WkBtcNetNodeServices(EnumSet<WkBtcNetNodeServicesBit> set) {
         this.flagSet = set;
     }
 
     @Override
-    public Iterator<WkBitcoinServiceFlag> iterator() {
+    public Iterator<WkBtcNetNodeServicesBit> iterator() {
         return flagSet.iterator();
     }
 
@@ -60,20 +60,20 @@ public class WkBitcoinNodeServices
     }
 
     public long toLong() {
-        return flagSet.stream().reduce(0L, (Long m, WkBitcoinServiceFlag f) -> m.longValue() | f.bitmask, (Long r, Long u) -> r | u);
+        return flagSet.stream().reduce(0L, (Long m, WkBtcNetNodeServicesBit f) -> m.longValue() | f.bitmask, (Long r, Long u) -> r | u);
     }
 
-    public static WkBitcoinNodeServices fromLong(long val) {
-      EnumSet<WkBitcoinServiceFlag> flags = WkBitcoinServiceFlag.FLAG_BY_MASK.values().stream().
+    public static WkBtcNetNodeServices fromLong(long val) {
+      EnumSet<WkBtcNetNodeServicesBit> flags = WkBtcNetNodeServicesBit.FLAG_BY_MASK.values().stream().
           filter((f) -> (f.bitmask & val) > 0).
-          collect(Collectors.toCollection(() -> EnumSet.noneOf(WkBitcoinServiceFlag.class)));
-      return new WkBitcoinNodeServices(flags);
+          collect(Collectors.toCollection(() -> EnumSet.noneOf(WkBtcNetNodeServicesBit.class)));
+      return new WkBtcNetNodeServices(flags);
     }
 
     /**
-     * Returns a string representation of this {@link WkBitcoinNodeServices} in which
-     * each of the {@link WkBitcoinServiceFlag} that composes it is printed joined by the
-     * separator character "|". The {@link WkBitcoinServiceFlag} with the smallest
+     * Returns a string representation of this {@link WkBtcNetNodeServices} in which
+     * each of the {@link WkBtcNetNodeServicesBit} that composes it is printed joined by the
+     * separator character "|". The {@link WkBtcNetNodeServicesBit} with the smallest
      * bitmasks appear first.
      */
     @Override
@@ -84,7 +84,7 @@ public class WkBitcoinNodeServices
           stream().
           reduce(
               new StringJoiner("|"), 
-              (StringJoiner j, WkBitcoinServiceFlag f) -> j.add(f.name()), 
+              (StringJoiner j, WkBtcNetNodeServicesBit f) -> j.add(f.name()), 
               (j1, j2) -> j1.merge(j2));
       return joiner.toString();
     }

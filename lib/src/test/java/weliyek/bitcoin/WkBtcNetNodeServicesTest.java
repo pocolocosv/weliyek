@@ -32,86 +32,86 @@ import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-class WkBitcoinNodeServicesTest
+class WkBtcNetNodeServicesTest
 {
   
 
   public static WkSerdeDtreeStruct<
-                        WkBitcoinNodeServices,
+                        WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinNodeServicesSerdeField,
-                        WkBitcoinNodeServicesSerdeFieldReader,
+                        WkBtcNetNodeServicesSerdeField,
+                        WkBtcNetNodeServicesSerdeFieldReader,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinNodeServicesSerdeField,
-                        WkBitcoinNodeServicesSerdeFieldWriter,
+                        WkBtcNetNodeServicesSerdeField,
+                        WkBtcNetNodeServicesSerdeFieldWriter,
                         WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkBitcoinNodeServicesSerdeField>
+                        WkBtcNetNodeServicesSerdeField>
   newStruct(String label) {
     return new WkSerdeDtreeStructCore<>(
                       label,
-                      WkBitcoinNodeServicesSerdeField::newCore,
+                      WkBtcNetNodeServicesSerdeField::newCore,
                       WkSerdeDtreeBytestreamCountingInputStream::new,
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   @Test
   void testCtor() {
-    WkBitcoinNodeServices empty = new WkBitcoinNodeServices();
+    WkBtcNetNodeServices empty = new WkBtcNetNodeServices();
     assertTrue(empty.isEmpty());
 
-    WkBitcoinNodeServices nodeBloom = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM);
+    WkBtcNetNodeServices nodeBloom = new WkBtcNetNodeServices(WkBtcNetNodeServicesBit.NODE_BLOOM);
     assertEquals(1, nodeBloom.size());
-    assertTrue(nodeBloom.contains(WkBitcoinServiceFlag.NODE_BLOOM));
+    assertTrue(nodeBloom.contains(WkBtcNetNodeServicesBit.NODE_BLOOM));
 
-    WkBitcoinNodeServices twoFlags = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM, WkBitcoinServiceFlag.NODE_NETWORK);
+    WkBtcNetNodeServices twoFlags = new WkBtcNetNodeServices(WkBtcNetNodeServicesBit.NODE_BLOOM, WkBtcNetNodeServicesBit.NODE_NETWORK);
     assertEquals(2, twoFlags.size());
-    assertTrue(twoFlags.contains(WkBitcoinServiceFlag.NODE_BLOOM));
-    assertTrue(twoFlags.contains(WkBitcoinServiceFlag.NODE_NETWORK));
+    assertTrue(twoFlags.contains(WkBtcNetNodeServicesBit.NODE_BLOOM));
+    assertTrue(twoFlags.contains(WkBtcNetNodeServicesBit.NODE_NETWORK));
   }
 
   @Test
   void testToLong() {
-    WkBitcoinNodeServices threeFlags = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM, WkBitcoinServiceFlag.NODE_NETWORK, WkBitcoinServiceFlag.BIT09);
+    WkBtcNetNodeServices threeFlags = new WkBtcNetNodeServices(WkBtcNetNodeServicesBit.NODE_BLOOM, WkBtcNetNodeServicesBit.NODE_NETWORK, WkBtcNetNodeServicesBit.BIT09);
     assertEquals(3, threeFlags.size());
     
     assertEquals(
-        WkBitcoinServiceFlag.NODE_BLOOM.bitmask 
-        | WkBitcoinServiceFlag.NODE_NETWORK.bitmask 
-        | WkBitcoinServiceFlag.BIT09.bitmask,
+        WkBtcNetNodeServicesBit.NODE_BLOOM.bitmask 
+        | WkBtcNetNodeServicesBit.NODE_NETWORK.bitmask 
+        | WkBtcNetNodeServicesBit.BIT09.bitmask,
         threeFlags.toLong());
   }
 
   @Test
   void testFromLong() {
-    WkBitcoinNodeServices threeFlags = WkBitcoinNodeServices.fromLong(
-        WkBitcoinServiceFlag.NODE_BLOOM.bitmask 
-        | WkBitcoinServiceFlag.NODE_NETWORK.bitmask 
-        | WkBitcoinServiceFlag.BIT09.bitmask);
+    WkBtcNetNodeServices threeFlags = WkBtcNetNodeServices.fromLong(
+        WkBtcNetNodeServicesBit.NODE_BLOOM.bitmask 
+        | WkBtcNetNodeServicesBit.NODE_NETWORK.bitmask 
+        | WkBtcNetNodeServicesBit.BIT09.bitmask);
     assertEquals(3, threeFlags.size());
-    assertTrue(threeFlags.contains(WkBitcoinServiceFlag.NODE_BLOOM));
-    assertTrue(threeFlags.contains(WkBitcoinServiceFlag.NODE_NETWORK));
-    assertTrue(threeFlags.contains(WkBitcoinServiceFlag.BIT09));
+    assertTrue(threeFlags.contains(WkBtcNetNodeServicesBit.NODE_BLOOM));
+    assertTrue(threeFlags.contains(WkBtcNetNodeServicesBit.NODE_NETWORK));
+    assertTrue(threeFlags.contains(WkBtcNetNodeServicesBit.BIT09));
   }
 
   @Test
   void testToString() {
-    WkBitcoinNodeServices twoFlags = new WkBitcoinNodeServices(WkBitcoinServiceFlag.NODE_BLOOM, WkBitcoinServiceFlag.NODE_NETWORK, WkBitcoinServiceFlag.BIT62);
+    WkBtcNetNodeServices twoFlags = new WkBtcNetNodeServices(WkBtcNetNodeServicesBit.NODE_BLOOM, WkBtcNetNodeServicesBit.NODE_NETWORK, WkBtcNetNodeServicesBit.BIT62);
     assertEquals("NODE_NETWORK|NODE_BLOOM|BIT62", twoFlags.toString());
   }
 
   @Test
   void testSerialization() {
-    WkBitcoinNodeServices services = WkBitcoinNodeServices.fromLong(
-        WkBitcoinServiceFlag.NODE_BLOOM.bitmask 
-        | WkBitcoinServiceFlag.NODE_NETWORK.bitmask 
-        | WkBitcoinServiceFlag.BIT09.bitmask);
+    WkBtcNetNodeServices services = WkBtcNetNodeServices.fromLong(
+        WkBtcNetNodeServicesBit.NODE_BLOOM.bitmask 
+        | WkBtcNetNodeServicesBit.NODE_NETWORK.bitmask 
+        | WkBtcNetNodeServicesBit.BIT09.bitmask);
     
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
-    WkSerdeDtreeStruct<WkBitcoinNodeServices, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBitcoinNodeServicesSerdeField> 
+    WkSerdeDtreeStruct<WkBtcNetNodeServices, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetNodeServicesSerdeField> 
       servicesStruct = newStruct("SERVICES");
     
-    WkSerdeDtreeWriter<WkBitcoinNodeServices, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldWriter> servicesWrite = servicesStruct.newOutputPacket(services, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
+    WkSerdeDtreeWriter<WkBtcNetNodeServices, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldWriter> servicesWrite = servicesStruct.newOutputPacket(services, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
     
     servicesWrite.processBytestream();
     
@@ -119,7 +119,7 @@ class WkBitcoinNodeServicesTest
     
     assertEquals(8, outputBuffer.size());
     
-    WkSerdeDtreeReader<WkBitcoinNodeServices, WkBitcoinNodeServicesSerdeField, WkBitcoinNodeServicesSerdeFieldReader> servicesRead = servicesStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
+    WkSerdeDtreeReader<WkBtcNetNodeServices, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldReader> servicesRead = servicesStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
     
     servicesRead.processBytestream();
     

@@ -21,9 +21,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Mirrors ServiceFlags enum type in bitcoin's protocol.h.
+ * Mirrors ServiceFlags enum type in bitcoin's
+ * https://github.com/bitcoin/bitcoin/tree/27.x/src/protocol.h
  */
-public enum WkBitcoinServiceFlag
+public enum WkBtcNetNodeServicesBit
 {
     //NODE_NONE   (0),
     NODE_NETWORK((long)1 << 0),
@@ -37,7 +38,7 @@ public enum WkBitcoinServiceFlag
     BIT08((long)1 <<  8),
     BIT09((long)1 <<  9),
     NODE_NETWORK_LIMITED((long)1 << 10),
-    BIT11((long)1 << 11),
+    NODE_P2P_V2((long)1 << 11),
     BIT12((long)1 << 12),
     BIT13((long)1 << 13),
     BIT14((long)1 << 14),
@@ -91,7 +92,7 @@ public enum WkBitcoinServiceFlag
     BIT62((long)1 << 62),
     BIT63((long)1 << 63);
 
-    static final Map<Long, WkBitcoinServiceFlag> FLAG_BY_MASK;
+    static final Map<Long, WkBtcNetNodeServicesBit> FLAG_BY_MASK;
 
     static {
         FLAG_BY_MASK = new LinkedHashMap<>();
@@ -106,7 +107,7 @@ public enum WkBitcoinServiceFlag
         FLAG_BY_MASK.put(BIT08.bitmask,   BIT08);
         FLAG_BY_MASK.put(BIT09.bitmask,   BIT09);
         FLAG_BY_MASK.put(NODE_NETWORK_LIMITED.bitmask,   NODE_NETWORK_LIMITED);
-        FLAG_BY_MASK.put(BIT11.bitmask,   BIT11);
+        FLAG_BY_MASK.put(NODE_P2P_V2.bitmask,   NODE_P2P_V2);
         FLAG_BY_MASK.put(BIT12.bitmask,   BIT12);
         FLAG_BY_MASK.put(BIT13.bitmask,   BIT13);
         FLAG_BY_MASK.put(BIT14.bitmask,   BIT14);
@@ -163,42 +164,8 @@ public enum WkBitcoinServiceFlag
 
     public final long bitmask;
 
-    private WkBitcoinServiceFlag(long mask) {
+    private WkBtcNetNodeServicesBit(long mask) {
         this.bitmask = mask;
     }
-
-    /*
-    public static EnumSet<BitcoinNodeService> fromLong(long val) {
-        Set<BitcoinNodeService> services = new LinkedHashSet<>();
-        for (BitcoinNodeService flag : BitcoinNodeService.FLAG_BY_MASK.values()) {
-            if (0 != (val & flag.bitmask)) {
-                services.add(flag);
-            }
-        }
-        if (services.isEmpty())
-            return EnumSet.noneOf(BitcoinNodeService.class);
-        else
-            return EnumSet.copyOf(services);
-    }
-
-    public static long toLong(EnumSet<BitcoinNodeService> services) {
-        long setBitmask = 0;
-        for (BitcoinNodeService s : services) {
-            setBitmask |= s.bitmask;
-        }
-        return setBitmask;
-    }
-
-    public static EnumSet<BitcoinNodeService> with(BitcoinNodeService... services) {
-        LinkedHashSet<BitcoinNodeService> set = new LinkedHashSet<>();
-        for (BitcoinNodeService s : services) {
-            set.add(s);
-        }
-        if (set.isEmpty())
-            return EnumSet.noneOf(BitcoinNodeService.class);
-        else
-            return EnumSet.copyOf(set);
-    }
-    */
 
 }

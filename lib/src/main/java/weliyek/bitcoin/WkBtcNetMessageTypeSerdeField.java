@@ -39,87 +39,87 @@ import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayWriter;
 
-public class WkBitcoinCommandSerdeField
-    implements WkSerdeDtreeAggregatorStructDefinition<WkBitcoinCommand>
+public class WkBtcNetMessageTypeSerdeField
+    implements WkSerdeDtreeAggregatorStructDefinition<WkBtcNetMessageType>
 {
 
   final WkSerdeDtreeStructSubfieldCore<
                         WkByteArray,
-                        WkBitcoinCommand,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArray,
                         WkSerdeDtreeFixedSizeByteArrayReader,
                         ? extends WkSerdeDtreeBytestreamInputBase<?>,
-                        WkBitcoinCommandSerdeFieldReader,
+                        WkBtcNetMessageTypeSerdeFieldReader,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeFixedSizeByteArray,
                         WkSerdeDtreeFixedSizeByteArrayWriter,
                         ? extends WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkBitcoinCommandSerdeFieldWriter,
+                        WkBtcNetMessageTypeSerdeFieldWriter,
                         WkSerdeDtreeFixedSizeByteArray> byteArray;
 
   final WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-                        WkBitcoinCommand,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinCommandSerdeField,
-                        WkBitcoinCommandSerdeFieldReader,
+                        WkBtcNetMessageTypeSerdeField,
+                        WkBtcNetMessageTypeSerdeFieldReader,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinCommandSerdeField,
-                        WkBitcoinCommandSerdeFieldWriter,
-                        WkBitcoinCommandSerdeField> definitionCore;
+                        WkBtcNetMessageTypeSerdeField,
+                        WkBtcNetMessageTypeSerdeFieldWriter,
+                        WkBtcNetMessageTypeSerdeField> definitionCore;
 
   static WkSerdeDtreeStruct<
-                        WkBitcoinCommand,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinCommandSerdeField,
-                        WkBitcoinCommandSerdeFieldReader,
+                        WkBtcNetMessageTypeSerdeField,
+                        WkBtcNetMessageTypeSerdeFieldReader,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinCommandSerdeField,
-                        WkBitcoinCommandSerdeFieldWriter,
+                        WkBtcNetMessageTypeSerdeField,
+                        WkBtcNetMessageTypeSerdeFieldWriter,
                         WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkBitcoinCommandSerdeField>
+                        WkBtcNetMessageTypeSerdeField>
   newStruct(String label) {
     return new WkSerdeDtreeStructCore<>(
                             label,
-                            WkBitcoinCommandSerdeField::newCore,
+                            WkBtcNetMessageTypeSerdeField::newCore,
                             WkSerdeDtreeBytestreamCountingInputStream::new,
                             WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
 
   static public WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-                        WkBitcoinCommand,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinCommandSerdeField,
-                        WkBitcoinCommandSerdeFieldReader,
+                        WkBtcNetMessageTypeSerdeField,
+                        WkBtcNetMessageTypeSerdeFieldReader,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinCommandSerdeField,
-                        WkBitcoinCommandSerdeFieldWriter,
-                        WkBitcoinCommandSerdeField>
+                        WkBtcNetMessageTypeSerdeField,
+                        WkBtcNetMessageTypeSerdeFieldWriter,
+                        WkBtcNetMessageTypeSerdeField>
   newCore(
       WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore) {
-    return new WkBitcoinCommandSerdeField(fieldCore).definitionCore;
+    return new WkBtcNetMessageTypeSerdeField(fieldCore).definitionCore;
   }
 
-  WkBitcoinCommandSerdeField(
+  WkBtcNetMessageTypeSerdeField(
     WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore) {
-    this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBitcoinCommand, WkSerdeDtreeOperationSettings, WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldReader, WkSerdeDtreeOperationSettings, WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldWriter, WkBitcoinCommandSerdeField>(
-                                  WkBitcoinCommandSerdeFieldReader::newReaderCore,
-                                  WkBitcoinCommandSerdeFieldWriter::newWriter,
+    this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldReader, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldWriter, WkBtcNetMessageTypeSerdeField>(
+                                  WkBtcNetMessageTypeSerdeFieldReader::newReaderCore,
+                                  WkBtcNetMessageTypeSerdeFieldWriter::newWriter,
                                   fieldCore,
-                                  WkBitcoinCommandSerdeField::onReadInit,
-                                  WkBitcoinCommandSerdeField::onFullRead,
-                                  WkBitcoinCommandSerdeField::onSkippedRead,
-                                  WkBitcoinCommandSerdeField::onWriteInit,
+                                  WkBtcNetMessageTypeSerdeField::onReadInit,
+                                  WkBtcNetMessageTypeSerdeField::onFullRead,
+                                  WkBtcNetMessageTypeSerdeField::onSkippedRead,
+                                  WkBtcNetMessageTypeSerdeField::onWriteInit,
                                   this,
-                                  WkBitcoinCommand.class);
+                                  WkBtcNetMessageType.class);
 
     this.byteArray = WkSerdeDtreeFixedSizeByteArray.<
-                        WkBitcoinCommand,
-                        WkBitcoinCommandSerdeFieldReader,
-                        WkBitcoinCommandSerdeFieldWriter>
+                        WkBtcNetMessageType,
+                        WkBtcNetMessageTypeSerdeFieldReader,
+                        WkBtcNetMessageTypeSerdeFieldWriter>
                             addAsSubfieldWithSingleOperation(
-                                WkBitcoinCommand.CANONICAL_LENGTH,
+                                WkBtcNetMessageType.CANONICAL_LENGTH,
                                 definitionCore,
                                 "BYTES",
                                 Optional.empty(),
@@ -130,36 +130,36 @@ public class WkBitcoinCommandSerdeField
 
   private static void onReadInit(
     WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-      WkBitcoinCommand, WkSerdeDtreeOperationSettings,
-      WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldReader> readerCore) {
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings,
+      WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldReader> readerCore) {
     // Nothing to do.
   }
 
-  private static WkBitcoinCommand onFullRead(
+  private static WkBtcNetMessageType onFullRead(
     WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-      WkBitcoinCommand, WkSerdeDtreeOperationSettings,
-      WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldReader> readerCore) {
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings,
+      WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldReader> readerCore) {
     WkByteArray bytes = readerCore.body().byteArray().get().firstOperation().get().result().get().serializable().get();
-    return WkBitcoinCommand.newCommand(bytes);
+    return WkBtcNetMessageType.newCommand(bytes);
   }
 
   private static void onSkippedRead(
     WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-      WkBitcoinCommand, WkSerdeDtreeOperationSettings,
-      WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldReader> readerCore) {
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings,
+      WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldReader> readerCore) {
     // Nothing to do.
   }
 
   private static void onWriteInit(
     WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-      WkBitcoinCommand, WkSerdeDtreeOperationSettings,
-      WkBitcoinCommandSerdeField, WkBitcoinCommandSerdeFieldWriter> writerCore) {
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings,
+      WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldWriter> writerCore) {
     // Nothing to do.
   }
 
   @Override
-  public Class<WkBitcoinCommand> serializableClass() {
-    return WkBitcoinCommand.class;
+  public Class<WkBtcNetMessageType> serializableClass() {
+    return WkBtcNetMessageType.class;
   }
 
   @Override

@@ -33,50 +33,50 @@ import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
 
-public class WkBitcoinCommandSerdeFieldReader
+public class WkBtcNetMessageTypeSerdeFieldReader
     implements WkSerdeDtreeAggregatorMsgReader<
-                        WkBitcoinCommand,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
-                        WkSerdeDtreeOperationResult<WkBitcoinCommand>,
-                        WkBitcoinCommandSerdeField>
+                        WkSerdeDtreeOperationResult<WkBtcNetMessageType>,
+                        WkBtcNetMessageTypeSerdeField>
 {
   static WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-              WkBitcoinCommand,
+              WkBtcNetMessageType,
               WkSerdeDtreeOperationSettings,
-              WkBitcoinCommandSerdeField,
-              WkBitcoinCommandSerdeFieldReader>
+              WkBtcNetMessageTypeSerdeField,
+              WkBtcNetMessageTypeSerdeFieldReader>
   newReaderCore(
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-      WkBitcoinCommand, WkSerdeDtreeOperationSettings, WkBitcoinCommandSerdeField,
-      WkBitcoinCommandSerdeFieldReader, ?, ?, ?,
-      ? extends WkBitcoinCommandSerdeField> definitionCore) {
-    return new WkBitcoinCommandSerdeFieldReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeField,
+      WkBtcNetMessageTypeSerdeFieldReader, ?, ?, ?,
+      ? extends WkBtcNetMessageTypeSerdeField> definitionCore) {
+    return new WkBtcNetMessageTypeSerdeFieldReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
   }
 
   final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-                        WkBitcoinCommand,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
-                        WkBitcoinCommandSerdeField,
-                        WkBitcoinCommandSerdeFieldReader> readerCore;
+                        WkBtcNetMessageTypeSerdeField,
+                        WkBtcNetMessageTypeSerdeFieldReader> readerCore;
 
-  WkBitcoinCommandSerdeFieldReader(
+  WkBtcNetMessageTypeSerdeFieldReader(
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-      WkBitcoinCommand, WkSerdeDtreeOperationSettings, WkBitcoinCommandSerdeField,
-      WkBitcoinCommandSerdeFieldReader, ?, ?, ?,
-      ? extends WkBitcoinCommandSerdeField> definitionCore) {
-    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBitcoinCommand,
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeField,
+      WkBtcNetMessageTypeSerdeFieldReader, ?, ?, ?,
+      ? extends WkBtcNetMessageTypeSerdeField> definitionCore) {
+    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcNetMessageType,
         WkSerdeDtreeOperationSettings,
-        WkBitcoinCommandSerdeField,
-        WkBitcoinCommandSerdeFieldReader>(
+        WkBtcNetMessageTypeSerdeField,
+        WkBtcNetMessageTypeSerdeFieldReader>(
         index, settings, parentBytestream, readerFieldCore, definitionCore, this);
   }
 
@@ -86,7 +86,7 @@ public class WkBitcoinCommandSerdeFieldReader
   }
 
   @Override
-  public WkBitcoinCommandSerdeField definition() {
+  public WkBtcNetMessageTypeSerdeField definition() {
     return this.readerCore.definition();
   }
 
@@ -101,7 +101,7 @@ public class WkBitcoinCommandSerdeFieldReader
   }
 
   @Override
-  public Optional<WkSerdeDtreeOperationResult<WkBitcoinCommand>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkBtcNetMessageType>> result() {
     return this.readerCore.result();
   }
 

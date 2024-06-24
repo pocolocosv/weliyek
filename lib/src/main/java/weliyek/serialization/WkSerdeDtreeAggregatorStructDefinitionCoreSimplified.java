@@ -81,10 +81,10 @@ public class WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
     WkSerdeDtreeAggregatorMsgReaderCoreFactory<XS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, XS, XD, XO, ?, ?, ?, ? extends XD>, WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T, XS, XD, XO>, WkSerdeDtreeBytestreamInputBase<?>> readerFactory,
     WkSerdeDtreeAggregatorMsgWriterCoreFactory<T, YS, WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, ?, ?, ?, YS, YD, YO, ? extends YD>, WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T, YS, YD, YO>, WkSerdeDtreeBytestreamOutputBase<?>> writerFactory,
     WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore,
-    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onInitializing,
-    Function<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>, T> onFullRead,
-    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onSkippedRead,
-    Consumer<? super WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>> onWrite,
+    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onReadInit,
+    Function<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>, T> onReadFull,
+    Consumer<? super WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO>> onReadSkipped,
+    Consumer<? super WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO>> onWriteInit,
     D body,
     Class<T> serializableClass) {
     super(
@@ -97,10 +97,10 @@ public class WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
           writerFactory,
           body,
           serializableClass);
-    this.onInitializing = Objects.requireNonNull(onInitializing);
-    this.onFullSerializing = Objects.requireNonNull(onFullRead);
-    this.onSkippedDeserializing = Objects.requireNonNull(onSkippedRead);
-    this.onOutputInitializing = Objects.requireNonNull(onWrite);
+    this.onInitializing = Objects.requireNonNull(onReadInit);
+    this.onFullSerializing = Objects.requireNonNull(onReadFull);
+    this.onSkippedDeserializing = Objects.requireNonNull(onReadSkipped);
+    this.onOutputInitializing = Objects.requireNonNull(onWriteInit);
   }
 
   @Override

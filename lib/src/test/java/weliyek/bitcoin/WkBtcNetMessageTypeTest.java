@@ -32,7 +32,7 @@ import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-class WkBitcoinCommandTest
+class WkBtcNetMessageTypeTest
 {
 
   @Test

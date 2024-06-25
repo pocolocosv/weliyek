@@ -103,6 +103,39 @@ public class WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
     this.onOutputInitializing = Objects.requireNonNull(onWriteInit);
   }
 
+  public static <T,
+                 XS extends WkSerdeDtreeOperationSettings,
+                 XD extends WkSerdeDtreeAggregatorStructDefinition<T>,
+                 XO extends WkSerdeDtreeAggregatorMsgReader<
+                                T,
+                                XS,
+                                WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                WkSerdeDtreeOperationResult<T>,
+                                XD>>
+
+  void doNothingOnReadInitOrSkipped(WkSerdeDtreeAggregatorMsgReaderCoreSimplified<T,XS,XD,XO> readerCore) {
+  }
+
+  public static <T,
+                 XS extends WkSerdeDtreeOperationSettings,
+                 XD extends WkSerdeDtreeAggregatorStructDefinition<T>,
+                 XO extends WkSerdeDtreeAggregatorMsgReader<
+                                 T,
+                                 XS,
+                                 WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
+                                 WkSerdeDtreeOperationResult<T>,
+                                 XD>,
+                 YS extends WkSerdeDtreeOperationSettings,
+                 YD extends WkSerdeDtreeAggregatorStructDefinition<T>,
+                 YO extends WkSerdeDtreeAggregatorMsgWriter<
+                                 T,
+                                 YS,
+                                 WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
+                                 WkSerdeDtreeOperationResult<T>,
+                                 YD>>
+  void doNothingOnWriteInit(WkSerdeDtreeAggregatorMsgWriterCoreSimplified<T,YS,YD,YO> writerCore) {
+  }
+
   @Override
   protected WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, XS, XD, XO, YS, YD, YO, D> getThis() {
     return this;

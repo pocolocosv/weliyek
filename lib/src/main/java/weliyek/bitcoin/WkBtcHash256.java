@@ -24,29 +24,30 @@ import java.util.Objects;
 import weliyek.util.array.WKArrayUtil;
 import weliyek.util.array.WkByteArray;
 
-public class WkBitcoinHash implements Comparable<WkBitcoinHash>
+public class WkBtcHash256 implements Comparable<WkBtcHash256>
 {
 
-    /** All Bitcoin hashes are 32 bytes long. */
     public static final int CANONICAL_BYTE_LENGTH = 32;
 
-    private WkByteArray bytes;
+    final WkByteArray bytes;
 
-    public WkBitcoinHash(WkByteArray bytes) {
-      if (CANONICAL_BYTE_LENGTH != bytes.getLength())
+    public WkBtcHash256(WkByteArray bytes) {
+      Objects.requireNonNull(bytes);
+      if (CANONICAL_BYTE_LENGTH != bytes.getLength()) {
         throw new IllegalArgumentException("Invalid byte array length");
-      this.bytes = Objects.requireNonNull(bytes);
+      }
+      this.bytes = bytes;
     }
 
-    public WkBitcoinHash(byte[] array) {
+    public WkBtcHash256(byte[] array) {
       this(array, 0, array.length);
     }
 
-    public WkBitcoinHash(byte[] array, int offset) {
+    public WkBtcHash256(byte[] array, int offset) {
       this(array, offset, array.length);
     }
 
-    public WkBitcoinHash(byte[] array, int from, int to) {
+    public WkBtcHash256(byte[] array, int from, int to) {
       WKArrayUtil.throwIfBoundsAreInvalid(array.length, from, to);
       final int len = to - from;
       if (CANONICAL_BYTE_LENGTH != len) {
@@ -61,18 +62,42 @@ public class WkBitcoinHash implements Comparable<WkBitcoinHash>
       this.bytes = new WkByteArray(cpy);
     }
 
+    public WkByteArray bytes() {
+      return this.bytes;
+    }
+
     public BigInteger asBigInteger() {
         return bytes.convertToBigInteger();
     }
 
     @Override
-    public int compareTo(WkBitcoinHash other) {
+    public int compareTo(WkBtcHash256 other) {
         return this.asBigInteger().compareTo(other.asBigInteger());
     }
 
     @Override
     public String toString() {
         return bytes.bytesToHexStr();
+    }
+
+      @Override
+    public int hashCode() {
+      return Objects.hash(bytes);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (this == obj) {
+        return true;
+      }
+      if (obj == null) {
+        return false;
+      }
+      if (getClass() != obj.getClass()) {
+        return false;
+      }
+      WkBtcHash256 other = (WkBtcHash256) obj;
+      return Objects.equals(bytes, other.bytes);
     }
 
 }

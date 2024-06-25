@@ -17,8 +17,54 @@
  */
 package weliyek.bitcoin;
 
-public class BtcProtoFieldHashTest
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
+import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
+import weliyek.serialization.WkSerdeDtreeOperationSettings;
+import weliyek.serialization.WkSerdeDtreeReader;
+import weliyek.serialization.WkSerdeDtreeStruct;
+import weliyek.serialization.WkSerdeDtreeWriter;
+import weliyek.serialization.util.KetzaByteOutputStream;
+
+public class WkBtcHash256Test
 {
+
+  public static final byte[] BIT_ARRAY_256 = new byte[] {
+      (byte)0xde, (byte)0x55, (byte)0xff, (byte)0xd7, (byte)0x09, (byte)0xac, (byte)0x1f, (byte)0x5d,
+      (byte)0xc5, (byte)0x09, (byte)0xa0, (byte)0x92, (byte)0x5d, (byte)0x0b, (byte)0x1f, (byte)0xc4,
+      (byte)0x42, (byte)0xca, (byte)0x03, (byte)0x4f, (byte)0x22, (byte)0x47, (byte)0x32, (byte)0xe4,
+      (byte)0x29, (byte)0x08, (byte)0x1d, (byte)0xa1, (byte)0xb6, (byte)0x21, (byte)0xf5, (byte)0x5a
+  };
+
+  @Test
+  void testSerde() {
+    WkBtcHash256 hash = new WkBtcHash256(BIT_ARRAY_256);
+
+    WkSerdeDtreeStruct<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcHash256SerdeField>
+      msgStruct = WkBtcHash256SerdeField.newStruct("BTCHASH");
+
+    KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
+
+    WkSerdeDtreeWriter<WkBtcHash256, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter>
+      msgWriter = msgStruct.newOutputPacket(hash, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
+
+    msgWriter.processBytestream();
+
+    assertTrue(msgWriter.isCompleted());
+
+    WkSerdeDtreeReader<WkBtcHash256, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader>
+      msgReader = msgStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
+
+    msgReader.processBytestream();
+
+    assertTrue(msgReader.isCompleted());
+
+    assertEquals(hash, msgReader.firstOperation().get().result().get().serializable().get());
+  }
 
     /*
     public static final Logger logger = LoggerFactory.getLogger(BtcProtoFieldHashTest.class);

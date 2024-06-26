@@ -34,7 +34,7 @@ import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-class WkBtcNetMessageStartTest
+class WkBtcProtocolVersionTest
 {
 
   @BeforeAll
@@ -55,38 +55,39 @@ class WkBtcNetMessageStartTest
 
   @Test
   void testValues() {
-    WkBtcNetMessageStart unknown = WkBtcNetMessageStart.newMagic(0);
-    assertFalse(unknown.isKnown());
+    WkBtcProtocolVersion zero = WkBtcProtocolVersion.newVersion(0);
+    assertFalse(zero.isKnown());
 
-    WkBtcNetMessageStart main = WkBtcNetMessageStart.newMagic(0xD9B4BEF9);
-    assertEquals(WkBtcNetMessageStart.MAIN, main);
+    WkBtcProtocolVersion declared = WkBtcProtocolVersion.newVersion(70016);
+    assertTrue(declared.isKnown());
+    assertEquals(WkBtcProtocolVersion.WTXID_RELAY, declared);
   }
 
   @Test
   void testSerde() {
-    WkSerdeDtreeStruct<WkBtcNetMessageStart, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetMessageStartSerdeField>
-      magicProto = WkBtcNetMessageStartSerdeField.newStruct("MAGIC");
+    WkSerdeDtreeStruct<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcProtocolVersionSerde>
+      versionSerde = WkBtcProtocolVersionSerde.newStruct("PROTOVER");
 
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSerdeDtreeWriter<WkBtcNetMessageStart, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldWriter>
-      magicWriter = magicProto.newOutputPacket(WkBtcNetMessageStart.MAIN, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
+    WkSerdeDtreeWriter<WkBtcProtocolVersion, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter>
+      verWriter = versionSerde.newOutputPacket(WkBtcProtocolVersion.WTXID_RELAY, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
 
-    magicWriter.processBytestream();
+    verWriter.processBytestream();
 
-    assertTrue(magicWriter.isCompleted());
+    assertTrue(verWriter.isCompleted());
 
-    assertEquals(Integer.BYTES, outputBuffer.size());
+    assertEquals(4, outputBuffer.size());
 
-    WkSerdeDtreeReader<WkBtcNetMessageStart, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldReader>
-      magicReader = magicProto.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
+    WkSerdeDtreeReader<WkBtcProtocolVersion, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader>
+      verReader = versionSerde.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
 
-    magicReader.processBytestream();
+    verReader.processBytestream();
 
-    assertTrue(magicReader.isCompleted());
+    assertTrue(verReader.isCompleted());
 
-    assertEquals(WkBtcNetMessageStart.MAIN.value, magicReader.firstOperation().get().uint32le().get().firstOperation().get().result().get().serializable().get());
-    assertEquals(WkBtcNetMessageStart.MAIN, magicReader.firstOperation().get().result().get().serializable().get());
+    assertEquals(WkBtcProtocolVersion.WTXID_RELAY.value, verReader.firstOperation().get().int32le().get().firstOperation().get().result().get().serializable().get().intValue());
+    assertEquals(WkBtcProtocolVersion.WTXID_RELAY, verReader.firstOperation().get().result().get().serializable().get());
   }
 
 }

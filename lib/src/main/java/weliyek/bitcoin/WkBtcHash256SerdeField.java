@@ -100,7 +100,7 @@ public class WkBtcHash256SerdeField
                       WkBtcHash256SerdeFieldWriter,
                       WkBtcHash256SerdeField> definitionCore;
 
-  public WkBtcHash256SerdeField(
+  private WkBtcHash256SerdeField(
     WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter, WkBtcHash256SerdeField>(
                                   WkBtcHash256SerdeFieldReader::newCore,

@@ -96,10 +96,10 @@ public class WkSerdeDtreeFixedSizeByteArray
               WkSerdeDtreeFixedSizeByteArray>addSubcomponent(
         label,
         rxEnablingTest,
-        WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+        WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
         WkSerdeDtreeOperationSettings::none,
         txEnablingTest,
-        WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+        WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
         WkSerdeDtreeOperationSettings::none,
         disaggregator,
         readRequired,

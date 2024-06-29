@@ -157,10 +157,10 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
     this.sizeComponent = this.<ZT,ZXS,ZXD,ZXO,ZYS,ZYD,ZYO,ZD>addSubcomponent(
                                     sizeComponentLabel,
                                     Optional.empty(), // Always enabled.
-                                    singleOperation(),
+                                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                     sizeComponentRxSettingsFactory,
                                     Optional.empty(), // Always enabled.
-                                    singleOperation(),
+                                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                     sizeComponentTxSettingsFactory,
                                     sizeComponentTxDesaggregator,
                                     true,             // Deserialized value is always needed.
@@ -168,10 +168,10 @@ public abstract class WkSerdeDtreeDynamicSequenceDefinitionCore<
     this.varseqComponent = this.<T,VXS,VXD,VXO,VYS,VYD,VYO,VD>addSubcomponent(
                                     varseqComponentLabel,
                                     Optional.empty(), // Always enabled.
-                                    singleOperation(),
+                                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                     varseqComponentRxSettingsFactory,
                                     Optional.empty(), // Always enabled.
-                                    singleOperation(),
+                                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                     varseqComponentTxSettingsFactory,
                                     varseqComponentTxDesaggregator,
                                     false,

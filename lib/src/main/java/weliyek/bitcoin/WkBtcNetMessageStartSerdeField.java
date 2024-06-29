@@ -126,10 +126,10 @@ public class WkBtcNetMessageStartSerdeField
                         addSubcomponent(
                           "UINT32LE",
                           Optional.empty(),
-                          WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+                          WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                           WkSerdeDtreeOperationSettings::none,
                           Optional.empty(),
-                          WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+                          WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                           WkSerdeDtreeOperationSettings::none,
                           (k,ao,i) -> ao.serializable().value, //disaggregator,
                           false,

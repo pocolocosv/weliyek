@@ -100,10 +100,10 @@ public class WkBtcNetNodeServicesSerdeField
     addSubcomponent(
         "LONG",
         Optional.empty(), // rxEnablingTest
-        WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+        WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
         WkSerdeDtreeOperationSettings::none,
         Optional.empty(), // txEnablingTest
-        WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+        WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
         WkSerdeDtreeOperationSettings::none,
         (k,ao,i) -> Long.valueOf(ao.serializable().toLong()), //disaggregator,
         false,

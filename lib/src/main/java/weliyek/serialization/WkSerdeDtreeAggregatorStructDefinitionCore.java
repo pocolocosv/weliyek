@@ -61,18 +61,6 @@ public abstract class WkSerdeDtreeAggregatorStructDefinitionCore<
     implements WkSerdeDtreeAggregatorStructDefinition<T>
 {
 
-  public static final
-  ToIntFunction<WkSerdeDtreeAggregatorMsgOperation<?,?,?,?>> singleOperation() {
-    return SINGLEOP;
-  }
-
-  private static final ToIntFunction<WkSerdeDtreeAggregatorMsgOperation<?,?,?,?>> SINGLEOP = new ToIntFunction<WkSerdeDtreeAggregatorMsgOperation<?,?,?,?>>() {
-    @Override
-    public int applyAsInt(WkSerdeDtreeAggregatorMsgOperation<?,?,?,?> value) {
-      return 1;
-    }
-  };
-
   final WkSerdeDtreeStructSubfieldCoreList<T,XBC,XO,YBC,YO>
     structSubfieldCoreList = new WkSerdeDtreeStructSubfieldCoreList<>();
 
@@ -98,6 +86,10 @@ public abstract class WkSerdeDtreeAggregatorStructDefinitionCore<
           writingOpFactory,
           definitionBody,
           serializableClass);
+  }
+
+  public static int opWithSingleResult(WkSerdeDtreeAggregatorMsgOperation<?,?,?,?> value) {
+    return 1;
   }
 
   @Override

@@ -115,10 +115,10 @@ public class WkBtcProtocolVersionSerde
     this.int32 = definitionCore.<Integer, WkSerdeDtreeOperationSettings,WkSerdeSignedLittleEndianInteger,WkSerdeSignedLittleEndianIntegerReader,WkSerdeDtreeOperationSettings,WkSerdeSignedLittleEndianInteger,WkSerdeSignedLittleEndianIntegerWriter,WkSerdeSignedLittleEndianInteger>addSubcomponent(
                                   "INT32",
                                   Optional.empty(),
-                                  WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+                                  WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                   WkSerdeDtreeOperationSettings::none,
                                   Optional.empty(),
-                                  WkSerdeDtreeAggregatorStructDefinitionCore.singleOperation(),
+                                  WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                   WkSerdeDtreeOperationSettings::none,
                                   (k,ao,i) -> ao.serializable().value,
                                   false,

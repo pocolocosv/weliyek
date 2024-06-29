@@ -132,10 +132,10 @@ public abstract class WkSerdeStringFromPrimitiveArrayDefinitionCore<
     this.primitiveArraySubcomponent = this.<ST,SXS,SXD,SXO,SYS,SYD,SYO,SD>addSubcomponent(
                                                primitiveArrayLabel,
                                                primitiveArrayDeserializationEnablingTest,
-                                               singleOperation(),
+                                               WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                                primitiveArrayDeserializingSettingsFactory,
                                                primitiveArraySerializationEnablingTest,
-                                               singleOperation(),
+                                               WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                                                primitiveArraySerializingSettingsFactory,
                                                primitiveArraySerializingDisaggregator,
                                                primitiveArrayDeserializedRequired,

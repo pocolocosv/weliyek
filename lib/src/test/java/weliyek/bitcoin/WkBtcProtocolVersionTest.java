@@ -65,12 +65,12 @@ class WkBtcProtocolVersionTest
 
   @Test
   void testSerde() {
-    WkSerdeDtreeStruct<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcProtocolVersionSerde>
-      versionSerde = WkBtcProtocolVersionSerde.newStruct("PROTOVER");
+    WkSerdeDtreeStruct<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcProtocolVersionSerdeDef>
+      versionSerde = WkBtcProtocolVersionSerdeDef.newStruct("PROTOVER");
 
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSerdeDtreeWriter<WkBtcProtocolVersion, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter>
+    WkSerdeDtreeWriter<WkBtcProtocolVersion, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter>
       verWriter = versionSerde.newOutputPacket(WkBtcProtocolVersion.WTXID_RELAY, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
 
     verWriter.processBytestream();
@@ -79,7 +79,7 @@ class WkBtcProtocolVersionTest
 
     assertEquals(4, outputBuffer.size());
 
-    WkSerdeDtreeReader<WkBtcProtocolVersion, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader>
+    WkSerdeDtreeReader<WkBtcProtocolVersion, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader>
       verReader = versionSerde.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
 
     verReader.processBytestream();

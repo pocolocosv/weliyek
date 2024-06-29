@@ -44,19 +44,19 @@ public class WkBtcHash256Test
   void testSerde() {
     WkBtcHash256 hash = new WkBtcHash256(BIT_ARRAY_256);
 
-    WkSerdeDtreeStruct<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcHash256SerdeField>
-      msgStruct = WkBtcHash256SerdeField.newStruct("BTCHASH");
+    WkSerdeDtreeStruct<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcHash256SerdeDef>
+      msgStruct = WkBtcHash256SerdeDef.newStruct("BTCHASH");
 
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSerdeDtreeWriter<WkBtcHash256, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter>
+    WkSerdeDtreeWriter<WkBtcHash256, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldWriter>
       msgWriter = msgStruct.newOutputPacket(hash, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
 
     msgWriter.processBytestream();
 
     assertTrue(msgWriter.isCompleted());
 
-    WkSerdeDtreeReader<WkBtcHash256, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader>
+    WkSerdeDtreeReader<WkBtcHash256, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader>
       msgReader = msgStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
 
     msgReader.processBytestream();

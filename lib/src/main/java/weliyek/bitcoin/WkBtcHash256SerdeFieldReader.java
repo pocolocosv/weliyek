@@ -39,20 +39,20 @@ public class WkBtcHash256SerdeFieldReader
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                         WkSerdeDtreeOperationResult<WkBtcHash256>,
-                        WkBtcHash256SerdeField>
+                        WkBtcHash256SerdeDef>
 {
 
   static WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcHash256,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcHash256SerdeField,
+                        WkBtcHash256SerdeDef,
                         WkBtcHash256SerdeFieldReader>
   newCore(
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader, ?, ?, ?, ? extends WkBtcHash256SerdeField>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader, ?, ?, ?, ? extends WkBtcHash256SerdeDef>
       definitionCore) {
     return new WkBtcHash256SerdeFieldReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
   }
@@ -60,7 +60,7 @@ public class WkBtcHash256SerdeFieldReader
   final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcHash256,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcHash256SerdeField,
+                        WkBtcHash256SerdeDef,
                         WkBtcHash256SerdeFieldReader> readerCore;
 
   private WkBtcHash256SerdeFieldReader(
@@ -68,9 +68,9 @@ public class WkBtcHash256SerdeFieldReader
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader, ?, ?, ?, ? extends WkBtcHash256SerdeField>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader, ?, ?, ?, ? extends WkBtcHash256SerdeDef>
       definitionCore) {
-    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader>(
+    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader>(
                               index,
                               settings,
                               parentBytestream,
@@ -85,7 +85,7 @@ public class WkBtcHash256SerdeFieldReader
   }
 
   @Override
-  public WkBtcHash256SerdeField definition() {
+  public WkBtcHash256SerdeDef definition() {
     return this.readerCore.definition();
   }
 

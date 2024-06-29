@@ -39,25 +39,25 @@ import weliyek.serialization.number.WkSerdeSignedLittleEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerReader;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianIntegerWriter;
 
-public class WkBtcProtocolVersionSerde
+public class WkBtcProtocolVersionSerdeDef
     implements WkSerdeDtreeAggregatorStructDefinition<WkBtcProtocolVersion>
 {
 
   public static WkSerdeDtreeStruct<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeReader,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeWriter,
                         WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkBtcProtocolVersionSerde>
+                        WkBtcProtocolVersionSerdeDef>
   newStruct(String label) {
     return new WkSerdeDtreeStructCore<>(
                         label,
-                        WkBtcProtocolVersionSerde::newCore,
+                        WkBtcProtocolVersionSerdeDef::newCore,
                         WkSerdeDtreeBytestreamCountingInputStream::new,
                         WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
@@ -65,25 +65,25 @@ public class WkBtcProtocolVersionSerde
   public static WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeReader,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeWriter,
-                        WkBtcProtocolVersionSerde>
+                        WkBtcProtocolVersionSerdeDef>
   newCore(WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
-    return new WkBtcProtocolVersionSerde(fieldCore).definitionCore;
+    return new WkBtcProtocolVersionSerdeDef(fieldCore).definitionCore;
   }
 
   private final WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeReader,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeWriter,
-                        WkBtcProtocolVersionSerde> definitionCore;
+                        WkBtcProtocolVersionSerdeDef> definitionCore;
 
   final WkSerdeDtreeStructSubfieldCore<
                         Integer,
@@ -100,14 +100,14 @@ public class WkBtcProtocolVersionSerde
                         WkBtcProtocolVersionSerdeWriter,
                         WkSerdeSignedLittleEndianInteger> int32;
 
-  private WkBtcProtocolVersionSerde(
+  private WkBtcProtocolVersionSerdeDef(
     WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
-    this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter, WkBtcProtocolVersionSerde>(
+    this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter, WkBtcProtocolVersionSerdeDef>(
                                   WkBtcProtocolVersionSerdeReader::newCore,
                                   WkBtcProtocolVersionSerdeWriter::newCore,
                                   fieldCore,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnReadInitOrSkipped,
-                                  WkBtcProtocolVersionSerde::onReadFull,
+                                  WkBtcProtocolVersionSerdeDef::onReadFull,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnReadInitOrSkipped,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnWriteInit,
                                   this,
@@ -127,7 +127,7 @@ public class WkBtcProtocolVersionSerde
 
   private static WkBtcProtocolVersion onReadFull(
     WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-      WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde,
+      WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef,
       WkBtcProtocolVersionSerdeReader> readerCore) {
     int intValue = readerCore.body().int32le().get().firstOperation().get().result().get().serializable().get().intValue();
     return WkBtcProtocolVersion.newVersion(intValue);

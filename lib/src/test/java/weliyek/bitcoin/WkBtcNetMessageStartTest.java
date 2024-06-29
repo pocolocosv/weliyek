@@ -64,12 +64,12 @@ class WkBtcNetMessageStartTest
 
   @Test
   void testSerde() {
-    WkSerdeDtreeStruct<WkBtcNetMessageStart, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetMessageStartSerdeField>
-      magicProto = WkBtcNetMessageStartSerdeField.newStruct("MAGIC");
+    WkSerdeDtreeStruct<WkBtcNetMessageStart, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeDef, WkBtcNetMessageStartSerdeReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeDef, WkBtcNetMessageStartSerdeWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetMessageStartSerdeDef>
+      magicProto = WkBtcNetMessageStartSerdeDef.newStruct("MAGIC");
 
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSerdeDtreeWriter<WkBtcNetMessageStart, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldWriter>
+    WkSerdeDtreeWriter<WkBtcNetMessageStart, WkBtcNetMessageStartSerdeDef, WkBtcNetMessageStartSerdeWriter>
       magicWriter = magicProto.newOutputPacket(WkBtcNetMessageStart.MAIN, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
 
     magicWriter.processBytestream();
@@ -78,7 +78,7 @@ class WkBtcNetMessageStartTest
 
     assertEquals(Integer.BYTES, outputBuffer.size());
 
-    WkSerdeDtreeReader<WkBtcNetMessageStart, WkBtcNetMessageStartSerdeField, WkBtcNetMessageStartSerdeFieldReader>
+    WkSerdeDtreeReader<WkBtcNetMessageStart, WkBtcNetMessageStartSerdeDef, WkBtcNetMessageStartSerdeReader>
       magicReader = magicProto.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
 
     magicReader.processBytestream();

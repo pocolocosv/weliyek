@@ -29,76 +29,64 @@ import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.number.WkSerdeUnsignedLittleEndianInteger;
-import weliyek.serialization.number.WkSerdeUnsignedLittleEndianIntegerReader;
+import weliyek.util.array.WkByteArray;
+import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
+import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
 
-public class WkBtcNetMessageStartSerdeFieldReader
+public class WkBtcNetMessageTypeSerdeReader
     implements WkSerdeDtreeAggregatorMsgReader<
-                        WkBtcNetMessageStart,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
-                        WkSerdeDtreeOperationResult<WkBtcNetMessageStart>,
-                        WkBtcNetMessageStartSerdeField>
+                        WkSerdeDtreeOperationResult<WkBtcNetMessageType>,
+                        WkBtcNetMessageTypeSerdeDef>
 {
-
   static WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-            WkBtcNetMessageStart,
-            WkSerdeDtreeOperationSettings,
-            WkBtcNetMessageStartSerdeField,
-            WkBtcNetMessageStartSerdeFieldReader>
-  newCore(
+              WkBtcNetMessageType,
+              WkSerdeDtreeOperationSettings,
+              WkBtcNetMessageTypeSerdeDef,
+              WkBtcNetMessageTypeSerdeReader>
+  newReaderCore(
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-      WkBtcNetMessageStart, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeField,
-      WkBtcNetMessageStartSerdeFieldReader, ?, ?, ?,
-      ? extends WkBtcNetMessageStartSerdeField> definitionCore) {
-    return new WkBtcNetMessageStartSerdeFieldReader(
-                  index,
-                  settings,
-                  parentBytestream,
-                  readerFieldCore,
-                  definitionCore).readerCore;
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef,
+      WkBtcNetMessageTypeSerdeReader, ?, ?, ?,
+      ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
+    return new WkBtcNetMessageTypeSerdeReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
   }
-
 
   final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-                        WkBtcNetMessageStart,
+                        WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetMessageStartSerdeField,
-                        WkBtcNetMessageStartSerdeFieldReader> readerCore;
+                        WkBtcNetMessageTypeSerdeDef,
+                        WkBtcNetMessageTypeSerdeReader> readerCore;
 
-  public WkBtcNetMessageStartSerdeFieldReader(
+  WkBtcNetMessageTypeSerdeReader(
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-      WkBtcNetMessageStart, WkSerdeDtreeOperationSettings, WkBtcNetMessageStartSerdeField,
-      WkBtcNetMessageStartSerdeFieldReader, ?, ?, ?,
-      ? extends WkBtcNetMessageStartSerdeField> definitionCore) {
-    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-                              WkBtcNetMessageStart,
-                              WkSerdeDtreeOperationSettings,
-                              WkBtcNetMessageStartSerdeField,
-                              WkBtcNetMessageStartSerdeFieldReader>(
-                                  index,
-                                  settings,
-                                  parentBytestream,
-                                  readerFieldCore,
-                                  definitionCore,
-                                  this);
+      WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef,
+      WkBtcNetMessageTypeSerdeReader, ?, ?, ?,
+      ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
+    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcNetMessageType,
+        WkSerdeDtreeOperationSettings,
+        WkBtcNetMessageTypeSerdeDef,
+        WkBtcNetMessageTypeSerdeReader>(
+        index, settings, parentBytestream, readerFieldCore, definitionCore, this);
   }
 
-  public Optional<WkSerdeDtreeMsgInputField<Long, WkSerdeUnsignedLittleEndianInteger, WkSerdeUnsignedLittleEndianIntegerReader>>
-  uint32le() {
-    return Optional.ofNullable(this.readerCore.getSubfieldpacketFor(definition().intField).asPacket());
+  public Optional<WkSerdeDtreeMsgInputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayReader>>
+  byteArray() {
+    return Optional.ofNullable(readerCore.getSubfieldpacketFor(definition().byteArray).asPacket());
   }
 
   @Override
-  public WkBtcNetMessageStartSerdeField definition() {
+  public WkBtcNetMessageTypeSerdeDef definition() {
     return this.readerCore.definition();
   }
 
@@ -113,7 +101,7 @@ public class WkBtcNetMessageStartSerdeFieldReader
   }
 
   @Override
-  public Optional<WkSerdeDtreeOperationResult<WkBtcNetMessageStart>> result() {
+  public Optional<WkSerdeDtreeOperationResult<WkBtcNetMessageType>> result() {
     return this.readerCore.result();
   }
 

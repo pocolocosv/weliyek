@@ -32,33 +32,33 @@ import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLongWriter;
 
-public class WkBtcNetNodeServicesSerdeFieldWriter
+public class WkBtcNetNodeServicesSerdeWriter
     implements WkSerdeDtreeAggregatorMsgWriter<
                         WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
                         WkSerdeDtreeOperationResult<WkBtcNetNodeServices>,
-                        WkBtcNetNodeServicesSerdeField>
+                        WkBtcNetNodeServicesSerdeDef>
 {
 
   final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetNodeServicesSerdeField,
-                        WkBtcNetNodeServicesSerdeFieldWriter> outputCore;
+                        WkBtcNetNodeServicesSerdeDef,
+                        WkBtcNetNodeServicesSerdeWriter> outputCore;
 
-  WkBtcNetNodeServicesSerdeFieldWriter(
+  WkBtcNetNodeServicesSerdeWriter(
     int index,
     WkBtcNetNodeServices serializable,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
     WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldWriter, ? extends WkBtcNetNodeServicesSerdeField> definitionCore) {
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeWriter, ? extends WkBtcNetNodeServicesSerdeDef> definitionCore) {
     this.outputCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                             WkBtcNetNodeServices,
                             WkSerdeDtreeOperationSettings,
-                            WkBtcNetNodeServicesSerdeField,
-                            WkBtcNetNodeServicesSerdeFieldWriter>(
+                            WkBtcNetNodeServicesSerdeDef,
+                            WkBtcNetNodeServicesSerdeWriter>(
                                 index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
   }
 
@@ -68,7 +68,7 @@ public class WkBtcNetNodeServicesSerdeFieldWriter
   }
 
   @Override
-  public WkBtcNetNodeServicesSerdeField definition() {
+  public WkBtcNetNodeServicesSerdeDef definition() {
     return this.outputCore.definition();
   }
 

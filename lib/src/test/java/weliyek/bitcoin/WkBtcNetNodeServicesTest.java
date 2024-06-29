@@ -39,18 +39,18 @@ class WkBtcNetNodeServicesTest
   public static WkSerdeDtreeStruct<
                         WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetNodeServicesSerdeField,
-                        WkBtcNetNodeServicesSerdeFieldReader,
+                        WkBtcNetNodeServicesSerdeDef,
+                        WkBtcNetNodeServicesSerdeReader,
                         WkSerdeDtreeBytestreamInputBase<?>,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetNodeServicesSerdeField,
-                        WkBtcNetNodeServicesSerdeFieldWriter,
+                        WkBtcNetNodeServicesSerdeDef,
+                        WkBtcNetNodeServicesSerdeWriter,
                         WkSerdeDtreeBytestreamOutputBase<?>,
-                        WkBtcNetNodeServicesSerdeField>
+                        WkBtcNetNodeServicesSerdeDef>
   newStruct(String label) {
     return new WkSerdeDtreeStructCore<>(
                       label,
-                      WkBtcNetNodeServicesSerdeField::newCore,
+                      WkBtcNetNodeServicesSerdeDef::newCore,
                       WkSerdeDtreeBytestreamCountingInputStream::new,
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
@@ -108,10 +108,10 @@ class WkBtcNetNodeServicesTest
         | WkBtcNetNodeServicesBit.BIT09.bitmask);
     
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
-    WkSerdeDtreeStruct<WkBtcNetNodeServices, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetNodeServicesSerdeField> 
+    WkSerdeDtreeStruct<WkBtcNetNodeServices, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetNodeServicesSerdeDef> 
       servicesStruct = newStruct("SERVICES");
     
-    WkSerdeDtreeWriter<WkBtcNetNodeServices, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldWriter> servicesWrite = servicesStruct.newOutputPacket(services, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
+    WkSerdeDtreeWriter<WkBtcNetNodeServices, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeWriter> servicesWrite = servicesStruct.newOutputPacket(services, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
     
     servicesWrite.processBytestream();
     
@@ -119,7 +119,7 @@ class WkBtcNetNodeServicesTest
     
     assertEquals(8, outputBuffer.size());
     
-    WkSerdeDtreeReader<WkBtcNetNodeServices, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldReader> servicesRead = servicesStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
+    WkSerdeDtreeReader<WkBtcNetNodeServices, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeReader> servicesRead = servicesStruct.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
     
     servicesRead.processBytestream();
     

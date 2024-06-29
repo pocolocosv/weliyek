@@ -32,32 +32,32 @@ import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLongReader;
 
-public class WkBtcNetNodeServicesSerdeFieldReader
+public class WkBtcNetNodeServicesSerdeReader
     implements WkSerdeDtreeAggregatorMsgReader<
                         WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                         WkSerdeDtreeOperationResult<WkBtcNetNodeServices>,
-                        WkBtcNetNodeServicesSerdeField>
+                        WkBtcNetNodeServicesSerdeDef>
 {
 
   final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetNodeServicesSerdeField,
-                        WkBtcNetNodeServicesSerdeFieldReader> inputCore;
+                        WkBtcNetNodeServicesSerdeDef,
+                        WkBtcNetNodeServicesSerdeReader> inputCore;
 
-  WkBtcNetNodeServicesSerdeFieldReader(
+  WkBtcNetNodeServicesSerdeReader(
     int index,
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeField, WkBtcNetNodeServicesSerdeFieldReader, ?, ?, ?, ? extends WkBtcNetNodeServicesSerdeField> definitionCore) {
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeReader, ?, ?, ?, ? extends WkBtcNetNodeServicesSerdeDef> definitionCore) {
     this.inputCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
           WkBtcNetNodeServices,
           WkSerdeDtreeOperationSettings,
-          WkBtcNetNodeServicesSerdeField,
-          WkBtcNetNodeServicesSerdeFieldReader>(
+          WkBtcNetNodeServicesSerdeDef,
+          WkBtcNetNodeServicesSerdeReader>(
         index, settings, parentBytestream, readerFieldCore, definitionCore, this);
   }
 
@@ -67,7 +67,7 @@ public class WkBtcNetNodeServicesSerdeFieldReader
   }
 
   @Override
-  public WkBtcNetNodeServicesSerdeField definition() {
+  public WkBtcNetNodeServicesSerdeDef definition() {
     return this.inputCore.definition();
   }
 

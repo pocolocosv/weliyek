@@ -33,19 +33,19 @@ import weliyek.util.array.WkByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayWriter;
 
-public class WkBtcNetMessageTypeSerdeFieldWriter
+public class WkBtcNetMessageTypeSerdeWriter
     implements WkSerdeDtreeAggregatorMsgWriter<
                         WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
                         WkSerdeDtreeOperationResult<WkBtcNetMessageType>,
-                        WkBtcNetMessageTypeSerdeField>
+                        WkBtcNetMessageTypeSerdeDef>
 {
   static WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
   WkBtcNetMessageType,
   WkSerdeDtreeOperationSettings,
-  WkBtcNetMessageTypeSerdeField,
-  WkBtcNetMessageTypeSerdeFieldWriter> newWriter(
+  WkBtcNetMessageTypeSerdeDef,
+  WkBtcNetMessageTypeSerdeWriter> newWriter(
     int index,
     WkBtcNetMessageType serializable,
     WkSerdeDtreeOperationSettings settings,
@@ -53,18 +53,18 @@ public class WkBtcNetMessageTypeSerdeFieldWriter
     WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
       WkBtcNetMessageType, ?, ?, ?, WkSerdeDtreeOperationSettings,
-      WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldWriter,
-      ? extends WkBtcNetMessageTypeSerdeField> definitionCore) {
-    return new WkBtcNetMessageTypeSerdeFieldWriter(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore).writerCore;
+      WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter,
+      ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
+    return new WkBtcNetMessageTypeSerdeWriter(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore).writerCore;
   }
 
   final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcNetMessageType,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetMessageTypeSerdeField,
-                        WkBtcNetMessageTypeSerdeFieldWriter> writerCore;
+                        WkBtcNetMessageTypeSerdeDef,
+                        WkBtcNetMessageTypeSerdeWriter> writerCore;
 
-  WkBtcNetMessageTypeSerdeFieldWriter(
+  WkBtcNetMessageTypeSerdeWriter(
     int index,
     WkBtcNetMessageType serializable,
     WkSerdeDtreeOperationSettings settings,
@@ -72,9 +72,9 @@ public class WkBtcNetMessageTypeSerdeFieldWriter
     WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
       WkBtcNetMessageType, ?, ?, ?, WkSerdeDtreeOperationSettings,
-      WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldWriter,
-      ? extends WkBtcNetMessageTypeSerdeField> definitionCore) {
-    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldWriter>(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
+      WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter,
+      ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
+    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter>(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
   }
 
   public Optional<WkSerdeDtreeMsgOutputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>
@@ -83,7 +83,7 @@ public class WkBtcNetMessageTypeSerdeFieldWriter
   }
 
   @Override
-  public WkBtcNetMessageTypeSerdeField definition() {
+  public WkBtcNetMessageTypeSerdeDef definition() {
     return this.writerCore.definition();
   }
 

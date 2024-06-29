@@ -34,32 +34,32 @@ import weliyek.serialization.number.WkSerdeSignedLittleEndianLong;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLongReader;
 import weliyek.serialization.number.WkSerdeSignedLittleEndianLongWriter;
 
-public class WkBtcNetNodeServicesSerdeField
+public class WkBtcNetNodeServicesSerdeDef
     implements WkSerdeDtreeAggregatorStructDefinition<WkBtcNetNodeServices>
 {
 
   public static WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                         WkBtcNetNodeServices,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetNodeServicesSerdeField,
-                        WkBtcNetNodeServicesSerdeFieldReader,
+                        WkBtcNetNodeServicesSerdeDef,
+                        WkBtcNetNodeServicesSerdeReader,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcNetNodeServicesSerdeField,
-                        WkBtcNetNodeServicesSerdeFieldWriter,
-                        WkBtcNetNodeServicesSerdeField>
+                        WkBtcNetNodeServicesSerdeDef,
+                        WkBtcNetNodeServicesSerdeWriter,
+                        WkBtcNetNodeServicesSerdeDef>
   newCore(WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
-    return new WkBtcNetNodeServicesSerdeField(componentCore).definitionCore;
+    return new WkBtcNetNodeServicesSerdeDef(componentCore).definitionCore;
   }
 
   private final WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                     WkBtcNetNodeServices,
                     WkSerdeDtreeOperationSettings,
-                    WkBtcNetNodeServicesSerdeField,
-                    WkBtcNetNodeServicesSerdeFieldReader,
+                    WkBtcNetNodeServicesSerdeDef,
+                    WkBtcNetNodeServicesSerdeReader,
                     WkSerdeDtreeOperationSettings,
-                    WkBtcNetNodeServicesSerdeField,
-                    WkBtcNetNodeServicesSerdeFieldWriter,
-                    WkBtcNetNodeServicesSerdeField> definitionCore;
+                    WkBtcNetNodeServicesSerdeDef,
+                    WkBtcNetNodeServicesSerdeWriter,
+                    WkBtcNetNodeServicesSerdeDef> definitionCore;
 
   final WkSerdeDtreeStructSubfieldCore<
                     Long,
@@ -68,27 +68,27 @@ public class WkBtcNetNodeServicesSerdeField
                     WkSerdeSignedLittleEndianLong,
                     WkSerdeSignedLittleEndianLongReader,
                     WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                    WkBtcNetNodeServicesSerdeFieldReader,
+                    WkBtcNetNodeServicesSerdeReader,
                     WkSerdeDtreeOperationSettings,
                     WkSerdeSignedLittleEndianLong,
                     WkSerdeSignedLittleEndianLongWriter,
                     WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                    WkBtcNetNodeServicesSerdeFieldWriter,
+                    WkBtcNetNodeServicesSerdeWriter,
                     WkSerdeSignedLittleEndianLong> int64le;
 
-  public WkBtcNetNodeServicesSerdeField(
+  public WkBtcNetNodeServicesSerdeDef(
     WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
         WkBtcNetNodeServices,
         WkSerdeDtreeOperationSettings,
-        WkBtcNetNodeServicesSerdeField,
-        WkBtcNetNodeServicesSerdeFieldReader,
+        WkBtcNetNodeServicesSerdeDef,
+        WkBtcNetNodeServicesSerdeReader,
         WkSerdeDtreeOperationSettings,
-        WkBtcNetNodeServicesSerdeField,
-        WkBtcNetNodeServicesSerdeFieldWriter,
-        WkBtcNetNodeServicesSerdeField>(
-            (i,xs,axb,xpc,dc) -> new WkBtcNetNodeServicesSerdeFieldReader(i,xs,axb,xpc,dc).inputCore,
-            (i,y,ys,ayb,ypc,dc) -> new WkBtcNetNodeServicesSerdeFieldWriter(i,y,ys,ayb,ypc,dc).outputCore,
+        WkBtcNetNodeServicesSerdeDef,
+        WkBtcNetNodeServicesSerdeWriter,
+        WkBtcNetNodeServicesSerdeDef>(
+            (i,xs,axb,xpc,dc) -> new WkBtcNetNodeServicesSerdeReader(i,xs,axb,xpc,dc).inputCore,
+            (i,y,ys,ayb,ypc,dc) -> new WkBtcNetNodeServicesSerdeWriter(i,y,ys,ayb,ypc,dc).outputCore,
             componentCore,
             (ic) -> {},
             (ic) -> WkBtcNetNodeServices.fromLong(ic.body().int64le().get().firstOperation().get().result().get().serializable().get().longValue()),

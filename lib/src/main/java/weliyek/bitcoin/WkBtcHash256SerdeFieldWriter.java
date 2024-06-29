@@ -39,13 +39,13 @@ public class WkBtcHash256SerdeFieldWriter
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
                         WkSerdeDtreeOperationResult<WkBtcHash256>,
-                        WkBtcHash256SerdeField>
+                        WkBtcHash256SerdeDef>
 {
 
   static WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcHash256,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcHash256SerdeField,
+                        WkBtcHash256SerdeDef,
                         WkBtcHash256SerdeFieldWriter>
   newCore(
     int index,
@@ -53,7 +53,7 @@ public class WkBtcHash256SerdeFieldWriter
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
     WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter, ? extends WkBtcHash256SerdeField>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldWriter, ? extends WkBtcHash256SerdeDef>
       definitionCore) {
     return new WkBtcHash256SerdeFieldWriter(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore).writerCore;
   }
@@ -61,7 +61,7 @@ public class WkBtcHash256SerdeFieldWriter
   final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcHash256,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcHash256SerdeField,
+                        WkBtcHash256SerdeDef,
                         WkBtcHash256SerdeFieldWriter> writerCore;
 
   private WkBtcHash256SerdeFieldWriter(
@@ -70,7 +70,7 @@ public class WkBtcHash256SerdeFieldWriter
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
     WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter, ? extends WkBtcHash256SerdeField>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldWriter, ? extends WkBtcHash256SerdeDef>
       definitionCore) {
     this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<>(
                               index,
@@ -88,7 +88,7 @@ public class WkBtcHash256SerdeFieldWriter
   }
 
   @Override
-  public WkBtcHash256SerdeField definition() {
+  public WkBtcHash256SerdeDef definition() {
     return this.writerCore.definition();
   }
 

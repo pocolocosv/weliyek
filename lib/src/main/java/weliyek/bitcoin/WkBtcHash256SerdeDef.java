@@ -37,25 +37,25 @@ import weliyek.util.array.WkSerdeDtreeFixedSizeByteArray;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayReader;
 import weliyek.util.array.WkSerdeDtreeFixedSizeByteArrayWriter;
 
-public class WkBtcHash256SerdeField
+public class WkBtcHash256SerdeDef
     implements WkSerdeDtreeAggregatorStructDefinition<WkBtcHash256>
 {
 
   static WkSerdeDtreeStruct<
                       WkBtcHash256,
                       WkSerdeDtreeOperationSettings,
-                      WkBtcHash256SerdeField,
+                      WkBtcHash256SerdeDef,
                       WkBtcHash256SerdeFieldReader,
                       WkSerdeDtreeBytestreamInputBase<?>,
                       WkSerdeDtreeOperationSettings,
-                      WkBtcHash256SerdeField,
+                      WkBtcHash256SerdeDef,
                       WkBtcHash256SerdeFieldWriter,
                       WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkBtcHash256SerdeField>
+                      WkBtcHash256SerdeDef>
   newStruct(String label) {
   return new WkSerdeDtreeStructCore<>(
                       label,
-                      WkBtcHash256SerdeField::newCore,
+                      WkBtcHash256SerdeDef::newCore,
                       WkSerdeDtreeBytestreamCountingInputStream::new,
                       WkSerdeDtreeBytestreamCountingOutputStream::new);
   }
@@ -63,15 +63,15 @@ public class WkBtcHash256SerdeField
   static public WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                       WkBtcHash256,
                       WkSerdeDtreeOperationSettings,
-                      WkBtcHash256SerdeField,
+                      WkBtcHash256SerdeDef,
                       WkBtcHash256SerdeFieldReader,
                       WkSerdeDtreeOperationSettings,
-                      WkBtcHash256SerdeField,
+                      WkBtcHash256SerdeDef,
                       WkBtcHash256SerdeFieldWriter,
-                      WkBtcHash256SerdeField>
+                      WkBtcHash256SerdeDef>
   newCore(
     WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
-    return new WkBtcHash256SerdeField(fieldCore).definitionCore;
+    return new WkBtcHash256SerdeDef(fieldCore).definitionCore;
   }
 
 
@@ -93,21 +93,21 @@ public class WkBtcHash256SerdeField
   private final WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                       WkBtcHash256,
                       WkSerdeDtreeOperationSettings,
-                      WkBtcHash256SerdeField,
+                      WkBtcHash256SerdeDef,
                       WkBtcHash256SerdeFieldReader,
                       WkSerdeDtreeOperationSettings,
-                      WkBtcHash256SerdeField,
+                      WkBtcHash256SerdeDef,
                       WkBtcHash256SerdeFieldWriter,
-                      WkBtcHash256SerdeField> definitionCore;
+                      WkBtcHash256SerdeDef> definitionCore;
 
-  private WkBtcHash256SerdeField(
+  private WkBtcHash256SerdeDef(
     WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
-    this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldReader, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeField, WkBtcHash256SerdeFieldWriter, WkBtcHash256SerdeField>(
+    this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldWriter, WkBtcHash256SerdeDef>(
                                   WkBtcHash256SerdeFieldReader::newCore,
                                   WkBtcHash256SerdeFieldWriter::newCore,
                                   fieldCore,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnReadInitOrSkipped,
-                                  WkBtcHash256SerdeField::onReadFull,
+                                  WkBtcHash256SerdeDef::onReadFull,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnReadInitOrSkipped,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnWriteInit,
                                   this,
@@ -126,7 +126,7 @@ public class WkBtcHash256SerdeField
   onReadFull(WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
       WkBtcHash256,
       WkSerdeDtreeOperationSettings,
-      WkBtcHash256SerdeField,
+      WkBtcHash256SerdeDef,
       WkBtcHash256SerdeFieldReader> readerCore) {
     WkByteArray byteArray = readerCore.body().bytes().get().firstOperation().get().result().get().serializable().get();
     return new WkBtcHash256(byteArray);

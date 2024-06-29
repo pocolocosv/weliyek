@@ -38,20 +38,20 @@ public class WkBtcProtocolVersionSerdeReader
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                         WkSerdeDtreeOperationResult<WkBtcProtocolVersion>,
-                        WkBtcProtocolVersionSerde>
+                        WkBtcProtocolVersionSerdeDef>
 {
 
   static WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeReader>
   newCore(
       int index,
       WkSerdeDtreeOperationSettings settings,
       WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
       WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
-      WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader, ?, ?, ?, ? extends WkBtcProtocolVersionSerde>
+      WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader, ?, ?, ?, ? extends WkBtcProtocolVersionSerdeDef>
         definitionCore) {
     return new WkBtcProtocolVersionSerdeReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
   }
@@ -59,7 +59,7 @@ public class WkBtcProtocolVersionSerdeReader
   private final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeReader> readerCore;
 
   private WkBtcProtocolVersionSerdeReader(
@@ -67,9 +67,9 @@ public class WkBtcProtocolVersionSerdeReader
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader, ?, ?, ?, ? extends WkBtcProtocolVersionSerde>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader, ?, ?, ?, ? extends WkBtcProtocolVersionSerdeDef>
       definitionCore) {
-    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeReader>(
+    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader>(
                             index, settings, parentBytestream, readerFieldCore, definitionCore, this);
   }
 
@@ -79,7 +79,7 @@ public class WkBtcProtocolVersionSerdeReader
   }
 
   @Override
-  public WkBtcProtocolVersionSerde definition() {
+  public WkBtcProtocolVersionSerdeDef definition() {
     return this.readerCore.definition();
   }
 

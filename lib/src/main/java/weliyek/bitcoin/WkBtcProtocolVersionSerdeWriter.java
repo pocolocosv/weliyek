@@ -38,13 +38,13 @@ public class WkBtcProtocolVersionSerdeWriter
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
                         WkSerdeDtreeOperationResult<WkBtcProtocolVersion>,
-                        WkBtcProtocolVersionSerde>
+                        WkBtcProtocolVersionSerdeDef>
 {
 
   static WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeWriter>
   newCore(
     int index,
@@ -52,7 +52,7 @@ public class WkBtcProtocolVersionSerdeWriter
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
     WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter, ? extends WkBtcProtocolVersionSerde>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter, ? extends WkBtcProtocolVersionSerdeDef>
       definitionCore) {
     return new WkBtcProtocolVersionSerdeWriter(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore).writerCore;
   }
@@ -60,7 +60,7 @@ public class WkBtcProtocolVersionSerdeWriter
   private final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerde,
+                        WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeWriter> writerCore;
 
   private WkBtcProtocolVersionSerdeWriter(
@@ -69,9 +69,9 @@ public class WkBtcProtocolVersionSerdeWriter
     WkSerdeDtreeOperationSettings settings,
     WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
     WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter, ? extends WkBtcProtocolVersionSerde>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter, ? extends WkBtcProtocolVersionSerdeDef>
       definitionCore) {
-    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerde, WkBtcProtocolVersionSerdeWriter>(
+    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter>(
                             index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
   }
 
@@ -81,7 +81,7 @@ public class WkBtcProtocolVersionSerdeWriter
   }
 
   @Override
-  public WkBtcProtocolVersionSerde definition() {
+  public WkBtcProtocolVersionSerdeDef definition() {
     return this.writerCore.definition();
   }
 

@@ -260,19 +260,19 @@ class WkBtcNetMessageTypeTest
 
   @Test
   void testSerde() {
-    WkSerdeDtreeStruct<WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetMessageTypeSerdeField>
-      btcCmd = WkBtcNetMessageTypeSerdeField.newStruct("BTC_CMD");
+    WkSerdeDtreeStruct<WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeReader, WkSerdeDtreeBytestreamInputBase<?>, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter, WkSerdeDtreeBytestreamOutputBase<?>, WkBtcNetMessageTypeSerdeDef>
+      btcCmd = WkBtcNetMessageTypeSerdeDef.newStruct("BTC_CMD");
 
     KetzaByteOutputStream outputBuffer = new KetzaByteOutputStream();
 
-    WkSerdeDtreeWriter<WkBtcNetMessageType, WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldWriter>
+    WkSerdeDtreeWriter<WkBtcNetMessageType, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter>
       cmdWriter = btcCmd.newOutputPacket(WkBtcNetMessageType.VERSION, WkSerdeDtreeOperationSettings.EMPTY, outputBuffer);
 
     cmdWriter.processBytestream();
 
     assertTrue(cmdWriter.isCompleted());
 
-    WkSerdeDtreeReader<WkBtcNetMessageType, WkBtcNetMessageTypeSerdeField, WkBtcNetMessageTypeSerdeFieldReader>
+    WkSerdeDtreeReader<WkBtcNetMessageType, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeReader>
       cmdReader = btcCmd.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, outputBuffer.inputStream());
 
     cmdReader.processBytestream();

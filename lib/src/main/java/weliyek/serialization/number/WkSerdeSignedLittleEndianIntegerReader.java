@@ -48,7 +48,8 @@ public final class WkSerdeSignedLittleEndianIntegerReader
     WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
     WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
-      Integer,WkSerdeSignedLittleEndianIntegerReader,?,WkSerdeSignedLittleEndianInteger> definitionCore) {
+      Integer,WkSerdeSignedLittleEndianIntegerReader,?,
+      WkSerdeSignedLittleEndianInteger> definitionCore) {
     operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<>(
                                     index,
                                     settings,

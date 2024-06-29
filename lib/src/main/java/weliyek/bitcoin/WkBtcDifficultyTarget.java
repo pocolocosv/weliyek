@@ -18,28 +18,28 @@
 package weliyek.bitcoin;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
-public class WkBitcoinComplexity extends WkBitcoinHash
+public class WkBtcDifficultyTarget extends WkBtcHash256
 {
 
-    private WkBitcoinComplexity(byte[] bytes) {
+    public WkBtcDifficultyTarget(byte[] bytes) {
         super(bytes);
     }
 
-    private WkBitcoinComplexity(byte[] buff, int offset) {
+    public WkBtcDifficultyTarget(byte[] buff, int offset) {
         super(buff, offset);
     }
 
-    public static WkBitcoinComplexity ofCompact(int compact) {
+    public static WkBtcDifficultyTarget ofCompact(int compact) {
         final BigInteger bigInt = convertCompactToBigInteger(compact);
-        final byte[] bigIntByteArray = bigInt.toByteArray();
-        if (WkBitcoinHash.CANONICAL_BYTE_LENGTH < bigIntByteArray.length)
-            throw new IllegalArgumentException("Length of derived byte array is longer that expected");
-        byte[] hashBytes = bigIntByteArray;
-        if (bigIntByteArray.length < WkBitcoinHash.CANONICAL_BYTE_LENGTH)
-            hashBytes = Arrays.copyOf(bigIntByteArray, CANONICAL_BYTE_LENGTH);
-        return new WkBitcoinComplexity(hashBytes);
+        final byte[] bigIntArray = bigInt.toByteArray();
+        if (WkBtcHash256.CANONICAL_BYTE_LENGTH < bigIntArray.length) {
+          throw new IllegalArgumentException("Length of derived byte array is longer that expected");
+        }
+        byte[] hashBytes = new byte[WkBtcHash256.CANONICAL_BYTE_LENGTH];
+        int zeroPrefixLen = WkBtcHash256.CANONICAL_BYTE_LENGTH - bigIntArray.length;
+        System.arraycopy(bigIntArray, 0, hashBytes, zeroPrefixLen, bigIntArray.length);
+        return new WkBtcDifficultyTarget(hashBytes);
     }
 
     public int toCompact() {

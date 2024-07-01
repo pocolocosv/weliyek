@@ -50,9 +50,9 @@ public abstract class WkSerdeDtreeMsgInputFieldCore<
   @Override
   protected WkSerdeDtreeMsgReaderCore<?,?,?,?,?,XO,?,?,?,?>
   newOperation(int index) {
-    XS settings = newSettings(index);
-    AXBC parentBytestream = parentBytestream();
-    return structFieldCore().definitionCore().newReadingOperationCore(index, settings, parentBytestream, this);
+    return structFieldCore()
+           .definitionCore()
+           .newReadingOperationCore(index, this);
   }
 
   private static

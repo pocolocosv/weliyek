@@ -52,9 +52,8 @@ public class WkSerdeStringFixedLengthBytesReader
 
   WkSerdeStringFixedLengthBytesReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       WkSerdeDtreeOperationSettings, WkSerdeStringFixedLengthBytesReader,
       WkSerdeStringFixedLengthBytes, ?, ?, ?,
@@ -70,8 +69,6 @@ public class WkSerdeStringFixedLengthBytesReader
                                 WkSerdeDtreeFixedSizeByteArrayReader,
                                 WkSerdeDtreeFixedSizeByteArray>(
                                   index,
-                                  settings,
-                                  parentBytestream,
                                   readerFieldCore,
                                   definitionCore,
                                   this);

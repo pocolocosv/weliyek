@@ -168,8 +168,8 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                   WkSerdeTestPrimitivesGroupStructDefinition,
                                   WkSerdeTestPrimitivesGroupMsgWriter,
                                   WkSerdeTestPrimitivesGroupStructDefinition>(
-                                      (i,xs,axb,xpc,dc) -> new WkSerdeTestPrimitivesGroupMsgReader(i,xs,axb,xpc,dc).operationCore,
-                                      (i,y,ys,ayb,ypc,dc) -> new WkSerdeTestPrimitivesGroupMsgWriter(i,y,ys,ayb,ypc,dc).operationCore,
+                                      (i,xpc,dc) -> new WkSerdeTestPrimitivesGroupMsgReader(i,xpc,dc).operationCore,
+                                      (i,ypc,dc) -> new WkSerdeTestPrimitivesGroupMsgWriter(i,ypc,dc).operationCore,
                                       componentCore,
                                       (ic) -> {},
                                       (ic) -> new WkSerdeTestPrimitivesGroup(ic.body()),
@@ -367,8 +367,9 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeDtreeOperationSettings,
                                 WkSerdeStringDynamicBytes<Integer, ?, ?, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ? extends WkSerdeSignedBigEndianInteger>,
                                 WkSerdeStringDynamicBytesWriter<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
-                                WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>>addSubcomponent(
-                            "FIXEDSTR",
+                                WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>>
+                          addSubcomponent(
+                            "DYNSTR",
                             Optional.empty(),
                             WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
                             WkSerdeDtreeOperationSettings::none,

@@ -52,13 +52,11 @@ public class WkSerdeDtreeNumberMsgWriterCoreSimplified<
 
   WkSerdeDtreeNumberMsgWriterCoreSimplified(
     int index,
-    Y serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Y,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      msgFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<Y,?,YO,YD> definitionCore,
     YO operationBody) {
-    super(index, settings, parentBytestream, serializable, msgFieldCore, definitionCore, operationBody);
+    super(index, msgFieldCore, definitionCore, operationBody);
   }
 
   @Override

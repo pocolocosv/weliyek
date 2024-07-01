@@ -69,14 +69,12 @@ public class WkSerdeTestMultipleListMsgWriter
 
   WkSerdeTestMultipleListMsgWriter(
     int index,
-    WkSerdeTestMultipleLists serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
-    WkSerdeDtreeDynamicCollectionDefinitionCore<WkSerdeTestMultipleLists, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgWriter, WkSerdeTestMultipleListStructDefinition, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, ? extends WkSerdeSignedBigEndianShort, WkSerdeTestPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgWriter, ? extends WkSerdeTestPrimitivesGroupListStructDefinition, ?, WkSerdeDtreeOperationSettings, ? extends WkSerdeTestMultipleListStructDefinition> definitionCore) {
-    operationCore = new WkSerdeDtreeDynamicCollectionWriterCore<
-                            WkSerdeTestMultipleLists, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgWriter, WkSerdeTestMultipleListStructDefinition, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, WkSerdeTestPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgWriter, WkSerdeDtreeOperationSettings>(
-                                index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
+    WkSerdeDtreeMsgOutputFieldCore<WkSerdeTestMultipleLists,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
+    WkSerdeDtreeDynamicCollectionDefinitionCore<WkSerdeTestMultipleLists, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgWriter, WkSerdeTestMultipleListStructDefinition, Short, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort, ? extends WkSerdeSignedBigEndianShort, WkSerdeTestPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgWriter, ? extends WkSerdeTestPrimitivesGroupListStructDefinition, ?, WkSerdeDtreeOperationSettings, ? extends WkSerdeTestMultipleListStructDefinition>
+      definitionCore) {
+    operationCore = new WkSerdeDtreeDynamicCollectionWriterCore<>(
+                                index, writerFieldCore, definitionCore, this);
   }
 
   @Override

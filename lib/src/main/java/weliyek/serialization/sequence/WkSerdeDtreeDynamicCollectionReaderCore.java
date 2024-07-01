@@ -82,13 +82,12 @@ public final class WkSerdeDtreeDynamicCollectionReaderCore<
 
   public WkSerdeDtreeDynamicCollectionReaderCore(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
       T,XS,XO,XD,?,?,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?,? extends XD> definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
+    super(index, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

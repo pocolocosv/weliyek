@@ -57,10 +57,8 @@ public class WkSerdeStringDynamicBytesWriter<
 
   WkSerdeStringDynamicBytesWriter(
     int index,
-    String serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<String,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeStringDynamicBytesWriter<ZT, ZYD, ZYO>,
       WkSerdeStringDynamicBytes<ZT, ?, ?, ZYD, ZYO, ? extends ZYD>, ?, ?, ?,
@@ -76,9 +74,6 @@ public class WkSerdeStringDynamicBytesWriter<
                                   WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,
                                   WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>>(
                                       index,
-                                      serializable,
-                                      settings,
-                                      parentBytestream,
                                       writerFieldCore,
                                       definitionCore,
                                       this);

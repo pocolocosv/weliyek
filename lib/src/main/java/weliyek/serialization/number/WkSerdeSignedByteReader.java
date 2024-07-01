@@ -44,12 +44,12 @@ public final class WkSerdeSignedByteReader
 
     WkSerdeSignedByteReader(
       int index,
-      WkSerdeDtreeOperationSettings settings,
-      WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-      WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+      WkSerdeDtreeMsgInputFieldCore<?, WkSerdeDtreeOperationSettings, ?, ?, WkSerdeDtreeBytestreamInputBase<?>, ?, ?, ?> msgFieldCore,
       WkSerdeDtreeNumberDefinitionCoreSimplified<Byte, WkSerdeSignedByteReader, ?, WkSerdeSignedByte> definitionCore) {
-      operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<Byte, WkSerdeSignedByteReader, WkSerdeSignedByte>(
-          index, settings, parentBytestream, msgFieldCore, definitionCore,
+      operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<>(
+                                index,
+                                msgFieldCore,
+                                definitionCore,
                                 this);
     }
 

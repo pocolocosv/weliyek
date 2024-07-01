@@ -17,7 +17,6 @@
  */
 package weliyek.serialization;
 
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
@@ -36,7 +35,7 @@ public abstract class WkSerdeDtreeMsgReaderCore<
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>>
         extends WkSerdeDtreeMsgOperationCore<
                         XS, XQ, XQC, XR, XD, XDC, XO, XOC,
-                        WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?>>
+                        WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?>>
         implements WkSerdeDtreeMsgReader<T, XS, XQ, XR, XD>
 {
 
@@ -44,13 +43,17 @@ public abstract class WkSerdeDtreeMsgReaderCore<
 
     protected WkSerdeDtreeMsgReaderCore(
       int index,
-      XS settings,
-      AXBC parentBytestream,
-      WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgField,
+      WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?> readerFieldCore,
       XDC definitionCore,
       XO operationBody) {
-      super(index, settings, msgField, definitionCore, operationBody);
-      this.runtime = definitionCore().rxRuntimeFactory().apply(Objects.requireNonNull(parentBytestream));
+      super(index, readerFieldCore, definitionCore, operationBody);
+      this.runtime = definitionCore().rxRuntimeFactory().apply(readerFieldCore.parentBytestream());
+    }
+
+    @Override
+    protected final XS
+    extractSettingsFrom(WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?> msgFieldCore) {
+    return msgFieldCore.newSettings(index());
     }
 
     @Override

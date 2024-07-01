@@ -70,9 +70,9 @@ public class WkSerdeUnsignedByte
   private WkSerdeUnsignedByte(WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeNumberDefinitionCoreSimplified<>(
                                   componentCore,
-                                  (i,xs,axb,xkc,dc) -> new WkSerdeUnsignedByteReader(i,xs,axb,xkc,dc).operationCore,
+                                  (i,xkc,dc) -> new WkSerdeUnsignedByteReader(i,xkc,dc).operationCore,
                                   WkSerdeDtreeByteUnsignedReaderDecoderEngine.FACTORY,
-                                  (i,y,ys,ayb,ykc,dc) -> new WkSerdeUnsignedByteWriter(i,y,ys,ayb,ykc,dc).writingCore,
+                                  (i,ykc,dc) -> new WkSerdeUnsignedByteWriter(i,ykc,dc).writingCore,
                                   WkSerdeDtreeByteUnsignedWriterEncoderEngine.FACTORY,
                                   this,
                                   Integer.class);

@@ -186,8 +186,8 @@ public class WkSerdeStringDynamicBytes<
                                   WkSerdeStringDynamicBytes<ZT,ZXD,ZXO,ZYD,ZYO,ZD>>(
                                       defaultCharset,
                                       componentCore,
-                                      (i,xs,axb,xpc,dc) -> new WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>(i,xs,axb,xpc,dc).operationCore,
-                                      (i,y,ys,ayb,ypc,dc) -> new WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>(i,y,ys,ayb,ypc,dc).operationCore,
+                                      (i,xpc,dc) -> new WkSerdeStringDynamicBytesReader<ZT,ZXD,ZXO>(i,xpc,dc).operationCore,
+                                      (i,ypc,dc) -> new WkSerdeStringDynamicBytesWriter<ZT,ZYD,ZYO>(i,ypc,dc).operationCore,
                                       bytesLabel,
                                       WkSerdeDtreeOperationSettings::none,
                                       WkSerdeStringDynamicBytes::aggragateByteArray,

@@ -49,16 +49,12 @@ public class WkBtcNetNodeServicesSerdeReader
 
   WkBtcNetNodeServicesSerdeReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeReader, ?, ?, ?, ? extends WkBtcNetNodeServicesSerdeDef> definitionCore) {
-    this.inputCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-          WkBtcNetNodeServices,
-          WkSerdeDtreeOperationSettings,
-          WkBtcNetNodeServicesSerdeDef,
-          WkBtcNetNodeServicesSerdeReader>(
-        index, settings, parentBytestream, readerFieldCore, definitionCore, this);
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeReader, ?, ?, ?, ? extends WkBtcNetNodeServicesSerdeDef>
+      definitionCore) {
+    this.inputCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<>(
+                            index, readerFieldCore, definitionCore, this);
   }
 
   public Optional<WkSerdeDtreeMsgInputField<Long, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongReader>>

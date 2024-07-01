@@ -159,9 +159,9 @@ public class WkSerdeSignedLittleEndianInteger
                                   WkSerdeSignedLittleEndianIntegerWriter,
                                   WkSerdeSignedLittleEndianInteger>(
                                       componentCore,
-                                      (i,xs,axb,xkc,dc) -> new WkSerdeSignedLittleEndianIntegerReader(i,xs,axb,xkc,dc).operationCore,
+                                      (i,xkc,dc) -> new WkSerdeSignedLittleEndianIntegerReader(i,xkc,dc).operationCore,
                                       WkSerdeDtreeIntegerSignedLittleEndianReaderDecoderEngine.FACTORY,
-                                      (i,y,ys,ayb,ykc,dc) -> new WkSerdeSignedLittleEndianIntegerWriter(i,y,ys,ayb,ykc,dc).operationCore,
+                                      (i,ykc,dc) -> new WkSerdeSignedLittleEndianIntegerWriter(i,ykc,dc).operationCore,
                                       WkSerdeDtreeIntSignedLittleEndianWriterEncoderEngine.FACTORY,
                                       this,
                                       Integer.class);

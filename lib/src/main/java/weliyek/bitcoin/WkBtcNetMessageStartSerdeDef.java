@@ -111,8 +111,8 @@ public class WkBtcNetMessageStartSerdeDef
                                 WkBtcNetMessageStartSerdeDef,
                                 WkBtcNetMessageStartSerdeWriter,
                                 WkBtcNetMessageStartSerdeDef>(
-                                    WkBtcNetMessageStartSerdeReader::newCore,
-                                    WkBtcNetMessageStartSerdeWriter::newCore,
+                                    (i,xkc,dc) -> new WkBtcNetMessageStartSerdeReader(i,xkc,dc).readerCore,
+                                    (i,ykc,dc) -> new WkBtcNetMessageStartSerdeWriter(i,ykc,dc).writerCore,
                                     fieldCore,
                                     WkBtcNetMessageStartSerdeDef::onReadInit,
                                     WkBtcNetMessageStartSerdeDef::onReadFull,

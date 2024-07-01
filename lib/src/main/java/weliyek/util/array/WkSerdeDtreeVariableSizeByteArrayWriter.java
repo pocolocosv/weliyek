@@ -51,10 +51,8 @@ public class WkSerdeDtreeVariableSizeByteArrayWriter
 
   WkSerdeDtreeVariableSizeByteArrayWriter(
     int index,
-    WkByteArray serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<WkByteArray,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,?,?,WkSerdeDtreeOperationSettings,WkSerdeDtreeVariableSizeByteArrayWriter,WkSerdeDtreeVariableSizeByteArray> definitionCore) {
     this.operationCore = new WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
@@ -63,9 +61,6 @@ public class WkSerdeDtreeVariableSizeByteArrayWriter
                                 WkSerdeDtreeVariableSizeByteArray,
                                 WkSerdeDtreeVariableSizeByteArrayWriter>(
                                     index,
-                                    serializable,
-                                    settings,
-                                    parentBytestream,
                                     msgFieldCore,
                                     definitionCore,
                                     this,

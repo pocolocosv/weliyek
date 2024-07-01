@@ -75,9 +75,9 @@ public class WkSerdeUnsignedBigEndianShort
                                   WkSerdeUnsignedBigEndianShortWriter,
                                   WkSerdeUnsignedBigEndianShort>(
                                     componentCore,
-                                    (i,xs,axb,xkc,dc) -> new WkSerdeUnsignedBigEndianShortReader(i,xs,axb,xkc,dc).operationCore,
+                                    (i,xkc,dc) -> new WkSerdeUnsignedBigEndianShortReader(i,xkc,dc).operationCore,
                                     WkSerdeDtreeShortUnsignedBigEndianReaderDecoderEngine.FACTORY,
-                                    (i,y,ys,ayb,ykc,dc) -> new WkSerdeUnsignedBigEndianShortWriter(i,y,ys,ayb,ykc,dc).operationCore,
+                                    (i,ykc,dc) -> new WkSerdeUnsignedBigEndianShortWriter(i,ykc,dc).operationCore,
                                     WkSerdeDtreeShortUnsignedBigEndianWriterEncoderEngine.FACTORY,
                                     this,
                                     Integer.class);

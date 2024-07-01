@@ -52,12 +52,11 @@ public final class WkSerdeDtreeNumberMsgReaderCoreSimplified<
 
   public WkSerdeDtreeNumberMsgReaderCoreSimplified(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<X,XO,?,XD> definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
+    super(index, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

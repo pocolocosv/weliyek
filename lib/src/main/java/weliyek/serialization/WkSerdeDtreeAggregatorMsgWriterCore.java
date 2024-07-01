@@ -44,13 +44,10 @@ public abstract class WkSerdeDtreeAggregatorMsgWriterCore<
 
   protected WkSerdeDtreeAggregatorMsgWriterCore(
     int index,
-    T serializable,
-    YS settings,
-    AYB parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYB,?,?,?> writerFieldCore,
     YDC definitionCore,
     YO operationBody) {
-    super(index, settings, parentBytestream, serializable, writerFieldCore, definitionCore, operationBody);
+    super(index, writerFieldCore, definitionCore, operationBody);
     this.writingSubfields = new WkSerdeDtreeAggregatorMsgSubfieldsWriters<>(this);
   }
 

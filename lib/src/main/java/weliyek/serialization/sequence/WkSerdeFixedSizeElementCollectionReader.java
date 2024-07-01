@@ -61,9 +61,8 @@ public final class WkSerdeFixedSizeElementCollectionReader<
 
   WkSerdeFixedSizeElementCollectionReader(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,XS,
       WkSerdeFixedSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD>,
@@ -76,8 +75,6 @@ public final class WkSerdeFixedSizeElementCollectionReader<
                                 WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
                                 ET, EXS, EXD, EXO>(
                                     index,
-                                    settings,
-                                    parentBytestream,
                                     readerFieldCore,
                                     definitionCore,
                                     this);

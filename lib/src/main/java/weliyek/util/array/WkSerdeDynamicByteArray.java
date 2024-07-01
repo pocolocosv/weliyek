@@ -174,8 +174,8 @@ public class WkSerdeDynamicByteArray<
                                     sizeComponentDefinitionFactory,
                                     arrayLabel,
                                     (pc) -> WkSerdeDtreeVariableSizeByteArray.newCore(minLength, maxLength, pc),
-                                    (i,xs,axb,xkc,dc) -> new WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>(i,xs,axb,xkc,dc).operationCore,
-                                    (i,y,ys,ayb,ykc,dc) -> new WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>(i,y,ys,ayb,ykc,dc).operationCore,
+                                    (i,xkc,dc) -> new WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>(i,xkc,dc).operationCore,
+                                    (i,ykc,dc) -> new WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>(i,ykc,dc).operationCore,
                                     componentCore,
                                     this,
                                     WkByteArray.class);

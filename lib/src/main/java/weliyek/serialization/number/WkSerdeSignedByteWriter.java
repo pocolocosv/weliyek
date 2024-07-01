@@ -44,19 +44,13 @@ public final class WkSerdeSignedByteWriter
 
   WkSerdeSignedByteWriter(
     int index,
-    Byte serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Byte,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Byte, ?, WkSerdeSignedByteWriter, WkSerdeSignedByte> definitionCore) {
-    this.writingCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<
-                              Byte, WkSerdeSignedByteWriter, WkSerdeSignedByte>(
+    this.writingCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<>(
                                     index,
-                                    serializable,
-                                    settings,
-                                    parentBytestream,
-                                    msgFieldCore,
+                                    writerFieldCore,
                                     definitionCore,
                                     this);
   }

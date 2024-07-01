@@ -25,8 +25,8 @@ import weliyek.serialization.WkSerdeDtreeOperationInputRuntimeCtrl;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
 import weliyek.serialization.WkSerdeDtreeOperationSettingsVariableLength;
-import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 
 public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
                         T extends WkPrimitiveArray<?,?>,
@@ -85,15 +85,14 @@ public class WkSerdeDtreeDynamicPrimitiveArrayReaderCore<
 
   public WkSerdeDtreeDynamicPrimitiveArrayReaderCore(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       T,XD,XO,?,?,
       ZT,ZXD,ZXO,?,?,? extends ZXD,
       VXD,VXO,?,?,? extends VXD,? extends XD> definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
+    super(index, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

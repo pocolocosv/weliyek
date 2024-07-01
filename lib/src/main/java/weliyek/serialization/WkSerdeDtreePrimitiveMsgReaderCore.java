@@ -42,12 +42,10 @@ public abstract class WkSerdeDtreePrimitiveMsgReaderCore<
 
     protected WkSerdeDtreePrimitiveMsgReaderCore(
         int index,
-        XS settings,
-        AXBC parentBytestream,
-        WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+        WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?> readerFieldCore,
         XDC definitionCore,
         XO operationBody) {
-        super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
+        super(index, readerFieldCore, definitionCore, operationBody);
     }
 
     @Override

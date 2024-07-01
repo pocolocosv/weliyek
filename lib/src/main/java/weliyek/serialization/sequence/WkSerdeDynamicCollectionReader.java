@@ -70,9 +70,8 @@ public class WkSerdeDynamicCollectionReader<
 
   WkSerdeDynamicCollectionReader(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
       T, XS,
       WkSerdeDtreeDynamicCollectionReader<
@@ -100,8 +99,6 @@ public class WkSerdeDynamicCollectionReader<
                                   T,XS,?,ZT,ZXS,ZXO,ZXD,?,?,?,? extends ZXD,ET,EXS,EXD,EXO,?,?,?,? extends EXD,VXS,?>,
                                 ZT, ZXS, ZXO, ZXD, ET, EXS, EXD, EXO, VXS>(
                                     index,
-                                    settings,
-                                    parentBytestream,
                                     readerFieldCore,
                                     definitionCore,
                                     this);

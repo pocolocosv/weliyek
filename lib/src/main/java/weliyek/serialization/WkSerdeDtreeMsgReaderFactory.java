@@ -20,17 +20,14 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSerdeDtreeMsgReaderFactory<
                         XS extends WkSerdeDtreeOperationSettings,
-                        XDC extends WkSerdeDtreeStructDefinitionCore<?,? super XS,?,?,?,?,?,? super XOC,? super AXBC,?,?,?,?,?,?,?,?,?,?>,
-                        XOC extends WkSerdeDtreeMsgReaderCore<?,? super XS,?,?,?,?,?,?,? super XDC,? super AXBC>,
+                        XDC extends WkSerdeDtreeStructDefinitionCore<
+                                      ?,XS,?,?,?,?,?,?,AXBC,?,?,?,?,?,?,?,?,?,?>,
+                        XOC extends WkSerdeDtreeMsgReaderCore<
+                                      ?,XS,?,?,?,?,?,?,?,?>,
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>>
-    extends WkSerdeDtreeMsgOperationFactory
+    extends WkSerdeDtreeMsgOperationFactory<
+                        XS, XDC, XOC, AXBC,
+                        WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?>>
 {
-
-  XOC newReadingCore(
-    int index,
-    XS settings,
-    AXBC parentBytestream,
-    @SuppressWarnings("rawtypes") WkSerdeDtreeMsgInputFieldCore msgFieldCore,
-    XDC definitionCore);
 
 }

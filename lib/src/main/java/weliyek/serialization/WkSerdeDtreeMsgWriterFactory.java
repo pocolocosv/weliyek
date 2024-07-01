@@ -21,18 +21,14 @@ package weliyek.serialization;
 public interface WkSerdeDtreeMsgWriterFactory<
                         T,
                         YS extends WkSerdeDtreeOperationSettings,
-                        YDC extends WkSerdeDtreeStructDefinitionCore<? super T,?,?,?,?,?,?,?,?,? super YS,?,?,?,?,?,? super YOC,? super AYBC,?,?>,
-                        YOC extends WkSerdeDtreeMsgWriterCore<? super T,? super YS,?,?,?,?,?,?,? super YDC,? super AYBC>,
+                        YDC extends WkSerdeDtreeStructDefinitionCore<
+                                      T,?,?,?,?,?,?,?,?,YS,?,?,?,?,?,?,?,?,?>,
+                        YOC extends WkSerdeDtreeMsgWriterCore<
+                                      T,YS,?,?,?,?,?,?,?,?>,
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>>
-    extends WkSerdeDtreeMsgOperationFactory
+    extends WkSerdeDtreeMsgOperationFactory<
+                        YS, YDC, YOC, AYBC,
+                        WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYBC,?,?,?>>
 {
-
-  YOC newWritingCore(
-    int index,
-    T serializable,
-    YS settings,
-    AYBC parentBytestream,
-    @SuppressWarnings("rawtypes") WkSerdeDtreeMsgOutputFieldCore dataFieldCore,
-    YDC definitionCore);
 
 }

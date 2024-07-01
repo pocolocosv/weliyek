@@ -141,10 +141,10 @@ public class WkSerdeDtreeFixedSizeByteArray
                                     1024, // de/serialization step size
                                     componentCore,
                                     WkSerdeDtreeFixedSizeByteArray::getRxRequestedLengthFromDefinition,
-                                    WkSerdeDtreeFixedSizeByteArrayReader::newCore,
+                                    (i,xkc,dc) -> new WkSerdeDtreeFixedSizeByteArrayReader(i,xkc,dc).operationCore,
                                     WkSerdeDtreeByteArrayReaderDecoderEngine.FACTORY,
                                     (WkSerdeUtilsPrimitiveArrayLengthGetter<WkByteArray,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArray>)WkSerdeDtreeFixedSizeByteArray::getTxRequestedLengthFromDefinition,
-                                    WkSerdeDtreeFixedSizeByteArrayWriter::newCore,
+                                    (i,ykc,dc) -> new WkSerdeDtreeFixedSizeByteArrayWriter(i,ykc,dc).operationCore,
                                     WkSerdeDtreeByteArrayWriterEncoderEngine.FACTORY,
                                     this,
                                     WkByteArray.class);

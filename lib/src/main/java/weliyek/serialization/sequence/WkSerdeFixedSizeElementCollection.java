@@ -190,8 +190,8 @@ public final class WkSerdeFixedSizeElementCollection<
                                   ET, EXS, EXD, EXO, EYS, EYD, EYO, ED,
                                   WkSerdeFixedSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>(
                                       componentCore,
-                                      (i,s,axb,xkc,dc) -> new WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>(i,s,axb,xkc,dc).operationCore,
-                                      (i,y,s,ayb,ykc,dc) -> new WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>(i,y,s,ayb,ykc,dc).operationCore,
+                                      (i,xkc,dc) -> new WkSerdeFixedSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>(i,xkc,dc).operationCore,
+                                      (i,ykc,dc) -> new WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>(i,ykc,dc).operationCore,
                                       elementsLabel,
                                       (xo) -> expectedCollectionSize,
                                       elementsRxSettingsFactory,

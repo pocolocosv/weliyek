@@ -44,12 +44,10 @@ public abstract class WkSerdeDtreeAggregatorMsgReaderCore<
 
   protected WkSerdeDtreeAggregatorMsgReaderCore(
     int index,
-    XS settings,
-    AXB parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXB,?,?,?> readerFieldCore,
     XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
+    super(index, readerFieldCore, definitionCore, operationBody);
     this.readinHandlerList = new WkSerdeDtreeAggregatorMsgSubfieldsReaders<>(this);
   }
 

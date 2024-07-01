@@ -47,12 +47,11 @@ public class WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
 
   public WkSerdeDtreeAggregatorMsgReaderCoreSimplified(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<X,XS,XD,XO,?,?,?,? extends XD> definitionCore,
     XO body) {
-    super(index, settings, parentBytestream, readerFieldCore, definitionCore, body);
+    super(index, readerFieldCore, definitionCore, body);
   }
 
   @Override

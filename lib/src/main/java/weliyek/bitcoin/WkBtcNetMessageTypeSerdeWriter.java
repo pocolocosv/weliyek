@@ -41,22 +41,6 @@ public class WkBtcNetMessageTypeSerdeWriter
                         WkSerdeDtreeOperationResult<WkBtcNetMessageType>,
                         WkBtcNetMessageTypeSerdeDef>
 {
-  static WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-  WkBtcNetMessageType,
-  WkSerdeDtreeOperationSettings,
-  WkBtcNetMessageTypeSerdeDef,
-  WkBtcNetMessageTypeSerdeWriter> newWriter(
-    int index,
-    WkBtcNetMessageType serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-      WkBtcNetMessageType, ?, ?, ?, WkSerdeDtreeOperationSettings,
-      WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter,
-      ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
-    return new WkBtcNetMessageTypeSerdeWriter(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore).writerCore;
-  }
 
   final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcNetMessageType,
@@ -66,15 +50,17 @@ public class WkBtcNetMessageTypeSerdeWriter
 
   WkBtcNetMessageTypeSerdeWriter(
     int index,
-    WkBtcNetMessageType serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<WkBtcNetMessageType,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
       WkBtcNetMessageType, ?, ?, ?, WkSerdeDtreeOperationSettings,
       WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter,
       ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
-    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter>(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
+    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<>(
+                              index,
+                              writerFieldCore,
+                              definitionCore,
+                              this);
   }
 
   public Optional<WkSerdeDtreeMsgOutputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayWriter>>

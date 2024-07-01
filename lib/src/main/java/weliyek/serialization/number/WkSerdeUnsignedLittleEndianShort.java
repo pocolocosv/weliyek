@@ -75,9 +75,9 @@ public class WkSerdeUnsignedLittleEndianShort
                                   WkSerdeUnsignedLittleEndianShortWriter,
                                   WkSerdeUnsignedLittleEndianShort>(
                                       componentCore,
-                                      (i,xs,axb,xkc,dc) -> new WkSerdeUnsignedLittleEndianShortReader(i,xs,axb,xkc,dc).operationCore,
+                                      (i,xkc,dc) -> new WkSerdeUnsignedLittleEndianShortReader(i,xkc,dc).operationCore,
                                       WkSerdeDtreeShortUnsignedLittleEndianReaderDecoderEngine.FACTORY,
-                                      (i,y,ys,ayb,ykc,dc) -> new WkSerdeUnsignedLittleEndianShortWriter(i,y,ys,ayb,ykc,dc).operationCore,
+                                      (i,ykc,dc) -> new WkSerdeUnsignedLittleEndianShortWriter(i,ykc,dc).operationCore,
                                       WkSerdeDtreeShortUnsignedLittleEndianWriterEncoderEngine.FACTORY,
                                       this,
                                       Integer.class);

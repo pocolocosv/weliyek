@@ -27,8 +27,8 @@ import weliyek.serialization.WkSerdeDtreeMsgInputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationInputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgReader;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 
 public class WkSerdeDynamicByteArrayReader<
                         ZT extends Number,
@@ -62,9 +62,8 @@ public class WkSerdeDynamicByteArrayReader<
 
   WkSerdeDynamicByteArrayReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       WkByteArray, WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>,
       WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,?,?,ZT,ZXD,ZXO,?,?,? extends ZXD,
@@ -79,8 +78,6 @@ public class WkSerdeDynamicByteArrayReader<
                                 WkSerdeDtreeVariableSizeByteArrayReader,
                                 WkSerdeDtreeVariableSizeByteArray>(
                                     index,
-                                    settings,
-                                    parentBytestream,
                                     readerFieldCore,
                                     definitionCore,
                                     this);

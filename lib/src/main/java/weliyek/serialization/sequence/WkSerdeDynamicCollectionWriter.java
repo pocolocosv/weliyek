@@ -69,9 +69,8 @@ public class WkSerdeDynamicCollectionWriter<
 
   WkSerdeDynamicCollectionWriter(
     int index,
-    T serializable, YS settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
       T, ?, ?, ?, YS,
       WkSerdeDtreeDynamicCollectionWriter<
@@ -95,9 +94,6 @@ public class WkSerdeDynamicCollectionWriter<
                                   T,?,YS,ZT,?,?,?,ZYS,ZYO,ZYD,? extends ZYD,ET,?,?,?,EYS,EYD,EYO,? extends EYD,?,VYS>,
                                 ZT, ZYS, ZYO, ZYD, ET, EYS, EYD, EYO, VYS>(
                                     index,
-                                    serializable,
-                                    settings,
-                                    parentBytestream,
                                     writerFieldCore,
                                     definitionCore,
                                     this);

@@ -70,14 +70,12 @@ public final class WkSerdeElementCollectionWriterCoreSimplified<
 
   WkSerdeElementCollectionWriterCoreSimplified(
     int index,
-    T serializable,
-    YS settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,?,?,?,YS,YD,YO, ET,?,?,?,EYS,EYD,EYO,? extends EYD,? extends YD> definitionCore,
     YO operationBody) {
-    super(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, operationBody);
+    super(index, writerFieldCore, definitionCore, operationBody);
   }
 
   @Override

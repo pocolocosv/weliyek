@@ -46,13 +46,11 @@ public class WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
 
   public WkSerdeDtreeAggregatorMsgWriterCoreSimplified(
     int index,
-    T serializable,
-    YS settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<T, ?, ?, ?, YS, YD, YO, ? extends YD> definitionCore,
     YO body) {
-    super(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, body);
+    super(index, writerFieldCore, definitionCore, body);
   }
 
   @Override

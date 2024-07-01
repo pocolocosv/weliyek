@@ -63,10 +63,8 @@ public final class WkSerdeFixedSizeElementCollectionWriter<
 
   WkSerdeFixedSizeElementCollectionWriter(
     int index,
-    T serializable,
-    YS settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,?,?,?,YS,
       WkSerdeFixedSizeElementCollection<T,?,YS,ET,?,?,?,EYS,EYD,EYO,? extends EYD>,
@@ -79,9 +77,6 @@ public final class WkSerdeFixedSizeElementCollectionWriter<
                                   WkSerdeFixedSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>,
                                   ET,EYS,EYD,EYO>(
                                       index,
-                                      serializable,
-                                      settings,
-                                      parentBytestream,
                                       writerFieldCore,
                                       definitionCore,
                                       this);

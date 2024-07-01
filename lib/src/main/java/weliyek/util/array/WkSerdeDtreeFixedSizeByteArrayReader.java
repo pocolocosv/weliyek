@@ -43,21 +43,6 @@ public class WkSerdeDtreeFixedSizeByteArrayReader
                         WkSerdeDtreeFixedSizeByteArray>
 {
 
-  static WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
-                        WkByteArray,
-                        WkSerdeDtreeOperationSettings,
-                        WkSerdeDtreeFixedSizeByteArray,
-                        WkSerdeDtreeFixedSizeByteArrayReader>
-  newCore(
-    int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
-    WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
-      WkByteArray,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArrayReader,?,?,WkSerdeDtreeFixedSizeByteArray> definitionCore) {
-    return new WkSerdeDtreeFixedSizeByteArrayReader(index, settings, parentBytestream, msgFieldCore, definitionCore).operationCore;
-  }
-
   final WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
                         WkByteArray,
                         WkSerdeDtreeOperationSettings,
@@ -66,9 +51,8 @@ public class WkSerdeDtreeFixedSizeByteArrayReader
 
   WkSerdeDtreeFixedSizeByteArrayReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArrayReader,?,?,WkSerdeDtreeFixedSizeByteArray> definitionCore) {
     this.operationCore = new WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
@@ -77,8 +61,6 @@ public class WkSerdeDtreeFixedSizeByteArrayReader
                                 WkSerdeDtreeFixedSizeByteArray,
                                 WkSerdeDtreeFixedSizeByteArrayReader>(
                                     index,
-                                    settings,
-                                    parentBytestream,
                                     msgFieldCore,
                                     definitionCore,
                                     this,

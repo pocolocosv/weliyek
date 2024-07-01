@@ -27,8 +27,8 @@ import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 import weliyek.serialization.number.WkSerdeDtreeNumberMsgWriter;
+import weliyek.serialization.number.WkSerdeDtreeNumberStructDefinition;
 
 public class WkSerdeDynamicByteArrayWriter<
                         ZT extends Number,
@@ -60,10 +60,8 @@ public class WkSerdeDynamicByteArrayWriter<
 
   WkSerdeDynamicByteArrayWriter(
     int index,
-    WkByteArray serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<WkByteArray,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeDynamicPrimitiveArrayDefinitionCore<
       WkByteArray,?,?,WkSerdeDynamicByteArray<ZT,?,?,ZYD,ZYO,? extends ZYD>,
       WkSerdeDynamicByteArrayWriter<ZT,ZYO,ZYD>,ZT,?,?,ZYD,ZYO,? extends ZYD,?,?,
@@ -78,9 +76,6 @@ public class WkSerdeDynamicByteArrayWriter<
                                 WkSerdeDtreeVariableSizeByteArrayWriter,
                                 WkSerdeDtreeVariableSizeByteArray>(
                                     index,
-                                    serializable,
-                                    settings,
-                                    parentBytestream,
                                     writerFieldCore,
                                     definitionCore,
                                     this);

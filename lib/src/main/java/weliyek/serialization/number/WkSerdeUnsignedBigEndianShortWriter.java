@@ -44,18 +44,13 @@ public class WkSerdeUnsignedBigEndianShortWriter
 
   WkSerdeUnsignedBigEndianShortWriter(
     int index,
-    Integer serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Integer,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Integer,?,WkSerdeUnsignedBigEndianShortWriter,WkSerdeUnsignedBigEndianShort> definitionCore) {
-    this.operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<Integer, WkSerdeUnsignedBigEndianShortWriter, WkSerdeUnsignedBigEndianShort>(
+    this.operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<>(
                                   index,
-                                  serializable,
-                                  settings,
-                                  parentBytestream,
-                                  msgFieldCore,
+                                  writerFieldCore,
                                   definitionCore,
                                   this);
   }

@@ -62,14 +62,11 @@ public abstract class WkSerdeElementCollectionWriterCore<
 
   protected WkSerdeElementCollectionWriterCore(
     int index,
-    T serializable,
-    YS settings,
-    AYBC parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> dataFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYBC,?,?,?> dataFieldCore,
     YDC definitionCore,
     YO operationBody) {
-    super(index, serializable, settings, parentBytestream, dataFieldCore, definitionCore, operationBody);
-    this.serializableAsList = WkSerdeElementCollectionWriter.collectionToList(serializable);
+    super(index, dataFieldCore, definitionCore, operationBody);
+    this.serializableAsList = WkSerdeElementCollectionWriter.collectionToList(serializable());
   }
 
   @Override

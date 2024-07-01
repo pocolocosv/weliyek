@@ -131,23 +131,20 @@ public abstract class WkSerdeDtreeStructDefinitionCore<
     final public WkSerdeDtreeMsgReaderCore<?,?,?,?,?,XO,?,?,?,?>
     newReadingOperationCore(
       int index,
-      XS settings,
-      AXBC parentBytestream,
-      @SuppressWarnings("rawtypes") WkSerdeDtreeMsgInputFieldCore fieldCore) {
-      return this.readingOpFactory.newReadingCore(
-          index, settings, parentBytestream, fieldCore, (XDC) this);
+      WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?> readingFieldCore) {
+      return this.readingOpFactory
+                 .newOperationCore(
+                     index, readingFieldCore, (XDC) this);
     }
 
     @SuppressWarnings("unchecked")
     public final WkSerdeDtreeMsgWriterCore<?,?,?,?,?,YO,?,?,?,?>
     newWritingOperationCore(
       int index,
-      YS settings,
-      AYBC parentBytestream,
-      T serializable,
-      @SuppressWarnings("rawtypes") WkSerdeDtreeMsgOutputFieldCore writingFieldCore) {
-      return this.writingOpFactory.newWritingCore(
-          index, serializable, settings, parentBytestream, writingFieldCore, (YDC) this);
+      WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYBC,?,?,?> writingFieldCore) {
+      return this.writingOpFactory
+                 .newOperationCore(
+                     index, writingFieldCore, (YDC) this);
     }
 
     protected abstract DC getThis();

@@ -68,9 +68,8 @@ public final class WkSerdeVariableSizeElementCollectionReader<
 
   WkSerdeVariableSizeElementCollectionReader(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,XS,WkSerdeVariableSizeElementCollection<T,XS,?,ET,EXS,EXD,EXO,?,?,?,?>,
       WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
@@ -83,8 +82,6 @@ public final class WkSerdeVariableSizeElementCollectionReader<
                                 WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>,
                                 ET,EXS,EXD,EXO>(
                                     index,
-                                    settings,
-                                    parentBytestream,
                                     readerFieldCore,
                                     definitionCore,
                                     this);

@@ -44,16 +44,13 @@ public final class WkSerdeUnsignedBigEndianIntegerReader
 
   WkSerdeUnsignedBigEndianIntegerReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?, WkSerdeDtreeOperationSettings, ?, ?, WkSerdeDtreeBytestreamInputBase<?>, ?, ?, ?>
+      readerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Long,WkSerdeUnsignedBigEndianIntegerReader,?,WkSerdeUnsignedBigEndianInteger> definitionCore) {
     operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<>(
                                   index,
-                                  settings,
-                                  parentBytestream,
-                                  msgFieldCore,
+                                  readerFieldCore,
                                   definitionCore,
                                   this);
   }

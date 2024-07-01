@@ -17,7 +17,6 @@
  */
 package weliyek.serialization;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public abstract class WkSerdeDtreeMsgWriterCore<
@@ -35,30 +34,32 @@ public abstract class WkSerdeDtreeMsgWriterCore<
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>>
         extends WkSerdeDtreeMsgOperationCore<
                         YS, YQ, YQC, YR, YD, YDC, YO, YOC,
-                        WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?>>
+                        WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYBC,?,?,?>>
         implements WkSerdeDtreeMsgWriter<T, YS, YQ, YR, YD>
 {
 
-    private final T serializable;
     private final YQC runtime;
+    private final T serializable;
 
     protected WkSerdeDtreeMsgWriterCore(
       int index,
-      YS settings,
-      AYBC parentBytestream,
-      T serializable,
-      WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> dataFieldCore,
+      WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYBC,?,?,?> writerFieldCore,
       YDC definitionCore,
       YO operationBody) {
       super(
             index,
-            settings,
-            dataFieldCore,
+            writerFieldCore,
             definitionCore,
             operationBody);
-        this.serializable = Objects.requireNonNull(serializable);
-        this.runtime = definitionCore().txRuntimeFactory().apply(Objects.requireNonNull(parentBytestream));
+        this.runtime = definitionCore().txRuntimeFactory().apply(writerFieldCore.parentBytestream());
+        this.serializable = packetFieldCore().serializable(index());
         definitionCore().onSerializerCreation(this);
+    }
+
+    @Override
+    protected YS
+    extractSettingsFrom(WkSerdeDtreeMsgOutputFieldCore<T, YS, ?, ?, AYBC, ?, ?, ?> msgFieldCore) {
+      return packetFieldCore().newSettings(index());
     }
 
     @Override
@@ -73,7 +74,7 @@ public abstract class WkSerdeDtreeMsgWriterCore<
 
     @Override
     protected YR onCompletion() {
-      return definitionCore().txResultFactory().apply(body(), this.serializable);
+      return definitionCore().txResultFactory().apply(body(), serializable());
     }
 
     @Override

@@ -44,17 +44,13 @@ public final class WkSerdeUnsignedByteReader
 
     WkSerdeUnsignedByteReader(
       int index,
-      WkSerdeDtreeOperationSettings settings,
-      WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-      WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+      WkSerdeDtreeMsgInputFieldCore<?, WkSerdeDtreeOperationSettings, ?, ?, WkSerdeDtreeBytestreamInputBase<?>, ?, ?, ?>
+        readerFieldCore,
       WkSerdeDtreeNumberDefinitionCoreSimplified<
         Integer,WkSerdeUnsignedByteReader,?,WkSerdeUnsignedByte> definitionCore) {
-      operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<
-          Integer, WkSerdeUnsignedByteReader, WkSerdeUnsignedByte>(
+      operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<>(
                                 index,
-                                settings,
-                                parentBytestream,
-                                msgFieldCore,
+                                readerFieldCore,
                                 definitionCore,
                                 this);
     }

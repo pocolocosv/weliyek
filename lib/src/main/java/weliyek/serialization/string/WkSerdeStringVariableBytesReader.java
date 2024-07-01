@@ -52,9 +52,8 @@ public class WkSerdeStringVariableBytesReader
 
   WkSerdeStringVariableBytesReader(
     int index,
-    WkSerdeDtreeOperationSettingsVariableLength settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettingsVariableLength,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       WkSerdeDtreeOperationSettingsVariableLength, WkSerdeStringVariableBytesReader,
       WkSerdeStringVariableBytes,?,?,?,WkSerdeDtreeOperationSettingsVariableLength,
@@ -69,8 +68,6 @@ public class WkSerdeStringVariableBytesReader
                                 WkSerdeDtreeVariableSizeByteArrayReader,
                                 WkSerdeDtreeVariableSizeByteArray>(
                                     index,
-                                    settings,
-                                    parentBytestream,
                                     readerFieldCore,
                                     definitionCore,
                                     this);

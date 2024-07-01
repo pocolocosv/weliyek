@@ -45,22 +45,16 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayWriterCore<
 
   protected WkSerdeDtreeGenericPrimitiveArrayWriterCore(
     int index,
-    Y serializable,
-    YS settings,
-    AYB parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Y,YS,?,?,AYB,?,?,?> msgFieldCore,
     DC definitionCore,
     YO operationBody) {
     super(
           index,
-          settings,
-          parentBytestream,
-          serializable,
           msgFieldCore,
           definitionCore,
           operationBody);
     this.requestedLength = definitionCore.txRequestedLengthEvaluator.retriveLength(
-                                serializable, settings, definition());
+                                serializable(), settings(), definition());
   }
 
   @Override

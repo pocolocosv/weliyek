@@ -136,8 +136,8 @@ public class WkSerdeStringVariableBytes
                                   WkSerdeStringVariableBytes>(
                                     defaultCharset,
                                     componentCore,
-                                    (i,xs,axb,xpc,dc) -> new WkSerdeStringVariableBytesReader(i,xs,axb,xpc,dc).operationCore,
-                                    (i,y,ys,ayb,ypc,dc) -> new WkSerdeStringVariableBytesWriter(i,y,ys,ayb,ypc,dc).operationCore,
+                                    (i,xpc,dc) -> new WkSerdeStringVariableBytesReader(i,xpc,dc).operationCore,
+                                    (i,ypc,dc) -> new WkSerdeStringVariableBytesWriter(i,ypc,dc).operationCore,
                                     bytesLabel,
                                     WkOperationSettingsFactory.parentSettingsReuser(), // reusing deserializing settings
                                     WkSerdeStringVariableBytes::aggragateByteArray,

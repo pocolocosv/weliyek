@@ -186,8 +186,8 @@ public final class WkSerdeVariableSizeElementCollection<
                                 ET, EXS, EXD, EXO, EYS, EYD, EYO, ED,
                                 WkSerdeVariableSizeElementCollection<T,XS,YS,ET,EXS,EXD,EXO,EYS,EYD,EYO,ED>>(
                                     componentCore,
-                                    (i,s,axb,xkc,dc) -> new WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>(i,s,axb,xkc,dc).operationCore,
-                                    (i,y,s,ayb,ykc,dc) -> new WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>(i,y,s,ayb,ykc,dc).operationCore,
+                                    (i,xkc,dc) -> new WkSerdeVariableSizeElementCollectionReader<T,XS,ET,EXS,EXD,EXO>(i,xkc,dc).operationCore,
+                                    (i,ykc,dc) -> new WkSerdeVariableSizeElementCollectionWriter<T,YS,ET,EYS,EYD,EYO>(i,ykc,dc).operationCore,
                                     elementsLabel,
                                     WkSerdeVariableSizeElementCollection::getNumberOfDeserializingOperations,
                                     elementsRxSettingsFactory,

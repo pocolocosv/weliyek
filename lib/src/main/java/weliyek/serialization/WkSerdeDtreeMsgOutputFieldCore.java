@@ -46,11 +46,9 @@ public abstract class WkSerdeDtreeMsgOutputFieldCore<
   @Override
   protected WkSerdeDtreeMsgWriterCore<?,?,?,?,?,YO,?,?,?,?>
   newOperation(int index) {
-    T serializable = serializable(index);
-    YS settings = newSettings(index);
-    AYBC parentBytestream = parentBytestream();
-    return structFieldCore().definitionCore().newWritingOperationCore(
-        index, settings, parentBytestream, serializable, this);
+    return structFieldCore()
+           .definitionCore()
+           .newWritingOperationCore(index, this);
   }
 
   @Override

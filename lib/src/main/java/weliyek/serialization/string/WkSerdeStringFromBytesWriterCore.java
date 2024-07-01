@@ -58,17 +58,11 @@ public abstract class WkSerdeStringFromBytesWriterCore<
 
   protected WkSerdeStringFromBytesWriterCore(
     int index,
-    String serializable,
-    YS settings,
-    AYB parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<String,YS,?,?,AYB,?,?,?> writerFieldCore,
     YDC definitionCore,
     YO operationBody) {
     super(
         index,
-        serializable,
-        settings,
-        parentBytestream,
         writerFieldCore,
         definitionCore,
         operationBody);

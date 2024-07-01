@@ -41,22 +41,6 @@ public class WkBtcNetMessageTypeSerdeReader
                         WkSerdeDtreeOperationResult<WkBtcNetMessageType>,
                         WkBtcNetMessageTypeSerdeDef>
 {
-  static WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-              WkBtcNetMessageType,
-              WkSerdeDtreeOperationSettings,
-              WkBtcNetMessageTypeSerdeDef,
-              WkBtcNetMessageTypeSerdeReader>
-  newReaderCore(
-    int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-      WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef,
-      WkBtcNetMessageTypeSerdeReader, ?, ?, ?,
-      ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
-    return new WkBtcNetMessageTypeSerdeReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
-  }
 
   final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcNetMessageType,
@@ -66,18 +50,17 @@ public class WkBtcNetMessageTypeSerdeReader
 
   WkBtcNetMessageTypeSerdeReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
       WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef,
       WkBtcNetMessageTypeSerdeReader, ?, ?, ?,
       ? extends WkBtcNetMessageTypeSerdeDef> definitionCore) {
-    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcNetMessageType,
-        WkSerdeDtreeOperationSettings,
-        WkBtcNetMessageTypeSerdeDef,
-        WkBtcNetMessageTypeSerdeReader>(
-        index, settings, parentBytestream, readerFieldCore, definitionCore, this);
+    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<>(
+                              index,
+                              readerFieldCore,
+                              definitionCore,
+                              this);
   }
 
   public Optional<WkSerdeDtreeMsgInputField<WkByteArray, WkSerdeDtreeFixedSizeByteArray, WkSerdeDtreeFixedSizeByteArrayReader>>

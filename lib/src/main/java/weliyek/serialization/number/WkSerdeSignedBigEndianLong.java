@@ -75,9 +75,9 @@ public class WkSerdeSignedBigEndianLong
                             WkSerdeSignedBigEndianLongWriter,
                             WkSerdeSignedBigEndianLong>(
                                 componentCore,
-                                (i,xs,axb,xkc,dc) -> new WkSerdeSignedBigEndianLongReader(i,xs,axb,xkc,dc).operationCore,
+                                (i,xkc,dc) -> new WkSerdeSignedBigEndianLongReader(i,xkc,dc).operationCore,
                                 WkSerdeDtreeLongSignedBigEndianReaderDecoderEngine.FACTORY,
-                                (i,y,ys,ayb,ykc,dc) -> new WkSerdeSignedBigEndianLongWriter(i,y,ys,ayb,ykc,dc).operationCore,
+                                (i,ykc,dc) -> new WkSerdeSignedBigEndianLongWriter(i,ykc,dc).operationCore,
                                 WkSerdeDtreeLongSignedBigEndianWriterEncoderEngine.FACTORY,
                                 this,
                                 Long.class);

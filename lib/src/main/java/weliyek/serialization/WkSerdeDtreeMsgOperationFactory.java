@@ -17,7 +17,15 @@
  */
 package weliyek.serialization;
 
-public interface WkSerdeDtreeMsgOperationFactory
+@FunctionalInterface
+public interface WkSerdeDtreeMsgOperationFactory<
+                        S extends WkSerdeDtreeOperationSettings,
+                        DC extends WkSerdeDtreeStructDefinitionCore<?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?>,
+                        OC extends WkSerdeDtreeMsgOperationCore<?,?,?,?,?,?,?,?,?>,
+                        ABC extends WkSerdeDtreeBytestreamBase<?,?>,
+                        KC extends WkSerdeDtreeMsgFieldCore<?,S,?,?,?,?,ABC,?,?>>
 {
+
+  OC newOperationCore(int index, KC msgFieldCore, DC definitionCore);
 
 }

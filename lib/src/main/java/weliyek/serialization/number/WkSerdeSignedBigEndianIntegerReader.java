@@ -38,69 +38,66 @@ public final class WkSerdeSignedBigEndianIntegerReader
 {
 
   final WkSerdeDtreeNumberMsgReaderCoreSimplified<
-                      Integer,
-                      WkSerdeSignedBigEndianIntegerReader,
-                      WkSerdeSignedBigEndianInteger> operationCore;
+                        Integer,
+                        WkSerdeSignedBigEndianIntegerReader,
+                        WkSerdeSignedBigEndianInteger> readerCore;
 
   WkSerdeSignedBigEndianIntegerReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?, WkSerdeDtreeOperationSettings, ?, ?, WkSerdeDtreeBytestreamInputBase<?>, ?, ?, ?>
+      readerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Integer,WkSerdeSignedBigEndianIntegerReader,?,WkSerdeSignedBigEndianInteger> definitionCore) {
-    operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<Integer, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger>(
+    readerCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<>(
                                 index,
-                                settings,
-                                parentBytestream,
-                                msgFieldCore,
+                                readerFieldCore,
                                 definitionCore,
                                 this);
   }
 
   @Override
   public WkSerdeDtreeOperationSettings settings() {
-    return this.operationCore.settings();
+    return this.readerCore.settings();
   }
 
   @Override
   public WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput> dashboard() {
-    return this.operationCore.dashboard();
+    return this.readerCore.dashboard();
   }
 
   @Override
   public Optional<WkSerdeDtreeOperationResult<Integer>> result() {
-    return this.operationCore.result();
+    return this.readerCore.result();
   }
 
   @Override
   public int index() {
-    return this.operationCore.index();
+    return this.readerCore.index();
   }
 
   @Override
   public WkSerdeDtreeMsgInputField<?,?,?> parentField() {
-    return this.operationCore.parentField();
+    return this.readerCore.parentField();
   }
 
   @Override
   public WkSerdeSignedBigEndianInteger definition() {
-    return this.operationCore.definition();
+    return this.readerCore.definition();
   }
 
   @Override
   public final List<WkSerdeDtreeMsgInputField<?,?,?>> subfields() {
-    return this.operationCore.subfields();
+    return this.readerCore.subfields();
   }
 
   @Override
   public String name() {
-    return this.operationCore.name();
+    return this.readerCore.name();
   }
 
   @Override
   public String toString() {
-    return this.operationCore.toString();
+    return this.readerCore.toString();
   }
 
 }

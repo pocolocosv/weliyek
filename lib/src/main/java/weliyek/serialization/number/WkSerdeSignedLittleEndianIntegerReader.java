@@ -44,17 +44,14 @@ public final class WkSerdeSignedLittleEndianIntegerReader
 
   WkSerdeSignedLittleEndianIntegerReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?, WkSerdeDtreeOperationSettings, ?, ?, WkSerdeDtreeBytestreamInputBase<?>, ?, ?, ?>
+      readerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Integer,WkSerdeSignedLittleEndianIntegerReader,?,
       WkSerdeSignedLittleEndianInteger> definitionCore) {
     operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<>(
                                     index,
-                                    settings,
-                                    parentBytestream,
-                                    msgFieldCore,
+                                    readerFieldCore,
                                     definitionCore,
                                     this);
   }

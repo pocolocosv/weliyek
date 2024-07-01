@@ -123,8 +123,8 @@ public class WkSerdeStringFixedLengthBytes
     this.definitionCore = new WkSerdeStringFromBytesDefinitionCoreSimplified<>(
                                   defaultCharset,
                                   componentCore,
-                                  (i,xs,axb,xpc,dc) -> new WkSerdeStringFixedLengthBytesReader(i,xs,axb,xpc,dc).operationCore,
-                                  (i,y,ys,ayb,ypc,dc) -> new WkSerdeStringFixedLengthBytesWriter(i,y,ys,ayb,ypc,dc).operationCore,
+                                  (i,xpc,dc) -> new WkSerdeStringFixedLengthBytesReader(i,xpc,dc).operationCore,
+                                  (i,ypc,dc) -> new WkSerdeStringFixedLengthBytesWriter(i,ypc,dc).operationCore,
                                   bytesLabel,
                                   WkSerdeDtreeOperationSettings::none,
                                   WkSerdeStringFixedLengthBytes::aggragateByteArray,

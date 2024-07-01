@@ -103,8 +103,8 @@ public class WkBtcProtocolVersionSerdeDef
   private WkBtcProtocolVersionSerdeDef(
     WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter, WkBtcProtocolVersionSerdeDef>(
-                                  WkBtcProtocolVersionSerdeReader::newCore,
-                                  WkBtcProtocolVersionSerdeWriter::newCore,
+                                  (i,xkc,dc) -> new WkBtcProtocolVersionSerdeReader(i,xkc,dc).readerCore,
+                                  (i,ykc,dc) -> new WkBtcProtocolVersionSerdeWriter(i,ykc,dc).writerCore,
                                   fieldCore,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnReadInitOrSkipped,
                                   WkBtcProtocolVersionSerdeDef::onReadFull,

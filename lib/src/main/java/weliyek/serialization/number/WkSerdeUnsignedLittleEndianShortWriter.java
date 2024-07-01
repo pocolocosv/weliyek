@@ -42,20 +42,15 @@ public class WkSerdeUnsignedLittleEndianShortWriter
                         WkSerdeUnsignedLittleEndianShortWriter,
                         WkSerdeUnsignedLittleEndianShort> operationCore;
 
-  public WkSerdeUnsignedLittleEndianShortWriter(
+  WkSerdeUnsignedLittleEndianShortWriter(
     int index,
-    Integer serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Integer,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Integer,?,WkSerdeUnsignedLittleEndianShortWriter,WkSerdeUnsignedLittleEndianShort> definitionCore) {
-    this.operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<Integer, WkSerdeUnsignedLittleEndianShortWriter, WkSerdeUnsignedLittleEndianShort>(
+    this.operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<>(
                                     index,
-                                    serializable,
-                                    settings,
-                                    parentBytestream,
-                                    msgFieldCore,
+                                    writerFieldCore,
                                     definitionCore,
                                     this);
   }

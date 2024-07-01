@@ -44,21 +44,13 @@ public final class WkSerdeSignedBigEndianLongWriter
 
   WkSerdeSignedBigEndianLongWriter(
     int index,
-    Long serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Long,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writeFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Long,?,WkSerdeSignedBigEndianLongWriter,WkSerdeSignedBigEndianLong> definitionCore) {
-    operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<
-                            Long,
-                            WkSerdeSignedBigEndianLongWriter,
-                            WkSerdeSignedBigEndianLong>(
+    operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<>(
                                 index,
-                                serializable,
-                                settings,
-                                parentBytestream,
-                                msgFieldCore,
+                                writeFieldCore,
                                 definitionCore,
                                 this);
   }

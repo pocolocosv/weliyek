@@ -49,19 +49,20 @@ public abstract class WkSerdeDtreeMsgOperationCore<
 
     protected WkSerdeDtreeMsgOperationCore(
             int index,
-            S settings,
             KC msgFieldCore,
             DC definitionCore,
             O operationBody) {
         this.msgFieldCore = Objects.requireNonNull(msgFieldCore);
         this.definitionCore = Objects.requireNonNull(definitionCore);
-        this.settings = Objects.requireNonNull(settings);
+        this.settings = extractSettingsFrom(msgFieldCore);
         if (index < 0) {
           throw new IllegalArgumentException();
         }
         this.index = index;
         this.operationBody = Objects.requireNonNull(operationBody);
     }
+
+    abstract protected S extractSettingsFrom(KC msgFieldCore);
 
     public final O body() {
       return this.operationBody;
@@ -118,7 +119,7 @@ public abstract class WkSerdeDtreeMsgOperationCore<
     public abstract QC getRuntimeControl();
 
     @Override
-    public S settings() {
+    public final S settings() {
       return this.settings;
     }
 
@@ -142,7 +143,7 @@ public abstract class WkSerdeDtreeMsgOperationCore<
     }
 
     @Override
-    public Q dashboard() {
+    public final Q dashboard() {
       return getRuntimeControl().asRuntime();
     }
 
@@ -154,7 +155,7 @@ public abstract class WkSerdeDtreeMsgOperationCore<
     */
 
     @Override
-    public String name() {
+    public final String name() {
       return packetFieldCore().name() + label() + '[' + index() + ']';
     }
 
@@ -168,7 +169,7 @@ public abstract class WkSerdeDtreeMsgOperationCore<
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
       StringBuilder strB = new StringBuilder(name());
       strB.append(':');
       if ( ! isInitialized()) {

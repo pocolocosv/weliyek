@@ -40,77 +40,69 @@ public final class WkSerdeSignedBigEndianIntegerWriter
   final WkSerdeDtreeNumberMsgWriterCoreSimplified<
                       Integer,
                       WkSerdeSignedBigEndianIntegerWriter,
-                      WkSerdeSignedBigEndianInteger> operationCore;
+                      WkSerdeSignedBigEndianInteger> writerCore;
 
   WkSerdeSignedBigEndianIntegerWriter(
     int index,
-    Integer serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Integer,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writeFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Integer,?,WkSerdeSignedBigEndianIntegerWriter,WkSerdeSignedBigEndianInteger> definitionCore) {
-    operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<
-                            Integer,
-                            WkSerdeSignedBigEndianIntegerWriter,
-                            WkSerdeSignedBigEndianInteger>(
+    writerCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<>(
                                   index,
-                                  serializable,
-                                  settings,
-                                  parentBytestream,
-                                  msgFieldCore,
+                                  writeFieldCore,
                                   definitionCore,
                                   this);
   }
 
   @Override
   public WkSerdeDtreeOperationSettings settings() {
-    return this.operationCore.settings();
+    return this.writerCore.settings();
   }
 
   @Override
   public WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput> dashboard() {
-    return this.operationCore.dashboard();
+    return this.writerCore.dashboard();
   }
 
   @Override
   public Optional<WkSerdeDtreeOperationResult<Integer>> result() {
-    return this.operationCore.result();
+    return this.writerCore.result();
   }
 
   @Override
   public int index() {
-    return this.operationCore.index();
+    return this.writerCore.index();
   }
 
   @Override
   public Integer serializable() {
-    return this.operationCore.serializable();
+    return this.writerCore.serializable();
   }
 
   @Override
   public WkSerdeDtreeMsgOutputField<?,?,?> parentField() {
-    return this.operationCore.parentField();
+    return this.writerCore.parentField();
   }
 
   @Override
   public WkSerdeSignedBigEndianInteger definition() {
-    return this.operationCore.definition();
+    return this.writerCore.definition();
   }
 
   @Override
   public List<WkSerdeDtreeMsgOutputField<?,?,?>> subfields() {
-    return this.operationCore.subfields();
+    return this.writerCore.subfields();
   }
 
   @Override
   public String name() {
-    return this.operationCore.name();
+    return this.writerCore.name();
   }
 
   @Override
   public String toString() {
-    return this.operationCore.toString();
+    return this.writerCore.toString();
   }
 
 }

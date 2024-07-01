@@ -75,9 +75,9 @@ public class WkSerdeSignedByte
                                 WkSerdeSignedByteWriter,
                                 WkSerdeSignedByte>(
                                     componentCore,
-                                    (i,xs,axb,xkc,xdc) -> new WkSerdeSignedByteReader(i,xs,axb,xkc,xdc).operationCore,
+                                    (i,xkc,xdc) -> new WkSerdeSignedByteReader(i,xkc,xdc).operationCore,
                                     WkSerdeDtreeByteSignedReaderDecoderEngine.FACTORY,
-                                    (i,y,ys,yab,ykc,ydc) -> new WkSerdeSignedByteWriter(i,y,ys,yab,ykc,ydc).writingCore,
+                                    (i,ykc,ydc) -> new WkSerdeSignedByteWriter(i,ykc,ydc).writingCore,
                                     WkSerdeDtreeByteSignedWriterEncoderEngine.FACTORY,
                                     this,
                                     Byte.class);

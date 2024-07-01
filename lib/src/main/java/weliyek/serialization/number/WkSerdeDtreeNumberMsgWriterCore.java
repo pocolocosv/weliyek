@@ -42,17 +42,11 @@ public abstract class WkSerdeDtreeNumberMsgWriterCore<
 
   protected WkSerdeDtreeNumberMsgWriterCore(
     int index,
-    YS settings,
-    AYB parentBytestream,
-    T serializable,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYB,?,?,?> msgFieldCore,
     YDC definitionCore,
     YO operationBody) {
     super(
         index,
-        settings,
-        parentBytestream,
-        serializable,
         msgFieldCore,
         definitionCore,
         operationBody);

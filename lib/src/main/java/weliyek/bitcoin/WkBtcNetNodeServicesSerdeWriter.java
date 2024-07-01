@@ -49,17 +49,12 @@ public class WkBtcNetNodeServicesSerdeWriter
 
   WkBtcNetNodeServicesSerdeWriter(
     int index,
-    WkBtcNetNodeServices serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeWriter, ? extends WkBtcNetNodeServicesSerdeDef> definitionCore) {
-    this.outputCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-                            WkBtcNetNodeServices,
-                            WkSerdeDtreeOperationSettings,
-                            WkBtcNetNodeServicesSerdeDef,
-                            WkBtcNetNodeServicesSerdeWriter>(
-                                index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
+    WkSerdeDtreeMsgOutputFieldCore<WkBtcNetNodeServices,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetNodeServices, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcNetNodeServicesSerdeDef, WkBtcNetNodeServicesSerdeWriter, ? extends WkBtcNetNodeServicesSerdeDef>
+      definitionCore) {
+    this.outputCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<>(
+                                index, writerFieldCore, definitionCore, this);
   }
 
   public Optional<WkSerdeDtreeMsgOutputField<Long, WkSerdeSignedLittleEndianLong, WkSerdeSignedLittleEndianLongWriter>>

@@ -49,13 +49,11 @@ public abstract class WkSerdeDtreeGenericPrimitiveArrayReaderCore<
 
   protected WkSerdeDtreeGenericPrimitiveArrayReaderCore(
     int index,
-    XS settings,
-    AXB parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXB,?,?,?> readerFieldCore,
     DC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
-    this.requestedLength = definitionCore.rxRequestedLengthEvaluator.applyAsInt(settings, definition());
+    super(index, readerFieldCore, definitionCore, operationBody);
+    this.requestedLength = definitionCore.rxRequestedLengthEvaluator.applyAsInt(settings(), definition());
   }
 
   @Override

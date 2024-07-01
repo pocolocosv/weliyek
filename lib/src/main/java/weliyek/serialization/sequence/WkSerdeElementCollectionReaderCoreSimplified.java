@@ -70,13 +70,12 @@ public final class WkSerdeElementCollectionReaderCoreSimplified<
 
   WkSerdeElementCollectionReaderCoreSimplified(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeElementCollectionDefinitionCoreSimplified<
       T,XS,XD,XO,?,?,?,ET,EXS,EXD,EXO,?,?,?,? extends EXD,? extends XD> definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
+    super(index, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

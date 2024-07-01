@@ -87,8 +87,8 @@ public class WkBtcNetNodeServicesSerdeDef
         WkBtcNetNodeServicesSerdeDef,
         WkBtcNetNodeServicesSerdeWriter,
         WkBtcNetNodeServicesSerdeDef>(
-            (i,xs,axb,xpc,dc) -> new WkBtcNetNodeServicesSerdeReader(i,xs,axb,xpc,dc).inputCore,
-            (i,y,ys,ayb,ypc,dc) -> new WkBtcNetNodeServicesSerdeWriter(i,y,ys,ayb,ypc,dc).outputCore,
+            (i,xpc,dc) -> new WkBtcNetNodeServicesSerdeReader(i,xpc,dc).inputCore,
+            (i,ypc,dc) -> new WkBtcNetNodeServicesSerdeWriter(i,ypc,dc).outputCore,
             componentCore,
             (ic) -> {},
             (ic) -> WkBtcNetNodeServices.fromLong(ic.body().int64le().get().firstOperation().get().result().get().serializable().get().longValue()),

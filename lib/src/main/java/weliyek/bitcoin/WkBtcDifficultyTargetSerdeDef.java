@@ -100,10 +100,10 @@ public class WkBtcDifficultyTargetSerdeDef
                         WkSerdeSignedLittleEndianInteger> int32;
 
   public WkBtcDifficultyTargetSerdeDef(
-    WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
+    WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<>(
-                                  WkBtcDifficultyTargetSerdeReader::newCore,
-                                  WkBtcDifficultyTargetSerdeWriter::newCore,
+                                  (i,xkc,dc) -> new WkBtcDifficultyTargetSerdeReader(i,xkc,dc).readerCore,
+                                  (i,ykc,dc) -> new WkBtcDifficultyTargetSerdeWriter(i,ykc,dc).writerCore,
                                   fieldCore,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnReadInitOrSkipped,
                                   WkBtcDifficultyTargetSerdeDef::onReadFull,

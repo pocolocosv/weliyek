@@ -41,38 +41,20 @@ public class WkBtcProtocolVersionSerdeWriter
                         WkBtcProtocolVersionSerdeDef>
 {
 
-  static WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-                        WkBtcProtocolVersion,
-                        WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerdeDef,
-                        WkBtcProtocolVersionSerdeWriter>
-  newCore(
-    int index,
-    WkBtcProtocolVersion serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter, ? extends WkBtcProtocolVersionSerdeDef>
-      definitionCore) {
-    return new WkBtcProtocolVersionSerdeWriter(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore).writerCore;
-  }
-
-  private final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
+  final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
                         WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeWriter> writerCore;
 
-  private WkBtcProtocolVersionSerdeWriter(
+  WkBtcProtocolVersionSerdeWriter(
     int index,
-    WkBtcProtocolVersion serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<WkBtcProtocolVersion,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, ?, ?, ?, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter, ? extends WkBtcProtocolVersionSerdeDef>
       definitionCore) {
-    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeWriter>(
-                            index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
+    this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<>(
+                              index, writerFieldCore, definitionCore, this);
   }
 
   public Optional<WkSerdeDtreeMsgOutputField<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerWriter>>

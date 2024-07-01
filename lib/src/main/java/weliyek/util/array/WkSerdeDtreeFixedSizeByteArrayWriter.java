@@ -43,22 +43,6 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
                         WkSerdeDtreeFixedSizeByteArray>
 {
 
-  static WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
-            WkByteArray,
-            WkSerdeDtreeOperationSettings,
-            WkSerdeDtreeFixedSizeByteArray,
-            WkSerdeDtreeFixedSizeByteArrayWriter>
-  newCore(
-      int index,
-      WkByteArray serializable,
-      WkSerdeDtreeOperationSettings settings,
-      WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-      WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
-      WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
-        WkByteArray,?,?,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArrayWriter,WkSerdeDtreeFixedSizeByteArray> definitionCore) {
-    return new WkSerdeDtreeFixedSizeByteArrayWriter(index, serializable, settings, parentBytestream, msgFieldCore, definitionCore).operationCore;
-  }
-
   final WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
                         WkByteArray,
                         WkSerdeDtreeOperationSettings,
@@ -67,10 +51,8 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
 
   WkSerdeDtreeFixedSizeByteArrayWriter(
     int index,
-    WkByteArray serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<WkByteArray,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,?,?,WkSerdeDtreeOperationSettings,WkSerdeDtreeFixedSizeByteArrayWriter,WkSerdeDtreeFixedSizeByteArray> definitionCore) {
     this.operationCore = new WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
@@ -79,9 +61,6 @@ public class WkSerdeDtreeFixedSizeByteArrayWriter
                                   WkSerdeDtreeFixedSizeByteArray,
                                   WkSerdeDtreeFixedSizeByteArrayWriter>(
                                       index,
-                                      serializable,
-                                      settings,
-                                      parentBytestream,
                                       msgFieldCore,
                                       definitionCore,
                                       this,

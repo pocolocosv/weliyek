@@ -60,12 +60,10 @@ public abstract class WkSerdeElementCollectionReaderCore<
 
   protected WkSerdeElementCollectionReaderCore(
     int index,
-    XS settings,
-    AXBC parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?> msgFieldCore,
     XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
+    super(index, msgFieldCore, definitionCore, operationBody);
   }
 
   @Override

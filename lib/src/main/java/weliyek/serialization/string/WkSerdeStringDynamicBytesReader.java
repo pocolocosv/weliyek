@@ -58,9 +58,8 @@ public class WkSerdeStringDynamicBytesReader<
 
   WkSerdeStringDynamicBytesReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       WkSerdeDtreeOperationSettings, WkSerdeStringDynamicBytesReader<ZT, ZXD, ZXO>,
       WkSerdeStringDynamicBytes<ZT, ZXD, ZXO, ?, ?, ? extends ZXD>, ?, ?, ?,
@@ -76,8 +75,6 @@ public class WkSerdeStringDynamicBytesReader<
         WkSerdeDynamicByteArrayReader<ZT,ZXO,ZXD>,
         WkSerdeDynamicByteArray<ZT,ZXD,ZXO,?,?,? extends ZXD>>(
                                       index,
-                                      settings,
-                                      parentBytestream,
                                       readerFieldCore,
                                       definitionCore,
                                       this);

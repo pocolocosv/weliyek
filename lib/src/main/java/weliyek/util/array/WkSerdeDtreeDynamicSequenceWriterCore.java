@@ -68,13 +68,10 @@ public abstract class WkSerdeDtreeDynamicSequenceWriterCore<
 
   protected WkSerdeDtreeDynamicSequenceWriterCore(
     int index,
-    T serializable,
-    YS settings,
-    AYBC parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,AYBC,?,?,?> writerFieldCore,
     YDC definitionCore,
     YO operationBody) {
-    super(index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, operationBody);
+    super(index, writerFieldCore, definitionCore, operationBody);
   }
 
   @Override

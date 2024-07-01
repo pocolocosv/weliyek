@@ -104,8 +104,8 @@ public class WkBtcNetMessageTypeSerdeDef
   WkBtcNetMessageTypeSerdeDef(
     WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> fieldCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcNetMessageType, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeReader, WkSerdeDtreeOperationSettings, WkBtcNetMessageTypeSerdeDef, WkBtcNetMessageTypeSerdeWriter, WkBtcNetMessageTypeSerdeDef>(
-                                  WkBtcNetMessageTypeSerdeReader::newReaderCore,
-                                  WkBtcNetMessageTypeSerdeWriter::newWriter,
+                                  (i,xkc,dc) -> new WkBtcNetMessageTypeSerdeReader(i,xkc,dc).readerCore,
+                                  (i,ykc,dc) -> new WkBtcNetMessageTypeSerdeWriter(i,ykc,dc).writerCore,
                                   fieldCore,
                                   WkBtcNetMessageTypeSerdeDef::onReadInit,
                                   WkBtcNetMessageTypeSerdeDef::onFullRead,

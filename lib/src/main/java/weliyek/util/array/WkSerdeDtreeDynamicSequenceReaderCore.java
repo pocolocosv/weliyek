@@ -69,12 +69,10 @@ public abstract class WkSerdeDtreeDynamicSequenceReaderCore<
 
   protected WkSerdeDtreeDynamicSequenceReaderCore(
     int index,
-    XS settings,
-    AXBC parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,AXBC,?,?,?> readerFieldCore,
     XDC definitionCore,
     XO operationBody) {
-    super(index, settings, parentBytestream, readerFieldCore, definitionCore, operationBody);
+    super(index, readerFieldCore, definitionCore, operationBody);
   }
 
   @Override

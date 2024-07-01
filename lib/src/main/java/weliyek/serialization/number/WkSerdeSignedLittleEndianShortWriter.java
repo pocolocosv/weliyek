@@ -44,18 +44,13 @@ public final class WkSerdeSignedLittleEndianShortWriter
 
   WkSerdeSignedLittleEndianShortWriter(
     int index,
-    Short serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Short,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Short,?,WkSerdeSignedLittleEndianShortWriter,WkSerdeSignedLittleEndianShort> definitionCore) {
-    operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<Short, WkSerdeSignedLittleEndianShortWriter, WkSerdeSignedLittleEndianShort>(
+    operationCore = new WkSerdeDtreeNumberMsgWriterCoreSimplified<>(
                             index,
-                            serializable,
-                            settings,
-                            parentBytestream,
-                            msgFieldCore,
+                            writerFieldCore,
                             definitionCore,
                             this);
   }

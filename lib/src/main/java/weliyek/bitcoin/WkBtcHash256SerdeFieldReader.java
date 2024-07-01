@@ -42,38 +42,20 @@ public class WkBtcHash256SerdeFieldReader
                         WkBtcHash256SerdeDef>
 {
 
-  static WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-                        WkBtcHash256,
-                        WkSerdeDtreeOperationSettings,
-                        WkBtcHash256SerdeDef,
-                        WkBtcHash256SerdeFieldReader>
-  newCore(
-    int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader, ?, ?, ?, ? extends WkBtcHash256SerdeDef>
-      definitionCore) {
-    return new WkBtcHash256SerdeFieldReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
-  }
-
   final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcHash256,
                         WkSerdeDtreeOperationSettings,
                         WkBtcHash256SerdeDef,
                         WkBtcHash256SerdeFieldReader> readerCore;
 
-  private WkBtcHash256SerdeFieldReader(
+  WkBtcHash256SerdeFieldReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader, ?, ?, ?, ? extends WkBtcHash256SerdeDef>
       definitionCore) {
-    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader>(
+    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<>(
                               index,
-                              settings,
-                              parentBytestream,
                               readerFieldCore,
                               definitionCore,
                               this);

@@ -59,14 +59,12 @@ public class WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<
 
   public WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified(
     int index,
-    Y serializable,
-    YS settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<Y,YS,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<Y,?,?,YS,YO,D> definitionCore,
     YO operationBody,
     Consumer<? super WkSerdeDtreeGenericPrimitiveArrayWriterCoreSimplified<Y,YS,D,YO>> onInitializing) {
-    super(index, serializable, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
+    super(index, msgFieldCore, definitionCore, operationBody);
     this.onInitializing = Objects.requireNonNull(onInitializing);
   }
 

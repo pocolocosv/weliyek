@@ -59,13 +59,12 @@ public class WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
 
   public WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<X,XS,XO,?,?,D> definitionCore,
     XO operationBody,
     Consumer<? super WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<X,XS,D,XO>> onInitializing) {
-    super(index, settings, parentBytestream, msgFieldCore, definitionCore, operationBody);
+    super(index, msgFieldCore, definitionCore, operationBody);
     this.onInitializing = Objects.requireNonNull(onInitializing);
   }
 

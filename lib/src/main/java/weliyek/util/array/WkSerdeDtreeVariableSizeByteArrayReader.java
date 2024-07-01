@@ -51,9 +51,8 @@ public final class WkSerdeDtreeVariableSizeByteArrayReader
 
   WkSerdeDtreeVariableSizeByteArrayReader(
     int index,
-    WkSerdeDtreeOperationSettingsVariableLength settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettingsVariableLength,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      msgFieldCore,
     WkSerdeDtreeGenericPrimitiveArrayDefinitionCoreSimplified<
       WkByteArray,WkSerdeDtreeOperationSettingsVariableLength,WkSerdeDtreeVariableSizeByteArrayReader,?,?,WkSerdeDtreeVariableSizeByteArray> definitionCore) {
     this.operationCore = new WkSerdeDtreeGenericPrimitiveArrayReaderCoreSimplified<
@@ -62,8 +61,6 @@ public final class WkSerdeDtreeVariableSizeByteArrayReader
         WkSerdeDtreeVariableSizeByteArray,
         WkSerdeDtreeVariableSizeByteArrayReader>(
                                     index,
-                                    settings,
-                                    parentBytestream,
                                     msgFieldCore,
                                     definitionCore,
                                     this,

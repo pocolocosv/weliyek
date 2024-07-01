@@ -41,46 +41,22 @@ public class WkBtcDifficultyTargetSerdeWriter
                         WkBtcDifficultyTargetSerdeDef>
 {
 
-  static WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-                        WkBtcDifficultyTarget,
-                        WkSerdeDtreeOperationSettings,
-                        WkBtcDifficultyTargetSerdeDef,
-                        WkBtcDifficultyTargetSerdeWriter>
-  newCore(
-    int index,
-    WkBtcDifficultyTarget serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
-      WkBtcDifficultyTarget, ?, ?, ?, WkSerdeDtreeOperationSettings,
-      WkBtcDifficultyTargetSerdeDef, WkBtcDifficultyTargetSerdeWriter,
-      ? extends WkBtcDifficultyTargetSerdeDef> definitionCore) {
-    return new WkBtcDifficultyTargetSerdeWriter(
-                index, serializable, settings, parentBytestream, writerFieldCore, definitionCore).writerCore;
-  }
-
-  private final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
+  final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkBtcDifficultyTarget,
                         WkSerdeDtreeOperationSettings,
                         WkBtcDifficultyTargetSerdeDef,
                         WkBtcDifficultyTargetSerdeWriter> writerCore;
 
-  private WkBtcDifficultyTargetSerdeWriter(
+  WkBtcDifficultyTargetSerdeWriter(
     int index,
-    WkBtcDifficultyTarget serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<WkBtcDifficultyTarget,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
       WkBtcDifficultyTarget, ?, ?, ?, WkSerdeDtreeOperationSettings,
       WkBtcDifficultyTargetSerdeDef, WkBtcDifficultyTargetSerdeWriter,
       ? extends WkBtcDifficultyTargetSerdeDef> definitionCore) {
     this.writerCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<>(
                               index,
-                              serializable,
-                              settings,
-                              parentBytestream,
                               writerFieldCore,
                               definitionCore,
                               this);

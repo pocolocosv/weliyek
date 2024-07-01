@@ -69,13 +69,12 @@ public class WkSerdeTestPrimitivesGroupListMsgWriter
 
     WkSerdeTestPrimitivesGroupListMsgWriter(
       int index,
-      WkSerdeTestPrimitivesGroupList serializable,
-      WkSerdeDtreeOperationSettings settings,
-      WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-      WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
-      WkSerdeDtreeDynamicCollectionDefinitionCore<WkSerdeTestPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListMsgWriter, WkSerdeTestPrimitivesGroupListStructDefinition, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ? extends WkSerdeSignedLittleEndianInteger, WkSerdeTestPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgWriter, ? extends WkSerdeTestPrimitivesGroupStructDefinition, ?, WkSerdeDtreeOperationSettings, ? extends WkSerdeTestPrimitivesGroupListStructDefinition> definitionCore) {
-      writingCore = new WkSerdeDtreeDynamicCollectionWriterCore<WkSerdeTestPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListMsgWriter, WkSerdeTestPrimitivesGroupListStructDefinition, Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, WkSerdeTestPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgWriter, WkSerdeDtreeOperationSettings>(
-            index, serializable, settings, parentBytestream, writerFieldCore, definitionCore, this);
+      WkSerdeDtreeMsgOutputFieldCore<WkSerdeTestPrimitivesGroupList,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+        writerFieldCore,
+      WkSerdeDtreeDynamicCollectionDefinitionCore<WkSerdeTestPrimitivesGroupList, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListMsgWriter, WkSerdeTestPrimitivesGroupListStructDefinition, Integer, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeSignedLittleEndianIntegerWriter, WkSerdeSignedLittleEndianInteger, ? extends WkSerdeSignedLittleEndianInteger, WkSerdeTestPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgWriter, ? extends WkSerdeTestPrimitivesGroupStructDefinition, ?, WkSerdeDtreeOperationSettings, ? extends WkSerdeTestPrimitivesGroupListStructDefinition>
+        definitionCore) {
+      writingCore = new WkSerdeDtreeDynamicCollectionWriterCore<>(
+                            index, writerFieldCore, definitionCore, this);
     }
 
     @Override

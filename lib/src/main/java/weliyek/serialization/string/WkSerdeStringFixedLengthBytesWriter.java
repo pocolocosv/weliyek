@@ -52,10 +52,8 @@ public class WkSerdeStringFixedLengthBytesWriter
 
   WkSerdeStringFixedLengthBytesWriter(
     int index,
-    String serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<String,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeStringFixedLengthBytesWriter,
       WkSerdeStringFixedLengthBytes, ?, ?, ?, WkSerdeDtreeOperationSettings,
@@ -69,9 +67,6 @@ public class WkSerdeStringFixedLengthBytesWriter
         WkSerdeDtreeFixedSizeByteArrayWriter,
         WkSerdeDtreeFixedSizeByteArray>(
                                   index,
-                                  serializable,
-                                  settings,
-                                  parentBytestream,
                                   writerFieldCore,
                                   definitionCore,
                                   this);

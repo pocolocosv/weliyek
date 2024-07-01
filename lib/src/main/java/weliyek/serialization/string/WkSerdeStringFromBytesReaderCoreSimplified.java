@@ -57,15 +57,12 @@ public class WkSerdeStringFromBytesReaderCoreSimplified<
 
   public WkSerdeStringFromBytesReaderCoreSimplified(
     int index,
-    XS settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,XS,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<XS,XO,XD,?,?,?,SXS,SXO,SXD,?,?,?,? extends SXD,? extends XD> definitionCore,
     XO operationBody) {
     super(
         index,
-        settings,
-        parentBytestream,
         readerFieldCore,
         definitionCore,
         operationBody);

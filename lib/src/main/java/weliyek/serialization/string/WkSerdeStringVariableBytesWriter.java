@@ -53,10 +53,8 @@ public class WkSerdeStringVariableBytesWriter
 
   WkSerdeStringVariableBytesWriter(
     int index,
-    String serializable,
-    WkSerdeDtreeOperationSettingsOptionalLength settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<String,WkSerdeDtreeOperationSettingsOptionalLength,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<
       ?,?,?,WkSerdeDtreeOperationSettingsOptionalLength, WkSerdeStringVariableBytesWriter,
       WkSerdeStringVariableBytes, ?, ?, ?, WkSerdeDtreeOperationSettings,
@@ -71,9 +69,6 @@ public class WkSerdeStringVariableBytesWriter
                                 WkSerdeDtreeVariableSizeByteArrayWriter,
                                 WkSerdeDtreeVariableSizeByteArray>(
                                     index,
-                                    serializable,
-                                    settings,
-                                    parentBytestream,
                                     writerFieldCore,
                                     definitionCore,
                                     this);

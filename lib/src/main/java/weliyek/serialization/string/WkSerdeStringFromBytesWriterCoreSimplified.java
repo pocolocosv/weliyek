@@ -58,35 +58,21 @@ public class WkSerdeStringFromBytesWriterCoreSimplified<
 
   public WkSerdeStringFromBytesWriterCoreSimplified(
     int index,
-    String serializable,
-    YS settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<String,YS,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeStringFromBytesDefinitionCoreSimplified<?,?,?,YS,YO,YD,?,?,?,SYS,SYO,SYD,? extends SYD,? extends YD> definitionCore,
     YO operationBody) {
     super(
         index,
-        serializable,
-        settings,
-        parentBytestream,
         writerFieldCore,
         definitionCore,
         operationBody);
   }
 
-
   @Override
   protected void onStringFromPrimitiveWritingInitialization() {
     // Nothing to do.
   }
-  /*
-  @Override
-  protected void onStringFromPrimitiveWritingInitialization() {
-    if(definitionCore().onWritingOpStart().isPresent()) {
-      definitionCore().onWritingOpStart().get().accept(this);;
-    }
-  }
-  */
 
   @Override
   protected WkSerdeStringFromBytesWriterCoreSimplified<YS,YO,YD,SYS,SYO,SYD> getThis() {

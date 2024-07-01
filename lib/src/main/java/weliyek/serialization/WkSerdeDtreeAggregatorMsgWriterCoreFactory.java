@@ -20,8 +20,9 @@ public interface WkSerdeDtreeAggregatorMsgWriterCoreFactory<
                         T,
                         YS extends WkSerdeDtreeOperationSettings,
                         YDC extends WkSerdeDtreeAggregatorStructDefinitionCore<
-                                      ? super T,?,?,?,?,?,?,?,?,?,?,? super YS,?,?,?,?,?,?,?,? super YOC,? super AYBC,?,?>,
-                        YOC extends WkSerdeDtreeAggregatorMsgWriterCore<? super T,? super YS,?,?,?,?,?,?,? super YDC,?,?,? super AYBC>,
+                                      T,?,?,?,?,?,?,?,?,?,?,YS,?,?,?,?,?,?,?,?,AYBC,?,?>,
+                        YOC extends WkSerdeDtreeAggregatorMsgWriterCore<
+                                      T,YS,?,?,?,?,?,?,?,?,?,AYBC>,
                         AYBC extends WkSerdeDtreeBytestreamOutputBase<?>>
     extends WkSerdeDtreeMsgWriterFactory<T, YS, YDC, YOC, AYBC>
 {

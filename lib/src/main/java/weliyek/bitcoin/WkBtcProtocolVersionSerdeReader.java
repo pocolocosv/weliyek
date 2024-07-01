@@ -41,36 +41,20 @@ public class WkBtcProtocolVersionSerdeReader
                         WkBtcProtocolVersionSerdeDef>
 {
 
-  static WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
-                        WkBtcProtocolVersion,
-                        WkSerdeDtreeOperationSettings,
-                        WkBtcProtocolVersionSerdeDef,
-                        WkBtcProtocolVersionSerdeReader>
-  newCore(
-      int index,
-      WkSerdeDtreeOperationSettings settings,
-      WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-      WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
-      WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader, ?, ?, ?, ? extends WkBtcProtocolVersionSerdeDef>
-        definitionCore) {
-    return new WkBtcProtocolVersionSerdeReader(index, settings, parentBytestream, readerFieldCore, definitionCore).readerCore;
-  }
-
-  private final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
+  final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkBtcProtocolVersion,
                         WkSerdeDtreeOperationSettings,
                         WkBtcProtocolVersionSerdeDef,
                         WkBtcProtocolVersionSerdeReader> readerCore;
 
-  private WkBtcProtocolVersionSerdeReader(
+  WkBtcProtocolVersionSerdeReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?, ?, ?, ?, ?, ?, ?, ?> readerFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader, ?, ?, ?, ? extends WkBtcProtocolVersionSerdeDef>
       definitionCore) {
-    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<WkBtcProtocolVersion, WkSerdeDtreeOperationSettings, WkBtcProtocolVersionSerdeDef, WkBtcProtocolVersionSerdeReader>(
-                            index, settings, parentBytestream, readerFieldCore, definitionCore, this);
+    this.readerCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<>(
+                              index, readerFieldCore, definitionCore, this);
   }
 
   public Optional<WkSerdeDtreeMsgInputField<Integer, WkSerdeSignedLittleEndianInteger, WkSerdeSignedLittleEndianIntegerReader>>

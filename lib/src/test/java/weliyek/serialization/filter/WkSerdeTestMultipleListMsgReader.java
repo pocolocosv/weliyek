@@ -71,13 +71,12 @@ public class WkSerdeTestMultipleListMsgReader
 
   WkSerdeTestMultipleListMsgReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> readerFieldCore,
-    WkSerdeDtreeDynamicCollectionDefinitionCore<WkSerdeTestMultipleLists, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgReader, WkSerdeTestMultipleListStructDefinition, ?, ?, ?, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortReader, WkSerdeSignedBigEndianShort, ?, ?, ?, ? extends WkSerdeSignedBigEndianShort, WkSerdeTestPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgReader, ?, ?, ?, ? extends WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeDtreeOperationSettingsVariableLength, ?, ? extends WkSerdeTestMultipleListStructDefinition> definitionCore) {
-    this.operationCore = new WkSerdeDtreeDynamicCollectionReaderCore<
-                                WkSerdeTestMultipleLists, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgReader, WkSerdeTestMultipleListStructDefinition, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortReader, WkSerdeSignedBigEndianShort, WkSerdeTestPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgReader, WkSerdeDtreeOperationSettingsVariableLength>(
-                                    index, settings, parentBytestream, readerFieldCore, definitionCore, this);
+    WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
+      readerFieldCore,
+    WkSerdeDtreeDynamicCollectionDefinitionCore<WkSerdeTestMultipleLists, WkSerdeDtreeOperationSettings, WkSerdeTestMultipleListMsgReader, WkSerdeTestMultipleListStructDefinition, ?, ?, ?, Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShortReader, WkSerdeSignedBigEndianShort, ?, ?, ?, ? extends WkSerdeSignedBigEndianShort, WkSerdeTestPrimitivesGroupList, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeTestPrimitivesGroupListMsgReader, ?, ?, ?, ? extends WkSerdeTestPrimitivesGroupListStructDefinition, WkSerdeDtreeOperationSettingsVariableLength, ?, ? extends WkSerdeTestMultipleListStructDefinition>
+      definitionCore) {
+    this.operationCore = new WkSerdeDtreeDynamicCollectionReaderCore<>(
+                                    index, readerFieldCore, definitionCore, this);
   }
 
   @Override

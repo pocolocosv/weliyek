@@ -103,8 +103,8 @@ public class WkBtcHash256SerdeDef
   private WkBtcHash256SerdeDef(
     WkSerdeDtreeStructFieldCore<?, ?, ?, ?, ?, ?, ?, ?> fieldCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkBtcHash256, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldReader, WkSerdeDtreeOperationSettings, WkBtcHash256SerdeDef, WkBtcHash256SerdeFieldWriter, WkBtcHash256SerdeDef>(
-                                  WkBtcHash256SerdeFieldReader::newCore,
-                                  WkBtcHash256SerdeFieldWriter::newCore,
+                                  (i,xkc,dc) -> new WkBtcHash256SerdeFieldReader(i,xkc,dc).readerCore,
+                                  (i,ykc,dc) -> new WkBtcHash256SerdeFieldWriter(i,ykc,dc).writerCore,
                                   fieldCore,
                                   WkSerdeDtreeAggregatorStructDefinitionCoreSimplified::doNothingOnReadInitOrSkipped,
                                   WkBtcHash256SerdeDef::onReadFull,

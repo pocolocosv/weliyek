@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Optional;
 
 import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriterCoreSimplified;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutput;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
 import weliyek.serialization.WkSerdeDtreeMsgOutputField;
@@ -28,8 +30,6 @@ import weliyek.serialization.WkSerdeDtreeMsgOutputFieldCore;
 import weliyek.serialization.WkSerdeDtreeOperationOutputRuntime;
 import weliyek.serialization.WkSerdeDtreeOperationResult;
 import weliyek.serialization.WkSerdeDtreeOperationSettings;
-import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriterCoreSimplified;
-import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCoreSimplified;
 import weliyek.serialization.number.WkSerdeSignedBigEndianInteger;
 import weliyek.serialization.number.WkSerdeSignedBigEndianIntegerWriter;
 import weliyek.serialization.number.WkSerdeSignedBigEndianLong;
@@ -60,24 +60,12 @@ public class WkSerdeTestPrimitivesGroupMsgWriter
 
   WkSerdeTestPrimitivesGroupMsgWriter(
     int index,
-    WkSerdeTestPrimitivesGroup serializable,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<WkSerdeTestPrimitivesGroup,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkSerdeTestPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgWriter, ? extends WkSerdeTestPrimitivesGroupStructDefinition>
       definitionCore) {
-    this.operationCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
-                                WkSerdeTestPrimitivesGroup,
-                                WkSerdeDtreeOperationSettings,
-                                WkSerdeTestPrimitivesGroupStructDefinition,
-                                WkSerdeTestPrimitivesGroupMsgWriter>(
-                                    index,
-                                    serializable,
-                                    settings,
-                                    parentBytestream,
-                                    writerFieldCore,
-                                    definitionCore,
-                                    this);
+    this.operationCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<>(
+                                 index, writerFieldCore, definitionCore, this);
   }
 
   public Optional<WkSerdeDtreeMsgOutputField<Byte, WkSerdeSignedByte, WkSerdeSignedByteWriter>> singleByte() {

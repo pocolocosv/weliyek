@@ -19,9 +19,10 @@ package weliyek.serialization;
 @FunctionalInterface
 public interface WkSerdeDtreeMsgPrimitiveReaderFactory<
                         XS extends WkSerdeDtreeOperationSettings,
-                        XDC extends WkSerdeDtreePrimitiveStructDefinitionCore<?,? super XS,?,?,?,?,?,? super XOC,? super AXBC,?,?,?,?,?,?,?,?,?,?>,
+                        XDC extends WkSerdeDtreePrimitiveStructDefinitionCore<
+                                      ?,XS,?,?,?,?,?,?,AXBC,?,?,?,?,?,?,?,?,?,?>,
                         XOC extends WkSerdeDtreePrimitiveMsgReaderCore<
-                                      ?,? super XS,?,?,?,?,?,?,? super XDC,? super AXBC>,
+                                      ?,XS,?,?,?,?,?,?,?,?>,
                         AXBC extends WkSerdeDtreeBytestreamInputBase<?>>
     extends WkSerdeDtreeMsgReaderFactory<XS, XDC, XOC, AXBC>
 {

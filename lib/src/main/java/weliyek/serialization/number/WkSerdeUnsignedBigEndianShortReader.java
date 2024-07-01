@@ -44,18 +44,15 @@ public final class WkSerdeUnsignedBigEndianShortReader
 
   WkSerdeUnsignedBigEndianShortReader(
     int index,
-    WkSerdeDtreeOperationSettings settings,
-    WkSerdeDtreeBytestreamInputBase<?> parentBytestream,
-    WkSerdeDtreeMsgInputFieldCore<?,?,?,?,?,?,?,?> msgFieldCore,
+    WkSerdeDtreeMsgInputFieldCore<?, WkSerdeDtreeOperationSettings, ?, ?, WkSerdeDtreeBytestreamInputBase<?>, ?, ?, ?>
+      readerFieldCore,
     WkSerdeDtreeNumberDefinitionCoreSimplified<
       Integer,WkSerdeUnsignedBigEndianShortReader,?,WkSerdeUnsignedBigEndianShort> definitionCore) {
     operationCore = new WkSerdeDtreeNumberMsgReaderCoreSimplified<Integer, WkSerdeUnsignedBigEndianShortReader, WkSerdeUnsignedBigEndianShort>(
-                        index,
-                        settings,
-                        parentBytestream,
-                        msgFieldCore,
-                        definitionCore,
-                        this);
+                            index,
+                            readerFieldCore,
+                            definitionCore,
+                            this);
   }
 
   @Override

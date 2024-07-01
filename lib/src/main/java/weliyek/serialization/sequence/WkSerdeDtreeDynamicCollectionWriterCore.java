@@ -81,18 +81,13 @@ public final class WkSerdeDtreeDynamicCollectionWriterCore<
 
   public WkSerdeDtreeDynamicCollectionWriterCore(
     int index,
-    T serializable,
-    YS settings,
-    WkSerdeDtreeBytestreamOutputBase<?> parentBytestream,
-    WkSerdeDtreeMsgOutputFieldCore<?,?,?,?,?,?,?,?> writerFieldCore,
+    WkSerdeDtreeMsgOutputFieldCore<T,YS,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
+      writerFieldCore,
     WkSerdeDtreeDynamicCollectionDefinitionCore<
       T,?,?,?,YS,YO,YD,ZT,?,?,?,ZYS,ZYO,ZYD,? extends ZYD,ET,?,?,?,EYS,EYD,EYO,? extends EYD,?,VYS,? extends YD> definitionCore,
     YO operationBody) {
     super(
           index,
-          serializable,
-          settings,
-          parentBytestream,
           writerFieldCore,
           definitionCore,
           operationBody);

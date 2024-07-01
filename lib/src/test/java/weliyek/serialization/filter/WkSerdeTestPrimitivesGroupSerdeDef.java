@@ -52,7 +52,7 @@ import weliyek.serialization.string.WkSerdeStringFixedLengthBytes;
 import weliyek.serialization.string.WkSerdeStringFixedLengthBytesReader;
 import weliyek.serialization.string.WkSerdeStringFixedLengthBytesWriter;
 
-public class WkSerdeTestPrimitivesGroupStructDefinition
+public class WkSerdeTestPrimitivesGroupSerdeDef
         implements WkSerdeDtreeAggregatorStructDefinition<
                         WkSerdeTestPrimitivesGroup>
 {
@@ -60,12 +60,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
   final WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                         WkSerdeTestPrimitivesGroup,
                         WkSerdeDtreeOperationSettings,
-                        WkSerdeTestPrimitivesGroupStructDefinition,
-                        WkSerdeTestPrimitivesGroupMsgReader,
+                        WkSerdeTestPrimitivesGroupSerdeDef,
+                        WkSerdeTestPrimitivesGroupSerdeReader,
                         WkSerdeDtreeOperationSettings,
-                        WkSerdeTestPrimitivesGroupStructDefinition,
-                        WkSerdeTestPrimitivesGroupMsgWriter,
-                        WkSerdeTestPrimitivesGroupStructDefinition> definitionCore;
+                        WkSerdeTestPrimitivesGroupSerdeDef,
+                        WkSerdeTestPrimitivesGroupSerdeWriter,
+                        WkSerdeTestPrimitivesGroupSerdeDef> definitionCore;
 
   final WkSerdeDtreeStructSubfieldCore<
                                 Byte,
@@ -74,12 +74,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeSignedByte,
                                 WkSerdeSignedByteReader,
                                 WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                                WkSerdeTestPrimitivesGroupMsgReader,
+                                WkSerdeTestPrimitivesGroupSerdeReader,
                                 WkSerdeDtreeOperationSettings,
                                 WkSerdeSignedByte,
                                 WkSerdeSignedByteWriter,
                                 WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                                WkSerdeTestPrimitivesGroupMsgWriter,
+                                WkSerdeTestPrimitivesGroupSerdeWriter,
                                 WkSerdeSignedByte> byteSubcomponent;
 
   final WkSerdeDtreeStructSubfieldCore<
@@ -89,12 +89,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeSignedBigEndianShort,
                                 WkSerdeSignedBigEndianShortReader,
                                 WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                                WkSerdeTestPrimitivesGroupMsgReader,
+                                WkSerdeTestPrimitivesGroupSerdeReader,
                                 WkSerdeDtreeOperationSettings,
                                 WkSerdeSignedBigEndianShort,
                                 WkSerdeSignedBigEndianShortWriter,
                                 WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                                WkSerdeTestPrimitivesGroupMsgWriter,
+                                WkSerdeTestPrimitivesGroupSerdeWriter,
                                 WkSerdeSignedBigEndianShort> shortSubcomponent;
 
   final WkSerdeDtreeStructSubfieldCore<
@@ -104,12 +104,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeSignedBigEndianInteger,
                                 WkSerdeSignedBigEndianIntegerReader,
                                 WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                                WkSerdeTestPrimitivesGroupMsgReader,
+                                WkSerdeTestPrimitivesGroupSerdeReader,
                                 WkSerdeDtreeOperationSettings,
                                 WkSerdeSignedBigEndianInteger,
                                 WkSerdeSignedBigEndianIntegerWriter,
                                 WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                                WkSerdeTestPrimitivesGroupMsgWriter,
+                                WkSerdeTestPrimitivesGroupSerdeWriter,
                                 WkSerdeSignedBigEndianInteger> intSubcomponent;
 
   final WkSerdeDtreeStructSubfieldCore<
@@ -119,12 +119,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeSignedBigEndianLong,
                                 WkSerdeSignedBigEndianLongReader,
                                 WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                                WkSerdeTestPrimitivesGroupMsgReader,
+                                WkSerdeTestPrimitivesGroupSerdeReader,
                                 WkSerdeDtreeOperationSettings,
                                 WkSerdeSignedBigEndianLong,
                                 WkSerdeSignedBigEndianLongWriter,
                                 WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                                WkSerdeTestPrimitivesGroupMsgWriter,
+                                WkSerdeTestPrimitivesGroupSerdeWriter,
                                 WkSerdeSignedBigEndianLong> longSubcomponent;
 
   final WkSerdeDtreeStructSubfieldCore<
@@ -134,12 +134,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeStringFixedLengthBytes,
                                 WkSerdeStringFixedLengthBytesReader,
                                 WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                                WkSerdeTestPrimitivesGroupMsgReader,
+                                WkSerdeTestPrimitivesGroupSerdeReader,
                                 WkSerdeDtreeOperationSettings,
                                 WkSerdeStringFixedLengthBytes,
                                 WkSerdeStringFixedLengthBytesWriter,
                                 WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                                WkSerdeTestPrimitivesGroupMsgWriter,
+                                WkSerdeTestPrimitivesGroupSerdeWriter,
                                 WkSerdeStringFixedLengthBytes> fixedStrSubcomponent;
 
   final WkSerdeDtreeStructSubfieldCore<
@@ -149,27 +149,27 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
                                 WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ? extends WkSerdeSignedBigEndianInteger>,
                                 WkSerdeStringDynamicBytesReader<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
                                 WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-                                WkSerdeTestPrimitivesGroupMsgReader,
+                                WkSerdeTestPrimitivesGroupSerdeReader,
                                 WkSerdeDtreeOperationSettings,
                                 WkSerdeStringDynamicBytes<Integer, ?, ?, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ? extends WkSerdeSignedBigEndianInteger>,
                                 WkSerdeStringDynamicBytesWriter<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
                                 WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-                                WkSerdeTestPrimitivesGroupMsgWriter,
+                                WkSerdeTestPrimitivesGroupSerdeWriter,
                                 WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>> dynStrSubcomponent;
 
-  WkSerdeTestPrimitivesGroupStructDefinition(
+  WkSerdeTestPrimitivesGroupSerdeDef(
     WkSerdeDtreeStructFieldCore<?,?,?,?,?,?,?,?> componentCore) {
     this.definitionCore = new WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<
                                   WkSerdeTestPrimitivesGroup,
                                   WkSerdeDtreeOperationSettings,
-                                  WkSerdeTestPrimitivesGroupStructDefinition,
-                                  WkSerdeTestPrimitivesGroupMsgReader,
+                                  WkSerdeTestPrimitivesGroupSerdeDef,
+                                  WkSerdeTestPrimitivesGroupSerdeReader,
                                   WkSerdeDtreeOperationSettings,
-                                  WkSerdeTestPrimitivesGroupStructDefinition,
-                                  WkSerdeTestPrimitivesGroupMsgWriter,
-                                  WkSerdeTestPrimitivesGroupStructDefinition>(
-                                      (i,xpc,dc) -> new WkSerdeTestPrimitivesGroupMsgReader(i,xpc,dc).operationCore,
-                                      (i,ypc,dc) -> new WkSerdeTestPrimitivesGroupMsgWriter(i,ypc,dc).operationCore,
+                                  WkSerdeTestPrimitivesGroupSerdeDef,
+                                  WkSerdeTestPrimitivesGroupSerdeWriter,
+                                  WkSerdeTestPrimitivesGroupSerdeDef>(
+                                      (i,xpc,dc) -> new WkSerdeTestPrimitivesGroupSerdeReader(i,xpc,dc).operationCore,
+                                      (i,ypc,dc) -> new WkSerdeTestPrimitivesGroupSerdeWriter(i,ypc,dc).operationCore,
                                       componentCore,
                                       (ic) -> {},
                                       (ic) -> new WkSerdeTestPrimitivesGroup(ic.body()),
@@ -192,12 +192,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
               WkSerdeSignedByte,
               WkSerdeSignedByteReader,
               WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-              WkSerdeTestPrimitivesGroupMsgReader,
+              WkSerdeTestPrimitivesGroupSerdeReader,
               WkSerdeDtreeOperationSettings,
               WkSerdeSignedByte,
               WkSerdeSignedByteWriter,
               WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-              WkSerdeTestPrimitivesGroupMsgWriter,
+              WkSerdeTestPrimitivesGroupSerdeWriter,
               WkSerdeSignedByte>
   addByteSubcomponent() {
     return this.definitionCore.<Byte, WkSerdeDtreeOperationSettings, WkSerdeSignedByte, WkSerdeSignedByteReader, WkSerdeDtreeOperationSettings, WkSerdeSignedByte, WkSerdeSignedByteWriter, WkSerdeSignedByte>
@@ -221,12 +221,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
               WkSerdeSignedBigEndianShort,
               WkSerdeSignedBigEndianShortReader,
               WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-              WkSerdeTestPrimitivesGroupMsgReader,
+              WkSerdeTestPrimitivesGroupSerdeReader,
               WkSerdeDtreeOperationSettings,
               WkSerdeSignedBigEndianShort,
               WkSerdeSignedBigEndianShortWriter,
               WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-              WkSerdeTestPrimitivesGroupMsgWriter,
+              WkSerdeTestPrimitivesGroupSerdeWriter,
               WkSerdeSignedBigEndianShort>
   addShortSubcomponent() {
     return this.definitionCore.<Short, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortWriter, WkSerdeSignedBigEndianShort>
@@ -250,12 +250,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
               WkSerdeSignedBigEndianInteger,
               WkSerdeSignedBigEndianIntegerReader,
               WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-              WkSerdeTestPrimitivesGroupMsgReader,
+              WkSerdeTestPrimitivesGroupSerdeReader,
               WkSerdeDtreeOperationSettings,
               WkSerdeSignedBigEndianInteger,
               WkSerdeSignedBigEndianIntegerWriter,
               WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-              WkSerdeTestPrimitivesGroupMsgWriter,
+              WkSerdeTestPrimitivesGroupSerdeWriter,
               WkSerdeSignedBigEndianInteger>
   addIntSubcomponent() {
     return this.definitionCore.<Integer, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>
@@ -279,12 +279,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
               WkSerdeSignedBigEndianLong,
               WkSerdeSignedBigEndianLongReader,
               WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-              WkSerdeTestPrimitivesGroupMsgReader,
+              WkSerdeTestPrimitivesGroupSerdeReader,
               WkSerdeDtreeOperationSettings,
               WkSerdeSignedBigEndianLong,
               WkSerdeSignedBigEndianLongWriter,
               WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-              WkSerdeTestPrimitivesGroupMsgWriter,
+              WkSerdeTestPrimitivesGroupSerdeWriter,
               WkSerdeSignedBigEndianLong>
   addLongSubcomponent() {
     return this.definitionCore.<Long, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianLong, WkSerdeSignedBigEndianLongReader, WkSerdeDtreeOperationSettings, WkSerdeSignedBigEndianLong, WkSerdeSignedBigEndianLongWriter, WkSerdeSignedBigEndianLong>
@@ -308,12 +308,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
               WkSerdeStringFixedLengthBytes,
               WkSerdeStringFixedLengthBytesReader,
               WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-              WkSerdeTestPrimitivesGroupMsgReader,
+              WkSerdeTestPrimitivesGroupSerdeReader,
               WkSerdeDtreeOperationSettings,
               WkSerdeStringFixedLengthBytes,
               WkSerdeStringFixedLengthBytesWriter,
               WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-              WkSerdeTestPrimitivesGroupMsgWriter,
+              WkSerdeTestPrimitivesGroupSerdeWriter,
               WkSerdeStringFixedLengthBytes>
   addFixedStrSubcomponent() {
     String bytesLabel = "BYTES";
@@ -346,12 +346,12 @@ public class WkSerdeTestPrimitivesGroupStructDefinition
               WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, ?, ?, ? extends WkSerdeSignedBigEndianInteger>,
               WkSerdeStringDynamicBytesReader<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader>,
               WkSerdeDtreeBytestreamInputBase<? extends WkSerdeDtreeBytestreamInput>,
-              WkSerdeTestPrimitivesGroupMsgReader,
+              WkSerdeTestPrimitivesGroupSerdeReader,
               WkSerdeDtreeOperationSettings,
               WkSerdeStringDynamicBytes<Integer, ?, ?, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, ? extends WkSerdeSignedBigEndianInteger>,
               WkSerdeStringDynamicBytesWriter<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter>,
               WkSerdeDtreeBytestreamOutputBase<? extends WkSerdeDtreeBytestreamOutput>,
-              WkSerdeTestPrimitivesGroupMsgWriter,
+              WkSerdeTestPrimitivesGroupSerdeWriter,
               WkSerdeStringDynamicBytes<Integer, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerReader, WkSerdeSignedBigEndianInteger, WkSerdeSignedBigEndianIntegerWriter, WkSerdeSignedBigEndianInteger>>
   addDynStrSubcomponent() {
     String bytesLabel = "BYTES";

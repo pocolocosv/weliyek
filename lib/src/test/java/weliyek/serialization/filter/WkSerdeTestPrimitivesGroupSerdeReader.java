@@ -43,33 +43,33 @@ import weliyek.serialization.string.WkSerdeStringDynamicBytesReader;
 import weliyek.serialization.string.WkSerdeStringFixedLengthBytes;
 import weliyek.serialization.string.WkSerdeStringFixedLengthBytesReader;
 
-public class WkSerdeTestPrimitivesGroupMsgReader
+public class WkSerdeTestPrimitivesGroupSerdeReader
         implements WkSerdeDtreeAggregatorMsgReader<
                         WkSerdeTestPrimitivesGroup,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationInputRuntime<WkSerdeDtreeBytestreamInput>,
                         WkSerdeDtreeOperationResult<WkSerdeTestPrimitivesGroup>,
-                        WkSerdeTestPrimitivesGroupStructDefinition>
+                        WkSerdeTestPrimitivesGroupSerdeDef>
 {
 
   final WkSerdeDtreeAggregatorMsgReaderCoreSimplified<
                         WkSerdeTestPrimitivesGroup,
                         WkSerdeDtreeOperationSettings,
-                        WkSerdeTestPrimitivesGroupStructDefinition,
-                        WkSerdeTestPrimitivesGroupMsgReader> operationCore;
+                        WkSerdeTestPrimitivesGroupSerdeDef,
+                        WkSerdeTestPrimitivesGroupSerdeReader> operationCore;
 
-  WkSerdeTestPrimitivesGroupMsgReader(
+  WkSerdeTestPrimitivesGroupSerdeReader(
     int index,
     WkSerdeDtreeMsgInputFieldCore<?,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamInputBase<?>,?,?,?>
       readerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkSerdeTestPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgReader, ?, ?, ?, ? extends WkSerdeTestPrimitivesGroupStructDefinition>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkSerdeTestPrimitivesGroup, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupSerdeDef, WkSerdeTestPrimitivesGroupSerdeReader, ?, ?, ?, ? extends WkSerdeTestPrimitivesGroupSerdeDef>
       definitionCore) {
     this.operationCore = new WkSerdeDtreeAggregatorMsgReaderCoreSimplified<>(
                                  index, readerFieldCore, definitionCore, this);
   }
 
   @Override
-  public WkSerdeTestPrimitivesGroupStructDefinition definition() {
+  public WkSerdeTestPrimitivesGroupSerdeDef definition() {
     return this.operationCore.definition();
   }
 

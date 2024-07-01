@@ -54,16 +54,16 @@ public class WkSerdeTestFilterBuilderTest
   private static WkSerdeDtreeStruct<
                       WkSerdeTestMultipleLists,
                       WkSerdeDtreeOperationSettings,
-                      WkSerdeTestMultipleListStructDefinition,
-                      WkSerdeTestMultipleListMsgReader,
+                      WkSerdeTestMultipleListSerdeDef,
+                      WkSerdeTestMultipleListSerdeReader,
                       WkSerdeDtreeBytestreamInputBase<?>,
                       WkSerdeDtreeOperationSettings,
-                      WkSerdeTestMultipleListStructDefinition,
-                      WkSerdeTestMultipleListMsgWriter,
+                      WkSerdeTestMultipleListSerdeDef,
+                      WkSerdeTestMultipleListSerdeWriter,
                       WkSerdeDtreeBytestreamOutputBase<?>,
-                      WkSerdeTestMultipleListStructDefinition> MULTIPLE_LIST_PACKET;
-  static WkSerdeTestPrimitivesGroupListStructDefinition PRIMITIVELIST_FIELD;
-  static WkSerdeTestPrimitivesGroupStructDefinition PRIMITIVEGROUP_FIELD;
+                      WkSerdeTestMultipleListSerdeDef> MULTIPLE_LIST_PACKET;
+  static WkSerdeTestPrimitivesGroupListSerdeDef PRIMITIVELIST_FIELD;
+  static WkSerdeTestPrimitivesGroupSerdeDef PRIMITIVEGROUP_FIELD;
   static WkSerdeSignedByte BYTE_FIELD;
   static WkSerdeSignedBigEndianInteger INT_FIELD;
   static WkSerdeSignedBigEndianLong LONG_FIELD;
@@ -90,7 +90,7 @@ public class WkSerdeTestFilterBuilderTest
 
   @BeforeClass
   public static void setUpBeforeClass() throws Exception {
-    MULTIPLE_LIST_PACKET = WkSerdeTestMultipleListStructDefinition.newStruct();
+    MULTIPLE_LIST_PACKET = WkSerdeTestMultipleListSerdeDef.newStruct();
     PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().definition().elements().definition();
     PRIMITIVEGROUP_FIELD = PRIMITIVELIST_FIELD.variableSequence().definition().elements().definition();
     BYTE_FIELD = PRIMITIVEGROUP_FIELD.byteSubcomponent.definition();
@@ -235,14 +235,14 @@ public class WkSerdeTestFilterBuilderTest
 
       KetzaByteOutputStream out = new KetzaByteOutputStream();
 
-      WkSerdeDtreeWriter<WkSerdeTestMultipleLists, WkSerdeTestMultipleListStructDefinition, WkSerdeTestMultipleListMsgWriter>
+      WkSerdeDtreeWriter<WkSerdeTestMultipleLists, WkSerdeTestMultipleListSerdeDef, WkSerdeTestMultipleListSerdeWriter>
         multiListsSerializer = MULTIPLE_LIST_PACKET.newOutputPacket(msgWrite, WkSerdeDtreeOperationSettings.EMPTY, out);
 
       while(multiListsSerializer.isInProgress()) {
         multiListsSerializer.processBytestream();
       }
 
-      WkSerdeDtreeReader<WkSerdeTestMultipleLists, WkSerdeTestMultipleListStructDefinition, WkSerdeTestMultipleListMsgReader>
+      WkSerdeDtreeReader<WkSerdeTestMultipleLists, WkSerdeTestMultipleListSerdeDef, WkSerdeTestMultipleListSerdeReader>
         multiListsDeserializer = MULTIPLE_LIST_PACKET.newInputPacket(WkSerdeDtreeOperationSettings.EMPTY, out.inputStream(), filter);
 
       while(multiListsDeserializer.isInProgress()) {

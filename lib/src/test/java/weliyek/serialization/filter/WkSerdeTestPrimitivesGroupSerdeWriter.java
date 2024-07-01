@@ -43,26 +43,26 @@ import weliyek.serialization.string.WkSerdeStringDynamicBytesWriter;
 import weliyek.serialization.string.WkSerdeStringFixedLengthBytes;
 import weliyek.serialization.string.WkSerdeStringFixedLengthBytesWriter;
 
-public class WkSerdeTestPrimitivesGroupMsgWriter
+public class WkSerdeTestPrimitivesGroupSerdeWriter
         implements WkSerdeDtreeAggregatorMsgWriter<
                         WkSerdeTestPrimitivesGroup,
                         WkSerdeDtreeOperationSettings,
                         WkSerdeDtreeOperationOutputRuntime<WkSerdeDtreeBytestreamOutput>,
                         WkSerdeDtreeOperationResult<WkSerdeTestPrimitivesGroup>,
-                        WkSerdeTestPrimitivesGroupStructDefinition>
+                        WkSerdeTestPrimitivesGroupSerdeDef>
 {
 
   final WkSerdeDtreeAggregatorMsgWriterCoreSimplified<
                         WkSerdeTestPrimitivesGroup,
                         WkSerdeDtreeOperationSettings,
-                        WkSerdeTestPrimitivesGroupStructDefinition,
-                        WkSerdeTestPrimitivesGroupMsgWriter> operationCore;
+                        WkSerdeTestPrimitivesGroupSerdeDef,
+                        WkSerdeTestPrimitivesGroupSerdeWriter> operationCore;
 
-  WkSerdeTestPrimitivesGroupMsgWriter(
+  WkSerdeTestPrimitivesGroupSerdeWriter(
     int index,
     WkSerdeDtreeMsgOutputFieldCore<WkSerdeTestPrimitivesGroup,WkSerdeDtreeOperationSettings,?,?,WkSerdeDtreeBytestreamOutputBase<?>,?,?,?>
       writerFieldCore,
-    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkSerdeTestPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupStructDefinition, WkSerdeTestPrimitivesGroupMsgWriter, ? extends WkSerdeTestPrimitivesGroupStructDefinition>
+    WkSerdeDtreeAggregatorStructDefinitionCoreSimplified<WkSerdeTestPrimitivesGroup, ?, ?, ?, WkSerdeDtreeOperationSettings, WkSerdeTestPrimitivesGroupSerdeDef, WkSerdeTestPrimitivesGroupSerdeWriter, ? extends WkSerdeTestPrimitivesGroupSerdeDef>
       definitionCore) {
     this.operationCore = new WkSerdeDtreeAggregatorMsgWriterCoreSimplified<>(
                                  index, writerFieldCore, definitionCore, this);
@@ -93,7 +93,7 @@ public class WkSerdeTestPrimitivesGroupMsgWriter
   }
 
   @Override
-  public WkSerdeTestPrimitivesGroupStructDefinition definition() {
+  public WkSerdeTestPrimitivesGroupSerdeDef definition() {
     return this.operationCore.definition();
   }
 

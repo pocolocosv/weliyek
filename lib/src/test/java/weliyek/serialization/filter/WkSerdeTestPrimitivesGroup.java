@@ -40,7 +40,7 @@ public class WkSerdeTestPrimitivesGroup
         this.varLengthStr = Objects.requireNonNull(str);
     }
 
-    WkSerdeTestPrimitivesGroup(WkSerdeTestPrimitivesGroupMsgReader deserializer) {
+    WkSerdeTestPrimitivesGroup(WkSerdeTestPrimitivesGroupSerdeReader deserializer) {
       this(
           deserializer.singleByte().get().firstOperation().get().result().get().serializable().get().byteValue(),
           deserializer.singleShort().get().firstOperation().get().result().get().serializable().get().shortValue(),

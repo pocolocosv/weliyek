@@ -18,7 +18,12 @@
 package weliyek.serialization.number;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
@@ -28,10 +33,45 @@ import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
 
 public class WkSerdeUnsignedLittleEndianShort
     implements WkSerdeDtreeNumberStructDefinition<Integer>
 {
+
+  public static <T,
+                 XO extends WkSerdeDtreeAggregatorMsgReader<T,?,?,?,?>,
+                 YO extends WkSerdeDtreeAggregatorMsgWriter<T,?,?,?,?>>
+  WkSerdeDtreeStructSubfieldCore<Integer, T, WkSerdeDtreeOperationSettings, WkSerdeUnsignedLittleEndianShort,
+    WkSerdeUnsignedLittleEndianShortReader, ? extends WkSerdeDtreeBytestreamInputBase<?>, XO,
+    WkSerdeDtreeOperationSettings, WkSerdeUnsignedLittleEndianShort, WkSerdeUnsignedLittleEndianShortWriter,
+    ? extends WkSerdeDtreeBytestreamOutputBase<?>, YO, WkSerdeUnsignedLittleEndianShort>
+  addAsSingleOperationSubfield(
+    String byteLabel,
+    WkSerdeDtreeAggregatorStructDefinitionCore<
+      T,?,?,? extends WkSerdeDtreeBytestreamInputBase<?>,?,?,?,?,XO,?,?,?,?,
+      ? extends WkSerdeDtreeBytestreamOutputBase<?>,?,?,?,?,YO,?,?,?,?> aggregatorCore,
+    Optional<Predicate<? super XO>> rxEnablingTest,
+    Optional<Predicate<? super YO>> txEnablingTest,
+    WkSzPacketWriteDisaggregator<Integer,WkSerdeUnsignedLittleEndianShort,T,YO>
+      disaggregator,
+    boolean readRequired) {
+    return aggregatorCore.<Integer, WkSerdeDtreeOperationSettings, WkSerdeUnsignedLittleEndianShort,
+             WkSerdeUnsignedLittleEndianShortReader, WkSerdeDtreeOperationSettings,
+             WkSerdeUnsignedLittleEndianShort, WkSerdeUnsignedLittleEndianShortWriter, WkSerdeUnsignedLittleEndianShort>
+                addSubcomponent(
+                    byteLabel,
+                    rxEnablingTest,
+                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
+                    WkSerdeDtreeOperationSettings::none,
+                    txEnablingTest,
+                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
+                    WkSerdeDtreeOperationSettings::none,
+                    disaggregator,
+                    readRequired,
+                    WkSerdeUnsignedLittleEndianShort::newCore);
+  }
 
   public static WkSerdeDtreeStruct<
                       Integer,

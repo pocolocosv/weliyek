@@ -18,7 +18,12 @@
 package weliyek.serialization.number;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgReader;
+import weliyek.serialization.WkSerdeDtreeAggregatorMsgWriter;
+import weliyek.serialization.WkSerdeDtreeAggregatorStructDefinitionCore;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingInputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamCountingOutputStream;
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
@@ -28,10 +33,46 @@ import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeStructCore;
 import weliyek.serialization.WkSerdeDtreeStructField;
 import weliyek.serialization.WkSerdeDtreeStructFieldCore;
+import weliyek.serialization.WkSerdeDtreeStructSubfieldCore;
+import weliyek.serialization.WkSzPacketWriteDisaggregator;
 
 public class WkSerdeSignedByte
     implements WkSerdeDtreeNumberStructDefinition<Byte>
 {
+
+  public static <
+  T,
+  XO extends WkSerdeDtreeAggregatorMsgReader<T,?,?,?,?>,
+  YO extends WkSerdeDtreeAggregatorMsgWriter<T,?,?,?,?>>
+  WkSerdeDtreeStructSubfieldCore<Byte, T, WkSerdeDtreeOperationSettings, WkSerdeSignedByte,
+    WkSerdeSignedByteReader, ? extends WkSerdeDtreeBytestreamInputBase<?>, XO,
+    WkSerdeDtreeOperationSettings, WkSerdeSignedByte, WkSerdeSignedByteWriter,
+    ? extends WkSerdeDtreeBytestreamOutputBase<?>, YO, WkSerdeSignedByte>
+  addAsSingleOperationSubfield(
+    String byteLabel,
+    WkSerdeDtreeAggregatorStructDefinitionCore<
+      T,?,?,? extends WkSerdeDtreeBytestreamInputBase<?>,?,?,?,?,XO,?,?,?,?,
+      ? extends WkSerdeDtreeBytestreamOutputBase<?>,?,?,?,?,YO,?,?,?,?> aggregatorCore,
+    Optional<Predicate<? super XO>> rxEnablingTest,
+    Optional<Predicate<? super YO>> txEnablingTest,
+    WkSzPacketWriteDisaggregator<Byte,WkSerdeSignedByte,T,YO>
+      disaggregator,
+    boolean readRequired) {
+    return aggregatorCore.<Byte, WkSerdeDtreeOperationSettings, WkSerdeSignedByte,
+             WkSerdeSignedByteReader, WkSerdeDtreeOperationSettings,
+             WkSerdeSignedByte, WkSerdeSignedByteWriter, WkSerdeSignedByte>
+                addSubcomponent(
+                    byteLabel,
+                    rxEnablingTest,
+                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
+                    WkSerdeDtreeOperationSettings::none,
+                    txEnablingTest,
+                    WkSerdeDtreeAggregatorStructDefinitionCore::opWithSingleResult,
+                    WkSerdeDtreeOperationSettings::none,
+                    disaggregator,
+                    readRequired,
+                    WkSerdeSignedByte::newCore);
+  }
 
   public static WkSerdeDtreeStruct<
                       Byte,

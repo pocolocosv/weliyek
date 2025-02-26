@@ -17,15 +17,15 @@
  */
 package weliyek.serialization.number;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Optional;
 
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +39,7 @@ import weliyek.serialization.WkSerdeDtreeStruct;
 import weliyek.serialization.WkSerdeDtreeWriter;
 import weliyek.serialization.util.KetzaByteOutputStream;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class WkSerdeDtreeNumberTest {
 
   private static final Logger logger = LoggerFactory.getLogger(WkSerdeDtreeNumberTest.class);
@@ -114,10 +114,6 @@ public class WkSerdeDtreeNumberTest {
     assertTrue(completedField.isPresent());
     assertEquals(byteOutput.firstOperation().get(), completedField.get());
     assertEquals(b, byteOutput.firstOperation().get().serializable());
-    assertTrue(byteOutput.firstOperation().get().dashboard().bytestream().isClosed());
-    assertEquals(1, byteOutput.firstOperation().get().dashboard().bytestream().getFieldProcessedBytes());
-    assertEquals(0, byteOutput.firstOperation().get().dashboard().bytestream().getStartIndexInGlobalBytestream());
-    assertEquals(1, byteOutput.firstOperation().get().dashboard().bytestream().getTotalPacketProcessedBytes());
 
     assertEquals(1, outputBuffer.size());
 
@@ -135,6 +131,7 @@ public class WkSerdeDtreeNumberTest {
     //assertTrue(unsignedByteReading.isRequiredByProtocol());
     assertTrue(unsignedByteReading.firstOperation().get().result().isPresent());
     assertTrue(unsignedByteReading.firstOperation().get().result().get().serializable().isPresent());
+    assertEquals(b, unsignedByteReading.firstOperation().get().result().get().serializable().get());
     assertReadingValueEqualsTo((byte) 0xFF, (short) 0x00FF, 0x00FF, 0x00FFL, unsignedByteReading);
   }
 

@@ -7,8 +7,10 @@
  */
 
 plugins {
-    // Apply the java-library plugin for API and implementation separation.
+    // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+    // Apply the eclipse plugin
+    id 'eclipse'
 }
 
 repositories {
@@ -16,41 +18,350 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
-    testImplementation "org.mockito:mockito-core:3.+"
-    testCompileOnly 'junit:junit:4.13'
-    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.7'
-
-	// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
-	testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.8'
-	// https://mvnrepository.com/artifact/ch.qos.logback/logback-core
-	implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.8'
-
-    //implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.20.0'
-    //implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.20.0'
-    //implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: '2.20.0'
-
-    
-    implementation 'commons-io:commons-io:2.13.0'
+// Explicitly set Java compatibility
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
-// Apply a specific Java toolchain to ease working on different environments.
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+eclipse {
+    classpath {
+        // Enable downloadSources
+        downloadSources = true
+        // Enable downloadJavadoc
+        downloadJavadoc = true
+        
+        // Configure source and target compatibility for Eclipse
+        file {
+            whenMerged { classpath ->
+                classpath.entries.findAll { entry -> entry.kind == 'con' && entry.path.startsWith('org.eclipse.jdt.launching.JRE_CONTAINER') }*.accessRules.add(new org.gradle.plugins.ide.eclipse.model.AccessRule('accessible', 'jdk.incubator/**'))
+            }
+        }
     }
+
+    jdt {
+        // Set Java version for Eclipse
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+        
+        // Configure file encoding
+        file.withProperties { properties ->
+            properties['encoding'] = 'UTF-8'
+        }
+    }
+}
+
+// Ensure Eclipse project files are regenerated if build.gradle changes
+tasks.eclipse.dependsOn(cleanEclipse)
+
+sourceSets {
+    main {
+        java {
+            exclude 'weliyek/bitcoin/BitcoinCommandInputField.java'
+            exclude 'weliyek/bitcoin/BitcoinCommandOutputField.java'
+            exclude 'weliyek/bitcoin/BitcoinCommandReading.java'
+            exclude 'weliyek/bitcoin/BitcoinCommandWriting.java'
+            exclude 'weliyek/bitcoin/BitcoinConfig.java'
+            exclude 'weliyek/bitcoin/BitcoinField.java'
+            exclude 'weliyek/bitcoin/BitcoinInputField.java'
+            exclude 'weliyek/bitcoin/BitcoinInventoryVector.java'
+            exclude 'weliyek/bitcoin/BitcoinInventoryVectorList.java'
+            exclude 'weliyek/bitcoin/BitcoinInventoryVectorType.java'
+            exclude 'weliyek/bitcoin/BitcoinMessageMagicName.java'
+            exclude 'weliyek/bitcoin/BitcoinMsg.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddr.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrCoreKernelAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrROCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrROCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrRWCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrRWCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrSerialization.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgAddrTools.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgCommissioners.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocks.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksKernelAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksKernelRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksKernelROCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksKernelRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksKernelRWCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksTools.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetData.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataKernelAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataROCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataROCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataRWCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataRWCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataTools.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeaders.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersKernelAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersROCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersROCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersRWCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersRWCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersSerialization.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersTools.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFound.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundKernelAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundROKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundROKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundRWKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundRWKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgNotFoundTools.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgPayload.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgPayloadRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgPayloadRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgReject.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectKernelAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectROKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectROKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectRWKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectRWKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectTools.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgROBody.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgROCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRWBody.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRWCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgSerialization.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgStream.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgStreamBody.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgStreamCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTx.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxKernelAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxROCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxROCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxRWCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxRWCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxTools.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersion.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersionCoreKernel.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersionCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersionRO.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersionRW.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersionSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersionTools.java'
+            exclude 'weliyek/bitcoin/BitcoinNetAddr.java'
+            exclude 'weliyek/bitcoin/BitcoinOperation.java'
+            exclude 'weliyek/bitcoin/BitcoinOutpoint.java'
+            exclude 'weliyek/bitcoin/BitcoinOutpointNamespace.java'
+            exclude 'weliyek/bitcoin/BitcoinOutpointProtoField.java'
+            exclude 'weliyek/bitcoin/BitcoinOutputField.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolFieldBlockHeader.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolFieldScript.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolFieldTxInList.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolFieldTxOutList.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolIO.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolIOVarInt.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageConfig.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldComplexity.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldComplexitySerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldHash.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldHashSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldInventoryVector.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldInventoryVectorList.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldInventoryVectorListSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldInventoryVectorSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldNetAddr.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldNetAddrSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldNodeServices.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolMessageFieldNodeServicesSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolName.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScript.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScriptAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScriptField.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScriptFieldSerializer.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScriptNamespaces.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScriptOpNamespaces.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScriptRO.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolScriptRW.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolSegregatedWitness.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolSegregatedWitnessAbstract.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolSegregatedWitnessField.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolSegregatedWitnessNamespace.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolSegregatedWitnessRO.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolSegregatedWitnessRW.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTransactionRO.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTransactionRW.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTxInNamespaces.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTxNamespaces.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTxOutNamespaces.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTxOutRO.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTxOutRW.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTxRO.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolTxRW.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolVersionName.java'
+            exclude 'weliyek/bitcoin/BitcoinReading.java'
+            exclude 'weliyek/bitcoin/BitcoinScript.java'
+            exclude 'weliyek/bitcoin/BitcoinScriptField.java'
+            exclude 'weliyek/bitcoin/BitcoinScriptOp.java'
+            exclude 'weliyek/bitcoin/BitcoinScriptOpDataField.java'
+            exclude 'weliyek/bitcoin/BitcoinScriptOpDataSizeField.java'
+            exclude 'weliyek/bitcoin/BitcoinScriptOpField.java'
+            exclude 'weliyek/bitcoin/BitcoinScriptOpName.java'
+            exclude 'weliyek/bitcoin/BitcoinTx.java'
+            exclude 'weliyek/bitcoin/BitcoinTxField.java'
+            exclude 'weliyek/bitcoin/BitcoinTxIn.java'
+            exclude 'weliyek/bitcoin/BitcoinTxInField.java'
+            exclude 'weliyek/bitcoin/BitcoinTxInListField.java'
+            exclude 'weliyek/bitcoin/BitcoinTxInRO.java'
+            exclude 'weliyek/bitcoin/BitcoinTxInWitnessesListField.java'
+            exclude 'weliyek/bitcoin/BitcoinTxOut.java'
+            exclude 'weliyek/bitcoin/BitcoinTxOutField.java'
+            exclude 'weliyek/bitcoin/BitcoinTxOutListField.java'
+            exclude 'weliyek/bitcoin/BitcoinTxOutRO.java'
+            exclude 'weliyek/bitcoin/BitcoinTxRO.java'
+            exclude 'weliyek/bitcoin/BitcoinTxSegwitField.java'
+            exclude 'weliyek/bitcoin/BitcoinVersion.java'
+            exclude 'weliyek/bitcoin/BitcoinWriting.java'
+            exclude 'weliyek/bitcoin/BlockHeader.java'
+            exclude 'weliyek/bitcoin/BodyType.java'
+            exclude 'weliyek/bitcoin/BtcProtoContext.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldCommand.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldComplexity.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldHash.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldInet6Address.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldInvectoryVector.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldInventoryVectorType.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldService.java'
+            exclude 'weliyek/bitcoin/BtcProtoScriptList.java'
+            exclude 'weliyek/bitcoin/CountingIterator.java'
+            exclude 'weliyek/bitcoin/MessageBase.java'
+            exclude 'weliyek/bitcoin/MessageBaseCommissioner.java'
+            exclude 'weliyek/bitcoin/MessageBaseCore.java'
+            exclude 'weliyek/bitcoin/MessageCommonCoreKernelBase.java'
+            exclude 'weliyek/bitcoin/MessageCommonCoreKernelSerialization.java'
+            exclude 'weliyek/bitcoin/MessageDoubleDigest.java'
+            exclude 'weliyek/bitcoin/MessagePayloadAccess.java'
+            exclude 'weliyek/bitcoin/MessagePayloadHandler.java'
+            exclude 'weliyek/bitcoin/MessagePayloadHandlerRO.java'
+            exclude 'weliyek/bitcoin/MessagePayloadHandlerRW.java'
+            exclude 'weliyek/bitcoin/MessagePayloadHandlerSerializer.java'
+            exclude 'weliyek/bitcoin/MessagePayloadIdentity.java'
+            exclude 'weliyek/bitcoin/MessagePayloadRO.java'
+            exclude 'weliyek/bitcoin/MessagePayloadRW.java'
+            exclude 'weliyek/bitcoin/MessagePayloadTests.java'
+            exclude 'weliyek/bitcoin/MessageRWArgs.java'
+            exclude 'weliyek/bitcoin/MessageUnpacked.java'
+            exclude 'weliyek/bitcoin/MessageUnpackedCommissioner.java'
+            exclude 'weliyek/bitcoin/MessageUnpackedCommon.java'
+            exclude 'weliyek/bitcoin/MessageUnpackedCore.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernel.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelAbstract.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelCommissioner.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelCommissionerBase.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelRO.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelROCommissioner.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelROCommissionerAbstract.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelROCommissionerROKernel.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelRW.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelRWCommissioner.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelRWCommissionerAbstract.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelRWCommissionerRWKernel.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelTools.java'
+            exclude 'weliyek/bitcoin/PayloadCoreKernelToolsAbstract.java'
+            exclude 'weliyek/bitcoin/PayloadFactory.java'
+            exclude 'weliyek/bitcoin/PayloadKernelSerializer.java'
+            exclude 'weliyek/bitcoin/PayloadListCoreKernelAbstract.java'
+            exclude 'weliyek/bitcoin/ProtocolProperties.java'
+            exclude 'weliyek/bitcoin/VarIntBodyField.java'
+            exclude 'weliyek/bitcoin/VarIntField.java'
+        }
+    }
+    test {
+        java {
+            exclude 'weliyek/bitcoin/BitcoinCommandSerializationTest.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetBlocksTest.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgGetDataTest.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgHeadersTest.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgRejectTest.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTest.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgTxTest.java'
+            exclude 'weliyek/bitcoin/BitcoinMsgVersionTest.java'
+            exclude 'weliyek/bitcoin/BitcoinNetAddrTest.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolFieldInvVecListTest.java'
+            exclude 'weliyek/bitcoin/BitcoinProtocolFieldInvVecTest.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldInventoryVectorTypeTest.java'
+            exclude 'weliyek/bitcoin/BtcProtoFieldServiceTest.java'
+            exclude 'weliyek/bitcoin/InventoryVectorListTest.java'
+            exclude 'weliyek/bitcoin/MessageDoubleDigestTest.java'
+            exclude 'weliyek/bitcoin/TestUtils.java'
+            exclude 'weliyek/bitcoin/VarIntFieldTest.java'
+            exclude 'weliyek/bitcoin/WkBtcCompactSizeSerdeDefTest.java'
+            exclude 'weliyek/bitcoin/WkBtcDifficultyTargetTest.java'
+            exclude 'weliyek/bitcoin/WkBtcHash256Test.java'
+            exclude 'weliyek/bitcoin/WkBtcNetMessageStartTest.java'
+            exclude 'weliyek/bitcoin/WkBtcNetMessageTypeTest.java'
+        }
+    }
+}
+
+dependencies {
+    // Testing dependencies
+    testImplementation platform('org.junit:junit-bom:5.10.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.mockito:mockito-core:5.3.1'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.3.1'
+    
+    // API dependencies - exposed to consumers
+    api 'org.apache.commons:commons-math3:3.6.1'
+
+    // Implementation dependencies - internal only
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'ch.qos.logback:logback-classic:1.4.8'
+    implementation 'ch.qos.logback:logback-core:1.4.8'
+    implementation 'commons-io:commons-io:2.13.0'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    
+    // Enable test logging
+    testLogging {
+        events "passed", "skipped", "failed"
+        showExceptions true
+        showStackTraces true
+        showCauses true
+    }
+}
+
+task printJavaVersion {
+    doLast {
+        println "Java Version: ${System.getProperty('java.version')}"
+        println "Java Home: ${System.getProperty('java.home')}"
+    }
 }

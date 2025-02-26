@@ -17,14 +17,14 @@
  */
 package weliyek.serialization.filter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.function.Predicate;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import weliyek.serialization.WkSerdeDtreeBytestreamInputBase;
 import weliyek.serialization.WkSerdeDtreeBytestreamOutputBase;
@@ -88,7 +88,7 @@ public class WkSerdeTestFilterBuilderTest
   private static SignedLongLittleEndianInput<Object> PRIMITIVEGROUP_LONG_INPUTFIELD = PRIMITIVEGROUP_INPUT.signedLong();
   */
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {
     MULTIPLE_LIST_PACKET = WkSerdeTestMultipleListSerdeDef.newStruct();
     PRIMITIVELIST_FIELD = MULTIPLE_LIST_PACKET.definition().variableSequence().definition().elements().definition();
@@ -105,7 +105,7 @@ public class WkSerdeTestFilterBuilderTest
     MULTIPLE_LIST_SIZE_IS_EQUAL_TO_ONE = new WkSrlzReadingPacketNodePredicate<WkSerdeSignedBigEndianShort, WkSerdeSignedBigEndianShortReader>(MULTIPLE_LIST_PACKET.definition().size().definition(), xo -> xo.result().get().serializable().get().intValue() == 1,"IS_MULTIPLE_LIST_SIZE_EQUAL_TO_ONE");
   }
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
   }
 

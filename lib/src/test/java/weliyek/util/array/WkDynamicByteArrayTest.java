@@ -17,16 +17,16 @@
  */
 package weliyek.util.array;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,7 +66,7 @@ public class WkDynamicByteArrayTest
   private static byte[] LONG_BYTE_ARRAY;
   private static WkByteArray LONG_ARRAY_WRAPPER;
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {
     SHORT_BYTE_ARRAY = new byte[] { 0x00, 0x01};
     SHORT_ARRAY_WRAPPER = new WkByteArray(SHORT_BYTE_ARRAY);
@@ -96,15 +96,15 @@ public class WkDynamicByteArrayTest
                                               WkSerdeSignedBigEndianInteger::newCore);
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownAfterClass() throws Exception {
   }
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
   }
 
